@@ -1,17 +1,17 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
   extends: ['plugin:vue/vue3-recommended', 'prettier'],
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
-    sourceType: 'module'
+    sourceType: 'module',
   },
   plugins: ['vue', '@typescript-eslint'],
   rules: {
     semi: 0,
-    indent: ['warn', 2]
-  }
+    indent: ['warn', 2],
+  },
 }

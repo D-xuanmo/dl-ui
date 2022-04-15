@@ -8,7 +8,7 @@
     "preview": "vite preview",
     "prepare": "husky install",
     "prettier": "npx prettier --write .",
-    "lint": "eslint . --ext js,ts,tsx,vue --fix"
+    "lint": "eslint . --ext js,ts,tsx,vue"
   },
   "files": [
     "dist"
