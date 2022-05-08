@@ -1,4 +1,4 @@
-<script lang='ts' setup>
+<script lang="ts" setup>
 import { defineProps } from 'vue'
 
 defineProps<{ count: number }>()
