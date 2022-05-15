@@ -15,14 +15,10 @@
     "paths": {
       "@": ["packages"],
       "@/*": ["packages/*"],
-      "@doc/*": ["docs/*"],
+      "@doc/*": ["docs/*"]
     }
   },
-  "include": [
-    "packages/**/*",
-    "docs/**/*",
-    "docs/**/*.md"
-  ],
+  "include": ["packages/**/*", "docs/**/*", "docs/**/*.md"],
   "references": [
     {
       "path": "./tsconfig.node.json"

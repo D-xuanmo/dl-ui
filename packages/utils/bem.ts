@@ -18,16 +18,10 @@ export function generateModifier(name: Modifier, modifier?: Modifiers): string {
   if (typeof modifier === 'string') return ` ${name}--${modifier} `
 
   if (Array.isArray(modifier)) {
-    return modifier.reduce<string>(
-      (prev, current) => prev + generateModifier(name, current),
-      ''
-    )
+    return modifier.reduce<string>((prev, current) => prev + generateModifier(name, current), '')
   }
 
-  return Object.keys(modifier).reduce(
-    (prev, key) => prev + (modifier[key] ? generateModifier(name, key) : ''),
-    ''
-  )
+  return Object.keys(modifier).reduce((prev, key) => prev + (modifier[key] ? generateModifier(name, key) : ''), '')
 }
 
 /**
@@ -35,11 +29,7 @@ export function generateModifier(name: Modifier, modifier?: Modifiers): string {
  * @param name 前缀
  */
 export function createBEM(name: string) {
-  return (
-    el?: Modifiers | null,
-    modifier?: Modifiers,
-    onlyModifier?: boolean
-  ) => {
+  return (el?: Modifiers | null, modifier?: Modifiers, onlyModifier?: boolean) => {
     if (el && typeof el !== 'string') {
       modifier = el
       el = ''
