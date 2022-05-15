@@ -7,7 +7,22 @@ title: '组件开发指南'
 ## 项目目录说明
 
 - `docs` 组件开发、文档目录
+- `docs/pages` 文档页面，格式为 `markdown`，用于运行 `Vue` 组件及文档书写说明，会自动根据文件名生成路由相关信息
 - `packages` 组件源码目录
+- `packages/utils` 全局工具类方法
+- `packages/hooks` 公用 `hooks`
+- `packages/*` 其他目录为组件目录，命名规范 `kebab-case`
+
+### 文档编写说明
+
+- 一个 `md` 文件代表一个组件的使用说明，以 `packages/example` 为例，访问路径为 `http://localhost:{port}/example`
+- `docs/constants/menus.ts` 文档需要在此文件追加路由信息，否则不会生成左侧菜单项
+
+### 组件开发目录说明
+
+- `index.ts` 组件对外导出入口文件，入口文件不做逻辑处理， `packages/example` 为示例目录
+- `Component.{vue,tsx}` 具体组件，可以多个，命名规范：`PascalCase`
+- `types.ts` 当前组件类型申明文件
 
 ```text
 dynamic-form
