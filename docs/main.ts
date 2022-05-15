@@ -5,8 +5,8 @@ import DForm from '@'
 
 // 引入 CSS 相关资源
 import 'vite-plugin-vuedoc/style.css'
-import 'github-markdown-css'
 import './assets/style/index.scss'
+import DocPreview from '@doc/components/preview'
 
 const app = createApp(App)
 
@@ -15,4 +15,5 @@ app
   .use(DForm, {
     theme: 'light'
   })
+  .component('DocPreview', DocPreview)
   .mount('#app')

@@ -709,6 +709,33 @@
   resolved "https://registry.npmmirror.com/@xuanmo/normalize.css/-/normalize.css-1.0.9.tgz#0e994fb1b2842de6d18dfa690000af02d05531e4"
   integrity sha512-/bMExdDMzOiZZiyipDfOOtefRsn4COnSx5WY0NDu+KknNkN+ZzKP8IScwkTThDZJUt7LXozTRJvRcW5MSFU1uQ==
 
+"@xuanmo/vite-plugin-vuedoc@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.npmjs.org/@xuanmo/vite-plugin-vuedoc/-/vite-plugin-vuedoc-0.0.1.tgz#c4324054d51272702e98fd75d1b07d23979166fd"
+  integrity sha512-D/M65q026xR8Ig/yeGm9YsrwbeNaiKCHsYiMrhu1DL+f3hj7NqCMQVlJhkAIKmItbvVVehL8/1p3bnMNYwjZDg==
+  dependencies:
+    fs-extra "^8.1.0"
+    gray-matter "^4.0.2"
+    highlight.js "^10.6.0"
+    js-yaml "^3.14.0"
+    markdown-it "^12.0.4"
+    markdown-it-abbr "^1.0.4"
+    markdown-it-container "^3.0.0"
+    markdown-it-deflist "^2.1.0"
+    markdown-it-emoji "^2.0.0"
+    markdown-it-footnote "^3.0.1"
+    markdown-it-ins "^3.0.1"
+    markdown-it-katex "^2.0.3"
+    markdown-it-latex "^0.2.0"
+    markdown-it-mark "^3.0.1"
+    markdown-it-source-map "^0.1.1"
+    markdown-it-sub "^1.0.0"
+    markdown-it-sup "^1.0.0"
+    markdown-it-task-lists "^2.1.1"
+    markdown-it-toc-and-anchor "^4.1.2"
+    rev-hash "^3.0.0"
+    slash "^3.0.0"
+
 acorn-jsx@^5.3.1:
   version "5.3.2"
   resolved "https://registry.npmmirror.com/acorn-jsx/-/acorn-jsx-5.3.2.tgz"
@@ -1633,11 +1660,6 @@ get-symbol-description@^1.0.0:
   dependencies:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
-
-github-markdown-css@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.npmmirror.com/github-markdown-css/-/github-markdown-css-5.1.0.tgz#a96281cd90a8969e3c13b9d3ca6a733a523a00a6"
-  integrity sha512-QLtORwHHtUHhPMHu7i4GKfP6Vx5CWZn+NKQXe+cBhslY1HEt0CTEkP4d/vSROKV0iIJSpl4UtlQ16AD8C6lMug==
 
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"
@@ -2824,33 +2846,6 @@ v8-compile-cache@^2.0.3:
   version "2.3.0"
   resolved "https://registry.npmmirror.com/v8-compile-cache/-/v8-compile-cache-2.3.0.tgz"
   integrity sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==
-
-vite-plugin-vuedoc@^3.1.3:
-  version "3.1.3"
-  resolved "https://registry.npmmirror.com/vite-plugin-vuedoc/-/vite-plugin-vuedoc-3.1.3.tgz#37d7eb1ee7e8bc92890b5a54c60af38780d4c14c"
-  integrity sha512-mvY+VB78d/Vma4LxZMxil8G+EAyFowFoSjJwI11yrr8OU+Jj4lhLGzfIHvku9yNf9ym34eafA8YcrZkopSeo3Q==
-  dependencies:
-    fs-extra "^8.1.0"
-    gray-matter "^4.0.2"
-    highlight.js "^10.6.0"
-    js-yaml "^3.14.0"
-    markdown-it "^12.0.4"
-    markdown-it-abbr "^1.0.4"
-    markdown-it-container "^3.0.0"
-    markdown-it-deflist "^2.1.0"
-    markdown-it-emoji "^2.0.0"
-    markdown-it-footnote "^3.0.1"
-    markdown-it-ins "^3.0.1"
-    markdown-it-katex "^2.0.3"
-    markdown-it-latex "^0.2.0"
-    markdown-it-mark "^3.0.1"
-    markdown-it-source-map "^0.1.1"
-    markdown-it-sub "^1.0.0"
-    markdown-it-sup "^1.0.0"
-    markdown-it-task-lists "^2.1.1"
-    markdown-it-toc-and-anchor "^4.1.2"
-    rev-hash "^3.0.0"
-    slash "^3.0.0"
 
 vite@^2.9.2:
   version "2.9.5"

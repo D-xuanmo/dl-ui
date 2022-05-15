@@ -1,6 +1,7 @@
 <template>
   <div>{{ count }}</div>
   <div>globalConfig: {{ globalConfig }}</div>
+  <slot name="code"></slot>
 </template>
 
 <script lang="ts">

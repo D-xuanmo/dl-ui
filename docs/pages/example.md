@@ -5,7 +5,7 @@ desc: '描述'
 
 # Example 文档示例说明
 
-```vue demo
+```vue demo h5
 <template>
   <d-example :count="333" />
   <DExample :count="333" />

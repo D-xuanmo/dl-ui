@@ -1,0 +1,38 @@
+.d-doc-preview {
+  &__wrapper {
+    border: var(--d-border);
+
+    > * {
+      padding: 0 var(--d-gap-sm);
+    }
+  }
+
+  &__runtime {
+    padding-top: var(--d-gap-sm);
+  }
+
+  &__toolbar {
+    margin-top: var(--d-gap-sm);
+    padding: var(--d-gap-xs) var(--d-gap-sm);
+    border-top: 1px dashed var(--d-border-color);
+    text-align: center;
+
+    > * {
+      cursor: pointer;
+    }
+
+    &--active {
+      border-bottom: 1px dashed var(--d-border-color);
+    }
+  }
+
+  &__code {
+    display: none;
+    margin-top: var(--d-gap-sm);
+    padding-bottom: var(--d-gap-sm);
+
+    &--active {
+      display: block;
+    }
+  }
+}
