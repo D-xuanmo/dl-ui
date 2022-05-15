@@ -95,17 +95,13 @@
     //  }
     //}
 
-    code:not(.d-doc__preview code, pre code) {
+    code:not(&__preview code, pre code) {
       margin: 0 1px;
       padding: 0.2em 0.4em;
       font-size: 0.9em;
       background: #f2f4f5;
       border: 1px solid rgba(0, 0, 0, 0.06);
       border-radius: 3px;
-    }
-
-    pre {
-      background: none !important;
     }
   }
 
@@ -114,6 +110,10 @@
 
     .vuedoc-demo__footer:hover {
       color: var(--d-primary);
+    }
+
+    pre.hljs {
+      background: none !important;
     }
 
     .vuedoc-demo__inner,

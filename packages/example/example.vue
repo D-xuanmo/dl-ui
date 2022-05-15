@@ -1,10 +1,12 @@
 <template>
   <div>{{ count }}</div>
+  <div>globalConfig: {{ globalConfig }}</div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, inject } from 'vue'
 import { createNamespace } from '@/utils/bem'
+import { globalConfigKey } from '@/constants/context'
 
 const [name] = createNamespace('example')
 
@@ -17,6 +19,12 @@ const props = {
 
 export default defineComponent({
   name,
-  props
+  props,
+  setup() {
+    const globalConfig = inject(globalConfigKey)
+    return {
+      globalConfig
+    }
+  }
 })
 </script>

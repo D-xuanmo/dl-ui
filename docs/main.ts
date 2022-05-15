@@ -10,4 +10,9 @@ import './assets/style/index.scss'
 
 const app = createApp(App)
 
-app.use(routes).use(DForm).mount('#app')
+app
+  .use(routes)
+  .use(DForm, {
+    theme: 'light'
+  })
+  .mount('#app')
