@@ -1,5 +1,5 @@
-import _Example from './Example.vue'
-import _ExampleBEM from './ExampleBEM.vue'
+import _Example from './example.vue'
+import _ExampleBEM from './example-bem.vue'
 import { withInstall } from '@/utils/with-install'
 
 const Example = withInstall(_Example)

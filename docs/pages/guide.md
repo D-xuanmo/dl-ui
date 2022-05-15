@@ -21,7 +21,7 @@ title: '组件开发指南'
 ### 组件开发目录说明
 
 - `index.ts` 组件对外导出入口文件，入口文件不做逻辑处理， `packages/example` 为示例目录
-- `Component.{vue,tsx}` 具体组件，可以多个，命名规范：`PascalCase`
+- `component.{vue,tsx}` 具体组件，可以多个，命名规范：`kebab-case`
 - `types.ts` 当前组件类型申明文件
 
 ```text
@@ -51,8 +51,8 @@ dynamic-form
 ├── package.json
 ├── packages
 │   ├── example
-│   │   ├── Example.vue
-│   │   ├── ExampleBEM.vue
+│   │   ├── example.vue
+│   │   ├── example-bem.vue
 │   │   └── index.ts
 │   ├── hooks
 │   ├── index.ts
