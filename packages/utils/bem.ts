@@ -35,13 +35,19 @@ export function generateModifier(name: Modifier, modifier?: Modifiers): string {
  * @param name 前缀
  */
 export function createBEM(name: string) {
-  return (el?: Modifiers, modifier?: Modifiers) => {
+  return (
+    el?: Modifiers | null,
+    modifier?: Modifiers,
+    onlyModifier?: boolean
+  ) => {
     if (el && typeof el !== 'string') {
       modifier = el
       el = ''
     }
 
     el = el ? `${name}__${el}` : name
+
+    if (onlyModifier) return generateModifier(el, modifier)
 
     return `${el}${generateModifier(el, modifier)}`
   }

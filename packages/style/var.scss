@@ -1,0 +1,35 @@
+:root {
+  // 提示类颜色
+  --d-primary: #43c6ac;
+  --d-success: #00a870;
+  --d-warning: #ed7b2f;
+  --d-error: #e34d59;
+
+  // 边框颜色
+  --d-border-color: #e5e5e5;
+  --d-border: 1px solid var(--d-border-color);
+
+  // 文字大小
+  --d-font-size-xs: 10px;
+  --d-font-size-sm: 12px;
+  --d-font-size-md: 14px;
+  --d-font-size-lg: 16px;
+
+  // 行高
+  --d-line-height-xs: calc(var(--d-font-size-xs) + var(--d-font-size-xs) * 0.4);
+  --d-line-height-sm: calc(var(--d-font-size-sm) + var(--d-font-size-sm) * 0.4);
+  --d-line-height-md: calc(var(--d-font-size-md) + var(--d-font-size-md) * 0.4);
+  --d-line-height-lg: calc(var(--d-font-size-lg) + var(--d-font-size-lg) * 0.4);
+
+  // 文字颜色
+  --d-title-color: #{rgba(black, 0.85)};
+  --d-primary-text-color: #{rgba(black, 0.85)};
+  --d-secondary-text-color: #{rgba(black, 0.45)};
+  --d-disable-color: #{rgba(black, 0.25)};
+
+  // 间距
+  --d-gap-xs: 8px;
+  --d-gap-sm: 16px;
+  --d-gap-md: 24px;
+  --d-gap-lg: 32px;
+}

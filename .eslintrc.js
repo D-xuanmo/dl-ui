@@ -16,6 +16,8 @@ module.exports = {
   ],
   rules: {
     semi: 0,
-    indent: ['warn', 2]
+    indent: ['warn', 2],
+    'vue/multi-word-component-names': 0,
+    'vue/no-v-html': 0
   }
 }

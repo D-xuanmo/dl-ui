@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// 文档预览样式
+.d-doc {
+  &__container {
+    display: flex;
+    margin: 0 auto;
+    padding: var(--d-gap-md);
+    font-size: var(--d-font-size-md);
+  }
+
+  &__menu {
+    width: 200px;
+    margin-right: var(--d-gap-lg);
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__wrapper {
+    font-size: 14px;
+
+    .markdownIt-Anchor {
+      color: var(--d-primary);
+    }
+
+    h1 {
+      border: 0;
+      font-size: 28px;
+    }
+
+    h2 {
+      margin: var(--d-gap-lg) 0 var(--d-gap-md);
+      border: 0;
+      font-size: 24px;
+    }
+
+    h3 {
+      margin-bottom: var(--d-gap-sm);
+      border: 0;
+      font-size: 18px;
+    }
+
+    h4 {
+      border: 0;
+      font-size: 16px;
+    }
+
+    h5 {
+      border: 0;
+      font-size: 14px;
+    }
+
+    h6 {
+      border: 0;
+      font-size: 12px;
+    }
+
+    //table {
+    //  width: 100%;
+    //  border: var(--d-border);
+    //  border-collapse: collapse;
+    //
+    //  thead {
+    //    background-color: var(--d-border-color);
+    //  }
+    //
+    //  tr {
+    //    th {
+    //      padding: var(--d-gap-xs);
+    //      border-bottom: var(--d-border);
+    //      text-align: left;
+    //      color: rgba(0, 0, 0, 0.9);
+    //
+    //      &:nth-of-type(4) {
+    //        width: 40%;
+    //      }
+    //    }
+    //
+    //    td {
+    //      padding: var(--d-gap-xs);
+    //
+    //      &:first-of-type {
+    //        font-weight: bold;
+    //      }
+    //
+    //      &:nth-of-type(4) {
+    //        width: 40%;
+    //      }
+    //    }
+    //  }
+    //}
+
+    code:not(.d-doc__preview code, pre code) {
+      margin: 0 1px;
+      padding: 0.2em 0.4em;
+      font-size: 0.9em;
+      background: #f2f4f5;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 3px;
+    }
+
+    pre {
+      background: none !important;
+    }
+  }
+
+  &__preview {
+    margin-top: var(--d-gap-md);
+
+    .vuedoc-demo__footer:hover {
+      color: var(--d-primary);
+    }
+
+    .vuedoc-demo__inner,
+    .vuedoc-demo__source,
+    .vuedoc-demo__footer {
+      border-color: var(--d-border-color);
+    }
+  }
+}

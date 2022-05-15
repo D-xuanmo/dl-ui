@@ -2,10 +2,23 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import vitePluginVueDoc, { vueDocFiles } from 'vite-plugin-vuedoc'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueJsx()],
+  plugins: [
+    vitePluginVueDoc({
+      wrapperClass: 'd-doc__wrapper markdown-body',
+      previewClass: 'd-doc__preview',
+      highlight: {
+        theme: 'one-light'
+      }
+    }),
+    vue({
+      include: [...vueDocFiles]
+    }),
+    vueJsx()
+  ],
   server: {
     open: '/'
   },
@@ -17,7 +30,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve(__dirname, 'components/index.ts'),
+      entry: resolve(__dirname, 'packages/index.ts'),
       name: 'DForm',
       fileName: (format) => `d-form.${format}.js`
     },
