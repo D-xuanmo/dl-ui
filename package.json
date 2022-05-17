@@ -15,12 +15,6 @@
   ],
   "main": "./dist/d-form.umd.js",
   "module": "./dist/d-form.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/d-form.es.js",
-      "require": "./dist/d-form.umd.js"
-    }
-  },
   "dependencies": {
     "@xuanmo/javascript-utils": "^0.0.35",
     "@xuanmo/normalize.css": "^1.0.9",

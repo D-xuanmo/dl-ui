@@ -34,10 +34,12 @@ const Menu = defineComponent({
           </>
         ) : null
 
+        const openPage = () => router.push(path ?? '')
+
         return (
           <li key={id} class={bem('item', { active: route.path === path })}>
             {content && (
-              <p class={bem('item-link')} onClick={() => path && router.push(path)}>
+              <p class={bem('item-link')} onClick={openPage}>
                 <span class={bem('item-link', 'title', true)}>{componentName}</span>
                 <span class={bem('item-link', 'describe', true)}>{describe}</span>
               </p>
