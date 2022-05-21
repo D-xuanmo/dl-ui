@@ -17,4 +17,4 @@
 
 ## 组件完整功能
 
-![组件说明](https://upyun.xuanmo.xin/20220508164941627153.svg)
+![组件说明](https://admin.xuanmo.xin/api/my-admin/readFile?path=/upload/20220521223340569392.svg)
