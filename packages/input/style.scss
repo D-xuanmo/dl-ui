@@ -1,0 +1,7 @@
+@import 'packages/style/prefix.scss';
+
+.#{$prefix}-input {
+  width: 100%;
+  border: 0;
+  caret-color: var(--d-primary);
+}

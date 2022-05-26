@@ -1,9 +1,13 @@
 :root {
-  // 提示类颜色
+  // 主题色
   --d-primary: #43c6ac;
+
+  // 提示类颜色
   --d-success: #00a870;
   --d-warning: #ed7b2f;
   --d-error: #e34d59;
+
+  --d-white-color: #fff;
 
   // 边框颜色
   --d-border-color: #e5e5e5;
@@ -28,6 +32,7 @@
   --d-disable-color: #{rgba(black, 0.25)};
 
   // 间距
+  --d-gap-xxs: 8px;
   --d-gap-xs: 8px;
   --d-gap-sm: 16px;
   --d-gap-md: 24px;

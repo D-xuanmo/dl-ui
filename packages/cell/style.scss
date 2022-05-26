@@ -1,0 +1,34 @@
+@import 'packages/style/prefix.scss';
+@import 'packages/style/mixins.scss';
+
+.#{$prefix}-cell {
+  $parent: &;
+  display: flex;
+  align-items: center;
+  padding: var(--d-gap-xs) var(--d-gap-sm);
+  background-color: var(--d-white-color);
+
+  &:not(:last-of-type) {
+    @include border-bottom(var(--d-gap-sm));
+  }
+
+  &--hide-title {
+    #{$parent} {
+      &__content {
+        text-align: left;
+      }
+    }
+  }
+
+  &__title {
+    &--mark {
+      vertical-align: middle;
+      color: var(--d-error);
+    }
+  }
+
+  &__content {
+    flex: 1;
+    text-align: right;
+  }
+}
