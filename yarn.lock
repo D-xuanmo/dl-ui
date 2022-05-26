@@ -704,11 +704,6 @@
   dependencies:
     "@typescript-eslint/parser" "^4.27.0"
 
-"@xuanmo/normalize.css@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.npmmirror.com/@xuanmo/normalize.css/-/normalize.css-1.0.9.tgz#0e994fb1b2842de6d18dfa690000af02d05531e4"
-  integrity sha512-/bMExdDMzOiZZiyipDfOOtefRsn4COnSx5WY0NDu+KknNkN+ZzKP8IScwkTThDZJUt7LXozTRJvRcW5MSFU1uQ==
-
 "@xuanmo/vite-plugin-vuedoc@^0.0.1":
   version "0.0.1"
   resolved "https://registry.npmjs.org/@xuanmo/vite-plugin-vuedoc/-/vite-plugin-vuedoc-0.0.1.tgz#c4324054d51272702e98fd75d1b07d23979166fd"

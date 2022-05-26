@@ -12,11 +12,13 @@
     "resolveJsonModule": true,
     "isolatedModules": false,
     "lib": ["esnext", "dom"],
+    "skipLibCheck": true,
     "paths": {
       "@": ["packages"],
       "@/*": ["packages/*"],
       "@doc/*": ["docs/*"]
-    }
+    },
+    "types": ["vite/client"]
   },
   "include": ["packages/**/*", "docs/**/*", "docs/**/*.md"],
   "references": [
