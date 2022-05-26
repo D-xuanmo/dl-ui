@@ -9,6 +9,10 @@
 
   &__runtime {
     padding-top: var(--d-gap-sm);
+
+    &--h5 {
+      width: 375px;
+    }
   }
 
   &__toolbar {
