@@ -10,6 +10,16 @@ const menus: MenuItemType[] = [
       { id: createRandomID(), path: '/example', content: 'Example [描述文字]' },
       { id: createRandomID(), path: '/example-bem', content: 'BEM [示例]' }
     ]
+  },
+  {
+    id: createRandomID(),
+    groupTitle: '布局组件',
+    children: [{ id: createRandomID(), path: '/cell', content: 'Cell [单元格]' }]
+  },
+  {
+    id: createRandomID(),
+    groupTitle: '表单组件',
+    children: [{ id: createRandomID(), path: '/input', content: 'Input [输入框]' }]
   }
 ]
 
