@@ -1,6 +1,7 @@
 import { defineComponent, inject, PropType } from 'vue'
 import { createNamespace } from '@/utils/bem'
 import { globalConfigKey } from '@/constants/context'
+import { toBoolean } from '@xuanmo/javascript-utils'
 
 const [name, bem] = createNamespace('cell')
 
@@ -8,7 +9,9 @@ const props = {
   title: String as PropType<string>,
   required: Boolean as PropType<boolean>,
   content: String as PropType<string>,
-  hideTitle: Boolean as PropType<boolean>
+  hideTitle: Boolean as PropType<boolean>,
+  titleClass: String as PropType<string>,
+  contentClass: String as PropType<string>
 }
 
 export default defineComponent({
@@ -17,21 +20,27 @@ export default defineComponent({
   setup(props, { slots }) {
     return () => {
       const { labelWidth, hideLabel } = inject(globalConfigKey) ?? {}
-      const { title, required, content, hideTitle } = props
+      const { title, required, content, hideTitle, titleClass, contentClass } = props
 
-      const requiredMark = required ? <span className={bem('title', 'mark')}> *</span> : null
+      const titleClassName = bem('title', {
+        [titleClass ?? '']: toBoolean(titleClass)
+      })
+
+      const contentClassName = bem('content', {
+        [contentClass ?? '']: toBoolean(contentClass)
+      })
 
       const label = hideLabel ? null : (
-        <div className={bem('title')} style={{ width: labelWidth }}>
+        <div className={titleClassName} style={{ width: labelWidth }}>
           {title}
-          {requiredMark}
+          {required ? <span className={bem('title', 'mark', true)}> *</span> : null}
         </div>
       )
 
       return (
         <div className={bem({ 'hide-title': hideTitle })}>
           {hideTitle ? null : label}
-          <div className={bem('content')}>{slots.default ? slots.default() : content}</div>
+          <div className={contentClassName}>{slots.default ? slots.default() : content}</div>
         </div>
       )
     }
