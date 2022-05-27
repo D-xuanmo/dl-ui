@@ -6,12 +6,12 @@ import { toBoolean } from '@xuanmo/javascript-utils'
 const [name, bem] = createNamespace('cell')
 
 const props = {
-  title: String as PropType<string>,
-  required: Boolean as PropType<boolean>,
-  content: String as PropType<string>,
-  hideTitle: Boolean as PropType<boolean>,
-  titleClass: String as PropType<string>,
-  contentClass: String as PropType<string>
+  title: String,
+  required: Boolean,
+  content: String,
+  hideTitle: Boolean,
+  titleClass: String,
+  contentClass: String
 }
 
 export default defineComponent({
