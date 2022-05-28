@@ -31,7 +31,10 @@ export default defineComponent({
       })
 
       const label = hideLabel ? null : (
-        <div className={titleClassName} style={{ width: labelWidth }}>
+        <div
+          className={titleClassName}
+          style={{ width: labelWidth }}
+        >
           {title}
           {required ? <span className={bem('title', 'mark', true)}> *</span> : null}
         </div>
