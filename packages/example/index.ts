@@ -9,6 +9,6 @@ export { Example, ExampleBEM }
 
 declare module 'vue' {
   export interface GlobalComponents {
-    DExample: typeof Example
+    DExample: typeof _Example
   }
 }

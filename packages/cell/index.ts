@@ -7,6 +7,6 @@ export default Cell
 
 declare module 'vue' {
   export interface GlobalComponents {
-    DCell: typeof Cell
+    DCell: typeof _Cell
   }
 }

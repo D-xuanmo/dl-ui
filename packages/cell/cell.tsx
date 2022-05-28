@@ -1,4 +1,4 @@
-import { defineComponent, inject, PropType } from 'vue'
+import { defineComponent, inject } from 'vue'
 import { createNamespace } from '@/utils/bem'
 import { globalConfigKey } from '@/constants/context'
 import { toBoolean } from '@xuanmo/javascript-utils'

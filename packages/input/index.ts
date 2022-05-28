@@ -7,6 +7,6 @@ export default Input
 
 declare module 'vue' {
   export interface GlobalComponents {
-    DInput: typeof Input
+    DInput: typeof _Input
   }
 }
