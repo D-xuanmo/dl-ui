@@ -20,6 +20,12 @@
     }
   }
 
+  &--disabled {
+    #{$parent}__title {
+      color: var(--d-disable-color);
+    }
+  }
+
   &__title {
     &--mark {
       vertical-align: middle;

@@ -11,7 +11,8 @@ const props = {
   content: String,
   hideTitle: Boolean,
   titleClass: String,
-  contentClass: String
+  contentClass: String,
+  disabled: Boolean
 }
 
 export default defineComponent({
@@ -20,7 +21,7 @@ export default defineComponent({
   setup(props, { slots }) {
     return () => {
       const { labelWidth, hideLabel } = inject(globalConfigKey) ?? {}
-      const { title, required, content, hideTitle, titleClass, contentClass } = props
+      const { title, required, content, hideTitle, titleClass, contentClass, disabled } = props
 
       const titleClassName = bem('title', {
         [titleClass ?? '']: toBoolean(titleClass)
@@ -41,7 +42,7 @@ export default defineComponent({
       )
 
       return (
-        <div className={bem({ 'hide-title': hideTitle })}>
+        <div className={bem({ 'hide-title': hideTitle, disabled })}>
           {hideTitle ? null : label}
           <div className={contentClassName}>{slots.default ? slots.default() : content}</div>
         </div>
