@@ -21,7 +21,8 @@ export default defineConfig({
     vueJsx()
   ],
   server: {
-    open: '/'
+    open: '/',
+    host: '0.0.0.0'
   },
   resolve: {
     alias: {
