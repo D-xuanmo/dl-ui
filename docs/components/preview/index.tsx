@@ -22,7 +22,7 @@ const DocPreview = defineComponent({
         <div class={bem('wrapper')}>
           <div class={bem('runtime', { h5: restAttrs?.indexOf('h5') !== -1 })}>{slots.default?.()}</div>
           <div class={bem('toolbar', { active: showCode.value })}>
-            <span onClick={toggleCodeVisible}>显示代码</span>
+            <span onClick={toggleCodeVisible}>{!showCode.value ? '显示' : '隐藏'}代码</span>
           </div>
           <div class={bem('code', { active: showCode.value })}>{slots.code?.()}</div>
         </div>

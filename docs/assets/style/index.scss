@@ -77,6 +77,10 @@ body {
       border: var(--d-border);
       border-collapse: collapse;
 
+      & + * {
+        margin-top: var(--d-gap-md);
+      }
+
       thead {
         background-color: var(--d-border-color);
       }
@@ -118,7 +122,7 @@ body {
   }
 
   &__preview {
-    margin-top: var(--d-gap-md);
+    margin: var(--d-gap-md) 0;
 
     .vuedoc-demo__footer:hover {
       color: var(--d-primary);
