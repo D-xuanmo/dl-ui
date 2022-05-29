@@ -49,6 +49,27 @@ title: 'Cell'
     content="隐藏标题"
     hideTitle
   />
+  <DCell
+    title="扩展内容"
+    content="正文"
+    suffix="单位"
+  />
+  <DCell
+    title="扩展内容"
+    content="正文"
+  >
+    <template #suffix>单位</template>
+  </DCell>
+  <DCell
+    title="显示图标"
+    icon="tips"
+  />
+  <DCell
+    title="显示图标"
+    content="图标大小、颜色控制"
+    icon="tips"
+    :iconProps="{ size: 'small', color: '#f00' }"
+  />
 </template>
 ```
 
@@ -63,12 +84,24 @@ title: 'Cell'
 
 ### Cell Props
 
-| 参数         | 类型    | 默认值 | 说明             | 必传 |
-| ------------ | ------- | ------ | ---------------- | ---- |
-| title        | string  | -      | 标题             | N    |
-| content      | string  | -      | 内容             | N    |
-| required     | boolean | false  | 是否显示必填标识 | N    |
-| hideTitle    | boolean | false  | 是否隐藏标题     | N    |
-| titleClass   | string  | -      | 标题类名         | N    |
-| contentClass | string  | -      | 内容类名         | N    |
-| disabled     | boolean | -      | 是否禁用         | N    |
+| 参数         | 类型                | 默认值 | 说明                                | 必传 |
+| ------------ | ------------------- | ------ | ----------------------------------- | ---- |
+| title        | string              | -      | 标题                                | N    |
+| content      | string              | -      | 内容                                | N    |
+| required     | boolean             | false  | 是否显示必填标识                    | N    |
+| hideTitle    | boolean             | false  | 是否隐藏标题                        | N    |
+| titleClass   | string              | -      | 标题类名                            | N    |
+| contentClass | string              | -      | 内容类名                            | N    |
+| disabled     | boolean             | -      | 是否禁用                            | N    |
+| suffix       | string              | -      | 扩展内容                            | N    |
+| align        | string              | right  | 对齐方式，可选值：left/center/right | N    |
+| icon         | string              | -      | 显示图标                            | N    |
+| iconProps    | Record<string, any> | -      | `Icon` 图标组件 props               | N    |
+
+### Cell Slots
+
+| 名称    | 说明           |
+| ------- | -------------- |
+| title   | 自定义标题     |
+| content | 自定义内容     |
+| suffix  | 自定义扩展内容 |
