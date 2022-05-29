@@ -1,7 +1,21 @@
 @import 'packages/style/prefix.scss';
+@import 'packages/style/mixins.scss';
 
 .#{$prefix}-input {
   width: 100%;
   border: 0;
   caret-color: var(--d-primary);
+  @include text-align;
+
+  &:-webkit-autofill {
+    background: none;
+  }
+
+  &--disabled {
+    color: var(--d-disable-color);
+
+    &::placeholder {
+      color: var(--d-disable-color);
+    }
+  }
 }
