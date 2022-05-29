@@ -24,6 +24,14 @@ textarea,
   }
 }
 
+input[class^='d-'] {
+  &,
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    appearance: none;
+  }
+}
+
 ol,
 ul {
   margin: 0;
