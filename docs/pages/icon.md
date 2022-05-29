@@ -49,8 +49,8 @@ title: 'Icon'
 
 ### Icon Props
 
-| 参数  | 类型   | 默认值 | 说明                                 | 必传 |
-| ----- | ------ | ------ | ------------------------------------ | ---- |
-| name  | string | -      | 图标名称                             | Y    |
-| size  | string | medium | 图标大小，可选值：small/medium/large | N    |
-| color | string | -      | 图标颜色                             | N    |
+| 参数  | 类型   | 默认值 | 说明                                                                     | 必传 |
+| ----- | ------ | ------ | ------------------------------------------------------------------------ | ---- |
+| name  | string | -      | 图标名称                                                                 | Y    |
+| size  | string | medium | 图标大小，可选值：small/medium/large/string，为 `string` 时，单位为 `px` | N    |
+| color | string | -      | 图标颜色                                                                 | N    |
