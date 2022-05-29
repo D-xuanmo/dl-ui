@@ -7,7 +7,7 @@ title: 'Icon'
 ```vue demo h5
 <template>
   <DCellGroup title="基础用法">
-    <DCell align="left">
+    <DCell content-align="left">
       <DIcon
         name="close"
         size="small"
@@ -27,7 +27,7 @@ title: 'Icon'
     </DCell>
   </DCellGroup>
   <DCellGroup title="图标颜色">
-    <DCell align="left">
+    <DCell content-align="left">
       <DIcon
         name="close"
         color="#f00"

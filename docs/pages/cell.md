@@ -47,7 +47,7 @@ title: 'Cell'
   />
   <DCell
     content="隐藏标题"
-    hideTitle
+    hide-title
   />
   <DCell
     title="扩展内容"
@@ -68,7 +68,7 @@ title: 'Cell'
     title="显示图标"
     content="图标大小、颜色控制"
     icon="tips"
-    :iconProps="{ size: 'small', color: '#f00' }"
+    :icon-props="{ size: 'small', color: '#f00' }"
   />
 </template>
 ```
@@ -84,19 +84,20 @@ title: 'Cell'
 
 ### Cell Props
 
-| 参数         | 类型                | 默认值 | 说明                                | 必传 |
-| ------------ | ------------------- | ------ | ----------------------------------- | ---- |
-| title        | string              | -      | 标题                                | N    |
-| content      | string              | -      | 内容                                | N    |
-| required     | boolean             | false  | 是否显示必填标识                    | N    |
-| hideTitle    | boolean             | false  | 是否隐藏标题                        | N    |
-| titleClass   | string              | -      | 标题类名                            | N    |
-| contentClass | string              | -      | 内容类名                            | N    |
-| disabled     | boolean             | -      | 是否禁用                            | N    |
-| suffix       | string              | -      | 扩展内容                            | N    |
-| align        | string              | right  | 对齐方式，可选值：left/center/right | N    |
-| icon         | string              | -      | 显示图标                            | N    |
-| iconProps    | Record<string, any> | -      | `Icon` 图标组件 props               | N    |
+| 参数          | 类型                | 默认值 | 说明                                    | 必传 |
+| ------------- | ------------------- | ------ | --------------------------------------- | ---- |
+| title         | string              | -      | 标题                                    | N    |
+| title-class   | string              | -      | 标题类名                                | N    |
+| title-align   | string              | left   | 标题对齐方式，可选值：left/center/right | N    |
+| hide-title    | boolean             | false  | 是否隐藏标题                            | N    |
+| required      | boolean             | false  | 是否显示必填标识                        | N    |
+| content       | string              | -      | 内容                                    | N    |
+| content-class | string              | -      | 内容类名                                | N    |
+| content-align | string              | right  | 内容对齐方式，可选值：left/center/right | N    |
+| disabled      | boolean             | -      | 是否禁用                                | N    |
+| suffix        | string              | -      | 扩展内容                                | N    |
+| icon          | string              | -      | 显示图标                                | N    |
+| icon-props    | Record<string, any> | -      | `Icon` 图标组件 props                   | N    |
 
 ### Cell Slots
 
