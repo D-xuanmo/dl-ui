@@ -28,6 +28,8 @@
 
   &__title {
     @include text-align;
+    margin-right: var(--d-gap-xs);
+
     &--mark {
       vertical-align: middle;
       color: var(--d-error);
@@ -48,5 +50,9 @@
     padding-left: var(--d-gap-xs);
     @include border(0, left);
     color: var(--d-secondary-text-color);
+  }
+
+  &__right-icon {
+    margin-left: var(--d-gap-xs);
   }
 }

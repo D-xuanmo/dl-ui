@@ -2,7 +2,7 @@ import { defineComponent, inject, PropType } from 'vue'
 import { createNamespace } from '@/utils/bem'
 import { globalConfigKey } from '@/constants/context'
 import { isEmpty, toBoolean } from '@xuanmo/javascript-utils'
-import { HorizontalAlignEnum } from '@/common'
+import { HorizontalAlignEnum, SizeEnum } from '@/common'
 import DIcon from '../icon'
 
 const [name, bem] = createNamespace('cell')
@@ -17,6 +17,11 @@ const props = {
   },
   hideTitle: Boolean,
   required: Boolean,
+  leftIcon: String,
+  leftIconSize: String as PropType<SizeEnum | string>,
+  leftIconColor: String,
+  leftIconProps: Object,
+
   content: String,
   contentClass: String,
   contentAlign: {
@@ -24,9 +29,12 @@ const props = {
     default: 'right'
   },
   disabled: Boolean,
+
   suffix: String,
-  icon: String,
-  iconProps: Object
+  rightIcon: String,
+  rightIconSize: String as PropType<SizeEnum | string>,
+  rightIconColor: String,
+  rightIconProps: Object
 }
 
 export default defineComponent({
@@ -47,8 +55,14 @@ export default defineComponent({
         disabled,
         suffix,
         contentAlign,
-        icon,
-        iconProps = {}
+        leftIcon,
+        leftIconSize,
+        leftIconColor,
+        leftIconProps,
+        rightIcon,
+        rightIconColor,
+        rightIconSize,
+        rightIconProps
       } = props
 
       const titleClassName = bem('title', {
@@ -71,11 +85,13 @@ export default defineComponent({
               slots.title()
             ) : (
               <>
-                {icon ? (
+                {leftIcon ? (
                   <DIcon
-                    name={icon}
+                    name={leftIcon}
                     className={bem('title', 'icon', true)}
-                    {...iconProps}
+                    size={leftIconSize}
+                    color={leftIconColor}
+                    {...leftIconProps}
                   />
                 ) : null}
                 <span>{title}</span>
@@ -85,6 +101,16 @@ export default defineComponent({
           </div>
         )
 
+      const rightIconRender = rightIcon && (
+        <DIcon
+          name={rightIcon}
+          color={rightIconColor}
+          size={rightIconSize}
+          className={bem('right-icon')}
+          {...rightIconProps}
+        />
+      )
+
       const suffixRender =
         slots.suffix || suffix ? <div className={bem('suffix')}>{slots.suffix ? slots.suffix() : suffix}</div> : null
 
@@ -92,6 +118,7 @@ export default defineComponent({
         <div className={bem({ 'hide-title': hideTitle, disabled })}>
           {label}
           <div className={contentClassName}>{slots.default ? slots.default() : content}</div>
+          {rightIconRender}
           {suffixRender}
         </div>
       )
