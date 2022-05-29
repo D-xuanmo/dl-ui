@@ -9,7 +9,7 @@
   background-color: var(--d-white-color);
 
   &:not(:last-of-type) {
-    @include border-bottom(var(--d-gap-sm));
+    @include border(var(--d-gap-sm));
   }
 
   &--hide-title {
@@ -36,5 +36,12 @@
   &__content {
     flex: 1;
     text-align: right;
+  }
+
+  &__suffix {
+    margin-left: var(--d-gap-xs);
+    padding-left: var(--d-gap-xs);
+    @include border(0, left);
+    color: var(--d-secondary-text-color);
   }
 }

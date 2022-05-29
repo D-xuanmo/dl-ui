@@ -12,7 +12,8 @@ const props = {
   hideTitle: Boolean,
   titleClass: String,
   contentClass: String,
-  disabled: Boolean
+  disabled: Boolean,
+  suffix: String
 }
 
 export default defineComponent({
@@ -21,7 +22,7 @@ export default defineComponent({
   setup(props, { slots }) {
     return () => {
       const { labelWidth, hideLabel } = inject(globalConfigKey) ?? {}
-      const { title, required, content, hideTitle, titleClass, contentClass, disabled } = props
+      const { title, required, content, hideTitle = hideLabel, titleClass, contentClass, disabled, suffix } = props
 
       const titleClassName = bem('title', {
         [titleClass ?? '']: toBoolean(titleClass)
@@ -31,20 +32,30 @@ export default defineComponent({
         [contentClass ?? '']: toBoolean(contentClass)
       })
 
-      const label = hideLabel ? null : (
+      const label = hideTitle ? null : (
         <div
           className={titleClassName}
           style={{ width: labelWidth }}
         >
-          {title}
-          {required ? <span className={bem('title', 'mark', true)}> *</span> : null}
+          {slots.title ? (
+            slots.title()
+          ) : (
+            <>
+              {title}
+              {required ? <span className={bem('title', 'mark', true)}> *</span> : null}
+            </>
+          )}
         </div>
       )
 
+      const suffixRender =
+        slots.suffix || suffix ? <div className={bem('suffix')}>{slots.suffix ? slots.suffix() : suffix}</div> : null
+
       return (
         <div className={bem({ 'hide-title': hideTitle, disabled })}>
-          {hideTitle ? null : label}
+          {label}
           <div className={contentClassName}>{slots.default ? slots.default() : content}</div>
+          {suffixRender}
         </div>
       )
     }
