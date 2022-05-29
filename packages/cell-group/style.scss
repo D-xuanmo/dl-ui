@@ -1,0 +1,18 @@
+@import 'packages/style/prefix.scss';
+
+.#{$prefix}-cell-group {
+  margin-bottom: var(--d-gap-md);
+
+  &__title {
+    margin-bottom: var(--d-gap-xs);
+    padding: 0 var(--d-gap-sm);
+    color: var(--d-secondary-text-color);
+  }
+
+  &__content {
+    &--radius {
+      overflow: hidden;
+      border-radius: var(--d-radius-lg);
+    }
+  }
+}

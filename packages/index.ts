@@ -3,6 +3,7 @@ import { FormGlobalConfigType, globalConfigKey } from '@/constants/context'
 import { Example, ExampleBEM } from './example'
 import Input from './input'
 import Cell from './cell'
+import CellGroup from './cell-group'
 import './style/index.scss'
 
 export default {
@@ -15,6 +16,7 @@ export default {
     app.use(Example)
     app.use(ExampleBEM)
     app.use(Cell)
+    app.use(CellGroup)
     app.use(Input)
   }
 }
