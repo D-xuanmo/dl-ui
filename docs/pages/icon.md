@@ -36,6 +36,10 @@ title: 'Icon'
         name="close"
         color="#ed7b2f"
       />
+      <DIcon
+        name="close"
+        color="var(--d-primary)"
+      />
     </DCell>
   </DCellGroup>
 </template>
