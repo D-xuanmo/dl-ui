@@ -75,7 +75,7 @@ export default defineComponent({
         [contentAlign]: contentAlign
       })
 
-      const label =
+      const renderLabel =
         hideTitle || isEmpty(title) ? null : (
           <div
             className={titleClassName}
@@ -101,7 +101,7 @@ export default defineComponent({
           </div>
         )
 
-      const rightIconRender = rightIcon && (
+      const renderRightIcon = rightIcon && (
         <DIcon
           name={rightIcon}
           color={rightIconColor}
@@ -111,15 +111,15 @@ export default defineComponent({
         />
       )
 
-      const suffixRender =
+      const renderSuffix =
         slots.suffix || suffix ? <div className={bem('suffix')}>{slots.suffix ? slots.suffix() : suffix}</div> : null
 
       return (
         <div className={bem({ 'hide-title': hideTitle, disabled })}>
-          {label}
+          {renderLabel}
           <div className={contentClassName}>{slots.default ? slots.default() : content}</div>
-          {rightIconRender}
-          {suffixRender}
+          {renderRightIcon}
+          {renderSuffix}
         </div>
       )
     }
