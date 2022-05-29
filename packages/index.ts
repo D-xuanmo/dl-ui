@@ -4,6 +4,8 @@ import { Example, ExampleBEM } from './example'
 import Input from './input'
 import Cell from './cell'
 import CellGroup from './cell-group'
+import Icon from './icon'
+import 'virtual:svg-icons-register'
 import './style/index.scss'
 
 export default {
@@ -17,6 +19,7 @@ export default {
     app.use(ExampleBEM)
     app.use(Cell)
     app.use(CellGroup)
+    app.use(Icon)
     app.use(Input)
   }
 }

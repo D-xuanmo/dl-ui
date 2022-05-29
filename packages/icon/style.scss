@@ -1,0 +1,26 @@
+@import 'packages/style/prefix.scss';
+
+.#{$prefix}-icon {
+  display: inline-block;
+
+  &--small {
+    > svg {
+      width: var(--d-font-size-sm);
+      height: var(--d-font-size-sm);
+    }
+  }
+
+  &--medium {
+    > svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &--large {
+    > svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

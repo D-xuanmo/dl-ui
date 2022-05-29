@@ -3,10 +3,18 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vitePluginVueDoc, { vueDocFiles } from '@xuanmo/vite-plugin-vuedoc'
+import path from 'path'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    createSvgIconsPlugin({
+      // 指定需要缓存的图标文件夹
+      iconDirs: [path.resolve(process.cwd(), 'packages/icon/icons')],
+      // 指定symbolId格式
+      symbolId: 'd-icon-[name]'
+    }),
     vitePluginVueDoc({
       wrapperClass: 'd-doc__wrapper markdown-body',
       previewClass: 'd-doc__preview',

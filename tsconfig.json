@@ -18,7 +18,7 @@
       "@/*": ["packages/*"],
       "@doc/*": ["docs/*"]
     },
-    "types": ["vite/client"]
+    "types": ["vite/client", "vite-plugin-svg-icons/client"]
   },
   "include": ["packages/**/*", "docs/**/*", "docs/**/*.md"],
   "references": [
