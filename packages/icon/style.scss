@@ -1,7 +1,12 @@
 @import 'packages/style/prefix.scss';
 
 .#{$prefix}-icon {
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: middle;
+
+  & + * {
+    vertical-align: middle;
+  }
 
   &--small {
     > svg {

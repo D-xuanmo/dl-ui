@@ -15,7 +15,8 @@ const props = {
   size: {
     type: String as PropType<'small' | 'medium' | 'large'>,
     default: 'medium'
-  }
+  },
+  className: String
 }
 
 export default defineComponent({
@@ -23,12 +24,15 @@ export default defineComponent({
   props,
   setup(props) {
     return () => {
-      const { color, size } = props
-      const className = bem({
-        [size]: size
-      })
+      const { color, size, className = '' } = props
+      const wrapperClassName = [
+        bem({
+          [size]: size
+        }),
+        className
+      ].join('')
       return (
-        <span className={className}>
+        <span className={wrapperClassName}>
           <svg aria-hidden="true">
             <use
               xlinkHref={`#d-icon-${props.name}`}
