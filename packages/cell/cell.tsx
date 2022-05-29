@@ -9,17 +9,22 @@ const [name, bem] = createNamespace('cell')
 
 const props = {
   title: String,
+  titleClass: String,
+  titleWidth: String,
+  titleAlign: {
+    type: String as PropType<HorizontalAlignEnum>,
+    default: 'left'
+  },
+  hideTitle: Boolean,
   required: Boolean,
   content: String,
-  hideTitle: Boolean,
-  titleClass: String,
   contentClass: String,
-  disabled: Boolean,
-  suffix: String,
-  align: {
+  contentAlign: {
     type: String as PropType<HorizontalAlignEnum>,
     default: 'right'
   },
+  disabled: Boolean,
+  suffix: String,
   icon: String,
   iconProps: Object
 }
@@ -32,6 +37,8 @@ export default defineComponent({
       const { labelWidth, hideLabel } = inject(globalConfigKey) ?? {}
       const {
         title,
+        titleAlign,
+        titleWidth = labelWidth,
         required,
         content,
         hideTitle = hideLabel,
@@ -39,25 +46,26 @@ export default defineComponent({
         contentClass,
         disabled,
         suffix,
-        align = 'right',
+        contentAlign,
         icon,
         iconProps = {}
       } = props
 
       const titleClassName = bem('title', {
-        [titleClass ?? '']: toBoolean(titleClass)
+        [titleClass ?? '']: toBoolean(titleClass),
+        [titleAlign]: titleAlign
       })
 
       const contentClassName = bem('content', {
         [contentClass ?? '']: toBoolean(contentClass),
-        [align]: align
+        [contentAlign]: contentAlign
       })
 
       const label =
         hideTitle || isEmpty(title) ? null : (
           <div
             className={titleClassName}
-            style={{ width: labelWidth }}
+            style={{ width: titleWidth }}
           >
             {slots.title ? (
               slots.title()

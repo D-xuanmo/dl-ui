@@ -27,6 +27,7 @@
   }
 
   &__title {
+    @include text-align;
     &--mark {
       vertical-align: middle;
       color: var(--d-error);
