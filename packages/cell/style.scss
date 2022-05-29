@@ -31,11 +31,15 @@
       vertical-align: middle;
       color: var(--d-error);
     }
+
+    &--icon {
+      margin-right: var(--d-gap-xxs);
+    }
   }
 
   &__content {
     flex: 1;
-    text-align: right;
+    @include text-align;
   }
 
   &__suffix {
