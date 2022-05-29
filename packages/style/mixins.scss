@@ -1,13 +1,41 @@
-@mixin border-bottom($padding) {
+// 统一处理边框，宽度为 0.5px
+@mixin border($padding, $d: bottom) {
   position: relative;
   &::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: calc(100% - #{$padding});
     height: 1px;
     background-color: var(--d-border-color);
     transform: scaleY(0.3) translateX(-50%);
+  }
+
+  @if ($d == bottom) {
+    &::after {
+      bottom: 0;
+      left: 50%;
+      width: calc(100% - #{$padding});
+    }
+  } @else if ($d == top) {
+    &::after {
+      top: 0;
+      left: 50%;
+      width: calc(100% - #{$padding});
+    }
+  } @else if ($d == right) {
+    &::after {
+      top: 0;
+      right: 0;
+      width: 1px;
+      height: 100%;
+      transform: scaleX(0.5);
+    }
+  } @else if ($d == left) {
+    &::after {
+      top: 0;
+      left: 0;
+      width: 1px;
+      height: 100%;
+      transform: scaleX(0.5);
+    }
   }
 }
