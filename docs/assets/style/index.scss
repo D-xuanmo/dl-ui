@@ -10,6 +10,10 @@ body {
   color: var(--d-primary-text-color);
 }
 
+a {
+  color: var(--d-primary);
+}
+
 // 文档预览样式
 .d-doc {
   &__container {
