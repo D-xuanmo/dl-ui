@@ -1,18 +1,34 @@
 .d-doc-preview {
+  $prefix: &;
   &__wrapper {
     border: var(--d-border);
 
     > * {
       padding: 0 var(--d-gap-sm);
     }
+
+    &--h5 {
+      position: fixed;
+      top: 50%;
+      right: 30px;
+      width: 375px;
+      height: 600px;
+      padding: 0;
+      overflow: auto;
+      transform: translateY(-50%);
+
+      > * {
+        padding: 0;
+      }
+
+      ~ * {
+        width: calc(100% - 375px - 30px) !important;
+      }
+    }
   }
 
   &__runtime {
     padding-top: var(--d-gap-sm);
-
-    &--h5 {
-      width: 375px;
-    }
   }
 
   &__toolbar {

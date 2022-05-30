@@ -4,7 +4,6 @@ import routes from './routes'
 import DForm from '@'
 
 // 引入 CSS 相关资源
-import '@xuanmo/vite-plugin-vuedoc/style.css'
 import './assets/style/index.scss'
 import DocPreview from '@doc/components/preview'
 
@@ -15,5 +14,5 @@ app
   .use(DForm, {
     theme: 'light'
   })
-  .component('DocPreview', DocPreview)
+  .component('VueCode', DocPreview)
   .mount('#app')

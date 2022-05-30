@@ -1,10 +1,6 @@
----
-title: 'Icon'
----
-
 # Icon 图标
 
-```vue demo h5
+```vue preview type=h5
 <template>
   <DCellGroup title="基础用法">
     <DCell content-align="left">

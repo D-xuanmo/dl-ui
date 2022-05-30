@@ -2,31 +2,33 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import vitePluginVueDoc, { vueDocFiles } from '@xuanmo/vite-plugin-vuedoc'
-import path from 'path'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import shiki from 'markdown-it-shiki'
+import Markdown from 'vite-plugin-md'
+import MarkdownPreview, { transformer } from '@xuanmo/vite-plugin-md-preview'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     createSvgIconsPlugin({
       // 指定需要缓存的图标文件夹
-      iconDirs: [path.resolve(process.cwd(), 'packages/icon/icons')],
+      iconDirs: [resolve(process.cwd(), 'packages/icon/icons')],
       // 指定symbolId格式
       symbolId: 'd-icon-[name]'
     }),
-    vitePluginVueDoc({
-      wrapperClass: 'd-doc__wrapper markdown-body',
-      previewClass: 'd-doc__preview',
-      previewComponent: 'DocPreview',
-      highlight: {
-        theme: 'one-light'
+    vue({
+      include: [/\.vue$/, /\.md$/]
+    }),
+    vueJsx(),
+    Markdown({
+      transforms: {
+        before: transformer
+      },
+      markdownItSetup(md) {
+        md.use(shiki, { theme: 'github-light' })
       }
     }),
-    vue({
-      include: [...vueDocFiles]
-    }),
-    vueJsx()
+    MarkdownPreview()
   ],
   server: {
     open: '/',

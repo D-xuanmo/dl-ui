@@ -5,7 +5,11 @@ import './style.scss'
 const [name, bem] = createNamespace('doc-preview')
 
 const props = {
-  restAttrs: String as PropType<string>
+  type: {
+    type: String as PropType<'PC' | 'H5'>,
+    default: 'H5'
+  },
+  source: { type: String, default: '' }
 }
 
 const DocPreview = defineComponent({
@@ -17,14 +21,30 @@ const DocPreview = defineComponent({
       showCode.value = !showCode.value
     }
     return () => {
-      const { restAttrs } = props
-      return (
-        <div class={bem('wrapper')}>
-          <div class={bem('runtime', { h5: restAttrs?.indexOf('h5') !== -1 })}>{slots.default?.()}</div>
-          <div class={bem('toolbar', { active: showCode.value })}>
+      const { type, source } = props
+      const isMobile = type?.toUpperCase() === 'H5'
+
+      const renderContent = isMobile ? null : (
+        <>
+          <div className={bem('toolbar', { active: showCode.value })}>
             <span onClick={toggleCodeVisible}>{!showCode.value ? '显示' : '隐藏'}代码</span>
           </div>
-          <div class={bem('code', { active: showCode.value })}>{slots.code?.()}</div>
+          <div className={bem('code', { active: showCode.value })}>{slots.code?.()}</div>
+        </>
+      )
+
+      const renderCode = isMobile ? null : (
+        <div
+          className="demo__source"
+          v-html={decodeURIComponent(source)}
+        />
+      )
+
+      return (
+        <div class={bem('wrapper', { h5: isMobile })}>
+          {renderCode}
+          <div class={bem('runtime')}>{slots.default?.()}</div>
+          {renderContent}
         </div>
       )
     }

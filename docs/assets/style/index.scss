@@ -34,14 +34,7 @@ a {
 
   &__content {
     flex: 1;
-  }
-
-  &__wrapper {
     font-size: 14px;
-
-    .markdownIt-Anchor {
-      color: var(--d-primary);
-    }
 
     li {
       padding: 4px 0;
@@ -128,22 +121,9 @@ a {
       border-radius: 3px;
     }
   }
+}
 
-  &__preview {
-    margin: var(--d-gap-md) 0;
-
-    .vuedoc-demo__footer:hover {
-      color: var(--d-primary);
-    }
-
-    pre.hljs {
-      background: none !important;
-    }
-
-    .vuedoc-demo__inner,
-    .vuedoc-demo__source,
-    .vuedoc-demo__footer {
-      border-color: var(--d-border-color);
-    }
-  }
+.shiki {
+  margin-top: var(--d-gap-sm);
+  padding: var(--d-gap-sm);
 }

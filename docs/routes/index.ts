@@ -7,7 +7,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
  * 'pages/example.md' 访问路径为：/example
  */
 const getRoutes = () => {
-  const modules = import.meta.glob('../pages/*.md')
+  const modules = import.meta.glob('../pages/**/*.md')
   const routes: RouteRecordRaw[] = []
   for (const [_key, _module] of Object.entries(modules)) {
     const { path } = /(?<path>\/[a-z\d-]+)\.md$/.exec(_key)?.groups ?? {}

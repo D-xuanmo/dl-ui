@@ -1,10 +1,4 @@
----
-title: 'Input'
----
-
-# Input
-
-```vue demo h5
+```vue preview type=h5
 <template>
   <DCellGroup title="基础用法">
     <DInput
@@ -123,6 +117,8 @@ function onBlur(value) {
 }
 </script>
 ```
+
+# Input
 
 ## API
 

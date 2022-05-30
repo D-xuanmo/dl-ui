@@ -1,12 +1,6 @@
----
-title: 'Cell'
----
-
-# CellGroup 分组
-
-```vue demo h5
+```vue preview type=H5
 <template>
-  <DCellGroup title="分组标题">
+  <DCellGroup title="CellGroup 分组">
     <DCell
       title="我是标题"
       content="内容"
@@ -29,13 +23,7 @@ title: 'Cell'
       content="内容"
     />
   </DCellGroup>
-</template>
-```
 
-# Cell 单元格
-
-```vue demo h5
-<template>
   <DCell
     title="我是标题"
     content="内容"
@@ -76,6 +64,8 @@ title: 'Cell'
   />
 </template>
 ```
+
+# Cell 单元格
 
 ## API
 

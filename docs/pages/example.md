@@ -1,8 +1,3 @@
----
-title: '示例说明'
-desc: '描述'
----
-
 # Example 文档示例说明
 
 ```vue demo h5
