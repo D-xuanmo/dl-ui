@@ -1,5 +1,3 @@
-# Icon 图标
-
 ```vue preview type=h5
 <template>
   <DCellGroup title="基础用法">
@@ -39,6 +37,21 @@
     </DCell>
   </DCellGroup>
 </template>
+```
+
+# Icon 图标
+
+图标基于 `SVG`，通过 `Icon` 组件使用
+
+## 基础用法
+
+通过 `name` 设置对应的图标名
+
+```html
+<DIcon
+  name="close"
+  size="small"
+/>
 ```
 
 ## API

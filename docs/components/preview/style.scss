@@ -1,6 +1,7 @@
 .d-doc-preview {
   $prefix: &;
   &__wrapper {
+    margin-top: var(--d-gap-sm);
     border: var(--d-border);
 
     > * {

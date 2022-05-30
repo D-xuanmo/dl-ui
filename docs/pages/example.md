@@ -1,6 +1,6 @@
 # Example 文档示例说明
 
-```vue demo h5
+```vue preview
 <template>
   <d-example :count="333" />
   <DExample :count="333" />

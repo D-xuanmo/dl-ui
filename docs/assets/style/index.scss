@@ -41,36 +41,31 @@ a {
       list-style-position: inside;
     }
 
+    $h3-font-size: 18px;
+    @for $num from 1 through 6 {
+      h#{$num} {
+        border: 0;
+
+        & + p {
+          margin-top: var(--d-gap-xs);
+        }
+
+        @if $num != 1 {
+          margin: var(--d-gap-lg) 0 var(--d-gap-xs);
+        }
+
+        @if $num > 2 {
+          font-size: $h3-font-size - 2px * ($num - 3);
+        }
+      }
+    }
+
     h1 {
-      border: 0;
       font-size: 28px;
     }
 
     h2 {
-      margin: var(--d-gap-lg) 0 var(--d-gap-md);
-      border: 0;
       font-size: 24px;
-    }
-
-    h3 {
-      margin-bottom: var(--d-gap-sm);
-      border: 0;
-      font-size: 18px;
-    }
-
-    h4 {
-      border: 0;
-      font-size: 16px;
-    }
-
-    h5 {
-      border: 0;
-      font-size: 14px;
-    }
-
-    h6 {
-      border: 0;
-      font-size: 12px;
     }
 
     table {
@@ -124,6 +119,7 @@ a {
 }
 
 .shiki {
+  box-sizing: border-box;
   margin-top: var(--d-gap-sm);
   padding: var(--d-gap-sm);
 }

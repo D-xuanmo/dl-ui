@@ -1,6 +1,6 @@
 # BEM 文档说明
 
-```vue demo
+```vue preview
 <template>
   <DExampleBem />
 </template>
