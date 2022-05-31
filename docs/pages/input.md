@@ -111,7 +111,7 @@
   setup
 >
 import { ref } from 'vue'
-const value = ref('22')
+const value = ref('')
 const number = ref('')
 
 function onBlur(value) {
@@ -126,7 +126,7 @@ function onBlur(value) {
 
 | 参数              | 类型                      | 默认值   | 说明                                                                                                      | 必传 |
 | ----------------- | ------------------------- | -------- | --------------------------------------------------------------------------------------------------------- | ---- |
-| v-model           | string/number             | -        | 输入值                                                                                                    | N    |
+| v-model           | string                    | -        | 输入值                                                                                                    | N    |
 | type              | string                    | text     | 输入框类型，可选值：`text/number/password/email/url`                                                      | N    |
 | name              | string                    | -        | input 原生属性                                                                                            | N    |
 | label             | string                    | -        | 左侧显示文字                                                                                              | N    |
