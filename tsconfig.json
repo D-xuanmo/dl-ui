@@ -20,7 +20,7 @@
     },
     "types": ["vite/client", "vite-plugin-svg-icons/client"]
   },
-  "include": ["packages/**/*", "docs/**/*", "docs/**/*.md"],
+  "include": ["packages/**/*", "docs/**/*", "docs/**/*.md", "./**/*.ts", "./**/*.tsx"],
   "references": [
     {
       "path": "./tsconfig.node.json"

@@ -10,12 +10,12 @@
     :required="required"
     :disabled="disabled"
     :hide-title="hideLabel"
-    :right-icon="clearable ? 'close' : undefined"
+    :right-icon="innerValue && clearable ? 'close' : undefined"
     right-icon-color="var(--d-secondary-text-color)"
     :right-icon-props="{ onClick: handleClear }"
   >
     <input
-      :value="modelValue"
+      :value="innerValue"
       :type="type"
       :name="name"
       :class="inputClassName"
@@ -31,7 +31,10 @@
       @click="handleClick"
     />
 
-    <template #suffix>
+    <template
+      v-if="suffix"
+      #suffix
+    >
       <slot name="suffix">
         {{ suffix }}
       </slot>
@@ -40,66 +43,106 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType, ref } from 'vue'
+import { computed, defineComponent, PropType, SetupContext } from 'vue'
 import { createNamespace } from '@/utils/bem'
 import Cell from '../cell'
 import { FieldFormatterTrigger, HorizontalAlignEnum, SizeEnum } from '@/common'
+import useDefault from '@/hooks/useDefault'
 
 const [name, bem] = createNamespace('input')
-
-const props = {
-  modelValue: [String, Number],
-
-  type: {
-    type: String as PropType<'text' | 'number' | 'password' | 'email' | 'url'>,
-    default: 'text'
-  },
-  name: String,
-
-  // label 相关参数
-  label: String,
-  labelClass: String,
-  labelWidth: String,
-  labelAlign: {
-    type: String as PropType<HorizontalAlignEnum>,
-    default: 'left'
-  },
-  hideLabel: Boolean,
-  leftIcon: String,
-  leftIconSize: String as PropType<SizeEnum | string>,
-  leftIconColor: String,
-  colon: Boolean,
-  required: Boolean,
-
-  // 内容相关参数
-  placeholder: String,
-  disabled: Boolean,
-  readonly: Boolean,
-  autofocus: Boolean,
-  inputAlign: String as PropType<HorizontalAlignEnum>,
-  maxlength: Number,
-  suffix: String,
-  autocomplete: String,
-  clearable: Boolean,
-
-  formatter: {
-    type: Function as PropType<(value: string | number) => string>,
-    default: null
-  },
-  formatterTrigger: {
-    type: String as PropType<FieldFormatterTrigger>,
-    default: 'onChange'
-  }
-}
 
 export default defineComponent({
   name,
   components: {
     Cell
   },
-  props,
+  props: {
+    modelValue: {
+      type: String,
+      default: ''
+    },
+
+    type: {
+      type: String as PropType<'text' | 'number' | 'password' | 'email' | 'url'>,
+      default: 'text'
+    },
+    name: {
+      type: String,
+      default: ''
+    },
+
+    // label 相关参数
+    label: {
+      type: String,
+      default: ''
+    },
+    labelClass: {
+      type: String,
+      default: ''
+    },
+    labelWidth: {
+      type: String,
+      default: ''
+    },
+    labelAlign: {
+      type: String as PropType<HorizontalAlignEnum>,
+      default: 'left'
+    },
+    hideLabel: Boolean,
+    leftIcon: {
+      type: String,
+      default: ''
+    },
+    leftIconSize: {
+      type: String as PropType<SizeEnum | string>,
+      default: 'medium'
+    },
+    leftIconColor: {
+      type: String,
+      default: ''
+    },
+    colon: Boolean,
+    required: Boolean,
+
+    // 内容相关参数
+    placeholder: {
+      type: String,
+      default: ''
+    },
+    disabled: Boolean,
+    readonly: Boolean,
+    autofocus: Boolean,
+    inputAlign: {
+      type: String as PropType<HorizontalAlignEnum>,
+      default: 'left'
+    },
+    maxlength: {
+      type: Number,
+      default: -1
+    },
+    suffix: {
+      type: String,
+      default: ''
+    },
+    autocomplete: {
+      type: String,
+      default: ''
+    },
+    clearable: Boolean,
+
+    formatter: {
+      type: Function as PropType<(value: string | number) => string>,
+      default: null
+    },
+    formatterTrigger: {
+      type: String as PropType<FieldFormatterTrigger>,
+      default: 'onChange'
+    }
+  },
   emits: ['update:modelValue', 'blur', 'clear', 'focus', 'click-input'],
-  setup(props, { emit }) {
+  setup(props, context: SetupContext) {
+    const { emit } = context
+
     const inputClassName = computed(() =>
       bem({
         disabled: props.disabled,
@@ -109,12 +152,11 @@ export default defineComponent({
       })
     )
 
-    const innerValue = ref(props.modelValue ?? '')
+    const [innerValue, setInnerValue] = useDefault<string, typeof props>(props, emit)
 
     function handleInput(event: Event) {
       const value = (event.target as HTMLInputElement).value
-      innerValue.value = props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value
-      emit('update:modelValue', innerValue.value)
+      setInnerValue(props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value)
     }
 
     function handleClear(event: MouseEvent) {
@@ -124,7 +166,7 @@ export default defineComponent({
 
     function handleBlur(event: Event) {
       const value = innerValue.value
-      props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value
+      setInnerValue(props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value)
       emit('blur', value, event)
     }
 
@@ -138,6 +180,7 @@ export default defineComponent({
 
     return {
       bem,
+      innerValue,
       inputClassName,
       handleInput,
       handleClear,
