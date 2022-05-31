@@ -1,3 +1,5 @@
+# Input 输入框
+
 ```vue preview type=h5
 <template>
   <DCellGroup title="基础用法">
@@ -117,8 +119,6 @@ function onBlur(value) {
 }
 </script>
 ```
-
-# Input
 
 ## API
 

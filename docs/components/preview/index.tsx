@@ -24,23 +24,30 @@ const DocPreview = defineComponent({
       const { type, source } = props
       const isMobile = type?.toUpperCase() === 'H5'
 
-      const renderCode = isMobile ? null : <div v-html={decodeURIComponent(source)} />
-
-      const renderContent = isMobile ? null : (
+      const pcContent = (
         <>
+          <div className={bem('runtime')}>{slots.default?.()}</div>
           <div className={bem('toolbar', { active: showCode.value })}>
             <span onClick={toggleCodeVisible}>{!showCode.value ? '显示' : '隐藏'}代码</span>
           </div>
-          <div className={bem('code', { active: showCode.value })}>{renderCode}</div>
+          <div
+            className={bem('code', { active: showCode.value })}
+            v-html={decodeURIComponent(source)}
+          />
         </>
       )
 
-      return (
-        <div class={bem('wrapper', { h5: isMobile })}>
+      const mobileContent = (
+        <div class={bem('content')}>
+          <div
+            className={bem('code', { active: showCode.value })}
+            v-html={decodeURIComponent(source)}
+          />
           <div class={bem('runtime')}>{slots.default?.()}</div>
-          {renderContent}
         </div>
       )
+
+      return <div class={bem('wrapper', { h5: isMobile })}>{isMobile ? mobileContent : pcContent}</div>
     }
   }
 })

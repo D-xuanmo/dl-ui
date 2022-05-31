@@ -1,6 +1,24 @@
+# Icon 图标
+
+图标基于 `SVG`，通过 `Icon` 组件使用
+
+## 基础用法
+
+通过 `name` 设置对应的图标名
+
 ```vue preview type=h5
 <template>
-  <DCellGroup title="基础用法">
+  <DIcon name="close" />
+</template>
+```
+
+## 图标颜色、大小修改
+
+通过 `size` 属性改变大小，`color` 可改变颜色
+
+```vue preview type=h5
+<template>
+  <DCellGroup title="大小调整">
     <DCell content-align="left">
       <DIcon
         name="close"
@@ -18,9 +36,13 @@
         name="arrow-right"
         size="large"
       />
+      <DIcon
+        name="tips"
+        size="30px"
+      />
     </DCell>
   </DCellGroup>
-  <DCellGroup title="图标颜色">
+  <DCellGroup title="颜色修改">
     <DCell content-align="left">
       <DIcon
         name="close"
@@ -37,21 +59,6 @@
     </DCell>
   </DCellGroup>
 </template>
-```
-
-# Icon 图标
-
-图标基于 `SVG`，通过 `Icon` 组件使用
-
-## 基础用法
-
-通过 `name` 设置对应的图标名
-
-```html
-<DIcon
-  name="close"
-  size="small"
-/>
 ```
 
 ## API

@@ -1,4 +1,10 @@
-```vue preview type=H5
+# Cell 单元格
+
+用于展示 2 列信息，左侧为标题，右侧为内容的场景
+
+## CellGroup 单元格分组
+
+```vue preview type=h5
 <template>
   <DCellGroup title="CellGroup 分组">
     <DCell
@@ -23,7 +29,13 @@
       content="内容"
     />
   </DCellGroup>
+</template>
+```
 
+## Cell 单元格
+
+```vue preview type=H5
+<template>
   <DCell
     title="我是标题"
     content="内容"
@@ -64,8 +76,6 @@
   />
 </template>
 ```
-
-# Cell 单元格
 
 ## API
 

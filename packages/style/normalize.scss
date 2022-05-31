@@ -38,3 +38,7 @@ ul {
   padding: 0;
   list-style: none;
 }
+
+[class*='d-'] {
+  box-sizing: border-box;
+}

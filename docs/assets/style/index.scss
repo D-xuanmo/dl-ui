@@ -10,6 +10,28 @@ body {
   color: var(--d-primary-text-color);
 }
 
+// webkit内核滚动条全局样式处理
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  transition: background-color 0.3s;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+*::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(144, 147, 153, 0.3);
+  transition: background-color 0.3s;
+}
+
 a {
   color: var(--d-primary);
 }
@@ -34,6 +56,8 @@ a {
 
   &__content {
     flex: 1;
+    max-width: 1300px;
+    margin: 0 auto;
     font-size: 14px;
 
     li {
@@ -122,4 +146,5 @@ a {
   box-sizing: border-box;
   margin-top: var(--d-gap-sm);
   padding: var(--d-gap-sm);
+  background: none !important;
 }
