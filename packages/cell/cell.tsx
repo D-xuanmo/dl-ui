@@ -110,7 +110,7 @@ export default defineComponent({
           {...rightIconProps}
         />
       )
-      console.log(slots.suffix)
+
       const renderSuffix =
         slots.suffix || suffix ? <div className={bem('suffix')}>{slots.suffix ? slots.suffix() : suffix}</div> : null
 
