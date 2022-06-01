@@ -4,31 +4,37 @@ import { SizeEnum } from '@/common'
 
 const [name, bem] = createNamespace('icon')
 
-const props = {
-  name: {
-    type: String,
-    required: true
-  },
-  color: {
-    type: String,
-    default: 'var(--d-primary-text-color)'
-  },
-  size: {
-    type: String as PropType<SizeEnum | string>,
-    default: 'medium'
-  },
-  className: String
-}
-
 export default defineComponent({
   name,
-  props,
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    color: {
+      type: String,
+      default: 'var(--d-primary-text-color)'
+    },
+    size: {
+      type: String as PropType<SizeEnum | string>,
+      default: 'medium'
+    },
+    className: {
+      type: String,
+      default: ''
+    },
+    spin: {
+      type: Boolean,
+      default: false
+    }
+  },
   setup(props) {
     return () => {
-      const { color, size, className = '' } = props
+      const { color, size, spin, className = '' } = props
       const wrapperClassName = [
         bem({
-          [size]: size
+          [size]: size,
+          spin: spin
         }),
         className
       ].join('')

@@ -1,7 +1,8 @@
 @import 'packages/style/prefix.scss';
 
 .#{$prefix}-icon {
-  display: inline-flex;
+  display: inline-block;
+  line-height: 0;
   vertical-align: middle;
 
   & + * {
@@ -27,5 +28,18 @@
       width: 20px;
       height: 20px;
     }
+  }
+
+  &--spin {
+    > svg {
+      animation: #{$prefix}-icon-spin 1s infinite linear;
+      transform-origin: center;
+    }
+  }
+}
+
+@keyframes #{$prefix}-icon-spin {
+  to {
+    transform: rotateZ(360deg);
   }
 }
