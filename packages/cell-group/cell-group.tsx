@@ -5,7 +5,7 @@ const [name, bem] = createNamespace('cell-group')
 
 const props = {
   title: String,
-  radius: Boolean
+  round: Boolean
 }
 
 export default defineComponent({
@@ -13,11 +13,11 @@ export default defineComponent({
   props,
   setup(props, { slots }) {
     return () => {
-      const { title, radius } = props
+      const { title, round } = props
       return (
         <div className={bem()}>
           <p className={bem('title')}>{title}</p>
-          <div className={bem('content', { radius })}>{slots.default?.()}</div>
+          <div className={bem('content', { round })}>{slots.default?.()}</div>
         </div>
       )
     }

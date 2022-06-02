@@ -18,7 +18,7 @@
   </DCellGroup>
   <DCellGroup
     title="展示圆角"
-    radius
+    round
   >
     <DCell
       title="我是标题"
