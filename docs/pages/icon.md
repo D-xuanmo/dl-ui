@@ -9,15 +9,35 @@
 ```vue preview type=h5
 <template>
   <DIcon name="close" />
+  <DIcon name="tips" />
+  <DIcon name="tips-o" />
+  <DIcon name="success" />
+  <DIcon name="warning" />
 </template>
 ```
 
-## 图标颜色、大小修改
+## 图标颜色、大小修改、旋转
 
 通过 `size` 属性改变大小，`color` 可改变颜色
 
 ```vue preview type=h5
 <template>
+  <DCellGroup title="旋转">
+    <DCell content-align="left">
+      <DIcon
+        name="loading"
+        spin
+      />
+      <DIcon
+        name="loading-2"
+        spin
+      />
+      <DIcon
+        name="close"
+        spin
+      />
+    </DCell>
+  </DCellGroup>
   <DCellGroup title="大小调整">
     <DCell content-align="left">
       <DIcon
@@ -30,10 +50,6 @@
       />
       <DIcon
         name="close"
-        size="large"
-      />
-      <DIcon
-        name="arrow-right"
         size="large"
       />
       <DIcon

@@ -87,14 +87,14 @@
       v-model="value"
       label="显示图标"
       placeholder="请输入文字"
-      left-icon="tips"
+      left-icon="tips-o"
       left-icon-color="#f00"
     />
     <DInput
       v-model="value"
       label="图标大小"
       placeholder="请输入文字"
-      left-icon="tips"
+      left-icon="tips-o"
       left-icon-color="#f00"
       left-icon-size="small"
     />
