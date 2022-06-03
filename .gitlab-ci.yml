@@ -1,0 +1,15 @@
+stages:
+  - build
+
+build:
+  stage: build
+  only:
+    refs:
+      - master
+  script:
+    - cd /htdocs/dynamic-form
+    - git pull
+    - yarn --registry=https://registry.npmmirror.com
+    - yarn build:docs
+  tags:
+    - my-runner

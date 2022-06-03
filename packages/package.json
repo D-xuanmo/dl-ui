@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vue-tsc --emitDeclarationOnly -p tsconfig.build.json",
+    "build": "vite build --base=/-/dynamic-form && vue-tsc --emitDeclarationOnly -p tsconfig.build.json",
     "preview": "vite preview"
   },
   "files": [
