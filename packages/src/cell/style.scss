@@ -1,0 +1,60 @@
+@import '../style/prefix.scss';
+@import '../style/mixins.scss';
+
+.#{$prefix}-cell {
+  $parent: &;
+  display: flex;
+  align-items: center;
+  padding: var(--d-gap-xs) var(--d-gap-sm);
+  background-color: var(--d-white-color);
+  font-size: var(--d-font-size-md);
+  line-height: var(--d-line-height-md);
+
+  &:not(:last-of-type) {
+    @include border(var(--d-gap-sm));
+  }
+
+  &--hide-title {
+    #{$parent} {
+      &__content {
+        text-align: left;
+      }
+    }
+  }
+
+  &--disabled {
+    #{$parent}__title {
+      color: var(--d-disable-color);
+    }
+  }
+
+  &__title {
+    @include text-align;
+    margin-right: var(--d-gap-xs);
+
+    &--mark {
+      vertical-align: middle;
+      color: var(--d-error);
+    }
+
+    &--icon {
+      margin-right: var(--d-gap-xxs);
+    }
+  }
+
+  &__content {
+    flex: 1;
+    @include text-align;
+  }
+
+  &__suffix {
+    margin-left: var(--d-gap-xs);
+    padding-left: var(--d-gap-xs);
+    @include border(0, left);
+    color: var(--d-secondary-text-color);
+  }
+
+  &__right-icon {
+    margin-left: var(--d-gap-xs);
+  }
+}

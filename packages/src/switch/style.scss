@@ -1,0 +1,82 @@
+@import '../style/prefix.scss';
+
+.#{$prefix}-switch {
+  $prefix: &;
+  position: relative;
+  border: 0;
+  border-radius: 4px;
+  background-color: var(--d-switch-bg-color);
+  transition: background-color 0.3s;
+  cursor: pointer;
+
+  &--active {
+    background-color: var(--d-primary);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &--loading {
+    cursor: wait;
+  }
+
+  &__handle {
+    width: 16px;
+    height: 16px;
+    line-height: 18px;
+    transform: translate(3px, -50%);
+
+    &--active {
+      transform: translate(calc(100% + 3px), -50%);
+    }
+  }
+
+  &--medium {
+    min-width: 40px;
+    height: 22px;
+
+    #{$prefix} {
+      &__handle {
+        width: 16px;
+        height: 16px;
+        transform: translate(3px, -50%);
+
+        &--active {
+          transform: translate(calc(100% + 3px), -50%);
+        }
+      }
+    }
+  }
+
+  &--round {
+    &#{$prefix} {
+      &--medium {
+        border-radius: 11px;
+      }
+    }
+
+    #{$prefix} {
+      &__handle {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__handle {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    background-color: var(--d-white-color);
+    overflow: hidden;
+    font-size: var(--d-font-size-xs);
+    line-height: 1;
+    transition: transform 0.4s;
+    transform: translateY(-50%);
+  }
+}

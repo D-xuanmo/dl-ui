@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "lib": ["esnext", "dom"],
+    "skipLibCheck": true,
+    "paths": {
+      "@": ["../packages/src"],
+      "@/*": ["../packages/src/*"],
+      "@doc/*": ["src/*"]
+    },
+    "types": ["vite/client", "vite-plugin-svg-icons/client"]
+  },
+  "include": ["./**/*.md", "./**/*.ts", "./**/*.tsx", "../packages/**/**.ts"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}
