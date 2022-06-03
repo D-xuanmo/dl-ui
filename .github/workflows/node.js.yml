@@ -1,0 +1,27 @@
+name: Node.js CI
+
+on:
+  push:
+    paths:
+     - 'packages/package.json'
+
+jobs:
+  publish-npm:
+
+    runs-on: macos-latest
+
+    # 任务的步骤
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14
+        registry-url: https://registry.npmjs.org/
+
+    - run: yarn
+    - run: yarn build:lib
+    - run: npm publish --access public
+
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
