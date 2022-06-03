@@ -20,7 +20,7 @@ jobs:
 
     - run: yarn
     - run: yarn build:lib
-    - run: npm publish --access public
+    - run: cd packages && npm publish --access public
 
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
