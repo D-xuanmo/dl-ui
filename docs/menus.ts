@@ -1,5 +1,5 @@
 import { createRandomID } from '@xuanmo/javascript-utils'
-import { MenuItemType } from '../components/menu/types'
+import { MenuItemType } from './components/menu/types'
 
 const menus: MenuItemType[] = [
   {
@@ -22,7 +22,10 @@ const menus: MenuItemType[] = [
   {
     id: createRandomID(),
     groupTitle: '表单组件',
-    children: [{ id: createRandomID(), path: '/input', content: 'Input [输入框]' }]
+    children: [
+      { id: createRandomID(), path: '/input', content: 'Input [输入框]' },
+      { id: createRandomID(), path: '/switch', content: 'Switch [开关]' }
+    ]
   }
 ]
 

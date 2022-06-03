@@ -16,7 +16,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { createNamespace } from '@/utils/bem'
-import menus from './constants/menus'
+import menus from './menus'
 import DMenu from './components/menu'
 
 const [name, bem] = createNamespace('doc')
