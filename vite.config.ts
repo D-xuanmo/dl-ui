@@ -24,11 +24,11 @@ export default defineConfig({
       transforms: {
         before: transformer
       },
-      markdownItUses: [[shiki, { theme: 'vitesse-light' }]]
+      markdownItUses: [[shiki, { theme: 'github-light' }]]
     }),
     MarkdownPreview({
       shiki: {
-        theme: 'vitesse-light'
+        theme: 'github-light'
       }
     })
   ],

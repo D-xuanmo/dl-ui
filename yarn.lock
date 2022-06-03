@@ -788,10 +788,10 @@
   resolved "https://registry.npmmirror.com/@vue/shared/-/shared-3.2.36.tgz#35e11200542cf29068ba787dad57da9bdb82f644"
   integrity sha512-JtB41wXl7Au3+Nl3gD16Cfpj7k/6aCroZ6BbOiCMFCMvrOpkg/qQUXTso2XowaNqBbnkuGHurLAqkLBxNGc1hQ==
 
-"@xuanmo/javascript-utils@^0.0.35":
-  version "0.0.35"
-  resolved "https://registry.npmmirror.com/@xuanmo/javascript-utils/-/javascript-utils-0.0.35.tgz#89b0de59e70323dc22db26af5bf0742710761a43"
-  integrity sha512-HNEYeThfxe8QHigtIKVXd2pHSVffIMttZBjkoFQyjRaev8uo8ZC6rxNaf41Xz+U0pE6qWWpmitT3n45j60k6mw==
+"@xuanmo/javascript-utils@^0.0.37":
+  version "0.0.37"
+  resolved "https://registry.npmjs.org/@xuanmo/javascript-utils/-/javascript-utils-0.0.37.tgz#9f853f08ba1134def69300d9e508b3d0bff01b36"
+  integrity sha512-XXpedbe6xgReFseiCDOJ/J1nTPIOpeM9/6GRXNvjSAWPjgnJ6Xg4K+ezlq8iAaW0oj+jEQh0mIq2NDGD8KXnsA==
   dependencies:
     "@typescript-eslint/parser" "^4.27.0"
 

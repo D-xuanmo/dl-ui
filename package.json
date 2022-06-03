@@ -17,7 +17,7 @@
   "main": "./dist/d-form.umd.js",
   "module": "./dist/d-form.es.js",
   "dependencies": {
-    "@xuanmo/javascript-utils": "^0.0.35",
+    "@xuanmo/javascript-utils": "^0.0.37",
     "vue": "^3.2.25",
     "vue-router": "^4.0.15"
   },
