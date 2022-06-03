@@ -10,7 +10,7 @@
     "docs"
   ],
   "scripts": {
-    "dev":"yarn workspace docs dev",
+    "dev": "yarn workspace docs dev",
     "prepare": "husky install",
     "prettier": "npx prettier --write .",
     "lint": "eslint . --ext js,ts,tsx,vue"
