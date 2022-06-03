@@ -1,6 +1,6 @@
-import { computed, ref, SetupContext, watchEffect, WritableComputedRef } from 'vue'
+import { computed, ref, watchEffect, WritableComputedRef } from 'vue'
 
-function useDefault<V, T>(props: T & { modelValue?: V }, emit: SetupContext['emit']) {
+function useDefault<V, T>(props: T & { modelValue?: V }) {
   const innerValue = ref<V>()
 
   watchEffect(() => {
@@ -10,7 +10,7 @@ function useDefault<V, T>(props: T & { modelValue?: V }, emit: SetupContext['emi
   })
 
   function setInnerValue(value: V) {
-    emit('update:modelValue', value)
+    innerValue.value = value
   }
 
   const innerValueRef = computed<V>({

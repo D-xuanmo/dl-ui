@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType, SetupContext } from 'vue'
+import { computed, defineComponent, PropType } from 'vue'
 import { createNamespace } from '@/utils/bem'
 import Cell from '../cell'
 import { FieldFormatterTrigger, HorizontalAlignEnum, SizeEnum } from '@/common'
@@ -140,9 +140,7 @@ export default defineComponent({
     }
   },
   emits: ['update:modelValue', 'blur', 'clear', 'focus', 'click-input'],
-  setup(props, context: SetupContext) {
-    const { emit } = context
-
+  setup(props, { emit }) {
     const inputClassName = computed(() =>
       bem({
         disabled: props.disabled,
@@ -152,11 +150,13 @@ export default defineComponent({
       })
     )
 
-    const [innerValue, setInnerValue] = useDefault<string, typeof props>(props, emit)
+    const [innerValue, setInnerValue] = useDefault<string, typeof props>(props)
 
     function handleInput(event: Event) {
       const value = (event.target as HTMLInputElement).value
-      setInnerValue(props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value)
+      const newValue = props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value
+      setInnerValue(newValue)
+      emit('update:modelValue', newValue)
     }
 
     function handleClear(event: MouseEvent) {
@@ -166,8 +166,9 @@ export default defineComponent({
 
     function handleBlur(event: Event) {
       const value = innerValue.value
-      setInnerValue(props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value)
-      emit('blur', value, event)
+      const newValue = props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value
+      setInnerValue(newValue)
+      emit('blur', newValue, event)
     }
 
     function handleFocus(event: Event) {
