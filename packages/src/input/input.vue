@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue'
+import { computed, defineComponent, PropType, SetupContext } from 'vue'
 import { createNamespace } from '../utils/bem'
 import Cell from '../cell'
 import { FieldFormatterTrigger, HorizontalAlignEnum, SizeEnum } from '../common'
@@ -58,11 +58,11 @@ export default defineComponent({
   },
   props: {
     value: {
-      type: String,
+      type: [String, Number] as PropType<string | number | undefined>,
       default: undefined
     },
     modelValue: {
-      type: String,
+      type: [String, Number] as PropType<string | number | undefined>,
       default: undefined
     },
 
@@ -71,7 +71,7 @@ export default defineComponent({
       default: 'text'
     },
     name: {
-      type: [String, Number],
+      type: String,
       default: ''
     },
 
@@ -139,7 +139,7 @@ export default defineComponent({
       default: null
     },
     formatterTrigger: {
-      type: String as PropType<FieldFormatterTrigger>,
+      type: String as PropType<FieldFormatterTrigger | undefined>,
       default: 'onChange'
     }
   },
@@ -154,7 +154,7 @@ export default defineComponent({
       })
     )
 
-    const [innerValue, setValue] = useDefault<string, typeof props>(props, emit)
+    const [innerValue, setValue] = useDefault<string | number, typeof props>(props, emit as SetupContext['emit'])
 
     function handleInput(event: Event) {
       const value = (event.target as HTMLInputElement).value

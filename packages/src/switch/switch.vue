@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue'
+import { computed, defineComponent, PropType, SetupContext } from 'vue'
 import { isPromise } from '@vue/shared'
 import { createNamespace } from '../utils/bem'
 import { SizeEnum } from '../common'
@@ -65,7 +65,7 @@ export default defineComponent({
   },
   emits: ['update:value', 'update:modelValue'],
   setup(props, { emit }) {
-    const [innerValue, setValue] = useDefault<boolean, typeof props>(props, emit)
+    const [innerValue, setValue] = useDefault<boolean, typeof props>(props, emit as SetupContext['emit'])
 
     const className = computed(() =>
       bem({
