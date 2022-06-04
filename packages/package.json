@@ -1,7 +1,7 @@
 {
   "name": "@xuanmo/dynamic-form",
   "private": false,
-  "version": "0.0.1-demo.7",
+  "version": "0.0.1-demo.8",
   "author": {
     "name": "xuanmo",
     "email": "me@xuanmo.xin"
@@ -25,8 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "@xuanmo/javascript-utils": "^0.0.37",
-    "vue": "^3.2.25",
-    "vue-router": "^4.0.15"
+    "vue": "^3.2.25"
   },
   "devDependencies": {
     "@types/node": "^17.0.36",

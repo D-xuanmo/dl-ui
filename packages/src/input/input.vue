@@ -135,7 +135,7 @@ export default defineComponent({
     clearable: Boolean,
 
     formatter: {
-      type: Function as PropType<(value: string | number) => string>,
+      type: Function as PropType<(value: string | number | undefined) => string>,
       default: null
     },
     formatterTrigger: {
@@ -154,7 +154,11 @@ export default defineComponent({
       })
     )
 
-    const [innerValue, setValue] = useDefault<string | number, typeof props>(props, emit as SetupContext['emit'])
+    const [innerValue, setValue] = useDefault<string | number | undefined, typeof props, 'modelValue'>(
+      props,
+      emit as SetupContext['emit'],
+      'modelValue'
+    )
 
     function handleInput(event: Event) {
       const value = (event.target as HTMLInputElement).value
