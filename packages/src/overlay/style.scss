@@ -1,0 +1,21 @@
+@import '../style/prefix';
+
+.#{$prefix}-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--d-overlay-bg-color);
+  transition: background-color 0.8s;
+
+  &-enter-active,
+  &-leave-active {
+    transition: opacity 0.3s ease;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
+}

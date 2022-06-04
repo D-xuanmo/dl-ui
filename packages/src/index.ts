@@ -7,13 +7,22 @@ export * from './components'
 
 export default {
   install(app: App, options?: FormGlobalConfigType) {
-    app.provide(globalConfigKey, {
+    const config = {
       hideLabel: false,
       labelWidth: '80px',
+      zIndex: 2000,
       ...(options ?? {})
-    })
+    }
+    app.provide(globalConfigKey, config)
+    app.config.globalProperties.$DForm = config
     Object.values(components).forEach((component) => {
       app.use(component)
     })
+  }
+}
+
+declare module '@vue/runtime-core' {
+  export interface ComponentCustomProperties {
+    $DForm: FormGlobalConfigType
   }
 }

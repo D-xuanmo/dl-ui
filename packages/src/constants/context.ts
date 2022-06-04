@@ -9,6 +9,9 @@ export type FormGlobalConfigType = {
 
   /** label 宽度 */
   labelWidth?: string
+
+  /** 遮罩层 z-index */
+  zIndex?: number
 }
 
 export const globalConfigKey = Symbol('DForm') as InjectionKey<FormGlobalConfigType>
