@@ -1,4 +1,4 @@
-# Vue3 Dynamic Form
+# Vue3 Dynamic Form [![Node.js CI](https://github.com/D-xuanmo/dynamic-form/actions/workflows/node.js.yml/badge.svg)](https://github.com/D-xuanmo/dynamic-form/actions/workflows/node.js.yml)
 
 ## 项目说明
 

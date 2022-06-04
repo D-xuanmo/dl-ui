@@ -6,6 +6,7 @@
 <template>
   <DCell title="基础用法">
     <DSwitch v-model="value" />
+    <DSwitch :value="value" />
   </DCell>
   <DCell title="默认值">
     <DSwitch v-model="value1" />
