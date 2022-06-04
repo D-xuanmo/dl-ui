@@ -5,7 +5,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '@/utils/bem'
 
 // 创建 BEM 示例
 const [name, bem] = createNamespace('example-bem')

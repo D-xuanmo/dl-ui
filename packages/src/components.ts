@@ -1,4 +1,3 @@
-export { Example, ExampleBEM } from './example'
 export { default as Input } from './input'
 export { default as Cell } from './cell'
 export { default as CellGroup } from './cell-group'
