@@ -40,9 +40,13 @@ export default defineComponent({
   name,
   components: { DIcon },
   props: {
+    value: {
+      type: Boolean,
+      default: undefined
+    },
     modelValue: {
       type: Boolean,
-      default: false
+      default: undefined
     },
     size: {
       type: String as PropType<SizeEnum>,
@@ -59,9 +63,9 @@ export default defineComponent({
       default: null
     }
   },
-  emits: ['update:modelValue'],
+  emits: ['update:value', 'update:modelValue'],
   setup(props, { emit }) {
-    const [innerValue] = useDefault<boolean, typeof props>(props)
+    const [innerValue, setValue] = useDefault<boolean, typeof props>(props, emit)
 
     const className = computed(() =>
       bem({
@@ -72,7 +76,7 @@ export default defineComponent({
       })
     )
 
-    const updateValue = () => emit('update:modelValue', (innerValue.value = !innerValue.value))
+    const updateValue = () => setValue((innerValue.value = !innerValue.value))
 
     function handleChange() {
       if (props.loading) return

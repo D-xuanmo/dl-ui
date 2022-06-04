@@ -57,9 +57,13 @@ export default defineComponent({
     Cell
   },
   props: {
+    value: {
+      type: String,
+      default: undefined
+    },
     modelValue: {
       type: String,
-      default: ''
+      default: undefined
     },
 
     type: {
@@ -67,7 +71,7 @@ export default defineComponent({
       default: 'text'
     },
     name: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
 
@@ -150,13 +154,12 @@ export default defineComponent({
       })
     )
 
-    const [innerValue, setInnerValue] = useDefault<string, typeof props>(props)
+    const [innerValue, setValue] = useDefault<string, typeof props>(props, emit)
 
     function handleInput(event: Event) {
       const value = (event.target as HTMLInputElement).value
       const newValue = props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value
-      setInnerValue(newValue)
-      emit('update:modelValue', newValue)
+      setValue(newValue)
     }
 
     function handleClear(event: MouseEvent) {
@@ -167,7 +170,7 @@ export default defineComponent({
     function handleBlur(event: Event) {
       const value = innerValue.value
       const newValue = props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value
-      setInnerValue(newValue)
+      setValue(newValue)
       emit('blur', newValue, event)
     }
 
