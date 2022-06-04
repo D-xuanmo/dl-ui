@@ -16,7 +16,8 @@ const menus: MenuItemType[] = [
     groupTitle: '基础组件',
     children: [
       { id: createRandomID(), path: '/cell', content: 'Cell [单元格]' },
-      { id: createRandomID(), path: '/icon', content: 'Icon [图标]' }
+      { id: createRandomID(), path: '/icon', content: 'Icon [图标]' },
+      { id: createRandomID(), path: '/overlay', content: 'Overlay [遮罩层]' }
     ]
   },
   {
