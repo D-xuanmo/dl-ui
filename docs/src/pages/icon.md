@@ -6,7 +6,7 @@
 
 通过 `name` 设置对应的图标名
 
-```vue preview type=h5
+```vue
 <template>
   <DIcon name="close" />
   <DIcon name="tips" />
@@ -20,7 +20,7 @@
 
 通过 `size` 属性改变大小，`color` 可改变颜色
 
-```vue preview type=h5
+```vue
 <template>
   <DCellGroup title="旋转">
     <DCell content-align="left">

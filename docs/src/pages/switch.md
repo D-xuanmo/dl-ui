@@ -2,7 +2,7 @@
 
 ## 基础用法
 
-```vue preview type=h5
+```vue
 <template>
   <DCell title="基础用法">
     <DSwitch v-model="value" />
@@ -47,7 +47,7 @@ const value1 = ref(true)
 
 通过 `before-change` 钩子拦截，返回 `true` 则切换，返回 `false` 或者 `Promise.reject` 则不切换
 
-```vue preview type=h5
+```vue
 <template>
   <DSwitch
     v-model="value"

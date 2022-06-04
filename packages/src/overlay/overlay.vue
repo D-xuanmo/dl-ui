@@ -1,5 +1,5 @@
 <template>
-  <Teleport to="body">
+  <Teleport :to="teleport">
     <Transition :name="name">
       <div
         v-if="innerVisible"
@@ -44,6 +44,10 @@ export default defineComponent({
     overlayStyle: {
       type: Object as PropType<CSSProperties>,
       default: undefined
+    },
+    teleport: {
+      type: String as PropType<string | HTMLElement>,
+      default: 'body'
     }
   },
   emits: ['update:visible', 'click'],

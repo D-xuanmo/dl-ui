@@ -1,6 +1,6 @@
 # Input 输入框
 
-```vue preview type=h5
+```vue
 <template>
   <DCellGroup title="基础用法">
     <DInput

@@ -4,7 +4,7 @@
 
 ## CellGroup 单元格分组
 
-```vue preview type=h5
+```vue
 <template>
   <DCellGroup title="CellGroup 分组">
     <DCell
@@ -34,7 +34,7 @@
 
 ## Cell 单元格
 
-```vue preview type=H5
+```vue
 <template>
   <DCell
     title="我是标题"

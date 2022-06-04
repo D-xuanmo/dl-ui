@@ -14,7 +14,8 @@ export default defineConfig({
       // 指定需要缓存的图标文件夹
       iconDirs: [resolve(join(__dirname, '../packages/src/icon/icons'))],
       // 指定symbolId格式
-      symbolId: 'd-icon-[name]'
+      symbolId: 'd-icon-[name]',
+      customDomId: '__d_svg__icons__dom__'
     }),
     vue({
       include: [/\.vue$/, /\.md$/]
