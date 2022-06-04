@@ -43,15 +43,14 @@ export default defineComponent({
   },
 
   setup() {
-    const isDemoRoute = ref(/^\/demo/.test(location.pathname))
+    const isDemoRoute = ref(/\/demo/g.test(location.pathname))
     const demoPath = ref('')
     const route = useRoute()
 
     watch(
       () => route.path,
       () => {
-        console.log(route.meta)
-        demoPath.value = `/demo${route.path}`
+        demoPath.value = `${import.meta.env.BASE_URL}demo${route.path}`
         isDemoRoute.value = /^\/demo/.test(route.path)
       }
     )
