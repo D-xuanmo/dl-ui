@@ -1,15 +1,25 @@
 import { computed, ref, SetupContext, watchEffect, WritableComputedRef } from 'vue'
 
-function useDefault<V, T>(props: T & { modelValue?: V; value?: V }, emit: SetupContext['emit']) {
+function useDefault<V, P, VK extends string>(
+  props: P & { modelValue?: V } & { value?: V } & Record<VK, V>,
+  emit: SetupContext['emit'],
+  valueKey?: VK,
+  eventName?: string
+) {
   const innerValue = ref<V>()
 
   const isUsedModelValue = props.modelValue !== undefined
+  const isUsedValue = props.value !== undefined
+  const isUsedCustomValue = valueKey && props[valueKey] !== undefined
 
   watchEffect(() => {
     if (isUsedModelValue) {
       innerValue.value = props.modelValue
     }
-    if (props.value !== undefined) {
+    if (isUsedCustomValue) {
+      innerValue.value = props[valueKey]
+    }
+    if (isUsedValue) {
       innerValue.value = props.value
     }
   })
@@ -24,6 +34,9 @@ function useDefault<V, T>(props: T & { modelValue?: V; value?: V }, emit: SetupC
     }
     if (props.value !== undefined) {
       emit('update:value', value)
+    }
+    if (eventName) {
+      emit(eventName, value)
     }
   }
 
