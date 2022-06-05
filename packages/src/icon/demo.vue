@@ -2,6 +2,7 @@
   <DCellGroup title="基础用法">
     <DCell content-align="left">
       <DIcon name="close" />
+      <DIcon name="close-o" />
       <DIcon name="tips" />
       <DIcon name="tips-o" />
       <DIcon name="success" />

@@ -29,15 +29,16 @@ export default defineComponent({
     }
   },
   emits: ['click'],
-  setup(props, { emit }) {
+  setup(props, { emit, attrs }) {
     return () => {
-      const { color, size, spin, className = '' } = props
+      const { color, size, spin, className } = props
       const wrapperClassName = [
         bem({
           [size]: size,
           spin: spin
         }),
-        className
+        className,
+        attrs?.class
       ].join('')
 
       const isCustomSize = !['small', 'medium', 'large'].includes(size)
@@ -53,7 +54,7 @@ export default defineComponent({
 
       return (
         <span
-          className={wrapperClassName}
+          class={wrapperClassName}
           onClick={handleClick}
         >
           <svg
