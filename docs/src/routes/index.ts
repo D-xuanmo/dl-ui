@@ -21,9 +21,9 @@ const getRoutes = () => {
 
 /**
  * 遍历所有 demo 路由
- * path 规则为：文件名
+ * path 规则为：组件目录名
  * @example
- * 'pages/example.md' 访问路径为：/example
+ * 访问路径为：/demo/cell
  */
 const getDemoRoutes = () => {
   const demoModules = import.meta.glob('../../../packages/src/**/demo.vue')
