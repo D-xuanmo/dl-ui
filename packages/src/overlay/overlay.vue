@@ -9,7 +9,7 @@
         v-if="innerVisible"
         :class="[bem(), overlayClass].join(' ')"
         :style="style"
-        @click="handleClose"
+        @click.stop="handleClose"
       >
         <slot />
       </div>
@@ -50,6 +50,10 @@ export default defineComponent({
       type: Object as PropType<CSSProperties>,
       default: undefined
     },
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: true
+    },
     teleport: {
       type: String as PropType<string | HTMLElement>,
       default: 'body'
@@ -83,8 +87,10 @@ export default defineComponent({
     }
 
     function handleClose() {
-      setVisible((innerVisible.value = !innerVisible.value))
-      context.emit('click')
+      if (props.closeOnClickOverlay) {
+        setVisible((innerVisible.value = !innerVisible.value))
+        context.emit('click')
+      }
     }
 
     return {
