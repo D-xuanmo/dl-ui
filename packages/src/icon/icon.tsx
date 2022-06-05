@@ -28,7 +28,8 @@ export default defineComponent({
       default: false
     }
   },
-  setup(props) {
+  emits: ['click'],
+  setup(props, { emit }) {
     return () => {
       const { color, size, spin, className = '' } = props
       const wrapperClassName = [
@@ -46,8 +47,15 @@ export default defineComponent({
         height: size
       }
 
+      function handleClick(event: Event) {
+        emit('click', event)
+      }
+
       return (
-        <span className={wrapperClassName}>
+        <span
+          className={wrapperClassName}
+          onClick={handleClick}
+        >
           <svg
             aria-hidden="true"
             style={isCustomSize ? iconStyle : undefined}
