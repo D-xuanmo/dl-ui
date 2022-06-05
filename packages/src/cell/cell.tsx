@@ -34,13 +34,16 @@ const props = {
   rightIcon: String,
   rightIconSize: String as PropType<SizeEnum | string>,
   rightIconColor: String,
-  rightIconProps: Object
+  rightIconProps: Object,
+
+  arrow: Boolean
 }
 
 export default defineComponent({
   name,
   props,
-  setup(props, { slots }) {
+  emits: ['click'],
+  setup(props, { slots, emit }) {
     return () => {
       const { labelWidth, hideLabel } = inject(globalConfigKey) ?? {}
       const {
@@ -62,7 +65,8 @@ export default defineComponent({
         rightIcon,
         rightIconColor,
         rightIconSize,
-        rightIconProps
+        rightIconProps,
+        arrow
       } = props
 
       const titleClassName = bem('title', {
@@ -114,12 +118,28 @@ export default defineComponent({
       const renderSuffix =
         slots.suffix || suffix ? <div className={bem('suffix')}>{slots.suffix ? slots.suffix() : suffix}</div> : null
 
+      const renderArrow = arrow ? (
+        <DIcon
+          name="arrow-right"
+          className={bem('arrow')}
+          color="var(--d-secondary-text-color)"
+        />
+      ) : null
+
+      function handleClick(event: Event) {
+        emit('click', event)
+      }
+
       return (
-        <div className={bem({ 'hide-title': hideTitle, disabled })}>
+        <div
+          className={bem({ 'hide-title': hideTitle, disabled })}
+          onClick={handleClick}
+        >
           {renderLabel}
           <div className={contentClassName}>{slots.default ? slots.default() : content}</div>
           {renderRightIcon}
           {renderSuffix}
+          {renderArrow}
         </div>
       )
     }

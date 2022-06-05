@@ -61,4 +61,8 @@
     right-icon="close"
     right-icon-color="#f00"
   />
+  <DCell
+    title="显示右侧箭头"
+    arrow
+  />
 </template>

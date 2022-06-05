@@ -100,6 +100,7 @@
 | content-align    | string              | right  | 内容对齐方式，可选值：left/center/right | N    |
 | disabled         | boolean             | -      | 是否禁用                                | N    |
 | suffix           | string              | -      | 扩展内容                                | N    |
+| arrow            | boolean             | false  | 是否显示右侧箭头                        | N    |
 | left-icon        | string              | -      | 显示左侧图标                            | N    |
 | left-icon-size   | string              | -      | 左侧图标大小，继承 `Icon` 组件 `Props`  | N    |
 | left-icon-color  | string              | -      | 左侧图标颜色                            | N    |
