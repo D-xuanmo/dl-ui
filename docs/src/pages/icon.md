@@ -9,6 +9,7 @@
 ```vue
 <template>
   <DIcon name="close" />
+  <DIcon name="close-o" />
   <DIcon name="tips" />
   <DIcon name="tips-o" />
   <DIcon name="success" />

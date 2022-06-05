@@ -58,6 +58,7 @@ a {
     position: sticky;
     top: var(--d-gap-md);
     width: 375px;
+    min-width: 375px;
     height: 500px;
     margin: 40px 0 0 var(--d-gap-md);
     border: var(--d-border);
