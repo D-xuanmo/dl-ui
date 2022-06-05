@@ -1,0 +1,233 @@
+@import '../style/prefix';
+@import '../style/mixins';
+
+.#{$prefix}-popup {
+  $prefix: &;
+
+  &__container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__header {
+    display: flex;
+    margin-bottom: var(--d-gap-xs);
+
+    &--title {
+      flex: 1;
+      font-size: var(--d-font-size-md);
+      text-align: center;
+      color: var(--d-title-color);
+      @include ellipsis();
+    }
+  }
+
+  &__wrapper {
+    position: absolute;
+    padding: var(--d-gap-sm);
+    background-color: var(--d-white-color);
+
+    &--round {
+      border-radius: var(--d-radius-lg) var(--d-radius-lg) 0 0;
+    }
+
+    &--notCenter {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &--center {
+      top: 50%;
+      left: 50%;
+      max-width: 90%;
+      padding: var(--d-gap-sm);
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    &--top,
+    &--bottom {
+      left: 0;
+      width: 100%;
+      min-height: 30%;
+      max-height: 80%;
+    }
+
+    &--top {
+      top: 0;
+    }
+
+    &--bottom {
+      bottom: 0;
+      padding-bottom: constant(safe-area-inset-bottom);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    &--left,
+    &--right {
+      top: 0;
+      min-width: 30%;
+      max-width: 80%;
+      height: 100%;
+    }
+
+    &--left {
+      left: 0;
+    }
+
+    &--right {
+      right: 0;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    overflow: auto;
+  }
+
+  // 居中过渡
+  &-center-enter-active,
+  &-center-leave-active {
+    #{$prefix} {
+      &__wrapper {
+        transition: transform 0.3s ease;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  }
+
+  &-center-leave-to,
+  &-center-enter-from {
+    #{$prefix} {
+      &__wrapper {
+        transform: translate(-50%, -50%) scale(0);
+      }
+    }
+  }
+
+  &-center-enter-to,
+  &-center-leave-from {
+    #{$prefix} {
+      &__wrapper {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  }
+  // 顶部过渡
+  &-top-enter-active,
+  &-top-leave-active {
+    #{$prefix} {
+      &__wrapper {
+        transition: transform 0.3s ease;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &-top-enter-from,
+  &-top-leave-to {
+    #{$prefix} {
+      &__wrapper {
+        transform: translateY(-100%);
+      }
+    }
+  }
+
+  &-top-enter-to,
+  &-top-leave-from {
+    #{$prefix} {
+      &__wrapper {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  // 底部过渡
+  &-bottom-enter-active,
+  &-bottom-leave-active {
+    #{$prefix} {
+      &__wrapper {
+        transition: transform 0.3s ease;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &-bottom-enter-from,
+  &-bottom-leave-to {
+    #{$prefix} {
+      &__wrapper {
+        transform: translateY(100%);
+      }
+    }
+  }
+
+  &-bottom-enter-to,
+  &-bottom-leave-from {
+    #{$prefix} {
+      &__wrapper {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  // 左侧过渡
+  &-left-enter-active,
+  &-left-leave-active {
+    #{$prefix} {
+      &__wrapper {
+        transition: transform 0.3s ease;
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &-left-enter-from,
+  &-left-leave-to {
+    #{$prefix} {
+      &__wrapper {
+        transform: translateX(-100%);
+      }
+    }
+  }
+
+  &-left-enter-to,
+  &-left-leave-from {
+    #{$prefix} {
+      &__wrapper {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  // 右侧过渡
+  &-right-enter-active,
+  &-right-leave-active {
+    #{$prefix} {
+      &__wrapper {
+        transition: transform 0.3s ease;
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &-right-enter-from,
+  &-right-leave-to {
+    #{$prefix} {
+      &__wrapper {
+        transform: translateX(100%);
+      }
+    }
+  }
+
+  &-right-enter-to,
+  &-right-leave-from {
+    #{$prefix} {
+      &__wrapper {
+        transform: translateX(0);
+      }
+    }
+  }
+}

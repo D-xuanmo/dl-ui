@@ -1,5 +1,12 @@
 import { computed, ref, SetupContext, watchEffect, WritableComputedRef } from 'vue'
 
+/**
+ * 处理默认值及响应式变量
+ * @param props
+ * @param emit
+ * @param valueKey 需要监听的字段
+ * @param eventName 事件名
+ */
 function useDefault<V, P, VK extends string>(
   props: P & { modelValue?: V } & { value?: V } & Record<VK, V>,
   emit: SetupContext['emit'],

@@ -53,3 +53,19 @@
     text-align: right;
   }
 }
+
+// 文字显示省略号
+@mixin ellipsis($number: 1) {
+  @if ($number == 1) {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: keep-all;
+  } @else {
+    display: -webkit-box;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $number;
+  }
+}

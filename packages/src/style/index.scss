@@ -1,8 +1,10 @@
 @import './var';
 @import './normalize';
+@import './common';
 @import '../input/style.scss';
 @import '../cell/style.scss';
 @import '../cell-group/style.scss';
 @import '../icon/style.scss';
 @import '../switch/style.scss';
 @import '../overlay/style';
+@import '../popup/style';
