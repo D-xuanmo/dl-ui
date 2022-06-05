@@ -1,6 +1,10 @@
 <template>
-  <Teleport :to="teleport">
-    <Transition :name="name">
+  <teleport :to="teleport">
+    <transition
+      :name="name"
+      @before-enter="onTransitionBefore"
+      @after-leave="onTransitionAfterLeave"
+    >
       <div
         v-if="innerVisible"
         :class="[bem(), overlayClass].join(' ')"
@@ -9,16 +13,17 @@
       >
         <slot />
       </div>
-    </Transition>
-  </Teleport>
+    </transition>
+  </teleport>
 </template>
 
 <script lang="ts">
-import { CSSProperties, defineComponent, inject, SetupContext, getCurrentInstance, PropType, computed } from 'vue'
+import { CSSProperties, defineComponent, SetupContext, PropType, computed } from 'vue'
 import { createNamespace } from '../utils/bem'
 import useDefault from '../hooks/useDefault'
-import { globalConfigKey } from '../constants/context'
-import { isNumber } from '@xuanmo/javascript-utils'
+import useZIndex from '../hooks/useZIndex'
+import { TRANSITION_DURATION } from '../utils/animation'
+import { PREFIX } from '../utils/prefix'
 
 const [name, bem] = createNamespace('overlay')
 
@@ -35,7 +40,7 @@ export default defineComponent({
     },
     duration: {
       type: [Number, String] as PropType<number | string | undefined>,
-      default: 0.3
+      default: TRANSITION_DURATION
     },
     overlayClass: {
       type: String,
@@ -52,8 +57,6 @@ export default defineComponent({
   },
   emits: ['update:visible', 'click'],
   setup(props, context: SetupContext) {
-    const { proxy } = getCurrentInstance() ?? {}
-    const globalConfig = inject(globalConfigKey) ?? {}
     const [innerVisible, setVisible] = useDefault<boolean | undefined, typeof props, 'visible'>(
       props,
       context.emit,
@@ -61,18 +64,23 @@ export default defineComponent({
       'update:visible'
     )
 
-    const zIndex = props.zIndex ?? globalConfig?.zIndex
+    const [zIndex, setZIndex] = useZIndex(props, props.zIndex !== undefined)
 
-    // 每次打开弹框默认加 1
-    const newZIndex = zIndex ? zIndex + 1 : (proxy?.$DForm?.zIndex ?? 2000) + 1
+    setZIndex()
 
     const style = computed<CSSProperties>(() => ({
-      zIndex: newZIndex,
-      transitionDuration: isNumber(props.duration) ? `${props.duration}s` : (props.duration as string),
+      zIndex: zIndex.value,
+      transitionDuration: typeof props.duration === 'number' ? `${props.duration}s` : (props.duration as string),
       ...(props.overlayStyle ?? {})
     }))
 
-    proxy!.$DForm.zIndex = newZIndex
+    function onTransitionBefore() {
+      document.body.classList.add(`${PREFIX}-overflow-hidden`)
+    }
+
+    function onTransitionAfterLeave() {
+      document.body.classList.remove(`${PREFIX}-overflow-hidden`)
+    }
 
     function handleClose() {
       setVisible((innerVisible.value = !innerVisible.value))
@@ -84,7 +92,9 @@ export default defineComponent({
       innerVisible,
       style,
       bem,
-      handleClose
+      handleClose,
+      onTransitionBefore,
+      onTransitionAfterLeave
     }
   }
 })
