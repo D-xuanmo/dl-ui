@@ -1,70 +1,70 @@
 <template>
-  <DCellGroup
+  <d-cell-group
     round
     title="基础用法"
   >
-    <DCell
+    <d-cell
       title="基础弹框"
       arrow
       @click="handleShowPopup"
     />
-    <DPopup v-model:visible="showPopup"> 我是内容 </DPopup>
-  </DCellGroup>
+    <d-popup v-model:visible="showPopup"> 我是内容 </d-popup>
+  </d-cell-group>
 
-  <DCellGroup
+  <d-cell-group
     round
     title="弹出位置"
   >
-    <DCell
+    <d-cell
       title="顶部弹出"
       content="placement: top"
       arrow
       @click="handleShowPopup2('top')"
     />
-    <DCell
+    <d-cell
       title="底部弹出"
       content="placement: bottom"
       arrow
       @click="handleShowPopup2('bottom')"
     />
-    <DCell
+    <d-cell
       title="左侧弹出"
       content="placement: left"
       arrow
       @click="handleShowPopup2('left')"
     />
-    <DCell
+    <d-cell
       title="右侧弹出"
       content="placement: right"
       arrow
       @click="handleShowPopup2('right')"
     />
-    <DPopup
+    <d-popup
       v-model:visible="showPopup2"
       :placement="placement"
     />
-  </DCellGroup>
+  </d-cell-group>
 
-  <DCellGroup
+  <d-cell-group
     round
     title="其他设置"
   >
-    <DCell
+    <d-cell
       title="圆角显示"
       arrow
       @click="handleShowPopup3"
     />
-    <DCell
+    <d-cell
       title="显示标题"
       arrow
       @click="handleShowPopup4"
     />
-    <DPopup
+    <d-popup
       v-model:visible="showPopup3"
       placement="bottom"
       round
     />
-    <DPopup
+    <d-popup
       v-model:visible="showPopup4"
       title="我是标题我是标题我是标题我是标题我是标题我是标题"
       placement="bottom"
@@ -73,8 +73,8 @@
       :popup-style="{ height: '50%' }"
     >
       我是内容
-    </DPopup>
-  </DCellGroup>
+    </d-popup>
+  </d-cell-group>
 </template>
 
 <script

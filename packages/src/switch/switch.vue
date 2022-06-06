@@ -6,7 +6,7 @@
   >
     <div :class="bem('handle', { active: innerValue })">
       <slot name="icon">
-        <DIcon
+        <d-icon
           v-if="loading"
           name="loading"
           spin

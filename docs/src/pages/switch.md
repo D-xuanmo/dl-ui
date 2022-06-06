@@ -4,36 +4,36 @@
 
 ```vue
 <template>
-  <DCell title="基础用法">
-    <DSwitch v-model="value" />
-    <DSwitch :value="value" />
-  </DCell>
-  <DCell title="默认值">
-    <DSwitch v-model="value1" />
-  </DCell>
-  <DCell title="方形">
-    <DSwitch
+  <d-cell title="基础用法">
+    <d-switch v-model="value" />
+    <d-switch :value="value" />
+  </d-cell>
+  <d-cell title="默认值">
+    <d-switch v-model="value1" />
+  </d-cell>
+  <d-cell title="方形">
+    <d-switch
       v-model="value"
       :round="false"
     />
-  </DCell>
-  <DCell title="禁用">
-    <DSwitch
+  </d-cell>
+  <d-cell title="禁用">
+    <d-switch
       v-model="value"
       disabled
     />
-  </DCell>
-  <DCell title="自定义图标">
-    <DSwitch v-model="value">
+  </d-cell>
+  <d-cell title="自定义图标">
+    <d-switch v-model="value">
       <template #icon>🤓</template>
-    </DSwitch>
-  </DCell>
-  <DCell title="自定义图标">
-    <DSwitch v-model="value">
+    </d-switch>
+  </d-cell>
+  <d-cell title="自定义图标">
+    <d-switch v-model="value">
       <template #checked-icon>🌝</template>
       <template #unchecked-icon>🌚</template>
-    </DSwitch>
-  </DCell>
+    </d-switch>
+  </d-cell>
 </template>
 <script setup>
 import { ref } from 'vue'
@@ -49,7 +49,7 @@ const value1 = ref(true)
 
 ```vue
 <template>
-  <DSwitch
+  <d-switch
     v-model="value"
     :loading="loading"
     :before-change="beforeChange"

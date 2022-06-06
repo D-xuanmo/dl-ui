@@ -2,20 +2,20 @@
 
 ```vue
 <template>
-  <DCell title="打开遮罩层">
-    <DSwitch v-model="visible"></DSwitch>
-    <DOverlay v-model:visible="visible" />
-  </DCell>
-  <DCell
+  <d-cell title="打开遮罩层">
+    <d-switch v-model="visible" />
+    <d-overlay v-model:visible="visible" />
+  </d-cell>
+  <d-cell
     title="修改过渡时间"
     title-width="100px"
   >
-    <DSwitch v-model="visible2"></DSwitch>
-    <DOverlay
+    <d-switch v-model="visible2" />
+    <d-overlay
       v-model:visible="visible2"
       duration="1s"
     />
-  </DCell>
+  </d-cell>
 </template>
 
 <script

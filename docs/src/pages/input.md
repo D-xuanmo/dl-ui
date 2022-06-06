@@ -2,95 +2,95 @@
 
 ```vue
 <template>
-  <DCellGroup title="基础用法">
-    <DInput
+  <d-cell-group title="基础用法">
+    <d-input
       v-model="value"
       label="输入框"
       placeholder="请输入文字"
       @blur="onBlur"
     />
-    <DInput
+    <d-input
       v-model="value"
       placeholder="无标题显示"
       hideLabel
     />
-  </DCellGroup>
-  <DCellGroup title="禁用、只读状态">
-    <DInput
+  </d-cell-group>
+  <d-cell-group title="禁用、只读状态">
+    <d-input
       v-model="value"
       label="输入框禁用"
       placeholder="请输入文字"
       readonly
     />
-    <DInput
+    <d-input
       v-model="value"
       label="输入框禁用"
       placeholder="请输入文字"
       disabled
     />
-  </DCellGroup>
-  <DCellGroup title="字数限制">
-    <DInput
+  </d-cell-group>
+  <d-cell-group title="字数限制">
+    <d-input
       v-model="value"
       label="输入框"
       placeholder="请输入文字"
       :maxlength="10"
     />
-  </DCellGroup>
-  <DCellGroup title="扩展类型">
-    <DInput
+  </d-cell-group>
+  <d-cell-group title="扩展类型">
+    <d-input
       label="密码"
       placeholder="请输入密码"
       type="password"
     />
-    <DInput
+    <d-input
       v-model="number"
       label="数字输入框"
       placeholder="请输入密码"
       type="number"
     />
-    <DInput
+    <d-input
       v-model="value"
       label="邮箱"
       placeholder="请输入邮箱"
       type="email"
     />
-    <DInput
+    <d-input
       v-model="value"
       label="单价"
       placeholder="请输入文字"
       suffix="元"
     />
-    <DInput
+    <d-input
       v-model="value"
       label="单价"
       placeholder="请输入文字"
       suffix="元"
     >
       <template #suffix>slot 形式</template>
-    </DInput>
-  </DCellGroup>
-  <DCellGroup title="其他设置">
-    <DInput
+    </d-input>
+  </d-cell-group>
+  <d-cell-group title="其他设置">
+    <d-input
       v-model="value"
       label="显示冒号"
       placeholder="请输入文字"
       colon
     />
-    <DInput
+    <d-input
       v-model="value"
       label="可被清除"
       placeholder="请输入文字"
       clearable
     />
-    <DInput
+    <d-input
       v-model="value"
       label="显示图标"
       placeholder="请输入文字"
       left-icon="tips-o"
       left-icon-color="#f00"
     />
-    <DInput
+    <d-input
       v-model="value"
       label="图标大小"
       placeholder="请输入文字"
@@ -98,13 +98,13 @@
       left-icon-color="#f00"
       left-icon-size="small"
     />
-    <DInput
+    <d-input
       v-model="value"
       label="超长文字展示"
       placeholder="请输入文字"
       label-align="right"
     />
-  </DCellGroup>
+  </d-cell-group>
 </template>
 <script
   lang="ts"

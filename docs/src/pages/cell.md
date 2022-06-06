@@ -6,29 +6,29 @@
 
 ```vue
 <template>
-  <DCellGroup title="CellGroup 分组">
-    <DCell
+  <d-cell-group title="CellGroup 分组">
+    <d-cell
       title="我是标题"
       content="内容"
     />
-    <DCell
+    <d-cell
       title="我是标题"
       content="内容"
     />
-  </DCellGroup>
-  <DCellGroup
+  </d-cell-group>
+  <d-cell-group
     title="展示圆角"
     round
   >
-    <DCell
+    <d-cell
       title="我是标题"
       content="内容"
     />
-    <DCell
+    <d-cell
       title="我是标题"
       content="内容"
     />
-  </DCellGroup>
+  </d-cell-group>
 </template>
 ```
 
@@ -36,36 +36,36 @@
 
 ```vue
 <template>
-  <DCell
+  <d-cell
     title="我是标题"
     content="内容"
   />
-  <DCell
+  <d-cell
     title="我是标题"
     content="必填标识"
     required
   />
-  <DCell
+  <d-cell
     content="隐藏标题"
     hide-title
   />
-  <DCell
+  <d-cell
     title="扩展内容"
     content="正文"
     suffix="单位"
   />
-  <DCell
+  <d-cell
     title="扩展内容"
     content="正文"
   >
     <template #suffix>单位</template>
-  </DCell>
-  <DCell
+  </d-cell>
+  <d-cell
     title="显示图标"
     left-icon="tips"
     right-icon="close"
   />
-  <DCell
+  <d-cell
     title="显示图标"
     content="图标大小、颜色控制"
     left-icon="tips"

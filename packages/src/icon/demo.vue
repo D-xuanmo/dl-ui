@@ -1,64 +1,64 @@
 <template>
-  <DCellGroup title="基础用法">
-    <DCell content-align="left">
-      <DIcon name="close" />
-      <DIcon name="close-o" />
-      <DIcon name="tips" />
-      <DIcon name="tips-o" />
-      <DIcon name="success" />
-      <DIcon name="warning" />
-    </DCell>
-  </DCellGroup>
-  <DCellGroup title="旋转">
-    <DCell content-align="left">
-      <DIcon
+  <d-cell-group title="基础用法">
+    <d-cell content-align="left">
+      <d-icon name="close" />
+      <d-icon name="close-o" />
+      <d-icon name="tips" />
+      <d-icon name="tips-o" />
+      <d-icon name="success" />
+      <d-icon name="warning" />
+    </d-cell>
+  </d-cell-group>
+  <d-cell-group title="旋转">
+    <d-cell content-align="left">
+      <d-icon
         name="loading"
         spin
       />
-      <DIcon
+      <d-icon
         name="loading-2"
         spin
       />
-      <DIcon
+      <d-icon
         name="close"
         spin
       />
-    </DCell>
-  </DCellGroup>
-  <DCellGroup title="大小调整">
-    <DCell content-align="left">
-      <DIcon
+    </d-cell>
+  </d-cell-group>
+  <d-cell-group title="大小调整">
+    <d-cell content-align="left">
+      <d-icon
         name="close"
         size="small"
       />
-      <DIcon
+      <d-icon
         name="close"
         size="medium"
       />
-      <DIcon
+      <d-icon
         name="close"
         size="large"
       />
-      <DIcon
+      <d-icon
         name="tips"
         size="30px"
       />
-    </DCell>
-  </DCellGroup>
-  <DCellGroup title="颜色修改">
-    <DCell content-align="left">
-      <DIcon
+    </d-cell>
+  </d-cell-group>
+  <d-cell-group title="颜色修改">
+    <d-cell content-align="left">
+      <d-icon
         name="close"
         color="#f00"
       />
-      <DIcon
+      <d-icon
         name="close"
         color="#ed7b2f"
       />
-      <DIcon
+      <d-icon
         name="close"
         color="var(--d-primary)"
       />
-    </DCell>
-  </DCellGroup>
+    </d-cell>
+  </d-cell-group>
 </template>

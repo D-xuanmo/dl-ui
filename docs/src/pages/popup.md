@@ -6,17 +6,17 @@
 
 ```vue
 <template>
-  <DCellGroup
+  <d-cell-group
     round
     title="基础用法"
   >
-    <DCell
+    <d-cell
       title="基础弹框"
       arrow
       @click="handleShowPopup"
-    ></DCell>
-  </DCellGroup>
-  <DPopup v-model:visible="showPopup"> 我是内容 </DPopup>
+    ></d-cell>
+  </d-cell-group>
+  <d-popup v-model:visible="showPopup"> 我是内容 </d-popup>
 </template>
 
 <script
@@ -37,36 +37,36 @@ function handleShowPopup() {
 
 ```vue
 <template>
-  <DCellGroup
+  <d-cell-group
     round
     title="弹出位置"
   >
-    <DCell
+    <d-cell
       title="顶部弹出"
       content="position: top"
       arrow
       @click="handleShowPopup('top')"
     />
-    <DCell
+    <d-cell
       title="底部弹出"
       content="position: bottom"
       arrow
       @click="handleShowPopup('bottom')"
     />
-    <DCell
+    <d-cell
       title="左侧弹出"
       content="position: left"
       arrow
       @click="handleShowPopup('left')"
     />
-    <DCell
+    <d-cell
       title="右侧弹出"
       content="position: right"
       arrow
       @click="handleShowPopup('right')"
     />
-  </DCellGroup>
-  <DPopup
+  </d-cell-group>
+  <d-popup
     v-model:visible="showPopup2"
     :position="position"
   />
