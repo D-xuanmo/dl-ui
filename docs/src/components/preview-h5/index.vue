@@ -35,7 +35,7 @@ export default defineComponent({
     const isPreview = computed(() => toBoolean(route.query.preview))
 
     onMounted(() => {
-      document.querySelector('html').classList.add('mobile')
+      document.querySelector('html')?.classList.add('mobile')
     })
 
     const goBack = () => router.go(-1)

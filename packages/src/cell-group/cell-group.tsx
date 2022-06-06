@@ -1,10 +1,10 @@
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { createNamespace } from '../utils/bem'
 
 const [name, bem] = createNamespace('cell-group')
 
 const props = {
-  title: String,
+  title: String as PropType<string | undefined>,
   round: Boolean
 }
 

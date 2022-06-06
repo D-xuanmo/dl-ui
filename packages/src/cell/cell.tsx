@@ -22,7 +22,7 @@ const props = {
   leftIconColor: String,
   leftIconProps: Object,
 
-  content: String,
+  content: String as PropType<string | undefined>,
   contentClass: String,
   contentAlign: {
     type: String as PropType<HorizontalAlignEnum>,

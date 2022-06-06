@@ -29,7 +29,7 @@ export default defineComponent({
   setup() {
     const router = useRouter()
 
-    const goDetail = (path: string) => router.push(`/demo${path}`)
+    const goDetail = (path?: string) => router.push(`/demo${path}`)
 
     return {
       menus,
