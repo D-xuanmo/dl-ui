@@ -1,7 +1,7 @@
 @import '../style/prefix.scss';
 
 .#{$prefix}-cell-group {
-  margin-bottom: var(--d-gap-md);
+  margin-bottom: var(--d-gap-sm);
 
   &__title {
     margin-bottom: var(--d-gap-xs);
