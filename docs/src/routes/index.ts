@@ -27,7 +27,12 @@ const getRoutes = () => {
  */
 const getDemoRoutes = () => {
   const demoModules = import.meta.glob('../../../packages/src/**/demo.vue')
-  const routes: RouteRecordRaw[] = []
+  const routes: RouteRecordRaw[] = [
+    {
+      path: '/demo/component-list',
+      component: () => import('../components/preview-h5/component-list.vue')
+    }
+  ]
   for (const [key, module] of Object.entries(demoModules)) {
     const { path } = /(?<path>\/[a-z\d-]+)\/demo\.vue$/.exec(key)?.groups ?? {}
     routes.push({

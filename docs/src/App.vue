@@ -17,21 +17,17 @@
         />
       </div>
     </template>
-    <div
-      v-else
-      :class="bem('demo-wrapper')"
-    >
-      <router-view />
-    </div>
+    <d-preview-h5 v-else />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, watch, ref } from 'vue'
 import { createNamespace } from '@/utils/bem'
+import { useRoute } from 'vue-router'
 import menus from './menus'
 import DMenu from './components/menu'
-import { useRoute } from 'vue-router'
+import DPreviewH5 from './components/preview-h5/index.vue'
 
 const [name, bem] = createNamespace('doc')
 
@@ -39,7 +35,8 @@ export default defineComponent({
   name,
 
   components: {
-    DMenu
+    DMenu,
+    DPreviewH5
   },
 
   setup() {
@@ -50,7 +47,7 @@ export default defineComponent({
     watch(
       () => route.path,
       () => {
-        demoPath.value = `${import.meta.env.BASE_URL}demo${route.path}`
+        demoPath.value = `${import.meta.env.BASE_URL}demo${route.path}?preview=true`
         isDemoRoute.value = /^\/demo/.test(route.path)
       }
     )

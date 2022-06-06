@@ -6,29 +6,49 @@ const menus: MenuItemType[] = [
     id: createRandomID(),
     groupTitle: '组件开发指南',
     children: [
-      { id: createRandomID(), path: '/guide', content: 'Guide [开发指南]' },
-      { id: createRandomID(), path: '/example', content: 'Example [描述文字]' },
-      { id: createRandomID(), path: '/example-bem', content: 'BEM [示例]' }
+      { id: 'guide', path: '/guide', content: 'Guide [开发指南]' },
+      { id: 'example', path: '/example', content: 'Example [描述文字]' },
+      { id: 'example-bem', path: '/example-bem', content: 'BEM [示例]' }
     ]
   },
   {
     id: createRandomID(),
     groupTitle: '基础组件',
     children: [
-      { id: createRandomID(), path: '/cell', content: 'Cell [单元格]' },
-      { id: createRandomID(), path: '/icon', content: 'Icon [图标]' },
-      { id: createRandomID(), path: '/overlay', content: 'Overlay [遮罩层]' },
-      { id: createRandomID(), path: '/popup', content: 'Popup [弹出层]' }
+      { id: 'cell', path: '/cell', content: 'Cell [单元格]' },
+      { id: 'icon', path: '/icon', content: 'Icon [图标]' },
+      { id: 'overlay', path: '/overlay', content: 'Overlay [遮罩层]' },
+      { id: 'popup', path: '/popup', content: 'Popup [弹出层]' }
     ]
   },
   {
     id: createRandomID(),
     groupTitle: '表单组件',
     children: [
-      { id: createRandomID(), path: '/input', content: 'Input [输入框]' },
-      { id: createRandomID(), path: '/switch', content: 'Switch [开关]' }
+      { id: 'input', path: '/input', content: 'Input [输入框]' },
+      { id: 'switch', path: '/switch', content: 'Switch [开关]' }
     ]
   }
 ]
+
+/**
+ * 查找菜单信息
+ * @param id
+ */
+export const findMenuById = (id: string) => {
+  let menu: unknown = {}
+  for (let i = 0; i < menus.length; i++) {
+    const children = menus[i].children
+    if (children) {
+      for (let j = 0; j < children.length; j++) {
+        if (children[j].id === id) {
+          menu = children[j]
+          break
+        }
+      }
+    }
+  }
+  return menu as MenuItemType
+}
 
 export default menus
