@@ -5,7 +5,7 @@
   $parent: &;
   display: flex;
   align-items: center;
-  padding: var(--d-gap-xs) var(--d-gap-sm);
+  padding: var(--d-horizontal-gap) var(--d-gap-sm);
   background-color: var(--d-white-color);
   font-size: var(--d-font-size-md);
   line-height: var(--d-line-height-md);

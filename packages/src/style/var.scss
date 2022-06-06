@@ -30,10 +30,10 @@
   --d-font-size-lg: 16px;
 
   // 行高
-  --d-line-height-xs: calc(var(--d-font-size-xs) + var(--d-font-size-xs) * 0.5);
-  --d-line-height-sm: calc(var(--d-font-size-sm) + var(--d-font-size-sm) * 0.5);
-  --d-line-height-md: calc(var(--d-font-size-md) + var(--d-font-size-md) * 0.5);
-  --d-line-height-lg: calc(var(--d-font-size-lg) + var(--d-font-size-lg) * 0.5);
+  --d-line-height-xs: calc(var(--d-font-size-xs) + 8px);
+  --d-line-height-sm: calc(var(--d-font-size-sm) + 8px);
+  --d-line-height-md: calc(var(--d-font-size-md) + 8px);
+  --d-line-height-lg: calc(var(--d-font-size-lg) + 8px);
 
   // 文字颜色
   --d-title-color: #{rgba(black, 0.85)};
@@ -50,4 +50,6 @@
 
   // 遮罩层背景颜色
   --d-overlay-bg-color: rgba(0, 0, 0, 0.7);
+
+  --d-horizontal-gap: calc(var(--d-gap-xxs) + var(--d-gap-xs));
 }
