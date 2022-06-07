@@ -9,7 +9,7 @@
     <d-input
       v-model="value"
       placeholder="无标题显示"
-      hideLabel
+      hide-label
     />
   </d-cell-group>
   <d-cell-group title="禁用、只读状态">
