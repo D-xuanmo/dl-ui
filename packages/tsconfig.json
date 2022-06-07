@@ -17,7 +17,7 @@
     "skipLibCheck": true,
     "types": ["vite/client", "vite-plugin-svg-icons/client"]
   },
-  "include": ["./**/*.ts", "./**/*.tsx"],
+  "include": ["./**/*.ts", "./**/*.tsx", "./**/*.vue"],
   "references": [
     {
       "path": "./tsconfig.node.json"

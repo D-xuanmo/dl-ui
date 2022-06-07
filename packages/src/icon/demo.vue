@@ -2,11 +2,7 @@
   <d-cell-group title="基础用法">
     <d-cell content-align="left">
       <d-icon name="close" />
-      <d-icon name="close-o" />
-      <d-icon name="tips" />
-      <d-icon name="tips-o" />
-      <d-icon name="success" />
-      <d-icon name="warning" />
+      <d-icon name="close-f" />
     </d-cell>
   </d-cell-group>
   <d-cell-group title="旋转">
@@ -61,4 +57,36 @@
       />
     </d-cell>
   </d-cell-group>
+  <d-cell-group title="线性图标">
+    <d-cell content-align="left">
+      <d-icon
+        v-for="name in lineIcons"
+        :key="name"
+        :name="name"
+      />
+    </d-cell>
+  </d-cell-group>
+  <d-cell-group title="面性图标">
+    <d-cell content-align="left">
+      <d-icon
+        v-for="name in facetIcons"
+        :key="name"
+        :name="name"
+      />
+    </d-cell>
+  </d-cell-group>
 </template>
+
+<script
+  lang="ts"
+  setup
+>
+const icons = import.meta.glob('./icons/*.svg')
+console.log(icons)
+const lineIcons: string[] = []
+const facetIcons: string[] = []
+Object.keys(icons).forEach((path) => {
+  const { filename } = /\/(?<filename>[a-z\d-]+)\.svg$/.exec(path)?.groups ?? {}
+  ;/-f$/.test(filename) ? facetIcons.push(filename) : lineIcons.push(filename)
+})
+</script>

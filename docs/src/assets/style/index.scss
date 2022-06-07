@@ -95,6 +95,11 @@ a {
       padding: 4px 0;
       list-style-type: initial;
       list-style-position: inside;
+
+      ul,
+      ol {
+        padding-left: var(--d-gap-md);
+      }
     }
 
     $h3-font-size: 18px;
