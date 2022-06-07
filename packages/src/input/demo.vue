@@ -84,14 +84,14 @@
       v-model="value"
       label="显示图标"
       placeholder="请输入文字"
-      left-icon="tips-o"
+      left-icon="tips-f"
       left-icon-color="#f00"
     />
     <d-input
       v-model="value"
       label="图标大小"
       placeholder="请输入文字"
-      left-icon="tips-o"
+      left-icon="tips-f"
       left-icon-color="#f00"
       left-icon-size="small"
     />
@@ -112,7 +112,7 @@ import { ref } from 'vue'
 const value = ref('')
 const number = ref('')
 
-function onBlur(value) {
+function onBlur(value: string) {
   console.log(value)
 }
 </script>

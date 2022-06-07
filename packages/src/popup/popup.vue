@@ -75,7 +75,7 @@ const props = {
   closeable: Boolean,
   closeIcon: {
     type: String,
-    default: 'close-o'
+    default: 'close'
   },
   teleport: {
     type: String as PropType<string | HTMLElement>,

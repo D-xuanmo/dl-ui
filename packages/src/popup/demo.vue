@@ -82,19 +82,19 @@
   setup
 >
 import { ref } from 'vue'
-import { PositionType } from '../common'
+import { PlacementType } from '../common'
 
 const showPopup = ref(false)
 const showPopup2 = ref(false)
 const showPopup3 = ref(false)
 const showPopup4 = ref(false)
-const placement = ref<PositionType>('top')
+const placement = ref<PlacementType>('top')
 
 function handleShowPopup() {
   showPopup.value = true
 }
 
-function handleShowPopup2(p: PositionType) {
+function handleShowPopup2(p: PlacementType) {
   placement.value = p
   showPopup2.value = true
 }

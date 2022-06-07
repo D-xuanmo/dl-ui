@@ -10,7 +10,7 @@
     :required="required"
     :disabled="disabled"
     :hide-title="hideLabel"
-    :right-icon="innerValue && clearable ? 'close' : undefined"
+    :right-icon="innerValue && clearable ? 'close-f' : undefined"
     right-icon-color="var(--d-secondary-text-color)"
     :right-icon-props="{ onClick: handleClear }"
   >
