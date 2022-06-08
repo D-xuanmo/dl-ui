@@ -82,7 +82,6 @@
   setup
 >
 const icons = import.meta.glob('./icons/*.svg')
-console.log(icons)
 const lineIcons: string[] = []
 const facetIcons: string[] = []
 Object.keys(icons).forEach((path) => {
