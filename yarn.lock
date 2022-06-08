@@ -796,6 +796,13 @@
   dependencies:
     "@typescript-eslint/parser" "^4.27.0"
 
+"@xuanmo/javascript-utils@^0.0.38":
+  version "0.0.38"
+  resolved "https://registry.npmjs.org/@xuanmo/javascript-utils/-/javascript-utils-0.0.38.tgz#429dd6dc8f2a53d0225a9415bdf161dcac489eae"
+  integrity sha512-LWVdNM76CfScRWxWZMLWf1jlzn6JDzjLW8WHlpFA7g47PFfz7MXmXtUqt+3mFiMdAi446/T3FYLhzS3SlHxuTA==
+  dependencies:
+    "@typescript-eslint/parser" "^4.27.0"
+
 "@xuanmo/vite-plugin-md-preview@^0.0.1":
   version "0.0.1"
   resolved "https://registry.npmjs.org/@xuanmo/vite-plugin-md-preview/-/vite-plugin-md-preview-0.0.1.tgz#dd59848c79d6e1143cb933be2a85fd82fab052a7"

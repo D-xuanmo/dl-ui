@@ -24,7 +24,7 @@
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "dependencies": {
-    "@xuanmo/javascript-utils": "^0.0.37",
+    "@xuanmo/javascript-utils": "^0.0.38",
     "vue": "^3.2.25"
   },
   "devDependencies": {
