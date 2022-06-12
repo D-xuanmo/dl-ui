@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties, defineComponent, PropType } from 'vue'
+import { computed, CSSProperties, defineComponent, PropType, TeleportProps } from 'vue'
 import { createNamespace } from '../utils/bem'
 import DOverlay from '../overlay'
 import { PlacementType } from '../common'
@@ -78,7 +78,7 @@ const props = {
     default: 'close'
   },
   teleport: {
-    type: String as PropType<string | HTMLElement>,
+    type: String as PropType<TeleportProps['to']>,
     default: 'body'
   },
 

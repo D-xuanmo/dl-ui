@@ -91,22 +91,23 @@ function handleShowPopup(p) {
 
 ### Props
 
-| 参数                   | 类型            | 默认值  | 说明                                                                   | 必传 |
-| ---------------------- | --------------- | ------- | ---------------------------------------------------------------------- | ---- |
-| v-model:visible        | `boolean`       | false   | 控制显示与隐藏                                                         | N    |
-| title                  | `string`        | -       | 弹出层标题，`placement` 不等于 `center` 有效                           | N    |
-| placement              | `PositionType`  | center  | 弹出层位置，可选值`'top' \| 'right' \| 'bottom' \| 'left' \| 'center'` | N    |
-| z-index                | `number`        | 2000    | CSS z-index                                                            | N    |
-| duration               | `number`        | 0.3     | 过渡动画时间                                                           | N    |
-| round                  | `boolean`       | false   | 实现显示未圆角，`placement` 不等于 `center` 有效                       | N    |
-| closeable              | `boolean`       | false   | 是否显示关闭图标                                                       | N    |
-| close-icon             | `string`        | close-o | 同 `Icon` 组件 `name` 属性                                             | N    |
-| popup-class            | `string`        | -       | 弹出层 class                                                           | N    |
-| popup-style            | `CSSProperties` | -       | 弹出层 style                                                           | N    |
-| overlay                | `boolean`       | true    | 是否显示遮罩层                                                         | N    |
-| overlay-class          | `string`        | -       | 遮罩层 class                                                           | N    |
-| overlay-style          | `CSSProperties` | -       | 遮罩层 style                                                           | N    |
-| close-on-click-overlay | `boolean`       | true    | 点击遮罩层是否关闭弹出层                                               | N    |
+| 参数                   | 类型                  | 默认值  | 说明                                                                                                                          | 必传 |
+| ---------------------- | --------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------- | ---- |
+| v-model:visible        | `boolean`             | false   | 控制显示与隐藏                                                                                                                | N    |
+| title                  | `string`              | -       | 弹出层标题，`placement` 不等于 `center` 有效                                                                                  | N    |
+| placement              | `PositionType`        | center  | 弹出层位置，可选值`'top' \| 'right' \| 'bottom' \| 'left' \| 'center'`                                                        | N    |
+| z-index                | `number`              | 2000    | CSS z-index                                                                                                                   | N    |
+| duration               | `number`              | 0.3     | 过渡动画时间                                                                                                                  | N    |
+| round                  | `boolean`             | false   | 实现显示未圆角，`placement` 不等于 `center` 有效                                                                              | N    |
+| closeable              | `boolean`             | false   | 是否显示关闭图标                                                                                                              | N    |
+| close-icon             | `string`              | close-o | 同 `Icon` 组件 `name` 属性                                                                                                    | N    |
+| popup-class            | `string`              | -       | 弹出层 class                                                                                                                  | N    |
+| popup-style            | `CSSProperties`       | -       | 弹出层 style                                                                                                                  | N    |
+| overlay                | `boolean`             | true    | 是否显示遮罩层                                                                                                                | N    |
+| overlay-class          | `string`              | -       | 遮罩层 class                                                                                                                  | N    |
+| overlay-style          | `CSSProperties`       | -       | 遮罩层 style                                                                                                                  | N    |
+| close-on-click-overlay | `boolean`             | true    | 点击遮罩层是否关闭弹出层                                                                                                      | N    |
+| teleport               | `TeleportProps['to']` | body    | 选择要插入的 DOM 节点，同 `Teleport` 组件，[参考链接](https://staging-cn.vuejs.org/guide/built-ins/teleport.html#basic-usage) | N    |
 
 ### Events
 

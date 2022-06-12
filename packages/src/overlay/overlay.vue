@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { CSSProperties, defineComponent, SetupContext, PropType, computed } from 'vue'
+import { CSSProperties, defineComponent, SetupContext, PropType, computed, TeleportProps } from 'vue'
 import { createNamespace } from '../utils/bem'
 import useDefault from '../hooks/useDefault'
 import useZIndex from '../hooks/useZIndex'
@@ -55,7 +55,7 @@ export default defineComponent({
       default: true
     },
     teleport: {
-      type: String as PropType<string | HTMLElement>,
+      type: String as PropType<TeleportProps['to']>,
       default: 'body'
     }
   },
