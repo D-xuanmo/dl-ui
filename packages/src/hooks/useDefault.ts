@@ -65,7 +65,7 @@ function useDefault<V, P, VK extends string>(
     }
   })
 
-  return [innerValueRef, updateValue] as [WritableComputedRef<V>, typeof setInnerValue]
+  return [innerValueRef, updateValue]
 }
 
 export default useDefault
