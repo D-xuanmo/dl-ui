@@ -24,7 +24,7 @@ function useDefault<V, P, VK extends string>(
   props: P & { modelValue?: V } & { value?: V } & Record<VK, V>,
   emit: SetupContext['emit'],
   valueKey?: VK,
-  eventName?: VK extends string ? `update:${VK}` : never
+  eventName?: `update:${VK}`
 ) {
   const innerValue = ref<V>()
 
