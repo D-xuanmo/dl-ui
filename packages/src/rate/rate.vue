@@ -80,7 +80,7 @@ export default defineComponent({
   name,
   props,
   setup(props, context: SetupContext) {
-    const [innerValue, updateValue] = useDefault<number, typeof props, 'modelValue'>(props as never, context.emit)
+    const [innerValue, updateValue] = useDefault<number, typeof props>(props as never, context.emit)
 
     const classes = bem({
       disabled: props.disabled

@@ -65,11 +65,7 @@ export default defineComponent({
   },
   emits: ['update:value', 'update:modelValue'],
   setup(props, { emit }) {
-    const [innerValue, setValue] = useDefault<boolean | undefined, typeof props, 'modelValue'>(
-      props,
-      emit as SetupContext['emit'],
-      'modelValue'
-    )
+    const [innerValue, setValue] = useDefault<boolean | undefined, typeof props>(props, emit as SetupContext['emit'])
 
     const className = computed(() =>
       bem({

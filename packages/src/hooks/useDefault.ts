@@ -1,5 +1,18 @@
 import { computed, ref, SetupContext, watchEffect, WritableComputedRef } from 'vue'
 
+type Props<P, V> = P & { modelValue?: V } & { value?: V }
+
+type UseDefaultReturnType<V> = [WritableComputedRef<V>, (value: V) => void]
+
+function useDefault<V, P>(props: Props<P, V>, emit: SetupContext['emit']): UseDefaultReturnType<V>
+
+function useDefault<V, P, VK extends string>(
+  props: Props<P, V> & Record<VK, V>,
+  emit: SetupContext['emit'],
+  valueKey: VK,
+  eventName: `update:${VK}`
+): UseDefaultReturnType<V>
+
 /**
  * 处理默认值及响应式变量
  * @param props
@@ -11,7 +24,7 @@ function useDefault<V, P, VK extends string>(
   props: P & { modelValue?: V } & { value?: V } & Record<VK, V>,
   emit: SetupContext['emit'],
   valueKey?: VK,
-  eventName?: string
+  eventName?: VK extends string ? `update:${VK}` : never
 ) {
   const innerValue = ref<V>()
 

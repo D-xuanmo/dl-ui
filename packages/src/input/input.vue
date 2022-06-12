@@ -154,10 +154,9 @@ export default defineComponent({
       })
     )
 
-    const [innerValue, setValue] = useDefault<string | number | undefined, typeof props, 'modelValue'>(
+    const [innerValue, setValue] = useDefault<string | number | undefined, typeof props>(
       props,
-      emit as SetupContext['emit'],
-      'modelValue'
+      emit as SetupContext['emit']
     )
 
     function handleInput(event: Event) {
