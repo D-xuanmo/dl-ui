@@ -4,9 +4,9 @@ import { globalConfigKey } from '../constants/context'
 /**
  * 统一处理 zIndex
  * @param props 组件 props
- * @param autoincrement 是否需要自增
+ * @param autoIncrement 是否需要自增
  */
-function useZIndex<P>(props: P & { zIndex?: number }, autoincrement = true) {
+function useZIndex<P>(props: P & { zIndex?: number }, autoIncrement = true) {
   const { proxy } = getCurrentInstance() ?? {}
   const globalConfig = inject(globalConfigKey) ?? {}
 
@@ -20,7 +20,7 @@ function useZIndex<P>(props: P & { zIndex?: number }, autoincrement = true) {
     proxy!.$DForm.zIndex = newZIndex
   }
 
-  autoincrement && setZIndex()
+  autoIncrement && setZIndex()
 
   return [zIndex, setZIndex] as [Ref<number>, typeof setZIndex]
 }
