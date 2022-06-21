@@ -66,7 +66,7 @@ class Picker {
     const translateY =
       index >= this.options.length ? (this.options.length - 1) * this.itemHeight : index * this.itemHeight
     this.translate(translateY)
-    this.onChange?.(this.options[index - 1])
+    this.onChange?.(this.options[index - 1 < 0 ? 0 : index - 1])
   }
 
   getTranslateY() {
