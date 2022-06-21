@@ -6,7 +6,7 @@
     position: absolute;
     height: 1px;
     background-color: var(--d-border-color);
-    transform: scaleY(0.3) translateX(-50%);
+    transform: scaleY(0.5) translateX(-50%);
   }
 
   @if ($d == bottom) {

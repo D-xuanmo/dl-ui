@@ -27,7 +27,8 @@ const menus: MenuItemType[] = [
     children: [
       { id: 'input', path: '/input', content: 'Input [输入框]' },
       { id: 'switch', path: '/switch', content: 'Switch [开关]' },
-      { id: 'rate', path: '/rate', content: 'Rate [评分]' }
+      { id: 'rate', path: '/rate', content: 'Rate [评分]' },
+      { id: 'picker', path: '/picker', content: 'Picker [选择器]' }
     ]
   }
 ]

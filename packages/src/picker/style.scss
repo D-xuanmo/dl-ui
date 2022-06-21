@@ -1,0 +1,64 @@
+@import '../style/prefix';
+@import '../style/mixins';
+
+.#{$prefix}-picker {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--d-gap-sm);
+
+    &--confirm {
+      color: var(--d-primary);
+    }
+
+    &--cancel {
+      color: var(--d-secondary-text-color);
+    }
+  }
+
+  &__content {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &-item {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    font-size: var(--d-font-size-md);
+    line-height: var(--d-line-height-md);
+    @include ellipsis(1);
+
+    &__wrapper {
+      position: relative;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    &__content {
+      transition: transform 0.3s;
+    }
+
+    &__overlay {
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.6);
+      pointer-events: none;
+
+      &:first-of-type {
+        top: 0;
+        @include border(0px, bottom);
+        position: absolute;
+      }
+
+      &:last-of-type {
+        bottom: 0;
+        @include border(0px, top);
+        position: absolute;
+      }
+    }
+  }
+}
