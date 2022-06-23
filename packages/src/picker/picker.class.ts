@@ -61,22 +61,41 @@ class Picker {
 
   private touchEndHandler(event: TouchEvent) {
     event.preventDefault()
-    const index = Math.round(Math.abs(this.getTranslateY() / this.itemHeight))
+    const currentIndex = this.calcCurrentIndex()
+    const nextIndex = this.findNextItemByIndex(currentIndex)
+    const currentOption = this.options[currentIndex]
+    const index = currentOption?.disabled ? nextIndex : currentIndex
     this.el!.style.transition = '0.2s'
-    const translateY =
-      index >= this.options.length ? (this.options.length - 1) * this.itemHeight : index * this.itemHeight
-    this.translate(translateY)
-    this.onChange?.(this.options[index - 1 < 0 ? 0 : index - 1])
+    this.translate(index * this.itemHeight)
+    this.onChange?.(this.options[index])
   }
 
-  getTranslateY() {
+  private calcCurrentIndex() {
+    const currentIndex = Math.round(Math.abs(this.getTranslateY() / this.itemHeight))
+    return currentIndex >= this.options.length ? currentIndex - 1 : currentIndex
+  }
+
+  private getTranslateY() {
     return parseFloat(getComputedStyle(this.el!).transform.split(',').reverse()[0])
   }
 
-  translate(translateY: number) {
+  private translate(translateY: number) {
     const y = translateY > this.maxTranslateY ? this.maxTranslateY : translateY < 0 ? 0 : translateY
     this.el!.style.transform = `translate3d(0px, -${y}px, 0px)`
     this.el!.style.webkitTransform = `translate3d(0px, -${y}px, 0px)`
+  }
+
+  private findNextItemByIndex(index: number) {
+    const options = this.options
+    let nextIndex = 0
+    for (let i = 0; i < options.length - 1; i++) {
+      if (i <= index) continue
+      if (!options[i].disabled) {
+        nextIndex = i
+        break
+      }
+    }
+    return nextIndex
   }
 }
 

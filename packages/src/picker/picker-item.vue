@@ -16,7 +16,7 @@
       <li
         v-for="(item, index) in options"
         :key="item.value"
-        :class="bem({ selected: selectedIndex === index })"
+        :class="bem({ selected: selectedIndex === index, disabled: item.disabled })"
       >
         <span>{{ item.label }}</span>
       </li>
@@ -29,7 +29,6 @@ import { computed, CSSProperties, defineComponent, onMounted, ref } from 'vue'
 import { createNamespace } from '../utils/bem'
 import { pickerItemProps } from './picker-item-props'
 import Picker from './picker.class'
-import { DataType } from '../common'
 
 const [name, bem] = createNamespace('picker-item')
 

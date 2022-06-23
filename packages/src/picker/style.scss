@@ -30,6 +30,7 @@
     font-size: var(--d-font-size-md);
     line-height: var(--d-line-height-md);
     @include ellipsis(1);
+    @include disabled;
 
     &__wrapper {
       position: relative;

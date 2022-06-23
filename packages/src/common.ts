@@ -13,6 +13,7 @@ export type PlacementType = 'top' | 'right' | 'bottom' | 'left' | 'center'
 export type DataType = {
   label: string
   value: string | number
+  disabled?: boolean
 } & Record<string, unknown>
 
 /** 排除 props value / modelValue */

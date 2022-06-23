@@ -70,7 +70,16 @@
   }
 }
 
+// 底部安全距离
 %safe-area-inset-bottom {
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
+}
+
+// 禁用
+@mixin disabled {
+  &--disabled {
+    color: var(--d-disable-color);
+    cursor: not-allowed;
+  }
 }
