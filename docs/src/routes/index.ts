@@ -26,7 +26,7 @@ const getRoutes = () => {
  * 访问路径为：/demo/cell
  */
 const getDemoRoutes = () => {
-  const demoModules = import.meta.glob('../../../packages/src/**/demo.vue')
+  const demoModules = import.meta.glob('../../../packages/src/**/demo/index.vue')
   const routes: RouteRecordRaw[] = [
     {
       path: '/demo/component-list',
@@ -34,7 +34,7 @@ const getDemoRoutes = () => {
     }
   ]
   for (const [key, module] of Object.entries(demoModules)) {
-    const { path } = /(?<path>\/[a-z\d-]+)\/demo\.vue$/.exec(key)?.groups ?? {}
+    const { path } = /(?<path>\/[a-z\d-]+)\/demo\/index\.vue$/.exec(key)?.groups ?? {}
     routes.push({
       path: `/demo${path}`,
       component: module,
