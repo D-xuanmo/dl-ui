@@ -82,7 +82,7 @@
   setup
 >
 import { ref } from 'vue'
-import { PlacementType } from '../common'
+import { PlacementType } from '../../common'
 
 const showPopup = ref(false)
 const showPopup2 = ref(false)
