@@ -1,7 +1,7 @@
 {
   "name": "@xuanmo/dynamic-form",
   "private": false,
-  "version": "0.0.1-demo.8",
+  "version": "0.0.1-demo.9",
   "author": {
     "name": "xuanmo",
     "email": "me@xuanmo.xin"
@@ -52,5 +52,6 @@
   },
   "peerDependencies": {
     "vue": "^3.0.0"
-  }
+  },
+  "keywords": ["dynamic-form", "Vue3 Form"]
 }
