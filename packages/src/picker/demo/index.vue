@@ -25,7 +25,7 @@
 
   <d-cell
     title="级联选择"
-    :content="value3.toString()"
+    :content="formatted"
     @click="visible3 = true"
   />
   <d-picker
@@ -40,7 +40,7 @@
   lang="ts"
   setup
 >
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { PickerColumnsType } from '../props'
 import addressJson from './data.json'
 
@@ -62,6 +62,11 @@ const columns2 = ref<PickerColumnsType>(template2)
 const value2 = ref(['0-2'])
 
 const visible3 = ref(false)
-const value3 = ref(['110000', '110100', '110102'])
+const value3 = ref([
+  { value: '110000', label: '北京市' },
+  { value: '110100', label: '市辖区' },
+  { value: '110102', label: '西城区' }
+])
+const formatted = computed(() => value3.value.map((item) => item.label).join('/'))
 const template3 = ref(addressJson)
 </script>

@@ -32,7 +32,7 @@
           :key="index"
           :options="item"
           :option-height="optionHeight"
-          :value="temporaryValue[index]"
+          :value="formatColumnValue(index)"
           @change="onChange($event, index)"
         />
       </div>
@@ -45,19 +45,17 @@ import { computed, CSSProperties, defineComponent, ref, SetupContext } from 'vue
 import { createNamespace } from '../utils/bem'
 import useDefault from '../hooks/useDefault'
 import { DataType, OmitValueProperties } from '../common'
-import { PickerColumnType, pickerProps } from './props'
+import { PickerColumnType, pickerProps, ValueType } from './props'
 import DPickerItem from './picker-item.vue'
 import { deepCopy, isObject } from '@xuanmo/javascript-utils'
 
 const [name, bem] = createNamespace('picker')
 
-type ValueType = string[] | number[]
-
 export default defineComponent({
   name,
   components: { DPickerItem },
   props: pickerProps,
-  emits: ['update:visible', 'update:modelValue'],
+  emits: ['update:visible', 'update:modelValue', 'confirm', 'close'],
   setup(props, context: SetupContext) {
     const className = bem()
     const headerClassName = bem('header')
@@ -85,13 +83,19 @@ export default defineComponent({
       const formatted: PickerColumnType[][] = []
       let level = 0
       function findColumns(data: PickerColumnType[]) {
-        while (temporaryValue.value[level] && data) {
-          if (!temporaryValue.value[level]) break
-          const result = data.find((item) => item.value === temporaryValue.value[level]) ?? data[0]
+        const value = temporaryValue.value
+        while (value[level] && data) {
+          if (!value[level]) break
+          const result =
+            data.find((item) => {
+              const current = value[level]
+              // 传入的 value 为对象数组，取 value 属性
+              return item.value === (isObject(current) ? (current as DataType).value : current)
+            }) ?? data[0]
           level++
           if (result) {
             formatted.push(data)
-            temporaryValue.value[level - 1] = result.value
+            temporaryValue.value[level - 1] = result
             result?.children && findColumns(result?.children)
             break
           }
@@ -114,25 +118,34 @@ export default defineComponent({
       height: `${props.optionHeight * 5}px`
     }))
 
-    const handleClose = () => updateVisible(false)
-
     const onChange = (data: DataType, columnIndex: number) => {
       // 级联选择模式切更改项为第一项，清空后续的值
       if (isCascade) {
-        const newValue = temporaryValue.value
-        newValue[columnIndex] = data.value
-        temporaryValue.value = newValue
+        temporaryValue.value[columnIndex] = data
       } else {
         temporaryValue.value = temporaryValue.value.map((item, index) => {
-          if (index === columnIndex) return data.value
+          if (index === columnIndex) return data
           return item
         }) as ValueType
       }
     }
 
     const handleChange = () => {
-      updateValue(deepCopy(temporaryValue.value))
+      const value = isCascade ? deepCopy(temporaryValue.value) : [(temporaryValue.value as DataType[])?.[0]?.value]
+      console.log(temporaryValue.value, value)
+      updateValue(value)
       handleClose()
+      context.emit('confirm', temporaryValue.value)
+    }
+
+    const handleClose = () => {
+      updateVisible(false)
+      context.emit('close')
+    }
+
+    const formatColumnValue = (columnIndex: number) => {
+      const columnValue = temporaryValue.value[columnIndex]
+      return (isObject(columnValue) ? (columnValue as DataType).value : columnValue) as string | number
     }
 
     return {
@@ -145,9 +158,12 @@ export default defineComponent({
       formattedColumns,
       contentStyle,
       temporaryValue,
+      isCascade,
+      isObject,
       handleClose,
       onChange,
-      handleChange
+      handleChange,
+      formatColumnValue
     }
   }
 })
