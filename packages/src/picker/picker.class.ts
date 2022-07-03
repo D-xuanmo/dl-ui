@@ -97,6 +97,11 @@ class Picker {
     }
     return nextIndex
   }
+
+  update({ options }: Pick<PickerType, 'options'>) {
+    this.options = options
+    this.maxTranslateY = options.length * this.itemHeight + 10
+  }
 }
 
 export default Picker

@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties, defineComponent, onMounted, ref } from 'vue'
+import { computed, CSSProperties, defineComponent, onMounted, ref, watch, watchEffect } from 'vue'
 import { createNamespace } from '../utils/bem'
 import { pickerItemProps } from './picker-item-props'
 import Picker from './picker.class'
@@ -41,6 +41,8 @@ export default defineComponent({
     const contentClassName = bem('content')
     const itemClassName = bem()
     const overlayClassName = bem('overlay')
+
+    let picker: Picker | null = null
 
     const overlayHeight = computed(() => props.optionHeight * 2)
 
@@ -59,13 +61,20 @@ export default defineComponent({
     }))
 
     onMounted(() => {
-      new Picker({
+      picker = new Picker({
         el: wrapperRef.value,
         options: props.options,
         itemHeight: props.optionHeight,
         onChange: props.onChange
       })
     })
+
+    watch(
+      () => props.options,
+      () => {
+        picker?.update({ options: props.options })
+      }
+    )
 
     return {
       wrapperRef,

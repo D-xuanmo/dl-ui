@@ -5,8 +5,8 @@
     @click="visible1 = true"
   />
   <d-picker
-    v-model:visible="visible1"
     v-model="value1"
+    v-model:visible="visible1"
     title="标题"
     :columns="columns1"
   />
@@ -17,10 +17,22 @@
     @click="visible2 = true"
   />
   <d-picker
-    v-model:visible="visible2"
     v-model="value2"
+    v-model:visible="visible2"
     title="标题"
     :columns="columns2"
+  />
+
+  <d-cell
+    title="级联选择"
+    :content="value3.toString()"
+    @click="visible3 = true"
+  />
+  <d-picker
+    v-model="value3"
+    v-model:visible="visible3"
+    title="标题"
+    :columns="template3"
   />
 </template>
 
@@ -29,7 +41,9 @@
   setup
 >
 import { ref } from 'vue'
-import { PickerColumnsType } from './props'
+import { PickerColumnsType } from '../props'
+import addressJson from './data.json'
+
 const visible1 = ref(false)
 const template1 = Array.from(new Array(10)).map((_, index) => ({
   label: `选项${index + 1}`,
@@ -46,4 +60,8 @@ const template2 = Array.from(new Array(10)).map((_, index) => ({
 const visible2 = ref(false)
 const columns2 = ref<PickerColumnsType>(template2)
 const value2 = ref(['0-2'])
+
+const visible3 = ref(false)
+const value3 = ref(['110000', '110100', '110102'])
+const template3 = ref(addressJson)
 </script>
