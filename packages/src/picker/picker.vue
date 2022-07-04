@@ -132,7 +132,6 @@ export default defineComponent({
 
     const handleChange = () => {
       const value = isCascade ? deepCopy(temporaryValue.value) : [(temporaryValue.value as DataType[])?.[0]?.value]
-      console.log(temporaryValue.value, value)
       updateValue(value)
       handleClose()
       context.emit('confirm', temporaryValue.value)
