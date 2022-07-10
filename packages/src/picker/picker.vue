@@ -45,9 +45,10 @@ import { computed, CSSProperties, defineComponent, ref, SetupContext } from 'vue
 import { createNamespace } from '../utils/bem'
 import useDefault from '../hooks/useDefault'
 import { DataType, OmitValueProperties } from '../common'
-import { PickerColumnType, pickerProps, ValueType } from './props'
+import { CascadeDataType, PickerColumnType, pickerProps, ValueType } from './props'
 import DPickerItem from './picker-item.vue'
 import { deepCopy, isObject } from '@xuanmo/javascript-utils'
+import { formatCascade } from './utils'
 
 const [name, bem] = createNamespace('picker')
 
@@ -73,41 +74,14 @@ export default defineComponent({
     const [innerValue, updateValue] = useDefault<ValueType, typeof props>(props, context.emit)
 
     // 是否为级联选择模式
-    const isCascade = Array.isArray((props.columns as PickerColumnType[])[0].children)
+    const isCascade = Array.isArray((props.columns[0] as CascadeDataType)?.children)
 
     // 接收子级传递回来的数据
     const temporaryValue = ref<ValueType>(deepCopy(innerValue.value))
 
-    // 处理级联数据
-    const formatCascade = (columns: PickerColumnType[]) => {
-      const formatted: PickerColumnType[][] = []
-      let level = 0
-      function findColumns(data: PickerColumnType[]) {
-        const value = temporaryValue.value
-        while (value[level] && data) {
-          if (!value[level]) break
-          const result =
-            data.find((item) => {
-              const current = value[level]
-              // 传入的 value 为对象数组，取 value 属性
-              return item.value === (isObject(current) ? (current as DataType).value : current)
-            }) ?? data[0]
-          level++
-          if (result) {
-            formatted.push(data)
-            temporaryValue.value[level - 1] = result
-            result?.children && findColumns(result?.children)
-            break
-          }
-        }
-      }
-      findColumns(columns)
-      return formatted
-    }
-
     // 内部渲染列使用
     const formattedColumns = computed(() => {
-      if (isCascade) return formatCascade(props.columns as PickerColumnType[])
+      if (isCascade) return formatCascade(temporaryValue.value, props.columns as CascadeDataType[])
 
       if (isObject(props.columns[0])) return [props.columns] as PickerColumnType[][]
 

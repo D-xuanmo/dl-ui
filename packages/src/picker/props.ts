@@ -3,8 +3,11 @@ import { DataType } from '../common'
 
 export type ValueType = string[] | number[] | DataType[]
 
+/** 级联选择数据类型 */
+export type CascadeDataType = DataType & { children?: DataType[] }
+
 /** 选择器每列数据类型 */
-export type PickerColumnType = DataType & { children?: DataType[] }
+export type PickerColumnType = string | DataType | CascadeDataType
 
 /** 选择器数据类型 */
 export type PickerColumnsType = PickerColumnType[] | PickerColumnType[][]
