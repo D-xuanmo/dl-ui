@@ -789,6 +789,13 @@
   resolved "https://registry.npmjs.org/@vue/shared/-/shared-3.2.37.tgz#8e6adc3f2759af52f0e85863dfb0b711ecc5c702"
   integrity sha512-4rSJemR2NQIo9Klm1vabqWjD8rs/ZaJSzMxkMNeJS6lHiUjjUeYFbooN19NgFjztubEKh3WlZUeOLVdbbUWHsw==
 
+"@xuanmo/datejs@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.npmjs.org/@xuanmo/datejs/-/datejs-1.0.8.tgz#db9956747721dc236a4f16a469cd18b7ee9d35a9"
+  integrity sha512-3zdiJFOf0c9Z+ha20mm70dk0vKYZVS+K8VUjSWxyEJYUbgFD4ot0PcpQgAhVhZ8QrX+Uq+io7CH0rQEWa/5tnA==
+  dependencies:
+    "@typescript-eslint/parser" "^4.27.0"
+
 "@xuanmo/javascript-utils@^0.0.37":
   version "0.0.37"
   resolved "https://registry.npmjs.org/@xuanmo/javascript-utils/-/javascript-utils-0.0.37.tgz#9f853f08ba1134def69300d9e508b3d0bff01b36"

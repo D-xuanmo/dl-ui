@@ -24,6 +24,7 @@
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "dependencies": {
+    "@xuanmo/datejs": "^1.0.8",
     "@xuanmo/javascript-utils": "^0.0.38",
     "vue": "^3.2.25"
   },
@@ -53,5 +54,8 @@
   "peerDependencies": {
     "vue": "^3.0.0"
   },
-  "keywords": ["dynamic-form", "Vue3 Form"]
+  "keywords": [
+    "dynamic-form",
+    "Vue3 Form"
+  ]
 }
