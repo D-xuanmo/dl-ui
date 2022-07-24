@@ -14,7 +14,7 @@ export type DataType = {
   label: string
   value: string | number
   disabled?: boolean
-} & Record<string, unknown>
+} & Record<string, any>
 
 /** 排除 props value / modelValue */
 export type OmitValueProperties<T extends Record<string, unknown>> = Omit<T, 'value' | 'modelValue'>

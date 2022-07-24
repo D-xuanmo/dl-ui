@@ -1,14 +1,15 @@
 import { computed, ref, SetupContext, watchEffect, WritableComputedRef } from 'vue'
+import { EmitsOptions } from '@vue/runtime-core'
 
 type Props<P, V> = P & { modelValue?: V } & { value?: V }
 
 type UseDefaultReturnType<V> = [WritableComputedRef<V>, (value: V) => void]
 
-function useDefault<V, P>(props: Props<P, V>, emit: SetupContext['emit']): UseDefaultReturnType<V>
+function useDefault<V, P, E = EmitsOptions>(props: Props<P, V>, emit: SetupContext<E>['emit']): UseDefaultReturnType<V>
 
-function useDefault<V, P, VK extends string>(
+function useDefault<V, P, VK extends string, E = EmitsOptions>(
   props: Props<P, V> & Record<VK, V>,
-  emit: SetupContext['emit'],
+  emit: SetupContext<E>['emit'],
   valueKey: VK,
   eventName: `update:${VK}`
 ): UseDefaultReturnType<V>

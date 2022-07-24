@@ -1,4 +1,4 @@
-import { CascadeDataType, PickerColumnType, ValueType } from './props'
+import { CascadeDataType, PickerColumnType, PickerValueType } from './props'
 import { isObject } from '@xuanmo/javascript-utils'
 import { DataType } from '../common'
 
@@ -7,7 +7,7 @@ import { DataType } from '../common'
  * @param value 当前选中的值
  * @param columns
  */
-export const formatCascade = (value: ValueType, columns: CascadeDataType[]) => {
+export const formatCascade = (value: PickerValueType, columns: CascadeDataType[]) => {
   const formatted: PickerColumnType[][] = []
   let level = 0
   function findColumns(data: CascadeDataType[]) {
