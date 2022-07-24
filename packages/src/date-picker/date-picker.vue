@@ -7,6 +7,7 @@
     :visible="showPicker"
     :value="pickerValue"
     :columns="columns"
+    :title="title"
     @change="handleChange"
     @confirm="handleConfirm"
     @close="showPicker = false"

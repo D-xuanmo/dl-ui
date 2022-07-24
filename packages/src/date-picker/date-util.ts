@@ -29,11 +29,11 @@ class DateUtil {
   }
 
   formatType: Record<DatePickerType, string> = {
-    'year-month': 'yyyy-MM',
-    date: 'yyyy-MM-dd',
-    datetime: 'yyyy-MM-dd HH:mm:ss',
-    'date-hour': 'yyyy-MM-dd HH',
-    'month-day': 'MM-dd',
+    'year-month': 'yyyy/MM',
+    date: 'yyyy/MM/dd',
+    datetime: 'yyyy/MM/dd HH:mm:ss',
+    'date-hour': 'yyyy/MM/dd HH',
+    'month-day': 'MM/dd',
     time: 'HH:mm'
   }
 

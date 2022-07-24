@@ -796,6 +796,13 @@
   dependencies:
     "@typescript-eslint/parser" "^4.27.0"
 
+"@xuanmo/datejs@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.npmjs.org/@xuanmo/datejs/-/datejs-1.0.9.tgz#8d8d7acddd64f2f122d7c8375027b7631840c99f"
+  integrity sha512-IRbH1yfyAOQj4CcAafLdQVSe45LgA3DfIjunWmqK8QX1nIHiFCjv/5y2IY4ctNgeWVV/Pnjn7qKKqfjoovrExw==
+  dependencies:
+    "@typescript-eslint/parser" "^4.27.0"
+
 "@xuanmo/javascript-utils@^0.0.37":
   version "0.0.37"
   resolved "https://registry.npmjs.org/@xuanmo/javascript-utils/-/javascript-utils-0.0.37.tgz#9f853f08ba1134def69300d9e508b3d0bff01b36"

@@ -16,10 +16,9 @@
   setup
 >
 import { ref } from 'vue'
-import dateJS from '@xuanmo/datejs'
 import { FormatterType } from '../props'
 
-const value = ref(dateJS(new Date(2022, 3, 15, 22, 58)).format())
+const value = ref('2022/4/15 22:58:00')
 
 const format: FormatterType = (type, value) => {
   if (type === 'year') {

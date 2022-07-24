@@ -6,6 +6,7 @@
     <d-date-picker
       v-model="value"
       type="datetime"
+      title="日期时间选择器"
     />
   </d-cell>
 </template>
@@ -15,7 +16,6 @@
   setup
 >
 import { ref } from 'vue'
-import dateJS from '@xuanmo/datejs'
 
-const value = ref(dateJS(new Date(2022, 3, 15, 22, 58)).format())
+const value = ref('2022/4/15 22:58:00')
 </script>

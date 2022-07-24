@@ -20,6 +20,7 @@ export const datePickerProps = {
     type: [String, Date] as PropType<DatePickerValueType>,
     default: new Date()
   },
+  title: String,
   type: {
     type: String as PropType<DatePickerType>,
     default: 'date'
