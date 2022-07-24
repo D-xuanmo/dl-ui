@@ -45,6 +45,10 @@
   &__content {
     flex: 1;
     @include text-align;
+
+    #{$parent} {
+      padding: 0;
+    }
   }
 
   &__suffix {

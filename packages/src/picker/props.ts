@@ -1,13 +1,13 @@
 import { PropType } from 'vue'
 import { DataType } from '../common'
 
-export type ValueType = string[] | number[] | DataType[]
+export type PickerValueType = string[] | number[] | DataType[]
 
 /** 级联选择数据类型 */
 export type CascadeDataType = DataType & { children?: DataType[] }
 
 /** 选择器每列数据类型 */
-export type PickerColumnType = string | DataType | CascadeDataType
+export type PickerColumnType = DataType | CascadeDataType
 
 /** 选择器数据类型 */
 export type PickerColumnsType = PickerColumnType[] | PickerColumnType[][]
@@ -15,11 +15,11 @@ export type PickerColumnsType = PickerColumnType[] | PickerColumnType[][]
 export const pickerProps = {
   visible: Boolean,
   value: {
-    type: Array as PropType<ValueType>,
+    type: Array as PropType<PickerValueType>,
     default: undefined
   },
   modelValue: {
-    type: Array as PropType<ValueType>,
+    type: Array as PropType<PickerValueType>,
     default: undefined
   },
   columns: {

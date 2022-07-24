@@ -45,10 +45,11 @@ import { computed, CSSProperties, defineComponent, ref, SetupContext } from 'vue
 import { createNamespace } from '../utils/bem'
 import useDefault from '../hooks/useDefault'
 import { DataType, OmitValueProperties } from '../common'
-import { CascadeDataType, PickerColumnType, pickerProps, ValueType } from './props'
+import { CascadeDataType, PickerColumnType, pickerProps, PickerValueType } from './props'
 import DPickerItem from './picker-item.vue'
 import { deepCopy, isObject } from '@xuanmo/javascript-utils'
 import { formatCascade } from './utils'
+import { EventType } from './types'
 
 const [name, bem] = createNamespace('picker')
 
@@ -56,28 +57,28 @@ export default defineComponent({
   name,
   components: { DPickerItem },
   props: pickerProps,
-  emits: ['update:visible', 'update:modelValue', 'confirm', 'close'],
-  setup(props, context: SetupContext) {
+  emits: ['update:visible', 'update:modelValue', 'update:value', 'change', 'confirm', 'close'],
+  setup(props, context: SetupContext<EventType>) {
     const className = bem()
     const headerClassName = bem('header')
     const cancelBtnClassName = bem('header', 'cancel', true)
     const confirmBtnClassName = bem('header', 'confirm', true)
     const contentClassName = bem('content')
 
-    const [visible, updateVisible] = useDefault<boolean, OmitValueProperties<typeof props>, 'visible'>(
+    const [visible, updateVisible] = useDefault<boolean, OmitValueProperties<typeof props>, 'visible', EventType>(
       props as OmitValueProperties<typeof props>,
       context.emit,
       'visible',
       'update:visible'
     )
 
-    const [innerValue, updateValue] = useDefault<ValueType, typeof props>(props, context.emit)
+    const [innerValue, updateValue] = useDefault<PickerValueType, typeof props, EventType>(props, context.emit)
 
     // 是否为级联选择模式
     const isCascade = Array.isArray((props.columns[0] as CascadeDataType)?.children)
 
     // 接收子级传递回来的数据
-    const temporaryValue = ref<ValueType>(deepCopy(innerValue.value))
+    const temporaryValue = ref<PickerValueType>(deepCopy(innerValue.value))
 
     // 内部渲染列使用
     const formattedColumns = computed(() => {
@@ -100,8 +101,9 @@ export default defineComponent({
         temporaryValue.value = temporaryValue.value.map((item, index) => {
           if (index === columnIndex) return data
           return item
-        }) as ValueType
+        }) as PickerValueType
       }
+      context.emit('change', temporaryValue.value, data)
     }
 
     const handleChange = () => {
