@@ -4,6 +4,7 @@ import './style/index.scss'
 import * as components from './components'
 import { FormGlobalConfigType, globalConfigKey } from './context/global'
 import { LABEL_WIDTH } from './constants'
+import { cellGroupInjectKey } from './context/cell-group'
 
 const install = function (app: App, options?: FormGlobalConfigType) {
   const config = {
@@ -13,6 +14,7 @@ const install = function (app: App, options?: FormGlobalConfigType) {
     ...(options ?? {})
   }
   app.provide(globalConfigKey, config)
+  app.provide(cellGroupInjectKey, {})
   app.config.globalProperties.$DForm = config
   Object.values(components).forEach((component) => {
     app.use(component)
