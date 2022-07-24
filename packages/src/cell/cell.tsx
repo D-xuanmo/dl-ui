@@ -1,9 +1,9 @@
 import { defineComponent, inject, PropType } from 'vue'
 import { createNamespace } from '../utils/bem'
-import { globalConfigKey } from '../constants/context'
 import { isEmpty, toBoolean } from '@xuanmo/javascript-utils'
 import { HorizontalAlignEnum, SizeEnum } from '../common'
 import DIcon from '../icon'
+import { globalConfigKey } from '../context/global'
 
 const [name, bem] = createNamespace('cell')
 

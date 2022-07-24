@@ -1,8 +1,8 @@
 import { App } from 'vue'
-import { FormGlobalConfigType, globalConfigKey } from './constants/context'
 import 'virtual:svg-icons-register'
 import './style/index.scss'
 import * as components from './components'
+import { FormGlobalConfigType, globalConfigKey } from './context/global'
 
 const install = function (app: App, options?: FormGlobalConfigType) {
   const config = {

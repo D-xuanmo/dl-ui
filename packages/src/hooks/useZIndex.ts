@@ -1,5 +1,5 @@
 import { getCurrentInstance, inject, Ref, ref } from 'vue'
-import { globalConfigKey } from '../constants/context'
+import { globalConfigKey } from '../context/global'
 
 /**
  * 统一处理 zIndex
