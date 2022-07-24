@@ -81,16 +81,18 @@
 
 ### CellGroup Props
 
-| 参数   | 类型    | 默认值 | 说明         | 必传 |
-| ------ | ------- | ------ | ------------ | ---- |
-| title  | string  | -      | 分组标题     | N    |
-| radius | boolean | false  | 是否展示圆角 | N    |
+| 参数             | 类型    | 默认值 | 说明           | 必传 |
+| ---------------- | ------- | ------ | -------------- | ---- |
+| title            | string  | -      | 分组标题       | N    |
+| cell-title-width | string  | `80px` | 单元格标题宽度 | N    |
+| radius           | boolean | false  | 是否展示圆角   | N    |
 
 ### Cell Props
 
 | 参数             | 类型                | 默认值 | 说明                                    | 必传 |
 | ---------------- | ------------------- | ------ | --------------------------------------- | ---- |
 | title            | string              | -      | 标题                                    | N    |
+| title-width      | string              | `80px` | 标题宽度                                | N    |
 | title-class      | string              | -      | 标题类名                                | N    |
 | title-align      | string              | left   | 标题对齐方式，可选值：left/center/right | N    |
 | hide-title       | boolean             | false  | 是否隐藏标题                            | N    |
@@ -114,6 +116,6 @@
 
 | 名称    | 说明           |
 | ------- | -------------- |
+| default | 自定义内容     |
 | title   | 自定义标题     |
-| content | 自定义内容     |
 | suffix  | 自定义扩展内容 |

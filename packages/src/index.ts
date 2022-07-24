@@ -3,11 +3,12 @@ import 'virtual:svg-icons-register'
 import './style/index.scss'
 import * as components from './components'
 import { FormGlobalConfigType, globalConfigKey } from './context/global'
+import { LABEL_WIDTH } from './constants'
 
 const install = function (app: App, options?: FormGlobalConfigType) {
   const config = {
     hideLabel: false,
-    labelWidth: '80px',
+    labelWidth: LABEL_WIDTH,
     zIndex: 2000,
     ...(options ?? {})
   }

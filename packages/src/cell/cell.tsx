@@ -4,6 +4,7 @@ import { isEmpty, toBoolean } from '@xuanmo/javascript-utils'
 import { HorizontalAlignEnum, SizeEnum } from '../common'
 import DIcon from '../icon'
 import { globalConfigKey } from '../context/global'
+import { cellGroupInjectKey } from '../context/cell-group'
 
 const [name, bem] = createNamespace('cell')
 
@@ -46,6 +47,7 @@ export default defineComponent({
   setup(props, { slots, emit }) {
     return () => {
       const { labelWidth, hideLabel } = inject(globalConfigKey) ?? {}
+      const cellGroupConfig = inject(cellGroupInjectKey)
       const {
         title,
         titleAlign,
@@ -83,7 +85,7 @@ export default defineComponent({
         hideTitle || isEmpty(title) ? null : (
           <div
             className={titleClassName}
-            style={{ width: titleWidth || labelWidth }}
+            style={{ width: titleWidth || cellGroupConfig?.cellTitleWidth || labelWidth }}
           >
             {slots.title ? (
               slots.title()
