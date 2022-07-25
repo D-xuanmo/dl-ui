@@ -52,7 +52,7 @@ import { createNamespace } from '../utils/bem'
 import DOverlay from '../overlay'
 import { PlacementType } from '../common'
 import useZIndex from '../hooks/useZIndex'
-import { TRANSITION_DURATION } from '../utils/animation'
+import { TRANSITION_DURATION } from '../constants/animation'
 
 const [name, bem] = createNamespace('popup')
 

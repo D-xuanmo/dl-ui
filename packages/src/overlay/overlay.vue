@@ -22,8 +22,8 @@ import { CSSProperties, defineComponent, SetupContext, PropType, computed, Telep
 import { createNamespace } from '../utils/bem'
 import useDefault from '../hooks/useDefault'
 import useZIndex from '../hooks/useZIndex'
-import { TRANSITION_DURATION } from '../utils/animation'
-import { PREFIX } from '../utils/prefix'
+import { TRANSITION_DURATION } from '../constants/animation'
+import { PREFIX } from '../constants/prefix'
 
 const [name, bem] = createNamespace('overlay')
 
