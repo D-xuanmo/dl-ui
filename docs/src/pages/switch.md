@@ -12,16 +12,10 @@
     <d-switch v-model="value1" />
   </d-cell>
   <d-cell title="方形">
-    <d-switch
-      v-model="value"
-      :round="false"
-    />
+    <d-switch v-model="value" :round="false" />
   </d-cell>
   <d-cell title="禁用">
-    <d-switch
-      v-model="value"
-      disabled
-    />
+    <d-switch v-model="value" disabled />
   </d-cell>
   <d-cell title="自定义图标">
     <d-switch v-model="value">
@@ -49,11 +43,7 @@ const value1 = ref(true)
 
 ```vue
 <template>
-  <d-switch
-    v-model="value"
-    :loading="loading"
-    :before-change="beforeChange"
-  />
+  <d-switch v-model="value" :loading="loading" :before-change="beforeChange" />
 </template>
 <script setup>
 import { ref } from 'vue'

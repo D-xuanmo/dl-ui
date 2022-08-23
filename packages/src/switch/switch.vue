@@ -1,27 +1,11 @@
 <template>
-  <button
-    :class="className"
-    :disabled="disabled"
-    @click="handleChange"
-  >
+  <button :class="className" :disabled="disabled" @click="handleChange">
     <div :class="bem('handle', { active: innerValue })">
       <slot name="icon">
-        <d-icon
-          v-if="loading"
-          name="loading"
-          spin
-          size="small"
-          color="var(--d-primary)"
-        />
+        <d-icon v-if="loading" name="loading" spin size="small" color="var(--d-primary)" />
       </slot>
-      <slot
-        v-if="innerValue"
-        name="checked-icon"
-      ></slot>
-      <slot
-        v-if="!innerValue"
-        name="unchecked-icon"
-      ></slot>
+      <slot v-if="innerValue" name="checked-icon"></slot>
+      <slot v-if="!innerValue" name="unchecked-icon"></slot>
     </div>
   </button>
 </template>

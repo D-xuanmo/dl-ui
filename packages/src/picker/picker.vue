@@ -1,32 +1,17 @@
 <template>
-  <d-popup
-    :visible="visible"
-    placement="bottom"
-    @update:visible="handleClose"
-  >
+  <d-popup :visible="visible" placement="bottom" @update:visible="handleClose">
     <div :class="className">
       <header :class="headerClassName">
-        <span
-          v-if="cancelButtonText"
-          :class="cancelBtnClassName"
-          @touchstart="handleClose"
-        >
+        <span v-if="cancelButtonText" :class="cancelBtnClassName" @touchstart="handleClose">
           {{ cancelButtonText }}
         </span>
         <span>{{ title }}</span>
-        <span
-          v-if="confirmButtonText"
-          :class="confirmBtnClassName"
-          @click="handleChange"
-        >
+        <span v-if="confirmButtonText" :class="confirmBtnClassName" @click="handleChange">
           {{ confirmButtonText }}
         </span>
       </header>
 
-      <div
-        :class="contentClassName"
-        :style="contentStyle"
-      >
+      <div :class="contentClassName" :style="contentStyle">
         <d-picker-item
           v-for="(item, index) in formattedColumns"
           :key="index"

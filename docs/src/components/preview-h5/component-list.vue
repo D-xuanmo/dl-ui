@@ -1,10 +1,5 @@
 <template>
-  <d-cell-group
-    v-for="item in menus"
-    :key="item.id"
-    :title="item.groupTitle"
-    round
-  >
+  <d-cell-group v-for="item in menus" :key="item.id" :title="item.groupTitle" round>
     <d-cell
       v-for="{ content, id, path } in item.children"
       :key="id"

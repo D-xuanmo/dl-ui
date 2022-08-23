@@ -30,25 +30,16 @@ const Menu = defineComponent({
         const subMenu = Array.isArray(children) ? (
           <>
             <p class={bem('item', 'group-title', true)}>{groupTitle}</p>
-            <Menu
-              data={children}
-              class={bem('sub-menu')}
-            />
+            <Menu data={children} class={bem('sub-menu')} />
           </>
         ) : null
 
         const openPage = () => router.push(path ?? '')
 
         return (
-          <li
-            key={id}
-            class={bem('item', { active: route.path === path })}
-          >
+          <li key={id} class={bem('item', { active: route.path === path })}>
             {content && (
-              <p
-                class={bem('item-link')}
-                onClick={openPage}
-              >
+              <p class={bem('item-link')} onClick={openPage}>
                 <span class={bem('item-link', 'title', true)}>{componentName}</span>
                 <span class={bem('item-link', 'describe', true)}>{describe}</span>
               </p>

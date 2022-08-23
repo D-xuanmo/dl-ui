@@ -1,18 +1,8 @@
 <template>
   <div :class="wrapperClassName">
-    <div
-      :class="overlayClassName"
-      :style="overlayStyle"
-    />
-    <div
-      :class="overlayClassName"
-      :style="overlayStyle"
-    />
-    <ul
-      ref="wrapperRef"
-      :class="contentClassName"
-      :style="wrapperStyle"
-    >
+    <div :class="overlayClassName" :style="overlayStyle" />
+    <div :class="overlayClassName" :style="overlayStyle" />
+    <ul ref="wrapperRef" :class="contentClassName" :style="wrapperStyle">
       <li
         v-for="(item, index) in options"
         :key="item.value"

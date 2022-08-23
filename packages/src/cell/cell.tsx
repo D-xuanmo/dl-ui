@@ -121,11 +121,7 @@ export default defineComponent({
         slots.suffix || suffix ? <div className={bem('suffix')}>{slots.suffix ? slots.suffix() : suffix}</div> : null
 
       const renderArrow = arrow ? (
-        <DIcon
-          name="arrow-right"
-          className={bem('arrow')}
-          color="var(--d-secondary-text-color)"
-        />
+        <DIcon name="arrow-right" className={bem('arrow')} color="var(--d-secondary-text-color)" />
       ) : null
 
       function handleClick(event: Event) {
@@ -133,10 +129,7 @@ export default defineComponent({
       }
 
       return (
-        <div
-          className={bem({ 'hide-title': hideTitle, disabled })}
-          onClick={handleClick}
-        >
+        <div className={bem({ 'hide-title': hideTitle, disabled })} onClick={handleClick}>
           {renderLabel}
           <div className={contentClassName}>{slots.default ? slots.default() : content}</div>
           {renderRightIcon}

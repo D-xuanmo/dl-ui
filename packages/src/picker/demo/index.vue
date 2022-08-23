@@ -1,45 +1,15 @@
 <template>
-  <d-cell
-    title="基础用法"
-    :content="value1.toString()"
-    @click="visible1 = true"
-  />
-  <d-picker
-    v-model="value1"
-    v-model:visible="visible1"
-    title="标题"
-    :columns="columns1"
-  />
+  <d-cell title="基础用法" :content="value1.toString()" @click="visible1 = true" />
+  <d-picker v-model="value1" v-model:visible="visible1" title="标题" :columns="columns1" />
 
-  <d-cell
-    title="禁用选项"
-    :content="value2.toString()"
-    @click="visible2 = true"
-  />
-  <d-picker
-    v-model="value2"
-    v-model:visible="visible2"
-    title="标题"
-    :columns="columns2"
-  />
+  <d-cell title="禁用选项" :content="value2.toString()" @click="visible2 = true" />
+  <d-picker v-model="value2" v-model:visible="visible2" title="标题" :columns="columns2" />
 
-  <d-cell
-    title="级联选择"
-    :content="formatted"
-    @click="visible3 = true"
-  />
-  <d-picker
-    v-model="value3"
-    v-model:visible="visible3"
-    title="标题"
-    :columns="template3"
-  />
+  <d-cell title="级联选择" :content="formatted" @click="visible3 = true" />
+  <d-picker v-model="value3" v-model:visible="visible3" title="标题" :columns="template3" />
 </template>
 
-<script
-  lang="ts"
-  setup
->
+<script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { PickerColumnsType } from '../props'
 import addressJson from './data.json'

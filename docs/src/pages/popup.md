@@ -6,23 +6,13 @@
 
 ```vue
 <template>
-  <d-cell-group
-    round
-    title="基础用法"
-  >
-    <d-cell
-      title="基础弹框"
-      arrow
-      @click="handleShowPopup"
-    ></d-cell>
+  <d-cell-group round title="基础用法">
+    <d-cell title="基础弹框" arrow @click="handleShowPopup"></d-cell>
   </d-cell-group>
   <d-popup v-model:visible="showPopup"> 我是内容 </d-popup>
 </template>
 
-<script
-  lang="ts"
-  setup
->
+<script lang="ts" setup>
 import { ref } from 'vue'
 
 const showPopup = ref(false)
@@ -37,44 +27,15 @@ function handleShowPopup() {
 
 ```vue
 <template>
-  <d-cell-group
-    round
-    title="弹出位置"
-  >
-    <d-cell
-      title="顶部弹出"
-      content="position: top"
-      arrow
-      @click="handleShowPopup('top')"
-    />
-    <d-cell
-      title="底部弹出"
-      content="position: bottom"
-      arrow
-      @click="handleShowPopup('bottom')"
-    />
-    <d-cell
-      title="左侧弹出"
-      content="position: left"
-      arrow
-      @click="handleShowPopup('left')"
-    />
-    <d-cell
-      title="右侧弹出"
-      content="position: right"
-      arrow
-      @click="handleShowPopup('right')"
-    />
+  <d-cell-group round title="弹出位置">
+    <d-cell title="顶部弹出" content="position: top" arrow @click="handleShowPopup('top')" />
+    <d-cell title="底部弹出" content="position: bottom" arrow @click="handleShowPopup('bottom')" />
+    <d-cell title="左侧弹出" content="position: left" arrow @click="handleShowPopup('left')" />
+    <d-cell title="右侧弹出" content="position: right" arrow @click="handleShowPopup('right')" />
   </d-cell-group>
-  <d-popup
-    v-model:visible="showPopup2"
-    :position="position"
-  />
+  <d-popup v-model:visible="showPopup2" :position="position" />
 </template>
-<script
-  lang="ts"
-  setup
->
+<script lang="ts" setup>
 import { ref } from 'vue'
 
 const showPopup = ref(false)

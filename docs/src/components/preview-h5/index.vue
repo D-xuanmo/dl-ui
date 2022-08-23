@@ -1,13 +1,7 @@
 <template>
   <div :class="bem('wrapper')">
-    <header
-      v-if="!isPreview && !isComponentListPage"
-      :class="bem('header')"
-    >
-      <d-icon
-        name="arrow-left"
-        @click="goBack"
-      />
+    <header v-if="!isPreview && !isComponentListPage" :class="bem('header')">
+      <d-icon name="arrow-left" @click="goBack" />
       <h2 :class="bem('header', 'title', true)">{{ title }}</h2>
     </header>
     <div :class="bem('content')"><router-view /></div>

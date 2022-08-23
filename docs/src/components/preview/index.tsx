@@ -30,19 +30,13 @@ const DocPreview = defineComponent({
           <div className={bem('toolbar', { active: showCode.value })}>
             <span onClick={toggleCodeVisible}>{!showCode.value ? '显示' : '隐藏'}代码</span>
           </div>
-          <div
-            className={bem('code', { active: showCode.value })}
-            v-html={decodeURIComponent(source)}
-          />
+          <div className={bem('code', { active: showCode.value })} v-html={decodeURIComponent(source)} />
         </>
       )
 
       const mobileContent = (
         <div class={bem('content')}>
-          <div
-            className={bem('code', { active: showCode.value })}
-            v-html={decodeURIComponent(source)}
-          />
+          <div className={bem('code', { active: showCode.value })} v-html={decodeURIComponent(source)} />
           <div class={bem('runtime')}>{slots.default?.()}</div>
         </div>
       )

@@ -53,18 +53,9 @@ export default defineComponent({
       }
 
       return (
-        <span
-          class={wrapperClassName}
-          onClick={handleClick}
-        >
-          <svg
-            aria-hidden="true"
-            style={isCustomSize ? iconStyle : undefined}
-          >
-            <use
-              xlinkHref={`#d-icon-${props.name}`}
-              style={{ color }}
-            />
+        <span class={wrapperClassName} onClick={handleClick}>
+          <svg aria-hidden="true" style={isCustomSize ? iconStyle : undefined}>
+            <use xlinkHref={`#d-icon-${props.name}`} style={{ color }} />
           </svg>
         </span>
       )

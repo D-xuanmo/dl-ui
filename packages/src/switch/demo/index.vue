@@ -7,16 +7,10 @@
     <d-switch v-model="value1" />
   </d-cell>
   <d-cell title="方形">
-    <d-switch
-      v-model="value"
-      :round="false"
-    />
+    <d-switch v-model="value" :round="false" />
   </d-cell>
   <d-cell title="禁用">
-    <d-switch
-      v-model="value"
-      disabled
-    />
+    <d-switch v-model="value" disabled />
   </d-cell>
   <d-cell title="自定义图标">
     <d-switch v-model="value">
@@ -30,11 +24,7 @@
     </d-switch>
   </d-cell>
   <d-cell title="模拟请求">
-    <d-switch
-      v-model="value2"
-      :loading="loading"
-      :before-change="beforeChange"
-    />
+    <d-switch v-model="value2" :loading="loading" :before-change="beforeChange" />
   </d-cell>
 </template>
 <script setup>

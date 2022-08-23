@@ -1,8 +1,5 @@
 <template>
-  <d-cell
-    :content="displayValue"
-    @click="showPicker = true"
-  />
+  <d-cell :content="displayValue" @click="showPicker = true" />
   <d-picker
     :visible="showPicker"
     :value="pickerValue"

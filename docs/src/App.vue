@@ -11,10 +11,7 @@
       <div :class="bem('content')">
         <router-view />
 
-        <iframe
-          :src="demoPath"
-          :class="bem('demo-mobile')"
-        />
+        <iframe :src="demoPath" :class="bem('demo-mobile')" />
       </div>
     </template>
     <d-preview-h5 v-else />

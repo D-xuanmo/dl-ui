@@ -31,10 +31,7 @@
       @click="handleClick"
     />
 
-    <template
-      v-if="suffix"
-      #suffix
-    >
+    <template v-if="suffix" #suffix>
       <slot name="suffix">
         {{ suffix }}
       </slot>

@@ -1,16 +1,7 @@
 <template>
   <teleport :to="teleport">
-    <transition
-      :name="name"
-      @before-enter="onTransitionBefore"
-      @after-leave="onTransitionAfterLeave"
-    >
-      <div
-        v-if="innerVisible"
-        :class="[bem(), overlayClass].join(' ')"
-        :style="style"
-        @click.stop="handleClose"
-      >
+    <transition :name="name" @before-enter="onTransitionBefore" @after-leave="onTransitionAfterLeave">
+      <div v-if="innerVisible" :class="[bem(), overlayClass].join(' ')" :style="style" @click.stop="handleClose">
         <slot />
       </div>
     </transition>
