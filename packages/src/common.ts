@@ -9,6 +9,9 @@ export type FieldFormatterTrigger = 'onChange' | 'onBlur'
 /** 弹框位置类型 */
 export type PlacementType = 'top' | 'right' | 'bottom' | 'left' | 'center'
 
+/** 主题类型 */
+export type ThemeEnum = 'primary' | 'success' | 'warning' | 'danger' | 'default'
+
 /** 数据基础类型，单选、多选、选择器等组件 */
 export type DataType = {
   label: string

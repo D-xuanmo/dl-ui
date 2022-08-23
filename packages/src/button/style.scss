@@ -1,0 +1,161 @@
+@import '../style/prefix';
+
+.#{$prefix}-button {
+  $prefix: &;
+  display: inline-block;
+  box-sizing: border-box;
+  border: var(--d-border);
+
+  &--block {
+    display: block;
+    width: 100%;
+  }
+
+  // 形状
+  &--shape {
+    &-default {
+      border-radius: var(--d-radius-md);
+    }
+
+    &-rounded {
+      border-radius: 1000px;
+    }
+
+    &-rectangular {
+      border-radius: 0;
+    }
+  }
+
+  // 填充模式
+  &--fill {
+    &-solid {
+      border: 0;
+      color: var(--d-white-color);
+
+      #{$prefix}__icon {
+        color: var(--d-white-color);
+      }
+
+      // 主题
+      &#{$prefix}--theme {
+        &-default {
+          background: none;
+          border: var(--d-border);
+          color: var(--d-primary-text-color);
+
+          #{$prefix}__icon {
+            color: var(--d-primary-text-color);
+          }
+        }
+
+        &-primary {
+          background: var(--d-primary);
+        }
+
+        &-success {
+          background: var(--d-success);
+        }
+
+        &-warning {
+          background: var(--d-warning);
+        }
+
+        &-danger {
+          background: var(--d-error);
+        }
+      }
+    }
+
+    &-outline {
+      border: 1px solid var(--d-primary);
+      color: var(--d-primary);
+
+      // 主题
+      &#{$prefix}--theme {
+        &-default {
+          background: none;
+          border: var(--d-border);
+          color: var(--d-primary-text-color);
+
+          #{$prefix}__icon {
+            color: var(--d-primary-text-color);
+          }
+        }
+
+        &-primary {
+          border-color: var(--d-primary);
+          color: var(--d-primary);
+
+          #{$prefix}__icon {
+            color: var(--d-primary);
+          }
+        }
+
+        &-success {
+          border-color: var(--d-success);
+          color: var(--d-success);
+
+          #{$prefix}__icon {
+            color: var(--d-success);
+          }
+        }
+
+        &-warning {
+          border-color: var(--d-warning);
+          color: var(--d-warning);
+
+          #{$prefix}__icon {
+            color: var(--d-warning);
+          }
+        }
+
+        &-danger {
+          border-color: var(--d-error);
+          color: var(--d-error);
+
+          #{$prefix}__icon {
+            color: var(--d-error);
+          }
+        }
+      }
+    }
+
+    &-none {
+      border: 0;
+      color: var(--d-primary);
+    }
+  }
+
+  // 尺寸
+  &--size {
+    &-large {
+      height: 44px;
+      padding: 0 var(--d-gap-sm);
+      font-size: var(--d-font-size-lg);
+      line-height: 44px;
+    }
+
+    &-medium {
+      height: 40px;
+      padding: 0 var(--d-gap-sm);
+      font-size: var(--d-font-size-md);
+      line-height: 40px;
+    }
+
+    &-small {
+      height: 36px;
+      padding: 0 var(--d-gap-sm);
+      font-size: var(--d-font-size-sm);
+      line-height: 36px;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &__icon {
+    margin-right: var(--d-gap-xxs);
+  }
+}
