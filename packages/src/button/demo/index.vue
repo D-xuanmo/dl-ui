@@ -51,6 +51,13 @@
     <d-button theme="success" fill="outline" loading class="m-l-5px m-r-5px">default</d-button>
     <d-button shape="rounded" loading theme="danger">rounded</d-button>
   </d-demo-block>
+
+  <d-demo-block>
+    <p>图标模式</p>
+    <d-button theme="primary" icon="star" />
+    <d-button theme="success" icon="star-f" class="m-l-5px m-r-5px">default</d-button>
+    <d-button theme="success" fill="outline" icon="star-f">default</d-button>
+  </d-demo-block>
 </template>
 
 <script lang="ts" setup></script>

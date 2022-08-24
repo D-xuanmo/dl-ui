@@ -1,6 +1,7 @@
 <template>
   <button :class="wrapperClassName" :disabled="loading || disabled">
-    <d-icon v-if="loading" name="loading" spin :class="iconClassName" color="inherit" />
+    <d-icon v-if="loading" name="loading" spin :class="iconLoadingClassName" color="inherit" />
+    <d-icon v-if="icon" :name="icon" color="inherit" />
     <span :class="innerTextClassName"><slot /></span>
   </button>
 </template>
@@ -33,7 +34,8 @@ export default defineComponent({
     return {
       wrapperClassName,
       innerTextClassName: bem('text'),
-      iconClassName: bem('icon')
+      iconLoadingClassName: bem('icon-loading'),
+      customIconClassName: bem('custom-icon')
     }
   }
 })

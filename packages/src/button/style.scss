@@ -32,8 +32,11 @@
       border: 0;
       color: var(--d-white-color);
 
-      #{$prefix}__icon {
-        color: var(--d-white-color);
+      #{$prefix} {
+        &__icon-loading,
+        &__custom-icon {
+          color: var(--d-white-color);
+        }
       }
 
       // 主题
@@ -43,8 +46,10 @@
           border: var(--d-border);
           color: var(--d-primary-text-color);
 
-          #{$prefix}__icon {
-            color: var(--d-primary-text-color);
+          #{$prefix} {
+            &__icon-loading {
+              color: var(--d-primary-text-color);
+            }
           }
         }
 
@@ -77,7 +82,7 @@
           border: var(--d-border);
           color: var(--d-primary-text-color);
 
-          #{$prefix}__icon {
+          #{$prefix}__icon-loading {
             color: var(--d-primary-text-color);
           }
         }
@@ -86,7 +91,7 @@
           border-color: var(--d-primary);
           color: var(--d-primary);
 
-          #{$prefix}__icon {
+          #{$prefix}__icon-loading {
             color: var(--d-primary);
           }
         }
@@ -95,7 +100,7 @@
           border-color: var(--d-success);
           color: var(--d-success);
 
-          #{$prefix}__icon {
+          #{$prefix}__icon-loading {
             color: var(--d-success);
           }
         }
@@ -104,7 +109,7 @@
           border-color: var(--d-warning);
           color: var(--d-warning);
 
-          #{$prefix}__icon {
+          #{$prefix}__icon-loading {
             color: var(--d-warning);
           }
         }
@@ -113,7 +118,7 @@
           border-color: var(--d-error);
           color: var(--d-error);
 
-          #{$prefix}__icon {
+          #{$prefix}__icon-loading {
             color: var(--d-error);
           }
         }
@@ -132,21 +137,18 @@
       height: 44px;
       padding: 0 var(--d-gap-sm);
       font-size: var(--d-font-size-lg);
-      line-height: 44px;
     }
 
     &-medium {
       height: 40px;
       padding: 0 var(--d-gap-sm);
       font-size: var(--d-font-size-md);
-      line-height: 40px;
     }
 
     &-small {
       height: 36px;
       padding: 0 var(--d-gap-sm);
       font-size: var(--d-font-size-sm);
-      line-height: 36px;
     }
   }
 
@@ -155,7 +157,7 @@
     cursor: not-allowed;
   }
 
-  &__icon {
+  &__icon-loading {
     margin-right: var(--d-gap-xxs);
   }
 }
