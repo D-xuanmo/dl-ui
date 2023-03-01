@@ -1,12 +1,12 @@
-import _Icon from './icon.js'
+import Icon from './icon.js'
 import { withInstall } from '../utils/with-install'
 
-const Icon = withInstall(_Icon)
+export const DIcon = withInstall(Icon)
 
-export default Icon
+export default DIcon
 
 declare module 'vue' {
   export interface GlobalComponents {
-    DIcon: typeof _Icon
+    DIcon: typeof Icon
   }
 }

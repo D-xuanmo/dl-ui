@@ -1,12 +1,12 @@
-import _Rate from './rate.vue'
+import Rate from './rate.vue'
 import { withInstall } from '../utils/with-install'
 
-const Rate = withInstall(_Rate)
+export const DRate = withInstall(Rate)
 
-export default Rate
+export default DRate
 
 declare module 'vue' {
   export interface GlobalComponents {
-    DRate: typeof _Rate
+    DRate: typeof Rate
   }
 }

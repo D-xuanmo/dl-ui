@@ -1,12 +1,12 @@
-import _Input from './input.vue'
+import Input from './input.vue'
 import { withInstall } from '../utils/with-install'
 
-const Input = withInstall(_Input)
+export const DInput = withInstall(Input)
 
-export default Input
+export default DInput
 
 declare module 'vue' {
   export interface GlobalComponents {
-    DInput: typeof _Input
+    DInput: typeof Input
   }
 }

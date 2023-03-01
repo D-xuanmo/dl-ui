@@ -1,12 +1,12 @@
-import _Popup from './popup.vue'
+import Popup from './popup.vue'
 import { withInstall } from '../utils/with-install'
 
-const Popup = withInstall(_Popup)
+export const DPopup = withInstall(Popup)
 
-export default Popup
+export default DPopup
 
 declare module 'vue' {
   export interface GlobalComponents {
-    DPopup: typeof _Popup
+    DPopup: typeof Popup
   }
 }

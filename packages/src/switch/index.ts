@@ -1,12 +1,12 @@
-import _Switch from './switch.vue'
+import Switch from './switch.vue'
 import { withInstall } from '../utils/with-install'
 
-const Switch = withInstall(_Switch)
+export const DSwitch = withInstall(Switch)
 
-export default Switch
+export default DSwitch
 
 declare module 'vue' {
   export interface GlobalComponents {
-    DSwitch: typeof _Switch
+    DSwitch: typeof Switch
   }
 }

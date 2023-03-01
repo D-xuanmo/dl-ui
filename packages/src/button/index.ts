@@ -1,12 +1,12 @@
-import _Button from './button.vue'
+import Button from './button.vue'
 import { withInstall } from '../utils/with-install'
 
-const Button = withInstall(_Button)
+export const DButton = withInstall(Button)
 
-export default Button
+export default DButton
 
 declare module 'vue' {
   export interface GlobalComponents {
-    DButton: typeof _Button
+    DButton: typeof Button
   }
 }

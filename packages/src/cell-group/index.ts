@@ -1,12 +1,12 @@
-import _CellGroup from './cell-group'
+import CellGroup from './cell-group'
 import { withInstall } from '../utils/with-install'
 
-const CellGroup = withInstall(_CellGroup)
+export const DCellGroup = withInstall(CellGroup)
 
-export default CellGroup
+export default DCellGroup
 
 declare module 'vue' {
   export interface GlobalComponents {
-    DCellGroup: typeof _CellGroup
+    DCellGroup: typeof CellGroup
   }
 }

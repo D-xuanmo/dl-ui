@@ -3,11 +3,7 @@
     <div :class="overlayClassName" :style="overlayStyle" />
     <div :class="overlayClassName" :style="overlayStyle" />
     <ul ref="wrapperRef" :class="contentClassName" :style="wrapperStyle">
-      <li
-        v-for="(item, index) in options"
-        :key="item.value"
-        :class="bem({ selected: selectedIndex === index, disabled: item.disabled })"
-      >
+      <li v-for="(item, index) in options" :key="item.value" :class="getItemClassName(item, index)">
         <span>{{ item.label }}</span>
       </li>
     </ul>
@@ -19,6 +15,7 @@ import { computed, CSSProperties, defineComponent, onMounted, ref, watch } from 
 import { createNamespace } from '../utils/bem'
 import { pickerItemProps } from './picker-item-props'
 import Picker from './picker.class'
+import { PickerColumnType } from './props'
 
 const [name, bem] = createNamespace('picker-item')
 
@@ -29,7 +26,6 @@ export default defineComponent({
     const wrapperRef = ref<HTMLElement | null>(null)
     const wrapperClassName = bem('wrapper')
     const contentClassName = bem('content')
-    const itemClassName = bem()
     const overlayClassName = bem('overlay')
 
     let picker: Picker | null = null
@@ -49,6 +45,9 @@ export default defineComponent({
       marginTop: `${overlayHeight.value}px`,
       transform: `translate3d(0px, -${selectedIndex.value * props.optionHeight}px, 0px)`
     }))
+
+    const getItemClassName = (item: PickerColumnType, index: number) =>
+      bem({ selected: selectedIndex.value === index, disabled: item.disabled })
 
     onMounted(() => {
       picker = new Picker({
@@ -70,11 +69,11 @@ export default defineComponent({
       wrapperRef,
       wrapperClassName,
       contentClassName,
-      itemClassName,
       overlayClassName,
       overlayStyle,
       selectedIndex,
       wrapperStyle,
+      getItemClassName,
       bem
     }
   }

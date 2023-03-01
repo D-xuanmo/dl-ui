@@ -1,14 +1,14 @@
-import _Picker from './picker.vue'
+import Picker from './picker.vue'
 import { withInstall } from '../utils/with-install'
 
-const Picker = withInstall(_Picker)
+export const DPicker = withInstall(Picker)
 
 export { type PickerColumnsType, type PickerColumnType } from './props'
 
-export default Picker
+export default DPicker
 
 declare module 'vue' {
   export interface GlobalComponents {
-    DPicker: typeof _Picker
+    DPicker: typeof Picker
   }
 }

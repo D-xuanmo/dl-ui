@@ -51,10 +51,10 @@ export default defineComponent({
     }
   },
   emits: ['update:visible', 'click'],
-  setup(props, context: SetupContext) {
+  setup(props, { emit }) {
     const [innerVisible, setVisible] = useDefault<boolean | undefined, typeof props, 'visible'>(
       props,
-      context.emit,
+      emit as SetupContext['emit'],
       'visible',
       'update:visible'
     )
@@ -80,7 +80,7 @@ export default defineComponent({
     function handleClose() {
       if (props.closeOnClickOverlay) {
         setVisible((innerVisible.value = !innerVisible.value))
-        context.emit('click')
+        emit('click')
       }
     }
 

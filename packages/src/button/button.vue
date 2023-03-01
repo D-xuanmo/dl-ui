@@ -10,14 +10,14 @@
 import { computed, defineComponent } from 'vue'
 import { createNamespace } from '../utils/bem'
 import { buttonProps } from './props'
-import { Icon } from '../components'
+import { DIcon } from '../icon'
 
 const [name, bem] = createNamespace('button')
 
 export default defineComponent({
   name,
   components: {
-    [Icon.name]: Icon
+    DIcon
   },
   props: buttonProps,
   setup(props) {

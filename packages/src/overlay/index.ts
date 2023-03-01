@@ -1,12 +1,12 @@
-import _Overlay from './overlay.vue'
+import Overlay from './overlay.vue'
 import { withInstall } from '../utils/with-install'
 
-const Overlay = withInstall(_Overlay)
+export const DOverlay = withInstall(Overlay)
 
-export default Overlay
+export default DOverlay
 
 declare module 'vue' {
   export interface GlobalComponents {
-    DOverlay: typeof _Overlay
+    DOverlay: typeof Overlay
   }
 }
