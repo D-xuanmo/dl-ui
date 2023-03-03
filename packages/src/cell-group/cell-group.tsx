@@ -26,7 +26,7 @@ export default defineComponent({
       const { title, round } = props
       return (
         <div className={bem()}>
-          <p className={bem('title')}>{title}</p>
+          {title && <p className={bem('title')}>{title}</p>}
           <div className={bem('content', { round })}>{slots.default?.()}</div>
         </div>
       )
