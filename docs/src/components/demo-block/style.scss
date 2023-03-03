@@ -1,3 +1,8 @@
 .d-demo-block {
   margin-bottom: var(--d-gap-sm);
+
+  &__title {
+    margin-bottom: var(--d-gap-xs);
+    color: var(--d-secondary-text-color);
+  }
 }

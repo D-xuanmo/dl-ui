@@ -1,6 +1,7 @@
 <template>
   <div :class="wrapperClasses">
-    <slot />
+    <p :class="titleClassName">{{ title }}</p>
+    <div><slot /></div>
   </div>
 </template>
 
@@ -12,9 +13,17 @@ import './style.scss'
 const [name, bem] = createNamespace('demo-block')
 export default defineComponent({
   name,
+  props: {
+    title: {
+      type: String,
+      default: ''
+    }
+  },
   setup() {
+    const titleClassName = bem('title')
     return {
-      wrapperClasses: bem()
+      wrapperClasses: bem(),
+      titleClassName
     }
   }
 })
