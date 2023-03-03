@@ -1,0 +1,15 @@
+@import '../style/prefix.scss';
+@import '../style/mixins.scss';
+
+.#{$prefix}-radio {
+  display: flex;
+  align-items: center;
+
+  &--disabled {
+    color: var(--d-disable-color);
+  }
+
+  &__label {
+    margin-left: var(--d-gap-xs);
+  }
+}

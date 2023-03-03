@@ -1,0 +1,13 @@
+@import '../style/prefix.scss';
+@import '../style/mixins.scss';
+
+.#{$prefix}-radio-group {
+  &--horizontal {
+    display: flex;
+    flex-wrap: wrap;
+
+    .#{$prefix}-radio {
+      margin: 0 var(--d-gap-xs) var(--d-gap-xs) 0;
+    }
+  }
+}
