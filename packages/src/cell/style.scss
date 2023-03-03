@@ -54,7 +54,6 @@
   &__suffix {
     margin-left: var(--d-gap-xs);
     padding-left: var(--d-gap-xs);
-    @include border(0, left);
     color: var(--d-secondary-text-color);
   }
 

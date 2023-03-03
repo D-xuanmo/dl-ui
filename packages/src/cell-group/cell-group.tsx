@@ -7,7 +7,10 @@ const [name, bem] = createNamespace('cell-group')
 
 const props = {
   title: String as PropType<string | undefined>,
-  round: Boolean,
+  round: {
+    type: Boolean,
+    default: true
+  },
   cellTitleWidth: String
 }
 
