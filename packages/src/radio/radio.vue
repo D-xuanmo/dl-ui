@@ -1,7 +1,7 @@
 <template>
   <div :class="wrapperClassName" @click="handleChange">
     <d-icon :name="iconName" :color="iconColor" />
-    <span :class="labelClassName">{{ label }}</span>
+    <span v-if="label" :class="labelClassName">{{ label }}</span>
   </div>
 </template>
 
