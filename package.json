@@ -15,7 +15,8 @@
     "build:lib": "yarn workspace @xuanmo/dynamic-form build",
     "prepare": "husky install",
     "prettier": "npx prettier --write .",
-    "lint": "eslint . --ext js,ts,tsx,vue"
+    "lint": "eslint . --ext js,ts,tsx,vue && npm run lint:tsc",
+    "lint:tsc": "yarn workspace @xuanmo/dynamic-form tsc:clear"
   },
   "dependencies": {
     "@xuanmo/datejs": "^1.0.9"
