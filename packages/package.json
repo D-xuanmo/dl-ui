@@ -28,7 +28,6 @@
   "license": "MIT",
   "dependencies": {
     "@xuanmo/datejs": "^1.0.8",
-    "@xuanmo/javascript-utils": "^0.0.38",
     "vue": "^3.2.25"
   },
   "devDependencies": {
