@@ -12,9 +12,9 @@
 ## 代码规范说明
 
 1. [Git 代码提交规范](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines)
-1. 代码格式化统一使用 `prettier`，[https://prettier.io/docs/en/index.html](https://prettier.io/docs/en/index.html)
-1. 目录和文件命名规则为 `kebab-case`
+2. 代码格式化统一使用 `prettier`，[https://prettier.io/docs/en/index.html](https://prettier.io/docs/en/index.html)
+3. 目录和文件命名规则为 `kebab-case`
 
 ## 组件完整功能
 
-![组件说明](https://admin.xuanmo.xin/api/my-admin/readFile?path=/upload/20220606002116365698.svg)
+![组件说明](https://my.xuanmo.xin:3202/api/file-server/read-file/3a884eec-6e8c-490e-a248-19b577ccf639)
