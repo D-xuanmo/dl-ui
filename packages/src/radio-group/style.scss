@@ -10,4 +10,8 @@
       margin: 0 var(--d-gap-xs) var(--d-gap-xs) 0;
     }
   }
+
+  .#{$prefix}-cell-group {
+    margin-bottom: 0;
+  }
 }
