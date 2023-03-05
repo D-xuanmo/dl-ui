@@ -1,5 +1,5 @@
 import { defineComponent, PropType } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import { SizeEnum } from '../common'
 
 const [name, bem] = createNamespace('icon')

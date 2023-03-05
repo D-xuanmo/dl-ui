@@ -1,5 +1,5 @@
 import Icon from './icon.js'
-import { withInstall } from '../utils/with-install'
+import { withInstall } from '../utils'
 
 export const DIcon = withInstall(Icon)
 

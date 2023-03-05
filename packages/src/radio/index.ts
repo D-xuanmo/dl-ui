@@ -1,5 +1,5 @@
 import Radio from './radio.vue'
-import { withInstall } from '../utils/with-install'
+import { withInstall } from '../utils'
 
 export const DRadio = withInstall(Radio)
 

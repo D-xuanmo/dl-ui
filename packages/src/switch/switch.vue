@@ -13,7 +13,7 @@
 <script lang="ts">
 import { computed, defineComponent, PropType, SetupContext } from 'vue'
 import { isPromise } from '@vue/shared'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import { SizeEnum } from '../common'
 import useDefault from '../hooks/useDefault'
 import DIcon from '../icon'

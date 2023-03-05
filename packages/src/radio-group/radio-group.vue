@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, provide, SetupContext } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import { radioGroupProps } from './props'
 import useDefault from '../hooks/useDefault'
 import { RADIO_GROUP_KEY } from '../context'

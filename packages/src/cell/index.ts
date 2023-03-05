@@ -1,5 +1,5 @@
 import Cell from './cell'
-import { withInstall } from '../utils/with-install'
+import { withInstall } from '../utils'
 
 export const DCell = withInstall(Cell)
 

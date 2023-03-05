@@ -1,5 +1,5 @@
 import DatePicker from './date-picker.vue'
-import { withInstall } from '../utils/with-install'
+import { withInstall } from '../utils'
 
 export const DDatePicker = withInstall(DatePicker)
 

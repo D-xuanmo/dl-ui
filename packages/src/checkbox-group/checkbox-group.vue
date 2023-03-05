@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, provide, SetupContext, UnwrapRef } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import { checkboxGroupProps } from './props'
 import useDefault from '../hooks/useDefault'
 import { CHECKBOX_GROUP_KEY, CheckboxGroupContextType } from '../context/checkbox-group'

@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent, ref, SetupContext } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import useDefault from '../hooks/useDefault'
 import { DataType, OmitValueProperties } from '../common'
 import { CascadeDataType, PickerColumnType, pickerProps, PickerValueType } from './props'

@@ -41,7 +41,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType, SetupContext } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import Cell from '../cell'
 import { FieldFormatterTrigger, HorizontalAlignEnum, SizeEnum } from '../common'
 import useDefault from '../hooks/useDefault'

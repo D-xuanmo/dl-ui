@@ -1,5 +1,5 @@
 import Picker from './picker.vue'
-import { withInstall } from '../utils/with-install'
+import { withInstall } from '../utils'
 
 export const DPicker = withInstall(Picker)
 

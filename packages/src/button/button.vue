@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import { buttonProps } from './props'
 import { DIcon } from '../icon'
 

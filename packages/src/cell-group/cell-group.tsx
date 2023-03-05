@@ -1,5 +1,5 @@
 import { defineComponent, provide, PropType, inject } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import { CELL_GROUP_KEY, GLOBAL_CONFIG_KEY } from '../context'
 import { LABEL_WIDTH } from '../constants'
 

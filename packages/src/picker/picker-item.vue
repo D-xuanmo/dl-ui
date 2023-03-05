@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent, onMounted, ref, watch } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import { pickerItemProps } from './picker-item-props'
 import Picker from './picker.class'
 import { PickerColumnType } from './props'

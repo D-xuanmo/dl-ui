@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, inject } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import { radioProps } from './props'
 import { isEmpty } from '@xuanmo/javascript-utils'
 import { RADIO_GROUP_KEY } from '../context'

@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { CSSProperties, defineComponent, SetupContext, PropType, computed, TeleportProps } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import useDefault from '../hooks/useDefault'
 import useZIndex from '../hooks/useZIndex'
 import { TRANSITION_DURATION } from '../constants/animation'

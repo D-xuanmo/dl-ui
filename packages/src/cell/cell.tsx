@@ -1,5 +1,5 @@
 import { defineComponent, inject, PropType } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import { isEmpty, toBoolean } from '@xuanmo/javascript-utils'
 import { HorizontalAlignEnum, SizeEnum } from '../common'
 import DIcon from '../icon'

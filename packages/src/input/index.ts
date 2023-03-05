@@ -1,5 +1,5 @@
 import Input from './input.vue'
-import { withInstall } from '../utils/with-install'
+import { withInstall } from '../utils'
 
 export const DInput = withInstall(Input)
 

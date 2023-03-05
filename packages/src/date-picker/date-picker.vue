@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, SetupContext } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import DPicker from '../picker'
 import DCell from '../cell'
 import DateUtil from './date-util'

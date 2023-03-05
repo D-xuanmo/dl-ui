@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, inject } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import { isEmpty, deleteArrayItems } from '@xuanmo/javascript-utils'
 import { checkboxProps } from './props'
 import { CHECKBOX_GROUP_KEY } from '../context/checkbox-group'

@@ -26,7 +26,7 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent, PropType, SetupContext } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import { isNumber } from '@xuanmo/javascript-utils'
 import useDefault from '../hooks/useDefault'
 import { SizeEnum } from '../common'

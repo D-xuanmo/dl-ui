@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent, PropType, TeleportProps } from 'vue'
-import { createNamespace } from '../utils/bem'
+import { createNamespace } from '../utils'
 import DOverlay from '../overlay'
 import { PlacementType } from '../common'
 import useZIndex from '../hooks/useZIndex'
