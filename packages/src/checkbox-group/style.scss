@@ -1,0 +1,17 @@
+@import '../style/prefix.scss';
+@import '../style/mixins.scss';
+
+.#{$prefix}-checkbox-group {
+  &--horizontal {
+    display: flex;
+    flex-wrap: wrap;
+
+    .#{$prefix}-checkbox {
+      margin: 0 var(--d-gap-xs) var(--d-gap-xs) 0;
+    }
+  }
+
+  .#{$prefix}-cell-group {
+    margin-bottom: 0;
+  }
+}
