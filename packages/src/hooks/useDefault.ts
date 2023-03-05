@@ -56,7 +56,7 @@ function useDefault<V, P, VK extends string>(
       if (isUsedValue) {
         emit('update:value', value)
       } else if (isUsedModelValue) {
-        emit('update:modelValue', value)
+        emit('update:model-value', value)
       }
     }
   }

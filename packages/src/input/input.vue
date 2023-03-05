@@ -140,7 +140,7 @@ export default defineComponent({
       default: 'onChange'
     }
   },
-  emits: ['update:modelValue', 'blur', 'clear', 'focus', 'click-input'],
+  emits: ['update:model-value', 'blur', 'clear', 'focus', 'click-input'],
   setup(props, { emit }) {
     const inputClassName = computed(() =>
       bem({
@@ -163,7 +163,7 @@ export default defineComponent({
     }
 
     function handleClear(event: MouseEvent) {
-      emit('update:modelValue', '')
+      emit('update:model-value', '')
       emit('clear', '', event)
     }
 

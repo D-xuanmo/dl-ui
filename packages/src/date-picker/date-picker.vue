@@ -29,7 +29,7 @@ export default defineComponent({
   name,
   components: { DPicker, DCell },
   props: datePickerProps,
-  emits: ['update:value', 'update:modelValue'],
+  emits: ['update:value', 'update:model-value'],
   setup(props, { emit }) {
     const [innerValue, updateValue] = useDefault(props, emit as SetupContext['emit'])
     const dateUtil = new DateUtil(innerValue.value, {

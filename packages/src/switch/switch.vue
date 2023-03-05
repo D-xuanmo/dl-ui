@@ -47,7 +47,7 @@ export default defineComponent({
       default: null
     }
   },
-  emits: ['update:value', 'update:modelValue'],
+  emits: ['update:value', 'update:model-value'],
   setup(props, { emit }) {
     const [innerValue, setValue] = useDefault<boolean | undefined, typeof props>(props, emit as SetupContext['emit'])
 

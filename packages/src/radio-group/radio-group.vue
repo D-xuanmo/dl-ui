@@ -16,7 +16,7 @@ const [name, bem] = createNamespace('radio-group')
 export default defineComponent({
   name,
   props: radioGroupProps,
-  emits: ['update:modelValue', 'change'],
+  emits: ['update:model-value', 'change'],
   setup(props, { emit }) {
     const wrapperClassName = bem({
       horizontal: props.direction === 'horizontal',
@@ -26,7 +26,7 @@ export default defineComponent({
     const disabled = computed(() => props.disabled)
 
     const updateModelValue = (value: any) => {
-      emit('update:modelValue', value)
+      emit('update:model-value', value)
       emit('change', value)
     }
 

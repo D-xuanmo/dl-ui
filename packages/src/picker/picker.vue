@@ -42,7 +42,7 @@ export default defineComponent({
   name,
   components: { DPickerItem },
   props: pickerProps,
-  emits: ['update:visible', 'update:modelValue', 'update:value', 'change', 'confirm', 'close'],
+  emits: ['update:visible', 'update:model-value', 'update:value', 'change', 'confirm', 'close'],
   setup(props, context: SetupContext<EventType>) {
     const className = bem()
     const headerClassName = bem('header')
