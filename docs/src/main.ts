@@ -7,8 +7,8 @@ import { Example, ExampleBEM } from './components/example'
 import DemoBlock from './components/demo-block'
 
 // 引入 CSS 相关资源
-import './assets/style/index.scss'
 import '@xuanmo/normalize.css/class.scss'
+import './assets/style/index.scss'
 import DocPreview from '@doc/components/preview'
 
 const app = createApp(App)

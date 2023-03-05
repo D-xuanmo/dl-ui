@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-html.mobile {
+html {
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -49,47 +49,82 @@ a {
 
 // 文档预览样式
 .d-doc {
-  &__container {
-    display: flex;
-    margin: 0 auto;
-    padding: var(--d-gap-md);
-    font-size: var(--d-font-size-md);
-    line-height: var(--d-line-height-lg);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0 auto;
+  font-size: var(--d-font-size-md);
+  line-height: var(--d-line-height-lg);
 
-    &--mobile {
-      height: 100%;
-      padding: 0;
+  &__header {
+    display: flex;
+    height: 50px;
+    padding: var(--d-gap-xs) var(--d-gap-sm);
+    overflow: hidden;
+    background: #fff;
+
+    img {
+      height: calc(50px - calc(var(--d-gap-xs) * 2));
+      margin-right: var(--d-gap-xs);
+      vertical-align: middle;
+    }
+
+    h1 {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 20px;
+    }
+
+    &-right {
+      flex: 1;
+      text-align: right;
     }
   }
 
-  &__demo-mobile {
-    position: sticky;
-    top: var(--d-gap-md);
-    width: 375px;
-    min-width: 375px;
-    height: 500px;
-    margin: 40px 0 0 var(--d-gap-md);
-    border: var(--d-border);
+  &__out-content {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
   }
 
   &__menu {
-    position: sticky;
-    top: var(--d-gap-md);
     width: 200px;
     height: 100%;
-    margin-right: var(--d-gap-lg);
+    padding: var(--d-gap-sm);
+    background: #fff;
+    overflow-y: auto;
   }
 
-  &__content {
-    flex: 1;
-    display: flex;
-    max-width: 1300px;
-    margin: 0 auto;
-    font-size: 14px;
+  &--mobile {
+    height: 100%;
+    padding: 0;
+  }
 
-    > .markdown-body {
-      flex: 1;
-    }
+  &__demo-mobile {
+    position: fixed;
+    top: 50%;
+    right: var(--d-gap-sm);
+    width: 375px;
+    min-width: 375px;
+    height: 600px;
+    border: var(--d-border);
+    transform: translateY(-50%);
+  }
+
+  &__scroll {
+    height: 100%;
+    padding: var(--d-gap-sm);
+    overflow-y: auto;
+    background: #fff;
+  }
+
+  &__inner-content {
+    flex: 1;
+    max-width: calc(100% - 200px - 375px - calc(var(--d-gap-sm) * 1));
+    padding: var(--d-gap-sm);
+    overflow: hidden;
+    line-height: initial;
 
     li {
       padding: 4px 0;
