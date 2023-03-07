@@ -4,11 +4,9 @@
 
 默认居中显示
 
-```vue
+```vue playground=fi6nth height=300
 <template>
-  <d-cell-group round title="基础用法">
-    <d-cell title="基础弹框" arrow @click="handleShowPopup"></d-cell>
-  </d-cell-group>
+  <d-button theme="primary" @click="handleShowPopup">打开弹框</d-button>
   <d-popup v-model:visible="showPopup"> 我是内容 </d-popup>
 </template>
 
@@ -25,7 +23,9 @@ function handleShowPopup() {
 
 ## 不同方向使用
 
-```vue
+通过 `placement` 设置方向
+
+```vue playground=hp3msr
 <template>
   <d-cell-group round title="弹出位置">
     <d-cell title="顶部弹出" content="position: top" arrow @click="handleShowPopup('top')" />
@@ -33,7 +33,7 @@ function handleShowPopup() {
     <d-cell title="左侧弹出" content="position: left" arrow @click="handleShowPopup('left')" />
     <d-cell title="右侧弹出" content="position: right" arrow @click="handleShowPopup('right')" />
   </d-cell-group>
-  <d-popup v-model:visible="showPopup2" :position="position" />
+  <d-popup v-model:visible="showPopup" :placement="position" />
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'

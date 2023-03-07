@@ -13,8 +13,6 @@
         <div :class="innerContentClassName">
           <div :class="scrollClassName"><router-view /></div>
         </div>
-
-        <iframe :src="demoPath" :class="mobileDemoClassName" />
       </template>
       <d-preview-h5 v-else />
     </div>
@@ -39,12 +37,11 @@ const outContentClassName = classNames('out-content')
 const menuClassName = classNames('menu')
 const innerContentClassName = classNames('inner-content')
 const scrollClassName = classNames('scroll')
-const mobileDemoClassName = classNames('demo-mobile')
 
 watch(
   () => route.path,
   () => {
-    demoPath.value = `${import.meta.env.BASE_URL}demo${route.path}?preview=true`
+    demoPath.value = `${import.meta.env.BASE_URL}demo${route.path}`
     isDemoRoute.value = /^\/demo/.test(route.path)
   }
 )

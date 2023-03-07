@@ -1,9 +1,23 @@
 .d-doc-preview {
   $prefix: &;
 
+  &__playground {
+    height: 500px;
+  }
+
   &__wrapper {
     margin-top: var(--d-gap-sm);
     border: var(--d-border);
+
+    &:empty {
+      display: none;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
 
     .shiki {
       margin-top: 0;
@@ -14,10 +28,17 @@
       margin: var(--d-gap-sm) 0;
 
       #{$prefix} {
+        &__out-content {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
+
         &__content {
           display: flex;
-          height: 100%;
+          flex: 1;
           padding: 0;
+          overflow: hidden;
         }
 
         &__code {
@@ -26,14 +47,14 @@
           height: 100%;
           margin-top: 0;
           padding: 0;
-          border-right: var(--d-border);
           overflow: auto;
         }
 
         &__runtime {
           width: 375px;
           height: 100%;
-          overflow: auto;
+          padding: 0;
+          overflow: hidden;
         }
       }
     }

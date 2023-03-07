@@ -9,12 +9,12 @@
 
 通过 `name` 设置对应的图标名
 
-```vue
+```vue playground=1kcf0k8 height=300
 <template>
   <d-icon name="close" />
-  <d-icon name="close-o" />
+  <d-icon name="close-f" />
   <d-icon name="tips" />
-  <d-icon name="tips-o" />
+  <d-icon name="tips-f" />
   <d-icon name="success" />
   <d-icon name="warning" />
 </template>
@@ -24,7 +24,7 @@
 
 通过 `size` 属性改变大小，`color` 可改变颜色
 
-```vue
+```vue playground=2d42fm9
 <template>
   <d-cell-group title="旋转">
     <d-cell content-align="left">

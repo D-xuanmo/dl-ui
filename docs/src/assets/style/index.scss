@@ -121,7 +121,7 @@ a {
 
   &__inner-content {
     flex: 1;
-    max-width: calc(100% - 200px - 375px - calc(var(--d-gap-sm) * 1));
+    max-width: calc(100% - 200px - calc(var(--d-gap-sm) * 1));
     padding: var(--d-gap-sm);
     overflow: hidden;
     line-height: initial;
@@ -218,6 +218,4 @@ a {
   box-sizing: border-box;
   margin-top: var(--d-gap-sm);
   padding: var(--d-gap-sm);
-  border: var(--d-border);
-  background: none !important;
 }

@@ -2,7 +2,7 @@
 
 ## 基础用法
 
-```vue
+```vue playground=1uuug1l
 <template>
   <d-cell title="基础用法">
     <d-switch v-model="value" />
@@ -41,7 +41,7 @@ const value1 = ref(true)
 
 通过 `before-change` 钩子拦截，返回 `true` 则切换，返回 `false` 或者 `Promise.reject` 则不切换
 
-```vue
+```vue playground=26jbtd2
 <template>
   <d-switch v-model="value" :loading="loading" :before-change="beforeChange" />
 </template>

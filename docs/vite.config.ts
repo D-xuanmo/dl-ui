@@ -25,17 +25,18 @@ export default defineConfig({
       transforms: {
         before: transformer
       },
-      markdownItUses: [[shiki, { theme: 'github-light' }]]
+      markdownItUses: [[shiki, { theme: 'min-light' }]]
     }),
     MarkdownPreview({
       shiki: {
-        theme: 'github-light'
+        theme: 'vitesse-light'
       }
     })
   ],
   server: {
     open: '/',
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    port: 3200
   },
   resolve: {
     alias: {

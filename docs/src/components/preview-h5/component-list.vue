@@ -11,25 +11,11 @@
   </d-cell-group>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import { createNamespace } from '@/utils/bem'
+<script lang="ts" setup>
 import menus from '../../menus'
 import { useRouter } from 'vue-router'
 
-const [name] = createNamespace('component-list')
+const router = useRouter()
 
-export default defineComponent({
-  name,
-  setup() {
-    const router = useRouter()
-
-    const goDetail = (path?: string) => router.push(`/demo${path}`)
-
-    return {
-      menus,
-      goDetail
-    }
-  }
-})
+const goDetail = (path?: string) => router.push(`/demo${path}`)
 </script>

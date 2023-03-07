@@ -1,6 +1,6 @@
 # Input 输入框
 
-```vue
+```vue playground=21eurvu
 <template>
   <d-cell-group title="基础用法">
     <d-input v-model="value" label="输入框" placeholder="请输入文字" @blur="onBlur" />

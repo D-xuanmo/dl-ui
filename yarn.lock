@@ -816,10 +816,10 @@
   resolved "https://registry.npmmirror.com/@xuanmo/normalize.css/-/normalize.css-1.0.9.tgz"
   integrity sha512-/bMExdDMzOiZZiyipDfOOtefRsn4COnSx5WY0NDu+KknNkN+ZzKP8IScwkTThDZJUt7LXozTRJvRcW5MSFU1uQ==
 
-"@xuanmo/vite-plugin-md-preview@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.npmjs.org/@xuanmo/vite-plugin-md-preview/-/vite-plugin-md-preview-0.0.1.tgz"
-  integrity sha512-j1tbWspL5evRwgLdz6qUG1ymKKhSvWCzjCk9sfgMgucv9j61+daeoMMSWlh1QS8cQKS2PdZRGFJclkZSL90cjw==
+"@xuanmo/vite-plugin-md-preview@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.npmjs.org/@xuanmo/vite-plugin-md-preview/-/vite-plugin-md-preview-0.0.9.tgz#a9a279c8ba2ef3d231d984f17539ea86fe86bad9"
+  integrity sha512-r/1uq2v6u+kugqG2NnmQF/Qv5hMuFnO+pTpkFWT7vbYffBWnz3WLXvPSL6dlVvgbIfZ2580yQZSsyefYjp009w==
   dependencies:
     "@types/mdast" "^3.0.10"
     debug "^4.3.4"
