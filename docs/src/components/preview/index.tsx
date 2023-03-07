@@ -31,7 +31,7 @@ const DocPreview = defineComponent({
     return () => {
       const { client, source, playground, height, width } = props
       const isMobile = client?.toUpperCase() === 'H5'
-      console.log({ playground })
+
       // PC 模版
       const pcContent =
         !isMobile && !playground ? (
