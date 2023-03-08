@@ -34,7 +34,7 @@ const DocPreview = defineComponent({
 
       // PC 模版
       const pcContent =
-        !isMobile && !playground ? (
+        !isMobile && playground === 'undefined' ? (
           <>
             <div className={bem('runtime')}>{slots.default?.()}</div>
             <div className={bem('toolbar', { active: showCode.value })}>

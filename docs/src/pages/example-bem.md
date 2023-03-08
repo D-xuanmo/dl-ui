@@ -1,7 +1,5 @@
 # BEM 文档说明
 
-```vue preview
-<template>
-  <DExampleBem />
-</template>
+```vue playground=57espe height=650
+
 ```
