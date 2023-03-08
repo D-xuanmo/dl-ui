@@ -60,14 +60,14 @@ export default defineComponent({
     const [innerValue, updateValue] = useDefault<PickerValueType, typeof props, EventType>(props, context.emit)
 
     // 是否为级联选择模式
-    const isCascade = Array.isArray((props.columns[0] as CascadeDataType)?.children)
+    const isCascade = computed(() => Array.isArray((props.columns[0] as CascadeDataType)?.children))
 
     // 接收子级传递回来的数据
     const temporaryValue = ref<PickerValueType>(deepCopy(innerValue.value))
 
     // 内部渲染列使用
     const formattedColumns = computed(() => {
-      if (isCascade) return formatCascade(temporaryValue.value, props.columns as CascadeDataType[])
+      if (isCascade.value) return formatCascade(temporaryValue.value, props.columns as CascadeDataType[])
 
       if (isObject(props.columns[0])) return [props.columns] as PickerColumnType[][]
 
@@ -80,7 +80,7 @@ export default defineComponent({
 
     const onChange = (data: DataType, columnIndex: number) => {
       // 级联选择模式切更改项为第一项，清空后续的值
-      if (isCascade) {
+      if (isCascade.value) {
         temporaryValue.value[columnIndex] = data
       } else {
         temporaryValue.value = temporaryValue.value.map((item, index) => {
@@ -92,7 +92,9 @@ export default defineComponent({
     }
 
     const handleChange = () => {
-      const value = isCascade ? deepCopy(temporaryValue.value) : [(temporaryValue.value as DataType[])?.[0]?.value]
+      const value = isCascade.value
+        ? deepCopy(temporaryValue.value)
+        : [(temporaryValue.value as DataType[])?.[0]?.value]
       updateValue(value)
       handleClose()
       context.emit('confirm', temporaryValue.value)
