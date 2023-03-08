@@ -12,7 +12,6 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { PickerColumnsType } from '../props'
-import addressJson from './data.json'
 
 const visible1 = ref(false)
 const template1 = Array.from(new Array(10)).map((_, index) => ({
@@ -38,5 +37,9 @@ const value3 = ref([
   { value: '110102', label: '西城区' }
 ])
 const formatted = computed(() => value3.value.map((item) => item.label).join('/'))
-const template3 = ref(addressJson)
+const template3 = ref([])
+
+fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address/data.json').then(async (res) => {
+  template3.value = await res.json()
+})
 </script>

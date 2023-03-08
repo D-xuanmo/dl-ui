@@ -28,21 +28,21 @@ function handleShowPopup() {
 ```vue playground=hp3msr
 <template>
   <d-cell-group round title="弹出位置">
-    <d-cell title="顶部弹出" content="position: top" arrow @click="handleShowPopup('top')" />
-    <d-cell title="底部弹出" content="position: bottom" arrow @click="handleShowPopup('bottom')" />
-    <d-cell title="左侧弹出" content="position: left" arrow @click="handleShowPopup('left')" />
-    <d-cell title="右侧弹出" content="position: right" arrow @click="handleShowPopup('right')" />
+    <d-cell title="顶部弹出" content="placement: top" arrow @click="handleShowPopup('top')" />
+    <d-cell title="底部弹出" content="placement: bottom" arrow @click="handleShowPopup('bottom')" />
+    <d-cell title="左侧弹出" content="placement: left" arrow @click="handleShowPopup('left')" />
+    <d-cell title="右侧弹出" content="placement: right" arrow @click="handleShowPopup('right')" />
   </d-cell-group>
-  <d-popup v-model:visible="showPopup" :placement="position" />
+  <d-popup v-model:visible="showPopup" :placement="placement" />
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
 
 const showPopup = ref(false)
-const position = ref('top')
+const placement = ref('top')
 
 function handleShowPopup(p) {
-  position.value = p
+  placement.value = p
   showPopup.value = true
 }
 </script>
