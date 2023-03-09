@@ -4,6 +4,8 @@
  * @description: CSS BEM 工具方法
  */
 
+import { PREFIX } from '../constants/prefix'
+
 export type Modifier = string | { [key: string]: unknown }
 export type Modifiers = Modifier | Modifier[]
 
@@ -48,6 +50,6 @@ export function createBEM(name: string) {
  * @param name
  */
 export function createNamespace(name: string) {
-  const prefixName = `d-${name}`
+  const prefixName = `${PREFIX}-${name}`
   return [prefixName, createBEM(prefixName)] as const
 }

@@ -21,6 +21,7 @@ const install = function (app: App, options?: FormGlobalConfigType) {
 }
 
 export * from './components'
+export * from './common'
 export default { install }
 
 declare module '@vue/runtime-core' {
