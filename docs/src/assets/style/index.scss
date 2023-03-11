@@ -47,6 +47,40 @@ a {
   color: var(--d-primary);
 }
 
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: initial;
+}
+
+blockquote {
+  position: relative;
+  box-sizing: border-box;
+  margin-top: var(--d-gap-sm);
+  padding: var(--d-gap-sm);
+  border-radius: 5px;
+  background: #f2f4f5 !important;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--d-primary);
+  }
+}
+
 // 文档预览样式
 .d-doc {
   display: flex;
@@ -218,4 +252,6 @@ a {
   box-sizing: border-box;
   margin-top: var(--d-gap-sm);
   padding: var(--d-gap-sm);
+  border-radius: 5px;
+  background: #f2f4f5 !important;
 }

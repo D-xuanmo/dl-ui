@@ -53,3 +53,24 @@ const value = ref(['2'])
 const value2 = ref(['1', '3'])
 </script>
 ```
+
+## API
+
+### Checkbox Props
+
+| 参数            | 类型               | 默认值 | 说明           | 必传 |
+| --------------- | ------------------ | ------ | -------------- | ---- |
+| value           | `string \| number` | -      | 绑定值         | Y    |
+| label           | `string`           | -      | 单选框显示文字 | Y    |
+| default-checked | `boolean`          | -      | 是否默认选中   | N    |
+| disabled        | `boolean`          | -      | 是否禁用       | N    |
+| icon            | `string`           | -      | 图标名         | N    |
+
+### CheckboxGroup Props
+
+| 参数      | 类型               | 默认值   | 说明           | 必传 |
+| --------- | ------------------ | -------- | -------------- | ---- |
+| v-model   | `string \| number` | -        | 当前选中的数据 | Y    |
+| direction | `DirectionType`    | vertical | 参考公用类型   | N    |
+| disabled  | `boolean`          | -        | 是否禁用       | N    |
+| max       | `number`           | -        | 最大选择个数   | N    |

@@ -25,60 +25,17 @@
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties, defineComponent, PropType, SetupContext } from 'vue'
+import { computed, CSSProperties, defineComponent, SetupContext } from 'vue'
 import { createNamespace } from '../utils'
 import { isNumber } from '@xuanmo/javascript-utils'
 import useDefault from '../hooks/useDefault'
-import { SizeType } from '../common'
+import { rateProps } from './props'
 
 const [name, bem] = createNamespace('rate')
 
-const props = {
-  value: {
-    type: Number,
-    default: undefined
-  },
-  modelValue: {
-    type: Number,
-    default: undefined
-  },
-  count: {
-    type: Number,
-    default: 5
-  },
-  size: {
-    type: String as PropType<SizeType | string>,
-    default: 'medium'
-  },
-  gap: {
-    type: [Number, String] as PropType<number | string | undefined>,
-    default: 4
-  },
-  checkedIcon: {
-    type: String,
-    default: 'star-f'
-  },
-  uncheckedIcon: {
-    type: String,
-    default: 'star'
-  },
-  activeColor: {
-    type: String,
-    default: 'rgb(250 200 0)'
-  },
-  allowClear: {
-    type: Boolean,
-    default: true
-  },
-  disabled: {
-    type: Boolean,
-    default: false
-  }
-}
-
 export default defineComponent({
   name,
-  props,
+  props: rateProps,
   setup(props, context: SetupContext) {
     const [innerValue, updateValue] = useDefault<number, typeof props>(props as never, context.emit)
 

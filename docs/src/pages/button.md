@@ -53,3 +53,18 @@
 }
 </style>
 ```
+
+## API
+
+### Props
+
+| 参数     | 类型                                      | 默认值    | 说明                                   | 必传 |
+| -------- | ----------------------------------------- | --------- | -------------------------------------- | ---- |
+| theme    | `ThemeType`                               | `default` | 主题颜色                               | N    |
+| size     | `SizeType`                                | `medium`  | 按钮大小                               | N    |
+| disabled | `boolean`                                 | `false`   | 是否禁用按钮                           | N    |
+| icon     | `string`                                  | -         | 按钮前图标，与 `Icon` 组件 `name` 一致 | N    |
+| block    | `boolean`                                 | `false`   | 是否展示为块级元素                     | N    |
+| fill     | `'solid' \| 'outline' \| 'none'`          | `solid`   | 填充模式，`outline` 为镂空展示         | N    |
+| shape    | `'default' \| 'rounded' \| 'rectangular'` | `default` | 按钮形状                               | N    |
+| loading  | `boolean`                                 | `false`   | 是否显示 loading 效果                  | N    |

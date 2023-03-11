@@ -11,5 +11,9 @@ export const checkboxGroupProps = {
     default: 'vertical'
   },
   disabled: Boolean,
+
+  /**
+   * 最大选择个数
+   */
   max: Number
 }

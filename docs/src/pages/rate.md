@@ -31,3 +31,19 @@ import { ref } from 'vue'
 const value = ref(2)
 </script>
 ```
+
+## API
+
+### Props
+
+| 参数           | 类型                 | 默认值             | 说明                                     | 必传 |
+| -------------- | -------------------- | ------------------ | ---------------------------------------- | ---- |
+| v-model        | `number`             | -                  | 当前选中评分值                           | Y    |
+| count          | `number`             | 5                  | 图标个数                                 | N    |
+| size           | `SizeType \| string` | `medium`           | 图标大小                                 | N    |
+| gap            | `number`             | 4                  | 图标间距                                 | N    |
+| checked-icon   | `string`             | `star-f`           | 选中图标，与 `Icon` 组件 `name` 一致     | N    |
+| unchecked-icon | `string`             | `star`             | 未选中的图标，与 `Icon` 组件 `name` 一致 | N    |
+| active-color   | `string`             | `rgb(250, 200, 0)` | 选中时图标颜色                           | N    |
+| allow-clear    | `boolean`            | `true`             | 是否允许反选清空                         | N    |
+| disabled       | `boolean`            | `false`            | 是否禁用                                 | N    |

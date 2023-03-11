@@ -4,11 +4,12 @@ import { MenuItemType } from './components/menu/types'
 const menus: MenuItemType[] = [
   {
     id: createRandomID(),
-    groupTitle: '组件开发指南',
+    groupTitle: '开发指南',
     children: [
-      { id: 'guide', path: '/guide', content: 'Guide [开发指南]' },
-      { id: 'example', path: '/example', content: 'Example [描述文字]' },
-      { id: 'example-bem', path: '/example-bem', content: 'BEM [示例]' }
+      { id: 'introduce', path: '/introduce', content: '介绍' },
+      { id: 'quick', path: '/quick', content: '快速上手' },
+      { id: 'common', path: '/common', content: '全局说明' },
+      { id: 'guide', path: '/guide', content: 'Guide [项目规范]' }
     ]
   },
   {

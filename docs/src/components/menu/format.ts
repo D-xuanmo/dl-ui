@@ -5,5 +5,5 @@
 export const format = (s: string) => {
   const { name, describe } = /(?<name>[a-z]+).+\[(?<describe>.+)\]/gi.exec(s)?.groups ?? {}
 
-  return { name, describe } as { name: string; describe: string }
+  return { name: name || s, describe } as { name: string; describe: string }
 }

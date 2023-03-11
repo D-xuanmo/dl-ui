@@ -11,10 +11,6 @@ export type FormatterType<V extends string | number = string> = (
 ) => V
 
 export const datePickerProps = {
-  visible: {
-    type: Boolean,
-    default: false
-  },
   value: {
     type: [String, Date] as PropType<DatePickerValueType>,
     default: undefined
@@ -23,11 +19,31 @@ export const datePickerProps = {
     type: [String, Date] as PropType<DatePickerValueType>,
     default: new Date()
   },
+
+  /**
+   * 显示隐藏
+   */
+  visible: {
+    type: Boolean,
+    default: false
+  },
+
+  /**
+   * 支持设置一个顶部标题
+   */
   title: String,
+
+  /**
+   * 日期格式
+   */
   type: {
     type: String as PropType<DatePickerType>,
     default: 'date'
   },
+
+  /**
+   * 每列格式化函数
+   */
   formatter: {
     type: Function as PropType<FormatterType>,
     default: undefined
