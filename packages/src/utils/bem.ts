@@ -23,7 +23,10 @@ export function generateModifier(name: Modifier, modifier?: Modifiers): string {
     return modifier.reduce<string>((prev, current) => prev + generateModifier(name, current), '')
   }
 
-  return Object.keys(modifier).reduce((prev, key) => prev + (modifier[key] ? generateModifier(name, key) : ''), '')
+  return Object.keys(modifier).reduce(
+    (prev, key) => prev + (modifier[key] ? generateModifier(name, key) : ''),
+    ''
+  )
 }
 
 /**

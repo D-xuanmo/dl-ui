@@ -39,7 +39,9 @@ const value3 = ref([
 const formatted = computed(() => value3.value.map((item) => item.label).join('/'))
 const template3 = ref([])
 
-fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address/data.json').then(async (res) => {
-  template3.value = await res.json()
-})
+fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address/data.json').then(
+  async (res) => {
+    template3.value = await res.json()
+  }
+)
 </script>

@@ -1,13 +1,7 @@
 import { PropType } from 'vue'
 import { DirectionType } from '../common'
 
-export type SpaceJustifyType =
-  | 'start'
-  | 'center'
-  | 'end'
-  | 'between'
-  | 'around'
-  | 'evenly'
+export type SpaceJustifyType = 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'
 
 export type SpaceAlignType = 'start' | 'center' | 'end' | 'baseline'
 

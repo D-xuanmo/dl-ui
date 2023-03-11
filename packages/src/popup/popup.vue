@@ -15,11 +15,21 @@
       @leave="onLeave"
       @after-leave="onAfterLeave"
     >
-      <div v-if="visible" :class="bem('container')" :style="style" @click="closeOnClickOverlay && handleClose()">
+      <div
+        v-if="visible"
+        :class="bem('container')"
+        :style="style"
+        @click="closeOnClickOverlay && handleClose()"
+      >
         <div :class="classes" :style="popupStyle" @click.stop>
           <header v-if="!isCenter && title" center :class="bem('header')">
             <div :class="bem('header', 'title', true)">{{ title }}</div>
-            <d-icon v-if="closeable" :name="closeIcon" :class="bem('header', 'icon', true)" @click="handleClickIcon" />
+            <d-icon
+              v-if="closeable"
+              :name="closeIcon"
+              :class="bem('header', 'icon', true)"
+              @click="handleClickIcon"
+            />
           </header>
           <div :class="bem('content')"><slot /></div>
         </div>
@@ -111,7 +121,8 @@ export default defineComponent({
 
     const style = computed<CSSProperties>(() => ({
       zIndex: zIndex.value,
-      transitionDuration: typeof props.duration === 'number' ? `${props.duration}s` : (props.duration as string)
+      transitionDuration:
+        typeof props.duration === 'number' ? `${props.duration}s` : (props.duration as string)
     }))
 
     const onEnter = () => emit('open')

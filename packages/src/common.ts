@@ -21,9 +21,6 @@ export type DataType = {
 } & Record<string, any>
 
 /** 排除 props value / modelValue */
-export type OmitValueProperties<T extends Record<string, unknown>> = Omit<
-  T,
-  'value' | 'modelValue'
->
+export type OmitValueProperties<T extends Record<string, unknown>> = Omit<T, 'value' | 'modelValue'>
 
 export type DirectionType = 'horizontal' | 'vertical'

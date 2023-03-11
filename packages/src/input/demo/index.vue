@@ -22,7 +22,13 @@
   <d-cell-group title="其他设置">
     <d-input v-model="value" label="显示冒号" placeholder="请输入文字" colon />
     <d-input v-model="value" label="可被清除" placeholder="请输入文字" clearable />
-    <d-input v-model="value" label="显示图标" placeholder="请输入文字" left-icon="tips-f" left-icon-color="#f00" />
+    <d-input
+      v-model="value"
+      label="显示图标"
+      placeholder="请输入文字"
+      left-icon="tips-f"
+      left-icon-color="#f00"
+    />
     <d-input
       v-model="value"
       label="图标大小"

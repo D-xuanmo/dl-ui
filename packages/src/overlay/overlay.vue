@@ -1,7 +1,16 @@
 <template>
   <teleport :to="teleport">
-    <transition :name="name" @before-enter="onTransitionBefore" @after-leave="onTransitionAfterLeave">
-      <div v-if="innerVisible" :class="[bem(), overlayClass].join(' ')" :style="style" @click.stop="handleClose">
+    <transition
+      :name="name"
+      @before-enter="onTransitionBefore"
+      @after-leave="onTransitionAfterLeave"
+    >
+      <div
+        v-if="innerVisible"
+        :class="[bem(), overlayClass].join(' ')"
+        :style="style"
+        @click.stop="handleClose"
+      >
         <slot />
       </div>
     </transition>
@@ -9,7 +18,14 @@
 </template>
 
 <script lang="ts">
-import { CSSProperties, defineComponent, SetupContext, PropType, computed, TeleportProps } from 'vue'
+import {
+  CSSProperties,
+  defineComponent,
+  SetupContext,
+  PropType,
+  computed,
+  TeleportProps
+} from 'vue'
 import { createNamespace } from '../utils'
 import useDefault from '../hooks/useDefault'
 import useZIndex from '../hooks/useZIndex'
@@ -65,7 +81,8 @@ export default defineComponent({
 
     const style = computed<CSSProperties>(() => ({
       zIndex: zIndex.value,
-      transitionDuration: typeof props.duration === 'number' ? `${props.duration}s` : (props.duration as string),
+      transitionDuration:
+        typeof props.duration === 'number' ? `${props.duration}s` : (props.duration as string),
       ...(props.overlayStyle ?? {})
     }))
 

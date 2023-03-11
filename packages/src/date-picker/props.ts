@@ -5,7 +5,10 @@ export type DatePickerType = 'date' | 'year-month' | 'month-day' | 'time' | 'dat
 
 export type DatePickerValueType = string | Date
 
-export type FormatterType<V extends string | number = string> = (type: DateTimePickerColumnType['type'], value: V) => V
+export type FormatterType<V extends string | number = string> = (
+  type: DateTimePickerColumnType['type'],
+  value: V
+) => V
 
 export const datePickerProps = {
   visible: {

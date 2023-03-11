@@ -43,7 +43,8 @@ export default defineComponent({
 
     const formatPickerValue = (value: PickerValueType) => {
       const formatted = value.map((item) => {
-        if ((item as DateTimePickerColumnType)?.value) return (item as DateTimePickerColumnType).value
+        if ((item as DateTimePickerColumnType)?.value)
+          return (item as DateTimePickerColumnType).value
         return item
       }) as string[]
       // 时间选择需要补充年月日

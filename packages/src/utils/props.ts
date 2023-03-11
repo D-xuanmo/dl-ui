@@ -3,7 +3,10 @@
  * @param props
  * @param keys
  */
-export function pickProps<T extends Record<string, unknown>, K extends keyof T>(props: T, keys: K[]) {
+export function pickProps<T extends Record<string, unknown>, K extends keyof T>(
+  props: T,
+  keys: K[]
+) {
   const result = {} as Record<K, unknown>
   keys.forEach((key) => {
     result[key] = props[key]

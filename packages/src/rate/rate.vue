@@ -11,9 +11,7 @@
         v-if="i > innerValue"
         :name="uncheckedIcon"
         :size="size"
-        :color="
-          disabled ? 'var(--d-disable-color)' : 'var(--d-secondary-text-color)'
-        "
+        :color="disabled ? 'var(--d-disable-color)' : 'var(--d-secondary-text-color)'"
       />
       <d-icon
         v-if="i <= innerValue"
@@ -27,13 +25,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  CSSProperties,
-  defineComponent,
-  PropType,
-  SetupContext
-} from 'vue'
+import { computed, CSSProperties, defineComponent, PropType, SetupContext } from 'vue'
 import { createNamespace } from '../utils'
 import { isNumber } from '@xuanmo/javascript-utils'
 import useDefault from '../hooks/useDefault'
@@ -88,10 +80,7 @@ export default defineComponent({
   name,
   props,
   setup(props, context: SetupContext) {
-    const [innerValue, updateValue] = useDefault<number, typeof props>(
-      props as never,
-      context.emit
-    )
+    const [innerValue, updateValue] = useDefault<number, typeof props>(props as never, context.emit)
 
     const classes = bem({
       disabled: props.disabled

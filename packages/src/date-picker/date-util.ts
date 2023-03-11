@@ -51,7 +51,14 @@ class DateUtil {
     }
     const date = dateJS(this.date)
     const formatted = date.format(formatType[this.dateType]).split(',')
-    if ((['year-month', 'date', 'datetime', 'date-hour', 'month-day'] as DatePickerType[]).includes(this.dateType)) {
+    const dateFormatTypes = [
+      'year-month',
+      'date',
+      'datetime',
+      'date-hour',
+      'month-day'
+    ] as DatePickerType[]
+    if (dateFormatTypes.includes(this.dateType)) {
       formatted.splice(1, 1, `${+date.format('M') - 1}`)
     }
     return formatted
@@ -73,7 +80,11 @@ class DateUtil {
     /* eslint-disable */
     switch (this.dateType) {
       case 'date':
-        return [this.getYearColumn(), this.getMonthColumn(), this.getDayColumn()]
+        return [
+          this.getYearColumn(),
+          this.getMonthColumn(),
+          this.getDayColumn()
+        ]
       case 'year-month':
         return [this.getYearColumn(), this.getMonthColumn()]
       case 'month-day':
@@ -88,7 +99,12 @@ class DateUtil {
           this.getSecond()
         ]
       case 'date-hour':
-        return [this.getYearColumn(), this.getMonthColumn(), this.getDayColumn(), this.getHourColumn()]
+        return [
+          this.getYearColumn(),
+          this.getMonthColumn(),
+          this.getDayColumn(),
+          this.getHourColumn()
+        ]
       case 'time':
         return [this.getHourColumn(), this.getMinute()]
     }
@@ -121,7 +137,11 @@ class DateUtil {
     }
     return [
       ...startYears.reverse(),
-      { value: `${currentYear}`, label: this.formatter('year', `${currentYear}`), type: 'year' },
+      {
+        value: `${currentYear}`,
+        label: this.formatter('year', `${currentYear}`),
+        type: 'year'
+      },
       ...endYears
     ]
   }
@@ -130,7 +150,11 @@ class DateUtil {
     const column: DateTimePickerColumnType[] = []
     let i = 1
     while (i <= 12) {
-      column.push({ value: `${i - 1}`, label: this.formatter('month', `${i}`.padStart(2, '0')), type: 'month' })
+      column.push({
+        value: `${i - 1}`,
+        label: this.formatter('month', `${i}`.padStart(2, '0')),
+        type: 'month'
+      })
       i++
     }
     return column
@@ -141,17 +165,28 @@ class DateUtil {
     const lastDay = dateJS(this.date).lastDay()
     let i = 1
     while (i <= lastDay) {
-      column.push({ value: `${i}`, label: this.formatter('day', `${i}`.padStart(2, '0')), type: 'day' })
+      column.push({
+        value: `${i}`,
+        label: this.formatter('day', `${i}`.padStart(2, '0')),
+        type: 'day'
+      })
       i++
     }
     return column
   }
 
-  getHourColumn = ({ min = 0, max = 24 }: { min?: number; max?: number } = {}) => {
+  getHourColumn = ({
+    min = 0,
+    max = 24
+  }: { min?: number; max?: number } = {}) => {
     const column: DateTimePickerColumnType[] = []
     let i = min
     while (i < max) {
-      column.push({ value: `${i}`, label: this.formatter('hour', `${i}`.padStart(2, '0')), type: 'hour' })
+      column.push({
+        value: `${i}`,
+        label: this.formatter('hour', `${i}`.padStart(2, '0')),
+        type: 'hour'
+      })
       i++
     }
     return column
@@ -161,7 +196,11 @@ class DateUtil {
     const column: DateTimePickerColumnType[] = []
     let i = 1
     while (i < 60) {
-      column.push({ value: `${i}`, label: this.formatter('minute', `${i}`.padStart(2, '0')), type: 'minute' })
+      column.push({
+        value: `${i}`,
+        label: this.formatter('minute', `${i}`.padStart(2, '0')),
+        type: 'minute'
+      })
       i++
     }
     return column
@@ -171,7 +210,11 @@ class DateUtil {
     const column: DateTimePickerColumnType[] = []
     let i = 1
     while (i < 60) {
-      column.push({ value: `${i}`, label: this.formatter('second', `${i}`.padStart(2, '0')), type: 'second' })
+      column.push({
+        value: `${i}`,
+        label: this.formatter('second', `${i}`.padStart(2, '0')),
+        type: 'second'
+      })
       i++
     }
     return column

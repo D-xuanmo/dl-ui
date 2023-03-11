@@ -6,7 +6,12 @@
 
   <d-cell-group round title="弹出位置">
     <d-cell title="顶部弹出" content="placement: top" arrow @click="handleShowPopup2('top')" />
-    <d-cell title="底部弹出" content="placement: bottom" arrow @click="handleShowPopup2('bottom')" />
+    <d-cell
+      title="底部弹出"
+      content="placement: bottom"
+      arrow
+      @click="handleShowPopup2('bottom')"
+    />
     <d-cell title="左侧弹出" content="placement: left" arrow @click="handleShowPopup2('left')" />
     <d-cell title="右侧弹出" content="placement: right" arrow @click="handleShowPopup2('right')" />
     <d-popup v-model:visible="showPopup2" :placement="placement" />

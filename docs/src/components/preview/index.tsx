@@ -40,7 +40,10 @@ const DocPreview = defineComponent({
             <div className={bem('toolbar', { active: showCode.value })}>
               <span onClick={toggleCodeVisible}>{!showCode.value ? '显示' : '隐藏'}代码</span>
             </div>
-            <div className={bem('code', { active: showCode.value })} v-html={decodeURIComponent(source)} />
+            <div
+              className={bem('code', { active: showCode.value })}
+              v-html={decodeURIComponent(source)}
+            />
           </>
         ) : null
 
@@ -48,7 +51,10 @@ const DocPreview = defineComponent({
       const mobileContent = isMobile ? (
         <div className={bem('out-content')}>
           <div className={bem('content')}>
-            <div className={bem('code', { active: showCode.value })} v-html={decodeURIComponent(source)} />
+            <div
+              className={bem('code', { active: showCode.value })}
+              v-html={decodeURIComponent(source)}
+            />
             <div className={bem('runtime')}>
               <iframe src={`/demo${route.path}?preview=true`} />
             </div>

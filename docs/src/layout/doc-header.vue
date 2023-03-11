@@ -8,7 +8,9 @@
       <a href="https://run.xuanmo.xin/" target="_blank">
         <d-button size="small" fill="none">演练场</d-button>
       </a>
-      <a href="https://github.com/D-xuanmo/dynamic-form" target="_blank"><img :src="githubLogo" /></a>
+      <a href="https://github.com/D-xuanmo/dynamic-form" target="_blank"
+        ><img :src="githubLogo"
+      /></a>
     </div>
   </header>
 </template>

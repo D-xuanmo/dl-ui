@@ -39,8 +39,16 @@ class Picker {
    * 初始化选择器
    */
   private initial = () => {
-    this.el?.addEventListener('touchstart', (event: TouchEvent) => this.touchStartHandler(event), false)
-    this.el?.addEventListener('touchmove', (event: TouchEvent) => this.touchMoveHandler(event), false)
+    this.el?.addEventListener(
+      'touchstart',
+      (event: TouchEvent) => this.touchStartHandler(event),
+      false
+    )
+    this.el?.addEventListener(
+      'touchmove',
+      (event: TouchEvent) => this.touchMoveHandler(event),
+      false
+    )
     this.el?.addEventListener('touchend', (event: TouchEvent) => this.touchEndHandler(event), false)
   }
 

@@ -18,4 +18,6 @@ export type CheckboxGroupContextType = Omit<CheckboxGroupPropsType, 'modelValue'
   onChangeEvent: (value: UnwrapRef<CheckboxGroupContextType['value']>) => void
 }
 
-export const CHECKBOX_GROUP_KEY = Symbol('DFormCheckboxGroup') as InjectionKey<CheckboxGroupContextType>
+export const CHECKBOX_GROUP_KEY = Symbol(
+  'DFormCheckboxGroup'
+) as InjectionKey<CheckboxGroupContextType>
