@@ -64,9 +64,7 @@ export default defineComponent({
     },
 
     type: {
-      type: String as PropType<
-        'text' | 'number' | 'password' | 'email' | 'url'
-      >,
+      type: String as PropType<'text' | 'number' | 'password' | 'email' | 'url'>,
       default: 'text'
     },
     name: {
@@ -134,9 +132,7 @@ export default defineComponent({
     clearable: Boolean,
 
     formatter: {
-      type: Function as PropType<
-        (value: string | number | undefined) => string
-      >,
+      type: Function as PropType<(value: string | number | undefined) => string>,
       default: null
     },
     formatterTrigger: {
@@ -155,17 +151,15 @@ export default defineComponent({
       })
     )
 
-    const [innerValue, setValue] = useDefault<
-      string | number | undefined,
-      typeof props
-    >(props, emit as SetupContext['emit'])
+    const [innerValue, setValue] = useDefault<string | number | undefined, typeof props>(
+      props,
+      emit as SetupContext['emit']
+    )
 
     function handleInput(event: Event) {
       const value = (event.target as HTMLInputElement).value
       const newValue =
-        props.formatterTrigger === 'onChange' && props.formatter
-          ? props.formatter(value)
-          : value
+        props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value
       setValue(newValue)
     }
 
@@ -177,9 +171,7 @@ export default defineComponent({
     function handleBlur(event: Event) {
       const value = innerValue.value
       const newValue =
-        props.formatterTrigger === 'onChange' && props.formatter
-          ? props.formatter(value)
-          : value
+        props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value
       setValue(newValue)
       emit('blur', newValue, event)
     }

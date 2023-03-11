@@ -2,19 +2,11 @@
   <d-popup :visible="visible" placement="bottom" @update:visible="handleClose">
     <div :class="className">
       <header :class="headerClassName">
-        <span
-          v-if="cancelButtonText"
-          :class="cancelBtnClassName"
-          @touchstart="handleClose"
-        >
+        <span v-if="cancelButtonText" :class="cancelBtnClassName" @touchstart="handleClose">
           {{ cancelButtonText }}
         </span>
         <span>{{ title }}</span>
-        <span
-          v-if="confirmButtonText"
-          :class="confirmBtnClassName"
-          @click="handleChange"
-        >
+        <span v-if="confirmButtonText" :class="confirmBtnClassName" @click="handleChange">
           {{ confirmButtonText }}
         </span>
       </header>
@@ -34,22 +26,11 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  CSSProperties,
-  defineComponent,
-  ref,
-  SetupContext
-} from 'vue'
+import { computed, CSSProperties, defineComponent, ref, SetupContext } from 'vue'
 import { createNamespace } from '../utils'
 import useDefault from '../hooks/useDefault'
 import { DataType, OmitValueProperties } from '../common'
-import {
-  CascadeDataType,
-  PickerColumnType,
-  pickerProps,
-  PickerValueType
-} from './props'
+import { CascadeDataType, PickerColumnType, pickerProps, PickerValueType } from './props'
 import DPickerItem from './picker-item.vue'
 import { deepCopy, isObject } from '@xuanmo/javascript-utils'
 import { formatCascade } from './utils'
@@ -61,14 +42,7 @@ export default defineComponent({
   name,
   components: { DPickerItem },
   props: pickerProps,
-  emits: [
-    'update:visible',
-    'update:model-value',
-    'update:value',
-    'change',
-    'confirm',
-    'close'
-  ],
+  emits: ['update:visible', 'update:model-value', 'update:value', 'change', 'confirm', 'close'],
   setup(props, context: SetupContext<EventType>) {
     const className = bem()
     const headerClassName = bem('header')
@@ -81,23 +55,15 @@ export default defineComponent({
       OmitValueProperties<typeof props>,
       'visible',
       EventType
-    >(
-      props as OmitValueProperties<typeof props>,
-      context.emit,
-      'visible',
-      'update:visible'
-    )
+    >(props as OmitValueProperties<typeof props>, context.emit, 'visible', 'update:visible')
 
-    const [innerValue, updateValue] = useDefault<
-      PickerValueType,
-      typeof props,
-      EventType
-    >(props, context.emit)
+    const [innerValue, updateValue] = useDefault<PickerValueType, typeof props, EventType>(
+      props,
+      context.emit
+    )
 
     // 是否为级联选择模式
-    const isCascade = computed(() =>
-      Array.isArray((props.columns[0] as CascadeDataType)?.children)
-    )
+    const isCascade = computed(() => Array.isArray((props.columns[0] as CascadeDataType)?.children))
 
     // 接收子级传递回来的数据
     const temporaryValue = ref<PickerValueType>(deepCopy(innerValue.value))
@@ -105,10 +71,7 @@ export default defineComponent({
     // 内部渲染列使用
     const formattedColumns = computed(() => {
       if (isCascade.value) {
-        return formatCascade(
-          temporaryValue.value,
-          props.columns as CascadeDataType[]
-        )
+        return formatCascade(temporaryValue.value, props.columns as CascadeDataType[])
       }
 
       if (isObject(props.columns[0])) {
@@ -151,9 +114,9 @@ export default defineComponent({
 
     const formatColumnValue = (columnIndex: number) => {
       const columnValue = temporaryValue.value[columnIndex]
-      return (
-        isObject(columnValue) ? (columnValue as DataType).value : columnValue
-      ) as string | number
+      return (isObject(columnValue) ? (columnValue as DataType).value : columnValue) as
+        | string
+        | number
     }
 
     return {

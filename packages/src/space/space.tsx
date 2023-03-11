@@ -28,17 +28,12 @@ export default defineComponent({
               ? addUnit(props.gap)
               : undefined,
           marginBottom:
-            (props.direction === 'vertical' || props.wrap) &&
-            children.length - 1 !== index
+            (props.direction === 'vertical' || props.wrap) && children.length - 1 !== index
               ? addUnit(props.gap)
               : undefined
         }
         return (
-          <div
-            key={createRandomID()}
-            className={spaceItemClassName}
-            style={style}
-          >
+          <div key={createRandomID()} className={spaceItemClassName} style={style}>
             {item}
           </div>
         )

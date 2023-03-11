@@ -80,11 +80,7 @@ class DateUtil {
     /* eslint-disable */
     switch (this.dateType) {
       case 'date':
-        return [
-          this.getYearColumn(),
-          this.getMonthColumn(),
-          this.getDayColumn()
-        ]
+        return [this.getYearColumn(), this.getMonthColumn(), this.getDayColumn()]
       case 'year-month':
         return [this.getYearColumn(), this.getMonthColumn()]
       case 'month-day':
@@ -175,10 +171,7 @@ class DateUtil {
     return column
   }
 
-  getHourColumn = ({
-    min = 0,
-    max = 24
-  }: { min?: number; max?: number } = {}) => {
+  getHourColumn = ({ min = 0, max = 24 }: { min?: number; max?: number } = {}) => {
     const column: DateTimePickerColumnType[] = []
     let i = min
     while (i < max) {

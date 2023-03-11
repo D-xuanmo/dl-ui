@@ -2,13 +2,7 @@
   <button :class="className" :disabled="disabled" @click="handleChange">
     <div :class="bem('handle', { active: innerValue })">
       <slot name="icon">
-        <d-icon
-          v-if="loading"
-          name="loading"
-          spin
-          size="small"
-          color="var(--d-primary)"
-        />
+        <d-icon v-if="loading" name="loading" spin size="small" color="var(--d-primary)" />
       </slot>
       <slot v-if="innerValue" name="checked-icon"></slot>
       <slot v-if="!innerValue" name="unchecked-icon"></slot>
@@ -55,10 +49,10 @@ export default defineComponent({
   },
   emits: ['update:value', 'update:model-value'],
   setup(props, { emit }) {
-    const [innerValue, setValue] = useDefault<
-      boolean | undefined,
-      typeof props
-    >(props, emit as SetupContext['emit'])
+    const [innerValue, setValue] = useDefault<boolean | undefined, typeof props>(
+      props,
+      emit as SetupContext['emit']
+    )
 
     const className = computed(() =>
       bem({
@@ -82,15 +76,8 @@ export default defineComponent({
 
       const interceptionResult = beforeChange()
 
-      if (
-        ![isPromise(interceptionResult), isBoolean(interceptionResult)].some(
-          (i) => i
-        )
-      ) {
-        throwError(
-          name,
-          'beforeChange 返回值必须为 `Promise<boolean>` 或者 `boolean`'
-        )
+      if (![isPromise(interceptionResult), isBoolean(interceptionResult)].some((i) => i)) {
+        throwError(name, 'beforeChange 返回值必须为 `Promise<boolean>` 或者 `boolean`')
       }
 
       if (isPromise(interceptionResult)) {
