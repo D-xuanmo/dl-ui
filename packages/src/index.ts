@@ -4,6 +4,7 @@ import './style/index.scss'
 import * as components from './components'
 import { FormGlobalConfigType, GLOBAL_CONFIG_KEY, CELL_GROUP_KEY } from './context'
 import { LABEL_WIDTH } from './constants'
+import pkg from '../package.json'
 
 const install = function (app: App, options?: FormGlobalConfigType) {
   const config = {
@@ -22,6 +23,8 @@ const install = function (app: App, options?: FormGlobalConfigType) {
 
 export * from './components'
 export * from './common'
+export * from './utils'
+export const version = pkg.version
 export default { install }
 
 declare module '@vue/runtime-core' {
