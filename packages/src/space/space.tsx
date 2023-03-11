@@ -2,7 +2,7 @@ import { computed, defineComponent } from 'vue'
 import { createNamespace } from '../utils'
 import { spaceProps } from './props'
 import { createRandomID } from '@xuanmo/javascript-utils'
-import { addUnit } from '../utils/style-format'
+import { addUnit } from '../utils'
 
 const [name, bem] = createNamespace('space')
 
