@@ -1,0 +1,29 @@
+@import '../style/prefix';
+
+.#{$prefix}-image {
+  position: relative;
+  display: inline-block;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__tips {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--d-secondary-text-color);
+
+    &-icon {
+      margin-bottom: var(--d-gap-xxs);
+    }
+  }
+}

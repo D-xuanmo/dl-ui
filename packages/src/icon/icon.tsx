@@ -13,7 +13,7 @@ export default defineComponent({
     },
     color: {
       type: String,
-      default: 'var(--d-primary-text-color)'
+      default: 'inherit'
     },
     size: {
       type: String as PropType<SizeType | string>,
