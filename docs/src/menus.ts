@@ -19,7 +19,9 @@ const menus: MenuItemType[] = [
       { id: 'cell', path: '/cell', content: 'Cell [单元格]' },
       { id: 'icon', path: '/icon', content: 'Icon [图标]' },
       { id: 'overlay', path: '/overlay', content: 'Overlay [遮罩层]' },
-      { id: 'popup', path: '/popup', content: 'Popup [弹出层]' }
+      { id: 'popup', path: '/popup', content: 'Popup [弹出层]' },
+      { id: 'space', path: '/space', content: 'Space [间距]' },
+      { id: 'image', path: '/image', content: 'Image [图片]' }
     ]
   },
   {
@@ -30,7 +32,11 @@ const menus: MenuItemType[] = [
       { id: 'switch', path: '/switch', content: 'Switch [开关]' },
       { id: 'rate', path: '/rate', content: 'Rate [评分]' },
       { id: 'picker', path: '/picker', content: 'Picker [选择器]' },
-      { id: 'date-picker', path: '/date-picker', content: 'DatePicker [日期选择器]' },
+      {
+        id: 'date-picker',
+        path: '/date-picker',
+        content: 'DatePicker [日期选择器]'
+      },
       { id: 'radio', path: '/radio', content: 'Radio [单选框]' },
       { id: 'checkbox', path: '/checkbox', content: 'Checkbox [复选框]' }
     ]
