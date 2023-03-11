@@ -1,6 +1,6 @@
 import { defineComponent, PropType } from 'vue'
 import { createNamespace } from '../utils'
-import { SizeEnum } from '../common'
+import { SizeType } from '../common'
 
 const [name, bem] = createNamespace('icon')
 
@@ -16,7 +16,7 @@ export default defineComponent({
       default: 'var(--d-primary-text-color)'
     },
     size: {
-      type: String as PropType<SizeEnum | string>,
+      type: String as PropType<SizeType | string>,
       default: 'medium'
     },
     className: {

@@ -43,7 +43,7 @@
 import { computed, defineComponent, PropType, SetupContext } from 'vue'
 import { createNamespace } from '../utils'
 import Cell from '../cell'
-import { FieldFormatterTrigger, HorizontalAlignEnum, SizeEnum } from '../common'
+import { FieldFormatterTrigger, HorizontalAlignType, SizeType } from '../common'
 import useDefault from '../hooks/useDefault'
 
 const [name, bem] = createNamespace('input')
@@ -64,7 +64,9 @@ export default defineComponent({
     },
 
     type: {
-      type: String as PropType<'text' | 'number' | 'password' | 'email' | 'url'>,
+      type: String as PropType<
+        'text' | 'number' | 'password' | 'email' | 'url'
+      >,
       default: 'text'
     },
     name: {
@@ -86,7 +88,7 @@ export default defineComponent({
       default: ''
     },
     labelAlign: {
-      type: String as PropType<HorizontalAlignEnum>,
+      type: String as PropType<HorizontalAlignType>,
       default: 'left'
     },
     hideLabel: Boolean,
@@ -95,7 +97,7 @@ export default defineComponent({
       default: ''
     },
     leftIconSize: {
-      type: String as PropType<SizeEnum | string>,
+      type: String as PropType<SizeType | string>,
       default: 'medium'
     },
     leftIconColor: {
@@ -114,7 +116,7 @@ export default defineComponent({
     readonly: Boolean,
     autofocus: Boolean,
     inputAlign: {
-      type: String as PropType<HorizontalAlignEnum>,
+      type: String as PropType<HorizontalAlignType>,
       default: 'left'
     },
     maxlength: {
@@ -132,7 +134,9 @@ export default defineComponent({
     clearable: Boolean,
 
     formatter: {
-      type: Function as PropType<(value: string | number | undefined) => string>,
+      type: Function as PropType<
+        (value: string | number | undefined) => string
+      >,
       default: null
     },
     formatterTrigger: {
@@ -151,14 +155,17 @@ export default defineComponent({
       })
     )
 
-    const [innerValue, setValue] = useDefault<string | number | undefined, typeof props>(
-      props,
-      emit as SetupContext['emit']
-    )
+    const [innerValue, setValue] = useDefault<
+      string | number | undefined,
+      typeof props
+    >(props, emit as SetupContext['emit'])
 
     function handleInput(event: Event) {
       const value = (event.target as HTMLInputElement).value
-      const newValue = props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value
+      const newValue =
+        props.formatterTrigger === 'onChange' && props.formatter
+          ? props.formatter(value)
+          : value
       setValue(newValue)
     }
 
@@ -169,7 +176,10 @@ export default defineComponent({
 
     function handleBlur(event: Event) {
       const value = innerValue.value
-      const newValue = props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value
+      const newValue =
+        props.formatterTrigger === 'onChange' && props.formatter
+          ? props.formatter(value)
+          : value
       setValue(newValue)
       emit('blur', newValue, event)
     }

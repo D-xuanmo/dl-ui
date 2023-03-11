@@ -1,7 +1,7 @@
 import { defineComponent, inject, PropType } from 'vue'
 import { createNamespace } from '../utils'
 import { isEmpty, toBoolean } from '@xuanmo/javascript-utils'
-import { HorizontalAlignEnum, SizeEnum } from '../common'
+import { HorizontalAlignType, SizeType } from '../common'
 import DIcon from '../icon'
 import { CELL_GROUP_KEY, GLOBAL_CONFIG_KEY } from '../context'
 
@@ -12,27 +12,27 @@ const props = {
   titleClass: String,
   titleWidth: String,
   titleAlign: {
-    type: String as PropType<HorizontalAlignEnum>,
+    type: String as PropType<HorizontalAlignType>,
     default: 'left'
   },
   hideTitle: Boolean,
   required: Boolean,
   leftIcon: String,
-  leftIconSize: String as PropType<SizeEnum | string>,
+  leftIconSize: String as PropType<SizeType | string>,
   leftIconColor: String,
   leftIconProps: Object,
 
   content: String as PropType<string | undefined>,
   contentClass: String,
   contentAlign: {
-    type: String as PropType<HorizontalAlignEnum>,
+    type: String as PropType<HorizontalAlignType>,
     default: 'right'
   },
   disabled: Boolean,
 
   suffix: String,
   rightIcon: String,
-  rightIconSize: String as PropType<SizeEnum | string>,
+  rightIconSize: String as PropType<SizeType | string>,
   rightIconColor: String,
   rightIconProps: Object,
 
@@ -84,7 +84,9 @@ export default defineComponent({
         hideTitle || isEmpty(title) ? null : (
           <div
             className={titleClassName}
-            style={{ width: titleWidth || cellGroupConfig?.cellTitleWidth || labelWidth }}
+            style={{
+              width: titleWidth || cellGroupConfig?.cellTitleWidth || labelWidth
+            }}
           >
             {slots.title ? (
               slots.title()
@@ -100,7 +102,9 @@ export default defineComponent({
                   />
                 ) : null}
                 <span>{title}</span>
-                {required ? <span className={bem('title', 'mark', true)}> *</span> : null}
+                {required ? (
+                  <span className={bem('title', 'mark', true)}> *</span>
+                ) : null}
               </>
             )}
           </div>
@@ -117,10 +121,18 @@ export default defineComponent({
       )
 
       const renderSuffix =
-        slots.suffix || suffix ? <div className={bem('suffix')}>{slots.suffix ? slots.suffix() : suffix}</div> : null
+        slots.suffix || suffix ? (
+          <div className={bem('suffix')}>
+            {slots.suffix ? slots.suffix() : suffix}
+          </div>
+        ) : null
 
       const renderArrow = arrow ? (
-        <DIcon name="arrow-right" className={bem('arrow')} color="var(--d-secondary-text-color)" />
+        <DIcon
+          name="arrow-right"
+          className={bem('arrow')}
+          color="var(--d-secondary-text-color)"
+        />
       ) : null
 
       function handleClick(event: Event) {
@@ -128,9 +140,14 @@ export default defineComponent({
       }
 
       return (
-        <div className={bem({ 'hide-title': hideTitle, disabled })} onClick={handleClick}>
+        <div
+          className={bem({ 'hide-title': hideTitle, disabled })}
+          onClick={handleClick}
+        >
           {renderLabel}
-          <div className={contentClassName}>{slots.default ? slots.default() : content}</div>
+          <div className={contentClassName}>
+            {slots.default ? slots.default() : content}
+          </div>
           {renderRightIcon}
           {renderSuffix}
           {renderArrow}

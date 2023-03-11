@@ -2,7 +2,13 @@
   <button :class="className" :disabled="disabled" @click="handleChange">
     <div :class="bem('handle', { active: innerValue })">
       <slot name="icon">
-        <d-icon v-if="loading" name="loading" spin size="small" color="var(--d-primary)" />
+        <d-icon
+          v-if="loading"
+          name="loading"
+          spin
+          size="small"
+          color="var(--d-primary)"
+        />
       </slot>
       <slot v-if="innerValue" name="checked-icon"></slot>
       <slot v-if="!innerValue" name="unchecked-icon"></slot>
@@ -14,7 +20,7 @@
 import { computed, defineComponent, PropType, SetupContext } from 'vue'
 import { isPromise } from '@vue/shared'
 import { createNamespace } from '../utils'
-import { SizeEnum } from '../common'
+import { SizeType } from '../common'
 import useDefault from '../hooks/useDefault'
 import DIcon from '../icon'
 import { isBoolean, throwError, debugWarn } from '@xuanmo/javascript-utils'
@@ -33,7 +39,7 @@ export default defineComponent({
       default: undefined
     },
     size: {
-      type: String as PropType<SizeEnum>,
+      type: String as PropType<SizeType>,
       default: 'medium'
     },
     loading: Boolean,
@@ -49,7 +55,10 @@ export default defineComponent({
   },
   emits: ['update:value', 'update:model-value'],
   setup(props, { emit }) {
-    const [innerValue, setValue] = useDefault<boolean | undefined, typeof props>(props, emit as SetupContext['emit'])
+    const [innerValue, setValue] = useDefault<
+      boolean | undefined,
+      typeof props
+    >(props, emit as SetupContext['emit'])
 
     const className = computed(() =>
       bem({
@@ -73,12 +82,21 @@ export default defineComponent({
 
       const interceptionResult = beforeChange()
 
-      if (![isPromise(interceptionResult), isBoolean(interceptionResult)].some((i) => i)) {
-        throwError(name, 'beforeChange 返回值必须为 `Promise<boolean>` 或者 `boolean`')
+      if (
+        ![isPromise(interceptionResult), isBoolean(interceptionResult)].some(
+          (i) => i
+        )
+      ) {
+        throwError(
+          name,
+          'beforeChange 返回值必须为 `Promise<boolean>` 或者 `boolean`'
+        )
       }
 
       if (isPromise(interceptionResult)) {
-        interceptionResult.then((result) => result && updateValue()).catch((e) => debugWarn(name, e))
+        interceptionResult
+          .then((result) => result && updateValue())
+          .catch((e) => debugWarn(name, e))
       } else if (interceptionResult) {
         updateValue()
       }

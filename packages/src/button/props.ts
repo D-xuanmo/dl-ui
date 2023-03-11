@@ -1,13 +1,13 @@
 import { PropType } from 'vue'
-import { SizeEnum, ThemeEnum } from '../common'
+import { SizeType, ThemeType } from '../common'
 
 export const buttonProps = {
   theme: {
-    type: String as PropType<ThemeEnum>,
+    type: String as PropType<ThemeType>,
     default: 'default'
   },
   size: {
-    type: String as PropType<SizeEnum>,
+    type: String as PropType<SizeType>,
     default: 'medium'
   },
   disabled: {
