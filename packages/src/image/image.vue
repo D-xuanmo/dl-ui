@@ -36,7 +36,7 @@ export default defineComponent({
     const loading = ref<boolean>(props.showLoading ?? true)
 
     // 加载失败
-    const loadError = ref(false)
+    const loadError = ref(props.showError ?? false)
 
     const wrapperStyle = computed<CSSProperties>(() => ({
       width: addUnit(props.width),
@@ -52,6 +52,13 @@ export default defineComponent({
       () => props.showLoading,
       () => {
         loading.value = props.showLoading
+      }
+    )
+
+    watch(
+      () => props.showError,
+      () => {
+        loadError.value = props.showError
       }
     )
 

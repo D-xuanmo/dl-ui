@@ -60,7 +60,7 @@ export const imageProps = {
   round: Boolean,
 
   /**
-   * 是否显示加载中状态
+   * 是否显示加载中状态，外部控制
    */
   showLoading: Boolean,
 
@@ -71,6 +71,11 @@ export const imageProps = {
     type: String,
     default: 'loading-2'
   },
+
+  /**
+   * 是否显示加载失败，外部控制
+   */
+  showError: Boolean,
 
   /**
    * 加载失败图标
