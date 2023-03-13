@@ -134,7 +134,7 @@ export const uploadProps = {
    */
   capture: {
     type: [String, Boolean] as PropType<'user' | 'environment' | boolean | undefined>,
-    default: ''
+    default: undefined
   },
 
   /**
