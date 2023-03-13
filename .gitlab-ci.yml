@@ -5,7 +5,7 @@ build:
   stage: build
   only:
     refs:
-      - master
+      - develop
   script:
     - cd /htdocs/dynamic-form
     - git pull
