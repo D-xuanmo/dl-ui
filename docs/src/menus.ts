@@ -39,7 +39,8 @@ const menus: MenuItemType[] = [
         content: 'DatePicker [日期选择器]'
       },
       { id: 'radio', path: '/radio', content: 'Radio [单选框]' },
-      { id: 'checkbox', path: '/checkbox', content: 'Checkbox [复选框]' }
+      { id: 'checkbox', path: '/checkbox', content: 'Checkbox [复选框]' },
+      { id: 'upload', path: '/upload', content: 'Upload [文件上传]' }
     ]
   }
 ]

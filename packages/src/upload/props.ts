@@ -36,6 +36,16 @@ export type UploadCallbackParameters = (
   }
 ) => void
 
+/**
+ * 上传前拦截方法
+ */
+export type BeforeUploadType = (...rest: Parameters<UploadCallbackParameters>) => Promise<boolean>
+
+/**
+ * 上传后拦截方法
+ */
+export type AfterUploadType = (response: XMLHttpRequestResponseType) => UploadListItemType
+
 export const uploadProps = {
   modelValue: {
     type: Array as PropType<UploadListItemType[]>,
@@ -155,7 +165,7 @@ export const uploadProps = {
    * 文件上传前回调函数，返回 false 终止上传
    */
   beforeUpload: {
-    type: Function as PropType<(...rest: Parameters<UploadCallbackParameters>) => Promise<boolean>>,
+    type: Function as PropType<BeforeUploadType>,
     default: undefined
   },
 
@@ -163,7 +173,7 @@ export const uploadProps = {
    * 文件上传成功回调，返回文件预览列表
    */
   uploadAfter: {
-    type: Function as PropType<(response: XMLHttpRequestResponseType) => UploadListItemType>,
+    type: Function as PropType<AfterUploadType>,
     default: undefined
   }
 }

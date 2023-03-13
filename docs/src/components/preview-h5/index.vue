@@ -72,7 +72,10 @@ export default defineComponent({
     overflow: auto;
     margin-top: var(--d-gap-xs);
     padding: var(--d-gap-sm);
-    padding-top: 0;
+
+    &.bg-white {
+      background: #fff;
+    }
   }
 }
 </style>

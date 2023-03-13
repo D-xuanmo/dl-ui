@@ -36,7 +36,10 @@ export default defineConfig({
   server: {
     open: '/',
     host: '0.0.0.0',
-    port: 3200
+    port: 3200,
+    proxy: {
+      '/api': 'http://127.0.0.1:7001'
+    }
   },
   resolve: {
     alias: {
