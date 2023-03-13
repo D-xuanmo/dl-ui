@@ -76,7 +76,7 @@ export const uploadProps = {
   /**
    * 文件上传数据的 key，默认：file
    */
-  uploadDataKey: {
+  name: {
     type: String,
     default: 'file'
   },

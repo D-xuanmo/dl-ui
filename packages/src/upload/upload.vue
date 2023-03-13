@@ -62,7 +62,7 @@ export default defineComponent({
         const file = files[i]
         const formData = new FormData()
         const currentPreview = localPreviewList.value[i]
-        formData.append(props.uploadDataKey, file, file.name)
+        formData.append(props.name, file, file.name)
         if (isObject(props.data)) {
           for (const [key, value] of Object.entries(props.data)) {
             formData.append(key, value)

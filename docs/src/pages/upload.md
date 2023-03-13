@@ -8,25 +8,25 @@
 
 ### Props
 
-| 参数            | 类型                                              | 默认值     | 说明                                    | 必传 |
-| --------------- | ------------------------------------------------- | ---------- | --------------------------------------- | ---- |
-| v-model         | `UploadListItemType[]`                            | -          | 当前文件列表                            | Y    |
-| action          | `string`                                          | -          | 文件上传地址                            | N    |
-| accept          | `string`                                          | 'image/\*' | 文件上传类型，input 原生属性            | N    |
-| capture         | `'user' \| 'environment' \| boolean \| undefined` | -          | 相机调取模式，原生属性                  | N    |
-| method          | `string`                                          | 'POST'     | 请求方式                                | N    |
-| upload-data-key | `string`                                          | 'file'     | 文件上传数据的 key                      | N    |
-| multiple        | `boolean`                                         | `false`    | 是否多选                                | N    |
-| disabled        | `boolean`                                         | `false`    | 禁用                                    | N    |
-| readonly        | `boolean`                                         | `false`    | 只读                                    | N    |
-| deletable       | `boolean`                                         | `true`     | 是否展示删除按钮                        | N    |
-| max-size        | `number`                                          | `Infinity` | 上传大小限制，单位：byte                | N    |
-| max-count       | `number`                                          | `Infinity` | 上传个数                                | N    |
-| preview-size    | `number`                                          | `80px`     | 上传区域预览大小                        | N    |
-| data            | `Record<string, any>`                             | -          | 文件上传需要携带的附加参数              | N    |
-| header-params   | `Record<string, any>`                             | -          | 文件上传请求头参数                      | N    |
-| before-upload   | `BeforeUploadType`                                | -          | 文件上传前回调函数，返回 false 终止上传 | N    |
-| upload-after    | `AfterUploadType`                                 | -          | 文件上传成功回调，返回文件预览列表      | N    |
+| 参数          | 类型                                              | 默认值     | 说明                                    | 必传 |
+| ------------- | ------------------------------------------------- | ---------- | --------------------------------------- | ---- |
+| v-model       | `UploadListItemType[]`                            | -          | 当前文件列表                            | Y    |
+| action        | `string`                                          | -          | 文件上传地址                            | N    |
+| accept        | `string`                                          | 'image/\*' | 文件上传类型，input 原生属性            | N    |
+| capture       | `'user' \| 'environment' \| boolean \| undefined` | -          | 相机调取模式，原生属性                  | N    |
+| method        | `string`                                          | 'POST'     | 请求方式                                | N    |
+| name          | `string`                                          | 'file'     | 文件上传字段名                          | N    |
+| multiple      | `boolean`                                         | `false`    | 是否多选                                | N    |
+| disabled      | `boolean`                                         | `false`    | 禁用                                    | N    |
+| readonly      | `boolean`                                         | `false`    | 只读                                    | N    |
+| deletable     | `boolean`                                         | `true`     | 是否展示删除按钮                        | N    |
+| max-size      | `number`                                          | `Infinity` | 上传大小限制，单位：byte                | N    |
+| max-count     | `number`                                          | `Infinity` | 上传个数                                | N    |
+| preview-size  | `number`                                          | `80px`     | 上传区域预览大小                        | N    |
+| data          | `Record<string, any>`                             | -          | 文件上传需要携带的附加参数              | N    |
+| header-params | `Record<string, any>`                             | -          | 文件上传请求头参数                      | N    |
+| before-upload | `BeforeUploadType`                                | -          | 文件上传前回调函数，返回 false 终止上传 | N    |
+| upload-after  | `AfterUploadType`                                 | -          | 文件上传成功回调，返回文件预览列表      | N    |
 
 ### TS 类型说明
 
