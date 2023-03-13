@@ -7,7 +7,7 @@
         :height="previewSize"
         :show-loading="item.loading"
         :show-error="item.fail"
-        error-text="上传失败"
+        :error-text="item.fail ? '上传失败' : undefined"
       />
       <d-icon
         v-if="deletable && item.deletable"
