@@ -18,4 +18,6 @@ type RadioGroupContextType = Omit<RadioGroupPropsType, 'modelValue' | 'disabled'
   onChangeEvent: (value: string | number) => void
 }
 
-export const RADIO_GROUP_KEY = Symbol('DFormRadioGroup') as InjectionKey<RadioGroupContextType>
+export const RADIO_GROUP_CONTEXT_KEY = Symbol(
+  'DFormRadioGroup'
+) as InjectionKey<RadioGroupContextType>

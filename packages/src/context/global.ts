@@ -14,4 +14,4 @@ export type FormGlobalConfigType = {
   zIndex?: number
 }
 
-export const GLOBAL_CONFIG_KEY = Symbol('DForm') as InjectionKey<FormGlobalConfigType>
+export const GLOBAL_CONFIG_CONTEXT_KEY = Symbol('DForm') as InjectionKey<FormGlobalConfigType>

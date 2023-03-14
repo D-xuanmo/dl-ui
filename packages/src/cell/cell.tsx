@@ -3,7 +3,7 @@ import { createNamespace } from '../utils'
 import { isEmpty, toBoolean } from '@xuanmo/javascript-utils'
 import { HorizontalAlignType, SizeType } from '../common'
 import DIcon from '../icon'
-import { CELL_GROUP_KEY, GLOBAL_CONFIG_KEY } from '../context'
+import { CELL_GROUP_CONTEXT_KEY, GLOBAL_CONFIG_CONTEXT_KEY } from '../context'
 
 const [name, bem] = createNamespace('cell')
 
@@ -45,8 +45,8 @@ export default defineComponent({
   emits: ['click'],
   setup(props, { slots, emit }) {
     return () => {
-      const { labelWidth, hideLabel } = inject(GLOBAL_CONFIG_KEY) ?? {}
-      const cellGroupConfig = inject(CELL_GROUP_KEY)
+      const { labelWidth, hideLabel } = inject(GLOBAL_CONFIG_CONTEXT_KEY) ?? {}
+      const cellGroupConfig = inject(CELL_GROUP_CONTEXT_KEY)
       const {
         title,
         titleAlign,

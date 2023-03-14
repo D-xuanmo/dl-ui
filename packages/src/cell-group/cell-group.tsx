@@ -1,6 +1,6 @@
 import { defineComponent, provide, PropType, inject } from 'vue'
 import { createNamespace } from '../utils'
-import { CELL_GROUP_KEY, GLOBAL_CONFIG_KEY } from '../context'
+import { CELL_GROUP_CONTEXT_KEY, GLOBAL_CONFIG_CONTEXT_KEY } from '../context'
 import { LABEL_WIDTH } from '../constants'
 
 const [name, bem] = createNamespace('cell-group')
@@ -18,8 +18,8 @@ export default defineComponent({
   name,
   props,
   setup(props, { slots }) {
-    const globalConfig = inject(GLOBAL_CONFIG_KEY)
-    provide(CELL_GROUP_KEY, {
+    const globalConfig = inject(GLOBAL_CONFIG_CONTEXT_KEY)
+    provide(CELL_GROUP_CONTEXT_KEY, {
       cellTitleWidth: props.cellTitleWidth || globalConfig?.labelWidth || LABEL_WIDTH
     })
     return () => {

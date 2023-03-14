@@ -12,7 +12,7 @@ import { computed, defineComponent, inject } from 'vue'
 import { createNamespace } from '../utils'
 import { isEmpty, deleteArrayItems } from '@xuanmo/javascript-utils'
 import { checkboxProps } from './props'
-import { CHECKBOX_GROUP_KEY } from '../context/checkbox-group'
+import { CHECKBOX_GROUP_CONTEXT_KEY } from '../context'
 
 const [name, bem] = createNamespace('checkbox')
 
@@ -20,7 +20,7 @@ export default defineComponent({
   name,
   props: checkboxProps,
   setup(props) {
-    const { value: groupValue, disabled, onChangeEvent } = inject(CHECKBOX_GROUP_KEY)!
+    const { value: groupValue, disabled, onChangeEvent } = inject(CHECKBOX_GROUP_CONTEXT_KEY)!
     const wrapperClassName = bem()
     const labelClassName = bem('label')
     const checked = computed(() => {

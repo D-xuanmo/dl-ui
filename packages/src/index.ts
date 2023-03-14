@@ -2,7 +2,7 @@ import { App } from 'vue'
 import 'virtual:svg-icons-register'
 import './style/index.scss'
 import * as components from './components'
-import { FormGlobalConfigType, GLOBAL_CONFIG_KEY, CELL_GROUP_KEY } from './context'
+import { FormGlobalConfigType, GLOBAL_CONFIG_CONTEXT_KEY, CELL_GROUP_CONTEXT_KEY } from './context'
 import { LABEL_WIDTH } from './constants'
 import pkg from '../package.json'
 
@@ -13,8 +13,8 @@ const install = function (app: App, options?: FormGlobalConfigType) {
     zIndex: 2000,
     ...(options ?? {})
   }
-  app.provide(GLOBAL_CONFIG_KEY, config)
-  app.provide(CELL_GROUP_KEY, {})
+  app.provide(GLOBAL_CONFIG_CONTEXT_KEY, config)
+  app.provide(CELL_GROUP_CONTEXT_KEY, {})
   app.config.globalProperties.$DForm = config
   Object.values(components).forEach((component) => {
     app.use(component)

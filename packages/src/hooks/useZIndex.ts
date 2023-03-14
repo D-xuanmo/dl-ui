@@ -1,5 +1,5 @@
 import { getCurrentInstance, inject, Ref, ref } from 'vue'
-import { GLOBAL_CONFIG_KEY } from '../context'
+import { GLOBAL_CONFIG_CONTEXT_KEY } from '../context'
 
 /**
  * 统一处理 zIndex
@@ -8,7 +8,7 @@ import { GLOBAL_CONFIG_KEY } from '../context'
  */
 function useZIndex<P>(props: P & { zIndex?: number }, autoIncrement = true) {
   const { proxy } = getCurrentInstance() ?? {}
-  const globalConfig = inject(GLOBAL_CONFIG_KEY) ?? {}
+  const globalConfig = inject(GLOBAL_CONFIG_CONTEXT_KEY) ?? {}
 
   const defaultZIndex = props.zIndex ?? globalConfig.zIndex
 

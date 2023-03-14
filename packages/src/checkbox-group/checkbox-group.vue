@@ -9,7 +9,7 @@ import { computed, defineComponent, provide, SetupContext, UnwrapRef } from 'vue
 import { createNamespace } from '../utils'
 import { checkboxGroupProps } from './props'
 import useDefault from '../hooks/useDefault'
-import { CHECKBOX_GROUP_KEY, CheckboxGroupContextType } from '../context/checkbox-group'
+import { CHECKBOX_GROUP_CONTEXT_KEY, CheckboxGroupContextType } from '../context'
 
 const [name, bem] = createNamespace('checkbox-group')
 
@@ -30,7 +30,7 @@ export default defineComponent({
       emit('update:model-value', value)
     }
 
-    provide(CHECKBOX_GROUP_KEY, {
+    provide(CHECKBOX_GROUP_CONTEXT_KEY, {
       value: innerValue,
       direction: props.direction,
       disabled,

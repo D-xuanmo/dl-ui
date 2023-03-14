@@ -5,4 +5,4 @@ type CellGroupConfig = {
   cellTitleWidth?: string
 }
 
-export const CELL_GROUP_KEY = Symbol('DFormCellGroup') as InjectionKey<CellGroupConfig>
+export const CELL_GROUP_CONTEXT_KEY = Symbol('DFormCellGroup') as InjectionKey<CellGroupConfig>

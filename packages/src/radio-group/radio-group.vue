@@ -9,7 +9,7 @@ import { computed, defineComponent, provide, SetupContext } from 'vue'
 import { createNamespace } from '../utils'
 import { radioGroupProps } from './props'
 import useDefault from '../hooks/useDefault'
-import { RADIO_GROUP_KEY } from '../context'
+import { RADIO_GROUP_CONTEXT_KEY } from '../context'
 
 const [name, bem] = createNamespace('radio-group')
 
@@ -30,7 +30,7 @@ export default defineComponent({
       emit('change', value)
     }
 
-    provide(RADIO_GROUP_KEY, {
+    provide(RADIO_GROUP_CONTEXT_KEY, {
       value: innerValue,
       direction: props.direction,
       disabled,
