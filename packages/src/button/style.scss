@@ -161,4 +161,33 @@
   &__icon-loading {
     margin-right: var(--d-gap-xxs);
   }
+
+  // 链接模式
+  &--is-link {
+    height: auto;
+    padding: 0;
+
+    // 主题
+    &#{$prefix}--theme {
+      &-default {
+        color: var(--d-primary-text-color);
+      }
+
+      &-primary {
+        color: var(--d-primary);
+      }
+
+      &-success {
+        color: var(--d-success);
+      }
+
+      &-warning {
+        color: var(--d-warning);
+      }
+
+      &-danger {
+        color: var(--d-error);
+      }
+    }
+  }
 }

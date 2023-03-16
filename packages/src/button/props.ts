@@ -58,5 +58,10 @@ export const buttonProps = {
   /**
    * 是否显示 loading 效果
    */
-  loading: Boolean
+  loading: Boolean,
+
+  /**
+   * 链接模式
+   */
+  link: Boolean
 }
