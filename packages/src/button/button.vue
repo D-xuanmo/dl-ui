@@ -25,8 +25,8 @@ export default defineComponent({
       bem({
         [`theme-${props.theme}`]: true,
         [`size-${props.size}`]: true,
-        [`shape-${props.shape}`]: true,
-        [`fill-${props.fill}`]: true,
+        [`shape-${props.shape}`]: !props.link,
+        [`fill-${props.fill}`]: !props.link,
         block: props.block,
         disabled: props.disabled,
         'is-link': props.link

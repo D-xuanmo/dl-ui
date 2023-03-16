@@ -7,6 +7,17 @@
   </d-demo-block>
 
   <d-demo-block>
+    <p>链接模式</p>
+    <d-space :gap="8">
+      <d-button link theme="default">default</d-button>
+      <d-button link theme="primary">primary</d-button>
+      <d-button link theme="success">success</d-button>
+      <d-button link theme="warning">warning</d-button>
+      <d-button link theme="danger">danger</d-button>
+    </d-space>
+  </d-demo-block>
+
+  <d-demo-block>
     <p>尺寸</p>
     <d-button size="small" fill="solid" theme="primary">small</d-button>
     <d-button size="medium" fill="solid" theme="primary" class="m-l-5px m-r-5px">medium</d-button>

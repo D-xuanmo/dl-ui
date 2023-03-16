@@ -166,6 +166,7 @@
   &--is-link {
     height: auto;
     padding: 0;
+    border: 0;
 
     // 主题
     &#{$prefix}--theme {
