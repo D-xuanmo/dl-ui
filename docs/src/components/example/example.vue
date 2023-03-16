@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent, inject } from 'vue'
 import { createNamespace } from '@/utils/bem'
-import { GLOBAL_CONFIG_KEY } from '@/context'
+import { GLOBAL_CONFIG_CONTEXT_KEY } from '@/context'
 
 const [name] = createNamespace('example')
 
