@@ -22,7 +22,7 @@ export default defineComponent({
   name,
   props,
   setup() {
-    const globalConfig = inject(GLOBAL_CONFIG_KEY)
+    const globalConfig = inject(GLOBAL_CONFIG_CONTEXT_KEY)
     return {
       globalConfig
     }
