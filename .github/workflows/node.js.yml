@@ -4,6 +4,7 @@ on:
   push:
     paths:
      - 'packages/package.json'
+     - '.github/workflows/node.js.yml'
 
 jobs:
   publish-npm:
