@@ -1,20 +1,24 @@
-# Vue3 Dynamic Form [![Node.js CI](https://github.com/D-xuanmo/dynamic-form/actions/workflows/node.js.yml/badge.svg)](https://github.com/D-xuanmo/dynamic-form/actions/workflows/node.js.yml)
+# 介绍
 
-## 项目说明
+> `Dynamic Form` 是基于 `Vue3` 开发的一套专注于表单的组件，为了解决表单繁琐的校验、联动、数据交互应运而生，不是大而全的 UI 组件库，主要通过配置的形式使用表单，尽可能达到不写代码实现一个表单的创建，类似于之前基于 `Vue2 + Vant2` 开发的动态表单模式，[具体链接](https://github.com/D-xuanmo/v-form)，功能会更强大。
 
-- 本项目是实现一套基于 `Vue3` 的动态表单，组件一共分为 PC、H5 两套组件。
-- 技术栈：Vue3 + TypeScript + Pinia
+## 组件目前规划
 
-## 环境配置
+![组件说明](https://uoo.ink/2bi907b)
 
-1. IDE 配置参考 Vue3 官网说明：[https://vuejs.org/guide/typescript/overview.html#ide-support](https://vuejs.org/guide/typescript/overview.html#ide-support)
+## 链接
 
-## 代码规范说明
+1. 项目仓库 [https://github.com/D-xuanmo/dynamic-form](https://github.com/D-xuanmo/dynamic-form)
+2. 在线演练场 [https://run.xuanmo.xin](https://run.xuanmo.xin)
+3. 工具方法 [https://github.com/D-xuanmo/javascript-utils](https://github.com/D-xuanmo/javascript-utils)
 
-1. [Git 代码提交规范](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines)
-2. 代码格式化统一使用 `prettier`，[https://prettier.io/docs/en/index.html](https://prettier.io/docs/en/index.html)
-3. 目录和文件命名规则为 `kebab-case`
+## 特别鸣谢
 
-## 组件完整功能
+- 感谢 [JetBrains](https://www.jetbrains.com/) 提供的 [非商业开源软件开发授权](https://www.jetbrains.com/shop/eform/opensource)
+- 感谢 [JasKang](https://github.com/JasKang/vite-plugin-markdown-preview) 提供的 Markdown 预览方案
+- 感谢 [三咲智子](https://github.com/element-plus/element-plus-playground) 提供的在线运行组件方案
 
-![组件说明](https://my.xuanmo.xin:3202/api/file-server/read-file/3a884eec-6e8c-490e-a248-19b577ccf639)
+## License
+
+- 本项目基于 [MIT](https://github.com/D-xuanmo/dynamic-form/blob/develop/LICENSE) 协议，欢迎有兴趣的朋友一起交流
+- Copyright © 2022-PRESENT [D-Xuanmo](https://github.com/D-xuanmo)

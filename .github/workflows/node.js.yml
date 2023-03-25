@@ -19,7 +19,8 @@ jobs:
         registry-url: https://registry.npmjs.org/
 
     - run: yarn
-    - run: yarn build:lib
+    - shell: bash
+      run: ./build.sh
     - run: cd packages && npm publish --access public
 
       env:

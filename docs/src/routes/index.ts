@@ -8,11 +8,12 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
  */
 const getRoutes = () => {
   const modules = import.meta.glob('../pages/**/*.md')
+  const introduce = import.meta.glob('../../../README.md')
   const routes: RouteRecordRaw[] = []
-  for (const [key, module] of Object.entries(modules)) {
-    const { path } = /(?<path>\/[a-z\d-]+)\.md$/.exec(key)?.groups ?? {}
+  for (const [key, module] of Object.entries({ ...modules, ...introduce })) {
+    const { path } = /(?<path>\/[a-z\d-]+)\.md$/i.exec(key)?.groups ?? {}
     routes.push({
-      path,
+      path: path.includes('README') ? '/introduce' : path,
       component: module
     })
   }
