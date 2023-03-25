@@ -21,7 +21,7 @@ jobs:
 
     - run: yarn
     - shell: bash
-      run: ./build-lib.sh
+      run: cp -r ./README.md ./packages & cp -r ./LICENSE ./packages & npm run build:lib
     - run: cd packages && npm publish --access public
 
       env:
