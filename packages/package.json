@@ -1,7 +1,7 @@
 {
   "name": "@xuanmo/dynamic-form",
   "private": false,
-  "version": "0.0.1-alpha.27",
+  "version": "0.0.1-alpha.28",
   "author": {
     "name": "xuanmo",
     "email": "me@xuanmo.xin"
@@ -24,7 +24,7 @@
   "type": "module",
   "main": "./dist/d-form.umd.js",
   "module": "./dist/d-form.es.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/src/index.d.ts",
   "license": "MIT",
   "dependencies": {
     "@xuanmo/datejs": "^1.0.14",
