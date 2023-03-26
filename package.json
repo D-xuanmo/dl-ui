@@ -19,7 +19,6 @@
     "lint:tsc": "yarn workspace @xuanmo/dynamic-form tsc:clear"
   },
   "dependencies": {
-    "@xuanmo/datejs": "^1.0.9",
     "@xuanmo/javascript-utils": "^0.0.42"
   }
 }
