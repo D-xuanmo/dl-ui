@@ -4,13 +4,14 @@
 
 ## 组件目前规划
 
-![组件说明](https://uoo.ink/2bi907b)
+![组件说明](https://uoo.ink/FMindMapping)
 
 ## 链接
 
-1. 项目仓库 [https://github.com/D-xuanmo/dynamic-form](https://github.com/D-xuanmo/dynamic-form)
-2. 在线演练场 [https://run.xuanmo.xin](https://run.xuanmo.xin)
-3. 工具方法 [https://github.com/D-xuanmo/javascript-utils](https://github.com/D-xuanmo/javascript-utils)
+1. 项目仓库：[https://github.com/D-xuanmo/dynamic-form](https://github.com/D-xuanmo/dynamic-form)
+2. 数据校验：[https://github.com/D-xuanmo/validator](https://github.com/D-xuanmo/validator)
+3. 工具方法：[https://github.com/D-xuanmo/javascript-utils](https://github.com/D-xuanmo/javascript-utils)
+4. 在线演练场：[https://run.xuanmo.xin](https://run.xuanmo.xin)
 
 ## 特别鸣谢
 
