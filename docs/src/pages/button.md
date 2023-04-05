@@ -46,12 +46,6 @@
   <d-button theme="success" icon="star-f">default</d-button>
   <d-button theme="success" fill="outline" icon="star-f">default</d-button>
 </template>
-
-<style>
-.d-button {
-  margin: 0 10px 10px 0;
-}
-</style>
 ```
 
 ## API

@@ -5,12 +5,17 @@
       <h1>Dynamic Form</h1>
     </div>
     <div :class="rightClassName">
-      <a href="https://run.xuanmo.xin/" target="_blank">
-        <d-button size="small" fill="none">演练场</d-button>
-      </a>
-      <a href="https://github.com/D-xuanmo/dynamic-form" target="_blank"
-        ><img :src="githubLogo"
-      /></a>
+      <d-space :gap="16" align="center" justify="end">
+        <a href="https://run.xuanmo.xin/" target="_blank">
+          <d-button size="small" fill="none" link theme="primary">演练场</d-button>
+        </a>
+        <a href="https://github.com/D-xuanmo/validator" target="_blank">
+          <d-button size="small" fill="none" link theme="primary">数据校验</d-button>
+        </a>
+        <a href="https://github.com/D-xuanmo/dynamic-form" target="_blank">
+          <img :src="githubLogo" width="24" />
+        </a>
+      </d-space>
     </div>
   </header>
 </template>
