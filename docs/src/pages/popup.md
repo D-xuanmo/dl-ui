@@ -4,7 +4,7 @@
 
 默认居中显示
 
-```vue playground=fi6nth height=300
+```vue playground=MPopup height=300
 <template>
   <d-button theme="primary" @click="handleShowPopup">打开弹框</d-button>
   <d-popup v-model:visible="showPopup"> 我是内容 </d-popup>
@@ -25,7 +25,7 @@ function handleShowPopup() {
 
 通过 `placement` 设置方向
 
-```vue playground=hp3msr
+```vue playground=MPopupEx
 <template>
   <d-cell-group round title="弹出位置">
     <d-cell title="顶部弹出" content="placement: top" arrow @click="handleShowPopup('top')" />

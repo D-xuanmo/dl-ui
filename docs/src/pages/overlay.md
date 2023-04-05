@@ -2,7 +2,7 @@
 
 可以在页面添加一层遮罩层，一般用于弹框的背景。
 
-```vue playground=17sas56
+```vue playground=MOverlay
 <template>
   <d-cell title="打开遮罩层">
     <d-switch v-model="visible" />

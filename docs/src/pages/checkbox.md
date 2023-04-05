@@ -1,6 +1,6 @@
 # Checkbox 复选框
 
-```vue playground=1ben4 height=600
+```vue playground=MCheckbox height=600
 <template>
   <p>基础用法</p>
   <d-checkbox-group v-model="value">

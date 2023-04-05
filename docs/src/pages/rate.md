@@ -1,6 +1,6 @@
 # Rate 评分
 
-```vue playground=1qh8p78
+```vue playground=MRate
 <template>
   <d-cell-group title="基础用法">
     <d-cell content-align="left">

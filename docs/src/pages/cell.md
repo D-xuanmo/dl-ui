@@ -4,7 +4,7 @@
 
 ## CellGroup 单元格分组
 
-```vue playground=g3bts3 height=320
+```vue playground=MCellGroup height=320
 <template>
   <d-cell-group title="CellGroup 分组">
     <d-cell title="我是标题" content="内容" />
@@ -19,7 +19,7 @@
 
 ## Cell 单元格
 
-```vue playground=2enlq1o
+```vue playground=MCell
 <template>
   <d-cell title="我是标题" content="内容" />
   <d-cell title="我是标题" content="必填标识" required />

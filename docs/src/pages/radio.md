@@ -1,6 +1,6 @@
 # Radio 单选框
 
-```vue playground=39u97n8
+```vue playground=MRadio
 <template>
   <p>基本用法</p>
   <d-radio-group v-model="value">

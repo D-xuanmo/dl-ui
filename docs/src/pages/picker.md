@@ -2,7 +2,7 @@
 
 > 目前只支持移动端事件
 
-```vue playground=3dtspi3
+```vue playground=MPicker
 
 ```
 

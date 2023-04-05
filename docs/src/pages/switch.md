@@ -2,7 +2,7 @@
 
 ## 基础用法
 
-```vue playground=1uuug1l
+```vue playground=MSwitch
 <template>
   <d-cell title="基础用法">
     <d-switch v-model="value" />
