@@ -23,3 +23,7 @@
 
 - 本项目基于 [MIT](https://github.com/D-xuanmo/dynamic-form/blob/develop/LICENSE) 协议，欢迎有兴趣的朋友一起交流
 - Copyright © 2022-PRESENT [D-Xuanmo](https://github.com/D-xuanmo)
+
+## 动态
+
+![Alt](https://repobeats.axiom.co/api/embed/6748b43f3a850bbfb9fa62bca5a734b06a9a2cf0.svg 'Repobeats analytics image')
