@@ -3,7 +3,7 @@ import { withInstall } from '../utils'
 
 export const DSpace = withInstall(Space)
 
-export type { SpaceAlignType, SpaceJustifyType } from './props'
+export type { SpaceAlignType, SpaceJustifyType, SpaceProps } from './props'
 
 export default DSpace
 

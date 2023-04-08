@@ -39,66 +39,18 @@
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties, defineComponent, PropType, TeleportProps } from 'vue'
+import { computed, CSSProperties, defineComponent } from 'vue'
 import { createNamespace } from '../utils'
 import DOverlay from '../overlay'
-import { PlacementType } from '../common'
 import useZIndex from '../hooks/useZIndex'
-import { TRANSITION_DURATION } from '../constants/animation'
+import { POPUP_PROPS } from './props'
 
 const [name, bem] = createNamespace('popup')
-
-const props = {
-  visible: Boolean,
-  title: String,
-  placement: {
-    type: String as PropType<PlacementType>,
-    default: 'center'
-  },
-  zIndex: {
-    type: Number,
-    default: undefined
-  },
-  duration: {
-    type: [Number, String] as PropType<number | string | undefined>,
-    default: TRANSITION_DURATION
-  },
-  round: Boolean,
-  closeable: Boolean,
-  closeIcon: {
-    type: String,
-    default: 'close'
-  },
-  teleport: {
-    type: String as PropType<TeleportProps['to']>,
-    default: 'body'
-  },
-
-  popupClass: String,
-  popupStyle: {
-    type: Object as PropType<CSSProperties>,
-    default: {}
-  },
-
-  overlay: {
-    type: Boolean,
-    default: true
-  },
-  overlayClass: String,
-  overlayStyle: {
-    type: Object as PropType<CSSProperties>,
-    default: {}
-  },
-  closeOnClickOverlay: {
-    type: Boolean,
-    default: true
-  }
-}
 
 export default defineComponent({
   name,
   components: { DOverlay },
-  props,
+  props: POPUP_PROPS,
   emits: ['update:visible', 'open', 'opened', 'close', 'closed', 'click-overlay-icon'],
   setup(props, { emit }) {
     const isCenter = computed(() => props.placement === 'center')

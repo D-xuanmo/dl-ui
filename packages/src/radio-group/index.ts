@@ -3,6 +3,8 @@ import { withInstall } from '../utils'
 
 export const DRadioGroup = withInstall(RadioGroup)
 
+export { type RadioGroupProps } from './props'
+
 export default DRadioGroup
 
 declare module 'vue' {

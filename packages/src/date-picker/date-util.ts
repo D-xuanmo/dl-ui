@@ -77,7 +77,7 @@ class DateUtil {
   }
 
   getColumns = () => {
-    /* eslint-disable */
+    /* eslint-disable indent */
     switch (this.dateType) {
       case 'date':
         return [this.getYearColumn(), this.getMonthColumn(), this.getDayColumn()]
@@ -104,7 +104,7 @@ class DateUtil {
       case 'time':
         return [this.getHourColumn(), this.getMinute()]
     }
-    /* eslint-enable */
+    /* eslint-enable indent */
   }
 
   getYearColumn = (): DateTimePickerColumnType[] => {

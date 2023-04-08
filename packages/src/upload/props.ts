@@ -1,4 +1,4 @@
-import { PropType } from 'vue'
+import { ExtractPropTypes, PropType } from 'vue'
 
 /**
  * 文件上传列表单条数据类型
@@ -46,7 +46,9 @@ export type BeforeUploadType = (...rest: Parameters<UploadCallbackParameters>) =
  */
 export type AfterUploadType = (response: XMLHttpRequestResponseType) => UploadListItemType
 
-export const uploadProps = {
+export type UploadProps = ExtractPropTypes<typeof UPLOAD_PROPS>
+
+export const UPLOAD_PROPS = {
   modelValue: {
     type: Array as PropType<UploadListItemType[]>,
     default: () => []
@@ -179,8 +181,8 @@ export const uploadProps = {
 }
 
 export const uploadListProps = {
-  deletable: uploadProps.deletable,
-  previewSize: uploadProps.previewSize,
+  deletable: UPLOAD_PROPS.deletable,
+  previewSize: UPLOAD_PROPS.previewSize,
   list: {
     type: Array as PropType<UploadListItemType[]>,
     default: () => []

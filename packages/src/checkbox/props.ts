@@ -1,6 +1,8 @@
-import { PropType } from 'vue'
+import { ExtractPropTypes, PropType } from 'vue'
 
-export const checkboxProps = {
+export type CheckboxProps = ExtractPropTypes<typeof CHECKBOX_PROPS>
+
+export const CHECKBOX_PROPS = {
   value: {
     type: [String, Number] as PropType<string | number>,
     default: ''

@@ -1,6 +1,6 @@
 import { computed, defineComponent } from 'vue'
 import { createNamespace } from '../utils'
-import { spaceProps } from './props'
+import { SPACE_PROPS } from './props'
 import { createRandomID } from '@xuanmo/javascript-utils'
 import { addUnit } from '../utils'
 
@@ -8,7 +8,7 @@ const [name, bem] = createNamespace('space')
 
 export default defineComponent({
   name,
-  props: spaceProps,
+  props: SPACE_PROPS,
   setup(props, { slots }) {
     return () => {
       const wrapperClassName = computed(() =>

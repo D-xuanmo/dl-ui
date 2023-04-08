@@ -20,7 +20,7 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent, ref } from 'vue'
-import { UploadListItemType, uploadProps } from './props'
+import { UploadListItemType, UPLOAD_PROPS } from './props'
 import { createUploadNameSpace } from './utils'
 import Icon from '../icon'
 import UploadList from './upload-list.vue'
@@ -36,7 +36,7 @@ export default defineComponent({
     [Icon.name]: Icon,
     UploadList
   },
-  props: uploadProps,
+  props: UPLOAD_PROPS,
   emits: ['update:model-value', 'change'],
   setup(props, { emit }) {
     const wrapperClassName = bem()

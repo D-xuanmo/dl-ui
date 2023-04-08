@@ -1,4 +1,4 @@
-import { PickerColumnType, pickerProps } from './props'
+import { PickerColumnType, PICKER_PROPS } from './props'
 import { DataType } from '../common'
 
 type PickerType = {
@@ -13,7 +13,7 @@ class Picker {
 
   options: PickerType['options'] = []
 
-  itemHeight = pickerProps.optionHeight.default
+  itemHeight = PICKER_PROPS.optionHeight.default
 
   /** 最大允许偏移距离 */
   maxTranslateY = 0

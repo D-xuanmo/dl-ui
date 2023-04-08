@@ -10,7 +10,7 @@ const install = function (app: App, options?: FormGlobalConfigType) {
     hideLabel: false,
     labelWidth: LABEL_WIDTH,
     zIndex: 2000,
-    ...(options ?? {})
+    ...options
   }
   app.provide(GLOBAL_CONFIG_CONTEXT_KEY, config)
   app.provide(CELL_GROUP_CONTEXT_KEY, {})
@@ -19,6 +19,12 @@ const install = function (app: App, options?: FormGlobalConfigType) {
     app.use(component)
   })
 }
+
+export type ComponentNames = keyof typeof components extends infer T
+  ? T extends `D${infer Name}`
+    ? `D${Name}`
+    : never
+  : never
 
 export * from './components'
 export * from './common'

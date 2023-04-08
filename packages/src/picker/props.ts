@@ -1,4 +1,4 @@
-import { PropType } from 'vue'
+import { ExtractPropTypes, PropType } from 'vue'
 import { DataType } from '../common'
 
 export type PickerValueType = string[] | number[] | DataType[]
@@ -12,7 +12,9 @@ export type PickerColumnType = DataType | CascadeDataType
 /** 选择器数据类型 */
 export type PickerColumnsType = PickerColumnType[] | PickerColumnType[][]
 
-export const pickerProps = {
+export type PickerProps = ExtractPropTypes<typeof PICKER_PROPS>
+
+export const PICKER_PROPS = {
   value: {
     type: Array as PropType<PickerValueType>,
     default: undefined

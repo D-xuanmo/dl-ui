@@ -30,7 +30,7 @@ import { computed, CSSProperties, defineComponent, ref, SetupContext } from 'vue
 import { createNamespace } from '../utils'
 import useDefault from '../hooks/useDefault'
 import { DataType, OmitValueProperties } from '../common'
-import { CascadeDataType, PickerColumnType, pickerProps, PickerValueType } from './props'
+import { CascadeDataType, PickerColumnType, PICKER_PROPS, PickerValueType } from './props'
 import DPickerItem from './picker-item.vue'
 import { deepCopy, isObject } from '@xuanmo/javascript-utils'
 import { formatCascade } from './utils'
@@ -41,7 +41,7 @@ const [name, bem] = createNamespace('picker')
 export default defineComponent({
   name,
   components: { DPickerItem },
-  props: pickerProps,
+  props: PICKER_PROPS,
   emits: ['update:visible', 'update:model-value', 'update:value', 'change', 'confirm', 'close'],
   setup(props, context: SetupContext<EventType>) {
     const className = bem()

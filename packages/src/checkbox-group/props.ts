@@ -1,7 +1,9 @@
-import { PropType } from 'vue'
+import { ExtractPropTypes, PropType } from 'vue'
 import { DirectionType } from '../common'
 
-export const checkboxGroupProps = {
+export type CheckboxGroupProps = ExtractPropTypes<typeof CHECKBOX_GROUP_PROPS>
+
+export const CHECKBOX_GROUP_PROPS = {
   modelValue: {
     type: [Array] as PropType<(string | number)[]>,
     required: true

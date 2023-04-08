@@ -11,42 +11,19 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType, SetupContext } from 'vue'
+import { computed, defineComponent, SetupContext } from 'vue'
 import { isPromise } from '@vue/shared'
 import { createNamespace } from '../utils'
-import { SizeType } from '../common'
 import useDefault from '../hooks/useDefault'
 import DIcon from '../icon'
 import { isBoolean, throwError, debugWarn } from '@xuanmo/javascript-utils'
+import { SWITCH_PROPS } from './props'
 
 const [name, bem] = createNamespace('switch')
 export default defineComponent({
   name,
   components: { DIcon },
-  props: {
-    value: {
-      type: Boolean,
-      default: undefined
-    },
-    modelValue: {
-      type: Boolean,
-      default: undefined
-    },
-    size: {
-      type: String as PropType<SizeType>,
-      default: 'medium'
-    },
-    loading: Boolean,
-    disabled: Boolean,
-    round: {
-      type: Boolean,
-      default: true
-    },
-    beforeChange: {
-      type: Function as PropType<() => Promise<boolean>>,
-      default: null
-    }
-  },
+  props: SWITCH_PROPS,
   emits: ['update:value', 'update:model-value'],
   setup(props, { emit }) {
     const [innerValue, setValue] = useDefault<boolean | undefined, typeof props>(

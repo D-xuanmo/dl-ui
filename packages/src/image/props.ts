@@ -1,6 +1,8 @@
-import { CSSProperties, PropType } from 'vue'
+import { CSSProperties, ExtractPropTypes, PropType } from 'vue'
 
-export const imageProps = {
+export type ImageProps = ExtractPropTypes<typeof IMAGE_PROPS>
+
+export const IMAGE_PROPS = {
   /**
    * 图片宽度，为数字时，单位：px
    */

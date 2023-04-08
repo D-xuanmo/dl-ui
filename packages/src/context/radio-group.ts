@@ -1,15 +1,13 @@
-import { ExtractPropTypes, InjectionKey, WritableComputedRef } from 'vue'
-import { radioGroupProps } from '../radio-group/props'
+import { InjectionKey, WritableComputedRef } from 'vue'
+import { RadioGroupProps } from '../radio-group'
 
-type RadioGroupPropsType = ExtractPropTypes<typeof radioGroupProps>
-
-type RadioGroupContextType = Omit<RadioGroupPropsType, 'modelValue' | 'disabled'> & {
+type RadioGroupContextType = Omit<RadioGroupProps, 'modelValue' | 'disabled'> & {
   /**
    * 当前绑定的值
    */
   value: WritableComputedRef<string | number>
 
-  disabled: WritableComputedRef<RadioGroupPropsType['disabled']>
+  disabled: WritableComputedRef<RadioGroupProps['disabled']>
 
   /**
    * 子级 change 事件

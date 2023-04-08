@@ -1,4 +1,4 @@
-import { PropType } from 'vue'
+import { ExtractPropTypes, PropType } from 'vue'
 import { DateTimePickerColumnType } from './types'
 
 export type DatePickerType = 'date' | 'year-month' | 'month-day' | 'time' | 'datetime' | 'date-hour'
@@ -10,7 +10,9 @@ export type FormatterType<V extends string | number = string> = (
   value: V
 ) => V
 
-export const datePickerProps = {
+export type DatePickerProps = ExtractPropTypes<typeof DATE_PICKER_PROPS>
+
+export const DATE_PICKER_PROPS = {
   value: {
     type: [String, Date] as PropType<DatePickerValueType>,
     default: undefined

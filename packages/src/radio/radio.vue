@@ -8,14 +8,14 @@
 <script lang="ts">
 import { computed, defineComponent, inject } from 'vue'
 import { createNamespace } from '../utils'
-import { radioProps } from './props'
+import { RADIO_PROPS } from './props'
 import { isEmpty } from '@xuanmo/javascript-utils'
 import { RADIO_GROUP_CONTEXT_KEY } from '../context'
 
 const [name, bem] = createNamespace('radio')
 export default defineComponent({
   name,
-  props: radioProps,
+  props: RADIO_PROPS,
   setup(props) {
     const { value, disabled, onChangeEvent } = inject(RADIO_GROUP_CONTEXT_KEY)!
     const wrapperClassName = bem({

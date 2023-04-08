@@ -1,11 +1,13 @@
-import { PropType } from 'vue'
+import { ExtractPropTypes, PropType } from 'vue'
 import { DirectionType } from '../common'
 
 export type SpaceJustifyType = 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'
 
 export type SpaceAlignType = 'start' | 'center' | 'end' | 'baseline'
 
-export const spaceProps = {
+export type SpaceProps = ExtractPropTypes<typeof SPACE_PROPS>
+
+export const SPACE_PROPS = {
   /**
    * 间隙，单位：px
    */

@@ -18,54 +18,18 @@
 </template>
 
 <script lang="ts">
-import {
-  CSSProperties,
-  defineComponent,
-  SetupContext,
-  PropType,
-  computed,
-  TeleportProps
-} from 'vue'
+import { CSSProperties, defineComponent, SetupContext, computed } from 'vue'
 import { createNamespace } from '../utils'
 import useDefault from '../hooks/useDefault'
 import useZIndex from '../hooks/useZIndex'
-import { TRANSITION_DURATION } from '../constants/animation'
 import { PREFIX } from '../constants/prefix'
+import { OVERLAY_PROPS } from './props'
 
 const [name, bem] = createNamespace('overlay')
 
 export default defineComponent({
   name,
-  props: {
-    visible: {
-      type: Boolean,
-      default: false
-    },
-    zIndex: {
-      type: Number,
-      default: undefined
-    },
-    duration: {
-      type: [Number, String] as PropType<number | string | undefined>,
-      default: TRANSITION_DURATION
-    },
-    overlayClass: {
-      type: String,
-      default: ''
-    },
-    overlayStyle: {
-      type: Object as PropType<CSSProperties>,
-      default: undefined
-    },
-    closeOnClickOverlay: {
-      type: Boolean,
-      default: true
-    },
-    teleport: {
-      type: String as PropType<TeleportProps['to']>,
-      default: 'body'
-    }
-  },
+  props: OVERLAY_PROPS,
   emits: ['update:visible', 'click'],
   setup(props, { emit }) {
     const [innerVisible, setVisible] = useDefault<boolean | undefined, typeof props, 'visible'>(

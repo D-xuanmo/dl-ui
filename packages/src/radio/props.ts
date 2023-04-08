@@ -1,6 +1,8 @@
-import { PropType } from 'vue'
+import { ExtractPropTypes, PropType } from 'vue'
 
-export const radioProps = {
+export type RadioProps = ExtractPropTypes<typeof RADIO_PROPS>
+
+export const RADIO_PROPS = {
   /**
    * 单选框值
    */

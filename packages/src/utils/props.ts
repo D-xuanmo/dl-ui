@@ -11,5 +11,5 @@ export function pickProps<T extends Record<string, unknown>, K extends keyof T>(
   keys.forEach((key) => {
     result[key] = props[key]
   })
-  return result as unknown as { [Key in keyof T]: T[Key] }
+  return result as unknown as Record<K, T[K]>
 }

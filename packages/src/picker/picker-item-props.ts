@@ -1,5 +1,5 @@
 import { PropType } from 'vue'
-import { PickerColumnType, pickerProps } from './props'
+import { PickerColumnType, PICKER_PROPS } from './props'
 import { DataType } from '../common'
 
 export const pickerItemProps = {
@@ -11,7 +11,7 @@ export const pickerItemProps = {
     type: Array as PropType<PickerColumnType[]>,
     default: () => []
   },
-  optionHeight: pickerProps.optionHeight,
+  optionHeight: PICKER_PROPS.optionHeight,
   onChange: {
     type: Function as PropType<(data: DataType) => void>,
     default: () => {}

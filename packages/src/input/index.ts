@@ -3,6 +3,8 @@ import { withInstall } from '../utils'
 
 export const DInput = withInstall(Input)
 
+export { type InputProps } from './props'
+
 export default DInput
 
 declare module 'vue' {

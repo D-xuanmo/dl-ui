@@ -3,6 +3,8 @@ import { withInstall } from '../utils'
 
 export const DCheckbox = withInstall(Checkbox)
 
+export { type CheckboxProps } from './props'
+
 export default DCheckbox
 
 declare module 'vue' {

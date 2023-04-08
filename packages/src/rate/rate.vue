@@ -29,13 +29,13 @@ import { computed, CSSProperties, defineComponent, SetupContext } from 'vue'
 import { createNamespace } from '../utils'
 import { isNumber } from '@xuanmo/javascript-utils'
 import useDefault from '../hooks/useDefault'
-import { rateProps } from './props'
+import { RATE_PROPS } from './props'
 
 const [name, bem] = createNamespace('rate')
 
 export default defineComponent({
   name,
-  props: rateProps,
+  props: RATE_PROPS,
   setup(props, context: SetupContext) {
     const [innerValue, updateValue] = useDefault<number, typeof props>(props as never, context.emit)
 

@@ -1,15 +1,13 @@
-import { ExtractPropTypes, InjectionKey, UnwrapRef, WritableComputedRef } from 'vue'
-import { checkboxGroupProps } from '../checkbox-group/props'
+import { InjectionKey, UnwrapRef, WritableComputedRef } from 'vue'
+import { CheckboxGroupProps } from '../checkbox-group'
 
-type CheckboxGroupPropsType = ExtractPropTypes<typeof checkboxGroupProps>
-
-export type CheckboxGroupContextType = Omit<CheckboxGroupPropsType, 'modelValue' | 'disabled'> & {
+export type CheckboxGroupContextType = Omit<CheckboxGroupProps, 'modelValue' | 'disabled'> & {
   /**
    * 当前绑定的值
    */
   value: WritableComputedRef<(string | number)[]>
 
-  disabled: WritableComputedRef<CheckboxGroupPropsType['disabled']>
+  disabled: WritableComputedRef<CheckboxGroupProps['disabled']>
 
   /**
    * 子级 change 事件

@@ -19,14 +19,14 @@
 <script lang="ts">
 import { computed, CSSProperties, defineComponent, ref, watch } from 'vue'
 import { createNamespace } from '../utils'
-import { imageProps } from './props'
+import { IMAGE_PROPS } from './props'
 import { addUnit } from '../utils'
 
 const [name, bem] = createNamespace('image')
 
 export default defineComponent({
   name,
-  props: imageProps,
+  props: IMAGE_PROPS,
   setup(props) {
     const wrapperClassName = bem()
     const tipsClassName = bem('tips')

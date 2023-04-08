@@ -3,6 +3,8 @@ import { withInstall } from '../utils'
 
 export const DButton = withInstall(Button)
 
+export { type ButtonProps } from './props'
+
 export default DButton
 
 declare module 'vue' {

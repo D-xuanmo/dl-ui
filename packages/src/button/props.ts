@@ -1,7 +1,9 @@
-import { PropType } from 'vue'
+import { ExtractPropTypes, PropType } from 'vue'
 import { SizeType, ThemeType } from '../common'
 
-export const buttonProps = {
+export type ButtonProps = ExtractPropTypes<typeof BUTTON_PROPS>
+
+export const BUTTON_PROPS = {
   /**
    * 主题分类
    */

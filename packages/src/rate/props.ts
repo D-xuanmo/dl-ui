@@ -1,7 +1,9 @@
-import { PropType } from 'vue'
+import { ExtractPropTypes, PropType } from 'vue'
 import { SizeType } from '../common'
 
-export const rateProps = {
+export type RateProps = ExtractPropTypes<typeof RATE_PROPS>
+
+export const RATE_PROPS = {
   value: {
     type: Number,
     default: undefined

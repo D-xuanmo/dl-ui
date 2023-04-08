@@ -9,7 +9,7 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { createNamespace } from '../utils'
-import { buttonProps } from './props'
+import { BUTTON_PROPS } from './props'
 import { DIcon } from '../icon'
 
 const [name, bem] = createNamespace('button')
@@ -19,7 +19,7 @@ export default defineComponent({
   components: {
     DIcon
   },
-  props: buttonProps,
+  props: BUTTON_PROPS,
   setup(props) {
     const wrapperClassName = computed(() =>
       bem({

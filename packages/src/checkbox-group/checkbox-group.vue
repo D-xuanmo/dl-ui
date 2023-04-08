@@ -7,7 +7,7 @@
 <script lang="ts">
 import { computed, defineComponent, provide, SetupContext, UnwrapRef } from 'vue'
 import { createNamespace } from '../utils'
-import { checkboxGroupProps } from './props'
+import { CHECKBOX_GROUP_PROPS } from './props'
 import useDefault from '../hooks/useDefault'
 import { CHECKBOX_GROUP_CONTEXT_KEY, CheckboxGroupContextType } from '../context'
 
@@ -15,7 +15,7 @@ const [name, bem] = createNamespace('checkbox-group')
 
 export default defineComponent({
   name,
-  props: checkboxGroupProps,
+  props: CHECKBOX_GROUP_PROPS,
   emits: ['update:model-value'],
   setup(props, { emit }) {
     const wrapperClassName = bem({

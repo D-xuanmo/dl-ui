@@ -7,7 +7,7 @@
 <script lang="ts">
 import { computed, defineComponent, provide, SetupContext } from 'vue'
 import { createNamespace } from '../utils'
-import { radioGroupProps } from './props'
+import { RADIO_GROUP_PROPS } from './props'
 import useDefault from '../hooks/useDefault'
 import { RADIO_GROUP_CONTEXT_KEY } from '../context'
 
@@ -15,7 +15,7 @@ const [name, bem] = createNamespace('radio-group')
 
 export default defineComponent({
   name,
-  props: radioGroupProps,
+  props: RADIO_GROUP_PROPS,
   emits: ['update:model-value', 'change'],
   setup(props, { emit }) {
     const wrapperClassName = bem({

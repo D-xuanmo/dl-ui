@@ -1,47 +1,15 @@
-import { defineComponent, inject, PropType } from 'vue'
+import { defineComponent, inject } from 'vue'
 import { createNamespace } from '../utils'
 import { isEmpty, toBoolean } from '@xuanmo/javascript-utils'
-import { HorizontalAlignType, SizeType } from '../common'
 import DIcon from '../icon'
 import { CELL_GROUP_CONTEXT_KEY, GLOBAL_CONFIG_CONTEXT_KEY } from '../context'
+import { CELL_PROPS } from './props'
 
 const [name, bem] = createNamespace('cell')
 
-const props = {
-  title: String,
-  titleClass: String,
-  titleWidth: String,
-  titleAlign: {
-    type: String as PropType<HorizontalAlignType>,
-    default: 'left'
-  },
-  hideTitle: Boolean,
-  required: Boolean,
-  leftIcon: String,
-  leftIconSize: String as PropType<SizeType | string>,
-  leftIconColor: String,
-  leftIconProps: Object,
-
-  content: String as PropType<string | undefined>,
-  contentClass: String,
-  contentAlign: {
-    type: String as PropType<HorizontalAlignType>,
-    default: 'right'
-  },
-  disabled: Boolean,
-
-  suffix: String,
-  rightIcon: String,
-  rightIconSize: String as PropType<SizeType | string>,
-  rightIconColor: String,
-  rightIconProps: Object,
-
-  arrow: Boolean
-}
-
 export default defineComponent({
   name,
-  props,
+  props: CELL_PROPS,
   emits: ['click'],
   setup(props, { slots, emit }) {
     return () => {
@@ -132,9 +100,15 @@ export default defineComponent({
       }
 
       return (
-        <div className={bem({ 'hide-title': hideTitle, disabled })} onClick={handleClick}>
+        <div
+          class={bem({
+            'hide-title': hideTitle,
+            disabled
+          })}
+          onClick={handleClick}
+        >
           {renderLabel}
-          <div className={contentClassName}>{slots.default ? slots.default() : content}</div>
+          <div class={contentClassName}>{slots.default ? slots.default() : content}</div>
           {renderRightIcon}
           {renderSuffix}
           {renderArrow}

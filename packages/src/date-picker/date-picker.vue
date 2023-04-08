@@ -18,7 +18,7 @@ import DPicker from '../picker'
 import DCell from '../cell'
 import DateUtil from './date-util'
 import useDefault from '../hooks/useDefault'
-import { datePickerProps, DatePickerType } from './props'
+import { DATE_PICKER_PROPS, DatePickerType } from './props'
 import { PickerValueType } from '../picker/props'
 import dateJS from '@xuanmo/datejs'
 import { DateTimePickerColumnType } from './types'
@@ -28,7 +28,7 @@ const [name] = createNamespace('date-picker')
 export default defineComponent({
   name,
   components: { DPicker, DCell },
-  props: datePickerProps,
+  props: DATE_PICKER_PROPS,
   emits: ['update:value', 'update:model-value'],
   setup(props, { emit }) {
     const [innerValue, updateValue] = useDefault(props, emit as SetupContext['emit'])

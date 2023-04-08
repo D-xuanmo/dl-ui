@@ -4,7 +4,7 @@ import { withInstall } from '../utils'
 export const DDatePicker = withInstall(DatePicker)
 
 export { type DateTimePickerColumnType } from './types'
-export { type FormatterType } from './props'
+export { type FormatterType, type DatePickerProps } from './props'
 
 export default DDatePicker
 
