@@ -1,6 +1,14 @@
 <template>
   <div :class="wrapperClassName">
-    <slot />
+    <template v-if="options">
+      <d-radio
+        v-for="option in options"
+        :key="option.value"
+        :label="option.label"
+        :value="option.value"
+      />
+    </template>
+    <slot v-else />
   </div>
 </template>
 
@@ -10,11 +18,15 @@ import { createNamespace } from '../utils'
 import { RADIO_GROUP_PROPS } from './props'
 import useDefault from '../hooks/useDefault'
 import { RADIO_GROUP_CONTEXT_KEY } from '../context'
+import DRadio from '../radio'
 
 const [name, bem] = createNamespace('radio-group')
 
 export default defineComponent({
   name,
+  components: {
+    DRadio
+  },
   props: RADIO_GROUP_PROPS,
   emits: ['update:model-value', 'change'],
   setup(props, { emit }) {

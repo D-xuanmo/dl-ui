@@ -1,6 +1,14 @@
 <template>
   <div :class="wrapperClassName">
-    <slot />
+    <template v-if="options">
+      <d-checkbox
+        v-for="option in options"
+        :key="option.value"
+        :label="option.label"
+        :value="option.value"
+      />
+    </template>
+    <slot v-else />
   </div>
 </template>
 
@@ -10,11 +18,15 @@ import { createNamespace } from '../utils'
 import { CHECKBOX_GROUP_PROPS } from './props'
 import useDefault from '../hooks/useDefault'
 import { CHECKBOX_GROUP_CONTEXT_KEY, CheckboxGroupContextType } from '../context'
+import DCheckbox from '../checkbox'
 
 const [name, bem] = createNamespace('checkbox-group')
 
 export default defineComponent({
   name,
+  components: {
+    DCheckbox
+  },
   props: CHECKBOX_GROUP_PROPS,
   emits: ['update:model-value'],
   setup(props, { emit }) {

@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { DirectionType } from '../common'
+import { DataType, DirectionType } from '../common'
 
 export type CheckboxGroupProps = ExtractPropTypes<typeof CHECKBOX_GROUP_PROPS>
 
@@ -13,6 +13,10 @@ export const CHECKBOX_GROUP_PROPS = {
     default: 'vertical'
   },
   disabled: Boolean,
+  options: {
+    type: Array as PropType<Array<DataType> | undefined>,
+    default: undefined
+  },
 
   /**
    * 最大选择个数
