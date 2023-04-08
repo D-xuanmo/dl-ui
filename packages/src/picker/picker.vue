@@ -1,5 +1,9 @@
 <template>
-  <d-popup :visible="visible" placement="bottom" @update:visible="handleClose">
+  <span v-if="!controlled" :class="triggerClassName" @click="showPicker">
+    <span style="vertical-align: middle">{{ displayValue }}</span>
+    <d-icon name="arrow-right" color="var(--d-secondary-text-color)" />
+  </span>
+  <d-popup :visible="innerVisible" placement="bottom" @update:visible="handleClose">
     <div :class="className">
       <header :class="headerClassName">
         <span v-if="cancelButtonText" :class="cancelBtnClassName" @touchstart="handleClose">
@@ -26,21 +30,22 @@
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties, defineComponent, ref, SetupContext } from 'vue'
+import { computed, CSSProperties, defineComponent, ref, SetupContext, watch } from 'vue'
 import { createNamespace } from '../utils'
 import useDefault from '../hooks/useDefault'
 import { DataType, OmitValueProperties } from '../common'
 import { CascadeDataType, PickerColumnType, PICKER_PROPS, PickerValueType } from './props'
 import DPickerItem from './picker-item.vue'
 import { deepCopy, isObject } from '@xuanmo/javascript-utils'
-import { formatCascade } from './utils'
+import { formatCascade, useDisplayName } from './utils'
 import { EventType } from './types'
+import DIcon from '../icon'
 
 const [name, bem] = createNamespace('picker')
 
 export default defineComponent({
   name,
-  components: { DPickerItem },
+  components: { DPickerItem, DIcon },
   props: PICKER_PROPS,
   emits: ['update:visible', 'update:model-value', 'update:value', 'change', 'confirm', 'close'],
   setup(props, context: SetupContext<EventType>) {
@@ -56,6 +61,8 @@ export default defineComponent({
       'visible',
       EventType
     >(props as OmitValueProperties<typeof props>, context.emit, 'visible', 'update:visible')
+
+    const innerVisible = ref(false)
 
     const [innerValue, updateValue] = useDefault<PickerValueType, typeof props, EventType>(
       props,
@@ -81,34 +88,36 @@ export default defineComponent({
       return props.columns as PickerColumnType[][]
     })
 
+    const displayValue = useDisplayName(innerValue, formattedColumns, props.placeholder)
+    const triggerClassName = computed(() =>
+      bem('trigger', {
+        empty: displayValue.value === props.placeholder
+      })
+    )
+
     const contentStyle = computed<CSSProperties>(() => ({
       height: `${props.optionHeight * 5}px`
     }))
 
     const onChange = (data: DataType, columnIndex: number) => {
-      // 级联选择模式切更改项为第一项，清空后续的值
-      if (isCascade.value) {
-        temporaryValue.value[columnIndex] = data
-      } else {
-        temporaryValue.value = temporaryValue.value.map((item, index) => {
-          if (index === columnIndex) return data
-          return item
-        }) as PickerValueType
-      }
+      temporaryValue.value[columnIndex] = data
       context.emit('change', temporaryValue.value, data)
     }
+
+    const showPicker = () => (innerVisible.value = true)
 
     const handleChange = () => {
       const value = isCascade.value
         ? deepCopy(temporaryValue.value)
-        : [(temporaryValue.value as DataType[])?.[0]?.value]
+        : temporaryValue.value.map((item) => (item as DataType).value)
       updateValue(value)
       handleClose()
       context.emit('confirm', temporaryValue.value)
     }
 
     const handleClose = () => {
-      updateVisible(false)
+      if (props.controlled) updateVisible(false)
+      innerVisible.value = false
       context.emit('close')
     }
 
@@ -119,18 +128,27 @@ export default defineComponent({
         | number
     }
 
+    watch(
+      () => visible.value,
+      (visible) => {
+        innerVisible.value = visible
+      }
+    )
+
     return {
-      visible,
+      innerVisible,
       className,
       headerClassName,
       cancelBtnClassName,
       confirmBtnClassName,
       contentClassName,
+      triggerClassName,
       formattedColumns,
       contentStyle,
-      temporaryValue,
       isCascade,
       isObject,
+      displayValue,
+      showPicker,
       handleClose,
       onChange,
       handleChange,

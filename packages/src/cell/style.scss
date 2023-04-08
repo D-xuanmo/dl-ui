@@ -30,7 +30,9 @@
 
   &__title {
     @include text-align;
+    align-self: flex-start;
     margin-right: var(--d-gap-xs);
+    word-break: break-word;
 
     &--mark {
       vertical-align: middle;

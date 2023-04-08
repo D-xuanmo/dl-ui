@@ -23,10 +23,21 @@ export const PICKER_PROPS = {
     type: Array as PropType<PickerValueType>,
     default: undefined
   },
+
+  placeholder: String,
+
   /**
    * 显示隐藏
    */
   visible: Boolean,
+
+  /**
+   * 是否受控
+   */
+  controlled: {
+    type: Boolean,
+    default: false
+  },
 
   /**
    * 选择器列
