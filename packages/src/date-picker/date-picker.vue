@@ -5,6 +5,7 @@
     :value="pickerValue"
     :columns="columns"
     :title="title"
+    controlled
     @change="handleChange"
     @confirm="handleConfirm"
     @close="showPicker = false"

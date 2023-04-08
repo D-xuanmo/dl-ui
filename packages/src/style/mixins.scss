@@ -83,3 +83,7 @@
     cursor: not-allowed;
   }
 }
+
+@mixin placeholder {
+  color: var(--d-placeholder-color);
+}
