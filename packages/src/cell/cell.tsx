@@ -1,9 +1,10 @@
-import { defineComponent, inject } from 'vue'
+import { defineComponent } from 'vue'
 import { createNamespace } from '../utils'
 import { isEmpty, toBoolean } from '@xuanmo/javascript-utils'
 import DIcon from '../icon'
-import { CELL_GROUP_CONTEXT_KEY, GLOBAL_CONFIG_CONTEXT_KEY } from '../context'
 import { CELL_PROPS } from './props'
+import { useGlobalConfig } from './utils'
+import { addUnit } from '../utils/style-format';
 
 const [name, bem] = createNamespace('cell')
 
@@ -13,20 +14,16 @@ export default defineComponent({
   emits: ['click'],
   setup(props, { slots, emit }) {
     return () => {
-      const { labelWidth, hideLabel } = inject(GLOBAL_CONFIG_CONTEXT_KEY) ?? {}
-      const cellGroupConfig = inject(CELL_GROUP_CONTEXT_KEY)
+      const { labelWidth, contentAlign, hideTitle } = useGlobalConfig(props)
       const {
         title,
         titleAlign,
-        titleWidth,
         required,
         content,
-        hideTitle = hideLabel,
         titleClass,
         contentClass,
         disabled,
         suffix,
-        contentAlign,
         leftIcon,
         leftIconSize,
         leftIconColor,
@@ -53,7 +50,7 @@ export default defineComponent({
           <div
             className={titleClassName}
             style={{
-              width: titleWidth || cellGroupConfig?.cellTitleWidth || labelWidth
+              width: addUnit(labelWidth)
             }}
           >
             {slots.title ? (

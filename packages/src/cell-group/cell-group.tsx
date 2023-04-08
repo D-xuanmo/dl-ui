@@ -12,7 +12,8 @@ export default defineComponent({
   setup(props, { slots }) {
     const globalConfig = inject(GLOBAL_CONFIG_CONTEXT_KEY)
     provide(CELL_GROUP_CONTEXT_KEY, {
-      cellTitleWidth: props.cellTitleWidth || globalConfig?.labelWidth || LABEL_WIDTH
+      cellTitleWidth: props.cellTitleWidth || globalConfig?.labelWidth || LABEL_WIDTH,
+      cellContentAlign: props.cellContentAlign || globalConfig?.contentAlign
     })
     return () => {
       const { title, round } = props

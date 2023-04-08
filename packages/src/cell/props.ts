@@ -6,7 +6,7 @@ export type CellProps = ExtractPropTypes<typeof CELL_PROPS>
 export const CELL_PROPS = {
   title: String,
   titleClass: String,
-  titleWidth: String,
+  titleWidth: [String, Number],
   titleAlign: {
     type: String as PropType<HorizontalAlignType>,
     default: 'left'
@@ -22,7 +22,7 @@ export const CELL_PROPS = {
   contentClass: String,
   contentAlign: {
     type: String as PropType<HorizontalAlignType>,
-    default: 'right'
+    default: ''
   },
   disabled: Boolean,
 
