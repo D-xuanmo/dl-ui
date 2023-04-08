@@ -1,5 +1,5 @@
 <template>
-  <d-cell title="格式化列" arrow>
+  <d-cell title="格式化列">
     <d-date-picker v-model="value" type="date" :formatter="format" />
   </d-cell>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <d-cell title="日期时间选择器" arrow>
+  <d-cell title="日期时间选择器">
     <d-date-picker v-model="value" type="datetime" title="日期时间选择器" />
   </d-cell>
 </template>
