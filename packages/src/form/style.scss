@@ -1,0 +1,22 @@
+@import '../style/prefix';
+
+.#{$prefix}-form {
+  &__item {
+    .#{$prefix}-cell {
+      &::after {
+        display: none;
+      }
+    }
+
+    &--message {
+      font-size: var(--d-font-size-sm);
+      color: var(--d-error);
+    }
+
+    &--required-mark {
+      margin-left: var(--d-gap-xxs);
+      vertical-align: middle;
+      color: var(--d-error);
+    }
+  }
+}

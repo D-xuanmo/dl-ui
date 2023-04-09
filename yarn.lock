@@ -755,10 +755,10 @@
   resolved "https://registry.npmjs.org/@vue/shared/-/shared-3.2.37.tgz"
   integrity sha512-4rSJemR2NQIo9Klm1vabqWjD8rs/ZaJSzMxkMNeJS6lHiUjjUeYFbooN19NgFjztubEKh3WlZUeOLVdbbUWHsw==
 
-"@xuanmo/datejs@^1.0.14":
-  version "1.0.14"
-  resolved "https://registry.npmjs.org/@xuanmo/datejs/-/datejs-1.0.14.tgz#ed3af185a6d26bc5ed4d63d0428f5e0eb22fff7e"
-  integrity sha512-cUWWiNunfvdrIErl8nzXpUlRRkj3U2vVAS+lvgJ9pTJRytJIkDmK4j+GT13ODCenFvML3H+S/dRUGgSPZ51Uhg==
+"@xuanmo/datejs@^1.0.15":
+  version "1.0.15"
+  resolved "https://registry.npmjs.org/@xuanmo/datejs/-/datejs-1.0.15.tgz#af78d755525429cd0db0040ec7e0c54c53daae9c"
+  integrity sha512-QhfHilKz9LBESUYaF2KMDHLFudjv17xBH26Z0tY0Am4VwhkOljZpKc+kZNCk6r/ljLnG9lcc3rGw1YWW4f8vZA==
 
 "@xuanmo/javascript-utils@^0.0.42":
   version "0.0.42"
@@ -769,6 +769,11 @@
   version "1.0.9"
   resolved "https://registry.npmmirror.com/@xuanmo/normalize.css/-/normalize.css-1.0.9.tgz"
   integrity sha512-/bMExdDMzOiZZiyipDfOOtefRsn4COnSx5WY0NDu+KknNkN+ZzKP8IScwkTThDZJUt7LXozTRJvRcW5MSFU1uQ==
+
+"@xuanmo/validator@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.npmjs.org/@xuanmo/validator/-/validator-0.0.10.tgz#a84f3825cc460b61faaf14b6c6a7bb299953fb5e"
+  integrity sha512-Ml6qtDDq/xl4PqzqxYQdcB0vnypqJspe87EOL6mXR6g8NSYNFeDL7B684ajhI79cAzlmjXYbUL6MF+1sBIzlrA==
 
 "@xuanmo/vite-plugin-md-preview@^0.0.9":
   version "0.0.9"

@@ -40,7 +40,8 @@ const menus: MenuItemType[] = [
       },
       { id: 'radio', path: '/radio', content: 'Radio [单选框]' },
       { id: 'checkbox', path: '/checkbox', content: 'Checkbox [复选框]' },
-      { id: 'upload', path: '/upload', content: 'Upload [文件上传]' }
+      { id: 'upload', path: '/upload', content: 'Upload [文件上传]' },
+      { id: 'form', path: '/form', content: 'Form [表单]' }
     ]
   }
 ]
