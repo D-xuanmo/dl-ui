@@ -770,12 +770,7 @@
   resolved "https://registry.npmmirror.com/@xuanmo/normalize.css/-/normalize.css-1.0.9.tgz"
   integrity sha512-/bMExdDMzOiZZiyipDfOOtefRsn4COnSx5WY0NDu+KknNkN+ZzKP8IScwkTThDZJUt7LXozTRJvRcW5MSFU1uQ==
 
-"@xuanmo/validator@^0.0.10":
-  version "0.0.10"
-  resolved "https://registry.npmjs.org/@xuanmo/validator/-/validator-0.0.10.tgz#a84f3825cc460b61faaf14b6c6a7bb299953fb5e"
-  integrity sha512-Ml6qtDDq/xl4PqzqxYQdcB0vnypqJspe87EOL6mXR6g8NSYNFeDL7B684ajhI79cAzlmjXYbUL6MF+1sBIzlrA==
-
-"@xuanmo/validator@^0.0.11":
+"@xuanmo/validator@^0.0.11", "@xuanmo/validator@^0.x":
   version "0.0.11"
   resolved "https://registry.npmjs.org/@xuanmo/validator/-/validator-0.0.11.tgz#9920527aae4b16e309c62812e26e88172472b968"
   integrity sha512-eRqpDiq1IKlr1HXNXrzeHNUjl/yCqVFXZX3ZpSTzrItF8lHkJVT4CKGvVO6PC0AqNwl8bqGL/19oW8hts7vm6Q==
