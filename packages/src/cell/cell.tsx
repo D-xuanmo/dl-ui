@@ -1,10 +1,9 @@
 import { defineComponent } from 'vue'
-import { createNamespace } from '../utils'
+import { createNamespace, addUnit } from '../utils'
 import { isEmpty, toBoolean } from '@xuanmo/javascript-utils'
 import DIcon from '../icon'
 import { CELL_PROPS } from './props'
 import { useGlobalConfig } from './utils'
-import { addUnit } from '../utils/style-format';
 
 const [name, bem] = createNamespace('cell')
 
@@ -46,7 +45,7 @@ export default defineComponent({
       })
 
       const renderLabel =
-        hideTitle || isEmpty(title) ? null : (
+        hideTitle || (isEmpty(title) && isEmpty(slots.title)) ? null : (
           <div
             className={titleClassName}
             style={{

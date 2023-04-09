@@ -1,13 +1,11 @@
 @import '../style/prefix.scss';
 @import '../style/mixins.scss';
 
-.#{$prefix}-radio {
+.#{$prefix}-checkbox {
   display: flex;
   align-items: center;
 
-  &--disabled {
-    color: var(--d-disable-color);
-  }
+  @include disabled;
 
   &__label {
     margin-left: var(--d-gap-xxs);

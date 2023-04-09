@@ -7,7 +7,7 @@
     flex-wrap: wrap;
 
     .#{$prefix}-radio {
-      margin: 0 var(--d-gap-xs) var(--d-gap-xs) 0;
+      margin-right: var(--d-gap-xs);
     }
   }
 

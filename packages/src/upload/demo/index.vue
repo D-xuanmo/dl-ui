@@ -13,8 +13,11 @@
 <script lang="ts" setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 import { dCookie } from '@xuanmo/javascript-utils'
+import { UploadListItemType } from '../props'
 
-const value = ref([{ url: '/api/file-server/read-file/cf5be5e5-a84b-41e9-b91a-c99646039f15' }])
+const value = ref<UploadListItemType[]>([
+  { url: '/api/file-server/read-file/cf5be5e5-a84b-41e9-b91a-c99646039f15', deletable: false }
+])
 
 const uploadData = {
   type: 'media'
@@ -26,7 +29,8 @@ const headerParams = {
 
 const uploadAfterHandler = (response: any) => {
   return {
-    url: response.data?.[0].url
+    url: response.data?.[0].url,
+    deletable: true
   }
 }
 
