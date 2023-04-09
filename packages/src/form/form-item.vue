@@ -16,7 +16,7 @@
       :readonly="readonly"
       @update:model-value="handleChange"
     />
-    <div :class="errorClassName">{{ errorMessage }}</div>
+    <div v-if="errorMessage" :class="errorClassName">{{ errorMessage }}</div>
   </d-cell>
 </template>
 
