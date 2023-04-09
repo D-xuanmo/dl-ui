@@ -26,7 +26,7 @@ export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>> 
   value: TValue
 
   // 组件名
-  componentName: ComponentNames
+  componentName: ComponentNames | string
 
   // 是否必填，会展示必填星号
   required?: boolean

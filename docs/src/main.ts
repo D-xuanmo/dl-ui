@@ -11,8 +11,11 @@ import '@xuanmo/normalize.css/class.scss'
 import './assets/style/index.scss'
 import DocPreview from '@doc/components/preview'
 
+// 引入校验国际化词条
 import zhCN from '@xuanmo/validator/locale/zh-CN.json'
 validator.localize(zhCN)
+
+import CustomInput from './components/example/custom-input.vue'
 
 const app = createApp(App)
 
@@ -23,4 +26,5 @@ app
   .use(DemoBlock)
   .use(DForm)
   .component('VueCode', DocPreview)
+  .component('CustomInput', CustomInput)
   .mount('#app')

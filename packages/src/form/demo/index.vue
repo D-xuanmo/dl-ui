@@ -51,6 +51,16 @@ const formStore = new FormStore({
       }
     },
     {
+      name: 'customInput',
+      componentName: 'CustomInput',
+      label: '自定义组件',
+      value: '',
+      required: true,
+      otherProps: {
+        placeholder: '可以实现很多目前不支持的场景'
+      }
+    },
+    {
       name: 'email',
       componentName: 'DInput',
       label: '邮箱',
@@ -170,7 +180,8 @@ const updateData = () => {
     upload: [
       { url: '/api/file-server/read-file/2d9595e4-af21-4cfa-862d-aa99933fbd7b', deletable: false },
       { url: '/api/file-server/read-file/2d9595e4-af21-4cfa-862d-aa99933fbd7b', deletable: true }
-    ]
+    ],
+    customInput: '我是自定义数据'
   })
 }
 
