@@ -9,7 +9,7 @@
       >
     </template>
     <component
-      :is="modelItem!.componentName"
+      :is="modelItem!.component"
       v-bind="modelItem?.otherProps"
       v-model="modelItem!.value"
       :disabled="disabled"

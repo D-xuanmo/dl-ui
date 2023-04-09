@@ -1,4 +1,5 @@
 import { ComponentNames } from '../index'
+import { Component } from 'vue'
 
 /**
  * 表单数据模型
@@ -25,8 +26,8 @@ export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>> 
   label: string
   value: TValue
 
-  // 组件名
-  componentName: ComponentNames | string
+  // 组件
+  component: ComponentNames | string | Component
 
   // 是否必填，会展示必填星号
   required?: boolean

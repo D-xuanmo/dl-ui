@@ -42,7 +42,7 @@ const formStore = new FormStore({
   models: [
     {
       name: 'input',
-      componentName: 'DInput',
+      component: 'DInput',
       label: '输入框',
       value: '',
       required: true,
@@ -52,7 +52,7 @@ const formStore = new FormStore({
     },
     {
       name: 'customInput',
-      componentName: 'CustomInput',
+      component: 'CustomInput',
       label: '自定义组件',
       value: '',
       required: true,
@@ -62,7 +62,7 @@ const formStore = new FormStore({
     },
     {
       name: 'email',
-      componentName: 'DInput',
+      component: 'DInput',
       label: '邮箱',
       value: '',
       rules: 'required|email',
@@ -72,19 +72,19 @@ const formStore = new FormStore({
     },
     {
       name: 'switch',
-      componentName: 'DSwitch',
+      component: 'DSwitch',
       label: '开关',
       value: false
     },
     {
       name: 'rate',
-      componentName: 'DRate',
+      component: 'DRate',
       label: '评分',
       value: 0
     },
     {
       name: 'picker',
-      componentName: 'DPicker',
+      component: 'DPicker',
       label: '选择器',
       value: ['2'],
       otherProps: <PickerProps>{
@@ -97,13 +97,13 @@ const formStore = new FormStore({
     },
     {
       name: 'datePicker',
-      componentName: 'DDatePicker',
+      component: 'DDatePicker',
       label: '日期选择器',
       value: new Date()
     },
     {
       name: 'radio',
-      componentName: 'DRadioGroup',
+      component: 'DRadioGroup',
       label: '单选框',
       value: '2',
       otherProps: <RadioGroupProps>{
@@ -117,7 +117,7 @@ const formStore = new FormStore({
     },
     {
       name: 'checkbox',
-      componentName: 'DCheckboxGroup',
+      component: 'DCheckboxGroup',
       label: '复选框',
       value: [],
       otherProps: <RadioGroupProps>{
@@ -131,7 +131,7 @@ const formStore = new FormStore({
     },
     {
       name: 'upload',
-      componentName: 'DUpload',
+      component: 'DUpload',
       label: '上传',
       value: [],
       otherProps: <Partial<UploadProps>>{
