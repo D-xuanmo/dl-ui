@@ -1,7 +1,7 @@
 <template>
   <span v-if="!controlled" :class="triggerClassName" @click="showPicker">
     <span style="vertical-align: middle">{{ displayValue }}</span>
-    <d-icon name="arrow-right" color="var(--d-secondary-text-color)" />
+    <d-icon v-if="!readonly" name="arrow-right" color="var(--d-secondary-text-color)" />
   </span>
   <d-popup :visible="innerVisible" placement="bottom" @update:visible="handleClose">
     <div :class="className">
@@ -91,7 +91,8 @@ export default defineComponent({
     const displayValue = useDisplayName(innerValue, formattedColumns, props.placeholder)
     const triggerClassName = computed(() =>
       bem('trigger', {
-        empty: displayValue.value === props.placeholder
+        empty: displayValue.value === props.placeholder,
+        disabled: props.disabled || props.readonly
       })
     )
 
@@ -104,7 +105,10 @@ export default defineComponent({
       context.emit('change', temporaryValue.value, data)
     }
 
-    const showPicker = () => (innerVisible.value = true)
+    const showPicker = () => {
+      if (props.disabled || props.readonly) return
+      innerVisible.value = true
+    }
 
     const handleChange = () => {
       const value = isCascade.value

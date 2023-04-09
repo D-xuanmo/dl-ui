@@ -1,9 +1,10 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { DataType, DirectionType } from '../common'
+import { COMMON_PROPS, DataType, DirectionType } from '../common'
 
 export type RadioGroupProps = ExtractPropTypes<typeof RADIO_GROUP_PROPS>
 
 export const RADIO_GROUP_PROPS = {
+  ...COMMON_PROPS,
   modelValue: {
     type: [String, Number],
     required: true
@@ -15,6 +16,5 @@ export const RADIO_GROUP_PROPS = {
   direction: {
     type: String as PropType<DirectionType>,
     default: 'vertical'
-  },
-  disabled: Boolean
+  }
 }

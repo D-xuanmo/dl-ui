@@ -1,9 +1,10 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { SizeType } from '../common'
+import { COMMON_PROPS, SizeType } from '../common'
 
 export type SwitchProps = ExtractPropTypes<typeof SWITCH_PROPS>
 
 export const SWITCH_PROPS = {
+  ...COMMON_PROPS,
   value: {
     type: Boolean,
     default: undefined
@@ -17,7 +18,6 @@ export const SWITCH_PROPS = {
     default: 'medium'
   },
   loading: Boolean,
-  disabled: Boolean,
   round: {
     type: Boolean,
     default: true

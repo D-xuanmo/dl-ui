@@ -1,5 +1,5 @@
 <template>
-  <button :class="className" :disabled="disabled" @click="handleChange">
+  <button :class="wrapperClassName" :disabled="disabled || readonly" @click="handleChange">
     <div :class="bem('handle', { active: innerValue })">
       <slot name="icon">
         <d-icon v-if="loading" name="loading" spin size="small" color="var(--d-primary)" />
@@ -31,12 +31,13 @@ export default defineComponent({
       emit as SetupContext['emit']
     )
 
-    const className = computed(() =>
+    const wrapperClassName = computed(() =>
       bem({
         [props.size]: props.size,
         active: innerValue.value,
         loading: props.loading,
-        round: props.round
+        round: props.round,
+        disabled: props.disabled || props.readonly
       })
     )
 
@@ -68,7 +69,7 @@ export default defineComponent({
 
     return {
       bem,
-      className,
+      wrapperClassName,
       innerValue,
       handleChange
     }

@@ -20,8 +20,17 @@ export default defineComponent({
   name,
   props: CHECKBOX_PROPS,
   setup(props) {
-    const { value: groupValue, disabled, onChangeEvent } = inject(CHECKBOX_GROUP_CONTEXT_KEY)!
-    const wrapperClassName = bem()
+    const {
+      value: groupValue,
+      disabled,
+      readonly,
+      onChangeEvent
+    } = inject(CHECKBOX_GROUP_CONTEXT_KEY)!
+    const wrapperClassName = computed(() =>
+      bem({
+        disabled: disabled.value || readonly.value
+      })
+    )
     const labelClassName = bem('label')
     const checked = computed(() => {
       // 如果 group 为空值，则默认选中当前
@@ -31,12 +40,12 @@ export default defineComponent({
       checked.value ? 'checkbox-selected-f' : 'checkbox-empty'
     )
     const iconColor = computed(() => {
-      if (disabled.value) return 'var(--d-disable-color)'
+      if (disabled.value || readonly.value) return 'var(--d-disable-color)'
       return checked.value ? 'var(--d-primary)' : 'var(--d-secondary-text-color)'
     })
 
     const handleChange = () => {
-      if (disabled.value) return
+      if (disabled.value || readonly.value) return
       const newValue = groupValue.value.includes(props.value)
         ? deleteArrayItems([props.value], groupValue.value)
         : [...groupValue.value, props.value]

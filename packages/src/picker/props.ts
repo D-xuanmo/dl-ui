@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { DataType } from '../common'
+import { COMMON_PROPS, DataType } from '../common'
 
 export type PickerValueType = string[] | number[] | DataType[]
 
@@ -15,6 +15,7 @@ export type PickerColumnsType = PickerColumnType[] | PickerColumnType[][]
 export type PickerProps = ExtractPropTypes<typeof PICKER_PROPS>
 
 export const PICKER_PROPS = {
+  ...COMMON_PROPS,
   value: {
     type: Array as PropType<PickerValueType>,
     default: undefined

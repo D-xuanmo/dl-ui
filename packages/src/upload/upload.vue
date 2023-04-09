@@ -1,6 +1,6 @@
 <template>
   <div :class="wrapperClassName">
-    <upload-list :list="previewList" :deletable="deletable && !disabled" @delete="handleDeleteItem">
+    <upload-list :list="previewList" :deletable="canDeletable" @delete="handleDeleteItem">
       <template #trigger>
         <div v-if="!readonly" :class="triggerClassName" :style="triggerStyle">
           <input
@@ -11,7 +11,7 @@
             :capture="capture"
             @change="handleChange"
           />
-          <d-icon name="camera-f" :class="triggerIconClasName" />
+          <d-icon name="camera-f" :class="triggerIconClassName" />
         </div>
       </template>
     </upload-list>
@@ -42,10 +42,10 @@ export default defineComponent({
     const wrapperClassName = bem()
     const triggerClassName = computed(() =>
       bem('trigger', {
-        disabled: props.disabled
+        disabled: props.disabled || props.readonly
       })
     )
-    const triggerIconClasName = bem('trigger', ['icon'], true)
+    const triggerIconClassName = bem('trigger', ['icon'], true)
     const fileList = ref<File[]>([])
     const localPreviewList = ref<UploadListItemType[]>([])
     const fileListDisposers: Map<number, () => void> = new Map()
@@ -54,6 +54,10 @@ export default defineComponent({
       width: addUnit(props.previewSize),
       height: addUnit(props.previewSize)
     }))
+
+    const canDeletable = computed(() => {
+      return props.deletable && !props.disabled && !props.readonly
+    })
 
     const handleUpload = (files: File[]) => {
       if (!props.action) throwError(name, '未配置文件上传请求地址')
@@ -152,10 +156,11 @@ export default defineComponent({
     return {
       wrapperClassName,
       triggerClassName,
-      triggerIconClasName,
+      triggerIconClassName,
       localPreviewList,
       previewList,
       triggerStyle,
+      canDeletable,
       handleChange,
       handleDeleteItem
     }

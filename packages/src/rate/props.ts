@@ -1,9 +1,10 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { SizeType } from '../common'
+import { SizeType, COMMON_PROPS } from '../common'
 
 export type RateProps = ExtractPropTypes<typeof RATE_PROPS>
 
 export const RATE_PROPS = {
+  ...COMMON_PROPS,
   value: {
     type: Number,
     default: undefined
@@ -67,13 +68,5 @@ export const RATE_PROPS = {
   allowClear: {
     type: Boolean,
     default: true
-  },
-
-  /**
-   * 是否禁用
-   */
-  disabled: {
-    type: Boolean,
-    default: false
   }
 }

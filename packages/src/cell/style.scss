@@ -23,8 +23,11 @@
   }
 
   &--disabled {
-    #{$parent}__title {
-      color: var(--d-disable-color);
+    #{$parent} {
+      &__title,
+      &__content {
+        color: var(--d-disable-color);
+      }
     }
   }
 

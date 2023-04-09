@@ -1,3 +1,4 @@
+import { COMMON_PROPS } from '../common'
 import { ExtractPropTypes, PropType } from 'vue'
 
 /**
@@ -49,6 +50,7 @@ export type AfterUploadType = (response: XMLHttpRequestResponseType) => UploadLi
 export type UploadProps = ExtractPropTypes<typeof UPLOAD_PROPS>
 
 export const UPLOAD_PROPS = {
+  ...COMMON_PROPS,
   modelValue: {
     type: Array as PropType<UploadListItemType[]>,
     default: () => []
@@ -103,22 +105,6 @@ export const UPLOAD_PROPS = {
    * 是否开启多选，默认：false
    */
   multiple: {
-    type: Boolean,
-    default: false
-  },
-
-  /**
-   * 是否禁用
-   */
-  disabled: {
-    type: Boolean,
-    default: false
-  },
-
-  /**
-   * 是否只读
-   */
-  readonly: {
     type: Boolean,
     default: false
   },

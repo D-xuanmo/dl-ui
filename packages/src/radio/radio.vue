@@ -17,23 +17,29 @@ export default defineComponent({
   name,
   props: RADIO_PROPS,
   setup(props) {
-    const { value, disabled, onChangeEvent } = inject(RADIO_GROUP_CONTEXT_KEY)!
-    const wrapperClassName = bem({
-      disabled: disabled.value
-    })
+    const { value, disabled, readonly, onChangeEvent } = inject(RADIO_GROUP_CONTEXT_KEY)!
+
+    const wrapperClassName = computed(() =>
+      bem({
+        disabled: disabled.value || readonly.value
+      })
+    )
+
     const labelClassName = bem('label')
+
     const checked = computed(() => {
       // 如果 group 为空值，则默认选中当前
       return isEmpty(value?.value) ? props.defaultChecked : value?.value === props.value
     })
+
     const iconName = computed<string>(() => (checked.value ? 'success-f' : 'circle'))
     const iconColor = computed(() => {
-      if (disabled.value) return 'var(--d-disable-color)'
+      if (disabled.value || readonly.value) return 'var(--d-disable-color)'
       return checked.value ? 'var(--d-primary)' : 'var(--d-secondary-text-color)'
     })
 
     const handleChange = () => {
-      if (disabled.value) return
+      if (disabled.value || readonly.value) return
       onChangeEvent?.(props.value)
     }
 

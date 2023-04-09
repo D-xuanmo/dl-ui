@@ -6,6 +6,7 @@
     display: inline-block;
     width: 100%;
     height: 100%;
+    @include disabled;
 
     .#{$prefix}-icon {
       float: right;

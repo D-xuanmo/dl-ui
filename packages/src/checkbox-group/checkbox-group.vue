@@ -36,6 +36,7 @@ export default defineComponent({
     })
     const [innerValue] = useDefault(props, emit as SetupContext['emit'])
     const disabled = computed(() => props.disabled)
+    const readonly = computed(() => props.readonly)
 
     const updateModelValue = (value: UnwrapRef<CheckboxGroupContextType['value']>) => {
       if (value.length > props.max!) return
@@ -46,6 +47,7 @@ export default defineComponent({
       value: innerValue,
       direction: props.direction,
       disabled,
+      readonly,
       onChangeEvent: updateModelValue
     })
 

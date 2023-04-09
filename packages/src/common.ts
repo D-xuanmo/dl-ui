@@ -24,3 +24,8 @@ export type DataType = {
 export type OmitValueProperties<T extends Record<string, unknown>> = Omit<T, 'value' | 'modelValue'>
 
 export type DirectionType = 'horizontal' | 'vertical'
+
+export const COMMON_PROPS = {
+  disabled: Boolean,
+  readonly: Boolean
+}

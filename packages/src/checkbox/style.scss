@@ -4,7 +4,6 @@
 .#{$prefix}-checkbox {
   display: flex;
   align-items: center;
-
   @include disabled;
 
   &__label {

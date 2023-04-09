@@ -1,14 +1,21 @@
 <template>
-  <d-cell :content="displayValue" arrow @click="showPicker = true" />
+  <d-cell
+    :content="displayValue"
+    :arrow="!readonly"
+    :disabled="disabled || readonly"
+    @click="showPicker"
+  />
   <d-picker
-    :visible="showPicker"
+    :visible="visible"
     :value="pickerValue"
     :columns="columns"
     :title="title"
     controlled
+    :disabled="disabled"
+    :readonly="readonly"
     @change="handleChange"
     @confirm="handleConfirm"
-    @close="showPicker = false"
+    @close="hidePicker"
   />
 </template>
 
@@ -37,7 +44,7 @@ export default defineComponent({
       dateType: props.type,
       formatter: props.formatter!
     })
-    const showPicker = ref(props.visible)
+    const visible = ref(props.visible)
     const pickerValue = ref(dateUtil.formattedValue())
     const displayValue = ref(dateUtil.formatValue())
     const columns = ref(dateUtil.getColumns())
@@ -76,18 +83,29 @@ export default defineComponent({
 
     const handleConfirm = (value: PickerValueType) => {
       const formatted = dateUtil.formatValue(new Date(...(formatPickerValue(value) as [])))
-      showPicker.value = false
+      visible.value = false
       displayValue.value = formatted
       updateValue(formatted)
     }
 
+    const showPicker = () => {
+      if (props.disabled || props.readonly) return
+      visible.value = true
+    }
+
+    const hidePicker = () => {
+      visible.value = false
+    }
+
     return {
-      showPicker,
+      visible,
       columns,
       pickerValue,
       displayValue,
       handleChange,
-      handleConfirm
+      handleConfirm,
+      showPicker,
+      hidePicker
     }
   }
 })
