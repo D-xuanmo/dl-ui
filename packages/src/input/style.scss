@@ -11,7 +11,8 @@
     background: none;
   }
 
-  &--disabled {
+  &--disabled,
+  &--readonly {
     color: var(--d-disable-color);
 
     &::placeholder {

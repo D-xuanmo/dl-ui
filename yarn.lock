@@ -775,6 +775,11 @@
   resolved "https://registry.npmjs.org/@xuanmo/validator/-/validator-0.0.10.tgz#a84f3825cc460b61faaf14b6c6a7bb299953fb5e"
   integrity sha512-Ml6qtDDq/xl4PqzqxYQdcB0vnypqJspe87EOL6mXR6g8NSYNFeDL7B684ajhI79cAzlmjXYbUL6MF+1sBIzlrA==
 
+"@xuanmo/validator@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.npmjs.org/@xuanmo/validator/-/validator-0.0.11.tgz#9920527aae4b16e309c62812e26e88172472b968"
+  integrity sha512-eRqpDiq1IKlr1HXNXrzeHNUjl/yCqVFXZX3ZpSTzrItF8lHkJVT4CKGvVO6PC0AqNwl8bqGL/19oW8hts7vm6Q==
+
 "@xuanmo/vite-plugin-md-preview@^0.0.9":
   version "0.0.9"
   resolved "https://registry.npmjs.org/@xuanmo/vite-plugin-md-preview/-/vite-plugin-md-preview-0.0.9.tgz#a9a279c8ba2ef3d231d984f17539ea86fe86bad9"

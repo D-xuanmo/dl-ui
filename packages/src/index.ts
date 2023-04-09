@@ -16,7 +16,7 @@ const install = function (app: App, options?: FormGlobalConfigType) {
   app.provide(CELL_GROUP_CONTEXT_KEY, {})
   app.config.globalProperties.$DForm = config
   Object.values(components).forEach((component) => {
-    app.use(component)
+    if (/^d-/.test(component.name)) app.use(component as any)
   })
 }
 
@@ -29,6 +29,7 @@ export type ComponentNames = keyof typeof components extends infer T
 export * from './components'
 export * from './common'
 export * from './utils'
+export * from './validator'
 export { version } from '../package.json'
 export default { install }
 

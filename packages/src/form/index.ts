@@ -5,6 +5,10 @@ export const DForm = withInstall(Form)
 
 export type { FormProps } from './props'
 
+export { FormStore } from './store'
+
+export * from './types'
+
 export default DForm
 
 declare module 'vue' {

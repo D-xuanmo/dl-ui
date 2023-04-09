@@ -27,7 +27,7 @@
   "types": "./dist/src/index.d.ts",
   "license": "MIT",
   "dependencies": {
-    "@xuanmo/validator": "^0.0.10",
+    "@xuanmo/validator": "^0.x",
     "vue": "^3.2.25"
   },
   "devDependencies": {

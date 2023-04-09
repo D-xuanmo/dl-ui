@@ -19,6 +19,7 @@
         <d-button @click="validate">执行校验</d-button>
         <d-button @click="getFormData">获取数据</d-button>
         <d-button @click="updateData">更新数据</d-button>
+        <d-button @click="hideFirstRow">隐藏第一行</d-button>
         <d-button @click="reset">重置</d-button>
       </d-space>
     </d-cell>
@@ -32,19 +33,20 @@ import { ref } from 'vue'
 import { PickerProps } from '../../picker'
 import { RadioGroupProps } from '../../radio-group'
 import { FormStore } from '../store'
+import { InputProps } from '../../input'
 
 const formDisabled = ref(false)
 const formReadonly = ref(false)
 
 const formStore = new FormStore({
-  model: [
+  models: [
     {
       name: 'input',
       componentName: 'DInput',
       label: '输入框',
       value: '',
       required: true,
-      otherProps: {
+      otherProps: <InputProps>{
         placeholder: '请输入文字'
       }
     },
@@ -54,7 +56,7 @@ const formStore = new FormStore({
       label: '邮箱',
       value: '',
       rules: 'required|email',
-      otherProps: {
+      otherProps: <InputProps>{
         placeholder: '请输入邮箱'
       }
     },
@@ -169,6 +171,12 @@ const updateData = () => {
       { url: '/api/file-server/read-file/2d9595e4-af21-4cfa-862d-aa99933fbd7b', deletable: false },
       { url: '/api/file-server/read-file/2d9595e4-af21-4cfa-862d-aa99933fbd7b', deletable: true }
     ]
+  })
+}
+
+const hideFirstRow = () => {
+  formStore.updateItem('input', {
+    hide: true
   })
 }
 

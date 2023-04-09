@@ -1,16 +1,14 @@
-import { FormModel, IFormModelItem } from './types'
+import { FormModel, IFormModelItem, FormGroups, FormGroupItem } from './types'
 import { reactive } from 'vue'
 import { UnwrapNestedRefs } from '@vue/reactivity'
 import { deepCopy } from '@xuanmo/javascript-utils'
-import validate from '@xuanmo/validator'
-import zhCN from '@xuanmo/validator/locale/zh-CN.json'
-validate.localize(zhCN)
+import { validator } from '../validator'
 
 class FormStore {
   /**
    * 表单数据模型
    */
-  public model: UnwrapNestedRefs<Map<string, IFormModelItem>> = reactive(new Map())
+  public models: UnwrapNestedRefs<Map<string, IFormModelItem>> = reactive(new Map())
 
   /**
    * 表单原始数据
@@ -18,43 +16,82 @@ class FormStore {
   private originalModel: FormModel = []
 
   /**
+   * 分组信息
+   */
+  public groups: UnwrapNestedRefs<Map<string, FormGroupItem & { items: string[] }>> = reactive(
+    new Map()
+  )
+
+  /**
+   * 是否为分组模式
+   */
+  isGroupMode = false
+
+  /**
    * 校验失败错误信息
    */
   errorMessages: UnwrapNestedRefs<Record<string, string>> = reactive({})
 
-  constructor(options: { model: FormModel }) {
-    const { model } = options
-    model.forEach((item) => {
-      this.model.set(item.name, item)
+  constructor(options: { models: FormModel; groups?: FormGroups }) {
+    const { models, groups } = options
+    this.originalModel = deepCopy(models)
+    models.forEach((item) => {
+      this.models.set(item.name, item)
     })
-    this.originalModel = deepCopy(model)
+    if (groups) {
+      this.isGroupMode = true
+      this.resolveGroups(groups, models)
+    }
+  }
+
+  /**
+   * 解析分组信息
+   * @param groups 分组列表
+   * @param models 表单数据模型
+   */
+  private resolveGroups = (groups: FormGroups, models: FormModel) => {
+    groups.forEach((group) => {
+      this.groups.set(group.id, {
+        ...group,
+        items: models.filter((model) => model.groupId === group.id).map((model) => model.name)
+      })
+    })
   }
 
   /**
    * 更新数据
    * @param data
    */
-  updateData = (data: Record<string, unknown>) => {
+  public updateData = (data: Record<string, unknown>) => {
     for (const [key, value] of Object.entries(data)) {
-      const model = this.model.get(key)!
-      Object.assign(model, { value })
-      this.model.set(key, model)
+      this.updateItem(key, { value })
     }
     this.validate()
+  }
+
+  /**
+   * 更新单个 item 信息
+   * @param key
+   * @param item
+   */
+  public updateItem = (key: string, item: Partial<IFormModelItem>) => {
+    const newItem = this.getItem(key)!
+    Object.assign(newItem, item)
+    this.models.set(key, newItem)
   }
 
   /**
    * 获取单个 item 信息
    * @param name 字段名
    */
-  getItem = (name: string) => this.model.get(name)
+  public getItem = (name: string) => this.models.get(name)
 
   /**
    *
    * @returns 获取表单数据
    */
-  getFormData = () => {
-    return Array.from(this.model.values()).reduce(
+  public getFormData = () => {
+    return Array.from(this.models.values()).reduce(
       (prev, current) => ({
         ...prev,
         [current.name]: current.value
@@ -66,20 +103,20 @@ class FormStore {
   /**
    * 表单重置
    */
-  reset = () => {
+  public reset = () => {
     this.originalModel.forEach((item) => {
-      const model = this.model.get(item.name)!
+      const model = this.models.get(item.name)!
       Object.assign(model, { value: item.value })
-      this.model.set(item.name, model)
+      this.models.set(item.name, model)
     })
   }
 
   /**
    * 表单校验
    */
-  validate = () =>
+  public validate = () =>
     new Promise((resolve, reject) => {
-      validate
+      validator
         .validate(this.convertModel())
         .then(() => {
           this.clearMessages()
@@ -95,10 +132,10 @@ class FormStore {
    * 单个校验
    * @param name 字段名
    */
-  singleValidate = (name: string) => {
+  public singleValidate = (name: string) => {
     const item = this.getItem(name)
     if (item) {
-      validate
+      validator
         .validate([item])
         .then(() => {
           this.errorMessages[name] = ''
@@ -109,11 +146,14 @@ class FormStore {
     }
   }
 
+  /**
+   * 清空所有校验信息
+   */
   private clearMessages = () => {
     Object.keys(this.errorMessages).forEach((key) => (this.errorMessages[key] = ''))
   }
 
-  convertModel = () => Array.from(this.model.values())
+  public convertModel = () => Array.from(this.models.values())
 }
 
 export { FormStore }
