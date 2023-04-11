@@ -1,6 +1,6 @@
 <template>
   <div :class="wrapperClassName">
-    <div v-for="(item, index) in list" :key="item.url" :class="itemClassName">
+    <div v-for="(item, index) in list" :key="`${item.url}@${index}`" :class="itemClassName">
       <d-image
         :src="item.url"
         :width="previewSize"
