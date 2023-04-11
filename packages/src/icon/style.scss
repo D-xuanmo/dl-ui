@@ -9,24 +9,28 @@
     vertical-align: middle;
   }
 
+  > svg {
+    display: inline-block;
+  }
+
   &--small {
     > svg {
-      width: 16px;
-      height: 16px;
+      width: 1em;
+      height: 1em;
     }
   }
 
   &--medium {
     > svg {
-      width: 20px;
-      height: 20px;
+      width: 1.5em;
+      height: 1.5em;
     }
   }
 
   &--large {
     > svg {
-      width: 24px;
-      height: 24px;
+      width: 2em;
+      height: 2em;
     }
   }
 
