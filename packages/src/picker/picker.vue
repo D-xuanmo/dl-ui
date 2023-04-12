@@ -113,7 +113,7 @@ export default defineComponent({
     const handleConfirm = () => {
       const value = isCascade.value
         ? deepCopy(temporaryValue.value)
-        : temporaryValue.value.map((item) => (item as DataType).value)
+        : temporaryValue.value.map((item) => (isObject(item) ? (item as DataType).value : item))
       updateValue(value)
       handleClose()
       context.emit('confirm', temporaryValue.value)
