@@ -96,6 +96,44 @@ const formStore = new FormStore({
       }
     },
     {
+      name: 'multiPicker',
+      component: 'DPicker',
+      label: '多列选择器',
+      value: ['1', '2-2'],
+      otherProps: <PickerProps>{
+        title: '多列选择器',
+        columns: [
+          [
+            { label: '选项1', value: '1' },
+            { label: '选项2', value: '2' },
+            { label: '选项3', value: '3' }
+          ],
+          [
+            { label: '选项1-1', value: '1-1' },
+            { label: '选项2-2', value: '2-2' },
+            { label: '选项3-3', value: '3-3' }
+          ]
+        ]
+      }
+    },
+    {
+      name: 'cascader',
+      component: 'DPicker',
+      label: '级联选择',
+      value: ['310000', '310100', '310115'],
+      // value 也可以是对象数组
+      // value: [
+      //   { value: '110000', label: '北京市' },
+      //   { value: '110100', label: '市辖区' },
+      //   { value: '110102', label: '西城区' }
+      // ],
+      otherProps: <Partial<PickerProps>>{
+        title: '使用选择器模拟级联选择',
+        placeholder: '点击选择内容',
+        columns: []
+      }
+    },
+    {
       name: 'datePicker',
       component: 'DDatePicker',
       label: '日期选择器',
@@ -133,7 +171,11 @@ const formStore = new FormStore({
       name: 'upload',
       component: 'DUpload',
       label: '上传',
-      value: [],
+      value: [
+        {
+          url: 'https://www.xuanmo.xin/api/file-server/read-file/cf5be5e5-a84b-41e9-b91a-c99646039f15'
+        }
+      ],
       otherProps: <Partial<UploadProps>>{
         action: '/api/file-server/p/upload',
         data: {
@@ -142,9 +184,10 @@ const formStore = new FormStore({
         headerParams: {
           'X-XSRF-TOKEN': dCookie.getItem('csrfToken')
         },
-        uploadAfter(response: any) {
+        uploadAfter(response) {
+          // 返回上传组件需要的格式
           return {
-            url: response.data?.[0].url,
+            url: (response as any).data?.[0].url,
             deletable: true
           }
         }
@@ -181,7 +224,12 @@ const updateData = () => {
       { url: '/api/file-server/read-file/2d9595e4-af21-4cfa-862d-aa99933fbd7b', deletable: false },
       { url: '/api/file-server/read-file/2d9595e4-af21-4cfa-862d-aa99933fbd7b', deletable: true }
     ],
-    customInput: '我是自定义数据'
+    customInput: '我是自定义数据',
+    cascader: [
+      { value: '110000', label: '北京市' },
+      { value: '110100', label: '市辖区' },
+      { value: '110102', label: '西城区' }
+    ]
   })
 }
 
@@ -194,4 +242,15 @@ const hideFirstRow = () => {
 const reset = () => {
   formStore.reset()
 }
+
+fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address/data.json').then(
+  async (res) => {
+    formStore.updateItem('cascader', {
+      otherProps: {
+        ...formStore.getItem('cascader')?.otherProps,
+        columns: await res.json()
+      }
+    })
+  }
+)
 </script>
