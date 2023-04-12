@@ -243,14 +243,14 @@ const reset = () => {
   formStore.reset()
 }
 
-fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address/data.json').then(
-  async (res) => {
-    formStore.updateItem('cascader', {
-      otherProps: {
-        ...formStore.getItem('cascader')?.otherProps,
-        columns: await res.json()
-      }
-    })
-  }
-)
+fetch(
+  'https://my.xuanmo.xin:3202/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727'
+).then(async (res) => {
+  formStore.updateItem('cascader', {
+    otherProps: {
+      ...formStore.getItem('cascader')?.otherProps,
+      columns: await res.json()
+    }
+  })
+})
 </script>
