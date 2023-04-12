@@ -20,10 +20,7 @@ export const CELL_PROPS = {
 
   content: String as PropType<string | undefined>,
   contentClass: String,
-  contentAlign: {
-    type: String as PropType<HorizontalAlignType>,
-    default: ''
-  },
+  contentAlign: String as PropType<HorizontalAlignType>,
   disabled: Boolean,
 
   suffix: String,

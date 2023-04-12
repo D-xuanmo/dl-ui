@@ -7,7 +7,7 @@ export const useGlobalConfig = (props: CellProps) => {
   const { cellTitleWidth, cellContentAlign } = inject(CELL_GROUP_CONTEXT_KEY) ?? {}
   return {
     labelWidth: props.titleWidth ?? cellTitleWidth ?? globalConfig.labelWidth,
-    contentAlign: props.contentAlign ?? cellContentAlign ?? globalConfig.contentAlign,
+    contentAlign: props.contentAlign ?? cellContentAlign ?? globalConfig.contentAlign ?? 'left',
     hideTitle: props.hideTitle ?? globalConfig.hideLabel
   }
 }
