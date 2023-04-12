@@ -10,7 +10,7 @@
           {{ cancelButtonText }}
         </span>
         <span>{{ title }}</span>
-        <span v-if="confirmButtonText" :class="confirmBtnClassName" @click="handleChange">
+        <span v-if="confirmButtonText" :class="confirmBtnClassName" @click="handleConfirm">
           {{ confirmButtonText }}
         </span>
       </header>
@@ -18,7 +18,7 @@
       <div :class="contentClassName" :style="contentStyle">
         <d-picker-item
           v-for="(item, index) in formattedColumns"
-          :key="index"
+          :key="`@${index}`"
           :options="item"
           :option-height="optionHeight"
           :value="formatColumnValue(index)"
@@ -36,8 +36,8 @@ import useDefault from '../hooks/useDefault'
 import { DataType, OmitValueProperties } from '../common'
 import { CascadeDataType, PickerColumnType, PICKER_PROPS, PickerValueType } from './props'
 import DPickerItem from './picker-item.vue'
-import { deepCopy, isObject } from '@xuanmo/javascript-utils'
-import { formatCascade, useDisplayName } from './utils'
+import { deepCopy, isEmpty, isObject } from '@xuanmo/javascript-utils'
+import { findCascadeFirstLevelData, findDisplayName, formatCascade } from './utils'
 import { EventType } from './types'
 import DIcon from '../icon'
 
@@ -72,7 +72,7 @@ export default defineComponent({
     // 是否为级联选择模式
     const isCascade = computed(() => Array.isArray((props.columns[0] as CascadeDataType)?.children))
 
-    // 接收子级传递回来的数据
+    // 接收子级传递回来的数据，用作缓存
     const temporaryValue = ref<PickerValueType>(deepCopy(innerValue.value))
 
     // 内部渲染列使用
@@ -88,7 +88,7 @@ export default defineComponent({
       return props.columns as PickerColumnType[][]
     })
 
-    const displayValue = useDisplayName(innerValue, formattedColumns, props.placeholder)
+    const displayValue = ref(props.placeholder ?? '')
     const triggerClassName = computed(() =>
       bem('trigger', {
         empty: displayValue.value === props.placeholder,
@@ -110,7 +110,7 @@ export default defineComponent({
       innerVisible.value = true
     }
 
-    const handleChange = () => {
+    const handleConfirm = () => {
       const value = isCascade.value
         ? deepCopy(temporaryValue.value)
         : temporaryValue.value.map((item) => (item as DataType).value)
@@ -122,6 +122,7 @@ export default defineComponent({
     const handleClose = () => {
       if (props.controlled) updateVisible(false)
       innerVisible.value = false
+      temporaryValue.value = deepCopy(innerValue.value)
       context.emit('close')
     }
 
@@ -131,6 +132,27 @@ export default defineComponent({
         | string
         | number
     }
+
+    watch(
+      () => innerValue.value,
+      () => {
+        temporaryValue.value = deepCopy(innerValue.value)
+        displayValue.value = findDisplayName(innerValue.value, formattedColumns.value)
+      },
+      {
+        immediate: true
+      }
+    )
+
+    watch(
+      () => props.columns,
+      () => {
+        displayValue.value = findDisplayName(innerValue.value, formattedColumns.value)
+        if (isCascade.value && isEmpty(temporaryValue.value)) {
+          temporaryValue.value = findCascadeFirstLevelData(props.columns as CascadeDataType[])
+        }
+      }
+    )
 
     watch(
       () => visible.value,
@@ -150,12 +172,11 @@ export default defineComponent({
       formattedColumns,
       contentStyle,
       isCascade,
-      isObject,
       displayValue,
       showPicker,
       handleClose,
       onChange,
-      handleChange,
+      handleConfirm,
       formatColumnValue
     }
   }

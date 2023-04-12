@@ -1,7 +1,25 @@
 import { CascadeDataType, PickerColumnsType, PickerColumnType, PickerValueType } from './props'
-import { isEmpty, isObject } from '@xuanmo/javascript-utils'
+import { isObject } from '@xuanmo/javascript-utils'
 import { DataType } from '../common'
-import { computed, Ref } from 'vue'
+
+/**
+ * 查找默认一级数据
+ * @param columns
+ */
+export const findCascadeFirstLevelData = (columns: CascadeDataType[]) => {
+  const firstLevelData: CascadeDataType[] = []
+  let level = 0
+  const findFirstLevelData = (column: CascadeDataType) => {
+    firstLevelData.push(column)
+    while (firstLevelData?.[level]) {
+      const result = firstLevelData?.[level]?.children
+      level++
+      result && findFirstLevelData(result[0])
+    }
+  }
+  findFirstLevelData(columns[0])
+  return firstLevelData
+}
 
 /**
  * 处理级联数据
@@ -52,14 +70,4 @@ export const findDisplayName = (value: PickerValueType, originalColumns: PickerC
     label && labels.push(label)
   }
   return labels.join('/')
-}
-
-export const useDisplayName = (
-  value: Ref<PickerValueType>,
-  originalColumns: Ref<PickerColumnsType>,
-  placeholder?: string
-) => {
-  return computed(() => {
-    return isEmpty(value.value) ? placeholder : findDisplayName(value.value, originalColumns.value)
-  })
 }
