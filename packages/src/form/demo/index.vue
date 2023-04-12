@@ -1,13 +1,6 @@
 <template>
-  <d-cell-group title="表单展示">
-    <d-form
-      :store="formStore"
-      :disabled="formDisabled"
-      :readonly="formReadonly"
-      label-width="100"
-    />
-  </d-cell-group>
-  <d-cell-group title="表单操作">
+  <d-form :store="formStore" :disabled="formDisabled" :readonly="formReadonly" label-width="100" />
+  <d-cell-group title="表单操作" cell-content-align="right">
     <d-cell title="表单禁用">
       <d-switch v-model="formDisabled" />
     </d-cell>
@@ -39,6 +32,10 @@ const formDisabled = ref(false)
 const formReadonly = ref(false)
 
 const formStore = new FormStore({
+  groups: [
+    { id: 'basic', title: '内置组件' },
+    { id: 'extend', title: '扩展功能' }
+  ],
   models: [
     {
       name: 'input',
@@ -46,18 +43,9 @@ const formStore = new FormStore({
       label: '输入框',
       value: '',
       required: true,
+      groupId: 'basic',
       otherProps: <InputProps>{
         placeholder: '请输入文字'
-      }
-    },
-    {
-      name: 'customInput',
-      component: 'CustomInput',
-      label: '自定义组件',
-      value: '',
-      required: true,
-      otherProps: {
-        placeholder: '可以实现很多目前不支持的场景'
       }
     },
     {
@@ -66,6 +54,7 @@ const formStore = new FormStore({
       label: '邮箱',
       value: '',
       rules: 'required|email',
+      groupId: 'basic',
       otherProps: <InputProps>{
         placeholder: '请输入邮箱'
       }
@@ -74,12 +63,14 @@ const formStore = new FormStore({
       name: 'switch',
       component: 'DSwitch',
       label: '开关',
+      groupId: 'basic',
       value: false
     },
     {
       name: 'rate',
       component: 'DRate',
       label: '评分',
+      groupId: 'basic',
       value: 0
     },
     {
@@ -87,6 +78,7 @@ const formStore = new FormStore({
       component: 'DPicker',
       label: '选择器',
       value: ['2'],
+      groupId: 'basic',
       otherProps: <PickerProps>{
         columns: [
           { label: '选项1', value: '1' },
@@ -100,6 +92,7 @@ const formStore = new FormStore({
       component: 'DPicker',
       label: '多列选择器',
       value: ['1', '2-2'],
+      groupId: 'basic',
       otherProps: <PickerProps>{
         title: '多列选择器',
         columns: [
@@ -127,6 +120,7 @@ const formStore = new FormStore({
       //   { value: '110100', label: '市辖区' },
       //   { value: '110102', label: '西城区' }
       // ],
+      groupId: 'basic',
       otherProps: <Partial<PickerProps>>{
         title: '使用选择器模拟级联选择',
         placeholder: '点击选择内容',
@@ -137,6 +131,7 @@ const formStore = new FormStore({
       name: 'datePicker',
       component: 'DDatePicker',
       label: '日期选择器',
+      groupId: 'basic',
       value: new Date()
     },
     {
@@ -144,6 +139,7 @@ const formStore = new FormStore({
       component: 'DRadioGroup',
       label: '单选框',
       value: '2',
+      groupId: 'basic',
       otherProps: <RadioGroupProps>{
         direction: 'horizontal',
         options: [
@@ -158,6 +154,7 @@ const formStore = new FormStore({
       component: 'DCheckboxGroup',
       label: '复选框',
       value: [],
+      groupId: 'basic',
       otherProps: <RadioGroupProps>{
         direction: 'horizontal',
         options: [
@@ -171,6 +168,7 @@ const formStore = new FormStore({
       name: 'upload',
       component: 'DUpload',
       label: '上传',
+      groupId: 'basic',
       value: [
         {
           url: 'https://www.xuanmo.xin/api/file-server/read-file/cf5be5e5-a84b-41e9-b91a-c99646039f15'
@@ -191,6 +189,17 @@ const formStore = new FormStore({
             deletable: true
           }
         }
+      }
+    },
+    {
+      name: 'customInput',
+      component: 'CustomInput',
+      label: '自定义组件',
+      value: '',
+      required: true,
+      groupId: 'extend',
+      otherProps: {
+        placeholder: '可以实现很多目前不支持的场景'
       }
     }
   ]
