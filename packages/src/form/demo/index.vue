@@ -221,8 +221,8 @@ const updateData = () => {
     email: 'example@qq.com',
     rate: 3,
     upload: [
-      { url: '/api/file-server/read-file/2d9595e4-af21-4cfa-862d-aa99933fbd7b', deletable: false },
-      { url: '/api/file-server/read-file/2d9595e4-af21-4cfa-862d-aa99933fbd7b', deletable: true }
+      { url: '/api/file-server/read-file/15b1c772-94ca-4e92-92be-d40b47832068', deletable: false },
+      { url: '/api/file-server/read-file/15b1c772-94ca-4e92-92be-d40b47832068', deletable: true }
     ],
     customInput: '我是自定义数据',
     cascader: [
@@ -243,9 +243,7 @@ const reset = () => {
   formStore.reset()
 }
 
-fetch(
-  'https://my.xuanmo.xin:3202/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727'
-).then(async (res) => {
+fetch('/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727').then(async (res) => {
   formStore.updateItem('cascader', {
     otherProps: {
       ...formStore.getItem('cascader')?.otherProps,
