@@ -12,7 +12,7 @@ class DateUtil {
   formatter: FormatterType
 
   constructor(
-    date: string | Date,
+    date: string | Date = new Date(),
     options: {
       dateType: DateUtil['dateType']
       formatter: DateUtil['formatter']

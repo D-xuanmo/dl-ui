@@ -21,7 +21,7 @@ export const DATE_PICKER_PROPS = {
   },
   modelValue: {
     type: [String, Date] as PropType<DatePickerValueType>,
-    default: new Date()
+    default: undefined
   },
 
   /**
