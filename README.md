@@ -9,9 +9,11 @@
 ## 链接
 
 1. 项目仓库：[https://github.com/D-xuanmo/dynamic-form](https://github.com/D-xuanmo/dynamic-form)
-2. 数据校验：[https://github.com/D-xuanmo/validator](https://github.com/D-xuanmo/validator)
-3. 工具方法：[https://github.com/D-xuanmo/javascript-utils](https://github.com/D-xuanmo/javascript-utils)
-4. 在线演练场：[https://run.xuanmo.xin](https://run.xuanmo.xin)
+2. 文档地址：[https://www.xuanmo.xin/-/dynamic-form](https://www.xuanmo.xin/-/dynamic-form)
+3. Demo：[https://www.xuanmo.xin/-/dynamic-form/demo/form](https://www.xuanmo.xin/-/dynamic-form/demo/form)
+4. 数据校验：[https://github.com/D-xuanmo/validator](https://github.com/D-xuanmo/validator)
+5. 工具方法：[https://github.com/D-xuanmo/javascript-utils](https://github.com/D-xuanmo/javascript-utils)
+6. 在线演练场：[https://run.xuanmo.xin](https://run.xuanmo.xin)
 
 ## 特别鸣谢
 
