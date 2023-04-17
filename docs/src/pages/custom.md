@@ -1,3 +1,12 @@
+# 自定义能力
+
+## 定制主题
+
+通过覆盖 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties) 可以实现主题定制
+
+> 变量源文件 [https://github.com/D-xuanmo/dynamic-form/blob/develop/packages/src/style/var.scss](https://github.com/D-xuanmo/dynamic-form/blob/develop/packages/src/style/var.scss)
+
+```scss
 :root {
   // 主题色
   --d-primary: #057cef;
@@ -66,3 +75,18 @@
   // 水平间距
   --d-horizontal-gap: calc(var(--d-gap-xxs) + var(--d-gap-xs));
 }
+```
+
+## 表单校验规则扩展
+
+> 更多用法参考 [https://github.com/D-xuanmo/validator](https://github.com/D-xuanmo/validator)
+
+```typescript
+import { validator } from '@xuanmo/dynamic-form'
+validator.extends({
+  custom: {
+    message: '自定义校验失败信息',
+    validate: (value: string) => value !== ''
+  }
+})
+```
