@@ -1,7 +1,7 @@
 import { FormModel, IFormModelItem, FormGroups, FormGroupItem } from './types'
-import { reactive } from 'vue'
+import { markRaw, reactive } from 'vue'
 import { UnwrapNestedRefs } from '@vue/reactivity'
-import { deepCopy } from '@xuanmo/javascript-utils'
+import { deepCopy, isObject } from '@xuanmo/javascript-utils'
 import { validator } from '../validator'
 
 class FormStore {
@@ -36,7 +36,11 @@ class FormStore {
     const { models, groups } = options
     this.originalModel = deepCopy(models)
     models.forEach((item) => {
-      this.models.set(item.name, item)
+      this.models.set(item.name, {
+        ...item,
+        // 如果是一个 vue 组件，返回对象本身，不需要进行代理
+        component: isObject(item.component) ? markRaw(item.component as object) : item.component
+      })
     })
     if (groups) {
       this.isGroupMode = true

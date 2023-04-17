@@ -3,13 +3,13 @@
     <template #title>
       <span>{{ modelItem?.label }}</span>
       <span
-        v-if="modelItem.required || modelItem.rules?.includes('required')"
+        v-if="modelItem!.required || modelItem!.rules?.includes('required')"
         :class="requiredMarkClassName"
         >*</span
       >
     </template>
     <component
-      :is="modelItem!.component"
+      :is="modelItem!.component as string"
       v-bind="modelItem?.otherProps"
       v-model="modelItem!.value"
       :disabled="disabled"
