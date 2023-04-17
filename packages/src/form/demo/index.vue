@@ -17,6 +17,11 @@
       </d-space>
     </d-cell>
   </d-cell-group>
+  <d-cell-group title="表单数据">
+    <d-cell>
+      <div>{{ formStore.getFormData() }}</div>
+    </d-cell>
+  </d-cell-group>
 </template>
 
 <script lang="ts" setup>
@@ -27,6 +32,7 @@ import { PickerProps } from '../../picker'
 import { RadioGroupProps } from '../../radio-group'
 import { FormStore } from '../store'
 import { InputProps } from '../../input'
+import CustomInput from './custom-input.vue'
 
 const formDisabled = ref(false)
 const formReadonly = ref(false)
@@ -200,6 +206,17 @@ const formStore = new FormStore({
       groupId: 'extend',
       otherProps: {
         placeholder: '可以实现很多目前不支持的场景'
+      }
+    },
+    {
+      name: 'customInput1',
+      component: CustomInput,
+      label: '自定义组件1',
+      value: '',
+      required: true,
+      groupId: 'extend',
+      otherProps: {
+        placeholder: '直接传入一个 vue 组件'
       }
     }
   ]
