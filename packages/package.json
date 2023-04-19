@@ -1,7 +1,7 @@
 {
   "name": "@xuanmo/dynamic-form",
   "private": false,
-  "version": "0.0.1-alpha.40",
+  "version": "0.0.1-alpha.41",
   "author": {
     "name": "xuanmo",
     "email": "me@xuanmo.xin"
@@ -27,7 +27,7 @@
   "types": "./dist/src/index.d.ts",
   "license": "MIT",
   "dependencies": {
-    "@xuanmo/validator": "latest",
+    "@xuanmo/validator": "^0.0.13",
     "vue": "^3.2.25"
   },
   "devDependencies": {
@@ -56,7 +56,8 @@
     "vue-tsc": "^0.29.8"
   },
   "peerDependencies": {
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "@xuanmo/validator": "^0.0.13"
   },
   "keywords": [
     "dynamic-form",
