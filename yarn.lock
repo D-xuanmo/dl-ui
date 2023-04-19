@@ -770,10 +770,15 @@
   resolved "https://registry.npmmirror.com/@xuanmo/normalize.css/-/normalize.css-1.0.9.tgz"
   integrity sha512-/bMExdDMzOiZZiyipDfOOtefRsn4COnSx5WY0NDu+KknNkN+ZzKP8IScwkTThDZJUt7LXozTRJvRcW5MSFU1uQ==
 
-"@xuanmo/validator@^0.0.11", "@xuanmo/validator@^0.x":
+"@xuanmo/validator@^0.0.11":
   version "0.0.11"
   resolved "https://registry.npmjs.org/@xuanmo/validator/-/validator-0.0.11.tgz#9920527aae4b16e309c62812e26e88172472b968"
   integrity sha512-eRqpDiq1IKlr1HXNXrzeHNUjl/yCqVFXZX3ZpSTzrItF8lHkJVT4CKGvVO6PC0AqNwl8bqGL/19oW8hts7vm6Q==
+
+"@xuanmo/validator@latest":
+  version "0.0.13"
+  resolved "https://registry.npmjs.org/@xuanmo/validator/-/validator-0.0.13.tgz#a05f8a4c87c9a9778254e10bd7259ead52d6f375"
+  integrity sha512-77wl6lYjxFxm/ZHpZ05VS4+w2wLuo22OnLVRKWZhSykP2oUZkYSg/KYPFbgnSgl2IL2Aq6vZfI8MVzTMDlxygA==
 
 "@xuanmo/vite-plugin-md-preview@^0.0.9":
   version "0.0.9"
