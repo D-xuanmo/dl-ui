@@ -10,7 +10,8 @@ const menus: MenuItemType[] = [
       { id: 'quick', path: '/quick', content: '快速上手' },
       { id: 'common', path: '/common', content: '全局说明' },
       { id: 'custom', path: '/custom', content: '自定义能力' },
-      { id: 'guide', path: '/guide', content: 'Guide [项目规范]' }
+      { id: 'questions', path: '/questions', content: '常见问题' },
+      { id: 'guide', path: '/guide', content: '项目规范' }
     ]
   },
   {

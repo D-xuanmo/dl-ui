@@ -20,52 +20,9 @@
 - `component.{vue,tsx}` 具体组件，可以多个，命名规范：`kebab-case`
 - `types.ts` 当前组件类型申明文件
 
-```text
-dynamic-form
-├── README.md
-├── docs
-│   ├── App.vue
-│   ├── assets
-│   │   └── style
-│   ├── components
-│   │   └── menu
-│   │       ├── format.ts
-│   │       ├── index.tsx
-│   │       ├── style.scss
-│   │       └── types.ts
-│   ├── constants
-│   │   └── menus.ts
-│   ├── env.d.ts
-│   ├── main.ts
-│   ├── pages
-│   │   ├── example-bem.md
-│   │   ├── example.md
-│   │   └── guide.md
-│   └── routes
-│       └── index.ts
-├── index.html
-├── package.json
-├── packages
-│   ├── example
-│   │   ├── example.vue
-│   │   ├── example-bem.vue
-│   │   └── index.ts
-│   ├── hooks
-│   ├── index.ts
-│   ├── input
-│   ├── layout
-│   ├── style
-│   │   ├── index.scss
-│   │   ├── prefix.scss
-│   │   └── var.scss
-│   └── utils
-│       ├── bem.ts
-│       └── with-install.ts
-├── public
-│   └── favicon.ico
-├── tsconfig.json
-├── tsconfig.node.json
-├── vite.config.ts
-└── yarn.lock
+### Git commit 提交规范
 
-```
+- 具体提交规范参考 [angular commit](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format)
+- 以修复 `Form` 组件 bug 为例，对应的 commit 为：fix(Form): 修复校验方法报错
+
+![](https://upyun.xuanmo.xin/dynamic-form/20230420002352123939.png)

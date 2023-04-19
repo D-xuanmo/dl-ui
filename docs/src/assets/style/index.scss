@@ -197,6 +197,11 @@ blockquote {
       font-size: 24px;
     }
 
+    img {
+      margin-top: var(--d-gap-sm);
+      vertical-align: top;
+    }
+
     table {
       width: 100%;
       border: var(--d-border);
