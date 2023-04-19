@@ -73,7 +73,7 @@ export default defineComponent({
     const isCascade = computed(() => Array.isArray((props.columns[0] as CascadeDataType)?.children))
 
     // 接收子级传递回来的数据，用作缓存
-    const temporaryValue = ref<PickerValueType>(!isEmpty(innerValue.value) && innerValue.value.length > 0 ? deepCopy(innerValue.value) : findCascadeFirstLevelData(props.columns as CascadeDataType[]))
+    const temporaryValue = ref<PickerValueType>(!isEmpty(innerValue.value) ? deepCopy(innerValue.value) : findCascadeFirstLevelData(props.columns as CascadeDataType[]))
     // 内部渲染列使用
     const formattedColumns = computed(() => {
       if (isCascade.value) {
@@ -134,7 +134,7 @@ export default defineComponent({
     watch(
       () => innerValue.value,
       () => {
-        if (!isEmpty(innerValue.value) && innerValue.value.length > 0) {
+        if (!isEmpty(innerValue.value)) {
           temporaryValue.value =  deepCopy(innerValue.value)  
         }
         displayValue.value = findDisplayName(innerValue.value, formattedColumns.value) || (props.placeholder ?? '请选择')
