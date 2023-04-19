@@ -1,7 +1,7 @@
 {
   "name": "@xuanmo/dynamic-form",
   "private": false,
-  "version": "0.0.1-alpha.39",
+  "version": "0.0.1-alpha.40",
   "author": {
     "name": "xuanmo",
     "email": "me@xuanmo.xin"
@@ -27,7 +27,7 @@
   "types": "./dist/src/index.d.ts",
   "license": "MIT",
   "dependencies": {
-    "@xuanmo/validator": "^0.x",
+    "@xuanmo/validator": "latest",
     "vue": "^3.2.25"
   },
   "devDependencies": {

@@ -11,7 +11,7 @@
               :disabled="disabled"
               :readonly="readonly"
               :label-width="labelWidth"
-              :error-message="store?.errorMessages?.[itemName]"
+              :error-message="store?.errorMessages?.[itemName]!"
             />
           </template>
         </d-cell-group>

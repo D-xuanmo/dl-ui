@@ -79,9 +79,11 @@ class FormStore {
    * @param item
    */
   public updateItem = (key: string, item: Partial<IFormModelItem>) => {
-    const newItem = this.getItem(key)!
-    Object.assign(newItem, item)
-    this.models.set(key, newItem)
+    const newItem = this.getItem(key)
+    if (newItem) {
+      Object.assign(newItem, item)
+      this.models.set(key, newItem)
+    }
   }
 
   /**
