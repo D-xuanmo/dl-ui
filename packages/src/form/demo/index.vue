@@ -83,7 +83,7 @@ const formStore = new FormStore({
       name: 'picker',
       component: 'DPicker',
       label: '选择器',
-      value: ['2'],
+      value: [],
       groupId: 'basic',
       otherProps: <PickerProps>{
         columns: [

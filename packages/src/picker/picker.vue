@@ -73,8 +73,7 @@ export default defineComponent({
     const isCascade = computed(() => Array.isArray((props.columns[0] as CascadeDataType)?.children))
 
     // 接收子级传递回来的数据，用作缓存
-    const temporaryValue = ref<PickerValueType>(deepCopy(innerValue.value))
-
+    const temporaryValue = ref<PickerValueType>(!isEmpty(innerValue.value) ? deepCopy(innerValue.value) : findCascadeFirstLevelData(props.columns as CascadeDataType[]))
     // 内部渲染列使用
     const formattedColumns = computed(() => {
       if (isCascade.value) {
@@ -87,11 +86,10 @@ export default defineComponent({
 
       return props.columns as PickerColumnType[][]
     })
-
     const displayValue = ref(props.placeholder ?? '')
     const triggerClassName = computed(() =>
       bem('trigger', {
-        empty: displayValue.value === props.placeholder,
+        empty: displayValue.value === props.placeholder || displayValue.value === '请选择',
         disabled: props.disabled || props.readonly
       })
     )
@@ -136,8 +134,10 @@ export default defineComponent({
     watch(
       () => innerValue.value,
       () => {
-        temporaryValue.value = deepCopy(innerValue.value)
-        displayValue.value = findDisplayName(innerValue.value, formattedColumns.value)
+        if (!isEmpty(innerValue.value)) {
+          temporaryValue.value =  deepCopy(innerValue.value)  
+        }
+        displayValue.value = findDisplayName(innerValue.value, formattedColumns.value) || (props.placeholder ?? '请选择')
       },
       {
         immediate: true
@@ -147,7 +147,7 @@ export default defineComponent({
     watch(
       () => props.columns,
       () => {
-        displayValue.value = findDisplayName(innerValue.value, formattedColumns.value)
+        displayValue.value = findDisplayName(innerValue.value, formattedColumns.value) || (props.placeholder ?? '请选择')
         if (isCascade.value && isEmpty(temporaryValue.value)) {
           temporaryValue.value = findCascadeFirstLevelData(props.columns as CascadeDataType[])
         }
