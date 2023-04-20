@@ -51,7 +51,7 @@ const formStore = new FormStore({
       required: true,
       groupId: 'basic',
       otherProps: <InputProps>{
-        placeholder: '请输入文字'
+        placeholder: '请输入文字',
       }
     },
     {
@@ -62,7 +62,7 @@ const formStore = new FormStore({
       groupId: 'basic',
       otherProps: <InputProps>{
         placeholder: '这个输入框被禁用了',
-        disabled: true
+        disabled: true,
       }
     },
     {

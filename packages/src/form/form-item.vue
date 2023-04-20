@@ -11,9 +11,9 @@
     <component
       :is="modelItem!.component as string"
       v-model="modelItem!.value"
-      :disabled="disabled"
-      :readonly="readonly"
       v-bind="modelItem?.otherProps"
+      :disabled="itemDisable"
+      :readonly="itemReadonle"
       @update:model-value="handleChange"
     />
     <div v-if="errorMessage" :class="errorClassName">{{ errorMessage }}</div>
@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { createNamespace } from '../utils'
 import { FORM_ITEM_PROPS } from './props'
 import DCell from '../cell'
@@ -47,9 +47,14 @@ export default defineComponent({
       }
     }
 
+    const itemDisable = computed(() => props.disabled || props.modelItem?.otherProps?.disabled)
+    const itemReadonle = computed(() => props.readonly || props.modelItem?.otherProps?.readonly)
+    
     return {
       itemClassName,
       errorClassName,
+      itemDisable,
+      itemReadonle,
       requiredMarkClassName,
       handleChange
     }
