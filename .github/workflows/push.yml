@@ -1,0 +1,8 @@
+name: GitLab auto push
+on: [push]
+jobs:
+  GitLab-Auto-Push:
+    runs-on: ubuntu-latest
+    steps:
+      - run: git remote add gitlab ${{ secrets.GITLAB }}
+      - run: git push gitlab develop
