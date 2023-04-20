@@ -12,13 +12,13 @@
         <d-icon
           v-if="i > innerValue"
           :name="uncheckedIcon"
-          :size="size"
+          :size="size!"
           :color="disabled ? 'var(--d-disable-color)' : 'var(--d-secondary-text-color)'"
         />
         <d-icon
           v-if="i <= innerValue"
           :name="checkedIcon"
-          :size="size"
+          :size="size!"
           :class="bem('item', 'active', true)"
           :color="disabled ? 'var(--d-disable-color)' : activeColor"
         />
