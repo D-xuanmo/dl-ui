@@ -51,7 +51,18 @@ const formStore = new FormStore({
       required: true,
       groupId: 'basic',
       otherProps: <InputProps>{
-        placeholder: '请输入文字'
+        placeholder: '请输入文字',
+      }
+    },
+    {
+      name: 'disableInput',
+      component: 'DInput',
+      label: '被禁用的输入框',
+      value: '',
+      groupId: 'basic',
+      otherProps: <InputProps>{
+        placeholder: '这个输入框被禁用了',
+        disabled: true,
       }
     },
     {
