@@ -32,7 +32,7 @@
 <script lang="ts">
 import { computed, CSSProperties, defineComponent, ref, SetupContext, watch } from 'vue'
 import { createNamespace } from '../utils'
-import useDefault from '../hooks/useDefault'
+import useModelValue from '../hooks/useModelValue'
 import { DataType, OmitValueProperties } from '../common'
 import { CascadeDataType, PickerColumnType, PICKER_PROPS, PickerValueType } from './props'
 import DPickerItem from './picker-item.vue'
@@ -55,7 +55,7 @@ export default defineComponent({
     const confirmBtnClassName = bem('header', 'confirm', true)
     const contentClassName = bem('content')
 
-    const [visible, updateVisible] = useDefault<
+    const [visible, updateVisible] = useModelValue<
       boolean,
       OmitValueProperties<typeof props>,
       'visible',
@@ -64,7 +64,7 @@ export default defineComponent({
 
     const innerVisible = ref(false)
 
-    const [innerValue, updateValue] = useDefault<PickerValueType, typeof props, EventType>(
+    const [innerValue, updateValue] = useModelValue<PickerValueType, typeof props, EventType>(
       props,
       context.emit
     )
@@ -113,10 +113,10 @@ export default defineComponent({
     }
 
     const handleConfirm = () => {
-      const value = isCascade.value
-        ? deepCopy(temporaryValue.value)
-        : temporaryValue.value.map((item) => (isObject(item) ? (item as DataType).value : item))
-      updateValue(value)
+      const value = temporaryValue.value.map((item) =>
+        isObject(item) ? (item as DataType).value : item
+      )
+      updateValue(value as PickerValueType)
       handleClose()
       context.emit('confirm', temporaryValue.value)
     }

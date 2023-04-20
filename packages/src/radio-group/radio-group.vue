@@ -16,7 +16,7 @@
 import { computed, defineComponent, provide, SetupContext } from 'vue'
 import { createNamespace } from '../utils'
 import { RADIO_GROUP_PROPS } from './props'
-import useDefault from '../hooks/useDefault'
+import useModelValue from '../hooks/useModelValue'
 import { RADIO_GROUP_CONTEXT_KEY } from '../context'
 import DRadio from '../radio'
 
@@ -34,7 +34,7 @@ export default defineComponent({
       horizontal: props.direction === 'horizontal',
       vertical: props.direction === 'vertical'
     })
-    const [innerValue] = useDefault(props, emit as SetupContext['emit'])
+    const [innerValue] = useModelValue(props, emit as SetupContext['emit'])
     const disabled = computed(() => props.disabled)
     const readonly = computed(() => props.readonly)
 

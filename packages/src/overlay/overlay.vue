@@ -20,7 +20,7 @@
 <script lang="ts">
 import { CSSProperties, defineComponent, SetupContext, computed } from 'vue'
 import { createNamespace } from '../utils'
-import useDefault from '../hooks/useDefault'
+import useModelValue from '../hooks/useModelValue'
 import useZIndex from '../hooks/useZIndex'
 import { PREFIX } from '../constants/prefix'
 import { OVERLAY_PROPS } from './props'
@@ -32,7 +32,7 @@ export default defineComponent({
   props: OVERLAY_PROPS,
   emits: ['update:visible', 'click'],
   setup(props, { emit }) {
-    const [innerVisible, setVisible] = useDefault<boolean | undefined, typeof props, 'visible'>(
+    const [innerVisible, setVisible] = useModelValue<boolean | undefined, typeof props, 'visible'>(
       props,
       emit as SetupContext['emit'],
       'visible',

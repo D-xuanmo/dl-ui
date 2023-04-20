@@ -31,7 +31,7 @@
 import { computed, CSSProperties, defineComponent, SetupContext } from 'vue'
 import { createNamespace } from '../utils'
 import { isNumber } from '@xuanmo/javascript-utils'
-import useDefault from '../hooks/useDefault'
+import useModelValue from '../hooks/useModelValue'
 import { RATE_PROPS } from './props'
 
 const [name, bem] = createNamespace('rate')
@@ -40,7 +40,10 @@ export default defineComponent({
   name,
   props: RATE_PROPS,
   setup(props, context: SetupContext) {
-    const [innerValue, updateValue] = useDefault<number, typeof props>(props as never, context.emit)
+    const [innerValue, updateValue] = useModelValue<number, typeof props>(
+      props as never,
+      context.emit
+    )
 
     const classes = bem({
       disabled: props.disabled

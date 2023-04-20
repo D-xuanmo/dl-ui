@@ -14,7 +14,7 @@
 import { computed, defineComponent, SetupContext } from 'vue'
 import { isPromise } from '@vue/shared'
 import { createNamespace } from '../utils'
-import useDefault from '../hooks/useDefault'
+import useModelValue from '../hooks/useModelValue'
 import DIcon from '../icon'
 import { isBoolean, throwError, debugWarn } from '@xuanmo/javascript-utils'
 import { SWITCH_PROPS } from './props'
@@ -26,7 +26,7 @@ export default defineComponent({
   props: SWITCH_PROPS,
   emits: ['update:value', 'update:model-value'],
   setup(props, { emit }) {
-    const [innerValue, setValue] = useDefault<boolean | undefined, typeof props>(
+    const [innerValue, setValue] = useModelValue<boolean | undefined, typeof props>(
       props,
       emit as SetupContext['emit']
     )

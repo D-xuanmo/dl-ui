@@ -51,7 +51,7 @@ const formStore = new FormStore({
       required: true,
       groupId: 'basic',
       otherProps: <InputProps>{
-        placeholder: '请输入文字',
+        placeholder: '请输入文字'
       }
     },
     {
@@ -62,7 +62,7 @@ const formStore = new FormStore({
       groupId: 'basic',
       otherProps: <InputProps>{
         placeholder: '这个输入框被禁用了',
-        disabled: true,
+        disabled: true
       }
     },
     {
@@ -129,7 +129,7 @@ const formStore = new FormStore({
     {
       name: 'cascader',
       component: 'DPicker',
-      label: '级联选择',
+      label: '树形选择',
       value: ['310000', '310100', '310115'],
       // value 也可以是对象数组
       // value: [
