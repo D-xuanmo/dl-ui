@@ -10,10 +10,10 @@
     </template>
     <component
       :is="modelItem!.component as string"
-      v-bind="modelItem?.otherProps"
-      v-model="modelItem!.value"
       :disabled="disabled"
       :readonly="readonly"
+      v-bind="modelItem?.otherProps"
+      v-model="modelItem!.value"
       @update:model-value="handleChange"
     />
     <div v-if="errorMessage" :class="errorClassName">{{ errorMessage }}</div>
