@@ -41,11 +41,10 @@
   }
 
   &-item {
-    display: flex;
-    justify-content: center;
     padding: 10px;
     font-size: var(--d-font-size-md);
     line-height: var(--d-line-height-md);
+    text-align: center;
     @include ellipsis(1);
     @include disabled;
 
