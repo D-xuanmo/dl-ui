@@ -4,6 +4,8 @@ import { UnwrapNestedRefs } from '@vue/reactivity'
 import { deepCopy, isObject } from '@xuanmo/javascript-utils'
 import { validator } from '../validator'
 
+export type FormStoreInitialConfig = ConstructorParameters<typeof FormStore>[number]
+
 class FormStore {
   /**
    * 表单数据模型

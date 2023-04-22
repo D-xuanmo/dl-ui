@@ -20,12 +20,13 @@
 
 ### Props
 
-| 参数        | 类型               | 默认值 | 说明       | 必传 |
-| ----------- | ------------------ | ------ | ---------- | ---- |
-| store       | `FormStore`        | -      | 表单 store | Y    |
-| disabled    | `boolean`          | -      | 表单禁用   | N    |
-| readonly    | `boolean`          | -      | 表单只读   | N    |
-| label-width | `string \| number` | `80px` | 标题宽度   | N    |
+| 参数        | 类型                         | 默认值     | 说明       | 必传 |
+| ----------- | ---------------------------- | ---------- | ---------- | ---- |
+| store       | `FormStore`                  | -          | 表单 store | Y    |
+| disabled    | `boolean`                    | -          | 表单禁用   | N    |
+| readonly    | `boolean`                    | -          | 表单只读   | N    |
+| label-width | `string \| number`           | `80px`     | 标题宽度   | N    |
+| layout      | `'horizontal' \| 'vertical'` | horizontal | 布局类型   | N    |
 
 ### FormStore API
 

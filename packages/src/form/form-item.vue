@@ -1,5 +1,10 @@
 <template>
-  <d-cell :class="itemClassName" content-align="left" :title-width="labelWidth">
+  <d-cell
+    :class="itemClassName"
+    content-align="left"
+    :title-width="labelWidth"
+    :layout="layout as any"
+  >
     <template #title>
       <span>{{ modelItem?.label }}</span>
       <span

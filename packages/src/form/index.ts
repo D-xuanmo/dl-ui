@@ -5,7 +5,7 @@ export const DForm = withInstall(Form)
 
 export type { FormProps } from './props'
 
-export { FormStore } from './store'
+export { FormStore, type FormStoreInitialConfig } from './store'
 
 export * from './types'
 
