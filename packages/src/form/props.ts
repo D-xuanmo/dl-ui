@@ -2,7 +2,7 @@ import { ExtractPropTypes, PropType } from 'vue'
 import { IFormModelItem } from './types'
 import { pickProps } from '../utils'
 import type { FormStore } from './store'
-import { COMMON_PROPS, DirectionType } from '../common'
+import { COMMON_PROPS, DirectionType, HorizontalAlignType } from '../common'
 
 export type FormProps = ExtractPropTypes<typeof FORM_PROPS>
 
@@ -16,11 +16,23 @@ export const FORM_PROPS = {
     type: [Number, String] as PropType<number | string>,
     default: 80
   },
-  layout: String as PropType<DirectionType>
+  layout: String as PropType<DirectionType>,
+  colon: Boolean,
+  requiredMarkPosition: {
+    type: String as PropType<Exclude<HorizontalAlignType, 'center'>>,
+    default: 'right'
+  }
 }
 
 export const FORM_ITEM_PROPS = {
-  ...pickProps(FORM_PROPS, ['disabled', 'readonly', 'store', 'layout']),
+  ...pickProps(FORM_PROPS, [
+    'disabled',
+    'readonly',
+    'store',
+    'layout',
+    'colon',
+    'requiredMarkPosition'
+  ]),
   labelWidth: {
     type: [Number, String] as PropType<number | string>,
     default: 80

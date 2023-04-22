@@ -20,13 +20,15 @@
 
 ### Props
 
-| 参数        | 类型                         | 默认值     | 说明       | 必传 |
-| ----------- | ---------------------------- | ---------- | ---------- | ---- |
-| store       | `FormStore`                  | -          | 表单 store | Y    |
-| disabled    | `boolean`                    | -          | 表单禁用   | N    |
-| readonly    | `boolean`                    | -          | 表单只读   | N    |
-| label-width | `string \| number`           | `80px`     | 标题宽度   | N    |
-| layout      | `'horizontal' \| 'vertical'` | horizontal | 布局类型   | N    |
+| 参数                   | 类型                         | 默认值       | 说明             | 必传 |
+| ---------------------- | ---------------------------- | ------------ | ---------------- | ---- |
+| store                  | `FormStore`                  | -            | 表单 store       | Y    |
+| disabled               | `boolean`                    | -            | 表单禁用         | N    |
+| readonly               | `boolean`                    | -            | 表单只读         | N    |
+| label-width            | `string \| number`           | `80px`       | 标题宽度         | N    |
+| layout                 | `'horizontal' \| 'vertical'` | `horizontal` | 布局类型         | N    |
+| colon                  | `boolean`                    | `false`      | 是否显示冒号     | N    |
+| required-mark-position | `'left' \| 'right'`          | `right`      | 必填标识显示位置 | N    |
 
 ### FormStore API
 

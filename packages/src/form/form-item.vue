@@ -6,12 +6,19 @@
     :layout="layout as any"
   >
     <template #title>
-      <span>{{ modelItem?.label }}</span>
       <span
-        v-if="modelItem!.required || modelItem!.rules?.includes('required')"
+        v-if="showRequiredMark && requiredMarkPosition === 'left'"
         :class="requiredMarkClassName"
-        >*</span
       >
+        *
+      </span>
+      <span>{{ modelItem?.label }}{{ colon ? ':' : '' }}</span>
+      <span
+        v-if="showRequiredMark && requiredMarkPosition === 'right'"
+        :class="requiredMarkClassName"
+      >
+        *
+      </span>
     </template>
     <component
       :is="modelItem!.component as string"
@@ -49,6 +56,10 @@ export default defineComponent({
     const itemDisable = computed(() => props.disabled || props.modelItem?.otherProps?.disabled)
     const itemReadonly = computed(() => props.readonly || props.modelItem?.otherProps?.readonly)
 
+    const showRequiredMark = computed(() => {
+      return props.modelItem!.required || props.modelItem!.rules?.includes('required')
+    })
+
     const handleChange = () => {
       if (props.errorMessage) {
         ;(props.store as FormStore)?.singleValidate(props.modelItem.name)
@@ -61,6 +72,7 @@ export default defineComponent({
       itemDisable,
       itemReadonly,
       requiredMarkClassName,
+      showRequiredMark,
       handleChange
     }
   }

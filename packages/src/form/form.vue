@@ -18,6 +18,8 @@
               :disabled="disabled"
               :readonly="readonly"
               :label-width="labelWidth"
+              :colon="colon"
+              :required-mark-position="requiredMarkPosition"
               :error-message="store?.errorMessages?.[itemName]!"
             />
           </template>
@@ -35,6 +37,8 @@
           :readonly="readonly"
           :label-width="labelWidth"
           :layout="layout"
+          :colon="colon"
+          :required-mark-position="requiredMarkPosition"
           :error-message="store?.errorMessages?.[name]"
         />
       </template>
