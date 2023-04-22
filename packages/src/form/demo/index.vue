@@ -6,6 +6,7 @@
     :layout="formLayout"
     label-width="100"
     required-mark-position="left"
+    @change="handleChange"
   />
   <d-cell-group title="表单操作">
     <d-cell title="表单禁用">
@@ -39,6 +40,7 @@ import { ref } from 'vue'
 import { FormStore } from '../store'
 import FORM_MODEL from './model'
 import { DirectionType } from '../../common'
+import { OnFormChange } from '../types'
 
 const formDisabled = ref(false)
 const formReadonly = ref(false)
@@ -96,6 +98,10 @@ const hideFirstRow = () => {
 
 const reset = () => {
   formStore.reset()
+}
+
+const handleChange: OnFormChange = (value, model) => {
+  console.log(value, model)
 }
 
 fetch('/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727').then(async (res) => {

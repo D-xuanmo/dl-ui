@@ -50,3 +50,5 @@ export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>> 
   // 组件的其他参数
   otherProps?: TProps
 }
+
+export type OnFormChange = (value: Record<string, unknown>, model: IFormModelItem) => void

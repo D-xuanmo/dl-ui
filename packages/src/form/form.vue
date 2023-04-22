@@ -21,6 +21,7 @@
               :colon="colon"
               :required-mark-position="requiredMarkPosition"
               :error-message="store?.errorMessages?.[itemName]!"
+              @change="handleChange"
             />
           </template>
         </d-cell-group>
@@ -40,6 +41,7 @@
           :colon="colon"
           :required-mark-position="requiredMarkPosition"
           :error-message="store?.errorMessages?.[name]"
+          @change="handleChange"
         />
       </template>
     </template>
@@ -52,6 +54,7 @@ import { FORM_PROPS } from './props'
 import DFormItem from './form-item.vue'
 import { formNamespace, createFormBEM } from './constants'
 import DCellGroup from '../cell-group'
+import { OnFormChange } from './types'
 
 export default defineComponent({
   name: formNamespace,
@@ -60,11 +63,17 @@ export default defineComponent({
     DCellGroup
   },
   props: FORM_PROPS,
-  setup() {
+  emits: ['change'],
+  setup(props, { emit }) {
     const formClassName = createFormBEM()
 
+    const handleChange: OnFormChange = (value, model) => {
+      emit('change', value, model)
+    }
+
     return {
-      formClassName
+      formClassName,
+      handleChange
     }
   }
 })

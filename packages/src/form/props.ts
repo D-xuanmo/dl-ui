@@ -21,6 +21,10 @@ export const FORM_PROPS = {
   requiredMarkPosition: {
     type: String as PropType<Exclude<HorizontalAlignType, 'center'>>,
     default: 'right'
+  },
+  change: {
+    type: Function as PropType<(value: Record<string, unknown>, model: IFormModelItem) => void>,
+    default: undefined
   }
 }
 

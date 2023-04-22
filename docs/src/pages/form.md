@@ -22,6 +22,12 @@
 | colon                  | `boolean`                    | `false`      | 是否显示冒号     | N    |
 | required-mark-position | `'left' \| 'right'`          | `right`      | 必填标识显示位置 | N    |
 
+### Events
+
+| 事件名 | 类型                                                              | 说明                   |
+| ------ | ----------------------------------------------------------------- | ---------------------- |
+| change | `(value: Record<string, unknown>, model: IFormModelItem) => void` | 表单数据发生改变时触发 |
+
 ### FormStore API
 
 ```typescript

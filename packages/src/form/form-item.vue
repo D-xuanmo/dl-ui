@@ -48,7 +48,8 @@ export default defineComponent({
     DCell
   },
   props: FORM_ITEM_PROPS,
-  setup(props) {
+  emits: ['change'],
+  setup(props, { emit }) {
     const itemClassName = createFormBEM('item')
     const errorClassName = createFormBEM('item', 'message', true)
     const requiredMarkClassName = createFormBEM('item', 'required-mark', true)
@@ -60,10 +61,11 @@ export default defineComponent({
       return props.modelItem!.required || props.modelItem!.rules?.includes('required')
     })
 
-    const handleChange = () => {
+    const handleChange = (value: unknown) => {
       if (props.errorMessage) {
         ;(props.store as FormStore)?.singleValidate(props.modelItem.name)
       }
+      emit('change', { [props.modelItem.name]: value }, props.modelItem)
     }
 
     return {
