@@ -35,7 +35,7 @@
 
   &--layout {
     &-horizontal {
-      #{$parent} {
+      > #{$parent} {
         &__wrapper {
           flex-direction: row;
         }
@@ -43,18 +43,20 @@
     }
 
     &-vertical {
-      #{$parent} {
+      > #{$parent} {
         &__wrapper {
           flex-direction: column;
-        }
 
-        &__title {
-          min-width: 100%;
-        }
+          > #{$parent} {
+            &__title {
+              min-width: 100%;
+            }
 
-        &__content {
-          width: 100%;
-          margin-top: var(--d-gap-xs);
+            &__content {
+              width: 100%;
+              margin-top: var(--d-gap-xs);
+            }
+          }
         }
       }
     }

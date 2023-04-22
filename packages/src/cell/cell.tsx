@@ -1,9 +1,11 @@
-import { defineComponent } from 'vue'
+import { computed, defineComponent, provide, ref } from 'vue'
 import { createNamespace, addUnit } from '../utils'
 import { isEmpty, toBoolean } from '@xuanmo/javascript-utils'
 import DIcon from '../icon'
 import { CELL_PROPS } from './props'
 import { useGlobalConfig } from './utils'
+import { CELL_GROUP_CONTEXT_KEY } from '../context'
+import { DirectionType } from '../common'
 
 const [name, bem] = createNamespace('cell')
 
@@ -12,6 +14,9 @@ export default defineComponent({
   props: CELL_PROPS,
   emits: ['click'],
   setup(props, { slots, emit }) {
+    provide(CELL_GROUP_CONTEXT_KEY, {
+      layout: ref<DirectionType>('horizontal')
+    })
     return () => {
       const { labelWidth, contentAlign, hideTitle, layout, border } = useGlobalConfig(props)
       const {
@@ -33,6 +38,15 @@ export default defineComponent({
         rightIconProps,
         arrow
       } = props
+
+      const wrapperClassName = computed(() =>
+        bem({
+          'hide-title': hideTitle,
+          [`layout-${layout}`]: layout,
+          disabled,
+          border: border || border === undefined
+        })
+      )
 
       const titleClassName = bem('title', {
         [titleClass ?? '']: toBoolean(titleClass),
@@ -96,17 +110,7 @@ export default defineComponent({
       }
 
       return (
-        <div
-          class={[
-            bem({
-              'hide-title': hideTitle,
-              [`layout-${layout}`]: layout,
-              disabled,
-              border: border || border === undefined
-            })
-          ]}
-          onClick={handleClick}
-        >
+        <div class={wrapperClassName.value} onClick={handleClick}>
           <div class={bem('wrapper')}>
             {renderLabel}
             <div class={contentClassName}>

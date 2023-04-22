@@ -34,5 +34,5 @@ export const CELL_PROPS = {
     type: Boolean,
     default: undefined
   },
-  layout: String as PropType<DirectionType>
+  layout: String as PropType<DirectionType | undefined>
 }

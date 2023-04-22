@@ -9,7 +9,7 @@ export const useGlobalConfig = (props: CellProps) => {
     labelWidth: props.titleWidth || cellTitleWidth || globalConfig.labelWidth,
     contentAlign: props.contentAlign || cellContentAlign || globalConfig.contentAlign || 'left',
     hideTitle: props.hideTitle || globalConfig.hideLabel,
-    layout: props.layout || layout || globalConfig.cellLayout,
+    layout: props.layout || layout?.value || globalConfig.cellLayout,
     border: props.border || border
   }
 }

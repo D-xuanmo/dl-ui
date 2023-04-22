@@ -49,7 +49,7 @@
 | ---------------- | ---------------------------- | ---------- | -------------- | ---- |
 | title            | string                       | -          | 分组标题       | N    |
 | cell-title-width | string                       | `80px`     | 单元格标题宽度 | N    |
-| radius           | boolean                      | false      | 是否展示圆角   | N    |
+| round            | boolean                      | false      | 是否展示圆角   | N    |
 | border           | boolean                      | true       | 是否显示边框   | N    |
 | layout           | `'horizontal' \| 'vertical'` | horizontal | 布局类型       | N    |
 
