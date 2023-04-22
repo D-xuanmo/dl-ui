@@ -13,7 +13,7 @@ export default defineComponent({
   emits: ['click'],
   setup(props, { slots, emit }) {
     return () => {
-      const { labelWidth, contentAlign, hideTitle } = useGlobalConfig(props)
+      const { labelWidth, contentAlign, hideTitle, layout, border } = useGlobalConfig(props)
       const {
         title,
         titleAlign,
@@ -97,16 +97,24 @@ export default defineComponent({
 
       return (
         <div
-          class={bem({
-            'hide-title': hideTitle,
-            disabled
-          })}
+          class={[
+            bem({
+              'hide-title': hideTitle,
+              [`layout-${layout}`]: layout,
+              disabled,
+              border: border || border === undefined
+            })
+          ]}
           onClick={handleClick}
         >
-          {renderLabel}
-          <div class={contentClassName}>{slots.default ? slots.default() : content}</div>
-          {renderRightIcon}
-          {renderSuffix}
+          <div class={bem('wrapper')}>
+            {renderLabel}
+            <div class={contentClassName}>
+              <div class={bem('content-inner')}>{slots.default ? slots.default() : content}</div>
+              {renderRightIcon}
+              {renderSuffix}
+            </div>
+          </div>
           {renderArrow}
         </div>
       )

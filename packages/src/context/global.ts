@@ -1,5 +1,5 @@
 import { InjectionKey } from 'vue'
-import { HorizontalAlignType } from '../common'
+import { DirectionType, HorizontalAlignType } from '../common'
 
 export type FormGlobalConfigType = {
   /** 主题 */
@@ -10,6 +10,9 @@ export type FormGlobalConfigType = {
 
   /** label 宽度 */
   labelWidth?: string
+
+  /** 单元格布局，默认：horizontal */
+  cellLayout?: DirectionType
 
   /** 内容对齐方式 */
   contentAlign?: HorizontalAlignType

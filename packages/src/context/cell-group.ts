@@ -1,12 +1,11 @@
 import { InjectionKey } from 'vue'
-import { HorizontalAlignType } from '../common'
+import { CellGroupProps } from '../cell-group'
 
-type CellGroupConfig = {
-  /** 单元格标题宽度 */
-  cellTitleWidth?: string
+type CellGroupConfig = Pick<
+  CellGroupProps,
+  'cellTitleWidth' | 'cellContentAlign' | 'layout' | 'border'
+>
 
-  /** 内容对齐方式 */
-  cellContentAlign?: HorizontalAlignType
-}
-
-export const CELL_GROUP_CONTEXT_KEY = Symbol('DFormCellGroup') as InjectionKey<CellGroupConfig>
+export const CELL_GROUP_CONTEXT_KEY = Symbol('DFormCellGroup') as InjectionKey<
+  Partial<CellGroupConfig>
+>

@@ -6,10 +6,11 @@ import { FormGlobalConfigType, GLOBAL_CONFIG_CONTEXT_KEY, CELL_GROUP_CONTEXT_KEY
 import { LABEL_WIDTH } from './constants'
 
 const install = function (app: App, options?: FormGlobalConfigType) {
-  const config = {
+  const config: FormGlobalConfigType = {
     hideLabel: false,
     labelWidth: LABEL_WIDTH,
     zIndex: 2000,
+    cellLayout: 'horizontal',
     ...options
   }
   app.provide(GLOBAL_CONFIG_CONTEXT_KEY, config)

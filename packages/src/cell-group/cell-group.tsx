@@ -13,7 +13,9 @@ export default defineComponent({
     const globalConfig = inject(GLOBAL_CONFIG_CONTEXT_KEY)
     provide(CELL_GROUP_CONTEXT_KEY, {
       cellTitleWidth: props.cellTitleWidth || globalConfig?.labelWidth || LABEL_WIDTH,
-      cellContentAlign: props.cellContentAlign || globalConfig?.contentAlign
+      cellContentAlign: props.cellContentAlign || globalConfig?.contentAlign,
+      layout: props.layout || globalConfig?.cellLayout,
+      border: props.border
     })
     return () => {
       const { title, round } = props

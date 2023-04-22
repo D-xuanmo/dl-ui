@@ -25,5 +25,5 @@
     right-icon="close"
     right-icon-color="#f00"
   />
-  <d-cell title="显示右侧箭头" arrow />
+  <d-cell title="显示右侧箭头" arrow content="正文内容" />
 </template>
