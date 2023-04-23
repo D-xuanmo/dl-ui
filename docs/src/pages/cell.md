@@ -45,36 +45,40 @@
 
 ### CellGroup Props
 
-| 参数             | 类型    | 默认值 | 说明           | 必传 |
-| ---------------- | ------- | ------ | -------------- | ---- |
-| title            | string  | -      | 分组标题       | N    |
-| cell-title-width | string  | `80px` | 单元格标题宽度 | N    |
-| radius           | boolean | false  | 是否展示圆角   | N    |
+| 参数             | 类型                         | 默认值     | 说明           | 必传 |
+| ---------------- | ---------------------------- | ---------- | -------------- | ---- |
+| title            | string                       | -          | 分组标题       | N    |
+| cell-title-width | string                       | `80px`     | 单元格标题宽度 | N    |
+| round            | boolean                      | false      | 是否展示圆角   | N    |
+| border           | boolean                      | true       | 是否显示边框   | N    |
+| layout           | `'horizontal' \| 'vertical'` | horizontal | 布局类型       | N    |
 
 ### Cell Props
 
-| 参数             | 类型                | 默认值 | 说明                                    | 必传 |
-| ---------------- | ------------------- | ------ | --------------------------------------- | ---- |
-| title            | string              | -      | 标题                                    | N    |
-| title-width      | string              | `80px` | 标题宽度                                | N    |
-| title-class      | string              | -      | 标题类名                                | N    |
-| title-align      | string              | left   | 标题对齐方式，可选值：left/center/right | N    |
-| hide-title       | boolean             | false  | 是否隐藏标题                            | N    |
-| required         | boolean             | false  | 是否显示必填标识                        | N    |
-| content          | string              | -      | 内容                                    | N    |
-| content-class    | string              | -      | 内容类名                                | N    |
-| content-align    | string              | right  | 内容对齐方式，可选值：left/center/right | N    |
-| disabled         | boolean             | -      | 是否禁用                                | N    |
-| suffix           | string              | -      | 扩展内容                                | N    |
-| arrow            | boolean             | false  | 是否显示右侧箭头                        | N    |
-| left-icon        | string              | -      | 显示左侧图标                            | N    |
-| left-icon-size   | string              | -      | 左侧图标大小，继承 `Icon` 组件 `Props`  | N    |
-| left-icon-color  | string              | -      | 左侧图标颜色                            | N    |
-| left-icon-props  | Record<string, any> | -      | 左侧 `Icon` 图标组件 props              | N    |
-| right-icon       | string              | -      | 显示右侧图标                            | N    |
-| right-icon-size  | string              | -      | 右侧图标大小，继承 `Icon` 组件 `Props`  | N    |
-| right-icon-color | string              | -      | 右侧图标颜色                            | N    |
-| right-icon-props | Record<string, any> | -      | 右侧 `Icon` 图标组件 props              | N    |
+| 参数             | 类型                         | 默认值     | 说明                                    | 必传 |
+| ---------------- | ---------------------------- | ---------- | --------------------------------------- | ---- |
+| title            | string                       | -          | 标题                                    | N    |
+| title-width      | string                       | `80px`     | 标题宽度                                | N    |
+| title-class      | string                       | -          | 标题类名                                | N    |
+| title-align      | string                       | left       | 标题对齐方式，可选值：left/center/right | N    |
+| hide-title       | boolean                      | false      | 是否隐藏标题                            | N    |
+| required         | boolean                      | false      | 是否显示必填标识                        | N    |
+| content          | string                       | -          | 内容                                    | N    |
+| content-class    | string                       | -          | 内容类名                                | N    |
+| content-align    | string                       | right      | 内容对齐方式，可选值：left/center/right | N    |
+| disabled         | boolean                      | -          | 是否禁用                                | N    |
+| suffix           | string                       | -          | 扩展内容                                | N    |
+| arrow            | boolean                      | false      | 是否显示右侧箭头                        | N    |
+| left-icon        | string                       | -          | 显示左侧图标                            | N    |
+| left-icon-size   | string                       | -          | 左侧图标大小，继承 `Icon` 组件 `Props`  | N    |
+| left-icon-color  | string                       | -          | 左侧图标颜色                            | N    |
+| left-icon-props  | Record<string, any>          | -          | 左侧 `Icon` 图标组件 props              | N    |
+| right-icon       | string                       | -          | 显示右侧图标                            | N    |
+| right-icon-size  | string                       | -          | 右侧图标大小，继承 `Icon` 组件 `Props`  | N    |
+| right-icon-color | string                       | -          | 右侧图标颜色                            | N    |
+| right-icon-props | Record<string, any>          | -          | 右侧 `Icon` 图标组件 props              | N    |
+| border           | boolean                      | true       | 是否显示边框                            | N    |
+| layout           | `'horizontal' \| 'vertical'` | horizontal | 布局类型                                | N    |
 
 ### Cell Slots
 

@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { HorizontalAlignType } from '../common'
+import { DirectionType, HorizontalAlignType } from '../common'
 
 export type CellGroupProps = ExtractPropTypes<typeof CELL_GROUP_PROPS>
 
@@ -12,6 +12,11 @@ export const CELL_GROUP_PROPS = {
   cellTitleWidth: String,
   cellContentAlign: {
     type: String as PropType<HorizontalAlignType>,
+    default: undefined
+  },
+  layout: String as PropType<DirectionType>,
+  border: {
+    type: Boolean,
     default: undefined
   }
 }

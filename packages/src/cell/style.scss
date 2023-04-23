@@ -10,8 +10,10 @@
   font-size: var(--d-font-size-md);
   line-height: var(--d-line-height-md);
 
-  &:not(:last-of-type) {
-    @include border(var(--d-gap-sm));
+  &--border {
+    &:not(:last-of-type) {
+      @include border(var(--d-gap-sm));
+    }
   }
 
   &--hide-title {
@@ -29,6 +31,40 @@
         color: var(--d-disable-color);
       }
     }
+  }
+
+  &--layout {
+    &-horizontal {
+      > #{$parent} {
+        &__wrapper {
+          flex-direction: row;
+        }
+      }
+    }
+
+    &-vertical {
+      > #{$parent} {
+        &__wrapper {
+          flex-direction: column;
+
+          > #{$parent} {
+            &__title {
+              min-width: 100%;
+            }
+
+            &__content {
+              width: 100%;
+              margin-top: var(--d-gap-xs);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__wrapper {
+    flex: 1;
+    display: flex;
   }
 
   &__title {
@@ -49,10 +85,15 @@
 
   &__content {
     flex: 1;
+    display: flex;
     @include text-align;
 
     #{$parent} {
       padding: 0;
+    }
+
+    &-inner {
+      flex: 1;
     }
   }
 

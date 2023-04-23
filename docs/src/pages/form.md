@@ -1,14 +1,6 @@
 # Form 表单
 
-## 组件亮点
-
-- 内置表单组件：输入框、单选框、复选框、开关、评分、选择器、时间选择器、上传；
-- 用最少的代码，完成表单的渲染；
-- 表单支持分组模式，可将信息录入进行分组展示；
-- 与其他 `Vant-UI`、`Element-plus` 等组件不同的是，一个表单的渲染通过 `JSON` 配置即可完成，不需要进行二次封装；
-- 表单校验可以与组件业务逻辑可以做到很好的拆分，校验支持扩展等，更多用法参考 [https://github.com/D-xuanmo/validator](https://github.com/D-xuanmo/validator)；
-- 表单可支持扩展业务场景更多的组件，本质上表单组件只是针对通用逻辑、校验等场景进行封装，每个子组件按统一规范开发即可融入到表单，无需要关心数据层、校验等；
-- 更多功能开发中...
+主要用于数据录入、校验等
 
 ## 示例
 
@@ -20,12 +12,21 @@
 
 ### Props
 
-| 参数        | 类型               | 默认值 | 说明       | 必传 |
-| ----------- | ------------------ | ------ | ---------- | ---- |
-| store       | `FormStore`        | -      | 表单 store | Y    |
-| disabled    | `boolean`          | -      | 表单禁用   | N    |
-| readonly    | `boolean`          | -      | 表单只读   | N    |
-| label-width | `string \| number` | `80px` | 标题宽度   | N    |
+| 参数                   | 类型                         | 默认值       | 说明             | 必传 |
+| ---------------------- | ---------------------------- | ------------ | ---------------- | ---- |
+| store                  | `FormStore`                  | -            | 表单 store       | Y    |
+| disabled               | `boolean`                    | -            | 表单禁用         | N    |
+| readonly               | `boolean`                    | -            | 表单只读         | N    |
+| label-width            | `string \| number`           | `80px`       | 标题宽度         | N    |
+| layout                 | `'horizontal' \| 'vertical'` | `horizontal` | 布局类型         | N    |
+| colon                  | `boolean`                    | `false`      | 是否显示冒号     | N    |
+| required-mark-position | `'left' \| 'right'`          | `right`      | 必填标识显示位置 | N    |
+
+### Events
+
+| 事件名 | 类型                                                              | 说明                   |
+| ------ | ----------------------------------------------------------------- | ---------------------- |
+| change | `(value: Record<string, unknown>, model: IFormModelItem) => void` | 表单数据发生改变时触发 |
 
 ### FormStore API
 

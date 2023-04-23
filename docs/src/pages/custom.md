@@ -86,7 +86,7 @@ import { validator } from '@xuanmo/dynamic-form'
 validator.extends({
   custom: {
     message: '自定义校验失败信息',
-    validate: (value: string) => value !== ''
+    validator: (value: string) => value !== ''
   }
 })
 ```
