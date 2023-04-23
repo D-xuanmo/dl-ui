@@ -14,6 +14,7 @@
           <div :class="scrollClassName"><router-view /></div>
         </div>
       </template>
+
       <d-preview-h5 v-else />
     </div>
   </div>
