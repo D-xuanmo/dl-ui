@@ -17,6 +17,7 @@ export default defineComponent({
     provide(CELL_GROUP_CONTEXT_KEY, {
       layout: ref<DirectionType>('horizontal')
     })
+
     return () => {
       const { labelWidth, contentAlign, hideTitle, layout, border } = useGlobalConfig(props)
       const {
@@ -36,7 +37,8 @@ export default defineComponent({
         rightIconColor,
         rightIconSize,
         rightIconProps,
-        arrow
+        arrow,
+        description
       } = props
 
       const wrapperClassName = computed(() =>
@@ -86,6 +88,11 @@ export default defineComponent({
           </div>
         )
 
+      const renderDesc =
+        description ? (
+          <div class={bem('description')} v-html={description}></div>
+        ) : null
+
       const renderRightIcon = rightIcon && (
         <DIcon
           name={rightIcon}
@@ -110,16 +117,20 @@ export default defineComponent({
       }
 
       return (
-        <div class={wrapperClassName.value} onClick={handleClick}>
-          <div class={bem('wrapper')}>
-            {renderLabel}
-            <div class={contentClassName}>
-              <div class={bem('content-inner')}>{slots.default ? slots.default() : content}</div>
-              {renderRightIcon}
-              {renderSuffix}
+        <div class={wrapperClassName.value}>
+          <div class={bem('layout')} onClick={handleClick}>
+            <div class={bem('wrapper')}>
+              {renderLabel}
+              <div class={contentClassName}>
+                <div class={bem('content-inner')}>{slots.default ? slots.default() : content}</div>
+                {renderRightIcon}
+                {renderSuffix}
+              </div>
             </div>
+
+            {renderArrow}
           </div>
-          {renderArrow}
+          {renderDesc}
         </div>
       )
     }

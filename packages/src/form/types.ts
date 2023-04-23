@@ -47,6 +47,9 @@ export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>> 
   // 对应的分组
   groupId?: string
 
+  //描述字段
+  description?: string
+
   // 组件的其他参数
   otherProps?: TProps
 }

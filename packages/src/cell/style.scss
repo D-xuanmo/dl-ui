@@ -3,12 +3,15 @@
 
 .#{$prefix}-cell {
   $parent: &;
-  display: flex;
-  align-items: center;
-  padding: var(--d-horizontal-gap) var(--d-gap-sm);
-  background-color: var(--d-white-color);
   font-size: var(--d-font-size-md);
   line-height: var(--d-line-height-md);
+  padding: var(--d-horizontal-gap) var(--d-gap-sm);
+  background-color: var(--d-white-color);
+
+  &__layout {
+    display: flex;
+    align-items: center;
+  }
 
   &--border {
     &:not(:last-of-type) {
@@ -44,19 +47,26 @@
 
     &-vertical {
       > #{$parent} {
-        &__wrapper {
-          flex-direction: column;
-
+        &__layout {
           > #{$parent} {
-            &__title {
-              min-width: 100%;
-            }
+            &__wrapper {
+              flex-direction: column;
 
-            &__content {
-              width: 100%;
-              margin-top: var(--d-gap-xs);
+              > #{$parent} {
+                &__title {
+                  min-width: 100%;
+                }
+
+                &__content {
+                  width: 100%;
+                }
+              }
             }
           }
+        }
+
+        &__description {
+          margin-top: var(--d-gap-sm);
         }
       }
     }
@@ -98,9 +108,16 @@
   }
 
   &__suffix {
+    color: var(--d-secondary-text-color);
     margin-left: var(--d-gap-xs);
     padding-left: var(--d-gap-xs);
+  }
+
+  &__description {
     color: var(--d-secondary-text-color);
+    font-size: var(--d-font-size-sm);
+    line-height: var(--d-line-height-xs);
+    margin-top: var(--d-gap-xs);
   }
 
   &__right-icon,
