@@ -17,7 +17,7 @@ const FORM_MODEL: FormStoreInitialConfig = {
       component: 'DInput',
       label: '输入框',
       value: '',
-      description: '1、这是一段很长很长的备注。<br />2、我这一段备注不仅长而且有两行',
+      description: '1、这是一段很长很长的备注。\n2、我这一段备注不仅长而且有两行',
       required: true,
       groupId: 'basic',
       otherProps: <InputProps>{
@@ -66,8 +66,6 @@ const FORM_MODEL: FormStoreInitialConfig = {
       component: 'DPicker',
       label: '选择器',
       value: [],
-      description:
-        '1、无公示、一项扣1分。<br />2、有公示，但是，公示内容与实际执行的标准不符，或未更新，一项扣0.5分。单项扣完为止。',
       groupId: 'basic',
       otherProps: <PickerProps>{
         columns: [
@@ -143,7 +141,7 @@ const FORM_MODEL: FormStoreInitialConfig = {
       name: 'checkbox',
       component: 'DCheckboxGroup',
       label: '复选框',
-      value: [],
+      value: ['1'],
       groupId: 'basic',
       otherProps: <RadioGroupProps>{
         direction: 'horizontal',

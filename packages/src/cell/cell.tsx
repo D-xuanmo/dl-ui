@@ -88,10 +88,9 @@ export default defineComponent({
           </div>
         )
 
-      const renderDesc =
-        description ? (
-          <div class={bem('description')} v-html={description}></div>
-        ) : null
+      const renderDescription = description ? (
+        <div class={bem('description')}>{description}</div>
+      ) : null
 
       const renderRightIcon = rightIcon && (
         <DIcon
@@ -130,7 +129,7 @@ export default defineComponent({
 
             {renderArrow}
           </div>
-          {renderDesc}
+          {renderDescription}
         </div>
       )
     }

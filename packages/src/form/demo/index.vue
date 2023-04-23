@@ -5,7 +5,6 @@
     :readonly="formReadonly"
     :layout="formLayout"
     label-width="100"
-    required-mark-position="left"
     @change="handleChange"
   />
   <d-cell-group title="表单操作">

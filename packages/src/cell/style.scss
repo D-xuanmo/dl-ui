@@ -59,14 +59,11 @@
 
                 &__content {
                   width: 100%;
+                  margin-top: var(--d-gap-xxs);
                 }
               }
             }
           }
-        }
-
-        &__description {
-          margin-top: var(--d-gap-sm);
         }
       }
     }
@@ -108,16 +105,17 @@
   }
 
   &__suffix {
-    color: var(--d-secondary-text-color);
     margin-left: var(--d-gap-xs);
     padding-left: var(--d-gap-xs);
+    color: var(--d-secondary-text-color);
   }
 
   &__description {
-    color: var(--d-secondary-text-color);
+    margin-top: var(--d-gap-xs);
     font-size: var(--d-font-size-sm);
     line-height: var(--d-line-height-xs);
-    margin-top: var(--d-gap-xs);
+    color: var(--d-secondary-text-color);
+    white-space: pre-wrap;
   }
 
   &__right-icon,
