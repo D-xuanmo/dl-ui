@@ -17,7 +17,6 @@ export default defineComponent({
     provide(CELL_GROUP_CONTEXT_KEY, {
       layout: ref<DirectionType>('horizontal')
     })
-    const showDesc = ref(false)
 
     return () => {
       const { labelWidth, contentAlign, hideTitle, layout, border } = useGlobalConfig(props)
@@ -61,10 +60,6 @@ export default defineComponent({
         [contentAlign]: contentAlign
       })
 
-      function setDescription() {
-        showDesc.value = !showDesc.value
-      }
-
       const renderLabel =
         hideTitle || (isEmpty(title) && isEmpty(slots.title)) ? null : (
           <div
@@ -90,16 +85,11 @@ export default defineComponent({
                 {required ? <span className={bem('title', 'mark', true)}> *</span> : null}
               </>
             )}
-            {description ? (
-              <span onClick={setDescription}>
-                <d-icon name="warning-f" color="var(--d-secondary-text-color)" size="16"></d-icon>
-              </span>
-            ) : null}
           </div>
         )
 
       const renderDesc =
-        description && showDesc.value ? (
+        description ? (
           <div class={bem('description')} v-html={description}></div>
         ) : null
 
