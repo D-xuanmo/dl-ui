@@ -22,10 +22,7 @@ export const FORM_PROPS = {
     type: String as PropType<Exclude<HorizontalAlignType, 'center'>>,
     default: 'right'
   },
-  change: {
-    type: Function as PropType<(value: Record<string, unknown>, model: IFormModelItem) => void>,
-    default: undefined
-  }
+  hideLabel: Boolean
 }
 
 export const FORM_ITEM_PROPS = {
@@ -35,14 +32,13 @@ export const FORM_ITEM_PROPS = {
     'store',
     'layout',
     'colon',
-    'requiredMarkPosition'
+    'requiredMarkPosition',
+    'hideLabel',
+    'labelWidth'
   ]),
-  labelWidth: {
-    type: [Number, String] as PropType<number | string>,
-    default: 80
-  },
   modelItem: {
     type: Object as PropType<IFormModelItem>,
+    required: true,
     default: () => ({})
   },
   errorMessage: String

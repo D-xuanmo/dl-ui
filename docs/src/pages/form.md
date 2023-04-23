@@ -12,21 +12,22 @@
 
 ### Props
 
-| 参数                   | 类型                         | 默认值       | 说明             | 必传 |
-| ---------------------- | ---------------------------- | ------------ | ---------------- | ---- |
-| store                  | `FormStore`                  | -            | 表单 store       | Y    |
-| disabled               | `boolean`                    | -            | 表单禁用         | N    |
-| readonly               | `boolean`                    | -            | 表单只读         | N    |
-| label-width            | `string \| number`           | `80px`       | 标题宽度         | N    |
-| layout                 | `'horizontal' \| 'vertical'` | `horizontal` | 布局类型         | N    |
-| colon                  | `boolean`                    | `false`      | 是否显示冒号     | N    |
-| required-mark-position | `'left' \| 'right'`          | `right`      | 必填标识显示位置 | N    |
+|参数|类型|默认值|说明|必传|
+|---|---|------|---|---|
+|store|`FormStore`|-|表单store|Y|
+|disabled|`boolean`|-|表单禁用|N|
+|readonly|`boolean`|-|表单只读|N|
+|label-width|`string \| number`|`80px`|标题宽度|N|
+|hide-label|`boolean`|false|隐藏 label|N|
+|layout|`'horizontal' \| 'vertical'`|`horizontal`|布局类型|N|
+|colon|`boolean`|`false`|是否显示冒号|N|
+|required-mark-position|`'left' \| 'right'`|`right`|必填标识显示位置|N|
 
 ### Events
 
-| 事件名 | 类型                                                              | 说明                   |
-| ------ | ----------------------------------------------------------------- | ---------------------- |
-| change | `(value: Record<string, unknown>, model: IFormModelItem) => void` | 表单数据发生改变时触发 |
+|事件名|类型|说明|
+|-----|----|---|
+|change|`(value: Record<string, unknown>, model: IFormModelItem) => void`|表单数据发生改变时触发|
 
 ### FormStore API
 
@@ -129,6 +130,9 @@ export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>> 
   // 左侧标题宽度
   labelWidth?: string | number
 
+  // 隐藏 label，默认：false
+  hideLabel?: boolean
+
   // 校验规则
   rules?: string
 
@@ -140,6 +144,9 @@ export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>> 
 
   // 对应的分组
   groupId?: string
+
+  // 描述字段
+  description?: string
 
   // 组件的其他参数
   otherProps?: TProps

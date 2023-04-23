@@ -5,6 +5,7 @@
     :readonly="formReadonly"
     :layout="formLayout"
     label-width="100"
+    :hide-label="hideLabel"
     @change="handleChange"
   />
   <d-cell-group title="表单操作">
@@ -13,6 +14,9 @@
     </d-cell>
     <d-cell title="表单只读">
       <d-switch v-model="formReadonly" />
+    </d-cell>
+    <d-cell title="隐藏 label">
+      <d-switch v-model="hideLabel" />
     </d-cell>
     <d-cell title="布局切换">
       <d-radio-group v-model="formLayout" :options="formLayoutOptions" direction="horizontal" />
@@ -43,6 +47,7 @@ import { OnFormChange } from '../types'
 
 const formDisabled = ref(false)
 const formReadonly = ref(false)
+const hideLabel = ref(false)
 const formLayout = ref<DirectionType>('horizontal')
 
 const formStore = new FormStore(FORM_MODEL)

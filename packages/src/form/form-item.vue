@@ -3,8 +3,9 @@
     :class="itemClassName"
     content-align="left"
     :title-width="labelWidth"
-    :layout="layout as any"
+    :layout="layout"
     :description="modelItem.description"
+    :hide-title="hideLabel || modelItem.hideLabel"
   >
     <template #title>
       <span
@@ -22,9 +23,9 @@
       </span>
     </template>
     <component
-      :is="modelItem!.component as string"
-      v-model="modelItem!.value"
-      v-bind="modelItem?.otherProps"
+      :is="modelItem.component"
+      v-model="modelItem.value"
+      v-bind="modelItem.otherProps"
       :disabled="itemDisable"
       :readonly="itemReadonly"
       @update:model-value="handleChange"

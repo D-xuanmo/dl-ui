@@ -35,6 +35,9 @@ export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>> 
   // 左侧标题宽度
   labelWidth?: string | number
 
+  // 隐藏 label，默认：false
+  hideLabel?: boolean
+
   // 校验规则
   rules?: string
 
@@ -47,7 +50,7 @@ export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>> 
   // 对应的分组
   groupId?: string
 
-  //描述字段
+  // 描述字段
   description?: string
 
   // 组件的其他参数
