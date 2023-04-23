@@ -4,7 +4,7 @@
 <template>
   <d-cell-group title="基础用法">
     <d-input v-model="value" label="输入框" placeholder="请输入文字" @blur="onBlur" />
-    <d-input v-model="value" placeholder="无标题显示" hideLabel />
+    <d-input v-model="value" placeholder="无标题显示" hide-label />
   </d-cell-group>
   <d-cell-group title="禁用、只读状态">
     <d-input v-model="value" label="输入框禁用" placeholder="请输入文字" readonly />
@@ -29,26 +29,27 @@
       v-model="value"
       label="显示图标"
       placeholder="请输入文字"
-      left-icon="tips-o"
+      left-icon="tips-f"
       left-icon-color="#f00"
     />
     <d-input
       v-model="value"
       label="图标大小"
       placeholder="请输入文字"
-      left-icon="tips-o"
+      left-icon="tips-f"
       left-icon-color="#f00"
       left-icon-size="small"
     />
     <d-input v-model="value" label="超长文字展示" placeholder="请输入文字" label-align="right" />
   </d-cell-group>
 </template>
+
 <script lang="ts" setup>
 import { ref } from 'vue'
 const value = ref('')
 const number = ref('')
 
-function onBlur(value) {
+function onBlur(value: string) {
   console.log(value)
 }
 </script>
