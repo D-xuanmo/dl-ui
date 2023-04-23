@@ -2,3 +2,4 @@ dist
 .eslintrc.js
 .*
 index.html
+*.md
