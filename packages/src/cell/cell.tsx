@@ -101,7 +101,6 @@ export default defineComponent({
       const renderDesc =
         desc && showDesc.value ? (
           <div class={bem('desc')} v-html={desc}>
-            {' '}
           </div>
         ) : null
 
@@ -121,7 +120,7 @@ export default defineComponent({
         ) : null
 
       const renderArrow = arrow ? (
-        <DIcon name="tips" className={bem('arrow')} color="var(--d-secondary-text-color)" />
+        <DIcon name="arrow-right" className={bem('arrow')} color="var(--d-secondary-text-color)" />
       ) : null
 
       function handleClick(event: Event) {
