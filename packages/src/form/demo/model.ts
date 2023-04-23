@@ -17,7 +17,8 @@ const FORM_MODEL: FormStoreInitialConfig = {
       component: 'DInput',
       label: '输入框',
       value: '',
-      desc: '这里是',
+      description:
+        '1、无公示、一项扣1分。<br />2、有公示，但是，公示内容与实际执行的标准不符，或未更新，一项扣0.5分。单项扣完为止。',
       required: true,
       groupId: 'basic',
       otherProps: <InputProps>{

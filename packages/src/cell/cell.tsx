@@ -39,7 +39,7 @@ export default defineComponent({
         rightIconSize,
         rightIconProps,
         arrow,
-        desc
+        description
       } = props
 
       const wrapperClassName = computed(() =>
@@ -61,7 +61,7 @@ export default defineComponent({
         [contentAlign]: contentAlign
       })
 
-      function setDesc() {
+      function setDescription() {
         showDesc.value = !showDesc.value
       }
 
@@ -90,17 +90,17 @@ export default defineComponent({
                 {required ? <span className={bem('title', 'mark', true)}> *</span> : null}
               </>
             )}
-            {desc ? (
-              <span onClick={setDesc}>
-                <d-icon name="warning-f" color="var(--d-secondary-text-color)" size="18"></d-icon>
+            {description ? (
+              <span onClick={setDescription}>
+                <d-icon name="warning-f" color="var(--d-secondary-text-color)" size="16"></d-icon>
               </span>
             ) : null}
           </div>
         )
 
       const renderDesc =
-        desc && showDesc.value ? (
-          <div class={bem('desc')} v-html={desc}>
+        description && showDesc.value ? (
+          <div class={bem('description')} v-html={description}>
           </div>
         ) : null
 

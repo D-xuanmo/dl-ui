@@ -103,9 +103,11 @@
     color: var(--d-secondary-text-color);
   }
 
-  &__desc {
+  &__description {
     color: var(--d-secondary-text-color);
     margin-bottom: var(--d-gap-xxs);
+    line-height: var(--d-line-height-xs);
+    font-size: var(--d-font-size-sm);
   }
 
   &__right-icon,

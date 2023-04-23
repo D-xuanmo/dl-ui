@@ -24,7 +24,7 @@ export const CELL_PROPS = {
   disabled: Boolean,
 
   suffix: String,
-  desc: String,
+  description: String,
   rightIcon: String,
   rightIconSize: String as PropType<SizeType | string>,
   rightIconColor: String,

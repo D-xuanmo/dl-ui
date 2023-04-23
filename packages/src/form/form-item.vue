@@ -4,7 +4,7 @@
     content-align="left"
     :title-width="labelWidth"
     :layout="layout as any"
-    :desc="modelItem.desc"
+    :description="modelItem.description"
   >
     <template #title>
       <span
