@@ -47,7 +47,7 @@ export default defineComponent({
           'hide-title': hideTitle,
           [`layout-${layout}`]: layout,
           disabled,
-          border: border || border === undefined
+          border: border || border === undefined,
         })
       )
 
@@ -100,8 +100,7 @@ export default defineComponent({
 
       const renderDesc =
         description && showDesc.value ? (
-          <div class={bem('description')} v-html={description}>
-          </div>
+          <div class={bem('description')} v-html={description}></div>
         ) : null
 
       const renderRightIcon = rightIcon && (
@@ -128,19 +127,20 @@ export default defineComponent({
       }
 
       return (
-        <div class={wrapperClassName.value} onClick={handleClick}>
-          <div class={bem('wrapper')}>
-            {renderLabel}
-            <div class={bem('content-inner')}>
-              {renderDesc}
+        <div  class={wrapperClassName.value}>
+          <div class={bem('layout')}onClick={handleClick}>
+            <div class={bem('wrapper')}>
+              {renderLabel}
               <div class={contentClassName}>
                 <div class={bem('content-inner')}>{slots.default ? slots.default() : content}</div>
                 {renderRightIcon}
                 {renderSuffix}
               </div>
             </div>
+            
+            {renderArrow}
           </div>
-          {renderArrow}
+          {renderDesc}
         </div>
       )
     }
