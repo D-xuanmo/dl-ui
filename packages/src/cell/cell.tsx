@@ -47,7 +47,7 @@ export default defineComponent({
           'hide-title': hideTitle,
           [`layout-${layout}`]: layout,
           disabled,
-          border: border || border === undefined,
+          border: border || border === undefined
         })
       )
 
@@ -127,8 +127,8 @@ export default defineComponent({
       }
 
       return (
-        <div  class={wrapperClassName.value}>
-          <div class={bem('layout')}onClick={handleClick}>
+        <div class={wrapperClassName.value}>
+          <div class={bem('layout')} onClick={handleClick}>
             <div class={bem('wrapper')}>
               {renderLabel}
               <div class={contentClassName}>
@@ -137,7 +137,7 @@ export default defineComponent({
                 {renderSuffix}
               </div>
             </div>
-            
+
             {renderArrow}
           </div>
           {renderDesc}
