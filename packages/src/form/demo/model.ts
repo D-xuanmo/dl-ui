@@ -17,6 +17,7 @@ const FORM_MODEL: FormStoreInitialConfig = {
       component: 'DInput',
       label: '输入框',
       value: '',
+      desc: '这里是',
       required: true,
       groupId: 'basic',
       otherProps: <InputProps>{

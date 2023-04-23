@@ -103,6 +103,11 @@
     color: var(--d-secondary-text-color);
   }
 
+  &__desc {
+    color: var(--d-secondary-text-color);
+    margin-bottom: var(--d-gap-xxs);
+  }
+
   &__right-icon,
   &__arrow {
     margin-left: var(--d-gap-xs);

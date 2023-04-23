@@ -17,6 +17,8 @@ export default defineComponent({
     provide(CELL_GROUP_CONTEXT_KEY, {
       layout: ref<DirectionType>('horizontal')
     })
+    const showDesc = ref(false)
+
     return () => {
       const { labelWidth, contentAlign, hideTitle, layout, border } = useGlobalConfig(props)
       const {
@@ -36,7 +38,8 @@ export default defineComponent({
         rightIconColor,
         rightIconSize,
         rightIconProps,
-        arrow
+        arrow,
+        desc
       } = props
 
       const wrapperClassName = computed(() =>
@@ -57,6 +60,10 @@ export default defineComponent({
         [contentClass ?? '']: toBoolean(contentClass),
         [contentAlign]: contentAlign
       })
+
+      function setDesc() {
+        showDesc.value = !showDesc.value
+      }
 
       const renderLabel =
         hideTitle || (isEmpty(title) && isEmpty(slots.title)) ? null : (
@@ -83,8 +90,20 @@ export default defineComponent({
                 {required ? <span className={bem('title', 'mark', true)}> *</span> : null}
               </>
             )}
+            {desc ? (
+              <span onClick={setDesc}>
+                <d-icon name="warning-f" color="var(--d-secondary-text-color)" size="18"></d-icon>
+              </span>
+            ) : null}
           </div>
         )
+
+      const renderDesc =
+        desc && showDesc.value ? (
+          <div class={bem('desc')} v-html={desc}>
+            {' '}
+          </div>
+        ) : null
 
       const renderRightIcon = rightIcon && (
         <DIcon
@@ -102,7 +121,7 @@ export default defineComponent({
         ) : null
 
       const renderArrow = arrow ? (
-        <DIcon name="arrow-right" className={bem('arrow')} color="var(--d-secondary-text-color)" />
+        <DIcon name="tips" className={bem('arrow')} color="var(--d-secondary-text-color)" />
       ) : null
 
       function handleClick(event: Event) {
@@ -113,10 +132,13 @@ export default defineComponent({
         <div class={wrapperClassName.value} onClick={handleClick}>
           <div class={bem('wrapper')}>
             {renderLabel}
-            <div class={contentClassName}>
-              <div class={bem('content-inner')}>{slots.default ? slots.default() : content}</div>
-              {renderRightIcon}
-              {renderSuffix}
+            <div class={bem('content-inner')}>
+              {renderDesc}
+              <div class={contentClassName}>
+                <div class={bem('content-inner')}>{slots.default ? slots.default() : content}</div>
+                {renderRightIcon}
+                {renderSuffix}
+              </div>
             </div>
           </div>
           {renderArrow}
