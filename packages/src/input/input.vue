@@ -43,7 +43,7 @@
 import { computed, defineComponent, SetupContext } from 'vue'
 import { createNamespace } from '../utils'
 import Cell from '../cell'
-import useDefault from '../hooks/useDefault'
+import useModelValue from '../hooks/useModelValue'
 import { INPUT_PROPS } from './props'
 
 const [name, bem] = createNamespace('input')
@@ -65,7 +65,7 @@ export default defineComponent({
       })
     )
 
-    const [innerValue, setValue] = useDefault<string | number | undefined, typeof props>(
+    const [innerValue, setValue] = useModelValue<string | number | undefined, typeof props>(
       props,
       emit as SetupContext['emit']
     )

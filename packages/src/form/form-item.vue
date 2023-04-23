@@ -13,7 +13,7 @@
       v-model="modelItem!.value"
       v-bind="modelItem?.otherProps"
       :disabled="itemDisable"
-      :readonly="itemReadonle"
+      :readonly="itemReadonly"
       @update:model-value="handleChange"
     />
     <div v-if="errorMessage" :class="errorClassName">{{ errorMessage }}</div>
@@ -41,20 +41,20 @@ export default defineComponent({
     const errorClassName = createFormBEM('item', 'message', true)
     const requiredMarkClassName = createFormBEM('item', 'required-mark', true)
 
+    const itemDisable = computed(() => props.disabled || props.modelItem?.otherProps?.disabled)
+    const itemReadonly = computed(() => props.readonly || props.modelItem?.otherProps?.readonly)
+
     const handleChange = () => {
       if (props.errorMessage) {
         ;(props.store as FormStore)?.singleValidate(props.modelItem.name)
       }
     }
 
-    const itemDisable = computed(() => props.disabled || props.modelItem?.otherProps?.disabled)
-    const itemReadonle = computed(() => props.readonly || props.modelItem?.otherProps?.readonly)
-    
     return {
       itemClassName,
       errorClassName,
       itemDisable,
-      itemReadonle,
+      itemReadonly,
       requiredMarkClassName,
       handleChange
     }

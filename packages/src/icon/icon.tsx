@@ -1,5 +1,5 @@
 import { defineComponent, PropType } from 'vue'
-import { createNamespace } from '../utils'
+import { addUnit, createNamespace } from '../utils'
 import { SizeType } from '../common'
 
 const [name, bem] = createNamespace('icon')
@@ -44,8 +44,8 @@ export default defineComponent({
       const isCustomSize = !['small', 'medium', 'large'].includes(size)
 
       const iconStyle = {
-        width: size,
-        height: size
+        width: addUnit(size),
+        height: addUnit(size)
       }
 
       function handleClick(event: Event) {

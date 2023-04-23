@@ -5,12 +5,12 @@ type Props<P, V> = P & { modelValue?: V } & { value?: V }
 
 type UseDefaultReturnType<V> = [WritableComputedRef<V>, (value: V) => void]
 
-function useDefault<V, P, E = EmitsOptions>(
+function useModelValue<V, P, E = EmitsOptions>(
   props: Props<P, V>,
   emit: SetupContext<E>['emit']
 ): UseDefaultReturnType<V>
 
-function useDefault<V, P, VK extends string, E = EmitsOptions>(
+function useModelValue<V, P, VK extends string, E = EmitsOptions>(
   props: Props<P, V> & Record<VK, V>,
   emit: SetupContext<E>['emit'],
   valueKey: VK,
@@ -24,7 +24,7 @@ function useDefault<V, P, VK extends string, E = EmitsOptions>(
  * @param valueKey 需要监听的字段
  * @param eventName 事件名
  */
-function useDefault<V, P, VK extends string>(
+function useModelValue<V, P, VK extends string>(
   props: P & { modelValue?: V } & { value?: V } & Record<VK, V>,
   emit: SetupContext['emit'],
   valueKey?: VK,
@@ -76,4 +76,4 @@ function useDefault<V, P, VK extends string>(
   return [innerValueRef, updateValue]
 }
 
-export default useDefault
+export default useModelValue

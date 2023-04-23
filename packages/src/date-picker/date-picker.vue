@@ -25,7 +25,7 @@ import { createNamespace } from '../utils'
 import DPicker from '../picker'
 import DCell from '../cell'
 import DateUtil from './date-util'
-import useDefault from '../hooks/useDefault'
+import useModelValue from '../hooks/useModelValue'
 import { DATE_PICKER_PROPS, DatePickerType } from './props'
 import { PickerValueType } from '../picker/props'
 import dateJS from '@xuanmo/datejs'
@@ -39,7 +39,7 @@ export default defineComponent({
   props: DATE_PICKER_PROPS,
   emits: ['update:value', 'update:model-value'],
   setup(props, { emit }) {
-    const [innerValue, updateValue] = useDefault(props, emit as SetupContext['emit'])
+    const [innerValue, updateValue] = useModelValue(props, emit as SetupContext['emit'])
     const dateUtil = new DateUtil(innerValue.value, {
       dateType: props.type,
       formatter: props.formatter!
