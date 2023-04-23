@@ -197,7 +197,7 @@ blockquote {
       font-size: 24px;
     }
 
-    img {
+    > img:not(.d-doc-preview__runtime img) {
       margin-top: var(--d-gap-sm);
       vertical-align: top;
     }
@@ -256,6 +256,5 @@ blockquote {
   box-sizing: border-box;
   margin-top: var(--d-gap-sm);
   padding: var(--d-gap-sm);
-  border-radius: 5px;
   background: #f2f4f5 !important;
 }

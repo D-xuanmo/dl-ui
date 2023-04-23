@@ -4,7 +4,7 @@
 
 ## 示例
 
-```vue playground=Form height=600
+```vue playground=Form
 
 ```
 

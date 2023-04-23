@@ -2,7 +2,10 @@
 
 .#{$prefix}-cell-group {
   width: 100%;
-  margin-bottom: var(--d-gap-sm);
+
+  &:not(:last-of-type) {
+    margin-bottom: var(--d-gap-sm);
+  }
 
   &__title {
     margin-bottom: var(--d-gap-xs);

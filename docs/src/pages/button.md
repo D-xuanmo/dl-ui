@@ -1,6 +1,6 @@
 # Button 按钮
 
-```vue playground=MButton height=600
+```vue client=Mobile playground=MButton height=600
 <template>
   <p>填充模式</p>
   <d-button fill="solid" theme="primary">solid</d-button>

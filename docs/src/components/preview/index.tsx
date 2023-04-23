@@ -2,12 +2,12 @@ import { defineComponent, CSSProperties, ref, watch } from 'vue'
 import { createNamespace } from '@/utils/bem'
 import { useRoute } from 'vue-router'
 import { PLAYGROUND_SHORT_URL } from '@doc/constants'
-import { isNumber } from '@xuanmo/javascript-utils'
 import QRCode from 'qrcode'
 import qs from 'qs'
 import qrcodeIcon from '../../assets/images/QRCode.svg'
 import playgroundIcon from '../../assets/images/CodeSandbox.svg'
 import './style.scss'
+import { addUnit } from '@/utils'
 
 const [name, bem] = createNamespace('doc-preview')
 
@@ -23,6 +23,7 @@ const DocPreview = defineComponent({
     const route = useRoute()
     const showCode = ref(false)
     const qrcode = ref('')
+    const playgroundRef = ref<HTMLIFrameElement | null>(null)
 
     watch(
       () => route,
@@ -40,6 +41,11 @@ const DocPreview = defineComponent({
     return () => {
       const { client = 'PC', playground, height, width } = qs.parse(props.params!)
       const isMobile = client === 'Mobile'
+
+      const wrapperStyle = {
+        width: addUnit(width as string),
+        height: addUnit(height as string)
+      } as CSSProperties
 
       const toggleCodeVisible = () => {
         showCode.value = !showCode.value
@@ -68,9 +74,7 @@ const DocPreview = defineComponent({
               className={bem('code', { active: showCode.value })}
               v-html={decodeURIComponent(props.source as string)}
             />
-            <div className={bem('runtime')}>
-              <iframe src={`/demo${route.path}?preview=true`} />
-            </div>
+            <div className={bem('runtime')}>{slots.default?.()}</div>
           </div>
           <div className={bem('toolbar')}>
             <div className={bem('qrcode')}>
@@ -95,21 +99,13 @@ const DocPreview = defineComponent({
       // 演练场
       const playgroundContent =
         playground && !isMobile ? (
-          <div
-            className={bem('playground')}
-            style={
-              {
-                width: isNumber(width) ? `${width}px` : width,
-                height: isNumber(height) ? `${height}px` : height
-              } as CSSProperties
-            }
-          >
-            <iframe src={`${PLAYGROUND_SHORT_URL}${playground}`} />
+          <div className={bem('playground')}>
+            <iframe ref={playgroundRef} src={`${PLAYGROUND_SHORT_URL}${playground}`} />
           </div>
         ) : null
 
       return (
-        <div class={bem('wrapper', { h5: isMobile })}>
+        <div class={bem('wrapper', { h5: isMobile })} style={wrapperStyle}>
           {pcContent}
           {mobileContent}
           {playgroundContent}

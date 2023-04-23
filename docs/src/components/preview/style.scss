@@ -24,7 +24,7 @@
     }
 
     &--h5 {
-      height: 450px;
+      height: auto;
       margin: var(--d-gap-sm) 0;
 
       #{$prefix} {
@@ -53,8 +53,13 @@
         &__runtime {
           width: 375px;
           height: 100%;
-          padding: 0;
-          overflow: hidden;
+          padding: var(--d-gap-sm);
+          overflow: auto;
+          background: #f2f4f5;
+        }
+
+        &__toolbar {
+          margin-top: 0;
         }
       }
     }
@@ -84,7 +89,7 @@
     img {
       width: 20px;
       height: 20px;
-      margin-top: 0;
+      vertical-align: middle;
     }
   }
 
@@ -110,6 +115,7 @@
       img {
         width: 100px;
         height: 100px;
+        margin: initial !important;
       }
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <d-cell-group cell-title-width="200">
+  <d-cell-group>
     <d-cell title="搭配单元格使用" content-align="right">
       <d-picker v-model="value1" title="直接使用" placeholder="请选择" :columns="columns1" />
     </d-cell>

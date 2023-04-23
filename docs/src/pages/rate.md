@@ -1,6 +1,6 @@
 # Rate 评分
 
-```vue playground=MRate
+```vue client=Mobile playground=MRate height=500
 <template>
   <d-cell-group title="基础用法">
     <d-cell content-align="left">

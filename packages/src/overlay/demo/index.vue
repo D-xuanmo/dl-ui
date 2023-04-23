@@ -1,9 +1,9 @@
 <template>
-  <d-cell title="打开遮罩层">
+  <d-cell title="打开遮罩层" content-align="right">
     <d-switch v-model="visible" />
     <d-overlay v-model:visible="visible" />
   </d-cell>
-  <d-cell title="修改过渡时间" title-width="100px">
+  <d-cell title="修改过渡时间" title-width="100px" content-align="right">
     <d-switch v-model="visible2" />
     <d-overlay v-model:visible="visible2" duration="1s" />
   </d-cell>
