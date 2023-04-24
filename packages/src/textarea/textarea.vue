@@ -30,7 +30,12 @@ export default defineComponent({
   props: TEXTAREA_PROPS,
   emits: ['update:model-value'],
   setup(props, context) {
-    const wrapperClassName = bem()
+    const wrapperClassName = computed(() =>
+      bem({
+        disabled: props.disabled,
+        readonly: props.readonly
+      })
+    )
     const innerClassName = bem('inner')
     const limitClassName = bem('limit')
     const textareaRef = ref<HTMLTextAreaElement | null>(null)
