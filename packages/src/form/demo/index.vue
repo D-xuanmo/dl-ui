@@ -8,7 +8,7 @@
     :hide-label="hideLabel"
     @change="handleChange"
   />
-  <d-cell-group title="表单操作">
+  <d-cell-group title="表单操作" style="margin-top: var(--d-gap-sm)">
     <d-cell title="表单禁用">
       <d-switch v-model="formDisabled" />
     </d-cell>

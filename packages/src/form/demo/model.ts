@@ -5,6 +5,7 @@ import { UploadProps } from '../../upload'
 import { dCookie } from '@xuanmo/javascript-utils'
 import CustomInput from './custom-input.vue'
 import { FormStoreInitialConfig } from '../store'
+import { TextareaProps } from '../../textarea'
 
 const FORM_MODEL: FormStoreInitialConfig = {
   groups: [
@@ -22,6 +23,19 @@ const FORM_MODEL: FormStoreInitialConfig = {
       groupId: 'basic',
       otherProps: <InputProps>{
         placeholder: '请输入文字'
+      }
+    },
+    {
+      name: 'textarea',
+      component: 'DTextarea',
+      label: '多行文本框',
+      value: '',
+      required: true,
+      groupId: 'basic',
+      otherProps: <TextareaProps>{
+        placeholder: '请输入文字',
+        maxlength: 80,
+        showWordLimit: true
       }
     },
     {
