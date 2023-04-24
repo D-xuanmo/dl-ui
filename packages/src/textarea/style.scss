@@ -1,0 +1,35 @@
+@import '../style/prefix.scss';
+
+.#{$prefix}-textarea {
+  $prefix: &;
+
+  &__inner {
+    width: 100%;
+    border: 0;
+    resize: none;
+    vertical-align: middle;
+
+    &:-webkit-autofill {
+      background: none;
+    }
+  }
+
+  &__limit {
+    font-size: var(--d-font-size-xs);
+    text-align: right;
+    color: var(--d-secondary-text-color);
+  }
+
+  &--disabled,
+  &--readonly {
+    #{$prefix} {
+      &__inner {
+        color: var(--d-disable-color);
+
+        &::placeholder {
+          color: var(--d-disable-color);
+        }
+      }
+    }
+  }
+}

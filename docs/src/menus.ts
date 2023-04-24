@@ -32,6 +32,7 @@ const menus: MenuItemType[] = [
     groupTitle: '表单组件',
     children: [
       { id: 'input', path: '/input', content: 'Input [输入框]' },
+      { id: 'textarea', path: '/textarea', content: 'Textarea [多行文本框]' },
       { id: 'switch', path: '/switch', content: 'Switch [开关]' },
       { id: 'rate', path: '/rate', content: 'Rate [评分]' },
       { id: 'picker', path: '/picker', content: 'Picker [选择器]' },
