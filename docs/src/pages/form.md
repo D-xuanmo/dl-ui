@@ -21,6 +21,7 @@
 |hide-label|`boolean`|false|隐藏 label|N|
 |layout|`'horizontal' \| 'vertical'`|`horizontal`|布局类型|N|
 |colon|`boolean`|`false`|是否显示冒号|N|
+|round|`boolean`|`true`|分组是否展示为圆角|N|
 |required-mark-position|`'left' \| 'right'`|`right`|必填标识显示位置|N|
 
 ### Events

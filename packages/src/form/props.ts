@@ -22,7 +22,11 @@ export const FORM_PROPS = {
     type: String as PropType<Exclude<HorizontalAlignType, 'center'>>,
     default: 'right'
   },
-  hideLabel: Boolean
+  hideLabel: Boolean,
+  round: {
+    type: Boolean,
+    default: true
+  }
 }
 
 export const FORM_ITEM_PROPS = {

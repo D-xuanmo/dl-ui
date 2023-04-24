@@ -7,7 +7,7 @@
           :key="groupId"
           :title="group.title"
           :layout="layout"
-          :round="false"
+          :round="round"
         >
           <template v-for="itemName in group?.items">
             <d-form-item
