@@ -30,7 +30,10 @@ const DocPreview = defineComponent({
       () => route,
       () => {
         const name = route.path.match(/\/([\w-]+)$/)?.[1]
-        demoURL.value = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/demo/${name}`
+        demoURL.value = `${window.location.origin}${import.meta.env.BASE_URL.replace(
+          /\/$/,
+          ''
+        )}/demo/${name}`
         QRCode.toDataURL(demoURL.value).then((url) => {
           qrcode.value = url
         })
