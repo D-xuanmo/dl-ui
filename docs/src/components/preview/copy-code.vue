@@ -28,9 +28,11 @@ const scrollClassName = computed(() =>
   })
 )
 
-const handleCopy = async () => {
+const handleCopy = () => {
+  const el = document.createElement('div')
+  el.innerHTML = decodeURIComponent(props.code)
   window.navigator.clipboard
-    .writeText(props.code)
+    .writeText(el.innerText)
     .then(() => {
       status.value = true
       statusIcon.value = 'success-f'
