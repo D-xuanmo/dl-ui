@@ -4,10 +4,11 @@ import { useRoute } from 'vue-router'
 import { PLAYGROUND_SHORT_URL } from '@doc/constants'
 import QRCode from 'qrcode'
 import qs from 'qs'
+import { addUnit } from '@/utils'
 import qrcodeIcon from '../../assets/images/QRCode.svg'
 import playgroundIcon from '../../assets/images/CodeSandbox.svg'
+import CopyCode from './copy-code.vue'
 import './style.scss'
-import { addUnit } from '@/utils'
 
 const [name, bem] = createNamespace('doc-preview')
 
@@ -18,6 +19,9 @@ const props = {
 
 const DocPreview = defineComponent({
   name,
+  components: {
+    'copy-code': CopyCode
+  },
   props,
   setup(props, { slots }) {
     const route = useRoute()
@@ -84,21 +88,26 @@ const DocPreview = defineComponent({
             </div>
           </div>
           <div className={bem('toolbar')}>
-            <div className={bem('qrcode')}>
-              <img className={bem('qrcode-trigger')} src={qrcodeIcon} />
-              <div className={bem('qrcode-img')}>
-                <img src={qrcode.value} />
+            <d-space>
+              <copy-code code={props.source} />
+            </d-space>
+            <d-space gap={10}>
+              <div className={bem('qrcode')}>
+                <img className={bem('qrcode-trigger')} src={qrcodeIcon} />
+                <div className={bem('qrcode-img')}>
+                  <img src={qrcode.value} />
+                </div>
               </div>
-            </div>
-            {playground && (
-              <a
-                href={`${PLAYGROUND_SHORT_URL}${playground}`}
-                target="_blank"
-                title="在 Playground 中编辑"
-              >
-                <img src={playgroundIcon} />
-              </a>
-            )}
+              {playground && (
+                <a
+                  href={`${PLAYGROUND_SHORT_URL}${playground}`}
+                  target="_blank"
+                  title="在 Playground 中编辑"
+                >
+                  <img src={playgroundIcon} />
+                </a>
+              )}
+            </d-space>
           </div>
         </div>
       ) : null

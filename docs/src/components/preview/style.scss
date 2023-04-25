@@ -71,14 +71,13 @@
 
   &__toolbar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-top: var(--d-gap-sm);
     padding: var(--d-gap-xs) var(--d-gap-sm);
     border-top: 1px dashed var(--d-border-color);
     text-align: center;
 
-    > * {
-      margin-left: var(--d-gap-sm);
+    .d-space__item > * {
       cursor: pointer;
     }
 
@@ -125,6 +124,19 @@
 
     &--active {
       display: block;
+    }
+  }
+
+  &__copy {
+    width: 22px;
+    height: 24px;
+    overflow: hidden;
+
+    &-scroll {
+      transition: 0.3s;
+      &--success {
+        transform: translateY(-50%);
+      }
     }
   }
 }
