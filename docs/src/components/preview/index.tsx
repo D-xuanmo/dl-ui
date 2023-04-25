@@ -24,12 +24,14 @@ const DocPreview = defineComponent({
     const showCode = ref(false)
     const qrcode = ref('')
     const playgroundRef = ref<HTMLIFrameElement | null>(null)
+    const demoURL = ref('')
 
     watch(
       () => route,
       () => {
-        const name = route.path.match(/\/(\w+)$/)?.[1]
-        QRCode.toDataURL(`https://www.xuanmo.xin/-/dynamic-form/demo/${name}`).then((url) => {
+        const name = route.path.match(/\/([\w-]+)$/)?.[1]
+        demoURL.value = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/demo/${name}`
+        QRCode.toDataURL(demoURL.value).then((url) => {
           qrcode.value = url
         })
       },
@@ -74,7 +76,9 @@ const DocPreview = defineComponent({
               className={bem('code', { active: showCode.value })}
               v-html={decodeURIComponent(props.source as string)}
             />
-            <div className={bem('runtime')}>{slots.default?.()}</div>
+            <div className={bem('runtime')}>
+              <iframe src={`${demoURL.value}?preview=true`} />
+            </div>
           </div>
           <div className={bem('toolbar')}>
             <div className={bem('qrcode')}>

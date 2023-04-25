@@ -1,6 +1,6 @@
 # Input 输入框
 
-```vue client=Mobile playground=MInput height=500
+```vue client=Mobile playground=MInput
 <template>
   <d-cell-group title="基础用法">
     <d-input v-model="value" label="输入框" placeholder="请输入文字" @blur="onBlur" />
@@ -59,36 +59,36 @@ function onBlur(value: string) {
 
 ### Props
 
-| 参数              | 类型                      | 默认值   | 说明                                                                                                      | 必传 |
-| ----------------- | ------------------------- | -------- | --------------------------------------------------------------------------------------------------------- | ---- |
-| v-model           | string                    | -        | 输入值                                                                                                    | N    |
-| type              | string                    | text     | 输入框类型，可选值：`text/number/password/email/url`                                                      | N    |
-| name              | string                    | -        | input 原生属性                                                                                            | N    |
-| label             | string                    | -        | 左侧显示文字                                                                                              | N    |
-| label-class       | string                    | -        | 左侧显示文字类名                                                                                          | N    |
-| label-width       | string                    | -        | 左侧显示文字宽度，单位 `px`                                                                               | N    |
-| label-align       | string                    | left     | 左侧显示文字对齐方式，可选值：`left/center/right`                                                         | N    |
-| hide-label        | boolean                   | false    | 隐藏左侧显示文字                                                                                          | N    |
-| left-icon         | string                    | -        | 左侧图标名                                                                                                | N    |
-| left-icon-size    | string                    | -        | 左侧图标大小，同 `Icon` 组件大小                                                                          | N    |
-| left-icon-color   | string                    | -        | 左侧图标颜色                                                                                              | N    |
-| colon             | boolean                   | -        | 是否显示左侧冒号                                                                                          | N    |
-| required          | boolean                   | -        | 是否必填                                                                                                  | N    |
-| placeholder       | string                    | -        | 输入框占位符                                                                                              | N    |
-| disabled          | boolean                   | -        | 是否禁用                                                                                                  | N    |
-| readonly          | boolean                   | -        | 是否只读                                                                                                  | N    |
-| autofocus         | boolean                   | -        | 自动聚焦，原生属性                                                                                        | N    |
-| input-align       | string                    | -        | 输入框文字对齐方式，可选值：`left/center/right`                                                           | N    |
-| maxlength         | number                    | -        | 最大长度，原生属性                                                                                        | N    |
-| suffix            | string                    | -        | 右侧扩展内容                                                                                              | N    |
-| autocomplete      | string                    | -        | 原生属性，[MDN - autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) | N    |
-| clearable         | boolean                   | -        | 显示可清空按钮                                                                                            | N    |
-| formatter         | (value: string) => string | -        | 格式化函数                                                                                                | N    |
-| formatter-trigger | string                    | onChange | 格式化函数触发时机，可选值：`onBlur`                                                                      | N    |
+|参数|类型|默认值|说明|必传|
+|---|----|-----|---|----|
+|v-model|`string`|-|输入值|N|
+|type|`string`|text|输入框类型，可选值：`text/number/password/email/url`|N|
+|name|`string`|-|input 原生属性|N|
+|label|`string`|-|左侧显示文字|N|
+|label-class|`string`|-|左侧显示文字类名|N|
+|label-width|`string`|-|左侧显示文字宽度，单位：`px`|N|
+|label-align|`string`|left|左侧显示文字对齐方式，可选值：`left/center/right`|N|
+|hide-label|`boolean`|false|隐藏左侧显示文字|N|
+|left-icon|`string`|-|左侧图标名|N|
+|left-icon-size|`string`|-|左侧图标大小，同 `Icon` 组件大小|N|
+|left-icon-color|`string`|-|左侧图标颜色|N|
+|colon|`boolean`|-|是否显示左侧冒号|N|
+|required|`boolean`|-|是否必填|N|
+|placeholder|`string`|-|输入框占位符|N|
+|disabled|`boolean`|-|是否禁用|N|
+|readonly|`boolean`|-|是否只读|N|
+|autofocus|`boolean`|-|自动聚焦，原生属性|N|
+|input-align|`string`|-|输入框文字对齐方式，可选值：`left/center/right`|N|
+|maxlength|`number`|-|最大长度，原生属性|N|
+|suffix|`string`|-|右侧扩展内容|N|
+|autocomplete|`string`|-|原生属性，[MDN-autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)|N|
+|clearable|`boolean`|-|显示可清空按钮|N|
+|formatter|`(value: string) => string`|-|格式化函数|N|
+|formatter-trigger|`string`|`onChange`|格式化函数触发时机，可选值：`onBlur`|N|
 
 ### Events
 
-| 事件              | 说明                   | 回调参数                    |
+|事件              | 说明                   | 回调参数                    |
 | ----------------- | ---------------------- | --------------------------- |
 | update:modelValue | 输入内容发生改变时触发 | value: string(当前输入内容) |
 | blur              | 输入框失焦时触发       | value: string, event: Event |

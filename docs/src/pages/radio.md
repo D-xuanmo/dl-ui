@@ -1,6 +1,6 @@
 # Radio 单选框
 
-```vue client=Mobile playground=MRadio height=400
+```vue client=Mobile playground=MRadio
 <template>
   <d-demo-block title="基本用法">
     <d-radio-group v-model="value">
@@ -49,19 +49,19 @@ const value = ref('1')
 
 ### Radio Props
 
-| 参数            | 类型               | 默认值 | 说明           | 必传 |
-| --------------- | ------------------ | ------ | -------------- | ---- |
-| value           | `string \| number` | -      | 绑定值         | Y    |
-| label           | `string`           | -      | 单选框显示文字 | Y    |
-| default-checked | `boolean`          | -      | 是否默认选中   | N    |
-| disabled        | `boolean`          | -      | 是否禁用       | N    |
-| icon            | `string`           | -      | 图标名         | N    |
+|参数|类型|默认值|说明|必传|
+|---|----|-----|---|----|
+|value|`string \| number`|-|绑定值|Y|
+|label|`string`|-|单选框显示文字|Y|
+|default-checked|`boolean`|-|是否默认选中|N|
+|disabled|`boolean`|-|是否禁用|N|
+|icon|`string`|-|图标名|N|
 
 ### RadioGroup Props
 
-| 参数      | 类型               | 默认值     | 说明           | 必传 |
-| --------- | ------------------ | ---------- | -------------- | ---- |
-| v-model   | `string \| number` | -          | 当前选中的数据 | Y    |
-| direction | `DirectionType`    | `vertical` | 参考公用类型   | N    |
-| disabled  | `boolean`          | -          | 是否禁用       | N    |
-| options   | `DataType[]`       | -          | 单选框数据项   | N    |
+|参数|类型|默认值|说明|必传|
+|---|----|-----|---|----|
+|v-model|`string \| number`|-|当前选中的数据|Y|
+|direction|`DirectionType`|`vertical`|参考公用类型|N|
+|disabled|`boolean`|-|是否禁用|N|
+|options|`DataType[]`|-|单选框数据项|N|

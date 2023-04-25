@@ -1,6 +1,6 @@
 # Button 按钮
 
-```vue client=Mobile playground=MButton height=600
+```vue client=Mobile playground=MButton
 <template>
   <d-demo-block>
     <p>填充模式</p>
@@ -73,8 +73,6 @@
     <d-button theme="success" fill="outline" icon="star-f">default</d-button>
   </d-demo-block>
 </template>
-
-<script lang="ts" setup></script>
 ```
 
 ## API

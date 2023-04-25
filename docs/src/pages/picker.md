@@ -2,7 +2,7 @@
 
 > 目前只支持移动端事件
 
-```vue client=Mobile playground=MPicker height=500
+```vue client=Mobile playground=MPicker
 <template>
   <d-cell-group>
     <d-cell title="搭配单元格使用" content-align="right">
@@ -70,24 +70,24 @@ fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address
 
 ### Props
 
-| 参数                | 类型                                 | 默认值  | 说明                 | 必传 |
-| ------------------- | ------------------------------------ | ------- | -------------------- | ---- |
-| v-model             | `string[] \| number[] \| DataType[]` | -       | 当前选中的数据       | Y    |
-| visible             | `boolean`                            | `false` | 显示与隐藏           | N    |
-| columns             | `PickerColumnsType`                  | []      | 选择器列数据         | N    |
-| title               | `string`                             | -       | 支持设置一个顶部标题 | N    |
-| cancel-button-text  | `string`                             | `取消`  | 关闭按钮文字         | N    |
-| confirm-button-text | `string`                             | `确认`  | 确认按钮文字         | N    |
-| option-height       | `number`                             | 42      | 单个选项高度         | N    |
+|参数|类型|默认值|说明|必传|
+|----|---|-----|---|----|
+|v-model|`string[] \| number[] \| DataType[]`|-|当前选中的数据|Y|
+|visible|`boolean`|`false`|显示与隐藏|N|
+|columns|`PickerColumnsType`|[]|选择器列数据|N|
+|title|`string`|-|支持设置一个顶部标题|N|
+|cancel-button-text|`string`|`取消`|关闭按钮文字|N|
+|confirm-button-text|`string`|`确认`|确认按钮文字|N|
+|option-height|`number`|42|单个选项高度|N|
 
 ### Events
 
-| 事件           | 说明         | 回调参数                                         |
-| -------------- | ------------ | ------------------------------------------------ |
-| update:visible | 显示隐藏事件 | (visible: boolean) => void                       |
-| change         | 确认事件     | (value: PickerValueType, data: DataType) => void |
-| confirm        | 确认事件     | (value: PickerValueType) => void                 |
-| close          | 关闭事件     | () => void                                       |
+|事件|说明|回调参数|
+|---|----|-------|
+|update:visible|显示隐藏事件|`(visible: boolean) => void`|
+|change|确认事件|`(value: PickerValueType, data: DataType) => void`|
+|confirm|确认事件|`(value: PickerValueType) => void`|
+|close|关闭事件|`() => void`|
 
 ## 选择器公用类型
 

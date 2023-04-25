@@ -21,10 +21,11 @@
 
     .shiki {
       margin-top: 0;
+      background: none !important;
     }
 
     &--h5 {
-      height: auto;
+      height: 500px;
       margin: var(--d-gap-sm) 0;
 
       #{$prefix} {
@@ -53,9 +54,8 @@
         &__runtime {
           width: 375px;
           height: 100%;
-          padding: var(--d-gap-sm);
-          overflow: auto;
-          background: #f2f4f5;
+          padding: 0;
+          overflow: hidden;
         }
 
         &__toolbar {

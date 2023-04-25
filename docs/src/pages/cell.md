@@ -2,9 +2,7 @@
 
 用于展示 2 列信息，左侧为标题，右侧为内容的场景
 
-## CellGroup 单元格分组
-
-```vue client=Mobile playground=MCellGroup
+```vue client=Mobile playground=MCell
 <template>
   <d-cell-group title="CellGroup 分组">
     <d-cell title="我是标题" content="内容" />
@@ -14,13 +12,7 @@
     <d-cell title="我是标题" content="内容" />
     <d-cell title="我是标题" content="内容" />
   </d-cell-group>
-</template>
-```
 
-## Cell 单元格
-
-```vue client=Mobile playground=MCell height=500
-<template>
   <d-cell title="我是标题" content="内容" />
   <d-cell title="我是标题" content="必填标识" required />
   <d-cell content="隐藏标题" hide-title />
@@ -38,6 +30,7 @@
     right-icon="close"
     right-icon-color="#f00"
   />
+  <d-cell title="显示右侧箭头" arrow content="正文内容" />
 </template>
 ```
 

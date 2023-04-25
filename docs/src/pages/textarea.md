@@ -30,13 +30,13 @@ const value3 = ref('')
 
 ### Props
 
-| 参数            | 类型      | 默认值 | 说明                                   | 必传 |
-| --------------- | --------- | ------ | -------------------------------------- | ---- |
-| v-model         | `string`  | -      | 组件数据                               | Y    |
-| disabled        | `boolean` | -      | 表单禁用                               | N    |
-| readonly        | `boolean` | -      | 表单只读 2                             | N    |
-| maxlength       | `number`  | -      | 最大长度，原生属性                     | N    |
-| rows            | `number`  | 3      | 显示行数，原生属性                     | N    |
-| placeholder     | `string`  | -      | 提示语，原生属性                       | N    |
-| show-word-limit | `boolean` | -      | 是否显示字数统计，需要开启 `maxlength` | N    |
-| autosize        | `boolean` | -      | 是否输入内容自动撑高                   | N    |
+|参数|类型|默认值|说明|必传|
+|---|----|-----|---|----|
+|v-model|`string`|-|组件数据|Y|
+|disabled|`boolean`|-|表单禁用|N|
+|readonly|`boolean`|-|表单只读|N|
+|maxlength|`number`|-|最大长度，原生属性|N|
+|rows|`number`|3|显示行数，原生属性|N|
+|placeholder|`string`|-|提示语，原生属性|N|
+|show-word-limit|`boolean`|-|是否显示字数统计，需要开启 `maxlength`|N|
+|autosize|`boolean`|-|是否输入内容自动撑高|N|
