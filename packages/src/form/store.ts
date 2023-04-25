@@ -131,6 +131,7 @@ class FormStore {
           resolve(true)
         })
         .catch((error) => {
+          this.clearMessages()
           Object.assign(this.errorMessages, error)
           reject(error)
         })
