@@ -2,10 +2,7 @@
   <div :class="className" @click="handleCopy">
     <div :class="scrollClassName">
       <img :src="copyIcon" title="复制代码" />
-      <d-icon
-        :name="status ? 'success-f' : 'close-f'"
-        :color="status ? 'var(--d-success)' : 'var(--d-error)'"
-      />
+      <d-icon :name="statusIcon" :color="statusColor" />
     </div>
   </div>
 </template>
@@ -21,6 +18,8 @@ const props = defineProps<{
 
 const [, bem] = createNamespace('doc-preview')
 const status = ref<boolean | null>(null)
+const statusIcon = ref('success-f')
+const statusColor = ref('var(--d-success)')
 
 const className = bem('copy')
 const scrollClassName = computed(() =>
@@ -34,9 +33,13 @@ const handleCopy = async () => {
     .writeText(props.code)
     .then(() => {
       status.value = true
+      statusIcon.value = 'success-f'
+      statusColor.value = 'var(--d-success)'
     })
     .catch(() => {
       status.value = false
+      statusIcon.value = 'close-f'
+      statusColor.value = 'var(--d-error)'
     })
   setTimeout(() => {
     status.value = null
