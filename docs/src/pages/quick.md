@@ -22,7 +22,7 @@ $ pnpm add @xuanmo/dl-ui
 import { createApp } from 'vue'
 
 // 1. 引入组件
-import DForm, { validator } from '@xuanmo/dl-ui'
+import DLui, { validator } from '@xuanmo/dl-ui'
 
 // 2. 引入校验国际化并注册
 import zhCN from '@xuanmo/validator/locale/zh-CN.json'
@@ -34,5 +34,5 @@ import '@xuanmo/dl-ui/dist/index.css'
 const app = createApp()
 
 // 4. 注册组件
-app.use(DForm)
+app.use(DLui)
 ```
