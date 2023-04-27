@@ -7,6 +7,6 @@ interface CellGroupConfig
   layout: Ref<DirectionType>
 }
 
-export const CELL_GROUP_CONTEXT_KEY = Symbol('DFormCellGroup') as InjectionKey<
+export const CELL_GROUP_CONTEXT_KEY = Symbol('DLuiCellGroup') as InjectionKey<
   Partial<CellGroupConfig>
 >

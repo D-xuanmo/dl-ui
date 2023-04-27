@@ -7,7 +7,7 @@ build:
     refs:
       - develop
   script:
-    - cd /htdocs/dynamic-form
+    - cd /htdocs/dl-ui
     - git pull
     - yarn --registry=https://registry.npmmirror.com
     - yarn build:docs

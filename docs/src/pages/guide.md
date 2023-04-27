@@ -25,4 +25,4 @@
 - 具体提交规范参考 [angular commit](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format)
 - 以修复 `Form` 组件 bug 为例，对应的 commit 为：fix(Form): 修复校验方法报错
 
-![](https://upyun.xuanmo.xin/dynamic-form/20230420002352123939.png)
+![](https://upyun.xuanmo.xin/dl-ui/20230427230129555620.png)

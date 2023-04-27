@@ -1,7 +1,7 @@
 import { InjectionKey } from 'vue'
 import { DirectionType, HorizontalAlignType } from '../common'
 
-export type FormGlobalConfigType = {
+export type GlobalConfigType = {
   /** 主题 */
   theme?: string
 
@@ -21,4 +21,4 @@ export type FormGlobalConfigType = {
   zIndex?: number
 }
 
-export const GLOBAL_CONFIG_CONTEXT_KEY = Symbol('DForm') as InjectionKey<FormGlobalConfigType>
+export const GLOBAL_CONFIG_CONTEXT_KEY = Symbol('DLui') as InjectionKey<GlobalConfigType>

@@ -48,7 +48,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-// 以下类型从 @xuanmo/dynamic-form 中引入
+// 以下类型从 @xuanmo/dl-ui 中引入
 import {
   InputProps,
   PickerProps,

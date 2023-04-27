@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import routes from './routes'
-import DForm, { validator } from '@'
+import DLui, { validator } from '@'
 
 import { Example, ExampleBEM } from './components/example'
 import DemoBlock from './components/demo-block'
@@ -24,7 +24,7 @@ app
   .use(Example)
   .use(ExampleBEM)
   .use(DemoBlock)
-  .use(DForm)
+  .use(DLui)
   .component('VueCode', DocPreview)
   .component('CustomInput', CustomInput)
   .mount('#app')

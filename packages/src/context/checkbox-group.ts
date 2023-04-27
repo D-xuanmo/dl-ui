@@ -22,5 +22,5 @@ export type CheckboxGroupContextType = Omit<
 }
 
 export const CHECKBOX_GROUP_CONTEXT_KEY = Symbol(
-  'DFormCheckboxGroup'
+  'DLuiCheckboxGroup'
 ) as InjectionKey<CheckboxGroupContextType>

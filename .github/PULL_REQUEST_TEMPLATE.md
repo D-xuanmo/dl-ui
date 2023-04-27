@@ -1,6 +1,6 @@
 ### 在创建 PR 前，请确保已经完成以下操作：
 
-1. 阅读项目 [开发规范](https://www.xuanmo.xin/-/dynamic-form/guide)；
+1. 阅读项目 [开发规范](https://www.xuanmo.xin/-/dl-ui/guide)；
 2. 如果新增了 API，请更新文档；
 3. 确保编译无任何警告或者报错。
 

@@ -4,7 +4,7 @@
 
 通过覆盖 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties) 可以实现主题定制
 
-> 变量源文件 [https://github.com/D-xuanmo/dynamic-form/blob/develop/packages/src/style/var.scss](https://github.com/D-xuanmo/dynamic-form/blob/develop/packages/src/style/var.scss)
+> 变量源文件 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/style/var.scss](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/style/var.scss)
 
 ```scss
 :root {
@@ -82,7 +82,7 @@
 > 更多用法参考 [https://github.com/D-xuanmo/validator](https://github.com/D-xuanmo/validator)
 
 ```typescript
-import { validator } from '@xuanmo/dynamic-form'
+import { validator } from '@xuanmo/dl-ui'
 validator.extends({
   custom: {
     message: '自定义校验失败信息',

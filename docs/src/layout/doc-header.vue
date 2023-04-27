@@ -1,8 +1,8 @@
 <template>
   <header :class="headerClassName">
     <div :class="leftClassName">
-      <img src="https://upyun.xuanmo.xin/logo/dynamic-form-32X32.png" alt="Dynamic Form" />
-      <h1>Dynamic Form</h1>
+      <img src="https://upyun.xuanmo.xin/logo/dynamic-form-32X32.png" alt="Vue dl-ui" />
+      <h1>Vue dl-ui</h1>
     </div>
     <div :class="rightClassName">
       <d-space :gap="16" align="center" justify="end">
@@ -12,7 +12,7 @@
         <a href="https://github.com/D-xuanmo/validator" target="_blank">
           <d-button size="small" fill="none" link theme="primary">数据校验</d-button>
         </a>
-        <a href="https://github.com/D-xuanmo/dynamic-form" target="_blank">
+        <a href="https://github.com/D-xuanmo/dl-ui" target="_blank">
           <img :src="githubLogo" width="24" />
         </a>
       </d-space>

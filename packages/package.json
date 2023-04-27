@@ -1,5 +1,5 @@
 {
-  "name": "@xuanmo/dynamic-form",
+  "name": "@xuanmo/dl-ui",
   "private": false,
   "version": "0.0.1-alpha.48",
   "author": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/D-xuanmo/dynamic-form.git"
+    "url": "https://github.com/D-xuanmo/dl-ui"
   },
   "scripts": {
     "dev": "vite",

@@ -159,6 +159,16 @@ blockquote {
     overflow: hidden;
     line-height: initial;
 
+    .markdown-body {
+      > * + * {
+        margin-top: var(--d-gap-sm);
+      }
+
+      ul, ol {
+        margin-top: var(--d-gap-xs) !important;
+      }
+    }
+
     li {
       padding: 4px 0;
       list-style-type: initial;
@@ -175,12 +185,8 @@ blockquote {
       h#{$num} {
         border: 0;
 
-        & + p {
-          margin-top: var(--d-gap-xs);
-        }
-
         @if $num != 1 {
-          margin: var(--d-gap-lg) 0 var(--d-gap-xs);
+          margin-top: var(--d-gap-lg);
         }
 
         @if $num > 2 {
