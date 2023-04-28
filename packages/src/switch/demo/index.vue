@@ -2,13 +2,20 @@
   <d-cell-group cell-content-align="right">
     <d-cell title="基础用法">
       <d-switch v-model="value" />
-      <d-switch :value="value" />
     </d-cell>
-    <d-cell title="默认值">
-      <d-switch v-model="value1" />
+    <d-cell title="尺寸">
+      <d-space gap='5' justify='end'>
+        <d-switch v-model="value" size='small' />
+        <d-switch v-model="value" size='medium' />
+        <d-switch v-model="value" size='large' />
+      </d-space>
     </d-cell>
-    <d-cell title="方形">
-      <d-switch v-model="value" :round="false" />
+    <d-cell title="方形尺寸">
+      <d-space gap='5' justify='end'>
+        <d-switch v-model="value" size='small' :round="false" />
+        <d-switch v-model="value" size='medium' :round="false" />
+        <d-switch v-model="value" size='large' :round="false" />
+      </d-space>
     </d-cell>
     <d-cell title="禁用">
       <d-switch v-model="value" disabled />
@@ -34,7 +41,6 @@
 import { ref } from 'vue'
 
 const value = ref(false)
-const value1 = ref(true)
 const value2 = ref(false)
 const loading = ref(false)
 

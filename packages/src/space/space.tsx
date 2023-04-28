@@ -1,7 +1,6 @@
 import { computed, defineComponent } from 'vue'
 import { createNamespace } from '../utils'
 import { SPACE_PROPS } from './props'
-import { createRandomID } from '@xuanmo/javascript-utils'
 import { addUnit } from '../utils'
 
 const [name, bem] = createNamespace('space')
@@ -33,7 +32,7 @@ export default defineComponent({
               : undefined
         }
         return (
-          <div key={createRandomID()} className={spaceItemClassName} style={style}>
+          <div key={`${index}`} className={spaceItemClassName} style={style}>
             {item}
           </div>
         )
