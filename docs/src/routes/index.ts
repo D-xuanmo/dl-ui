@@ -54,6 +54,10 @@ const routes = createRouter({
       path: '/',
       redirect: '/introduce'
     },
+    {
+      path: '/demo',
+      redirect: '/demo/component-list'
+    },
     ...getRoutes(),
     ...getDemoRoutes()
   ]

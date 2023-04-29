@@ -1,9 +1,10 @@
-import { createRandomID } from '@xuanmo/javascript-utils'
+import { createRandomID, ua } from '@xuanmo/javascript-utils'
 import { MenuItemType } from './components/menu/types'
 
 const menus: MenuItemType[] = [
   {
     id: createRandomID(),
+    hide: ua().device === 'Mobile',
     groupTitle: '开发指南',
     children: [
       { id: 'introduce', path: '/introduce', content: '介绍' },
@@ -48,6 +49,8 @@ const menus: MenuItemType[] = [
     ]
   }
 ]
+
+export const getMenuList = () => menus.filter((item) => !item.hide)
 
 /**
  * 查找菜单信息

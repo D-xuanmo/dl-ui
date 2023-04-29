@@ -4,5 +4,6 @@ export type MenuItemType = {
   path?: string
   groupTitle?: string
   groupId?: string
+  hide?: boolean
   children?: MenuItemType[]
 }
