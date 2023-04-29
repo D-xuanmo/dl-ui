@@ -37,51 +37,5 @@
     display: flex;
     width: 100%;
     justify-content: center;
-    overflow: hidden;
-  }
-
-  &-item {
-    padding: 10px;
-    font-size: var(--d-font-size-md);
-    line-height: var(--d-line-height-md);
-    text-align: center;
-    @include ellipsis(1);
-    @include disabled;
-
-    &__wrapper {
-      position: relative;
-      flex: 1;
-      overflow: hidden;
-    }
-
-    &__content {
-      height: 100%;
-      overflow-y: auto;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-      //transition: transform 0.3s;
-    }
-
-    &__overlay {
-      left: 0;
-      z-index: 1;
-      width: 100%;
-      background-color: rgba(255, 255, 255, 0.6);
-      pointer-events: none;
-
-      &:first-of-type {
-        top: 0;
-        @include border(0px, bottom);
-        position: absolute;
-      }
-
-      &:last-of-type {
-        bottom: 0;
-        @include border(0px, top);
-        position: absolute;
-      }
-    }
   }
 }
