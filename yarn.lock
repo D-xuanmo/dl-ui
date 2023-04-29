@@ -772,10 +772,10 @@
   resolved "https://registry.npmjs.org/@xuanmo/datejs/-/datejs-1.0.15.tgz#af78d755525429cd0db0040ec7e0c54c53daae9c"
   integrity sha512-QhfHilKz9LBESUYaF2KMDHLFudjv17xBH26Z0tY0Am4VwhkOljZpKc+kZNCk6r/ljLnG9lcc3rGw1YWW4f8vZA==
 
-"@xuanmo/javascript-utils@^0.0.42":
-  version "0.0.42"
-  resolved "https://registry.npmjs.org/@xuanmo/javascript-utils/-/javascript-utils-0.0.42.tgz#2f1af15e460ce49e3713c0c36b47bb9029b4d2bf"
-  integrity sha512-413aFzMgoqb608xhWr6+bMow8Ry8O48X7bvoy4fX94DUatukHxJETRLlyWWq9VqiyV0FvFbIVnZMCV2fQ/pGzg==
+"@xuanmo/javascript-utils@^0.0.47":
+  version "0.0.47"
+  resolved "https://registry.npmjs.org/@xuanmo/javascript-utils/-/javascript-utils-0.0.47.tgz#cf27f033483638c92d7af85aabaae5e0cfbbe6f9"
+  integrity sha512-9rPptBcGVCHuLbLVYYJr7wK1qMuBI1yDupfqY8gjwJucpjtOuJBBUCkeFUT5enG91lY0o0t2xFBItyxfSCm4OA==
 
 "@xuanmo/normalize.css@^1.0.9":
   version "1.0.9"

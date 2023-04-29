@@ -16,7 +16,7 @@
       </header>
 
       <div :class="contentClassName" :style="contentStyle">
-        <d-picker-item
+        <d-scroll-radio
           v-for="(item, index) in formattedColumns"
           :key="`@${index}`"
           :options="item"
@@ -35,17 +35,17 @@ import { createNamespace } from '../utils'
 import useModelValue from '../hooks/useModelValue'
 import { DataType, OmitValueProperties } from '../common'
 import { CascadeDataType, PickerColumnType, PICKER_PROPS, PickerValueType } from './props'
-import DPickerItem from './picker-item.vue'
 import { deepCopy, isEmpty, isObject } from '@xuanmo/javascript-utils'
 import { findCascadeFirstLevelData, findDisplayName, formatCascade } from './utils'
 import { EventType } from './types'
 import DIcon from '../icon'
+import DScrollRadio from '../scroll-radio'
 
 const [name, bem] = createNamespace('picker')
 
 export default defineComponent({
   name,
-  components: { DPickerItem, DIcon },
+  components: { DIcon, DScrollRadio },
   props: PICKER_PROPS,
   emits: ['update:visible', 'update:model-value', 'update:value', 'change', 'confirm', 'close'],
   setup(props, context: SetupContext<EventType>) {

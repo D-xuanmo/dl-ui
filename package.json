@@ -19,7 +19,7 @@
     "lint:tsc": "yarn workspace @xuanmo/dl-ui tsc:clear"
   },
   "dependencies": {
-    "@xuanmo/javascript-utils": "^0.0.42",
+    "@xuanmo/javascript-utils": "^0.0.47",
     "@xuanmo/validator": "^0.0.11"
   }
 }
