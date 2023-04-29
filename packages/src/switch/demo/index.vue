@@ -4,14 +4,14 @@
       <d-switch v-model="value" />
     </d-cell>
     <d-cell title="尺寸">
-      <d-space gap="5" justify="end">
+      <d-space :gap="5" justify="end">
         <d-switch v-model="value" size="small" />
         <d-switch v-model="value" size="medium" />
         <d-switch v-model="value" size="large" />
       </d-space>
     </d-cell>
     <d-cell title="方形尺寸">
-      <d-space gap="5" justify="end">
+      <d-space :gap="5" justify="end">
         <d-switch v-model="value" size="small" :round="false" />
         <d-switch v-model="value" size="medium" :round="false" />
         <d-switch v-model="value" size="large" :round="false" />
