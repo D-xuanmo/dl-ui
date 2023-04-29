@@ -182,7 +182,7 @@ const FORM_MODEL: FormStoreInitialConfig = {
           type: 'media'
         },
         headerParams: {
-          'X-XSRF-TOKEN': dCookie.getItem('csrfToken')
+          'X-XSRF-TOKEN': dCookie().getItem('csrfToken')
         },
         uploadAfter(response) {
           // 返回上传组件需要的格式
