@@ -1,9 +1,5 @@
 @import './prefix';
 
-body {
-  min-height: 100vh;
-}
-
 .#{$prefix}-overflow-hidden {
   overflow: hidden !important;
 }
