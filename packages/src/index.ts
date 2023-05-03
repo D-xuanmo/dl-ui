@@ -2,20 +2,15 @@ import { App } from 'vue'
 import 'virtual:svg-icons-register'
 import './style/index.scss'
 import * as components from './components'
-import { GlobalConfigType, GLOBAL_CONFIG_CONTEXT_KEY, CELL_GROUP_CONTEXT_KEY } from './context'
-import { LABEL_WIDTH } from './constants'
+import { GlobalConfigType, GLOBAL_CONFIG_CONTEXT_KEY } from './context'
 
 const install = function (app: App, options?: GlobalConfigType) {
   const config: GlobalConfigType = {
-    hideLabel: false,
-    labelWidth: LABEL_WIDTH,
     zIndex: 2000,
-    cellLayout: 'horizontal',
     ...options
   }
   app.provide(GLOBAL_CONFIG_CONTEXT_KEY, config)
-  app.provide(CELL_GROUP_CONTEXT_KEY, {})
-  app.config.globalProperties.$DLui = config
+  app.config.globalProperties.$DLUI = config
   Object.values(components).forEach((component) => {
     if (/^d-/.test(component.name)) app.use(component as any)
   })
@@ -36,6 +31,6 @@ export default { install }
 
 declare module '@vue/runtime-core' {
   export interface ComponentCustomProperties {
-    $DLui: GlobalConfigType
+    $DLUI: GlobalConfigType
   }
 }

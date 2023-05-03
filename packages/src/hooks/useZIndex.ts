@@ -14,11 +14,11 @@ function useZIndex<P>(props: P & { zIndex?: number }, autoIncrement = true) {
 
   const zIndex = ref(defaultZIndex)
 
-  const newZIndex = zIndex.value ? zIndex.value + 1 : (proxy?.$DLui?.zIndex ?? 2000) + 1
+  const newZIndex = zIndex.value ? zIndex.value + 1 : (proxy?.$DLUI?.zIndex ?? 2000) + 1
 
   function setZIndex() {
-    if (proxy?.$DLui) {
-      proxy.$DLui.zIndex = newZIndex
+    if (proxy?.$DLUI) {
+      proxy.$DLUI.zIndex = newZIndex
     }
   }
 
