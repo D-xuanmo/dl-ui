@@ -24,7 +24,7 @@ const uploadData = {
 }
 
 const headerParams = {
-  'X-XSRF-TOKEN': dCookie.getItem('csrfToken')
+  'X-XSRF-TOKEN': dCookie().getItem('csrfToken')
 }
 
 const uploadAfterHandler = (response: any) => {
