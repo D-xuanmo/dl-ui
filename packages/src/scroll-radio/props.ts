@@ -20,6 +20,22 @@ export const SCROLL_RADIO_PROPS = {
   optionHeight: {
     type: Number,
     default: 42
+  },
+
+  /**
+   * 可见选项个数
+   */
+  visibleOptionNum: {
+    type: Number as PropType<[5, 7][number]>,
+    default: 5
+  },
+
+  /**
+   * 是否需要空白占位，默认需要
+   */
+  needPlaceholder: {
+    type: Boolean,
+    default: true
   }
 }
 

@@ -1,16 +1,18 @@
 <template>
-  <div :class="wrapperClassName">
+  <div :class="wrapperClassName" :style="wrapperStyle">
     <ul ref="wrapperRef" :class="scrollClassName">
-      <scroll-radio-item :option-height="optionHeight" />
-      <scroll-radio-item :option-height="optionHeight" />
+      <template v-if="needPlaceholder">
+        <scroll-radio-item v-for="item in markNum" :key="item" :option-height="optionHeight" />
+      </template>
       <scroll-radio-item
         v-for="item in options"
         :key="item.value"
         :option="item"
         :option-height="optionHeight"
       />
-      <scroll-radio-item :option-height="optionHeight" />
-      <scroll-radio-item :option-height="optionHeight" />
+      <template v-if="needPlaceholder">
+        <scroll-radio-item v-for="item in markNum" :key="item" :option-height="optionHeight" />
+      </template>
     </ul>
     <div :class="maskClassName">
       <div :class="maskTopClassName" :style="markItemStyle"></div>
@@ -44,9 +46,14 @@ export default defineComponent({
     const maskBottomClassName = bem('mask', ['bottom'], true)
     const wrapperRef = ref<HTMLUListElement | null>(null)
 
-    const markItemHeight = computed(() => props.optionHeight * 2)
+    const markNum = Math.floor(props.visibleOptionNum / 2)
+    const markItemHeight = computed(() => props.optionHeight * markNum)
     const markItemStyle = computed<CSSProperties>(() => ({
       height: addUnit(markItemHeight.value)
+    }))
+
+    const wrapperStyle = computed<CSSProperties>(() => ({
+      height: addUnit(props.optionHeight * props.visibleOptionNum)
     }))
 
     const scrollToCurrent = () => {
@@ -89,7 +96,9 @@ export default defineComponent({
       maskTopClassName,
       maskBottomClassName,
       markItemStyle,
-      wrapperRef
+      wrapperRef,
+      wrapperStyle,
+      markNum
     }
   }
 })
