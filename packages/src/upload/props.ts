@@ -171,6 +171,7 @@ export const uploadListProps = {
   previewSize: UPLOAD_PROPS.previewSize,
   list: {
     type: Array as PropType<UploadListItemType[]>,
+    required: true,
     default: () => []
   }
 }
