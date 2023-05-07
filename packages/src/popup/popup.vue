@@ -22,12 +22,18 @@
         @click="closeOnClickOverlay && handleClose()"
       >
         <div :class="classes" :style="popupStyle" @click.stop>
-          <header v-if="!isCenter && title" center :class="bem('header')">
+          <header v-if="showHeader" center :class="bem('header')">
+            <div v-if="$slots['header-left']" :class="bem('header', 'left', true)">
+              <slot name="header-left" />
+            </div>
             <div :class="bem('header', 'title', true)">{{ title }}</div>
+            <div v-if="$slots['header-right']" :class="bem('header', 'right', true)">
+              <slot name="header-right" />
+            </div>
             <d-icon
               v-if="closeable"
               :name="closeIcon"
-              :class="bem('header', 'icon', true)"
+              :class="bem('header', 'closable', true)"
               @click="handleClickIcon"
             />
           </header>
@@ -54,6 +60,10 @@ export default defineComponent({
   emits: ['update:visible', 'open', 'opened', 'close', 'closed', 'click-overlay-icon'],
   setup(props, { emit }) {
     const isCenter = computed(() => props.placement === 'center')
+
+    const showHeader = computed(() => {
+      return !isCenter.value && (props.title || props.closeable)
+    })
 
     const classes = computed(() =>
       [
@@ -93,6 +103,7 @@ export default defineComponent({
       style,
       overlayZIndex,
       isCenter,
+      showHeader,
       bem,
       handleClose,
       onEnter,

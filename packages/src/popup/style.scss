@@ -14,6 +14,7 @@
 
   &__header {
     display: flex;
+    justify-content: space-between;
     margin-bottom: var(--d-gap-xs);
 
     &--title {
@@ -22,6 +23,15 @@
       text-align: center;
       color: var(--d-title-color);
       @include ellipsis();
+    }
+
+    &--left {
+      margin-right: var(--d-gap-xs);
+    }
+
+    &--right,
+    &--closable {
+      margin-left: var(--d-gap-xs);
     }
   }
 

@@ -104,3 +104,5 @@ function handleShowPopup4() {
 |名称|说明|
 |---|----|
 |default|弹出层内容|
+|header-left|头部左侧内容|
+|header-right|头部右侧内容|
