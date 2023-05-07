@@ -58,11 +58,14 @@ export default defineComponent({
   components: { DOverlay },
   props: POPUP_PROPS,
   emits: ['update:visible', 'open', 'opened', 'close', 'closed', 'click-overlay-icon'],
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const isCenter = computed(() => props.placement === 'center')
 
     const showHeader = computed(() => {
-      return !isCenter.value && (props.title || props.closeable)
+      return (
+        !isCenter.value &&
+        (props.title || props.closeable || slots['header-left'] || slots['header-right'])
+      )
     })
 
     const classes = computed(() =>

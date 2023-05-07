@@ -1,0 +1,42 @@
+@import '../style/prefix.scss';
+
+.#{$prefix}-tabs {
+  --d-tabs-line-height: 40px;
+
+  &__nav {
+    position: relative;
+    display: flex;
+    overflow-x: auto;
+    background: var(--d-white-color);
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &-item {
+      height: var(--d-tabs-line-height);
+      line-height: var(--d-tabs-line-height);
+      cursor: pointer;
+
+      &:not(:first-of-type) {
+        margin-left: var(--d-gap-sm);
+      }
+
+      &--active {
+        font-weight: bold;
+        color: var(--d-primary);
+      }
+    }
+
+    &--line {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      background: var(--d-primary);
+      border-radius: 1.5px;
+      transition: 0.3s;
+    }
+  }
+}

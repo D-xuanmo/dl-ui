@@ -1,0 +1,58 @@
+@import '../style/prefix';
+@import '../style/mixins';
+
+.#{$prefix}-cascader {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .#{$prefix}-popup__content {
+    overflow: hidden;
+  }
+
+  &__trigger {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    @include disabled;
+
+    .#{$prefix}-icon {
+      margin-left: var(--d-gap-xxs);
+    }
+
+    &--empty:not(.#{$prefix}-icon) {
+      @include placeholder;
+    }
+  }
+
+  &__content {
+    height: 100%;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 40px;
+    @include disabled;
+    cursor: pointer;
+
+    &--active {
+      color: var(--d-primary);
+    }
+  }
+
+  &__confirm {
+    color: var(--d-primary);
+  }
+
+  &__cancel {
+    color: var(--d-secondary-text-color);
+  }
+}

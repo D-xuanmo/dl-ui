@@ -6,6 +6,7 @@ import { dCookie } from '@xuanmo/javascript-utils'
 import CustomInput from './custom-input.vue'
 import { FormStoreInitialConfig } from '../store'
 import { TextareaProps } from '../../textarea'
+import { CascaderProps } from '../../cascader'
 
 const FORM_MODEL: FormStoreInitialConfig = {
   groups: [
@@ -112,7 +113,7 @@ const FORM_MODEL: FormStoreInitialConfig = {
       }
     },
     {
-      name: 'cascader',
+      name: 'cascaderPicker',
       component: 'DPicker',
       label: '树形选择',
       value: ['310000', '310100', '310115'],
@@ -125,6 +126,23 @@ const FORM_MODEL: FormStoreInitialConfig = {
       groupId: 'basic',
       otherProps: <Partial<PickerProps>>{
         title: '使用选择器模拟级联选择',
+        placeholder: '点击选择内容',
+        columns: []
+      }
+    },
+    {
+      name: 'cascader',
+      component: 'DCascader',
+      label: '级联选择',
+      value: ['310000', '310100', '310115'],
+      // value 也可以是对象数组
+      // value: [
+      //   { value: '110000', label: '北京市' },
+      //   { value: '110100', label: '市辖区' },
+      //   { value: '110102', label: '西城区' }
+      // ],
+      groupId: 'basic',
+      otherProps: <Partial<CascaderProps>>{
         placeholder: '点击选择内容',
         columns: []
       }

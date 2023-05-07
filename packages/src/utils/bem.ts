@@ -48,6 +48,8 @@ export function createBEM(name: string) {
   }
 }
 
+export const getComponentName = (name: string) => name?.replace(`${PREFIX}-`, '')
+
 /**
  * 创建组件命名空间
  * @param name

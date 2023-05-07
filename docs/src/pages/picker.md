@@ -76,6 +76,8 @@ fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address
 |visible|`boolean`|`false`|显示与隐藏|N|
 |columns|`PickerColumnsType`|[]|选择器列数据|N|
 |title|`string`|-|支持设置一个顶部标题|N|
+|disabled|`boolean`|-|是否禁用|N|
+|readonly|`boolean`|-|是否只读|N|
 |cancel-button-text|`string`|`取消`|关闭按钮文字|N|
 |confirm-button-text|`string`|`确认`|确认按钮文字|N|
 |option-height|`number`|42|单个选项高度|N|

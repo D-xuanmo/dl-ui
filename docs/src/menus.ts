@@ -37,10 +37,11 @@ const menus: MenuItemType[] = [
       { id: 'switch', path: '/switch', content: 'Switch [开关]' },
       { id: 'rate', path: '/rate', content: 'Rate [评分]' },
       { id: 'picker', path: '/picker', content: 'Picker [选择器]' },
+      { id: 'cascader', path: '/cascader', content: 'Cascader [级联选择]' },
       {
         id: 'date-picker',
         path: '/date-picker',
-        content: 'DatePicker [日期时间选择器]'
+        content: 'DatePicker [日期时间选择]'
       },
       { id: 'radio', path: '/radio', content: 'Radio [单选框]' },
       { id: 'checkbox', path: '/checkbox', content: 'Checkbox [复选框]' },
