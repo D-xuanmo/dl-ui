@@ -1,6 +1,6 @@
-import { CascadeDataType, PickerColumnsType, PickerColumnType, PickerValueType } from './props'
+import { PickerColumnsType, PickerColumnType, PickerValueType } from './props'
 import { isObject } from '@xuanmo/javascript-utils'
-import { DataType } from '../common'
+import { CascadeDataType, DataType } from '../common'
 
 /**
  * 查找默认一级数据

@@ -1,10 +1,7 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { COMMON_PROPS, DataType } from '../common'
+import { CascadeDataType, COMMON_PROPS, DataType } from '../common'
 
 export type PickerValueType = string[] | number[] | DataType[]
-
-/** 级联选择数据类型 */
-export type CascadeDataType = DataType & { children?: DataType[] }
 
 /** 选择器每列数据类型 */
 export type PickerColumnType = DataType | CascadeDataType

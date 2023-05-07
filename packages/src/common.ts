@@ -25,6 +25,9 @@ export type OmitValueProperties<T extends Record<string, unknown>> = Omit<T, 'va
 
 export type DirectionType = 'horizontal' | 'vertical'
 
+/** 级联选择数据类型 */
+export type CascadeDataType = DataType & { children?: DataType[] }
+
 export const COMMON_PROPS = {
   disabled: Boolean,
   readonly: Boolean
