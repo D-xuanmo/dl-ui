@@ -6,7 +6,7 @@
   &__nav {
     position: relative;
     display: flex;
-    overflow-x: auto;
+    overflow: auto hidden;
     background: var(--d-white-color);
 
     &::-webkit-scrollbar {
@@ -16,6 +16,7 @@
     &-item {
       height: var(--d-tabs-line-height);
       line-height: var(--d-tabs-line-height);
+      white-space: nowrap;
       cursor: pointer;
 
       &:not(:first-of-type) {

@@ -53,6 +53,8 @@ export default defineComponent({
         width: addUnit(activeEl?.offsetWidth),
         transform: `translate3d(${addUnit(activeEl?.offsetLeft)}, 0, 0)`
       } as CSSProperties
+
+      navRef.value!.scrollTo(navRef.value!.scrollWidth, 0)
     }
 
     const handleTabClick = (item: TabsItemType) => {
