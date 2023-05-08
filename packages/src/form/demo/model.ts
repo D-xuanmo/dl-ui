@@ -116,17 +116,17 @@ const FORM_MODEL: FormStoreInitialConfig = {
       name: 'cascaderPicker',
       component: 'DPicker',
       label: '树形选择',
-      value: ['310000', '310100', '310115'],
+      value: ['110000000000', '110100000000', '110102000000'],
       // value 也可以是对象数组
       // value: [
-      //   { value: '110000', label: '北京市' },
-      //   { value: '110100', label: '市辖区' },
-      //   { value: '110102', label: '西城区' }
+      //   { value: '110000000000', label: '北京市' },
+      //   { value: '110100000000', label: '市辖区' },
+      //   { value: '110102000000', label: '西城区' }
       // ],
       groupId: 'basic',
       otherProps: <Partial<PickerProps>>{
         title: '使用选择器模拟级联选择',
-        placeholder: '点击选择内容',
+        placeholder: '数据加载中',
         columns: []
       }
     },
@@ -134,16 +134,16 @@ const FORM_MODEL: FormStoreInitialConfig = {
       name: 'cascader',
       component: 'DCascader',
       label: '级联选择',
-      value: ['310000', '310100', '310115'],
+      value: ['110000000000', '110100000000', '110102000000', '110102007000'],
       // value 也可以是对象数组
       // value: [
-      //   { value: '110000', label: '北京市' },
-      //   { value: '110100', label: '市辖区' },
-      //   { value: '110102', label: '西城区' }
+      //   { value: '110000000000', label: '北京市' },
+      //   { value: '110100000000', label: '市辖区' },
+      //   { value: '110102000000', label: '西城区' }
       // ],
       groupId: 'basic',
       otherProps: <Partial<CascaderProps>>{
-        placeholder: '点击选择内容',
+        placeholder: '数据加载中',
         columns: []
       }
     },

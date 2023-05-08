@@ -16,11 +16,11 @@
 import { ref } from 'vue'
 
 const template = ref([])
-const value = ref(['310000', '310100', '310115'])
+const value = ref(['110000000000', '110100000000', '110102000000', '110102007000'])
 const value2 = ref([
-  { value: '110000', label: '北京市' },
-  { value: '110100', label: '市辖区' },
-  { value: '110102', label: '西城区' }
+  { value: '110000000000', label: '北京市' },
+  { value: '110100000000', label: '市辖区' },
+  { value: '110102000000', label: '西城区' }
 ])
 
 fetch('/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727').then(async (res) => {
