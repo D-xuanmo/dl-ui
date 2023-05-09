@@ -144,7 +144,7 @@ const FORM_MODEL: FormStoreInitialConfig = {
       groupId: 'basic',
       otherProps: <Partial<CascaderProps>>{
         placeholder: '数据加载中',
-        columns: []
+        options: []
       }
     },
     {

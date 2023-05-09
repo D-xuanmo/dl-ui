@@ -29,13 +29,14 @@
         :name="item.value"
       >
         <div
-          v-for="column in activeColumns"
-          :key="column.value"
-          :class="bem('option', { active: column.value === active, disabled: column.disabled })"
-          @click="handleChange(column)"
+          v-for="option in activeOptions"
+          :key="option.value"
+          :class="bem('option', { active: option.value === active, disabled: option.disabled })"
+          @click="handleChange(option)"
         >
-          <span>{{ column.label }}</span>
-          <d-icon v-if="column.value === active" name="success-1" size="large" />
+          <span>{{ option.label }}</span>
+          <d-icon v-if="loadingMap.get(option.value)" name="loading" spin size="medium" />
+          <d-icon v-if="option.value === active" name="success-1" size="large" />
         </div>
       </d-tab-panel>
     </d-tabs>
@@ -43,15 +44,17 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, ref, SetupContext, watch } from 'vue'
-import { createCascaderNameSpace, findColumnsByValue } from './utils'
-import { CASCADER_PROPS, CascaderValueType } from './props'
+import { computed, defineComponent, ref, SetupContext, watch } from 'vue'
+import { createCascaderNameSpace, findOptionsByValue } from './utils'
+import { CASCADER_PROPS } from './props'
+import { pickLastItem, isEmpty, isObject } from '@xuanmo/javascript-utils'
+import { CascadeOption, CascaderObjectValue, CascaderValue, DataType } from '../common'
+import useModelValue from '../hooks/useModelValue'
 import DPopup from '../popup'
 import { DTabs, DTabPanel } from '../tabs'
-import useModelValue from '../hooks/useModelValue'
-import { CascadeDataType } from '../common'
 import DIcon from '../icon'
-import { deepCopy, isEmpty, isObject } from '@xuanmo/javascript-utils'
+import { watchOnce } from '../hooks/watch-once'
+import { TabsItemType } from '../tabs/types'
 
 const [name, bem] = createCascaderNameSpace()
 
@@ -66,7 +69,7 @@ export default defineComponent({
   props: CASCADER_PROPS,
   emits: ['update:model-value'],
   setup(props, { emit }) {
-    const [value, updateValue] = useModelValue(props, emit as SetupContext['emit'])
+    const [innerValue, updateValue] = useModelValue(props, emit as SetupContext['emit'])
     const wrapperClassName = bem()
     const contentClassName = bem('content')
     const headerClassName = bem('header')
@@ -75,19 +78,42 @@ export default defineComponent({
 
     const triggerClassName = computed(() =>
       bem('trigger', {
-        empty: isEmpty(value.value),
+        empty: isEmpty(innerValue.value),
         disabled: props.disabled || props.readonly
       })
     )
 
     const visible = ref(false)
 
-    const activeColumns = ref<CascadeDataType[]>([])
-    const activePath = ref<CascadeDataType[]>([])
+    // 选择过程中的占位前缀
+    const placeholderPrefix = '__placeholder__'
+
+    // 子级加载状态
+    const loadingMap = ref(new Map<DataType['value'], boolean>())
+
+    // 当前面板选项
+    const activeOptions = ref<CascadeOption[]>([])
+
+    // 当前选中的数据路径
+    const activePath = ref<CascadeOption[]>([])
+
+    // 懒加载的数据
+    const lazyOptions = new Map<DataType['value'], CascadeOption[]>()
+
+    // 显示名称
     const displayName = ref(props.placeholder ?? '')
 
     // 当前选择的值
     const active = ref<string | number>('')
+
+    // 最后一级数据
+    const lastValue = computed(() => {
+      const value = pickLastItem<CascaderValue>(innerValue.value)
+      if (isObject(innerValue.value)) {
+        return (innerValue.value as unknown as CascaderObjectValue[number]).value
+      }
+      return value
+    })
 
     const showPicker = () => {
       if (props.readonly || props.disabled) return
@@ -98,12 +124,12 @@ export default defineComponent({
       visible.value = false
     }
 
-    const formatColumns = () => {
-      const result = findColumnsByValue(deepCopy(value.value).reverse()[0], props.columns)
+    const formatOptions = () => {
+      const result = findOptionsByValue(lastValue.value, props.options)
       if (result) {
-        const { columns, path } = result
+        const { options, path } = result
         const placeholder = getPlaceholder()
-        activeColumns.value = columns
+        activeOptions.value = options
         activePath.value = isEmpty(path) ? [placeholder] : path
         active.value = isEmpty(path) ? placeholder.value : path[path.length - 1].value
         displayName.value = path?.map((item) => item.label).join('/') ?? ''
@@ -111,57 +137,92 @@ export default defineComponent({
     }
 
     const getPlaceholder = (value?: string | number) => ({
-      value: `__placeholder@${value}`,
+      value: `${placeholderPrefix}${value}`,
       label: '请选择'
     })
 
-    const handleTabChange = (data: any) => {
-      const { columns, path } = findColumnsByValue(data.name, props.columns)!
-      activeColumns.value = columns
-      activePath.value = path
-      active.value = path[path.length - 1].value
+    const handleTabChange = (data: TabsItemType, tabIndex: number) => {
+      if (data.name.includes(placeholderPrefix)) return
+      if (props.lazy) {
+        activePath.value = activePath.value.filter((_, index) => index <= tabIndex)
+        if (tabIndex === 0) {
+          activeOptions.value = props.options
+        } else {
+          activeOptions.value = lazyOptions.get(data.name)!
+        }
+      } else {
+        const { options, path } = findOptionsByValue(data.name, props.options)!
+        activeOptions.value = options
+        activePath.value = path
+      }
+      active.value = pickLastItem(activePath.value).value
     }
 
-    const handleChange = (data: CascadeDataType) => {
-      const { path } = findColumnsByValue(data.value, props.columns)!
+    const handleChange = async (data: CascadeOption) => {
       const placeholder = getPlaceholder(data.value)
-      if (data.children) {
-        activeColumns.value = data.children
-        activePath.value = [...path, { value: placeholder.value, label: placeholder.label }]
+      if (props.lazy) {
+        if (loadingMap.value.get(data.value)) return
+        const cacheOptions = lazyOptions.get(data.value)
+        let options: CascadeOption[]
+        if (cacheOptions) {
+          options = lazyOptions.get(data.value)!
+        } else {
+          loadingMap.value.set(data.value, true)
+          options = (await props.lazyLoad?.(data))!
+          loadingMap.value.set(data.value, false)
+          lazyOptions.set(data.value, options!)
+        }
+        activePath.value.splice(activePath.value.length - 1, 1, {
+          value: data.value,
+          label: data.label
+        })
+        // 如果返回的 options 为空，则代表已经是最后一级
+        if (isEmpty(options)) {
+          active.value = data.value
+          return
+        }
+        activeOptions.value = options!
+        activePath.value.push({ value: placeholder.value, label: placeholder.label })
         active.value = placeholder.value
       } else {
-        activePath.value = path
-        active.value = data.value
+        const { path } = findOptionsByValue(data.value, props.options)!
+        if (data.children) {
+          activeOptions.value = data.children
+          activePath.value = [...path, { value: placeholder.value, label: placeholder.label }]
+          active.value = placeholder.value
+        } else {
+          activePath.value = path
+          active.value = data.value
+        }
       }
     }
 
     const handleConfirm = () => {
       const labels: string[] = []
       const _value = activePath.value
-        .filter((item) => !(item.value as string)?.includes('__placeholder'))
+        .filter((item) => !(item.value as string)?.includes(placeholderPrefix))
         .map((item) => {
           labels.push(item.label)
-          return isObject(value.value) ? { label: item.label, value: item.value } : item.value
+          return isObject(innerValue.value) ? { label: item.label, value: item.value } : item.value
         })
       displayName.value = labels.join('/')
       hidePicker()
-      updateValue(_value as CascaderValueType)
+      updateValue(_value as CascaderValue)
     }
 
     const handleCancel = () => {
-      formatColumns()
+      !props.lazy && formatOptions()
       hidePicker()
     }
 
-    watch(() => props.columns, formatColumns, { immediate: true })
+    watch(() => props.options, formatOptions, { immediate: true })
 
-    // 监听首次传入的数据和 columns，找出对应的 label
-    const stop = watch(
-      () => value,
+    // 监听首次传入的数据和 option，找出对应的 label
+    watchOnce(
+      innerValue,
       () => {
-        const { path } = findColumnsByValue(deepCopy(value.value).reverse()[0], props.columns) ?? {}
+        const { path } = findOptionsByValue(lastValue.value, props.options) ?? {}
         displayName.value = path?.map((item) => item.label).join('/') ?? ''
-        nextTick(() => stop())
       },
       {
         immediate: true
@@ -177,9 +238,10 @@ export default defineComponent({
       confirmBtnClassName,
       visible,
       active,
-      activeColumns,
+      activeOptions,
       activePath,
       displayName,
+      loadingMap,
       bem,
       showPicker,
       handleCancel,

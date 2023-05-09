@@ -119,7 +119,7 @@ fetch('/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727').then(as
   formStore.updateItem('cascader', {
     otherProps: {
       ...formStore.getItem('cascader')?.otherProps,
-      columns
+      options: columns
     }
   })
 })

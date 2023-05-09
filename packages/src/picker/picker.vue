@@ -33,7 +33,7 @@
 import { computed, CSSProperties, defineComponent, ref, SetupContext, watch } from 'vue'
 import { createNamespace } from '../utils'
 import useModelValue from '../hooks/useModelValue'
-import { CascadeDataType, DataType, OmitValueProperties } from '../common'
+import { CascadeOption, DataType, OmitValueProperties } from '../common'
 import { PickerColumnType, PICKER_PROPS, PickerValueType } from './props'
 import { deepCopy, isEmpty, isObject } from '@xuanmo/javascript-utils'
 import { findCascadeFirstLevelData, findDisplayName, formatCascade } from './utils'
@@ -70,18 +70,18 @@ export default defineComponent({
     )
 
     // 是否为级联选择模式
-    const isCascade = computed(() => Array.isArray((props.columns[0] as CascadeDataType)?.children))
+    const isCascade = computed(() => Array.isArray((props.columns[0] as CascadeOption)?.children))
 
     // 接收子级传递回来的数据，用作缓存
     const temporaryValue = ref<PickerValueType>(
       !isEmpty(innerValue.value)
         ? deepCopy(innerValue.value)
-        : findCascadeFirstLevelData(props.columns as CascadeDataType[])
+        : findCascadeFirstLevelData(props.columns as CascadeOption[])
     )
     // 内部渲染列使用
     const formattedColumns = computed(() => {
       if (isCascade.value) {
-        return formatCascade(temporaryValue.value, props.columns as CascadeDataType[])
+        return formatCascade(temporaryValue.value, props.columns as CascadeOption[])
       }
 
       if (isObject(props.columns[0])) {
@@ -157,7 +157,7 @@ export default defineComponent({
           findDisplayName(innerValue.value, formattedColumns.value) ||
           (props.placeholder ?? '请选择')
         if (isCascade.value && isEmpty(temporaryValue.value)) {
-          temporaryValue.value = findCascadeFirstLevelData(props.columns as CascadeDataType[])
+          temporaryValue.value = findCascadeFirstLevelData(props.columns as CascadeOption[])
         }
       }
     )

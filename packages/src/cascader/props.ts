@@ -1,7 +1,5 @@
-import { CascadeDataType, COMMON_PROPS, DataType } from '../common'
+import { CascadeOption, CascaderValue, COMMON_PROPS, DataType } from '../common'
 import { ExtractPropTypes, PropType } from 'vue'
-
-export type CascaderValueType = string[] | number[] | DataType[]
 
 export type CascaderProps = ExtractPropTypes<typeof CASCADER_PROPS>
 
@@ -9,11 +7,11 @@ export const CASCADER_PROPS = {
   ...COMMON_PROPS,
 
   value: {
-    type: Array as PropType<CascaderValueType>,
+    type: Array as PropType<CascaderValue>,
     default: undefined
   },
   modelValue: {
-    type: Array as PropType<CascaderValueType>,
+    type: Array as PropType<CascaderValue>,
     default: undefined
   },
 
@@ -22,8 +20,11 @@ export const CASCADER_PROPS = {
     default: '请选择'
   },
 
-  columns: {
-    type: Array as PropType<CascadeDataType[]>,
+  /**
+   * 级联选项数据源
+   */
+  options: {
+    type: Array as PropType<CascadeOption[]>,
     required: true,
     default: () => []
   },
@@ -47,6 +48,19 @@ export const CASCADER_PROPS = {
   confirmButtonText: {
     type: String,
     default: '确认'
+  },
+
+  /**
+   * 是否开启懒加载
+   */
+  lazy: Boolean,
+
+  /**
+   * 数据懒加载，需要配合 lazy
+   */
+  lazyLoad: {
+    type: Function as PropType<(option: CascadeOption) => Promise<CascadeOption[]>>,
+    default: undefined
   }
 }
 

@@ -1,15 +1,15 @@
 import { PickerColumnsType, PickerColumnType, PickerValueType } from './props'
 import { isObject } from '@xuanmo/javascript-utils'
-import { CascadeDataType, DataType } from '../common'
+import { CascadeOption, DataType } from '../common'
 
 /**
  * 查找默认一级数据
  * @param columns
  */
-export const findCascadeFirstLevelData = (columns: CascadeDataType[]) => {
-  const firstLevelData: CascadeDataType[] = []
+export const findCascadeFirstLevelData = (columns: CascadeOption[]) => {
+  const firstLevelData: CascadeOption[] = []
   let level = 0
-  const findFirstLevelData = (column: CascadeDataType) => {
+  const findFirstLevelData = (column: CascadeOption) => {
     firstLevelData.push(column)
     while (firstLevelData?.[level]) {
       const result = firstLevelData?.[level]?.children
@@ -26,17 +26,17 @@ export const findCascadeFirstLevelData = (columns: CascadeDataType[]) => {
  * @param value 当前选中的值
  * @param columns
  */
-export const formatCascade = (value: PickerValueType, columns: CascadeDataType[]) => {
+export const formatCascade = (value: PickerValueType, columns: CascadeOption[]) => {
   const formatted: PickerColumnType[][] = []
   let level = 0
-  function findColumns(data: CascadeDataType[]) {
+  function findColumns(data: CascadeOption[]) {
     while (value[level] && data) {
       if (!value[level]) break
       const result =
         data.find((item) => {
           const current = value[level] as DataType
           // 传入的 value 为对象数组，取 value 属性
-          return item?.value === (isObject(current) ? (current as CascadeDataType).value : current)
+          return item?.value === (isObject(current) ? (current as CascadeOption).value : current)
         }) ?? data[0]
       level++
       if (result) {

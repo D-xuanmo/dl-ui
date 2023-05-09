@@ -77,11 +77,11 @@ export default defineComponent({
       emit as SetupContext['emit']
     )
 
-    const handleTabClick = (item: TabsItemType) => {
+    const handleTabClick = (item: TabsItemType, index: number) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { component, ...rest } = item
       updateValue(item.name)
-      emit('tab-click', rest)
+      emit('tab-click', rest, index)
     }
 
     return {

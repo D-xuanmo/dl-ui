@@ -1,10 +1,10 @@
 <template>
   <ul ref="navRef" :class="wrapperClassName">
     <nav-item
-      v-for="item in navList"
+      v-for="(item, index) in navList"
       :key="item.name"
       :active="item.name === active"
-      @click="handleTabClick(item)"
+      @click="handleTabClick(item, index)"
     >
       {{ item.label }}
     </nav-item>
@@ -57,8 +57,8 @@ export default defineComponent({
       navRef.value!.scrollTo(navRef.value!.scrollWidth, 0)
     }
 
-    const handleTabClick = (item: TabsItemType) => {
-      emit('tab-click', item)
+    const handleTabClick = (item: TabsItemType, index: number) => {
+      emit('tab-click', item, index)
     }
 
     onMounted(calcLineStyle)

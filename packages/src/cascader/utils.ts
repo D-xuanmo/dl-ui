@@ -1,6 +1,5 @@
 import { createBEM, createNamespace, Modifiers } from '../utils'
-import { CascadeDataType, DataType } from '../common'
-import { CascaderValueType } from './props'
+import { CascadeOption, CascaderObjectValue, CascaderValue } from '../common'
 import { isEmpty } from '@xuanmo/javascript-utils'
 
 function createCascaderNameSpace(): [string, ReturnType<typeof createBEM>]
@@ -20,31 +19,37 @@ function createCascaderNameSpace(childName?: string) {
   return [name, bem]
 }
 
-export const findColumnsByValue = (
-  value: CascaderValueType[number],
-  originalColumns: CascadeDataType[],
-  path: CascadeDataType[] = []
+/**
+ * 通过指定 value 查找对应选项列表和路径
+ * @param value 数据
+ * @param originalOptions 原始数据源
+ * @param path 路径
+ */
+export const findOptionsByValue = (
+  value: CascaderValue[number],
+  originalOptions: CascadeOption[],
+  path: CascadeOption[] = []
 ) => {
   if (isEmpty(value)) {
     return {
       path: [],
-      columns: originalColumns
+      options: originalOptions
     }
   }
-  for (let i = 0; i < originalColumns.length; i++) {
-    const item = originalColumns[i]
+  for (let i = 0; i < originalOptions.length; i++) {
+    const item = originalOptions[i]
     path.push(item)
-    if (item.value === value || item.value === (value as DataType)?.value) {
+    if (item.value === value || item.value === (value as CascaderObjectValue[number])?.value) {
       return {
         path,
-        columns: path.length - 2 <= 0 ? originalColumns : path[path.length - 2]?.children ?? []
+        options: path.length - 2 <= 0 ? originalOptions : path[path.length - 2]?.children ?? []
       }
     }
-    const result = findColumnsByValue(value, item.children ?? [], path) as any
-    if (result?.columns) {
+    const result = findOptionsByValue(value, item.children ?? [], path) as any
+    if (result?.options) {
       return {
         path,
-        columns: result.columns as CascadeDataType[]
+        options: result.options as CascadeOption[]
       }
     }
     path.pop()
