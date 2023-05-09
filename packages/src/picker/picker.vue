@@ -34,7 +34,7 @@ import { computed, CSSProperties, defineComponent, ref, SetupContext, watch } fr
 import { createNamespace } from '../utils'
 import useModelValue from '../hooks/useModelValue'
 import { CascadeOption, DataType, OmitValueProperties } from '../common'
-import { PickerColumnType, PICKER_PROPS, PickerValueType } from './props'
+import { PickerOption, PICKER_PROPS, PickerValue } from './props'
 import { deepCopy, isEmpty, isObject } from '@xuanmo/javascript-utils'
 import { findCascadeFirstLevelData, findDisplayName, formatCascade } from './utils'
 import { EventType } from './types'
@@ -64,31 +64,31 @@ export default defineComponent({
 
     const innerVisible = ref(false)
 
-    const [innerValue, updateValue] = useModelValue<PickerValueType, typeof props, EventType>(
+    const [innerValue, updateValue] = useModelValue<PickerValue, typeof props, EventType>(
       props,
       context.emit
     )
 
     // 是否为级联选择模式
-    const isCascade = computed(() => Array.isArray((props.columns[0] as CascadeOption)?.children))
+    const isCascade = computed(() => Array.isArray((props.options[0] as CascadeOption)?.children))
 
     // 接收子级传递回来的数据，用作缓存
-    const temporaryValue = ref<PickerValueType>(
+    const temporaryValue = ref<PickerValue>(
       !isEmpty(innerValue.value)
         ? deepCopy(innerValue.value)
-        : findCascadeFirstLevelData(props.columns as CascadeOption[])
+        : findCascadeFirstLevelData(props.options as CascadeOption[])
     )
     // 内部渲染列使用
     const formattedColumns = computed(() => {
       if (isCascade.value) {
-        return formatCascade(temporaryValue.value, props.columns as CascadeOption[])
+        return formatCascade(temporaryValue.value, props.options as CascadeOption[])
       }
 
-      if (isObject(props.columns[0])) {
-        return [props.columns] as PickerColumnType[][]
+      if (isObject(props.options[0])) {
+        return [props.options] as PickerOption[][]
       }
 
-      return props.columns as PickerColumnType[][]
+      return props.options as PickerOption[][]
     })
     const displayValue = ref(props.placeholder ?? '')
     const triggerClassName = computed(() =>
@@ -116,7 +116,7 @@ export default defineComponent({
       const value = temporaryValue.value.map((item) =>
         isObject(item) ? (item as DataType).value : item
       )
-      updateValue(value as PickerValueType)
+      updateValue(value as PickerValue)
       handleClose()
       context.emit('confirm', temporaryValue.value)
     }
@@ -151,13 +151,13 @@ export default defineComponent({
     )
 
     watch(
-      () => props.columns,
+      () => props.options,
       () => {
         displayValue.value =
           findDisplayName(innerValue.value, formattedColumns.value) ||
           (props.placeholder ?? '请选择')
         if (isCascade.value && isEmpty(temporaryValue.value)) {
-          temporaryValue.value = findCascadeFirstLevelData(props.columns as CascadeOption[])
+          temporaryValue.value = findCascadeFirstLevelData(props.options as CascadeOption[])
         }
       }
     )

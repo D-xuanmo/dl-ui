@@ -6,39 +6,39 @@
 <template>
   <d-cell-group>
     <d-cell title="搭配单元格使用" content-align="right">
-      <d-picker v-model="value1" title="直接使用" placeholder="请选择" :columns="columns1" />
+      <d-picker v-model="value1" title="直接使用" placeholder="请选择" :options="options1" />
     </d-cell>
 
     <d-cell title="多列选择" content-align="right">
-      <d-picker v-model="value4" placeholder="请选择" :columns="columns4" />
+      <d-picker v-model="value4" placeholder="请选择" :options="options4" />
     </d-cell>
 
     <d-cell title="搭配单元格使用(visible 外部受控)" content-align="right" @click="visible2 = true">
-      <d-picker v-model="value2" v-model:visible="visible2" title="标题" :columns="columns2" />
+      <d-picker v-model="value2" v-model:visible="visible2" title="标题" :options="options2" />
     </d-cell>
 
     <d-cell title="级联选择" @click="visible3 = true">
-      <d-picker v-model="value3" v-model:visible="visible3" title="标题" :columns="template3" />
+      <d-picker v-model="value3" v-model:visible="visible3" title="标题" :options="template3" />
     </d-cell>
   </d-cell-group>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { PickerColumnsType } from '../props'
+import { PickerOptions } from '../props'
 
 const template1 = Array.from(new Array(10)).map((_, index) => ({
   label: `选项${index + 1}`,
   value: `0-${index + 1}`
 }))
-const columns1 = ref<PickerColumnsType>(template1)
+const options1 = ref<PickerOptions>(template1)
 const value1 = ref([])
 
 const template4 = Array.from(new Array(10)).map((_, index) => ({
   label: `选项${index + 1}`,
   value: `0-${index + 1}`
 }))
-const columns4 = ref<PickerColumnsType>([template4, template4])
+const options4 = ref<PickerOptions>([template4, template4])
 const value4 = ref(['0-1', '0-3'])
 
 const template2 = Array.from(new Array(10)).map((_, index) => ({
@@ -47,7 +47,7 @@ const template2 = Array.from(new Array(10)).map((_, index) => ({
   disabled: index === 0 || index === 5
 }))
 const visible2 = ref(false)
-const columns2 = ref<PickerColumnsType>(template2)
+const options2 = ref<PickerOptions>(template2)
 const value2 = ref(['0-2'])
 
 const visible3 = ref(false)
@@ -74,7 +74,7 @@ fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address
 |----|---|-----|---|----|
 |v-model|`string[] \| number[] \| DataType[]`|-|当前选中的数据|Y|
 |visible|`boolean`|`false`|显示与隐藏|N|
-|columns|`PickerColumnsType`|[]|选择器列数据|N|
+|options|`PickerOptions`|[]|选择器列数据|N|
 |title|`string`|-|支持设置一个顶部标题|N|
 |disabled|`boolean`|-|是否禁用|N|
 |readonly|`boolean`|-|是否只读|N|
@@ -87,8 +87,8 @@ fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address
 |事件|说明|回调参数|
 |---|----|-------|
 |update:visible|显示隐藏事件|`(visible: boolean) => void`|
-|change|确认事件|`(value: PickerValueType, data: DataType) => void`|
-|confirm|确认事件|`(value: PickerValueType) => void`|
+|change|确认事件|`(value: PickerValue, data: DataType) => void`|
+|confirm|确认事件|`(value: PickerValue) => void`|
 |close|关闭事件|`() => void`|
 
 ## 选择器公用类型
@@ -96,14 +96,11 @@ fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address
 > 公用类型 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/common.ts](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/common.ts)
 
 ```typescript
-export type PickerValueType = string[] | number[] | DataType[]
-
-/** 级联选择数据类型 */
-export type CascadeDataType = DataType & { children?: DataType[] }
+export type PickerValue = string[] | number[] | DataType[]
 
 /** 选择器每列数据类型 */
-export type PickerColumnType = DataType | CascadeDataType
+export type PickerOption = DataType | CascadeOption
 
 /** 选择器数据类型 */
-export type PickerColumnsType = PickerColumnType[] | PickerColumnType[][]
+export type PickerOptions = PickerOption[] | PickerOption[][]
 ```

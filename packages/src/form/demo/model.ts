@@ -83,7 +83,7 @@ const FORM_MODEL: FormStoreInitialConfig = {
       value: [],
       groupId: 'basic',
       otherProps: <PickerProps>{
-        columns: [
+        options: [
           { label: '选项1', value: '1' },
           { label: '选项2', value: '2' },
           { label: '选项3', value: '3' }
@@ -98,7 +98,7 @@ const FORM_MODEL: FormStoreInitialConfig = {
       groupId: 'basic',
       otherProps: <PickerProps>{
         title: '多列选择器',
-        columns: [
+        options: [
           [
             { label: '选项1', value: '1' },
             { label: '选项2', value: '2' },
@@ -127,7 +127,7 @@ const FORM_MODEL: FormStoreInitialConfig = {
       otherProps: <Partial<PickerProps>>{
         title: '使用选择器模拟级联选择',
         placeholder: '数据加载中',
-        columns: []
+        options: []
       }
     },
     {

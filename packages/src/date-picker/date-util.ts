@@ -1,6 +1,6 @@
 import dateJS from '@xuanmo/datejs'
 import { DatePickerType, FormatterType } from './props'
-import { DateTimePickerColumnType } from './types'
+import { DateTimePickerOption } from './types'
 
 class DateUtil {
   date: Date = new Date()
@@ -107,12 +107,12 @@ class DateUtil {
     /* eslint-enable indent */
   }
 
-  getYearColumn = (): DateTimePickerColumnType[] => {
+  getYearColumn = (): DateTimePickerOption[] => {
     const currentYear = this.freezeDate.getFullYear()
     let start = 0
     let end = 0
-    const startYears: DateTimePickerColumnType[] = []
-    const endYears: DateTimePickerColumnType[] = []
+    const startYears: DateTimePickerOption[] = []
+    const endYears: DateTimePickerOption[] = []
     while (start < 10) {
       start++
       const current = `${currentYear - start}`
@@ -143,7 +143,7 @@ class DateUtil {
   }
 
   getMonthColumn = () => {
-    const column: DateTimePickerColumnType[] = []
+    const column: DateTimePickerOption[] = []
     let i = 1
     while (i <= 12) {
       column.push({
@@ -157,7 +157,7 @@ class DateUtil {
   }
 
   getDayColumn = () => {
-    const column: DateTimePickerColumnType[] = []
+    const column: DateTimePickerOption[] = []
     const lastDay = dateJS(this.date).lastDay()
     let i = 1
     while (i <= lastDay) {
@@ -172,7 +172,7 @@ class DateUtil {
   }
 
   getHourColumn = ({ min = 0, max = 24 }: { min?: number; max?: number } = {}) => {
-    const column: DateTimePickerColumnType[] = []
+    const column: DateTimePickerOption[] = []
     let i = min
     while (i < max) {
       column.push({
@@ -186,7 +186,7 @@ class DateUtil {
   }
 
   getMinute = () => {
-    const column: DateTimePickerColumnType[] = []
+    const column: DateTimePickerOption[] = []
     let i = 1
     while (i < 60) {
       column.push({
@@ -200,7 +200,7 @@ class DateUtil {
   }
 
   getSecond = () => {
-    const column: DateTimePickerColumnType[] = []
+    const column: DateTimePickerOption[] = []
     let i = 1
     while (i < 60) {
       column.push({

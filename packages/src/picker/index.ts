@@ -3,7 +3,7 @@ import { withInstall } from '../utils'
 
 export const DPicker = withInstall(Picker)
 
-export { type PickerColumnsType, type PickerColumnType, type PickerProps } from './props'
+export { type PickerOptions, type PickerOption, type PickerProps } from './props'
 
 export default DPicker
 

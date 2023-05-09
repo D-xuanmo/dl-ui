@@ -8,7 +8,7 @@
   <d-picker
     :visible="visible"
     :value="pickerValue"
-    :columns="columns"
+    :options="columns"
     :title="title"
     controlled
     :disabled="disabled"
@@ -27,9 +27,9 @@ import DCell from '../cell'
 import DateUtil from './date-util'
 import useModelValue from '../hooks/useModelValue'
 import { DATE_PICKER_PROPS, DatePickerType } from './props'
-import { PickerValueType } from '../picker/props'
+import { PickerValue } from '../picker/props'
 import dateJS from '@xuanmo/datejs'
-import { DateTimePickerColumnType } from './types'
+import { DateTimePickerOption } from './types'
 
 const [name] = createNamespace('date-picker')
 
@@ -49,10 +49,9 @@ export default defineComponent({
     const displayValue = ref(dateUtil.formatValue())
     const columns = ref(dateUtil.getColumns())
 
-    const formatPickerValue = (value: PickerValueType) => {
+    const formatPickerValue = (value: PickerValue) => {
       const formatted = value.map((item) => {
-        if ((item as DateTimePickerColumnType)?.value)
-          return (item as DateTimePickerColumnType).value
+        if ((item as DateTimePickerOption)?.value) return (item as DateTimePickerOption).value
         return item
       }) as string[]
       // 时间选择需要补充年月日
@@ -60,7 +59,7 @@ export default defineComponent({
       return formatted
     }
 
-    const handleChange = (value: PickerValueType, columnValue: DateTimePickerColumnType) => {
+    const handleChange = (value: PickerValue, columnValue: DateTimePickerOption) => {
       const formatted = formatPickerValue(value)
 
       // 计算当月最后一天
@@ -81,7 +80,7 @@ export default defineComponent({
       columns.value = dateUtil.getColumns()
     }
 
-    const handleConfirm = (value: PickerValueType) => {
+    const handleConfirm = (value: PickerValue) => {
       const formatted = dateUtil.formatValue(new Date(...(formatPickerValue(value) as [])))
       visible.value = false
       displayValue.value = formatted

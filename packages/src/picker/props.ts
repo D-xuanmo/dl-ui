@@ -1,24 +1,24 @@
 import { ExtractPropTypes, PropType } from 'vue'
 import { CascadeOption, COMMON_PROPS, DataType } from '../common'
 
-export type PickerValueType = string[] | number[] | DataType[]
+export type PickerValue = string[] | number[] | DataType[]
 
 /** 选择器每列数据类型 */
-export type PickerColumnType = DataType | CascadeOption
+export type PickerOption = DataType | CascadeOption
 
 /** 选择器数据类型 */
-export type PickerColumnsType = PickerColumnType[] | PickerColumnType[][]
+export type PickerOptions = PickerOption[] | PickerOption[][]
 
 export type PickerProps = ExtractPropTypes<typeof PICKER_PROPS>
 
 export const PICKER_PROPS = {
   ...COMMON_PROPS,
   value: {
-    type: Array as PropType<PickerValueType>,
+    type: Array as PropType<PickerValue>,
     default: undefined
   },
   modelValue: {
-    type: Array as PropType<PickerValueType>,
+    type: Array as PropType<PickerValue>,
     default: undefined
   },
 
@@ -40,8 +40,8 @@ export const PICKER_PROPS = {
   /**
    * 选择器列
    */
-  columns: {
-    type: Array as PropType<PickerColumnsType>,
+  options: {
+    type: Array as PropType<PickerOptions>,
     default: () => []
   },
 

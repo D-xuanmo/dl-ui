@@ -1,4 +1,4 @@
-import { PickerColumnsType, PickerColumnType, PickerValueType } from './props'
+import { PickerOptions, PickerOption, PickerValue } from './props'
 import { isObject } from '@xuanmo/javascript-utils'
 import { CascadeOption, DataType } from '../common'
 
@@ -26,8 +26,8 @@ export const findCascadeFirstLevelData = (columns: CascadeOption[]) => {
  * @param value 当前选中的值
  * @param columns
  */
-export const formatCascade = (value: PickerValueType, columns: CascadeOption[]) => {
-  const formatted: PickerColumnType[][] = []
+export const formatCascade = (value: PickerValue, columns: CascadeOption[]) => {
+  const formatted: PickerOption[][] = []
   let level = 0
   function findColumns(data: CascadeOption[]) {
     while (value[level] && data) {
@@ -56,7 +56,7 @@ export const formatCascade = (value: PickerValueType, columns: CascadeOption[]) 
  * @param value 当前选择的数据
  * @param originalColumns 原始列数据
  */
-export const findDisplayName = (value: PickerValueType, originalColumns: PickerColumnsType) => {
+export const findDisplayName = (value: PickerValue, originalColumns: PickerOptions) => {
   const labels: string[] = []
   const columns = originalColumns.flat()
   for (let i = 0; i < value.length; i++) {

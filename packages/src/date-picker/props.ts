@@ -1,13 +1,13 @@
 import { COMMON_PROPS } from '../common'
 import { ExtractPropTypes, PropType } from 'vue'
-import { DateTimePickerColumnType } from './types'
+import { DateTimePickerOption } from './types'
 
 export type DatePickerType = 'date' | 'year-month' | 'month-day' | 'time' | 'datetime' | 'date-hour'
 
-export type DatePickerValueType = string | Date
+export type DatePickerValue = string | Date
 
 export type FormatterType<V extends string | number = string> = (
-  type: DateTimePickerColumnType['type'],
+  type: DateTimePickerOption['type'],
   value: V
 ) => V
 
@@ -16,11 +16,11 @@ export type DatePickerProps = ExtractPropTypes<typeof DATE_PICKER_PROPS>
 export const DATE_PICKER_PROPS = {
   ...COMMON_PROPS,
   value: {
-    type: [String, Date] as PropType<DatePickerValueType>,
+    type: [String, Date] as PropType<DatePickerValue>,
     default: undefined
   },
   modelValue: {
-    type: [String, Date] as PropType<DatePickerValueType>,
+    type: [String, Date] as PropType<DatePickerValue>,
     default: undefined
   },
 
