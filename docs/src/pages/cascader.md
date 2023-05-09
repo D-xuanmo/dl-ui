@@ -2,6 +2,8 @@
 
 用于树形数据选择，常用于地址选择
 
+> 最新中国内地行政区域数据下载 [https://github.com/D-xuanmo/china-region](https://github.com/D-xuanmo/china-region)
+
 ```vue client=Mobile playground=MCascader
 <template>
   <d-cell-group>
@@ -42,3 +44,9 @@ fetch('/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727').then(as
 |lazy-load|`(option: CascadeOption) => Promise<CascadeOption[]>`|-|数据懒加载方法，需要配合 `lazy` 使用|N|
 |cancel-button-text|`string`|`取消`|关闭按钮文字|N|
 |confirm-button-text|`string`|`确认`|确认按钮文字|N|
+
+### 类型导出
+
+```typescript
+import type { CascaderProps, CascadeOption, CascaderValue } from '@xuanmo/dl-ui'
+```

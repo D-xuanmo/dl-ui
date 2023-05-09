@@ -1,17 +1,22 @@
 <template>
   <d-cell-group cell-title-width="100px">
     <d-cell title="基础用法">
-      <d-cascader v-model="value" :options="template" />
+      <d-cascader v-model="value" :options="template" placeholder="数据加载中..." />
     </d-cell>
     <d-cell title="绑定对象数组">
-      <d-cascader v-model="value2" :options="template" title="请选择地址" />
+      <d-cascader
+        v-model="value2"
+        :options="template"
+        title="请选择地址"
+        placeholder="数据加载中..."
+      />
     </d-cell>
     <d-cell title="模拟异步场景">
       <d-cascader
         v-model="value3"
         :options="template2"
         title="请选择地址"
-        placeholder="请选择"
+        placeholder="数据加载中..."
         lazy
         :lazy-load="handleLazyLoad"
       />

@@ -126,7 +126,7 @@ const FORM_MODEL: FormStoreInitialConfig = {
       groupId: 'basic',
       otherProps: <Partial<PickerProps>>{
         title: '使用选择器模拟级联选择',
-        placeholder: '数据加载中',
+        placeholder: '数据加载中...',
         options: []
       }
     },
@@ -143,7 +143,7 @@ const FORM_MODEL: FormStoreInitialConfig = {
       // ],
       groupId: 'basic',
       otherProps: <Partial<CascaderProps>>{
-        placeholder: '数据加载中',
+        placeholder: '数据加载中...',
         options: []
       }
     },
