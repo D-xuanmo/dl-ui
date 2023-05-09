@@ -16,7 +16,7 @@
         v-model="value3"
         :options="template2"
         title="请选择地址"
-        placeholder="数据加载中..."
+        placeholder="请选择"
         lazy
         :lazy-load="handleLazyLoad"
       />
