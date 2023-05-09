@@ -1,6 +1,6 @@
 <template>
   <span :class="triggerClassName" @click="showPicker">
-    <span style="vertical-align: middle">{{ displayName }}</span>
+    <span style="vertical-align: middle">{{ displayName || placeholder }}</span>
     <d-icon v-if="!readonly" name="arrow-right" color="var(--d-secondary-text-color)" />
   </span>
   <d-popup
@@ -76,9 +76,12 @@ export default defineComponent({
     const cancelBtnClassName = bem('cancel')
     const confirmBtnClassName = bem('confirm')
 
+    // 显示名称
+    const displayName = ref('')
+
     const triggerClassName = computed(() =>
       bem('trigger', {
-        empty: isEmpty(innerValue.value),
+        empty: isEmpty(innerValue.value) || isEmpty(displayName.value),
         disabled: props.disabled || props.readonly
       })
     )
@@ -99,9 +102,6 @@ export default defineComponent({
 
     // 懒加载的数据
     const lazyOptions = new Map<DataType['value'], CascadeOption[]>()
-
-    // 显示名称
-    const displayName = ref(props.placeholder ?? '')
 
     // 当前选择的值
     const active = ref<string | number>('')
@@ -125,6 +125,7 @@ export default defineComponent({
     }
 
     const formatOptions = () => {
+      // TODO 查询待优化
       const result = findOptionsByValue(lastValue.value, props.options)
       if (result) {
         const { options, path } = result
