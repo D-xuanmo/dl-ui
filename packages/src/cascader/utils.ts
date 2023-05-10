@@ -1,6 +1,5 @@
 import { createBEM, createNamespace, Modifiers } from '../utils'
-import { CascadeOption, CascaderObjectValue, CascaderValue } from '../common'
-import { isEmpty } from '@xuanmo/javascript-utils'
+import { CascadeOption, DataType } from '../common'
 
 function createCascaderNameSpace(): [string, ReturnType<typeof createBEM>]
 
@@ -20,40 +19,21 @@ function createCascaderNameSpace(childName?: string) {
 }
 
 /**
- * 通过指定 value 查找对应选项列表和路径
- * @param value 数据
- * @param originalOptions 原始数据源
- * @param path 路径
+ * 级联数据转换为 map 结构
+ * @param originalOptions
  */
-export const findOptionsByValue = (
-  value: CascaderValue[number],
-  originalOptions: CascadeOption[],
-  path: CascadeOption[] = []
-) => {
-  if (isEmpty(value)) {
-    return {
-      path: [],
-      options: originalOptions
-    }
-  }
-  for (let i = 0; i < originalOptions.length; i++) {
-    const item = originalOptions[i]
-    path.push(item)
-    if (item.value === value || item.value === (value as CascaderObjectValue[number])?.value) {
-      return {
-        path,
-        options: path.length - 2 <= 0 ? originalOptions : path[path.length - 2]?.children ?? []
+export const cascaderOptionsToMap = (originalOptions: CascadeOption[]) => {
+  const optionsMap = new Map<DataType['value'], CascadeOption>()
+  const formatOptions = (options: CascadeOption[]) => {
+    options.forEach((item) => {
+      optionsMap.set(item.value, item)
+      if (Array.isArray(item.children)) {
+        formatOptions(item.children)
       }
-    }
-    const result = findOptionsByValue(value, item.children ?? [], path) as any
-    if (result?.options) {
-      return {
-        path,
-        options: result.options as CascadeOption[]
-      }
-    }
-    path.pop()
+    })
   }
+  formatOptions(originalOptions)
+  return optionsMap
 }
 
 export { createCascaderNameSpace }
