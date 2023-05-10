@@ -86,11 +86,7 @@ const updateData = () => {
       { url: '/api/file-server/read-file/15b1c772-94ca-4e92-92be-d40b47832068', deletable: true }
     ],
     customInput: '我是自定义数据',
-    cascader: [
-      { value: '110000', label: '北京市' },
-      { value: '110100', label: '市辖区' },
-      { value: '110102', label: '西城区' }
-    ]
+    cascader: ['310000000000', '310100000000', '310104000000', '310104007000']
   })
 }
 

@@ -53,7 +53,6 @@ import useModelValue from '../hooks/useModelValue'
 import DPopup from '../popup'
 import { DTabs, DTabPanel } from '../tabs'
 import DIcon from '../icon'
-import { watchOnce } from '../hooks/watch-once'
 import { TabsItemType } from '../tabs/types'
 
 const [name, bem] = createCascaderNameSpace()
@@ -226,11 +225,13 @@ export default defineComponent({
       { immediate: true }
     )
 
-    // 监听首次传入的数据和 option，找出对应的 label
-    watchOnce(
+    watch(
       innerValue,
       () => {
-        const { path } = findPathAndColumns(innerValue.value)
+        const { path, options } = findPathAndColumns(innerValue.value)
+        activePath.value = path
+        activeOptions.value = options
+        activeTab.value = pickLastItem(path)?.value
         displayName.value = isEmpty(path) ? '' : path?.map((item) => item.label).join('/')
       },
       {
