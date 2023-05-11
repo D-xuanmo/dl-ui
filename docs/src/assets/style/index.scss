@@ -15,7 +15,6 @@ html {
 }
 
 body {
-  background-color: #f7f8fa;
   font-family: -apple-system;
   font-size: var(--d-font-size-sm);
   color: var(--d-primary-text-color);
@@ -94,8 +93,8 @@ blockquote {
     display: flex;
     height: 50px;
     padding: var(--d-gap-xs) var(--d-gap-sm);
+    border-bottom: var(--d-border);
     overflow: hidden;
-    background: #fff;
 
     img {
       height: calc(50px - calc(var(--d-gap-xs) * 2));
@@ -107,6 +106,12 @@ blockquote {
       display: inline-block;
       vertical-align: middle;
       font-size: 20px;
+    }
+
+    .d-button {
+      &:hover {
+        color: var(--d-primary);
+      }
     }
 
     &-right {
@@ -125,6 +130,7 @@ blockquote {
     width: 200px;
     height: 100%;
     padding: var(--d-gap-sm);
+    border-right: var(--d-border);
     background: #fff;
     overflow-y: auto;
   }
@@ -145,18 +151,11 @@ blockquote {
     transform: translateY(-50%);
   }
 
-  &__scroll {
-    height: 100%;
-    padding: var(--d-gap-sm);
-    overflow-y: auto;
-    background: #fff;
-  }
-
   &__inner-content {
     flex: 1;
-    max-width: calc(100% - 200px - calc(var(--d-gap-sm) * 1));
-    padding: var(--d-gap-sm);
-    overflow: hidden;
+    max-width: calc(100% - 200px);
+    padding: var(--d-gap-sm) 40px;
+    overflow-y: auto;
     line-height: initial;
 
     .markdown-body {
@@ -213,18 +212,23 @@ blockquote {
       width: 100%;
       border: var(--d-border);
       border-collapse: collapse;
+      border-radius: var(--d-radius-lg);
+      overflow: hidden;
+      box-shadow: inset 1px 0 0 #e7e7e7, inset -1px -1px 0 #e7e7e7;
 
       & + * {
         margin-top: var(--d-gap-md);
       }
 
       thead {
-        background-color: var(--d-border-color);
+        background-color: var(--d-gray-1);
       }
 
       tr {
+        border: var(--d-border);
+
         th {
-          padding: var(--d-gap-xs);
+          padding: var(--d-gap-sm);
           border-bottom: var(--d-border);
           text-align: left;
           color: rgba(0, 0, 0, 0.9);
@@ -235,7 +239,7 @@ blockquote {
         }
 
         td {
-          padding: var(--d-gap-xs);
+          padding: var(--d-gap-sm);
 
           &:first-of-type {
             font-weight: bold;
@@ -264,5 +268,5 @@ blockquote {
   margin-top: var(--d-gap-sm);
   padding: var(--d-gap-sm);
   border-radius: var(--d-radius-md);
-  background: #f2f4f5 !important;
+  background: var(--d-gray-1) !important;
 }

@@ -5,13 +5,12 @@
       <template v-if="!isDemoRoute">
         <!-- 左侧菜单 -->
         <div :class="menuClassName">
-          <header>组件预览</header>
           <DMenu :data="menus" />
         </div>
 
         <!-- 文档内容区 -->
         <div :class="innerContentClassName">
-          <div :class="scrollClassName"><router-view /></div>
+          <router-view />
         </div>
       </template>
 
@@ -37,7 +36,6 @@ const containerClassName = computed(() => classNames({ mobile: isDemoRoute.value
 const outContentClassName = classNames('out-content')
 const menuClassName = classNames('menu')
 const innerContentClassName = classNames('inner-content')
-const scrollClassName = classNames('scroll')
 
 watch(
   () => route.path,

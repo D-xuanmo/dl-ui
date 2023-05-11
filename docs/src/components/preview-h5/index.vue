@@ -70,8 +70,8 @@ export default defineComponent({
   &__content {
     flex: 1;
     overflow: auto;
-    margin-top: var(--d-gap-xs);
     padding: var(--d-gap-sm);
+    background: #f7f8fa;
 
     &.bg-white {
       background: #fff;

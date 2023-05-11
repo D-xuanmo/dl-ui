@@ -41,7 +41,7 @@ const menus: MenuItemType[] = [
       {
         id: 'date-picker',
         path: '/date-picker',
-        content: 'DatePicker [日期时间选择]'
+        content: 'DatePicker [日期时间]'
       },
       { id: 'radio', path: '/radio', content: 'Radio [单选框]' },
       { id: 'checkbox', path: '/checkbox', content: 'Checkbox [复选框]' },

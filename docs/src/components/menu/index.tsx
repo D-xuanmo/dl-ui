@@ -1,9 +1,9 @@
 import { defineComponent, PropType } from 'vue'
 import { createNamespace } from '@/utils/bem'
 import { MenuItemType } from '@doc/components/menu/types'
-import './style.scss'
 import { format } from './format'
 import { useRoute, useRouter } from 'vue-router'
+import './style.scss'
 
 const [name, bem] = createNamespace('menu')
 

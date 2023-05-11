@@ -6,8 +6,9 @@
   }
 
   &__wrapper {
-    margin-top: var(--d-gap-sm);
-    border: var(--d-border);
+    margin: var(--d-gap-sm) 0 40px;
+    box-shadow: 0px 10px 24px rgba(9, 16, 30, 0.04), 0px 6px 40px rgba(9, 16, 30, 0.08);
+    border-radius: 8px;
 
     &:empty {
       display: none;
@@ -26,7 +27,6 @@
 
     &--h5 {
       height: 500px;
-      margin: var(--d-gap-sm) 0;
 
       #{$prefix} {
         &__out-content {
