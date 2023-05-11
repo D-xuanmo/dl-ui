@@ -68,16 +68,36 @@ function beforeChange() {
 |参数|类型|默认值|说明|必传|
 |---|----|-----|---|----|
 |v-model|`boolean`|-|绑定的值|Y|
-|loading|`boolean`|false|可设置加载状态|N|
-|disabled|`boolean`|false|禁用状态设置|N|
-|round|`boolean`|true|是否显示为圆角类型|N|
-|size|`'small' \| 'medium' \| 'large'`|medium|尺寸|N|
-|beforeChange|`() => Promise<boolean>`|-|值发生改变前的拦截，返回 `true` 则切换，返回 `false` 或者 `Promise.reject` 则不切换|N|
+|loading|`boolean`|`false`|可设置加载状态|N|
+|disabled|`boolean`|`false`|禁用状态设置|N|
+|round|`boolean`|`true`|是否显示为圆角类型|N|
+|size|`'small' \| 'medium' \| 'large'`|`medium`|尺寸|N|
+|before-change|`() => Promise<boolean>`|-|值发生改变前的拦截，返回 `true` 则切换，返回 `false` 或者 `Promise.reject` 则不切换|N|
 
 ### Slots
 
-| 名称     | 说明             |
-| -------------- | ---------------------- |
-| icon           | 自定义图标             |
-| checked-icon   | 自定义选中状态下图标   |
-| unchecked-icon | 自定义未选中状态下图标 |
+|名称|说明|
+|---|----|
+|icon|自定义图标|
+|checked-icon|自定义选中状态下图标|
+|unchecked-icon|自定义未选中状态下图标|
+
+### TypeScript 类型
+
+```typescript
+import type { SwitchProps } from '@xuanmo/dl-ui'
+```
+
+## 主题定制
+
+### CSS 变量
+
+|变量名|默认值|描述|
+|-----|-----|----|
+|--d-switch-bg-color|#bcbcbc|开关未开启时背景色|
+|--d-switch-small-width|30px|`size=small` 时宽度|
+|--d-switch-small-height|16px|`size=small` 时高度|
+|--d-switch-medium-width|40px|`size=medium` 时宽度|
+|--d-switch-medium-height|20px|`size=medium` 时高度|
+|--d-switch-large-width|50px|`size=large` 时宽度|
+|--d-switch-large-height|24px|`size=large` 时高度|

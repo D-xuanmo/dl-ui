@@ -1,7 +1,20 @@
 @import '../style/prefix.scss';
 
+:root {
+  --d-switch-bg-color: #bcbcbc;
+  --d-switch-small-width: 30px;
+  --d-switch-small-height: 16px;
+  --d-switch-medium-width: 40px;
+  --d-switch-medium-height: 20px;
+  --d-switch-large-width: 50px;
+  --d-switch-large-height: 24px;
+}
+
 .#{$prefix}-switch {
   $prefix: &;
+  --d-switch-small-handle: calc(var(--d-switch-small-height) - 4px);
+  --d-switch-medium-handle: calc(var(--d-switch-medium-height) - 4px);
+  --d-switch-large-handle: calc(var(--d-switch-large-height) - 4px);
   position: relative;
   border: 0;
   border-radius: 4px;
@@ -24,48 +37,48 @@
   }
 
   &--small {
-    width: 30px;
-    height: 16px;
+    width: var(--d-switch-small-width);
+    height: var(--d-switch-small-height);
 
     #{$prefix} {
       &__handle {
-        width: 12px;
-        height: 12px;
+        width: var(--d-switch-small-handle);
+        height: var(--d-switch-small-handle);
 
         &--active {
-          left: calc(100% - 18px);
+          left: calc(100% - calc(var(--d-switch-small-handle) + 6px));
         }
       }
     }
   }
 
   &--medium {
-    width: 40px;
-    height: 20px;
+    width: var(--d-switch-medium-width);
+    height: var(--d-switch-medium-height);
 
     #{$prefix} {
       &__handle {
-        width: 16px;
-        height: 16px;
+        width: var(--d-switch-medium-handle);
+        height: var(--d-switch-medium-handle);
 
         &--active {
-          left: calc(100% - 22px);
+          left: calc(100% - calc(var(--d-switch-medium-handle) + 6px));
         }
       }
     }
   }
 
   &--large {
-    width: 50px;
-    height: 24px;
+    width: var(--d-switch-large-width);
+    height: var(--d-switch-large-height);
 
     #{$prefix} {
       &__handle {
-        width: 20px;
-        height: 20px;
+        width: var(--d-switch-large-handle);
+        height: var(--d-switch-large-handle);
 
         &--active {
-          left: calc(100% - 26px);
+          left: calc(100% - calc(var(--d-switch-large-handle) + 6px));
         }
       }
     }
@@ -74,15 +87,15 @@
   &--round {
     &#{$prefix} {
       &--small {
-        border-radius: 8px;
+        border-radius: calc(var(--d-switch-small-height) / 2);
       }
 
       &--medium {
-        border-radius: 10px;
+        border-radius: calc(var(--d-switch-medium-height) / 2);
       }
 
       &--large {
-        border-radius: 12px;
+        border-radius: calc(var(--d-switch-large-height) / 2);
       }
     }
 

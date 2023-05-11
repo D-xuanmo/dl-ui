@@ -76,3 +76,23 @@ const value2 = ref(['1', '3'])
 |disabled|`boolean`|-|是否禁用|N|
 |max|`number`|-|最大选择个数|N|
 |options|`DataType[]`|-|复选框数据项|N|
+
+### TypeScript 类型
+
+```typescript
+export type DirectionType = 'horizontal' | 'vertical'
+
+/** 数据基础类型，单选、多选、选择器等组件 */
+export interface DataType {
+  label: string
+  value: string | number
+  disabled?: boolean
+}
+
+import type { 
+  CheckboxProps, 
+  CheckboxGroupProps, 
+  DataType, 
+  DirectionType 
+} from '@xuanmo/fl-ui'
+```

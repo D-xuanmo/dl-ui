@@ -1,5 +1,9 @@
 @import '../style/prefix.scss';
 
+:root {
+  --d-textarea-limit-color: var(--d-secondary-text-color);
+}
+
 .#{$prefix}-textarea {
   $prefix: &;
 
@@ -17,7 +21,7 @@
   &__limit {
     font-size: var(--d-font-size-xs);
     text-align: right;
-    color: var(--d-secondary-text-color);
+    color: var(--d-textarea-limit-color);
   }
 
   &--disabled,

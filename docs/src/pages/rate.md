@@ -47,3 +47,9 @@ const value = ref(2)
 |active-color|`string`|`rgb(250,200,0)`|选中时图标颜色|N|
 |allow-clear|`boolean`|`true`|是否允许反选清空|N|
 |disabled|`boolean`|`false`|是否禁用|N|
+
+### TypeScript 类型
+
+```typescript
+import type { RateProps } from '@xuanmo/dl-ui'
+```

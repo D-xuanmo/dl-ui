@@ -12,14 +12,14 @@
     @update:visible="handleCancel"
   >
     <template #header-left>
-      <span v-if="cancelButtonText" :class="cancelBtnClassName" @click="handleCancel">
+      <d-button v-if="cancelButtonText" link @click="handleCancel">
         {{ cancelButtonText }}
-      </span>
+      </d-button>
     </template>
     <template #header-right>
-      <span v-if="confirmButtonText" :class="confirmBtnClassName" @click="handleConfirm">
+      <d-button v-if="confirmButtonText" link theme="primary" @click="handleConfirm">
         {{ confirmButtonText }}
-      </span>
+      </d-button>
     </template>
     <d-tabs v-model="activeTab" :class="contentClassName" sticky @tab-click="handleTabChange">
       <d-tab-panel
@@ -54,6 +54,7 @@ import DPopup from '../popup'
 import { DTabs, DTabPanel } from '../tabs'
 import DIcon from '../icon'
 import { TabsItemType } from '../tabs/types'
+import DButton from '../button'
 
 const [name, bem] = createCascaderNameSpace()
 
@@ -63,7 +64,8 @@ export default defineComponent({
     DPopup,
     DTabs,
     DTabPanel,
-    DIcon
+    DIcon,
+    DButton
   },
   props: CASCADER_PROPS,
   emits: ['update:model-value'],
@@ -71,9 +73,6 @@ export default defineComponent({
     const [innerValue, updateValue] = useModelValue(props, emit as SetupContext['emit'])
     const wrapperClassName = bem()
     const contentClassName = bem('content')
-    const headerClassName = bem('header')
-    const cancelBtnClassName = bem('cancel')
-    const confirmBtnClassName = bem('confirm')
 
     // 显示名称
     const displayName = ref('')
@@ -243,9 +242,6 @@ export default defineComponent({
       wrapperClassName,
       contentClassName,
       triggerClassName,
-      headerClassName,
-      cancelBtnClassName,
-      confirmBtnClassName,
       visible,
       activeTab,
       activeOptions,

@@ -32,12 +32,19 @@ const value = ref('2022/4/15 22:58:00')
 ### 公用类型
 
 ```typescript
-export type DatePickerType = 'date' | 'year-month' | 'month-day' | 'time' | 'datetime' | 'date-hour'
+type DatePickerType = 'date' | 'year-month' | 'month-day' | 'time' | 'datetime' | 'date-hour'
 
-export type DatePickerValueType = string | Date
+type DatePickerValueType = string | Date
 
-export type FormatterType<V extends string | number = string> = (
+type FormatterType<V extends string | number = string> = (
   type: DateTimePickerColumnType['type'],
   value: V
 ) => V
+
+import type { 
+  DatePickerProps, 
+  DateTimePickerOption, 
+  FormatterType, 
+  DatePickerType 
+} from '@xuanmo/dl-ui'
 ```

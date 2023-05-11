@@ -1,22 +1,29 @@
 @import '../style/prefix.scss';
 
+:root {
+  --d-cell-group-title-gap-bottom: var(--d-gap-xs);
+  --d-cell-group-title-gap-padding: var(--d-gap-sm);
+  --d-cell-group-gap-bottom: var(--d-gap-sm);
+  --d-cell-group-radius: var(--d-radius-lg);
+}
+
 .#{$prefix}-cell-group {
   width: 100%;
 
   &:not(:last-of-type) {
-    margin-bottom: var(--d-gap-sm);
+    margin-bottom: var(--d-cell-group-gap-bottom);
   }
 
   &__title {
-    margin-bottom: var(--d-gap-xs);
-    padding: 0 var(--d-gap-sm);
+    margin-bottom: var(--d-cell-group-title-gap-bottom);
+    padding: 0 var(--d-cell-group-title-gap-padding);
     color: var(--d-secondary-text-color);
   }
 
   &__content {
     &--round {
       overflow: hidden;
-      border-radius: var(--d-radius-lg);
+      border-radius: var(--d-cell-group-radius);
     }
   }
 }

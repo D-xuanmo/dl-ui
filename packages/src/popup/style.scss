@@ -1,6 +1,13 @@
 @import '../style/prefix';
 @import '../style/mixins';
 
+:root {
+  --d-popup-header-gap-bottom: var(--d-gap-xs);
+  --d-popup-title-font-size: var(--d-font-size-md);
+  --d-popup-padding: var(--d-gap-sm);
+  --d-popup-radius: var(--d-radius-lg);
+}
+
 .#{$prefix}-popup {
   $prefix: &;
 
@@ -15,11 +22,11 @@
   &__header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: var(--d-gap-xs);
+    margin-bottom: var(--d-popup-header-gap-bottom);
 
     &--title {
       flex: 1;
-      font-size: var(--d-font-size-md);
+      font-size: var(--d-popup-title-font-size);
       text-align: center;
       color: var(--d-title-color);
       @include ellipsis();
@@ -37,11 +44,11 @@
 
   &__wrapper {
     position: absolute;
-    padding: var(--d-gap-sm);
+    padding: var(--d-popup-padding);
     background-color: var(--d-white-color);
 
     &--round {
-      border-radius: var(--d-radius-lg) var(--d-radius-lg) 0 0;
+      border-radius: var(--d-popup-radius) var(--d-popup-radius) 0 0;
     }
 
     &--notCenter {
@@ -122,6 +129,7 @@
       }
     }
   }
+
   // 顶部过渡
   &-top-enter-active,
   &-top-leave-active {

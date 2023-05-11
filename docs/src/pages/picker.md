@@ -96,11 +96,18 @@ fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address
 > 公用类型 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/common.ts](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/common.ts)
 
 ```typescript
-export type PickerValue = string[] | number[] | DataType[]
+type PickerValue = string[] | number[] | DataType[]
 
 /** 选择器每列数据类型 */
-export type PickerOption = DataType | CascadeOption
+type PickerOption = DataType | CascadeOption
 
 /** 选择器数据类型 */
-export type PickerOptions = PickerOption[] | PickerOption[][]
+type PickerOptions = PickerOption[] | PickerOption[][]
+
+import type {
+  PickerProps, 
+  PickerValue,
+  PickerOption, 
+  PickerOptions
+} from '@xuanmo/dl-ui'
 ```

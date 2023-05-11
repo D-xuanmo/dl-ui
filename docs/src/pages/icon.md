@@ -46,6 +46,17 @@
 
 |参数|类型|默认值|说明|必传|
 |---|----|-----|----|---|
-|name|string|-|图标名称|Y|
-|size|string|medium|图标大小，可选值：`small/medium/large/string`，为`string`时，单位为`px`|N|
-|color|string|-|图标颜色|N|
+|name|`string`|-|图标名称|Y|
+|size|`string`|`medium`|图标大小，可选值：`small/medium/large/string`，为 `string` 时，单位为 `px`|N|
+|color|`string`|-|图标颜色|N|
+|spin|`boolean`|-|是否旋转图标|N|
+
+## 主题定制
+
+### CSS 变量
+
+|变量名|默认值|描述|
+|-----|-----|----|
+|--d-icon-size-small|16px|图标 `size=small` 时尺寸|
+|--d-icon-size-medium|20px|图标 `size=medium` 时尺寸|
+|--d-icon-size-large|24px|图标 `size=large` 时尺寸|

@@ -1,5 +1,11 @@
 @import '../style/prefix.scss';
 
+:root {
+  --d-icon-size-small: 16px;
+  --d-icon-size-medium: 20px;
+  --d-icon-size-large: 24px;
+}
+
 .#{$prefix}-icon {
   display: inline-block;
   line-height: 0;
@@ -15,22 +21,22 @@
 
   &--small {
     > svg {
-      width: 16px;
-      height: 16px;
+      width: var(--d-icon-size-small);
+      height: var(--d-icon-size-small);
     }
   }
 
   &--medium {
     > svg {
-      width: 20px;
-      height: 20px;
+      width: var(--d-icon-size-medium);
+      height: var(--d-icon-size-medium);
     }
   }
 
   &--large {
     > svg {
-      width: 24px;
-      height: 24px;
+      width: var(--d-icon-size-large);
+      height: var(--d-icon-size-large);
     }
   }
 

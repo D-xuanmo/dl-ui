@@ -39,4 +39,16 @@ const value3 = ref('')
 |rows|`number`|3|显示行数，原生属性|N|
 |placeholder|`string`|-|提示语，原生属性|N|
 |show-word-limit|`boolean`|-|是否显示字数统计，需要开启 `maxlength`|N|
-|autosize|`boolean`|-|是否输入内容自动撑高|N|
+|autosize|`boolean`|-|是否输入内容自动撑高|N|## 主题定制
+
+### TypeScript 类型
+
+```typescript
+import type { TextareaProps } from '@xuanmo/dl-ui'
+```
+
+### CSS 变量
+
+|变量名|默认值|描述|
+|-----|-----|----|
+|--d-textarea-limit-color|var(--d-secondary-text-color)|字数统计颜色|

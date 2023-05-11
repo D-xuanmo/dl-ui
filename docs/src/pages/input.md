@@ -88,16 +88,22 @@ function onBlur(value: string) {
 
 ### Events
 
-|事件              | 说明                   | 回调参数                    |
-| ----------------- | ---------------------- | --------------------------- |
-| update:modelValue | 输入内容发生改变时触发 | value: string(当前输入内容) |
-| blur              | 输入框失焦时触发       | value: string, event: Event |
-| focus             | 输入框聚焦时触发       | value: string, event: Event |
-| clear             | 清空内容按钮点击时触发 | value: string, event: Event |
-| click-input       | 输入框点击时触发       | value: string, event: Event |
+|事件|说明|回调参数|
+|---|----|-------|
+|update:model-value|输入内容发生改变时触发|value: string(当前输入内容)|
+|blur|输入框失焦时触发|value: string, event: Event|
+|focus|输入框聚焦时触发|value: string, event: Event|
+|clear|清空内容按钮点击时触发|value: string, event: Event|
+|click-input|输入框点击时触发|value: string, event: Event|
 
 ### Slots
 
-| 名称   | 说明           |
-| ------ | -------------- |
-| suffix | 自定义扩展内容 |
+|名称|说明|
+|---|----|
+|suffix|自定义扩展内容|
+
+### TypesScript 类型
+
+```typescript
+import type { InputProps } from '@xuanmo/dl-ui'
+```

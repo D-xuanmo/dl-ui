@@ -26,9 +26,6 @@
   // 阴影
   --d-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 
-  // 开关背景颜色
-  --d-switch-bg-color: #bcbcbc;
-
   // 圆角
   --d-radius-xs: 2px;
   --d-radius-md: 4px;
@@ -59,9 +56,6 @@
   --d-gap-sm: 16px;
   --d-gap-md: 24px;
   --d-gap-lg: 32px;
-
-  // 遮罩层背景颜色
-  --d-overlay-bg-color: rgba(0, 0, 0, 0.7);
 
   // 水平间距
   --d-horizontal-gap: calc(var(--d-gap-xxs) + var(--d-gap-xs));

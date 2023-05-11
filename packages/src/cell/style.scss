@@ -1,12 +1,17 @@
 @import '../style/prefix.scss';
 @import '../style/mixins.scss';
 
+:root {
+  --d-cell-padding: var(--d-horizontal-gap) var(--d-gap-sm);
+  --d-cell-background: var(--d-white-color);
+}
+
 .#{$prefix}-cell {
   $parent: &;
   font-size: var(--d-font-size-md);
   line-height: var(--d-line-height-md);
-  padding: var(--d-horizontal-gap) var(--d-gap-sm);
-  background-color: var(--d-white-color);
+  padding: var(--d-cell-padding);
+  background-color: var(--d-cell-background);
 
   &__layout {
     display: flex;

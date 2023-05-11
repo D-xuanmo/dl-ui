@@ -18,20 +18,6 @@
     }
   }
 
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: var(--d-gap-sm);
-
-    &--confirm {
-      color: var(--d-primary);
-    }
-
-    &--cancel {
-      color: var(--d-secondary-text-color);
-    }
-  }
-
   &__content {
     display: flex;
     width: 100%;

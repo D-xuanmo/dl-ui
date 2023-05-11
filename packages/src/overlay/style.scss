@@ -1,5 +1,10 @@
 @import '../style/prefix';
 
+:root {
+  // 遮罩层背景颜色
+  --d-overlay-bg-color: rgba(0, 0, 0, 0.7);
+}
+
 .#{$prefix}-overlay {
   position: fixed;
   top: 0;

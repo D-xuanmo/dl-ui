@@ -72,21 +72,21 @@ function handleShowPopup4() {
 
 |参数|类型|默认值|说明|必传|
 |----|---|-----|---|----|
-|v-model:visible|`boolean`|false|控制显示与隐藏|Y|
+|v-model:visible|`boolean`|`false`|控制显示与隐藏|Y|
 |title|`string`|-|弹出层标题，`placement` 不等于 `center` 有效|N|
-|placement|`PositionType`|center|弹出层位置，可选值`'top' \| 'right' \| 'bottom' \| 'left' \| 'center'`|N|
-|z-index|`number`|2000|CSS z-index|N|
-|duration|`number`|0.3|过渡动画时间|N|
-|round|`boolean`|false|实现显示未圆角，`placement`不等于`center`有效|N|
-|closeable|`boolean`|false|是否显示关闭图标|N|
-|close-icon|`string`|close-o|同`Icon`组件`name`属性|N|
+|placement|`PositionType`|`center`|弹出层位置，可选值`'top' \| 'right' \| 'bottom' \| 'left' \| 'center'`|N|
+|z-index|`number`|`2000`|CSS z-index|N|
+|duration|`number`|`0.3`|过渡动画时间|N|
+|round|`boolean`|`false`|实现显示未圆角，`placement`不等于`center`有效|N|
+|closeable|`boolean`|`false`|是否显示关闭图标|N|
+|close-icon|`string`|`close-o`|同`Icon`组件`name`属性|N|
 |popup-class|`string`|-|弹出层class|N|
 |popup-style|`CSSProperties`|-|弹出层style|N|
-|overlay|`boolean`|true|是否显示遮罩层|N|
-|overlay-class|`string`|-|遮罩层class|N|
-|overlay-style|`CSSProperties`|-|遮罩层style|N|
-|close-on-click-overlay|`boolean`|true|点击遮罩层是否关闭弹出层|N|
-|teleport|`TeleportProps['to']`|body|选择要插入的 DOM 节点，同 `Teleport` 组件，[参考链接](https://staging-cn.vuejs.org/guide/built-ins/teleport.html#basic-usage) |N|
+|overlay|`boolean`|`true`|是否显示遮罩层|N|
+|overlay-class|`string`|-|遮罩层 class|N|
+|overlay-style|`CSSProperties`|-|遮罩层 style|N|
+|close-on-click-overlay|`boolean`|`true`|点击遮罩层是否关闭弹出层|N|
+|teleport|`TeleportProps['to']`|`body`|选择要插入的 DOM 节点，同 `Teleport` 组件，[参考链接](https://staging-cn.vuejs.org/guide/built-ins/teleport.html#basic-usage) |N|
 
 ### Events
 
@@ -106,3 +106,20 @@ function handleShowPopup4() {
 |default|弹出层内容|
 |header-left|头部左侧内容|
 |header-right|头部右侧内容|
+
+## TypeScript 类型
+
+```typescript
+import type { PopupProps } from '@xuanmo/dl-ui'
+```
+
+## 主题定制
+
+### CSS 变量
+
+|变量名|默认值|描述|
+|-----|-----|----|
+|--d-popup-header-gap-bottom|var(--d-gap-xs)|头部下外边距|
+|--d-popup-padding|var(--d-gap-sm)|内边距|
+|--d-popup-radius|var(--d-radius-lg)|圆角大小|
+|--d-popup-title-font-size|var(--d-font-size-md)|头部标题文字大小|

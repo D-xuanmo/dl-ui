@@ -3,18 +3,18 @@
     <span style="vertical-align: middle">{{ displayValue }}</span>
     <d-icon v-if="!readonly" name="arrow-right" color="var(--d-secondary-text-color)" />
   </span>
-  <d-popup :visible="innerVisible" placement="bottom" @update:visible="handleClose">
+  <d-popup :visible="innerVisible" placement="bottom" :title="title" @update:visible="handleClose">
+    <template #header-left>
+      <d-button v-if="cancelButtonText" link @touchstart="handleClose">
+        {{ cancelButtonText }}
+      </d-button>
+    </template>
+    <template #header-right>
+      <d-button v-if="confirmButtonText" link theme="primary" @click="handleConfirm">
+        {{ confirmButtonText }}
+      </d-button>
+    </template>
     <div :class="className">
-      <header :class="headerClassName">
-        <span v-if="cancelButtonText" :class="cancelBtnClassName" @touchstart="handleClose">
-          {{ cancelButtonText }}
-        </span>
-        <span>{{ title }}</span>
-        <span v-if="confirmButtonText" :class="confirmBtnClassName" @click="handleConfirm">
-          {{ confirmButtonText }}
-        </span>
-      </header>
-
       <div :class="contentClassName" :style="contentStyle">
         <d-scroll-radio
           v-for="(item, index) in formattedColumns"
@@ -40,19 +40,17 @@ import { findCascadeFirstLevelData, findDisplayName, formatCascade } from './uti
 import { EventType } from './types'
 import DIcon from '../icon'
 import DScrollRadio from '../scroll-radio'
+import DButton from '../button'
 
 const [name, bem] = createNamespace('picker')
 
 export default defineComponent({
   name,
-  components: { DIcon, DScrollRadio },
+  components: { DIcon, DScrollRadio, DButton },
   props: PICKER_PROPS,
   emits: ['update:visible', 'update:model-value', 'update:value', 'change', 'confirm', 'close'],
   setup(props, context: SetupContext<EventType>) {
     const className = bem()
-    const headerClassName = bem('header')
-    const cancelBtnClassName = bem('header', 'cancel', true)
-    const confirmBtnClassName = bem('header', 'confirm', true)
     const contentClassName = bem('content')
 
     const [visible, updateVisible] = useModelValue<
@@ -172,9 +170,6 @@ export default defineComponent({
     return {
       innerVisible,
       className,
-      headerClassName,
-      cancelBtnClassName,
-      confirmBtnClassName,
       contentClassName,
       triggerClassName,
       formattedColumns,
