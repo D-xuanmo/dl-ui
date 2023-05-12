@@ -1,12 +1,10 @@
-<p style="text-align: center">
-  <img src="https://upyun.xuanmo.xin/logo/dl-ui.svg" style="width: 50px" />
+<p align="center">
+  <img src="https://upyun.xuanmo.xin/logo/dl-ui.svg" width="50px" />
 </p>
 
-<h1 style="text-align: center">DL UI</h1>
+<h1 align="center">DL UI</h1>
 
-<p style="text-align: center">一个基于 Vue 3 的低代码组件库</p>
-
-<hr />
+<p align="center">一个基于 Vue 3 的低代码组件库</p>
 
 ## 安装
 
