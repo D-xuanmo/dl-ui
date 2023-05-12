@@ -1,5 +1,7 @@
 # Picker 选择器
 
+用于单例、多列或者树形数据进行集合选择
+
 ```vue client=Mobile playground=MPicker
 <template>
   <d-cell-group>

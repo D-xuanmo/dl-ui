@@ -7,13 +7,29 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
  * 'pages/example.md' 访问路径为：/example
  */
 const getRoutes = () => {
-  const modules = import.meta.glob('../pages/**/*.md')
-  const introduce = import.meta.glob('../../../README.md')
-  const routes: RouteRecordRaw[] = []
-  for (const [key, module] of Object.entries({ ...modules, ...introduce })) {
+  const compModules = import.meta.glob('../pages/components/*.md')
+  const docModules = import.meta.glob('../pages/docs/*.md')
+  const routes: RouteRecordRaw[] = [
+    {
+      path: '/components',
+      redirect: '/components/button'
+    },
+    {
+      path: '/docs',
+      redirect: '/docs/introduce'
+    }
+  ]
+  for (const [key, module] of Object.entries(compModules)) {
     const { path } = /(?<path>\/[a-z\d-]+)\.md$/i.exec(key)?.groups ?? {}
     routes.push({
-      path,
+      path: `/components${path}`,
+      component: module
+    })
+  }
+  for (const [key, module] of Object.entries(docModules)) {
+    const { path } = /(?<path>\/[a-z\d-]+)\.md$/i.exec(key)?.groups ?? {}
+    routes.push({
+      path: `/docs${path}`,
       component: module
     })
   }
@@ -52,7 +68,7 @@ const routes = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/introduce'
+      redirect: '/docs/introduce'
     },
     {
       path: '/demo',

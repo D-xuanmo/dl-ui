@@ -114,11 +114,15 @@ blockquote {
       }
     }
 
+    &-center {
+      flex: 1;
+      margin-left: 90px;
+    }
+
+    &-center,
     &-right {
       display: flex;
-      justify-content: flex-end;
       align-items: center;
-      flex: 1;
     }
   }
 
@@ -174,7 +178,7 @@ blockquote {
 
     li {
       padding: 4px 0;
-      list-style-type: initial;
+      list-style-type: circle;
       list-style-position: inside;
 
       ul,
@@ -278,4 +282,5 @@ blockquote {
   padding: var(--d-gap-sm);
   border-radius: var(--d-radius-md);
   background: var(--d-gray-1) !important;
+  line-height: 1.8;
 }

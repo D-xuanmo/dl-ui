@@ -1,5 +1,7 @@
 # Popup 弹出层
 
+用于弹框选择数据、弹框提示等场景
+
 ```vue client=Mobile playground=MPopup
 <template>
   <d-cell-group round title="基础用法">

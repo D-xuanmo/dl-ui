@@ -1,5 +1,7 @@
 # Checkbox 复选框
 
+用于选择数据中的某些项，多选
+
 ```vue client=Mobile playground=MCheckbox
 <template>
   <d-demo-block title="基础用法">

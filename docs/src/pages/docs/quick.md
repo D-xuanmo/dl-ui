@@ -2,13 +2,13 @@
 
 ## 安装
 
-### 通过 npm 安装
+- 通过 npm 安装
 
 ```bash
 $ npm i @xuanmo/dl-ui
 ```
 
-### 通过 yarn 或者 pnpm 安装
+- 通过 yarn 或者 pnpm 安装
 
 ```bash
 $ yarn add @xuanmo/dl-ui

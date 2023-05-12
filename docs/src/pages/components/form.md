@@ -2,8 +2,6 @@
 
 主要用于数据录入、校验等
 
-## 示例
-
 ```vue client=Mobile playground=Form
 <template>
   <d-form

@@ -1,5 +1,7 @@
 # Radio 单选框
 
+用于选择数据中的某项，单选
+
 ```vue client=Mobile playground=MRadio
 <template>
   <d-demo-block title="基本用法">

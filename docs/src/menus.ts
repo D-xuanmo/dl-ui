@@ -3,50 +3,50 @@ import { MenuItemType } from './components/menu/types'
 
 const menus: MenuItemType[] = [
   {
-    id: createRandomID(),
+    id: 'docs',
     hide: ua().device === 'Mobile',
     groupTitle: '开发指南',
     children: [
-      { id: 'introduce', path: '/introduce', content: '介绍' },
-      { id: 'quick', path: '/quick', content: '快速上手' },
-      { id: 'common', path: '/common', content: '全局说明' },
-      { id: 'custom', path: '/custom', content: '自定义能力' },
-      { id: 'questions', path: '/questions', content: '常见问题' },
-      { id: 'guide', path: '/guide', content: '项目规范' }
+      { id: 'introduce', path: '/docs/introduce', content: '介绍' },
+      { id: 'quick', path: '/docs/quick', content: '快速上手' },
+      { id: 'common', path: '/docs/common', content: '全局说明' },
+      { id: 'custom', path: '/docs/custom', content: '自定义能力' },
+      { id: 'questions', path: '/docs/questions', content: '常见问题' },
+      { id: 'guide', path: '/docs/guide', content: '项目规范' }
     ]
   },
   {
     id: createRandomID(),
     groupTitle: '基础组件',
     children: [
-      { id: 'button', path: '/button', content: 'Button [按钮]' },
-      { id: 'cell', path: '/cell', content: 'Cell [单元格]' },
-      { id: 'icon', path: '/icon', content: 'Icon [图标]' },
-      { id: 'overlay', path: '/overlay', content: 'Overlay [遮罩层]' },
-      { id: 'popup', path: '/popup', content: 'Popup [弹出层]' },
-      { id: 'space', path: '/space', content: 'Space [间距]' },
-      { id: 'image', path: '/image', content: 'Image [图片]' }
+      { id: 'button', path: '/components/button', content: 'Button [按钮]' },
+      { id: 'cell', path: '/components/cell', content: 'Cell [单元格]' },
+      { id: 'icon', path: '/components/icon', content: 'Icon [图标]' },
+      { id: 'overlay', path: '/components/overlay', content: 'Overlay [遮罩层]' },
+      { id: 'popup', path: '/components/popup', content: 'Popup [弹出层]' },
+      { id: 'space', path: '/components/space', content: 'Space [间距]' },
+      { id: 'image', path: '/components/image', content: 'Image [图片]' }
     ]
   },
   {
     id: createRandomID(),
     groupTitle: '表单组件',
     children: [
-      { id: 'input', path: '/input', content: 'Input [输入框]' },
-      { id: 'textarea', path: '/textarea', content: 'Textarea [多行文本框]' },
-      { id: 'switch', path: '/switch', content: 'Switch [开关]' },
-      { id: 'rate', path: '/rate', content: 'Rate [评分]' },
-      { id: 'picker', path: '/picker', content: 'Picker [选择器]' },
-      { id: 'cascader', path: '/cascader', content: 'Cascader [级联选择]' },
+      { id: 'input', path: '/components/input', content: 'Input [输入框]' },
+      { id: 'textarea', path: '/components/textarea', content: 'Textarea [多行文本框]' },
+      { id: 'switch', path: '/components/switch', content: 'Switch [开关]' },
+      { id: 'rate', path: '/components/rate', content: 'Rate [评分]' },
+      { id: 'picker', path: '/components/picker', content: 'Picker [选择器]' },
+      { id: 'cascader', path: '/components/cascader', content: 'Cascader [级联选择]' },
       {
         id: 'date-picker',
-        path: '/date-picker',
+        path: '/components/date-picker',
         content: 'DatePicker [日期时间]'
       },
-      { id: 'radio', path: '/radio', content: 'Radio [单选框]' },
-      { id: 'checkbox', path: '/checkbox', content: 'Checkbox [复选框]' },
-      { id: 'upload', path: '/upload', content: 'Upload [文件上传]' },
-      { id: 'form', path: '/form', content: 'Form [表单]' }
+      { id: 'radio', path: '/components/radio', content: 'Radio [单选框]' },
+      { id: 'checkbox', path: '/components/checkbox', content: 'Checkbox [复选框]' },
+      { id: 'upload', path: '/components/upload', content: 'Upload [文件上传]' },
+      { id: 'form', path: '/components/form', content: 'Form [表单]' }
     ]
   }
 ]

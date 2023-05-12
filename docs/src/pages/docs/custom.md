@@ -2,14 +2,14 @@
 
 ## 定制主题
 
-通过覆盖 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties) 可以实现主题定制
+通过覆盖 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties) 可以实现主题定制，组件级可参考组件文档
 
-> 变量源文件 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/style/var.scss](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/style/var.scss)
+变量源文件 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/style/var.scss](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/style/var.scss)
 
 ```scss
 :root {
   // 主题色
-  --d-primary: #057cef;
+  --d-primary: #1b62eb;
 
   // 提示类颜色
   --d-success: #00a870;
@@ -19,14 +19,20 @@
   --d-white-color: #fff;
 
   // 灰色
-  --d-gray-1: #f7f8fa;
-  --d-gray-2: #f2f3f5;
-  --d-gray-3: #ebedf0;
-  --d-gray-4: #dcdee0;
-  --d-gray-5: #c8c9cc;
-  --d-gray-6: #969799;
-  --d-gray-7: #646566;
-  --d-gray-8: #323233;
+  --d-gray-1: #f3f3f3;
+  --d-gray-2: #eeeeee;
+  --d-gray-3: #e8e8e8;
+  --d-gray-4: #dddddd;
+  --d-gray-5: #c6c6c6;
+  --d-gray-6: #a6a6a6;
+  --d-gray-7: #8b8b8b;
+  --d-gray-8: #777777;
+  --d-gray-9: #5e5e5e;
+  --d-gray-10: #4b4b4b;
+  --d-gray-11: #393939;
+  --d-gray-12: #2c2c2c;
+  --d-gray-13: #242424;
+  --d-gray-14: #181818;
 
   // 边框颜色
   --d-border-color: #e5e5e5;
@@ -34,9 +40,6 @@
 
   // 阴影
   --d-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-
-  // 开关背景颜色
-  --d-switch-bg-color: #bcbcbc;
 
   // 圆角
   --d-radius-xs: 2px;
@@ -68,9 +71,6 @@
   --d-gap-sm: 16px;
   --d-gap-md: 24px;
   --d-gap-lg: 32px;
-
-  // 遮罩层背景颜色
-  --d-overlay-bg-color: rgba(0, 0, 0, 0.7);
 
   // 水平间距
   --d-horizontal-gap: calc(var(--d-gap-xxs) + var(--d-gap-xs));

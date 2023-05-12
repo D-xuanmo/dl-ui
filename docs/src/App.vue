@@ -5,7 +5,7 @@
       <template v-if="!isDemoRoute">
         <!-- 左侧菜单 -->
         <div :class="menuClassName">
-          <DMenu :data="menus" />
+          <DMenu :data="menuData" />
         </div>
 
         <!-- 文档内容区 -->
@@ -36,6 +36,13 @@ const containerClassName = computed(() => classNames({ mobile: isDemoRoute.value
 const outContentClassName = classNames('out-content')
 const menuClassName = classNames('menu')
 const innerContentClassName = classNames('inner-content')
+
+const menuData = computed(() => {
+  if (route.path.startsWith('/docs')) {
+    return menus.filter((item) => item.id === 'docs')
+  }
+  return menus.filter((item) => item.id !== 'docs')
+})
 
 watch(
   () => route.path,
