@@ -13,7 +13,7 @@ const getRoutes = () => {
   for (const [key, module] of Object.entries({ ...modules, ...introduce })) {
     const { path } = /(?<path>\/[a-z\d-]+)\.md$/i.exec(key)?.groups ?? {}
     routes.push({
-      path: path.includes('README') ? '/introduce' : path,
+      path,
       component: module
     })
   }

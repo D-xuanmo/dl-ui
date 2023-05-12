@@ -1,19 +1,19 @@
 <template>
   <header :class="headerClassName">
     <div :class="leftClassName">
-      <img src="https://upyun.xuanmo.xin/logo/dynamic-form-32X32.png" alt="Vue dl-ui" />
-      <h1>Vue dl-ui</h1>
+      <img src="https://upyun.xuanmo.xin/logo/dl-ui.svg" alt="Vue dl-ui" />
+      <h1>Vue DL UI</h1>
     </div>
     <div :class="rightClassName">
       <d-space :gap="16" align="center" justify="end">
         <a href="https://run.xuanmo.xin/" target="_blank">
-          <d-button size="small" fill="none" link>演练场</d-button>
+          <d-button size="small" fill="none" link>Playground</d-button>
         </a>
         <a href="https://github.com/D-xuanmo/validator" target="_blank">
           <d-button size="small" fill="none" link>数据校验</d-button>
         </a>
         <a href="https://github.com/D-xuanmo/dl-ui" target="_blank">
-          <img :src="githubLogo" width="24" />
+          <d-button size="small" fill="none" link>GitHub</d-button>
         </a>
       </d-space>
     </div>
@@ -22,7 +22,6 @@
 
 <script lang="ts" setup>
 import { classNames } from '@doc/utils'
-import githubLogo from '../assets/images/GitHub.svg'
 
 const headerClassName = classNames('header')
 const leftClassName = classNames('header-left')

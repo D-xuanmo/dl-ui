@@ -115,6 +115,9 @@ blockquote {
     }
 
     &-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
       flex: 1;
     }
   }
@@ -160,13 +163,13 @@ blockquote {
 
     .markdown-body {
       > * + * {
-        margin-top: var(--d-gap-sm);
+        margin-top: 16px;
       }
+    }
 
-      ul,
-      ol {
-        margin-top: var(--d-gap-xs) !important;
-      }
+    ul,
+    ol {
+      margin-top: var(--d-gap-xs) !important;
     }
 
     li {
@@ -183,10 +186,15 @@ blockquote {
     $h3-font-size: 18px;
     @for $num from 1 through 6 {
       h#{$num} {
+        margin: 16px 0;
         border: 0;
 
         @if $num != 1 {
-          margin-top: var(--d-gap-lg);
+          margin-top: 24px !important;
+        }
+
+        @if $num == 2 {
+          margin: 24px 0 16px;
         }
 
         @if $num > 2 {
@@ -196,11 +204,12 @@ blockquote {
     }
 
     h1 {
+      margin-top: 0;
       font-size: 28px;
-    }
 
-    h2 {
-      font-size: 24px;
+      & + * {
+        margin-top: 10px;
+      }
     }
 
     > img:not(.d-doc-preview__runtime img) {

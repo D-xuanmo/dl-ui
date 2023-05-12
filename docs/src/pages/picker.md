@@ -1,7 +1,5 @@
 # Picker 选择器
 
-> 目前只支持移动端事件
-
 ```vue client=Mobile playground=MPicker
 <template>
   <d-cell-group>
@@ -105,9 +103,9 @@ type PickerOption = DataType | CascadeOption
 type PickerOptions = PickerOption[] | PickerOption[][]
 
 import type {
-  PickerProps, 
+  PickerProps,
   PickerValue,
-  PickerOption, 
+  PickerOption,
   PickerOptions
 } from '@xuanmo/dl-ui'
 ```

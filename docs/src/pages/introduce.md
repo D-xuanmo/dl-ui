@@ -1,49 +1,11 @@
-<p style="text-align: center">
-  <img src="https://upyun.xuanmo.xin/logo/dl-ui.svg" style="width: 50px" />
-</p>
+# DL UI
 
-<h1 style="text-align: center">DL UI</h1>
+一个基于 Vue 3 的低代码组件库
 
-<p style="text-align: center">一个基于 Vue 3 的低代码组件库</p>
+### DL 释义
 
-<hr />
-
-## 安装
-
-### 通过 npm 安装
-
-```bash
-$ npm i @xuanmo/dl-ui
-```
-
-### 通过 yarn 或者 pnpm 安装
-
-```bash
-$ yarn add @xuanmo/dl-ui
-
-$ pnpm add @xuanmo/dl-ui
-```
-
-## 引入组件
-
-```typescript
-import { createApp } from 'vue'
-
-// 1. 引入组件
-import DLUI, { validator } from '@xuanmo/dl-ui'
-
-// 2. 引入校验国际化并注册
-import zhCN from '@xuanmo/validator/locale/zh-CN.json'
-validator.localize(zhCN)
-
-// 3. 引入组件样式
-import '@xuanmo/dl-ui/dist/index.css'
-
-const app = createApp()
-
-// 4. 注册组件
-app.use(DLUI)
-```
+- D 代表梦想（Dream）、动态（Dynamic）
+- L 代表低代码（Low code）
 
 ## 亮点
 
@@ -53,11 +15,6 @@ app.use(DLUI)
 - 💪 繁琐的表单校验通过规则配置即可，校验与表单业务可完美剥离
 - ✍️ 使用 TypeScript 开发，提供完整的类型定义
 - 🛠 更多功能开发中，欢迎共建...
-
-## 链接
-
-- 文档地址：[https://www.xuanmo.xin/-/dl-ui](https://www.xuanmo.xin/-/dl-ui)
-- Demo：[https://www.xuanmo.xin/-/dl-ui/demo/form](https://www.xuanmo.xin/-/dl-ui/demo/form)
 
 ## 特别鸣谢
 
@@ -73,3 +30,9 @@ app.use(DLUI)
 ## 动态
 
 ![Alt](https://repobeats.axiom.co/api/embed/6748b43f3a850bbfb9fa62bca5a734b06a9a2cf0.svg 'Repobeats analytics image')
+
+<style>
+.d-doc__inner-content li {
+  list-style-type: circle;
+}
+</style>

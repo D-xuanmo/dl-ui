@@ -416,8 +416,6 @@ class FormStore {
    * @param name 字段名
    */
   singleValidate: (name: string) => void
-
-  convertModel: () => IFormModelItem<unknown, Record<string, any>>[]
 }
 ```
 
