@@ -66,7 +66,7 @@ const value = ref('1')
 |model-value/v-model|`string \| number`|-|当前选中的数据|Y|
 |direction|`DirectionType`|`vertical`|参考公用类型|N|
 |disabled|`boolean`|-|是否禁用|N|
-|options|`DataType[]`|-|单选框数据项|N|
+|options|`IData[]`|-|单选框数据项|N|
 
 ### TypeScript 类型
 
@@ -83,7 +83,7 @@ export interface DataType {
 import type {
   RadioProps,
   RadioGroupProps,
-  DataType,
+  IData,
   DirectionType
-} from '@xuanmo/fl-ui'
+} from '@xuanmo/dl-ui'
 ```

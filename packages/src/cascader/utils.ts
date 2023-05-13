@@ -1,5 +1,5 @@
 import { createBEM, createNamespace, Modifiers } from '../utils'
-import { CascadeOption, DataType } from '../common'
+import { ICascaderOption, IData } from '../common'
 
 function createCascaderNameSpace(): [string, ReturnType<typeof createBEM>]
 
@@ -22,9 +22,9 @@ function createCascaderNameSpace(childName?: string) {
  * 级联数据转换为 map 结构
  * @param originalOptions
  */
-export const cascaderOptionsToMap = (originalOptions: CascadeOption[]) => {
-  const optionsMap = new Map<DataType['value'], CascadeOption>()
-  const formatOptions = (options: CascadeOption[]) => {
+export const cascaderOptionsToMap = (originalOptions: ICascaderOption[]) => {
+  const optionsMap = new Map<IData['value'], ICascaderOption>()
+  const formatOptions = (options: ICascaderOption[]) => {
     options.forEach((item) => {
       optionsMap.set(item.value, item)
       if (Array.isArray(item.children)) {

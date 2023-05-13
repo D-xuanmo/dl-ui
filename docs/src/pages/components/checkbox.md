@@ -77,7 +77,7 @@ const value2 = ref(['1', '3'])
 |direction|`DirectionType`|`vertical`|参考公用类型|N|
 |disabled|`boolean`|-|是否禁用|N|
 |max|`number`|-|最大选择个数|N|
-|options|`DataType[]`|-|复选框数据项|N|
+|options|`IData[]`|-|复选框数据项|N|
 
 ### TypeScript 类型
 
@@ -85,7 +85,7 @@ const value2 = ref(['1', '3'])
 export type DirectionType = 'horizontal' | 'vertical'
 
 /** 数据基础类型，单选、多选、选择器等组件 */
-export interface DataType {
+export interface IData {
   label: string
   value: string | number
   disabled?: boolean
@@ -94,7 +94,7 @@ export interface DataType {
 import type {
   CheckboxProps,
   CheckboxGroupProps,
-  DataType,
+  IData,
   DirectionType
-} from '@xuanmo/fl-ui'
+} from '@xuanmo/dl-ui'
 ```

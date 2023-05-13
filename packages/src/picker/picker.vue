@@ -33,7 +33,7 @@
 import { computed, CSSProperties, defineComponent, ref, SetupContext, watch } from 'vue'
 import { createNamespace } from '../utils'
 import useModelValue from '../hooks/useModelValue'
-import { CascadeOption, DataType, OmitValueProperties } from '../common'
+import { ICascaderOption, IData, OmitValueProperties } from '../common'
 import { PickerOption, PICKER_PROPS, PickerValue } from './props'
 import { deepCopy, isEmpty, isObject } from '@xuanmo/javascript-utils'
 import { findCascadeFirstLevelData, findDisplayName, formatCascade } from './utils'
@@ -68,18 +68,18 @@ export default defineComponent({
     )
 
     // 是否为级联选择模式
-    const isCascade = computed(() => Array.isArray((props.options[0] as CascadeOption)?.children))
+    const isCascade = computed(() => Array.isArray((props.options[0] as ICascaderOption)?.children))
 
     // 接收子级传递回来的数据，用作缓存
     const temporaryValue = ref<PickerValue>(
       !isEmpty(innerValue.value)
         ? deepCopy(innerValue.value)
-        : findCascadeFirstLevelData(props.options as CascadeOption[])
+        : findCascadeFirstLevelData(props.options as ICascaderOption[])
     )
     // 内部渲染列使用
     const formattedColumns = computed(() => {
       if (isCascade.value) {
-        return formatCascade(temporaryValue.value, props.options as CascadeOption[])
+        return formatCascade(temporaryValue.value, props.options as ICascaderOption[])
       }
 
       if (isObject(props.options[0])) {
@@ -100,7 +100,7 @@ export default defineComponent({
       height: `${props.optionHeight * 5}px`
     }))
 
-    const onChange = (data: DataType, columnIndex: number) => {
+    const onChange = (data: IData, columnIndex: number) => {
       temporaryValue.value[columnIndex] = data
       context.emit('change', temporaryValue.value, data)
     }
@@ -112,7 +112,7 @@ export default defineComponent({
 
     const handleConfirm = () => {
       const value = temporaryValue.value.map((item) =>
-        isObject(item) ? (item as DataType).value : item
+        isObject(item) ? (item as IData).value : item
       )
       updateValue(value as PickerValue)
       handleClose()
@@ -128,9 +128,7 @@ export default defineComponent({
 
     const formatColumnValue = (columnIndex: number) => {
       const columnValue = temporaryValue.value[columnIndex]
-      return (isObject(columnValue) ? (columnValue as DataType).value : columnValue) as
-        | string
-        | number
+      return (isObject(columnValue) ? (columnValue as IData).value : columnValue) as string | number
     }
 
     watch(
@@ -155,7 +153,7 @@ export default defineComponent({
           findDisplayName(innerValue.value, formattedColumns.value) ||
           (props.placeholder ?? '请选择')
         if (isCascade.value && isEmpty(temporaryValue.value)) {
-          temporaryValue.value = findCascadeFirstLevelData(props.options as CascadeOption[])
+          temporaryValue.value = findCascadeFirstLevelData(props.options as ICascaderOption[])
         }
       }
     )

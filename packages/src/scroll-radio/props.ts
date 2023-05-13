@@ -1,6 +1,6 @@
 import { PropType } from 'vue'
 import { pickProps } from '../utils'
-import { DataType } from '../common'
+import { IData } from '../common'
 
 export const SCROLL_RADIO_PROPS = {
   value: {
@@ -9,7 +9,7 @@ export const SCROLL_RADIO_PROPS = {
   },
 
   options: {
-    type: Array as PropType<DataType[]>,
+    type: Array as PropType<IData[]>,
     required: true,
     default: () => []
   },
@@ -41,7 +41,7 @@ export const SCROLL_RADIO_PROPS = {
 
 export const SCROLL_RADIO_ITEM_PROPS = {
   option: {
-    type: Object as PropType<DataType>,
+    type: Object as PropType<IData>,
     default: () => ({})
   },
   ...pickProps(SCROLL_RADIO_PROPS, ['optionHeight'])

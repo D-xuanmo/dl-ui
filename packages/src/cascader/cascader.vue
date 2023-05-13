@@ -48,7 +48,7 @@ import { computed, defineComponent, ref, SetupContext, watch } from 'vue'
 import { cascaderOptionsToMap, createCascaderNameSpace } from './utils'
 import { CASCADER_PROPS } from './props'
 import { pickLastItem, isEmpty, isObject, deepCopy } from '@xuanmo/javascript-utils'
-import { CascadeOption, CascaderObjectValue, CascaderValue, DataType } from '../common'
+import { ICascaderOption, CascaderObjectValue, CascaderValue, IData } from '../common'
 import useModelValue from '../hooks/useModelValue'
 import DPopup from '../popup'
 import { DTabs, DTabPanel } from '../tabs'
@@ -93,13 +93,13 @@ export default defineComponent({
     const placeholderPrefix = '__placeholder__'
 
     // 子级加载状态
-    const loadingMap = ref(new Map<DataType['value'], boolean>())
+    const loadingMap = ref(new Map<IData['value'], boolean>())
 
     // 当前面板选项
-    const activeOptions = ref<CascadeOption[]>([])
+    const activeOptions = ref<ICascaderOption[]>([])
 
     // 当前选中的数据路径
-    const activePath = ref<CascadeOption[]>([])
+    const activePath = ref<ICascaderOption[]>([])
 
     // 当前选择的值
     const activeTab = ref<string | number>('')
@@ -118,7 +118,7 @@ export default defineComponent({
         (prev: any, current: CascaderValue[number], currentIndex: number) => {
           let option = isObject(current)
             ? optionsMap.get((current as CascaderObjectValue[number]).value)
-            : optionsMap.get(current as DataType['value'])
+            : optionsMap.get(current as IData['value'])
           if (option) {
             prev.path.push(option)
             if (currentIndex === value.length - 2) {
@@ -131,7 +131,7 @@ export default defineComponent({
           path: [],
           options: []
         }
-      ) as { path: CascadeOption[]; options: CascadeOption[] }
+      ) as { path: ICascaderOption[]; options: ICascaderOption[] }
     }
 
     const getPlaceholder = (value?: string | number) => ({
@@ -147,7 +147,7 @@ export default defineComponent({
       activeTab.value = pickLastItem(activePath.value).value
     }
 
-    const handleChange = async (data: CascadeOption) => {
+    const handleChange = async (data: ICascaderOption) => {
       const placeholder = getPlaceholder(data.value)
       if (props.lazy) {
         if (loadingMap.value.get(data.value)) return

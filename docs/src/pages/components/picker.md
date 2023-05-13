@@ -72,7 +72,7 @@ fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address
 
 |参数|类型|默认值|说明|必传|
 |----|---|-----|---|----|
-|model-value/v-model|`string[] \| number[] \| DataType[]`|-|当前选中的数据|Y|
+|model-value/v-model|`string[] \| number[] \| IData[]`|-|当前选中的数据|Y|
 |visible|`boolean`|`false`|显示与隐藏|N|
 |options|`PickerOptions`|[]|选择器列数据|N|
 |title|`string`|-|支持设置一个顶部标题|N|
@@ -87,7 +87,7 @@ fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address
 |事件|说明|回调参数|
 |---|----|-------|
 |update:visible|显示隐藏事件|`(visible: boolean) => void`|
-|change|确认事件|`(value: PickerValue, data: DataType) => void`|
+|change|确认事件|`(value: PickerValue, data: IData) => void`|
 |confirm|确认事件|`(value: PickerValue) => void`|
 |close|关闭事件|`() => void`|
 
@@ -96,10 +96,10 @@ fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address
 > 公用类型 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/common.ts](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/common.ts)
 
 ```typescript
-type PickerValue = string[] | number[] | DataType[]
+type PickerValue = string[] | number[] | IData[]
 
 /** 选择器每列数据类型 */
-type PickerOption = DataType | CascadeOption
+type PickerOption = IData | ICascaderOption
 
 /** 选择器数据类型 */
 type PickerOptions = PickerOption[] | PickerOption[][]

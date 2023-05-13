@@ -1,4 +1,4 @@
-import { CascadeOption, CascaderValue, COMMON_PROPS, DataType } from '../common'
+import { ICascaderOption, CascaderValue, COMMON_PROPS, IData } from '../common'
 import { ExtractPropTypes, PropType } from 'vue'
 
 export type CascaderProps = ExtractPropTypes<typeof CASCADER_PROPS>
@@ -20,7 +20,7 @@ export const CASCADER_PROPS = {
    * 级联选项数据源
    */
   options: {
-    type: Array as PropType<CascadeOption[]>,
+    type: Array as PropType<ICascaderOption[]>,
     required: true,
     default: () => []
   },
@@ -55,7 +55,7 @@ export const CASCADER_PROPS = {
    * 数据懒加载，需要配合 lazy
    */
   lazyLoad: {
-    type: Function as PropType<(option: CascadeOption) => Promise<CascadeOption[]>>,
+    type: Function as PropType<(option: ICascaderOption) => Promise<ICascaderOption[]>>,
     default: undefined
   }
 }
@@ -65,7 +65,7 @@ export const CASCADER_TAB_PROPS = {
    * 选择的数据列表
    */
   data: {
-    type: Array as PropType<DataType[]>,
+    type: Array as PropType<IData[]>,
     required: true,
     default: () => []
   }

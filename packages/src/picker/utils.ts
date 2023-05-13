@@ -1,15 +1,15 @@
 import { PickerOptions, PickerOption, PickerValue } from './props'
 import { isObject } from '@xuanmo/javascript-utils'
-import { CascadeOption, DataType } from '../common'
+import { ICascaderOption, IData } from '../common'
 
 /**
  * 查找默认一级数据
  * @param columns
  */
-export const findCascadeFirstLevelData = (columns: CascadeOption[]) => {
-  const firstLevelData: CascadeOption[] = []
+export const findCascadeFirstLevelData = (columns: ICascaderOption[]) => {
+  const firstLevelData: ICascaderOption[] = []
   let level = 0
-  const findFirstLevelData = (column: CascadeOption) => {
+  const findFirstLevelData = (column: ICascaderOption) => {
     firstLevelData.push(column)
     while (firstLevelData?.[level]) {
       const result = firstLevelData?.[level]?.children
@@ -26,17 +26,17 @@ export const findCascadeFirstLevelData = (columns: CascadeOption[]) => {
  * @param value 当前选中的值
  * @param columns
  */
-export const formatCascade = (value: PickerValue, columns: CascadeOption[]) => {
+export const formatCascade = (value: PickerValue, columns: ICascaderOption[]) => {
   const formatted: PickerOption[][] = []
   let level = 0
-  function findColumns(data: CascadeOption[]) {
+  function findColumns(data: ICascaderOption[]) {
     while (value[level] && data) {
       if (!value[level]) break
       const result =
         data.find((item) => {
-          const current = value[level] as DataType
+          const current = value[level] as IData
           // 传入的 value 为对象数组，取 value 属性
-          return item?.value === (isObject(current) ? (current as CascadeOption).value : current)
+          return item?.value === (isObject(current) ? (current as ICascaderOption).value : current)
         }) ?? data[0]
       level++
       if (result) {
@@ -63,7 +63,7 @@ export const findDisplayName = (value: PickerValue, originalColumns: PickerOptio
     const item = value[i]
     const label = columns.find((col) => {
       if (isObject(item)) {
-        return (item as DataType).value === col.value
+        return (item as IData).value === col.value
       }
       return col.value === item
     })?.label

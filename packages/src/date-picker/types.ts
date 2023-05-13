@@ -1,5 +1,5 @@
-import { DataType } from '../common'
+import { IData } from '../common'
 
-export type DateTimePickerOption = DataType & {
+export type DateTimePickerOption = IData & {
   type: 'year' | 'month' | 'day' | 'hour' | 'minute' | 'second'
 }

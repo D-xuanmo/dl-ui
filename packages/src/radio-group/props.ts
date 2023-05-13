@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { COMMON_PROPS, DataType, DirectionType } from '../common'
+import { COMMON_PROPS, IData, DirectionType } from '../common'
 
 export type RadioGroupProps = ExtractPropTypes<typeof RADIO_GROUP_PROPS>
 
@@ -10,7 +10,7 @@ export const RADIO_GROUP_PROPS = {
     required: true
   },
   options: {
-    type: Array as PropType<Array<DataType> | undefined>,
+    type: Array as PropType<Array<IData> | undefined>,
     default: undefined
   },
   direction: {

@@ -27,7 +27,7 @@ import { addUnit, createNamespace } from '../utils'
 import { SCROLL_RADIO_PROPS } from './props'
 import ScrollRadioItem from './scroll-radio-item.vue'
 import { debounce } from '@xuanmo/javascript-utils'
-import { DataType } from '../common'
+import { IData } from '../common'
 
 const [name, bem] = createNamespace('scroll-radio')
 
@@ -61,7 +61,7 @@ export default defineComponent({
       wrapperRef.value?.scrollTo(0, index * props.optionHeight)
     }
 
-    const findNext = (current: DataType, index: number): [DataType, number] => {
+    const findNext = (current: IData, index: number): [IData, number] => {
       if (!current.disabled) return [current, index]
       const newIndex = props.options.findIndex((item) => item.value === current.value) + 1
       return findNext(props.options[newIndex], newIndex)

@@ -29,16 +29,16 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { CascadeOption } from '../../common'
+import { ICascaderOption } from '../../common'
 
-const template = ref<CascadeOption[]>([])
+const template = ref<ICascaderOption[]>([])
 const value = ref(['110000000000', '110100000000', '110102000000', '110102007000'])
 const value2 = ref([
   { value: '110000000000', label: '北京市' },
   { value: '110100000000', label: '市辖区' },
   { value: '110102000000', label: '西城区' }
 ])
-const template2 = ref<CascadeOption[]>([
+const template2 = ref<ICascaderOption[]>([
   {
     label: '北京市',
     value: '110000000000'
@@ -54,8 +54,8 @@ const value3 = ref([])
  * 异步加载子级数据
  * @param options 当前级数据
  */
-const handleLazyLoad = (options: CascadeOption) =>
-  new Promise<CascadeOption[]>((resolve) => {
+const handleLazyLoad = (options: ICascaderOption) =>
+  new Promise<ICascaderOption[]>((resolve) => {
     setTimeout(() => {
       /* eslint-disable */
       switch (options.value) {

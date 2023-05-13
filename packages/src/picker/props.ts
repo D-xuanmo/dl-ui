@@ -1,10 +1,10 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { CascadeOption, COMMON_PROPS, DataType } from '../common'
+import { ICascaderOption, COMMON_PROPS, IData } from '../common'
 
-export type PickerValue = string[] | number[] | DataType[]
+export type PickerValue = string[] | number[] | IData[]
 
 /** 选择器每列数据类型 */
-export type PickerOption = DataType | CascadeOption
+export type PickerOption = IData | ICascaderOption
 
 /** 选择器数据类型 */
 export type PickerOptions = PickerOption[] | PickerOption[][]
