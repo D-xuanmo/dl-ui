@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { ua } from '@xuanmo/javascript-utils'
 
 /**
  * 遍历所有文档路由
@@ -68,7 +69,7 @@ const routes = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/docs/introduce'
+      redirect: ua().device === 'Mobile' ? '/demo/component-list' : '/docs/introduce'
     },
     {
       path: '/demo',
