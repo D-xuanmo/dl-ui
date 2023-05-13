@@ -32,7 +32,7 @@
 <script lang="ts">
 import { computed, CSSProperties, defineComponent, ref, SetupContext, watch } from 'vue'
 import { createNamespace } from '../utils'
-import useModelValue from '../hooks/useModelValue'
+import useModelValue from '../hooks/use-model-value'
 import { ICascaderOption, IData, OmitValueProperties } from '../common'
 import { PickerOption, PICKER_PROPS, PickerValue } from './props'
 import { deepCopy, isEmpty, isObject } from '@xuanmo/javascript-utils'

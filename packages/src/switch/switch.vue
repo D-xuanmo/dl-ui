@@ -14,7 +14,7 @@
 import { computed, defineComponent, SetupContext } from 'vue'
 import { isPromise } from '@vue/shared'
 import { createNamespace } from '../utils'
-import useModelValue from '../hooks/useModelValue'
+import useModelValue from '../hooks/use-model-value'
 import DIcon from '../icon'
 import { isBoolean, throwError, debugWarn } from '@xuanmo/javascript-utils'
 import { SWITCH_PROPS } from './props'

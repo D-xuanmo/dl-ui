@@ -48,7 +48,7 @@
 import { computed, CSSProperties, defineComponent } from 'vue'
 import { createNamespace } from '../utils'
 import DOverlay from '../overlay'
-import useZIndex from '../hooks/useZIndex'
+import useZIndex from '../hooks/use-z-index'
 import { POPUP_PROPS } from './props'
 
 const [name, bem] = createNamespace('popup')

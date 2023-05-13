@@ -16,7 +16,7 @@
 import { computed, defineComponent, provide, SetupContext } from 'vue'
 import { createNamespace } from '../utils'
 import { RADIO_GROUP_PROPS } from './props'
-import useModelValue from '../hooks/useModelValue'
+import useModelValue from '../hooks/use-model-value'
 import { RADIO_GROUP_CONTEXT_KEY } from '../context'
 import DRadio from '../radio'
 

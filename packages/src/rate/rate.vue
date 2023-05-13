@@ -31,7 +31,7 @@
 import { computed, CSSProperties, defineComponent, SetupContext } from 'vue'
 import { createNamespace } from '../utils'
 import { isNumber } from '@xuanmo/javascript-utils'
-import useModelValue from '../hooks/useModelValue'
+import useModelValue from '../hooks/use-model-value'
 import { RATE_PROPS } from './props'
 
 const [name, bem] = createNamespace('rate')

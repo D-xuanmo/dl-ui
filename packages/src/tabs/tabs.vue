@@ -11,7 +11,7 @@
 import { computed, CSSProperties, defineComponent, Fragment, SetupContext } from 'vue'
 import { getComponentName } from '../utils'
 import { TABS_PROPS, TabsProps } from './props'
-import useModelValue from '../hooks/useModelValue'
+import useModelValue from '../hooks/use-model-value'
 import { createTabsNameSpace } from './utils'
 import { TabsItemType, TabsValueType } from './types'
 import TabsNav from './nav.vue'

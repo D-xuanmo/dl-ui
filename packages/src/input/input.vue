@@ -43,7 +43,7 @@
 import { computed, defineComponent, SetupContext } from 'vue'
 import { createNamespace } from '../utils'
 import Cell from '../cell'
-import useModelValue from '../hooks/useModelValue'
+import useModelValue from '../hooks/use-model-value'
 import { INPUT_PROPS } from './props'
 
 const [name, bem] = createNamespace('input')

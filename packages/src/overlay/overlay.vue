@@ -20,8 +20,8 @@
 <script lang="ts">
 import { CSSProperties, defineComponent, SetupContext, computed } from 'vue'
 import { createNamespace } from '../utils'
-import useModelValue from '../hooks/useModelValue'
-import useZIndex from '../hooks/useZIndex'
+import useModelValue from '../hooks/use-model-value'
+import useZIndex from '../hooks/use-z-index'
 import { PREFIX } from '../constants/prefix'
 import { OVERLAY_PROPS } from './props'
 
