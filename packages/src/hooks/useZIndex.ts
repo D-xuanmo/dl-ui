@@ -1,5 +1,6 @@
-import { getCurrentInstance, inject, Ref, ref } from 'vue'
-import { GLOBAL_CONFIG_CONTEXT_KEY } from '../context'
+import { Ref, ref } from 'vue'
+
+let globalZIndex = 2000
 
 /**
  * 统一处理 zIndex
@@ -7,19 +8,12 @@ import { GLOBAL_CONFIG_CONTEXT_KEY } from '../context'
  * @param autoIncrement 是否需要自增
  */
 function useZIndex<P>(props: P & { zIndex?: number }, autoIncrement = true) {
-  const { proxy } = getCurrentInstance() ?? {}
-  const globalConfig = inject(GLOBAL_CONFIG_CONTEXT_KEY) ?? {}
-
-  const defaultZIndex = props.zIndex ?? globalConfig.zIndex
+  const defaultZIndex = props.zIndex ?? globalZIndex
 
   const zIndex = ref(defaultZIndex)
 
-  const newZIndex = zIndex.value ? zIndex.value + 1 : (proxy?.$DLUI?.zIndex ?? 2000) + 1
-
   function setZIndex() {
-    if (proxy?.$DLUI) {
-      proxy.$DLUI.zIndex = newZIndex
-    }
+    globalZIndex = zIndex.value ? zIndex.value + 1 : globalZIndex + 1
   }
 
   autoIncrement && setZIndex()

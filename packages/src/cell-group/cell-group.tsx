@@ -11,7 +11,7 @@ export default defineComponent({
   name,
   props: CELL_GROUP_PROPS,
   setup(props, { slots }) {
-    const globalConfig = inject(GLOBAL_CONFIG_CONTEXT_KEY)
+    const globalConfig = inject(GLOBAL_CONFIG_CONTEXT_KEY, {})
     const layout = ref(props.layout || globalConfig?.cellLayout)
 
     provide(CELL_GROUP_CONTEXT_KEY, {

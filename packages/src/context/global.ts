@@ -21,4 +21,4 @@ export type GlobalConfigType = {
   zIndex?: number
 }
 
-export const GLOBAL_CONFIG_CONTEXT_KEY = Symbol('DLui') as InjectionKey<GlobalConfigType>
+export const GLOBAL_CONFIG_CONTEXT_KEY = Symbol('DLUI') as InjectionKey<GlobalConfigType>
