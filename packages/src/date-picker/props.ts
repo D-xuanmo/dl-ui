@@ -15,10 +15,6 @@ export type DatePickerProps = ExtractPropTypes<typeof DATE_PICKER_PROPS>
 
 export const DATE_PICKER_PROPS = {
   ...COMMON_PROPS,
-  value: {
-    type: [String, Date] as PropType<DatePickerValue>,
-    default: undefined
-  },
   modelValue: {
     type: [String, Date] as PropType<DatePickerValue>,
     default: undefined

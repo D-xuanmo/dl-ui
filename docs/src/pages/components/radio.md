@@ -63,7 +63,7 @@ const value = ref('1')
 
 |参数|类型|默认值|说明|必传|
 |---|----|-----|---|----|
-|v-model|`string \| number`|-|当前选中的数据|Y|
+|model-value/v-model|`string \| number`|-|当前选中的数据|Y|
 |direction|`DirectionType`|`vertical`|参考公用类型|N|
 |disabled|`boolean`|-|是否禁用|N|
 |options|`DataType[]`|-|单选框数据项|N|
@@ -80,10 +80,10 @@ export interface DataType {
   disabled?: boolean
 }
 
-import type { 
-  RadioProps, 
-  RadioGroupProps, 
-  DataType, 
+import type {
+  RadioProps,
+  RadioGroupProps,
+  DataType,
   DirectionType
 } from '@xuanmo/fl-ui'
 ```

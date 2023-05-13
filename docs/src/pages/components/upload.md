@@ -47,7 +47,7 @@ const uploadAfterHandler = (response: any) => {
 
 |参数|类型|默认值|说明|必传|
 |---|----|-----|---|----|
-|v-model|`UploadListItemType[]`|-|当前文件列表|Y|
+|model-value/v-model|`UploadListItemType[]`|-|当前文件列表|Y|
 |action|`string`|-|文件上传地址|N|
 |accept|`string`|`image/*`|文件上传类型，input 原生属性|N|
 |capture|`'user' \| 'environment' \| boolean \| undefined`|-|相机调取模式，原生属性|N|

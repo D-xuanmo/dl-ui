@@ -33,16 +33,13 @@ function useModelValue<V, P, VK extends string>(
   const innerValue = ref<V>()
 
   const isUsedModelValue = props.modelValue !== undefined
-  const isUsedValue = props.value !== undefined
   const isUsedCustomValue = valueKey && props[valueKey] !== undefined
 
   watchEffect(() => {
     if (isUsedCustomValue) {
       innerValue.value = props[valueKey]
     } else {
-      if (isUsedValue) {
-        innerValue.value = props.value
-      } else if (isUsedModelValue) {
+      if (isUsedModelValue) {
         innerValue.value = props.modelValue
       }
     }
@@ -56,9 +53,7 @@ function useModelValue<V, P, VK extends string>(
     if (isUsedCustomValue) {
       emit(eventName!, value)
     } else {
-      if (isUsedValue) {
-        emit('update:value', value)
-      } else if (isUsedModelValue) {
+      if (isUsedModelValue) {
         emit('update:model-value', value)
       }
     }

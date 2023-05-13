@@ -5,10 +5,6 @@ export type RateProps = ExtractPropTypes<typeof RATE_PROPS>
 
 export const RATE_PROPS = {
   ...COMMON_PROPS,
-  value: {
-    type: Number,
-    default: undefined
-  },
   modelValue: {
     type: Number,
     default: undefined

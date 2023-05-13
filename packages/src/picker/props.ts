@@ -13,10 +13,6 @@ export type PickerProps = ExtractPropTypes<typeof PICKER_PROPS>
 
 export const PICKER_PROPS = {
   ...COMMON_PROPS,
-  value: {
-    type: Array as PropType<PickerValue>,
-    default: undefined
-  },
   modelValue: {
     type: Array as PropType<PickerValue>,
     default: undefined

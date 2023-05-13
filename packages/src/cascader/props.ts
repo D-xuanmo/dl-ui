@@ -6,10 +6,6 @@ export type CascaderProps = ExtractPropTypes<typeof CASCADER_PROPS>
 export const CASCADER_PROPS = {
   ...COMMON_PROPS,
 
-  value: {
-    type: Array as PropType<CascaderValue>,
-    default: undefined
-  },
   modelValue: {
     type: Array as PropType<CascaderValue>,
     default: undefined

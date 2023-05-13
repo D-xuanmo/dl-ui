@@ -63,7 +63,7 @@ function onBlur(value: string) {
 
 |参数|类型|默认值|说明|必传|
 |---|----|-----|---|----|
-|v-model|`string`|-|输入值|N|
+|model-value/v-model|`string`|-|输入值|N|
 |type|`string`|text|输入框类型，可选值：`text/number/password/email/url`|N|
 |name|`string`|-|input 原生属性|N|
 |label|`string`|-|左侧显示文字|N|

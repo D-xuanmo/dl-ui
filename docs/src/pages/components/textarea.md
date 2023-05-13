@@ -32,7 +32,7 @@ const value3 = ref('')
 
 |参数|类型|默认值|说明|必传|
 |---|----|-----|---|----|
-|v-model|`string`|-|组件数据|Y|
+|model-value/v-model|`string`|-|组件数据|Y|
 |disabled|`boolean`|-|表单禁用|N|
 |readonly|`boolean`|-|表单只读|N|
 |maxlength|`number`|-|最大长度，原生属性|N|

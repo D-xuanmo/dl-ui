@@ -73,7 +73,7 @@ const value2 = ref(['1', '3'])
 
 |参数|类型|默认值|说明|必传|
 |---|----|-----|---|----|
-|v-model|`string \| number`|-|当前选中的数据|Y|
+|model-value/v-model|`string \| number`|-|当前选中的数据|Y|
 |direction|`DirectionType`|`vertical`|参考公用类型|N|
 |disabled|`boolean`|-|是否禁用|N|
 |max|`number`|-|最大选择个数|N|
@@ -91,10 +91,10 @@ export interface DataType {
   disabled?: boolean
 }
 
-import type { 
-  CheckboxProps, 
-  CheckboxGroupProps, 
-  DataType, 
-  DirectionType 
+import type {
+  CheckboxProps,
+  CheckboxGroupProps,
+  DataType,
+  DirectionType
 } from '@xuanmo/fl-ui'
 ```

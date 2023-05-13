@@ -38,7 +38,7 @@ const value = ref(2)
 
 |参数|类型|默认值|说明|必传|
 |----|---|-----|---|----|
-|v-model|`number`|-|当前选中评分值|Y|
+|model-value/v-model|`number`|-|当前选中评分值|Y|
 |count|`number`|5|图标个数|N|
 |size|`SizeType \| string`|`medium`|图标大小|N|
 |gap|`number`|4|图标间距|N|

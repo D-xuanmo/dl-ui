@@ -24,7 +24,7 @@ export default defineComponent({
   name,
   components: { DIcon },
   props: SWITCH_PROPS,
-  emits: ['update:value', 'update:model-value'],
+  emits: ['update:model-value'],
   setup(props, { emit }) {
     const [innerValue, setValue] = useModelValue<boolean | undefined, typeof props>(
       props,

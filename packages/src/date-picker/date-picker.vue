@@ -7,7 +7,7 @@
   />
   <d-picker
     :visible="visible"
-    :value="pickerValue"
+    :model-value="pickerValue"
     :options="columns"
     :title="title"
     controlled
@@ -37,7 +37,7 @@ export default defineComponent({
   name,
   components: { DPicker, DCell },
   props: DATE_PICKER_PROPS,
-  emits: ['update:value', 'update:model-value'],
+  emits: ['update:model-value'],
   setup(props, { emit }) {
     const [innerValue, updateValue] = useModelValue(props, emit as SetupContext['emit'])
     const dateUtil = new DateUtil(innerValue.value, {

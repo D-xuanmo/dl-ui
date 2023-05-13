@@ -69,7 +69,7 @@ function beforeChange() {
 
 |参数|类型|默认值|说明|必传|
 |---|----|-----|---|----|
-|v-model|`boolean`|-|绑定的值|Y|
+|model-value/v-model|`boolean`|-|绑定的值|Y|
 |loading|`boolean`|`false`|可设置加载状态|N|
 |disabled|`boolean`|`false`|禁用状态设置|N|
 |round|`boolean`|`true`|是否显示为圆角类型|N|

@@ -48,7 +48,7 @@ export default defineComponent({
   name,
   components: { DIcon, DScrollRadio, DButton },
   props: PICKER_PROPS,
-  emits: ['update:visible', 'update:model-value', 'update:value', 'change', 'confirm', 'close'],
+  emits: ['update:visible', 'update:model-value', 'change', 'confirm', 'close'],
   setup(props, context: SetupContext<EventType>) {
     const className = bem()
     const contentClassName = bem('content')
@@ -116,7 +116,7 @@ export default defineComponent({
       )
       updateValue(value as PickerValue)
       handleClose()
-      context.emit('confirm', temporaryValue.value)
+      context.emit('confirm', value as PickerValue)
     }
 
     const handleClose = () => {

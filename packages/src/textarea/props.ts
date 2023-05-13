@@ -5,7 +5,6 @@ export type TextareaProps = ExtractPropTypes<typeof TEXTAREA_PROPS>
 
 export const TEXTAREA_PROPS = {
   ...COMMON_PROPS,
-  value: String,
   modelValue: String,
   maxlength: Number,
   rows: {

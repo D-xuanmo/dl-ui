@@ -120,7 +120,7 @@ fetch('/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727').then(as
 
 |参数|类型|默认值|说明|必传|
 |----|---|-----|---|----|
-|v-model|`CascaderValue`|-|组件选择的值|Y|
+|model-value/v-model|`CascaderValue`|-|组件选择的值|Y|
 |options|`CascadeOption[]`|-|选项数据|Y|
 |placeholder|`string`|-|提示语|N|
 |title|`string`|-|支持设置一个顶部标题|N|

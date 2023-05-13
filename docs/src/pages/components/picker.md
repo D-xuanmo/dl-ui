@@ -72,7 +72,7 @@ fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address
 
 |参数|类型|默认值|说明|必传|
 |----|---|-----|---|----|
-|v-model|`string[] \| number[] \| DataType[]`|-|当前选中的数据|Y|
+|model-value/v-model|`string[] \| number[] \| DataType[]`|-|当前选中的数据|Y|
 |visible|`boolean`|`false`|显示与隐藏|N|
 |options|`PickerOptions`|[]|选择器列数据|N|
 |title|`string`|-|支持设置一个顶部标题|N|

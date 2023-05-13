@@ -5,10 +5,6 @@ export type SwitchProps = ExtractPropTypes<typeof SWITCH_PROPS>
 
 export const SWITCH_PROPS = {
   ...COMMON_PROPS,
-  value: {
-    type: Boolean,
-    default: undefined
-  },
   modelValue: {
     type: Boolean,
     default: undefined

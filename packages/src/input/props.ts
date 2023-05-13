@@ -4,10 +4,6 @@ import { FieldFormatterTrigger, HorizontalAlignType, SizeType } from '../common'
 export type InputProps = ExtractPropTypes<typeof INPUT_PROPS>
 
 export const INPUT_PROPS = {
-  value: {
-    type: [String, Number] as PropType<string | number | undefined>,
-    default: undefined
-  },
   modelValue: {
     type: [String, Number] as PropType<string | number | undefined>,
     default: undefined
