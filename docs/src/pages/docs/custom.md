@@ -79,7 +79,7 @@
 
 ## 表单校验规则扩展
 
-> 更多用法参考 [https://github.com/D-xuanmo/validator](https://github.com/D-xuanmo/validator)
+更多用法参考 [https://github.com/D-xuanmo/validator](https://github.com/D-xuanmo/validator)
 
 ```typescript
 import { validator } from '@xuanmo/dl-ui'

@@ -14,13 +14,17 @@
     />
     <d-cell title="左侧弹出" content="placement: left" arrow @click="handleShowPopup2('left')" />
     <d-cell title="右侧弹出" content="placement: right" arrow @click="handleShowPopup2('right')" />
-    <d-popup v-model:visible="showPopup2" :placement="placement" />
+    <d-popup v-model:visible="showPopup2" :placement="placement">
+      <div style="min-width: 100px; min-height: 100px">我是内容</div>
+    </d-popup>
   </d-cell-group>
 
   <d-cell-group round title="其他设置">
     <d-cell title="圆角显示" arrow @click="handleShowPopup3" />
     <d-cell title="显示标题" arrow @click="handleShowPopup4" />
-    <d-popup v-model:visible="showPopup3" placement="bottom" round />
+    <d-popup v-model:visible="showPopup3" placement="bottom" round>
+      <div style="min-width: 100px; min-height: 100px">我是内容</div>
+    </d-popup>
     <d-popup
       v-model:visible="showPopup4"
       title="我是标题我是标题我是标题我是标题我是标题我是标题"

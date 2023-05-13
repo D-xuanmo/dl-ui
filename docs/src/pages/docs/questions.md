@@ -8,7 +8,7 @@
 
 ```typescript
 // 1. 引入组件
-import DLui, { validator } from '@xuanmo/dl-ui'
+import DLUI, { validator } from '@xuanmo/dl-ui'
 
 // 2. 引入校验国际化并注册
 import zhCN from '@xuanmo/validator/locale/zh-CN.json'

@@ -3,11 +3,16 @@ import { MenuItemType } from './components/menu/types'
 
 const menus: MenuItemType[] = [
   {
+    id: 'introduce',
+    hide: ua().device === 'Mobile',
+    groupTitle: '介绍',
+    children: [{ id: 'introduce', path: '/docs/introduce', content: 'DL UI' }]
+  },
+  {
     id: 'docs',
     hide: ua().device === 'Mobile',
     groupTitle: '开发指南',
     children: [
-      { id: 'introduce', path: '/docs/introduce', content: '介绍' },
       { id: 'quick', path: '/docs/quick', content: '快速上手' },
       { id: 'common', path: '/docs/common', content: '全局说明' },
       { id: 'custom', path: '/docs/custom', content: '自定义能力' },
@@ -19,7 +24,6 @@ const menus: MenuItemType[] = [
     id: createRandomID(),
     groupTitle: '基础组件',
     children: [
-      { id: 'button', path: '/components/button', content: 'Button [按钮]' },
       { id: 'cell', path: '/components/cell', content: 'Cell [单元格]' },
       { id: 'icon', path: '/components/icon', content: 'Icon [图标]' },
       { id: 'overlay', path: '/components/overlay', content: 'Overlay [遮罩层]' },
@@ -32,6 +36,7 @@ const menus: MenuItemType[] = [
     id: createRandomID(),
     groupTitle: '表单组件',
     children: [
+      { id: 'button', path: '/components/button', content: 'Button [按钮]' },
       { id: 'input', path: '/components/input', content: 'Input [输入框]' },
       { id: 'textarea', path: '/components/textarea', content: 'Textarea [多行文本框]' },
       { id: 'switch', path: '/components/switch', content: 'Switch [开关]' },

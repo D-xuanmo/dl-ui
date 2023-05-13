@@ -38,10 +38,11 @@ const menuClassName = classNames('menu')
 const innerContentClassName = classNames('inner-content')
 
 const menuData = computed(() => {
+  const docIds = ['introduce', 'docs']
   if (route.path.startsWith('/docs')) {
-    return menus.filter((item) => item.id === 'docs')
+    return menus.filter((item) => docIds.includes(item.id))
   }
-  return menus.filter((item) => item.id !== 'docs')
+  return menus.filter((item) => !docIds.includes(item.id))
 })
 
 watch(

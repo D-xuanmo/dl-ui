@@ -49,7 +49,7 @@ const uploadAfterHandler = (response: any) => {
 |---|----|-----|---|----|
 |v-model|`UploadListItemType[]`|-|当前文件列表|Y|
 |action|`string`|-|文件上传地址|N|
-|accept|`string`|`image/\*`|文件上传类型，input 原生属性|N|
+|accept|`string`|`image/*`|文件上传类型，input 原生属性|N|
 |capture|`'user' \| 'environment' \| boolean \| undefined`|-|相机调取模式，原生属性|N|
 |method|`string`|`POST`|请求方式|N|
 |name|`string`|`file`|文件上传字段名|N|
@@ -60,8 +60,8 @@ const uploadAfterHandler = (response: any) => {
 |max-size|`number`|`Infinity`|上传大小限制，单位：byte|N|
 |max-count|`number`|`Infinity`|上传个数|N|
 |preview-size|`number`|`80px`|上传区域预览大小|N|
-|data|`Record<string,any>`|-|文件上传需要携带的附加参数|N|
-|header-params|`Record<string,any>`|-|文件上传请求头参数|N|
+|data|`Record<string, any>`|-|文件上传需要携带的附加参数|N|
+|header-params|`Record<string, any>`|-|文件上传请求头参数|N|
 |before-upload|`BeforeUploadType`|-|文件上传前回调函数，返回false终止上传|N|
 |upload-after|`AfterUploadType`|-|文件上传成功回调，返回文件预览列表|N|
 
