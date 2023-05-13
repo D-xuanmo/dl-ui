@@ -24,7 +24,7 @@ const router = useRouter()
 
 const menuData = getMenuList()
 
-const goDetail = (path?: string) => router.push(`/demo${path}`)
+const goDetail = (path?: string) => router.push(`/demo${path!.replace(/\/\w+/, '')}`)
 </script>
 
 <style lang="scss">
