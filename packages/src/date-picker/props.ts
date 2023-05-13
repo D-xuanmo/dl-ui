@@ -13,6 +13,8 @@ export type FormatterType<V extends string | number = string> = (
 
 export type DatePickerProps = ExtractPropTypes<typeof DATE_PICKER_PROPS>
 
+const currentDate = new Date()
+
 export const DATE_PICKER_PROPS = {
   ...COMMON_PROPS,
   modelValue: {
@@ -39,6 +41,22 @@ export const DATE_PICKER_PROPS = {
   type: {
     type: String as PropType<DatePickerType>,
     default: 'date'
+  },
+
+  /**
+   * 可选最小日期，默认当前日期的前 10 年
+   */
+  minDate: {
+    type: Date,
+    default: new Date(currentDate.getFullYear() - 10, 0, 1)
+  },
+
+  /**
+   * 可选最大日期，默认当前日期的后 10 年
+   */
+  maxDate: {
+    type: Date,
+    default: new Date(currentDate.getFullYear() + 10, 11, 1)
   },
 
   /**

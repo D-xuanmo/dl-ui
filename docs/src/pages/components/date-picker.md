@@ -28,6 +28,8 @@ const value = ref('2022/4/15 22:58:00')
 |visible|`boolean`|`false`|显示与隐藏|N|
 |type|`DatePickerType`|`date`|日期格式|N|
 |formatter|`FormatterType`|-|每列格式化函数|N|
+|min-date|`Date`|-|最小日期，默认当前日期前 10 年|N|
+|max-date|`Date`|-|最大日期，默认当前日期后 10 年|N|
 
 ### 公用类型
 

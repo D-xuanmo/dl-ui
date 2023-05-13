@@ -42,7 +42,9 @@ export default defineComponent({
     const [innerValue, updateValue] = useModelValue(props, emit as SetupContext['emit'])
     const dateUtil = new DateUtil(innerValue.value, {
       dateType: props.type,
-      formatter: props.formatter!
+      formatter: props.formatter!,
+      minDate: props.minDate,
+      maxDate: props.maxDate
     })
     const visible = ref(props.visible)
     const pickerValue = ref(dateUtil.formattedValue())
