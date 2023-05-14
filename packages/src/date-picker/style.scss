@@ -1,0 +1,6 @@
+@import '../style/prefix';
+@import '../style/mixins';
+
+.#{$prefix}-date-picker {
+  @include trigger;
+}

@@ -87,3 +87,26 @@
 @mixin placeholder {
   color: var(--d-placeholder-color);
 }
+
+// 选择类型组件触发元素
+@mixin trigger {
+  &__trigger {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    @include disabled;
+
+    .#{$prefix}-icon {
+      margin-left: var(--d-gap-xxs);
+    }
+
+    span {
+      vertical-align: middle;
+    }
+
+    &--empty:not(.#{$prefix}-icon) {
+      @include placeholder;
+    }
+  }
+}

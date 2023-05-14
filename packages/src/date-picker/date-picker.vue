@@ -1,10 +1,8 @@
 <template>
-  <d-cell
-    :content="displayValue"
-    :arrow="!readonly"
-    :disabled="disabled || readonly"
-    @click="showPicker"
-  />
+  <span :class="triggerClassName" @click="showPicker">
+    <span style="vertical-align: middle">{{ displayValue }}</span>
+    <d-icon v-if="!readonly" name="arrow-right" color="var(--d-secondary-text-color)" />
+  </span>
   <d-picker
     :visible="visible"
     :model-value="pickerValue"
@@ -20,10 +18,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, SetupContext } from 'vue'
+import { computed, defineComponent, ref, SetupContext } from 'vue'
 import { createNamespace } from '../utils'
 import DPicker from '../picker'
-import DCell from '../cell'
 import DateUtil from './date-util'
 import useModelValue from '../hooks/use-model-value'
 import { DATE_PICKER_PROPS, DatePickerType } from './props'
@@ -31,11 +28,11 @@ import { PickerValue } from '../picker/props'
 import dateJS from '@xuanmo/datejs'
 import { DateTimePickerOption } from './types'
 
-const [name] = createNamespace('date-picker')
+const [name, bem] = createNamespace('date-picker')
 
 export default defineComponent({
   name,
-  components: { DPicker, DCell },
+  components: { DPicker },
   props: DATE_PICKER_PROPS,
   emits: ['update:model-value'],
   setup(props, { emit }) {
@@ -50,6 +47,12 @@ export default defineComponent({
     const pickerValue = ref(dateUtil.formattedValue())
     const displayValue = ref(dateUtil.formatValue())
     const columns = ref(dateUtil.getColumns())
+
+    const triggerClassName = computed(() =>
+      bem('trigger', {
+        disabled: props.disabled || props.readonly
+      })
+    )
 
     const formatPickerValue = (value: PickerValue) => {
       const formatted = value.map((item) => {
@@ -103,6 +106,7 @@ export default defineComponent({
       columns,
       pickerValue,
       displayValue,
+      triggerClassName,
       handleChange,
       handleConfirm,
       showPicker,

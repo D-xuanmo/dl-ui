@@ -48,7 +48,7 @@ export const DATE_PICKER_PROPS = {
    */
   minDate: {
     type: Date,
-    default: new Date(currentDate.getFullYear() - 10, 0, 1)
+    default: new Date(currentDate.getFullYear() - 10, 0)
   },
 
   /**
@@ -56,7 +56,7 @@ export const DATE_PICKER_PROPS = {
    */
   maxDate: {
     type: Date,
-    default: new Date(currentDate.getFullYear() + 10, 11, 1)
+    default: new Date(currentDate.getFullYear() + 10, 11)
   },
 
   /**

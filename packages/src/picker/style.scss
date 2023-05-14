@@ -2,21 +2,7 @@
 @import '../style/mixins';
 
 .#{$prefix}-picker {
-  &__trigger {
-    display: inline-flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    @include disabled;
-
-    .#{$prefix}-icon {
-      margin-left: var(--d-gap-xxs);
-    }
-
-    &--empty:not(.#{$prefix}-icon) {
-      @include placeholder;
-    }
-  }
+  @include trigger;
 
   &__content {
     display: flex;

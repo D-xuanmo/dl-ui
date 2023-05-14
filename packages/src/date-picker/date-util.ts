@@ -165,7 +165,8 @@ class DateUtil {
   getDayColumn = () => {
     const column: DateTimePickerOption[] = []
     const lastDay = dateJS(this.date).lastDay()
-    const maxDay = this.maxDate.getDate() > lastDay ? lastDay : this.maxDate.getDate()
+    const max = this.maxDate.getDate()
+    const maxDay = max === 1 || max > lastDay ? lastDay : max
     let i = this.minDate.getDate()
     while (i <= maxDay) {
       column.push({

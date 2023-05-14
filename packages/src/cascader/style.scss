@@ -5,25 +5,10 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  @include trigger;
 
   .#{$prefix}-popup__content {
     overflow: hidden;
-  }
-
-  &__trigger {
-    display: inline-flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    @include disabled;
-
-    .#{$prefix}-icon {
-      margin-left: var(--d-gap-xxs);
-    }
-
-    &--empty:not(.#{$prefix}-icon) {
-      @include placeholder;
-    }
   }
 
   &__content {
