@@ -2,7 +2,7 @@
 @import '../style/mixins';
 
 :root {
-  --d-popup-header-gap-bottom: var(--d-gap-xs);
+  --d-popup-header-gap-bottom: var(--d-gap-sm);
   --d-popup-title-font-size: var(--d-font-size-md);
   --d-popup-padding: var(--d-gap-sm);
   --d-popup-radius: var(--d-radius-lg);
@@ -83,7 +83,7 @@
     &--right {
       top: 0;
       min-width: 30%;
-      max-width: 80%;
+      max-width: 100%;
       height: 100%;
     }
 
@@ -96,7 +96,7 @@
     }
   }
 
-  &__content {
+  &__body {
     flex: 1;
     overflow: auto;
   }

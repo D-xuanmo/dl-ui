@@ -82,10 +82,11 @@ function handleShowPopup4() {
 |round|`boolean`|`false`|实现显示未圆角，`placement`不等于`center`有效|N|
 |closeable|`boolean`|`false`|是否显示关闭图标|N|
 |close-icon|`string`|`close-o`|同`Icon`组件`name`属性|N|
-|popup-class|`string`|-|弹出层class|N|
+|popup-class|`string`|-|弹出层 className|N|
+|popup-body-class|`string`|-|弹出层主体 className|N|
 |popup-style|`CSSProperties`|-|弹出层style|N|
 |overlay|`boolean`|`true`|是否显示遮罩层|N|
-|overlay-class|`string`|-|遮罩层 class|N|
+|overlay-class|`string`|-|遮罩层 className|N|
 |overlay-style|`CSSProperties`|-|遮罩层 style|N|
 |close-on-click-overlay|`boolean`|`true`|点击遮罩层是否关闭弹出层|N|
 |teleport|`TeleportProps['to']`|`body`|选择要插入的 DOM 节点，同 `Teleport` 组件，[参考链接](https://staging-cn.vuejs.org/guide/built-ins/teleport.html#basic-usage) |N|

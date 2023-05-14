@@ -31,6 +31,7 @@ export const POPUP_PROPS = {
   },
 
   popupClass: String,
+  popupBodyClass: String,
   popupStyle: {
     type: Object as PropType<CSSProperties>,
     default: {}

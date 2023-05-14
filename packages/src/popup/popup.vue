@@ -37,7 +37,7 @@
               @click="handleClickIcon"
             />
           </header>
-          <div :class="bem('content')"><slot /></div>
+          <div :class="[bem('body'), popupBodyClass]"><slot /></div>
         </div>
       </div>
     </transition>
