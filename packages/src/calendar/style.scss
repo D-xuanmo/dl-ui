@@ -1,0 +1,126 @@
+@import '../style/prefix';
+@import '../style/mixins';
+
+:root {
+  --d-calendar-day-height: 60px;
+  --d-calendar-day-margin: 4px;
+}
+
+.#{$prefix}-calendar {
+  $calendarPrefix: &;
+  max-height: 90%;
+  @include trigger;
+
+  &--multiple {
+    #{$calendarPrefix} {
+      &__day {
+        margin-bottom: 0;
+        padding: var(--d-calendar-day-margin);
+      }
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    &-date {
+      width: 50%;
+      text-align: center;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .#{$prefix} {
+    &-popup__header--closable {
+      position: absolute;
+      right: var(--d-popup-padding);
+    }
+
+    &-date-picker__trigger {
+      display: inline-block;
+    }
+  }
+
+  &__week,
+  &__days {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: var(--d-gap-sm);
+
+    li {
+      width: calc(100% / 7);
+      text-align: center;
+    }
+  }
+
+  &__day {
+    $dayPrefix: &;
+    @include disabled;
+    margin-bottom: var(--d-calendar-day-margin);
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: var(--d-calendar-day-height);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    &--today {
+      color: var(--d-primary);
+    }
+
+    &--selected {
+      #{$dayPrefix} {
+        &-content {
+          border-radius: var(--d-radius-lg);
+          background: var(--d-primary);
+          color: #fff;
+        }
+      }
+    }
+
+    &--start {
+      #{$dayPrefix} {
+        &-content {
+          border-radius: var(--d-radius-lg) 0 0 var(--d-radius-lg);
+        }
+      }
+    }
+
+    &--middle {
+      #{$dayPrefix} {
+        &-content {
+          border-radius: 0;
+          background: var(--d-primary-1);
+          color: var(--d-primary-text-color);
+        }
+      }
+    }
+
+    &--end {
+      #{$dayPrefix} {
+        &-content {
+          border-radius: 0 var(--d-radius-lg) var(--d-radius-lg) 0;
+        }
+      }
+    }
+
+    &--inner {
+      font-weight: bold;
+    }
+
+    &--tips {
+      flex: 1;
+      font-size: var(--d-font-size-xs);
+      @include ellipsis();
+    }
+  }
+}

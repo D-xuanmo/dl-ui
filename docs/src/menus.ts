@@ -48,6 +48,7 @@ const menus: MenuItemType[] = [
         path: '/components/date-picker',
         content: 'DatePicker [日期时间]'
       },
+      { id: 'calendar', path: '/components/calendar', content: 'Calendar [日历]' },
       { id: 'radio', path: '/components/radio', content: 'Radio [单选框]' },
       { id: 'checkbox', path: '/components/checkbox', content: 'Checkbox [复选框]' },
       { id: 'upload', path: '/components/upload', content: 'Upload [文件上传]' },

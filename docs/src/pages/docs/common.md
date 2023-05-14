@@ -21,9 +21,9 @@ export type PlacementType = 'top' | 'right' | 'bottom' | 'left' | 'center'
 export type ThemeType = 'primary' | 'success' | 'warning' | 'danger' | 'default'
 
 /** 数据基础类型，单选、多选、选择器等组件 */
-export interface IData {
+export interface IData<T = string | number> {
   label: string
-  value: string | number
+  value: T
   disabled?: boolean
 }
 

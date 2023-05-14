@@ -93,7 +93,7 @@ fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address
 
 ## 选择器公用类型
 
-> 公用类型 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/common.ts](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/common.ts)
+公用类型 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/common.ts](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/common.ts)
 
 ```typescript
 type PickerValue = string[] | number[] | IData[]
