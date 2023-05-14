@@ -160,7 +160,7 @@ class DateUtil {
 
   getMonthColumn = () => {
     const column: DateTimePickerOption[] = []
-    let i = this.minDate.getMonth()
+    let i = this.date.getFullYear() !== this.freezeDate.getFullYear() ? 0 : this.minDate.getMonth()
     while (i <= this.maxDate.getMonth()) {
       column.push({
         value: `${i}`,
