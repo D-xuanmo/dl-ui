@@ -1,6 +1,6 @@
 <template>
   <span :class="triggerClassName" @click="showPicker">
-    <span style="vertical-align: middle">{{ displayValue }}</span>
+    <span>{{ displayValue }}</span>
     <slot v-if="!readonly" name="trigger-arrow">
       <d-icon name="arrow-right" color="var(--d-secondary-text-color)" />
     </slot>
@@ -109,6 +109,8 @@ export default defineComponent({
         displayValue.value = dateJS(value).format(
           props.displayFormatter || DateUtil.formatType[props.type]
         )
+        dateUtil.updateDate(new Date(value!))
+        pickerValue.value = dateUtil.formattedValue()
       }
     )
 

@@ -27,6 +27,8 @@ const value = ref('2022/4/15 22:58:00')
 |title|`string`|-|支持设置一个顶部标题|N|
 |visible|`boolean`|`false`|显示与隐藏|N|
 |type|`DatePickerType`|`date`|日期格式|N|
+|disabled|`boolean`|`false`|是否禁用|N|
+|readonly|`boolean`|`false`|是否只读|N|
 |formatter|`FormatterType`|-|每列格式化函数|N|
 |display-formatter|`string`|-|显示日期格式化，默认取 `type`|N|
 |min-date|`Date`|-|最小日期，默认当前日期前 10 年|N|
