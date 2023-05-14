@@ -3,6 +3,15 @@ import { DatePickerType, FormatterType } from './props'
 import { DateTimePickerOption } from './types'
 
 class DateUtil {
+  static formatType: Record<DatePickerType, string> = {
+    'year-month': 'yyyy/MM',
+    date: 'yyyy/MM/dd',
+    datetime: 'yyyy/MM/dd HH:mm:ss',
+    'date-hour': 'yyyy/MM/dd HH',
+    'month-day': 'MM/dd',
+    time: 'HH:mm'
+  }
+
   date: Date = new Date()
 
   // 初始化传入的日期，不在改变
@@ -14,6 +23,8 @@ class DateUtil {
 
   dateType: DatePickerType = 'date'
 
+  displayFormatter: string | null = null
+
   formatter: FormatterType
 
   constructor(
@@ -23,24 +34,23 @@ class DateUtil {
       formatter: DateUtil['formatter']
       minDate: Date
       maxDate: Date
+      displayFormatter?: DateUtil['displayFormatter']
     }
   ) {
-    const { dateType, minDate, maxDate, formatter = (type, value) => value } = options
+    const {
+      dateType,
+      minDate,
+      maxDate,
+      displayFormatter,
+      formatter = (type, value) => value
+    } = options
     this.date = typeof date === 'string' ? new Date(date) : date
     this.freezeDate = this.date
     this.dateType = dateType
     this.formatter = formatter
     this.minDate = minDate
     this.maxDate = maxDate
-  }
-
-  formatType: Record<DatePickerType, string> = {
-    'year-month': 'yyyy/MM',
-    date: 'yyyy/MM/dd',
-    datetime: 'yyyy/MM/dd HH:mm:ss',
-    'date-hour': 'yyyy/MM/dd HH',
-    'month-day': 'MM/dd',
-    time: 'HH:mm'
+    this.displayFormatter = displayFormatter!
   }
 
   /**
@@ -75,7 +85,7 @@ class DateUtil {
    * @param date
    */
   formatValue = (date = this.date) => {
-    return dateJS(date).format(this.formatType[this.dateType])
+    return dateJS(date).format(this.displayFormatter || DateUtil.formatType[this.dateType])
   }
 
   updateDate = (date: Date | string[]) => {

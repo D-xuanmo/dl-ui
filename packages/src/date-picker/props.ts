@@ -44,6 +44,11 @@ export const DATE_PICKER_PROPS = {
   },
 
   /**
+   * 显示内容格式化
+   */
+  displayFormatter: String,
+
+  /**
    * 可选最小日期，默认当前日期的前 10 年
    */
   minDate: {

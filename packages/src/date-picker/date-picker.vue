@@ -1,7 +1,9 @@
 <template>
   <span :class="triggerClassName" @click="showPicker">
     <span style="vertical-align: middle">{{ displayValue }}</span>
-    <d-icon v-if="!readonly" name="arrow-right" color="var(--d-secondary-text-color)" />
+    <slot v-if="!readonly" name="trigger-arrow">
+      <d-icon name="arrow-right" color="var(--d-secondary-text-color)" />
+    </slot>
   </span>
   <d-picker
     :visible="visible"
@@ -18,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, SetupContext } from 'vue'
+import { computed, defineComponent, ref, SetupContext, watch } from 'vue'
 import { createNamespace } from '../utils'
 import DPicker from '../picker'
 import DateUtil from './date-util'
@@ -41,7 +43,8 @@ export default defineComponent({
       dateType: props.type,
       formatter: props.formatter!,
       minDate: props.minDate,
-      maxDate: props.maxDate
+      maxDate: props.maxDate,
+      displayFormatter: props.displayFormatter
     })
     const visible = ref(props.visible)
     const pickerValue = ref(dateUtil.formattedValue())
@@ -88,7 +91,6 @@ export default defineComponent({
     const handleConfirm = (value: PickerValue) => {
       const formatted = dateUtil.formatValue(new Date(...(formatPickerValue(value) as [])))
       visible.value = false
-      displayValue.value = formatted
       updateValue(formatted)
     }
 
@@ -100,6 +102,15 @@ export default defineComponent({
     const hidePicker = () => {
       visible.value = false
     }
+
+    watch(
+      () => props.modelValue,
+      (value) => {
+        displayValue.value = dateJS(value).format(
+          props.displayFormatter || DateUtil.formatType[props.type]
+        )
+      }
+    )
 
     return {
       visible,

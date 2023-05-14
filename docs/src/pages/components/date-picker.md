@@ -28,8 +28,14 @@ const value = ref('2022/4/15 22:58:00')
 |visible|`boolean`|`false`|显示与隐藏|N|
 |type|`DatePickerType`|`date`|日期格式|N|
 |formatter|`FormatterType`|-|每列格式化函数|N|
+|display-formatter|`string`|-|显示日期格式化，默认取 `type`|N|
 |min-date|`Date`|-|最小日期，默认当前日期前 10 年|N|
 |max-date|`Date`|-|最大日期，默认当前日期后 10 年|N|
+
+### Slots
+|名称|说明|
+|---|----|
+|trigger-arrow|自定义触发图标|
 
 ### 公用类型
 
@@ -50,3 +56,9 @@ import type {
   DatePickerType
 } from '@xuanmo/dl-ui'
 ```
+
+## 常见问题
+
+### iOS 日期无法识别
+
+如果创建时间使用的是 `new Date('2022-04-15')` 这种格式，需要替换为 `new Date('2022/04/15')` 写法，iOS 系统不认识横线分割模式。
