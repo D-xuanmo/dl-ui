@@ -81,6 +81,16 @@
   &--disabled {
     color: var(--d-disable-color);
     cursor: not-allowed;
+    &::placeholder {
+      color: var(--d-disable-color);
+    }
+  }
+  &--readonly {
+    color: var(--d-primary-text-color);
+    cursor: text;
+    &::placeholder {
+      color: var(--d-disable-color);
+    }
   }
 }
 

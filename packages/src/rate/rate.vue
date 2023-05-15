@@ -46,6 +46,7 @@ export default defineComponent({
     )
 
     const classes = bem({
+      readonly: props.readonly,
       disabled: props.disabled
     })
 

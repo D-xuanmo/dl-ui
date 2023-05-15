@@ -6,6 +6,7 @@
 
 .#{$prefix}-textarea {
   $prefix: &;
+  @include disabled;
 
   &__inner {
     width: 100%;
@@ -22,18 +23,5 @@
     font-size: var(--d-font-size-xs);
     text-align: right;
     color: var(--d-textarea-limit-color);
-  }
-
-  &--disabled,
-  &--readonly {
-    #{$prefix} {
-      &__inner {
-        color: var(--d-disable-color);
-
-        &::placeholder {
-          color: var(--d-disable-color);
-        }
-      }
-    }
   }
 }

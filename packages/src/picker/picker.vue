@@ -92,7 +92,8 @@ export default defineComponent({
     const triggerClassName = computed(() =>
       bem('trigger', {
         empty: displayValue.value === props.placeholder || displayValue.value === '请选择',
-        disabled: props.disabled || props.readonly
+        readonly: props.readonly,
+        disabled: props.disabled
       })
     )
 

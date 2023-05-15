@@ -28,7 +28,8 @@ export default defineComponent({
     } = inject(CHECKBOX_GROUP_CONTEXT_KEY)!
     const wrapperClassName = computed(() =>
       bem({
-        disabled: disabled.value || readonly.value
+        disabled: disabled.value,
+        readonly: readonly.value
       })
     )
     const labelClassName = bem('label')

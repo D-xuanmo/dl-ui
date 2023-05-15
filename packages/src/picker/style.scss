@@ -3,6 +3,7 @@
 
 .#{$prefix}-picker {
   @include trigger;
+  @include disabled;
 
   &__content {
     display: flex;

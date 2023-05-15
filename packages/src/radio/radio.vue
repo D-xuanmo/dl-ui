@@ -21,7 +21,8 @@ export default defineComponent({
 
     const wrapperClassName = computed(() =>
       bem({
-        disabled: disabled.value || readonly.value
+        disabled: disabled.value,
+        readonly: readonly.value
       })
     )
 

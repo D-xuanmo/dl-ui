@@ -6,17 +6,9 @@
   border: 0;
   caret-color: var(--d-primary);
   @include text-align;
+  @include disabled;
 
   &:-webkit-autofill {
     background: none;
-  }
-
-  &--disabled,
-  &--readonly {
-    color: var(--d-disable-color);
-
-    &::placeholder {
-      color: var(--d-disable-color);
-    }
   }
 }

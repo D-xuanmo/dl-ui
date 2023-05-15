@@ -70,7 +70,9 @@ export default defineComponent({
     const daysClassName = bem('days')
     const triggerClassName = computed(() =>
       bem('trigger', {
-        empty: isEmpty(innerValue.value)
+        empty: isEmpty(innerValue.value),
+        readonly: props.readonly,
+        disabled: props.disabled
       })
     )
 
@@ -102,6 +104,7 @@ export default defineComponent({
     }
 
     const handleShowPopup = () => {
+      if (props.readonly || props.disabled) return
       if (props.modelValue) {
         currentDay.value = new Date(
           Array.isArray(props.modelValue) ? props.modelValue[0] : props.modelValue

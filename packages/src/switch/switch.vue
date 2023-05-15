@@ -37,7 +37,8 @@ export default defineComponent({
         active: innerValue.value,
         loading: props.loading,
         round: props.round,
-        disabled: props.disabled || props.readonly
+        readonly: props.readonly,
+        disabled: props.disabled
       })
     )
 

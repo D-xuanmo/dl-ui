@@ -4,10 +4,7 @@
 .#{$prefix}-radio {
   display: flex;
   align-items: center;
-
-  &--disabled {
-    color: var(--d-disable-color);
-  }
+  @include disabled;
 
   &__label {
     margin-left: var(--d-gap-xxs);

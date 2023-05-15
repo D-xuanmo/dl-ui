@@ -52,7 +52,8 @@ export default defineComponent({
 
     const triggerClassName = computed(() =>
       bem('trigger', {
-        disabled: props.disabled || props.readonly
+        readonly: props.readonly,
+        disabled: props.disabled
       })
     )
 
