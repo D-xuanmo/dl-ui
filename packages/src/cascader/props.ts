@@ -8,7 +8,7 @@ export const CASCADER_PROPS = {
 
   modelValue: {
     type: Array as PropType<CascaderValue>,
-    default: undefined
+    default: []
   },
 
   placeholder: {

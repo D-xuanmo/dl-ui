@@ -114,7 +114,11 @@ export default defineComponent({
       visible.value = false
     }
 
-    const findPathAndColumns = (value: CascaderValue) => {
+    /**
+     * 查找路径信息和当前需要展示的选项
+     * @param value 当前选中的值
+     */
+    const findPathAndOptions = (value: CascaderValue) => {
       return (value as any).reduce(
         (prev: any, current: CascaderValue[number], currentIndex: number) => {
           let option = isObject(current)
@@ -178,7 +182,7 @@ export default defineComponent({
       } else {
         const value = deepCopy(activePath.value)
         value.splice(activePath.value.length - 1, 1, data)
-        const { path } = findPathAndColumns(value)
+        const { path } = findPathAndOptions(value)
         if (data.children) {
           activeOptions.value = data.children
           activePath.value = [...path, { value: placeholder.value, label: placeholder.label }]
@@ -203,11 +207,17 @@ export default defineComponent({
       updateValue(_value as CascaderValue)
     }
 
+    const update = (value: CascaderValue, originalOptions: ICascaderOption[]) => {
+      const placeholder = getPlaceholder()
+      const { path, options } = findPathAndOptions(innerValue.value)
+      activePath.value = isEmpty(path) ? ([placeholder] as any) : path
+      activeOptions.value = isEmpty(path) ? originalOptions : options
+      activeTab.value = pickLastItem(path)?.value || placeholder.value
+      displayName.value = path?.map((item) => item.label).join('/')
+    }
+
     const handleCancel = () => {
-      const { path } = findPathAndColumns(innerValue.value)
-      activePath.value = path
-      activeOptions.value =
-        path.length - 2 <= 0 ? props.options : path[path.length - 2].children ?? []
+      update(innerValue.value, props.options)
       hidePicker()
     }
 
@@ -215,24 +225,16 @@ export default defineComponent({
       () => props.options,
       (originalOptions) => {
         optionsMap = cascaderOptionsToMap(originalOptions)
-        const placeholder = getPlaceholder()
-        const { path, options } = findPathAndColumns(innerValue.value)
-        activePath.value = isEmpty(path) ? ([placeholder] as any) : path
-        activeOptions.value = isEmpty(path) ? originalOptions : options
-        activeTab.value = pickLastItem(path)?.value || placeholder.value
-        displayName.value = path?.map((item) => item.label).join('/')
+        update(innerValue.value, originalOptions)
       },
       { immediate: true }
     )
 
     watch(
-      innerValue,
-      () => {
-        const { path, options } = findPathAndColumns(innerValue.value)
-        activePath.value = path
-        activeOptions.value = options
-        activeTab.value = pickLastItem(path)?.value
-        displayName.value = isEmpty(path) ? '' : path?.map((item) => item.label).join('/')
+      () => innerValue,
+      (value) => {
+        console.log(value.value, props.options, props.lazy)
+        update(value.value, props.options)
       },
       {
         immediate: true
