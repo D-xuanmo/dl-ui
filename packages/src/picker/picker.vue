@@ -22,7 +22,7 @@
           :options="item"
           :option-height="optionHeight"
           :value="formatColumnValue(index)"
-          @change="onChange($event, index)"
+          @change="handleChange($event, index)"
         />
       </div>
     </div>
@@ -35,7 +35,7 @@ import { createNamespace } from '../utils'
 import useModelValue from '../hooks/use-model-value'
 import { ICascaderOption, IData, OmitValueProperties } from '../common'
 import { PickerOption, PICKER_PROPS, PickerValue } from './props'
-import { deepCopy, isEmpty, isObject } from '@xuanmo/javascript-utils'
+import { debounce, deepCopy, isEmpty, isObject } from '@xuanmo/javascript-utils'
 import { findCascadeFirstLevelData, findDisplayName, formatCascade } from './utils'
 import { EventType } from './types'
 import DIcon from '../icon'
@@ -100,9 +100,16 @@ export default defineComponent({
       height: `${props.optionHeight * 5}px`
     }))
 
-    const onChange = (data: IData, columnIndex: number) => {
+    let currentColumn: PickerOption | null = null
+
+    const emitChange = debounce(() => {
+      context.emit('change', temporaryValue.value, currentColumn)
+    }, 20)
+
+    const handleChange = (data: IData, columnIndex: number) => {
       temporaryValue.value[columnIndex] = data
-      context.emit('change', temporaryValue.value, data)
+      currentColumn = data
+      emitChange()
     }
 
     const showPicker = () => {
@@ -176,7 +183,7 @@ export default defineComponent({
       displayValue,
       showPicker,
       handleClose,
-      onChange,
+      handleChange,
       handleConfirm,
       formatColumnValue
     }
