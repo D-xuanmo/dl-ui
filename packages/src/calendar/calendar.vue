@@ -188,7 +188,7 @@ export default defineComponent({
                   ...day,
                   type: 'selected'
                 })
-                displayValue.value = dateJS(day.type).format(props.displayFormatter)
+                displayValue.value = dateJS(day.value).format(props.displayFormatter)
               }
               break
             case 'multiple':

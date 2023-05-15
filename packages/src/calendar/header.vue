@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, SetupContext, computed, watch } from 'vue'
+import { defineComponent, SetupContext, computed } from 'vue'
 import { createNamespace } from '../utils'
 import { CALENDAR_HEADER_PROPS } from './props'
 import useModelValue from '../hooks/use-model-value'
