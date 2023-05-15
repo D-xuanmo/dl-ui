@@ -109,7 +109,9 @@ const handleChange: OnFormChange = (value, model) => {
   console.log(value, model)
 }
 
-fetch('/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727').then(async (res) => {
+fetch(
+  'https://my.xuanmo.xin:3202/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727'
+).then(async (res) => {
   const options = await res.json()
   formStore.updateItem('cascaderPicker', {
     otherProps: {

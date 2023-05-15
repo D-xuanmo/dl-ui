@@ -66,49 +66,51 @@ const handleLazyLoad = (options: ICascaderOption) =>
     setTimeout(() => {
       /* eslint-disable */
       switch (options.value) {
-      case '110000000000':
-        resolve([
-          {
-            label: '市辖区',
-            value: '110100000000'
-          }
-        ])
-        break
-      case '110100000000':
-        resolve([
-          {
-            label: '东城区',
-            value: '110101000000'
-          },
-          {
-            label: '西城区',
-            value: '110102000000'
-          },
-          {
-            label: '朝阳区',
-            value: '110105000000'
-          }
-        ])
-        break
-      case '130000000000':
-        resolve([
-          {
-            label: '石家庄市',
-            value: '130100000000'
-          },
-          {
-            label: '唐山市',
-            value: '130200000000'
-          }
-        ])
-        break
+        case '110000000000':
+          resolve([
+            {
+              label: '市辖区',
+              value: '110100000000'
+            }
+          ])
+          break
+        case '110100000000':
+          resolve([
+            {
+              label: '东城区',
+              value: '110101000000'
+            },
+            {
+              label: '西城区',
+              value: '110102000000'
+            },
+            {
+              label: '朝阳区',
+              value: '110105000000'
+            }
+          ])
+          break
+        case '130000000000':
+          resolve([
+            {
+              label: '石家庄市',
+              value: '130100000000'
+            },
+            {
+              label: '唐山市',
+              value: '130200000000'
+            }
+          ])
+          break
         /* eslint-enable */
       }
       resolve([])
     }, 1000)
   })
 
-fetch('/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727').then(async (res) => {
+fetch(
+  'https://my.xuanmo.xin:3202/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727'
+).then(async (res) => {
   template.value = await res.json()
 })
 </script>

@@ -58,11 +58,11 @@ const value3 = ref([
 ])
 const template3 = ref([])
 
-fetch('https://raw.githubusercontent.com/D-xuanmo/v-form/master/packages/Address/data.json').then(
-  async (res) => {
-    template3.value = await res.json()
-  }
-)
+fetch(
+  'https://my.xuanmo.xin:3202/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727'
+).then(async (res) => {
+  template3.value = await res.json()
+})
 </script>
 ```
 

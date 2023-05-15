@@ -1,8 +1,8 @@
-# DatePicker 日期时间选择器
+# DateTimePicker 日期时间选择器
 
 用于选择日期、时间
 
-```vue client=Mobile playground=MDatePicker
+```vue client=Mobile playground=MDateTimePicker
 <template>
   <d-cell title="日期时间选择器">
     <d-date-time-picker v-model="value1" type="datetime" />
