@@ -44,9 +44,9 @@ const menus: MenuItemType[] = [
       { id: 'picker', path: '/components/picker', content: 'Picker [选择器]' },
       { id: 'cascader', path: '/components/cascader', content: 'Cascader [级联选择]' },
       {
-        id: 'date-picker',
-        path: '/components/date-picker',
-        content: 'DatePicker [日期时间]'
+        id: 'date-time-picker',
+        path: '/components/date-time-picker',
+        content: 'DateTimePicker [日期时间]'
       },
       { id: 'calendar', path: '/components/calendar', content: 'Calendar [日历]' },
       { id: 'radio', path: '/components/radio', content: 'Radio [单选框]' },

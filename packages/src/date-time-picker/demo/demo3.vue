@@ -1,6 +1,6 @@
 <template>
   <d-cell title="最大、最小日期">
-    <d-date-picker
+    <d-date-time-picker
       v-model="value"
       type="datetime"
       title="日期时间选择器"

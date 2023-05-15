@@ -13,24 +13,24 @@
     controlled
     :disabled="disabled"
     :readonly="readonly"
-    @change="handleChange"
+    @change="handleChange!"
     @confirm="handleConfirm"
     @close="hidePicker"
   />
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, SetupContext, watch } from 'vue'
+import { computed, defineComponent, nextTick, ref, SetupContext, watch } from 'vue'
 import { createNamespace } from '../utils'
 import DPicker from '../picker'
 import DateUtil from './date-util'
 import useModelValue from '../hooks/use-model-value'
-import { DATE_PICKER_PROPS, DatePickerType } from './props'
+import { DATE_PICKER_PROPS, DateTimePickerType } from './props'
 import { PickerValue } from '../picker/props'
 import dateJS from '@xuanmo/datejs'
 import { DateTimePickerOption } from './types'
 
-const [name, bem] = createNamespace('date-picker')
+const [name, bem] = createNamespace('date-time-picker')
 
 export default defineComponent({
   name,
@@ -43,12 +43,11 @@ export default defineComponent({
       dateType: props.type,
       formatter: props.formatter!,
       minDate: props.minDate,
-      maxDate: props.maxDate,
-      displayFormatter: props.displayFormatter
+      maxDate: props.maxDate
     })
     const visible = ref(props.visible)
-    const pickerValue = ref(dateUtil.formattedValue())
-    const displayValue = ref(dateUtil.formatValue())
+    const pickerValue = ref(dateUtil.pickerValue)
+    const displayValue = ref(dateUtil.value)
     const columns = ref(dateUtil.getColumns())
 
     const triggerClassName = computed(() =>
@@ -57,41 +56,37 @@ export default defineComponent({
       })
     )
 
-    const formatPickerValue = (value: PickerValue) => {
+    const handleChange = (value: PickerValue, columnValue: DateTimePickerOption) => {
       const formatted = value.map((item) => {
-        if ((item as DateTimePickerOption)?.value) return (item as DateTimePickerOption).value
+        if ((item as DateTimePickerOption)?.value) {
+          return (item as DateTimePickerOption).value
+        }
         return item
       }) as string[]
-      // 时间选择需要补充年月日
-      if (props.type === 'time') formatted.unshift(...dateJS().format('yyyy,M,d').split(','))
-      return formatted
-    }
-
-    const handleChange = (value: PickerValue, columnValue: DateTimePickerOption) => {
-      const formatted = formatPickerValue(value)
-
-      // 计算当月最后一天
-      const lastDay = dateJS(new Date(+formatted[0], +formatted[1])).lastDay()
 
       // 日期、日期时间需要重新计算天
-      if (
-        (['date', 'datetime', 'date-hour'] as DatePickerType[]).includes(props.type) &&
-        columnValue.type === 'month'
-      ) {
-        formatted.splice(2, 1, `${lastDay}`)
+      if (['year', 'month'].includes(columnValue.type)) {
+        const types: DateTimePickerType[] = ['date', 'datetime', 'date-hour']
+        if (types.includes(props.type)) {
+          const [year, month] = formatted
+          const lastDay = dateJS(new Date(+year, +month)).lastDay()
+          formatted.splice(2, 1, `${lastDay}`)
+        }
+        if (props.type === 'month-day') {
+          const year = new Date().getFullYear()
+          const [month] = formatted
+          const lastDay = dateJS(new Date(year, +month)).lastDay()
+          formatted.splice(1, 1, `${lastDay}`)
+        }
       }
-      if (props.type === 'month-day' && columnValue.type === 'month') {
-        formatted.splice(1, 1, `${lastDay}`)
-      }
-
-      dateUtil.updateDate(new Date(...(formatted as [])))
+      dateUtil.update(formatted)
       columns.value = dateUtil.getColumns()
     }
 
-    const handleConfirm = (value: PickerValue) => {
-      const formatted = dateUtil.formatValue(new Date(...(formatPickerValue(value) as [])))
+    const handleConfirm = () => {
       visible.value = false
-      updateValue(formatted)
+      pickerValue.value = dateUtil.pickerValue
+      updateValue(dateUtil.value)
     }
 
     const showPicker = () => {
@@ -105,12 +100,16 @@ export default defineComponent({
 
     watch(
       () => props.modelValue,
-      (value) => {
-        displayValue.value = dateJS(value).format(
-          props.displayFormatter || DateUtil.formatType[props.type]
-        )
-        dateUtil.updateDate(new Date(value!))
-        pickerValue.value = dateUtil.formattedValue()
+      async (modelValue) => {
+        await nextTick()
+        if (modelValue) {
+          displayValue.value = props.displayFormatter
+            ? dateJS(dateUtil.convertDate(modelValue)).format(props.displayFormatter)
+            : dateUtil.value
+        }
+      },
+      {
+        immediate: true
       }
     )
 

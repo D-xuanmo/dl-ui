@@ -1,9 +1,9 @@
 import dateJS from '@xuanmo/datejs'
-import { DatePickerType, FormatterType } from './props'
+import { DateTimePickerType, DateTimePickerValue, DateTimePickerFormatter } from './props'
 import { DateTimePickerOption } from './types'
 
 class DateUtil {
-  static formatType: Record<DatePickerType, string> = {
+  static formatType: Record<DateTimePickerType, string> = {
     'year-month': 'yyyy/MM',
     date: 'yyyy/MM/dd',
     datetime: 'yyyy/MM/dd HH:mm:ss',
@@ -21,48 +21,42 @@ class DateUtil {
 
   maxDate: Date
 
-  dateType: DatePickerType = 'date'
+  dateType: DateTimePickerType
 
-  displayFormatter: string | null = null
-
-  formatter: FormatterType
+  formatter: DateTimePickerFormatter
 
   constructor(
-    date: string | Date = new Date(),
+    date: DateTimePickerValue,
     options: {
       dateType: DateUtil['dateType']
       formatter: DateUtil['formatter']
       minDate: Date
       maxDate: Date
-      displayFormatter?: DateUtil['displayFormatter']
     }
   ) {
-    const {
-      dateType,
-      minDate,
-      maxDate,
-      displayFormatter,
-      formatter = (type, value) => value
-    } = options
-    this.date = typeof date === 'string' ? new Date(date) : date
-    this.freezeDate = this.date
+    const { dateType, minDate, maxDate, formatter = (type, value) => value } = options
     this.dateType = dateType
     this.formatter = formatter
     this.minDate = minDate
     this.maxDate = maxDate
-    this.displayFormatter = displayFormatter!
+    this.update(date)
+    this.freezeDate = this.date
+  }
+
+  get value() {
+    return dateJS(this.date).format(DateUtil.formatType[this.dateType])
   }
 
   /**
    * 处理传入的 value 为 picker 需要的格式
    */
-  formattedValue = () => {
-    const formatType: Record<DatePickerType, string> = {
+  get pickerValue() {
+    const formatType: Record<DateTimePickerType, string> = {
       'year-month': 'yyyy,M',
       date: 'yyyy,M,d',
       datetime: 'yyyy,M,d,H,m,s',
       'date-hour': 'yyyy,M,d,H',
-      'month-day': 'm,d',
+      'month-day': 'M,d',
       time: 'H,m'
     }
     const date = dateJS(this.date)
@@ -73,23 +67,68 @@ class DateUtil {
       'datetime',
       'date-hour',
       'month-day'
-    ] as DatePickerType[]
+    ] as DateTimePickerType[]
+    // 转换月份，需要减一
     if (dateFormatTypes.includes(this.dateType)) {
-      formatted.splice(1, 1, `${+date.format('M') - 1}`)
+      formatted.splice(this.dateType === 'month-day' ? 0 : 1, 1, `${+date.format('M') - 1}`)
     }
     return formatted
   }
 
   /**
-   * 格式化
+   * 数组转换为日期
    * @param date
    */
-  formatValue = (date = this.date) => {
-    return dateJS(date).format(this.displayFormatter || DateUtil.formatType[this.dateType])
+  convertDate = (date: DateTimePickerValue | DateTimePickerValue[]): Date => {
+    if (typeof date === 'number') {
+      return new Date(date)
+    }
+    if (Array.isArray(date)) {
+      /* eslint-disable indent */
+      switch (this.dateType) {
+        case 'date':
+        case 'datetime':
+        case 'date-hour':
+        case 'year-month':
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          return new Date(...date)
+        case 'month-day':
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          return new Date(...([this.freezeDate.getFullYear(), ...date] as any))
+        case 'time':
+          return new Date(
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            ...([...dateJS(this.freezeDate).format('yyyy-M-d').split('-'), ...date] as any)
+          )
+      }
+      /* eslint-enable indent */
+    }
+
+    /* eslint-disable indent */
+    switch (this.dateType) {
+      case 'date':
+      case 'datetime':
+      case 'date-hour':
+        return new Date(date)
+      case 'year-month':
+        return new Date(`${date}/1`)
+      case 'month-day':
+        return new Date(`1970/${date}`)
+      case 'time':
+        return new Date(`1970/1/1 ${date}`)
+    }
+    /* eslint-enable indent */
   }
 
-  updateDate = (date: Date | string[]) => {
-    this.date = Array.isArray(date) ? new Date(...(date as [])) : date
+  /**
+   * 更新时间
+   * @param date
+   */
+  update = (date: DateTimePickerValue | DateTimePickerValue[]) => {
+    this.date = this.convertDate(date)
   }
 
   getColumns = () => {

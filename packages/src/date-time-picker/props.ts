@@ -2,23 +2,29 @@ import { COMMON_PROPS } from '../common'
 import { ExtractPropTypes, PropType } from 'vue'
 import { DateTimePickerOption } from './types'
 
-export type DatePickerType = 'date' | 'year-month' | 'month-day' | 'time' | 'datetime' | 'date-hour'
+export type DateTimePickerType =
+  | 'date'
+  | 'year-month'
+  | 'month-day'
+  | 'time'
+  | 'datetime'
+  | 'date-hour'
 
-export type DatePickerValue = string | Date
+export type DateTimePickerValue = string | number
 
-export type FormatterType<V extends string | number = string> = (
+export type DateTimePickerFormatter<V extends string | number = string> = (
   type: DateTimePickerOption['type'],
   value: V
 ) => V
 
-export type DatePickerProps = ExtractPropTypes<typeof DATE_PICKER_PROPS>
+export type DateTimePickerProps = ExtractPropTypes<typeof DATE_PICKER_PROPS>
 
 const currentDate = new Date()
 
 export const DATE_PICKER_PROPS = {
   ...COMMON_PROPS,
   modelValue: {
-    type: [String, Date] as PropType<DatePickerValue>,
+    type: [String, Number] as PropType<DateTimePickerValue>,
     default: undefined
   },
 
@@ -39,7 +45,7 @@ export const DATE_PICKER_PROPS = {
    * 日期格式
    */
   type: {
-    type: String as PropType<DatePickerType>,
+    type: String as PropType<DateTimePickerType>,
     default: 'date'
   },
 
@@ -68,7 +74,7 @@ export const DATE_PICKER_PROPS = {
    * 每列格式化函数
    */
   formatter: {
-    type: Function as PropType<FormatterType>,
+    type: Function as PropType<DateTimePickerFormatter>,
     default: undefined
   }
 }

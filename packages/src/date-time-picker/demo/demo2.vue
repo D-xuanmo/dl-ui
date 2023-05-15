@@ -1,6 +1,11 @@
 <template>
   <d-cell title="格式化列">
-    <d-date-picker v-model="value" type="date" :formatter="format" />
+    <d-date-time-picker
+      v-model="value"
+      type="year-month"
+      :formatter="format"
+      display-formatter="yyyy年M月"
+    />
   </d-cell>
 </template>
 
@@ -8,7 +13,7 @@
 import { ref } from 'vue'
 import { FormatterType } from '../props'
 
-const value = ref('2022/4/15 22:58:00')
+const value = ref('2022/4')
 
 const format: FormatterType = (type, value) => {
   if (type === 'year') {
