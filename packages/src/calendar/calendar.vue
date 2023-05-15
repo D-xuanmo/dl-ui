@@ -97,9 +97,15 @@ export default defineComponent({
 
     const popupVisible = ref(false)
 
+    const formatValue = (value: Date) => {
+      return dateJS(value).format(props.valueFormatter)
+    }
+
     const handleShowPopup = () => {
       if (props.modelValue) {
-        currentDay.value = Array.isArray(props.modelValue) ? props.modelValue[0] : props.modelValue
+        currentDay.value = new Date(
+          Array.isArray(props.modelValue) ? props.modelValue[0] : props.modelValue
+        )
       }
       popupVisible.value = true
     }
@@ -156,13 +162,13 @@ export default defineComponent({
       /* eslint-disable indent */
       switch (props.type) {
         case 'single':
-          updateValue(isEmpty(days) ? currentDay.value : days[0]!.value)
+          updateValue(formatValue(isEmpty(days) ? currentDay.value : days[0]!.value))
           break
         case 'multiple':
-          updateValue(days.map((item) => item!.value))
+          updateValue(days.map((item) => formatValue(item!.value)))
           break
         case 'range':
-          updateValue([startDay.value!.value, endDay.value!.value])
+          updateValue([formatValue(startDay.value!.value), formatValue(endDay.value!.value)])
           break
       }
       /* eslint-enable indent */
@@ -171,25 +177,25 @@ export default defineComponent({
 
     watch(
       () => props.modelValue,
-      (value) => {
-        if (value) {
+      (modelValue) => {
+        if (modelValue) {
           /* eslint-disable indent */
           switch (props.type) {
             case 'single':
               {
-                const day = generateDay(value as Date)
+                const day = generateDay(new Date(modelValue as string))
                 selectedMap.value.set(day.id, {
                   ...day,
                   type: 'selected'
                 })
-                displayValue.value = dateJS(value as Date).format(props.displayFormatter)
+                displayValue.value = dateJS(day.type).format(props.displayFormatter)
               }
               break
             case 'multiple':
               {
-                displayValue.value = `已选择 ${(value as []).length} 个日期`
-                ;(value as Date[]).forEach((item) => {
-                  const day = generateDay(item as Date)
+                displayValue.value = `已选择 ${(modelValue as []).length} 个日期`
+                ;(modelValue as string[]).forEach((item) => {
+                  const day = generateDay(new Date(item))
                   selectedMap.value.set(day.id, {
                     ...day,
                     type: 'selected'
@@ -199,8 +205,8 @@ export default defineComponent({
               break
             case 'range':
               {
-                const start = (value as Date[])[0]
-                const end = pickLastItem(value as Date[])
+                const start = new Date(modelValue[0])
+                const end = new Date(pickLastItem(modelValue as string[]))
                 const localStartDay = generateDay(start)
                 const localEndDay = generateDay(end)
                 displayValue.value = `${dateJS(start).format(props.displayFormatter)} - ${dateJS(

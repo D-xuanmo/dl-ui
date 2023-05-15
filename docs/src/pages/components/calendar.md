@@ -102,6 +102,7 @@ const formatter: CalendarDayFormatter = (day) => {
 |placeholder|`string`|-|提示语|N|
 |title|`string`|`日期选择`|提示语|N|
 |display-formatter|`string`|`yyyy/MM/dd`|显示日期格式化|N|
+|value-formatter|`string`|`yyyy/MM/dd`|已选日期格式化|N|
 |month-formatter|`string`|`yyyy/MM`|月份选择格式化|N|
 |disabled|`boolean`|`false`|是否禁用|N|
 |readonly|`boolean`|`false`|是否只读|N|
@@ -111,7 +112,7 @@ const formatter: CalendarDayFormatter = (day) => {
 ## TypeScript 类型
 
 ```typescript
-export type CalendarValue = Date | Array<Date>
+export type CalendarValue = string | Array<string>
 
 /**
  * 日历选择类型

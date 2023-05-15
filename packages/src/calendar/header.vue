@@ -5,8 +5,8 @@
       <d-icon name="arrow-left" size="large" @click="togglePrevMonth" />
     </d-space>
     <span :class="dateClassName">
-      <d-date-picker
-        :model-value="innerValue"
+      <d-date-time-picker
+        :model-value="datePickerValue"
         type="year-month"
         :min-date="minDate"
         :max-date="maxDate"
@@ -16,7 +16,7 @@
         <template #trigger-arrow>
           <d-icon name="arrow-bottom-f" size="small" color="var(--d-secondary-text-color)" />
         </template>
-      </d-date-picker>
+      </d-date-time-picker>
     </span>
     <d-space :gap="10">
       <d-icon name="arrow-right" size="large" @click="toggleNextMonth" />
@@ -29,11 +29,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, SetupContext } from 'vue'
+import { defineComponent, SetupContext, computed, watch } from 'vue'
 import { createNamespace } from '../utils'
 import { CALENDAR_HEADER_PROPS } from './props'
 import useModelValue from '../hooks/use-model-value'
-import DDatePicker from '../date-picker'
+import DDateTimePicker from '../date-time-picker'
 import DIcon from '../icon'
 import DSpace from '../space'
 import dateJS from '@xuanmo/datejs'
@@ -43,7 +43,7 @@ const [, bem] = createNamespace('calendar')
 export default defineComponent({
   name: 'CalendarHeader',
   components: {
-    DDatePicker,
+    DDateTimePicker,
     DIcon,
     DSpace
   },
@@ -67,6 +67,10 @@ export default defineComponent({
       id: `${item}`,
       text: weeks[item]
     }))
+
+    const datePickerValue = computed(() => {
+      return dateJS(props.modelValue).format('yyyy/MM')
+    })
 
     const togglePrevMonth = () => {
       const year = innerValue.value.getFullYear()
@@ -95,8 +99,8 @@ export default defineComponent({
     }
 
     const toggleMonth = (value: string) => {
-      const year = +dateJS(new Date(value)).format('yyyy')
-      const month = +dateJS(new Date(value)).format('MM') - 1
+      const year = +dateJS(new Date(`${value}/1`)).format('yyyy')
+      const month = +dateJS(new Date(`${value}/1`)).format('M') - 1
       updateValue(new Date(year, month))
     }
 
@@ -106,6 +110,7 @@ export default defineComponent({
       weekList,
       dateClassName,
       innerValue,
+      datePickerValue,
       togglePrevMonth,
       togglePrevYear,
       toggleNextMonth,

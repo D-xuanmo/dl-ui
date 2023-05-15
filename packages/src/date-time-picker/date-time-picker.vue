@@ -13,7 +13,7 @@
     controlled
     :disabled="disabled"
     :readonly="readonly"
-    @change="handleChange!"
+    @change="(handleChange as any)"
     @confirm="handleConfirm"
     @close="hidePicker"
   />
@@ -103,6 +103,8 @@ export default defineComponent({
       async (modelValue) => {
         await nextTick()
         if (modelValue) {
+          dateUtil.update(modelValue)
+          pickerValue.value = dateUtil.pickerValue
           displayValue.value = props.displayFormatter
             ? dateJS(dateUtil.convertDate(modelValue)).format(props.displayFormatter)
             : dateUtil.value

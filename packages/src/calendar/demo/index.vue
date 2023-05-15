@@ -47,13 +47,13 @@ import dateJS from '@xuanmo/datejs'
 const value1 = ref()
 const value2 = ref()
 const value3 = ref()
-const value4 = ref(new Date(2023, 4, 19))
-const value5 = ref([new Date(2023, 4, 19), new Date(2023, 4, 23), new Date(2023, 4, 27)])
-const value6 = ref([new Date(2023, 1, 19), new Date(2023, 4, 20), new Date(2023, 4, 21)])
-const minDate = new Date(2023, 0, 1)
-const today = new Date()
+const value4 = ref('2023/4/29')
+const value5 = ref(['2023/4/2', '2023/4/29', '2023/4/29'])
+const value6 = ref(['2023/4/15', '2023/4/18'])
 const value7 = ref()
 const value8 = ref()
+const minDate = new Date(2023, 0, 1)
+const today = new Date()
 
 const formatter: CalendarDayFormatter = (day) => {
   Object.assign(day, {

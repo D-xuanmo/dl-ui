@@ -2,7 +2,7 @@ import { CSSProperties, ExtractPropTypes, PropType } from 'vue'
 import { COMMON_PROPS, IData } from '../common'
 import { pickProps } from '../utils'
 
-export type CalendarValue = Date | Array<Date>
+export type CalendarValue = string | Array<string>
 
 /**
  * 日历选择类型
@@ -56,7 +56,7 @@ export interface IDay extends IData<Date> {
 export const CALENDAR_PROPS = {
   ...COMMON_PROPS,
   modelValue: {
-    type: [Date, Array] as PropType<CalendarValue>,
+    type: [String, Array] as PropType<CalendarValue>,
     default: undefined
   },
 
@@ -103,6 +103,14 @@ export const CALENDAR_PROPS = {
   },
 
   /**
+   * 已选数据格式化
+   */
+  valueFormatter: {
+    type: String,
+    default: 'yyyy/MM/dd'
+  },
+
+  /**
    * 月份选择格式化
    */
   monthFormatter: {
@@ -118,6 +126,9 @@ export const CALENDAR_PROPS = {
     default: undefined
   },
 
+  /**
+   * 确认按钮文字
+   */
   confirmButtonText: {
     type: String,
     default: '确认'

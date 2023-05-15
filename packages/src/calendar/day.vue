@@ -40,7 +40,9 @@ export default defineComponent({
     const innerClassName = bem('day', ['inner'], true)
     const tipsClassName = bem('day', ['tips'], true)
 
-    const formatted = props.formatter ? props.formatter(props.date!) : props.date!
+    const formatted = computed(() => {
+      return props.formatter ? props.formatter(props.date!) : props.date!
+    })
 
     const handleSelect = () => {
       if (disabled.value) return
