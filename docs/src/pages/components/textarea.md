@@ -1,4 +1,4 @@
-# Textarea 多行文本框
+# Textarea 文本域
 
 用于输入多行内容
 

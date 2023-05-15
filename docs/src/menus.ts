@@ -37,20 +37,20 @@ const menus: MenuItemType[] = [
     groupTitle: '表单组件',
     children: [
       { id: 'button', path: '/components/button', content: 'Button [按钮]' },
-      { id: 'input', path: '/components/input', content: 'Input [输入框]' },
-      { id: 'textarea', path: '/components/textarea', content: 'Textarea [多行文本框]' },
-      { id: 'switch', path: '/components/switch', content: 'Switch [开关]' },
-      { id: 'rate', path: '/components/rate', content: 'Rate [评分]' },
-      { id: 'picker', path: '/components/picker', content: 'Picker [选择器]' },
+      { id: 'calendar', path: '/components/calendar', content: 'Calendar [日历]' },
       { id: 'cascader', path: '/components/cascader', content: 'Cascader [级联选择]' },
+      { id: 'checkbox', path: '/components/checkbox', content: 'Checkbox [复选框]' },
       {
         id: 'date-time-picker',
         path: '/components/date-time-picker',
         content: 'DateTimePicker [日期时间]'
       },
-      { id: 'calendar', path: '/components/calendar', content: 'Calendar [日历]' },
+      { id: 'input', path: '/components/input', content: 'Input [输入框]' },
+      { id: 'textarea', path: '/components/textarea', content: 'Textarea [文本域]' },
+      { id: 'switch', path: '/components/switch', content: 'Switch [开关]' },
+      { id: 'picker', path: '/components/picker', content: 'Picker [选择器]' },
+      { id: 'rate', path: '/components/rate', content: 'Rate [评分]' },
       { id: 'radio', path: '/components/radio', content: 'Radio [单选框]' },
-      { id: 'checkbox', path: '/components/checkbox', content: 'Checkbox [复选框]' },
       { id: 'upload', path: '/components/upload', content: 'Upload [文件上传]' },
       { id: 'form', path: '/components/form', content: 'Form [表单]' }
     ]
