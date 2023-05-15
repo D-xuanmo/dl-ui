@@ -86,7 +86,12 @@ const updateData = () => {
       { url: '/api/file-server/read-file/15b1c772-94ca-4e92-92be-d40b47832068', deletable: true }
     ],
     customInput: '我是自定义数据',
-    cascader: ['310000000000', '310100000000', '310104000000', '310104007000']
+    cascader: ['310000000000', '310100000000', '310104000000', '310104007000'],
+    datePicker: '2025/5/18',
+    timePicker: '08:35',
+    calendarSingle: '2024/3/8',
+    calendarMultiple: ['2024/3/8', '2024/3/12'],
+    calendarRange: ['2024/3/8', '2024/3/12']
   })
 }
 

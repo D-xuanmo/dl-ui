@@ -7,6 +7,8 @@ import CustomInput from './custom-input.vue'
 import { FormStoreInitialConfig } from '../store'
 import { TextareaProps } from '../../textarea'
 import { CascaderProps } from '../../cascader'
+import { CalendarProps } from '../../calendar'
+import { DateTimePickerProps } from '../../date-time-picker'
 
 const FORM_MODEL: FormStoreInitialConfig = {
   groups: [
@@ -75,6 +77,38 @@ const FORM_MODEL: FormStoreInitialConfig = {
       label: '评分',
       groupId: 'basic',
       value: 0
+    },
+    {
+      name: 'calendarSingle',
+      component: 'DCalendar',
+      label: '日历单选',
+      groupId: 'basic',
+      value: '',
+      otherProps: <CalendarProps>{
+        placeholder: '请选择'
+      }
+    },
+    {
+      name: 'calendarMultiple',
+      component: 'DCalendar',
+      label: '日历多选',
+      groupId: 'basic',
+      value: '',
+      otherProps: <CalendarProps>{
+        placeholder: '请选择',
+        type: 'multiple'
+      }
+    },
+    {
+      name: 'calendarRange',
+      component: 'DCalendar',
+      label: '日历区间',
+      groupId: 'basic',
+      value: '',
+      otherProps: <CalendarProps>{
+        placeholder: '请选择',
+        type: 'range'
+      }
     },
     {
       name: 'picker',
@@ -149,10 +183,20 @@ const FORM_MODEL: FormStoreInitialConfig = {
     },
     {
       name: 'datePicker',
-      component: 'DDatePicker',
+      component: 'DDateTimePicker',
       label: '日期选择器',
       groupId: 'basic',
-      value: new Date()
+      value: '2022/4/15'
+    },
+    {
+      name: 'timePicker',
+      component: 'DDateTimePicker',
+      label: '日期选择器',
+      groupId: 'basic',
+      value: '22:58',
+      otherProps: <DateTimePickerProps>{
+        type: 'time'
+      }
     },
     {
       name: 'radio',
