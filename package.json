@@ -19,6 +19,8 @@
     "lint:tsc": "yarn workspace @xuanmo/dl-ui tsc:clear"
   },
   "dependencies": {
+    "@commitlint/cli": "^17.6.3",
+    "@commitlint/config-conventional": "^17.6.3",
     "@xuanmo/javascript-utils": "^0.0.49",
     "@xuanmo/validator": "^0.0.11"
   }

@@ -1,6 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run prettier
-git add .
-npm run lint
+npx --no -- commitlint --edit "$1"

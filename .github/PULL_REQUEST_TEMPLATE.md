@@ -17,13 +17,14 @@ type(ComponentName?)：commit message
 
 允许的类型:
 
-- fix
-- feat
-- docs
-- perf
-- test
-- types
 - build
 - chore
-- refactor
 - ci
+- docs
+- feat
+- fix
+- perf
+- refactor
+- revert
+- style
+- test
