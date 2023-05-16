@@ -11,10 +11,9 @@ import MarkdownPreview, { transformer } from '@xuanmo/vite-plugin-md-preview'
 export default defineConfig({
   plugins: [
     createSvgIconsPlugin({
-      // 指定需要缓存的图标文件夹
       iconDirs: [resolve(__dirname, 'src/icon/icons')],
-      // 指定symbolId格式
-      symbolId: 'd-icon-[name]'
+      symbolId: 'd-icon-[name]',
+      customDomId: '__dlui__svg__icons__dom__'
     }),
     vue({
       include: [/\.vue$/, /\.md$/]
