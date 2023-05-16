@@ -55,7 +55,6 @@ app.use(DLUI)
 ## 链接
 
 - 文档地址：[https://www.xuanmo.xin/-/dl-ui](https://www.xuanmo.xin/-/dl-ui)
-- Demo：[https://www.xuanmo.xin/-/dl-ui/demo/form](https://www.xuanmo.xin/-/dl-ui/demo/form)
 
 ## 特别鸣谢
 
