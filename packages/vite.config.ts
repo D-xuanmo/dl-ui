@@ -3,9 +3,6 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import shiki from 'markdown-it-shiki'
-import Markdown from 'vite-plugin-md'
-import MarkdownPreview, { transformer } from '@xuanmo/vite-plugin-md-preview'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,18 +15,7 @@ export default defineConfig({
     vue({
       include: [/\.vue$/, /\.md$/]
     }),
-    vueJsx(),
-    Markdown({
-      transforms: {
-        before: transformer
-      },
-      markdownItUses: [[shiki, { theme: 'github-light' }]]
-    }),
-    MarkdownPreview({
-      shiki: {
-        theme: 'github-light'
-      }
-    })
+    vueJsx()
   ],
   server: {
     open: '/',
