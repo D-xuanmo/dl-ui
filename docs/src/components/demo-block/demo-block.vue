@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { createNamespace } from '@/utils/bem'
+import { createNamespace } from '@doc/utils'
 import './style.scss'
 
 const [name, bem] = createNamespace('demo-block')

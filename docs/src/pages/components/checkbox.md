@@ -4,25 +4,25 @@
 
 ```vue client=Mobile playground=MCheckbox
 <template>
-  <d-demo-block title="基础用法">
+  <dl-demo-block title="基础用法">
     <d-checkbox-group v-model="value">
       <d-checkbox value="1">选项1</d-checkbox>
       <d-checkbox value="2">选项2</d-checkbox>
     </d-checkbox-group>
-  </d-demo-block>
-  <d-demo-block title="禁用">
+  </dl-demo-block>
+  <dl-demo-block title="禁用">
     <d-checkbox-group v-model="value" disabled>
       <d-checkbox value="1">选项1</d-checkbox>
       <d-checkbox value="2">选项2</d-checkbox>
     </d-checkbox-group>
-  </d-demo-block>
-  <d-demo-block title="水平排列">
+  </dl-demo-block>
+  <dl-demo-block title="水平排列">
     <d-checkbox-group v-model="value" direction="horizontal">
       <d-checkbox value="1">选项1</d-checkbox>
       <d-checkbox value="2">选项2</d-checkbox>
     </d-checkbox-group>
-  </d-demo-block>
-  <d-demo-block title="最大个数">
+  </dl-demo-block>
+  <dl-demo-block title="最大个数">
     <d-checkbox-group v-model="value2" :max="3">
       <d-checkbox value="1">选项1</d-checkbox>
       <d-checkbox value="2">选项2</d-checkbox>
@@ -30,8 +30,8 @@
       <d-checkbox value="4">选项4</d-checkbox>
       <d-checkbox value="5">选项5</d-checkbox>
     </d-checkbox-group>
-  </d-demo-block>
-  <d-demo-block title="搭配单元格使用">
+  </dl-demo-block>
+  <dl-demo-block title="搭配单元格使用">
     <d-checkbox-group v-model="value">
       <d-cell-group>
         <d-cell title="选项1">
@@ -46,7 +46,7 @@
         </d-cell>
       </d-cell-group>
     </d-checkbox-group>
-  </d-demo-block>
+  </dl-demo-block>
 </template>
 
 <script lang="ts" setup>

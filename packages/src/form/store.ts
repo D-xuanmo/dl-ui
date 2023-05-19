@@ -1,6 +1,5 @@
 import { FormModel, IFormModelItem, FormGroups, FormGroupItem } from './types'
-import { markRaw, reactive } from 'vue'
-import { UnwrapNestedRefs } from '@vue/reactivity'
+import { markRaw, reactive, UnwrapNestedRefs } from 'vue'
 import { deepCopy, isObject } from '@xuanmo/javascript-utils'
 import { validator } from '../validator'
 

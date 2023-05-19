@@ -1,9 +1,9 @@
 import DemoBlock from './demo-block.vue'
-import { withInstall } from '@/utils/with-install'
+import { withInstall } from '@doc/utils'
 
-const DDemoBlock = withInstall(DemoBlock)
+const DLDemoBlock = withInstall(DemoBlock)
 
-export default DDemoBlock
+export default DLDemoBlock
 
 declare module 'vue' {
   export interface GlobalComponents {

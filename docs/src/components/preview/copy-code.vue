@@ -8,9 +8,9 @@
 </template>
 
 <script lang="ts" setup>
-import { createNamespace } from '@/utils/bem'
 import copyIcon from '../../assets/images/copy.svg'
 import { computed, ref } from 'vue'
+import { createNamespace } from '@doc/utils'
 
 const props = defineProps<{
   code: string

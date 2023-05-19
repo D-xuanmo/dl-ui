@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { CALENDAR_DATE_PROPS } from './props'
+import { CALENDAR_DATE_PROPS, IDay } from './props'
 import { createNamespace } from '../utils'
 import dateJS from '@xuanmo/datejs'
 
@@ -40,7 +40,7 @@ export default defineComponent({
     const innerClassName = bem('day', ['inner'], true)
     const tipsClassName = bem('day', ['tips'], true)
 
-    const formatted = computed(() => {
+    const formatted = computed<IDay>(() => {
       return props.formatter ? props.formatter(props.date!) : props.date!
     })
 

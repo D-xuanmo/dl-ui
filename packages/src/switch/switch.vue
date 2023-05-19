@@ -12,11 +12,10 @@
 
 <script lang="ts">
 import { computed, defineComponent, SetupContext } from 'vue'
-import { isPromise } from '@vue/shared'
 import { createNamespace } from '../utils'
 import useModelValue from '../hooks/use-model-value'
 import DIcon from '../icon'
-import { isBoolean, throwError, debugWarn } from '@xuanmo/javascript-utils'
+import { isBoolean, throwError, debugWarn, isPromise } from '@xuanmo/javascript-utils'
 import { SWITCH_PROPS } from './props'
 
 const [name, bem] = createNamespace('switch')
@@ -63,7 +62,7 @@ export default defineComponent({
         interceptionResult
           .then((result) => result && updateValue())
           .catch((e) => debugWarn(name, e))
-      } else if (interceptionResult) {
+      } else if (interceptionResult as unknown as boolean) {
         updateValue()
       }
     }

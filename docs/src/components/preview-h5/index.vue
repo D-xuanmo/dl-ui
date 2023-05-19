@@ -10,9 +10,9 @@
 
 <script lang="ts">
 import { computed, defineComponent, onMounted } from 'vue'
-import { createNamespace } from '@/utils/bem'
 import { useRoute, useRouter } from 'vue-router'
 import { toBoolean } from '@xuanmo/javascript-utils'
+import { createNamespace } from '@doc/utils'
 
 const [name, bem] = createNamespace('preview-mobile')
 
@@ -46,7 +46,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.d-preview-mobile {
+.dl-preview-mobile {
   &__wrapper {
     display: flex;
     flex-direction: column;

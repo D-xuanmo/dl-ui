@@ -1,9 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import routes from './routes'
-import DLUI, { validator } from '@'
+import DLUI, { validator } from '@xuanmo/dl-ui'
 
-import { Example, ExampleBEM } from './components/example'
 import DemoBlock from './components/demo-block'
 
 // 引入 CSS 相关资源
@@ -21,8 +20,6 @@ const app = createApp(App)
 
 app
   .use(routes)
-  .use(Example)
-  .use(ExampleBEM)
   .use(DemoBlock)
   .use(DLUI)
   .component('VueCode', DocPreview)

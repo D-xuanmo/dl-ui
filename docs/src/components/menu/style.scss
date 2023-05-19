@@ -1,4 +1,4 @@
-.d-menu {
+.dl-menu {
   $prefix: &;
 
   &__wrapper:not(&__sub-menu) {
@@ -32,7 +32,7 @@
 
     &-link {
       height: 32px;
-      font-size: var(--d-font-size-sm);
+      font-size: var(--d-font-size-md);
       line-height: 32px;
       cursor: pointer;
 

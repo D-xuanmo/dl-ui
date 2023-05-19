@@ -4,8 +4,8 @@
     "baseUrl": "./",
     "outDir": "dist",
     "paths": {
-      "@": ["../packages/src"],
-      "@/*": ["../packages/src/*"],
+      "@xuanmo/dl-ui": ["../packages/src"],
+      "@xuanmo/dl-ui/*": ["../packages/src/*"],
       "@doc/*": ["src/*"]
     },
     "types": ["vite/client", "vite-plugin-svg-icons/client"]

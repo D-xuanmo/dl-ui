@@ -1,23 +1,23 @@
 <template>
-  <d-demo-block title="基本用法">
+  <dl-demo-block title="基本用法">
     <d-radio-group v-model="value">
       <d-radio value="1" label="单选框1" />
       <d-radio value="2" label="单选框2" />
     </d-radio-group>
-  </d-demo-block>
-  <d-demo-block title="水平排列">
+  </dl-demo-block>
+  <dl-demo-block title="水平排列">
     <d-radio-group v-model="value" direction="horizontal">
       <d-radio value="1" label="单选框1" />
       <d-radio value="2" label="单选框2" />
     </d-radio-group>
-  </d-demo-block>
-  <d-demo-block title="禁用">
+  </dl-demo-block>
+  <dl-demo-block title="禁用">
     <d-radio-group v-model="value" direction="horizontal" disabled>
       <d-radio value="1" label="单选框1" />
       <d-radio value="2" label="单选框2" />
     </d-radio-group>
-  </d-demo-block>
-  <d-demo-block title="搭配单元格">
+  </dl-demo-block>
+  <dl-demo-block title="搭配单元格">
     <d-radio-group v-model="value">
       <d-cell-group>
         <d-cell title="单选框1">
@@ -32,7 +32,7 @@
         </d-cell>
       </d-cell-group>
     </d-radio-group>
-  </d-demo-block>
+  </dl-demo-block>
 </template>
 
 <script lang="ts" setup>

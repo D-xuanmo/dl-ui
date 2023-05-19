@@ -57,7 +57,7 @@ import {
   OnFormChange,
   FormStore,
   DirectionType
-} from '@'
+} from '@xuanmo/dl-ui'
 
 const FORM_MODEL: FormStoreInitialConfig = {
   groups: [

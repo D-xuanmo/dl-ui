@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import 'virtual:svg-icons-register'
+// import 'virtual:svg-icons-register'
 import './style/index.scss'
 import * as components from './components'
 
@@ -17,7 +17,7 @@ export type ComponentNames = keyof typeof components extends infer T
 
 export * from './components'
 export * from './common'
-export * from './utils'
+export * as utils from './utils'
 export * from './validator'
 export { version } from '../package.json'
 export default { install }

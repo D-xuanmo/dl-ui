@@ -1,14 +1,14 @@
 import { defineComponent, CSSProperties, ref, watch } from 'vue'
-import { createNamespace } from '@/utils/bem'
 import { useRoute } from 'vue-router'
 import { PLAYGROUND_SHORT_URL } from '@doc/constants'
 import QRCode from 'qrcode'
 import qs from 'qs'
-import { addUnit } from '@/utils'
 import qrcodeIcon from '../../assets/images/QRCode.svg'
 import playgroundIcon from '../../assets/images/CodeSandbox.svg'
 import CopyCode from './copy-code.vue'
 import './style.scss'
+import { createNamespace } from '@doc/utils'
+import { utils } from '@xuanmo/dl-ui'
 
 const [name, bem] = createNamespace('doc-preview')
 
@@ -52,8 +52,8 @@ const DocPreview = defineComponent({
       const isMobile = client === 'Mobile'
 
       const wrapperStyle = {
-        width: addUnit(width as string),
-        height: addUnit(height as string)
+        width: utils.addUnit(width as string),
+        height: utils.addUnit(height as string)
       } as CSSProperties
 
       const toggleCodeVisible = () => {

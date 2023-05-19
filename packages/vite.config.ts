@@ -12,9 +12,7 @@ export default defineConfig({
       symbolId: 'd-icon-[name]',
       customDomId: '__dlui__svg__icons__dom__'
     }),
-    vue({
-      include: [/\.vue$/, /\.md$/]
-    }),
+    vue(),
     vueJsx()
   ],
   server: {

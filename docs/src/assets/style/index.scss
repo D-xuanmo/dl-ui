@@ -81,7 +81,7 @@ blockquote {
 }
 
 // 文档预览样式
-.d-doc {
+.dl-doc {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -92,7 +92,7 @@ blockquote {
   &__header {
     display: flex;
     height: 50px;
-    padding: var(--d-gap-xs) var(--d-gap-sm);
+    padding: 0 var(--d-gap-sm);
     border-bottom: var(--d-border);
     overflow: hidden;
 
@@ -112,6 +112,10 @@ blockquote {
       &:hover {
         color: var(--d-primary);
       }
+    }
+
+    &-left {
+      line-height: 50px;
     }
 
     &-center {

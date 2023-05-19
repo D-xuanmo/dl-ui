@@ -1,5 +1,4 @@
-import { computed, ref, SetupContext, watchEffect, WritableComputedRef } from 'vue'
-import { EmitsOptions } from '@vue/runtime-core'
+import { computed, ref, SetupContext, watchEffect, WritableComputedRef, EmitsOptions } from 'vue'
 
 type Props<P, V> = P & { modelValue?: V } & { value?: V }
 

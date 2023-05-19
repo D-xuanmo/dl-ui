@@ -1,5 +1,4 @@
-import { nextTick, watch } from 'vue'
-import { WatchOptions } from '@vue/runtime-core'
+import { nextTick, watch, WatchOptions } from 'vue'
 
 export function watchOnce<T>(source: T, callback: (args: T) => any, options?: WatchOptions) {
   const stop = watch(

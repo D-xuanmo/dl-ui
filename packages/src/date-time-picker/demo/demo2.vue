@@ -11,11 +11,11 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { FormatterType } from '../props'
+import { DateTimePickerFormatter } from '../props'
 
 const value = ref('2022/4')
 
-const format: FormatterType = (type, value) => {
+const format: DateTimePickerFormatter = (type, value) => {
   if (type === 'year') {
     return `${value}年`
   }
