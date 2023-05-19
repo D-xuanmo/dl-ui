@@ -17,8 +17,8 @@ jobs:
         registry-url: https://registry.npmjs.org/
     - run: yarn
     - shell: bash
-      run: cp -r .npmignore ./packages/dl-common & cp -r LICENSE ./packages/dl-common & npm run build
-    - run: cd packages/dl-common && npm publish --access public
+      run: cp -r .npmignore ./packages/dl-common && cp -r LICENSE ./packages/dl-common
+    - run: cd packages/dl-common && npm run build && npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
