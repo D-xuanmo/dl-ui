@@ -1098,13 +1098,20 @@
   resolved "https://registry.npmmirror.com/@vue/shared/-/shared-3.3.4.tgz#06e83c5027f464eef861c329be81454bc8b70780"
   integrity sha512-7OjdcV8vQ74eiz1TZLzZP4JwqM5fA94K6yntPS5Z25r9HDuGNzaGdgvwKYq6S+MxwF0TFRwe50fIR/MYnakdkQ==
 
+"@xuanmo/common@file:./packages/dl-common":
+  version "0.0.1-alpha.1"
+  dependencies:
+    vue "^3.2.47"
+
 "@xuanmo/datejs@^1.0.15":
   version "1.0.15"
   resolved "https://registry.npmmirror.com/@xuanmo/datejs/-/datejs-1.0.15.tgz#af78d755525429cd0db0040ec7e0c54c53daae9c"
   integrity sha512-QhfHilKz9LBESUYaF2KMDHLFudjv17xBH26Z0tY0Am4VwhkOljZpKc+kZNCk6r/ljLnG9lcc3rGw1YWW4f8vZA==
 
-"@xuanmo/dl-common@file:packages/dl-common":
+"@xuanmo/dl-common@latest":
   version "0.0.1-alpha.1"
+  resolved "https://registry.npmjs.org/@xuanmo/dl-common/-/dl-common-0.0.1-alpha.1.tgz#d4adcbfa96aeac02e9e4dd51aa54905496f1f6d2"
+  integrity sha512-m2XUFqMP9meODha2siPumjXm0sl9fkYkEQq7XWyD/WUnhq183GIT1SfQaFXqDSwNy+dSVwD1MPqeOdkiKErOXA==
   dependencies:
     vue "^3.2.47"
 
