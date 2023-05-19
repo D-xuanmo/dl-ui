@@ -4,7 +4,7 @@
   "author": "D-xuanmo",
   "license": "MIT",
   "scripts": {
-    "dev": "vite --force",
+    "dev": "vite",
     "build": "vue-tsc --noEmit && vite build --base=/-/dl-ui",
     "preview": "vite preview"
   },

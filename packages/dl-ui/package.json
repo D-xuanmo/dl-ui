@@ -27,7 +27,7 @@
   "dependencies": {
     "@xuanmo/datejs": "^1.0.15",
     "@xuanmo/validator": "^0.0.13",
-    "@xuanmo/dl-common": "^0.x",
+    "@xuanmo/dl-common": "file:../dl-common",
     "vue": "^3.2.25"
   },
   "devDependencies": {

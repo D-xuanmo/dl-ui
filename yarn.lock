@@ -1103,6 +1103,11 @@
   resolved "https://registry.npmmirror.com/@xuanmo/datejs/-/datejs-1.0.15.tgz#af78d755525429cd0db0040ec7e0c54c53daae9c"
   integrity sha512-QhfHilKz9LBESUYaF2KMDHLFudjv17xBH26Z0tY0Am4VwhkOljZpKc+kZNCk6r/ljLnG9lcc3rGw1YWW4f8vZA==
 
+"@xuanmo/dl-common@file:packages/dl-common":
+  version "0.0.1-alpha.70"
+  dependencies:
+    vue "^3.2.47"
+
 "@xuanmo/javascript-utils@^0.0.49":
   version "0.0.49"
   resolved "https://registry.npmmirror.com/@xuanmo/javascript-utils/-/javascript-utils-0.0.49.tgz#609781c0408726cabdaeb8cb93e1a5e63fd32942"
