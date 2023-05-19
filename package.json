@@ -13,6 +13,7 @@
     "dev": "yarn workspace docs dev",
     "build:docs": "yarn workspace docs build",
     "build:lib": "yarn workspace @xuanmo/dl-ui build",
+    "build:common": "yarn workspace @xuanmo/dl-common build",
     "prepare": "husky install",
     "prettier": "npx prettier --write .",
     "lint": "eslint . --ext js,ts,tsx,vue && npm run lint:tsc",

@@ -17,7 +17,7 @@ jobs:
         registry-url: https://registry.npmjs.org/
     - run: yarn
     - shell: bash
-      run: cp -r README.md ./packages/dl-ui & cp -r .npmignore ./packages/dl-ui & cp -r LICENSE ./packages/dl-ui & npm run build:lib
+      run: cp -r README.md ./packages/dl-ui && cp -r .npmignore ./packages/dl-ui && cp -r LICENSE ./packages/dl-ui && npm run build:lib
     - run: cd packages/dl-ui && npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

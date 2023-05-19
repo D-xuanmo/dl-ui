@@ -1104,7 +1104,7 @@
   integrity sha512-QhfHilKz9LBESUYaF2KMDHLFudjv17xBH26Z0tY0Am4VwhkOljZpKc+kZNCk6r/ljLnG9lcc3rGw1YWW4f8vZA==
 
 "@xuanmo/dl-common@file:packages/dl-common":
-  version "0.0.1-alpha.70"
+  version "0.0.1-alpha.1"
   dependencies:
     vue "^3.2.47"
 
