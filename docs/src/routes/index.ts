@@ -44,7 +44,7 @@ const getRoutes = () => {
  * 访问路径为：/demo/cell
  */
 const getDemoRoutes = () => {
-  const demoModules = import.meta.glob('../../../packages/src/**/demo/index.vue')
+  const demoModules = import.meta.glob('../../../packages/dl-ui/src/**/demo/index.vue')
   const routes: RouteRecordRaw[] = [
     {
       path: '/demo/component-list',

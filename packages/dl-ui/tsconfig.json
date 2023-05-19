@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "dist",
+    "types": ["vite/client", "vite-plugin-svg-icons/client"]
+  },
+  "include": ["./**/*.ts", "./**/*.tsx", "./**/*.vue"]
+}

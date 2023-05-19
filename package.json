@@ -6,14 +6,14 @@
   "author": "xuanmo <me@xuanmo.xin>",
   "license": "MIT",
   "workspaces": [
-    "packages",
+    "packages/*",
     "docs"
   ],
   "scripts": {
     "dev": "yarn workspace docs dev",
     "build:docs": "yarn workspace docs build",
     "build:lib": "yarn workspace @xuanmo/dl-ui build",
-    "prepare": "husky install",
+    "prepare": "husky install && chmod +x ./pre-start.sh && ./pre-start.sh",
     "prettier": "npx prettier --write .",
     "lint": "eslint . --ext js,ts,tsx,vue && npm run lint:tsc",
     "lint:tsc": "yarn workspace @xuanmo/dl-ui tsc:clear"
@@ -43,6 +43,7 @@
     "husky": "^7.0.4",
     "prettier": "2.6.2",
     "rimraf": "^4.3.0",
+    "rollup": "^3.22.0",
     "sass": "^1.51.0",
     "typescript": "^5.0.2",
     "vite": "^2.9.2",

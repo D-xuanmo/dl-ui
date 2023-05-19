@@ -36,7 +36,7 @@ export default defineConfig({
   resolve: {
     preserveSymlinks: true,
     alias: {
-      '@xuanmo/dl-ui': resolve(join(__dirname, '../packages/src')),
+      '@xuanmo/dl-ui': resolve(join(__dirname, '../packages/dl-ui/src')),
       '@doc': resolve(__dirname, 'src')
     }
   }

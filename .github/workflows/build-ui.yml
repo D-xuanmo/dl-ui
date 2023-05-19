@@ -1,0 +1,24 @@
+name: Build UI
+
+on:
+  push:
+    paths:
+     - 'packages/dl-ui/package.json'
+     - '.github/workflows/build-ui.yml'
+
+jobs:
+  publish-npm:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14
+        registry-url: https://registry.npmjs.org/
+    - run: yarn
+    - shell: bash
+      run: cp -r README.md ./packages/dl-ui & cp -r .npmignore ./packages/dl-ui & cp -r LICENSE ./packages/dl-ui & npm run build:lib
+    - run: cd packages/dl-ui && npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

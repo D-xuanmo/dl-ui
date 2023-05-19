@@ -8,7 +8,7 @@ import playgroundIcon from '../../assets/images/CodeSandbox.svg'
 import CopyCode from './copy-code.vue'
 import './style.scss'
 import { createNamespace } from '@doc/utils'
-import { utils } from '@xuanmo/dl-ui'
+import { addUnit } from '@xuanmo/dl-common'
 
 const [name, bem] = createNamespace('doc-preview')
 
@@ -52,8 +52,8 @@ const DocPreview = defineComponent({
       const isMobile = client === 'Mobile'
 
       const wrapperStyle = {
-        width: utils.addUnit(width as string),
-        height: utils.addUnit(height as string)
+        width: addUnit(width as string),
+        height: addUnit(height as string)
       } as CSSProperties
 
       const toggleCodeVisible = () => {

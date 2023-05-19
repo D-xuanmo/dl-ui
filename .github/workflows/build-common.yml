@@ -1,0 +1,24 @@
+name: Build Common
+
+on:
+  push:
+    paths:
+     - 'packages/dl-common/package.json'
+     - '.github/workflows/build-common.yml'
+
+jobs:
+  publish-npm:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14
+        registry-url: https://registry.npmjs.org/
+    - run: yarn
+    - shell: bash
+      run: cp -r .npmignore ./packages/common & cp -r LICENSE ./packages/common & npm run build
+    - run: cd packages/common && npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
