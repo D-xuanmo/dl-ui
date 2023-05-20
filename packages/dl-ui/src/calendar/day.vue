@@ -28,7 +28,7 @@ export default defineComponent({
     const disabled = computed(() => !props.date?.isCurrentMonth || props.date.disabled)
     const itemClassName = computed(() => {
       const today =
-        dateJS(props.date?.value).format('yyyy-MM-dd') === dateJS(new Date()).format('yyyy-MM-dd')
+        dateJS(props.date!.value).format('yyyy-MM-dd') === dateJS(new Date()).format('yyyy-MM-dd')
       return bem('day', {
         disabled: disabled.value,
         today,

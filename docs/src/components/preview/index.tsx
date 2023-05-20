@@ -64,12 +64,12 @@ const DocPreview = defineComponent({
       const pcContent =
         !isMobile && !playground ? (
           <>
-            <div className={bem('runtime')}>{slots.default?.()}</div>
-            <div className={bem('toolbar', { active: showCode.value })}>
+            <div class={bem('runtime')}>{slots.default?.()}</div>
+            <div class={bem('toolbar', { active: showCode.value })}>
               <span onClick={toggleCodeVisible}>{!showCode.value ? '显示' : '隐藏'}代码</span>
             </div>
             <div
-              className={bem('code', { active: showCode.value })}
+              class={bem('code', { active: showCode.value })}
               v-html={decodeURIComponent(props.source as string)}
             />
           </>
@@ -77,24 +77,24 @@ const DocPreview = defineComponent({
 
       // H5 模版
       const mobileContent = isMobile ? (
-        <div className={bem('out-content')}>
-          <div className={bem('content')}>
+        <div class={bem('out-content')}>
+          <div class={bem('content')}>
             <div
-              className={bem('code', { active: showCode.value })}
+              class={bem('code', { active: showCode.value })}
               v-html={decodeURIComponent(props.source as string)}
             />
-            <div className={bem('runtime')}>
+            <div class={bem('runtime')}>
               <iframe src={`${demoURL.value}?preview=true`} />
             </div>
           </div>
-          <div className={bem('toolbar')}>
+          <div class={bem('toolbar')}>
             <d-space>
               <copy-code code={props.source} />
             </d-space>
             <d-space gap={10}>
-              <div className={bem('qrcode')}>
-                <img className={bem('qrcode-trigger')} src={qrcodeIcon} />
-                <div className={bem('qrcode-img')}>
+              <div class={bem('qrcode')}>
+                <img class={bem('qrcode-trigger')} src={qrcodeIcon} />
+                <div class={bem('qrcode-img')}>
                   <img src={qrcode.value} />
                 </div>
               </div>
@@ -115,7 +115,7 @@ const DocPreview = defineComponent({
       // 演练场
       const playgroundContent =
         playground && !isMobile ? (
-          <div className={bem('playground')}>
+          <div class={bem('playground')}>
             <iframe ref={playgroundRef} src={`${PLAYGROUND_SHORT_URL}${playground}`} />
           </div>
         ) : null

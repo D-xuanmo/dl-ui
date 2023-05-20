@@ -13,5 +13,6 @@
     "isolatedModules": false,
     "lib": ["esnext", "dom"],
     "skipLibCheck": true
-  }
+  },
+  "include": ["**/*.d.ts"]
 }

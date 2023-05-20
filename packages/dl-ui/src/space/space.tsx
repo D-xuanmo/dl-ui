@@ -31,13 +31,13 @@ export default defineComponent({
               : undefined
         }
         return (
-          <div key={`${index}`} className={spaceItemClassName} style={style}>
+          <div key={`${index}`} class={spaceItemClassName} style={style}>
             {item}
           </div>
         )
       })
 
-      return <div className={wrapperClassName.value}>{spaceItems}</div>
+      return <div class={wrapperClassName.value}>{spaceItems}</div>
     }
   }
 })

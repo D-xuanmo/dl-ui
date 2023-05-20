@@ -13,6 +13,7 @@
   ],
   "type": "module",
   "dependencies": {
+    "@xuanmo/dl-ui": "workspace:*",
     "@xuanmo/normalize.css": "^1.0.9",
     "qrcode": "^1.5.3",
     "qs": "^6.11.1",

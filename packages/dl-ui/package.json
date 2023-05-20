@@ -1,6 +1,5 @@
 {
   "name": "@xuanmo/dl-ui",
-  "private": false,
   "version": "0.0.1-alpha.71",
   "author": {
     "name": "xuanmo",
@@ -27,7 +26,6 @@
   "dependencies": {
     "@xuanmo/datejs": "^1.0.15",
     "@xuanmo/validator": "^0.0.13",
-    "@xuanmo/dl-common": "latest",
     "vue": "^3.2.25"
   },
   "devDependencies": {

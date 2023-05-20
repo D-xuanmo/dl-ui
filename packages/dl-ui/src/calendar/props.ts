@@ -147,7 +147,6 @@ export const CALENDAR_DATE_PROPS = {
   ...pickProps(CALENDAR_PROPS, ['formatter']),
   date: {
     type: Object as PropType<IDay>,
-    required: true,
-    default: undefined
+    required: true
   }
 }

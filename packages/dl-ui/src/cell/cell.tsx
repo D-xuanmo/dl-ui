@@ -63,7 +63,7 @@ export default defineComponent({
       const renderLabel =
         hideTitle || (isEmpty(title) && isEmpty(slots.title)) ? null : (
           <div
-            className={titleClassName}
+            class={titleClassName}
             style={{
               width: addUnit(labelWidth)
             }}
@@ -75,14 +75,14 @@ export default defineComponent({
                 {leftIcon ? (
                   <DIcon
                     name={leftIcon}
-                    className={bem('title', 'icon', true)}
+                    class={bem('title', 'icon', true)}
                     size={leftIconSize}
                     color={leftIconColor}
                     {...leftIconProps}
                   />
                 ) : null}
                 <span>{title}</span>
-                {required ? <span className={bem('title', 'mark', true)}> *</span> : null}
+                {required ? <span class={bem('title', 'mark', true)}> *</span> : null}
               </>
             )}
           </div>
@@ -97,18 +97,18 @@ export default defineComponent({
           name={rightIcon}
           color={rightIconColor}
           size={rightIconSize}
-          className={bem('right-icon')}
+          class={bem('right-icon')}
           {...rightIconProps}
         />
       )
 
       const renderSuffix =
         slots.suffix || suffix ? (
-          <div className={bem('suffix')}>{slots.suffix ? slots.suffix() : suffix}</div>
+          <div class={bem('suffix')}>{slots.suffix ? slots.suffix() : suffix}</div>
         ) : null
 
       const renderArrow = arrow ? (
-        <DIcon name="arrow-right" className={bem('arrow')} color="var(--d-secondary-text-color)" />
+        <DIcon name="arrow-right" class={bem('arrow')} color="var(--d-secondary-text-color)" />
       ) : null
 
       function handleClick(event: Event) {

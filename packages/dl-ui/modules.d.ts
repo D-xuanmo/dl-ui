@@ -1,10 +1,8 @@
-import { AriaAttributes } from 'vue'
-
-declare module 'vue' {
-  interface HTMLAttributes extends AriaAttributes {
-    className?: string
-  }
-}
+// declare module '@vue/runtime-dom' {
+//   interface HTMLAttributes {
+//     className?: string
+//   }
+// }
 
 declare module '*.vue' {
   import type { ComponentOptions } from 'vue'

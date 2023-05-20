@@ -5,8 +5,8 @@ import '@xuanmo/dl-common/dist/index.css'
 import './style/index.scss'
 
 const install = function (app: App) {
-  Object.values(components).forEach((component) => {
-    if (/^d-/.test(component.name)) app.use(component as any)
+  Object.values(components).forEach((component: any) => {
+    if (/^d-/.test(component?.name)) app.use(component)
   })
 }
 
