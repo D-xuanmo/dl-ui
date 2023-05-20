@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { ua } from '@xuanmo/javascript-utils'
-import icons from '../components/icons'
 
 /**
  * 遍历所有文档路由
@@ -75,10 +74,6 @@ const routes = createRouter({
     {
       path: '/demo',
       redirect: '/demo/component-list'
-    },
-    {
-      path: '/preview-icon',
-      component: icons
     },
     ...getRoutes(),
     ...getDemoRoutes()

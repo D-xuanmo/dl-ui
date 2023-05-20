@@ -18,6 +18,7 @@ export default defineComponent({
           spin: spin
         }),
         className,
+        props.class,
         attrs?.class
       ].join('')
 

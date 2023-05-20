@@ -30,11 +30,13 @@
             <div v-if="$slots['header-right']" :class="bem('header', 'right', true)">
               <slot name="header-right" />
             </div>
-            <close-outlined
+            <span
               v-if="closeable"
               :class="bem('header', 'closable', true)"
               @click="handleClickIcon"
-            />
+            >
+              <slot name="close-icon"><close-outlined /></slot>
+            </span>
           </header>
           <div :class="[bem('body'), popupBodyClass]"><slot /></div>
         </div>

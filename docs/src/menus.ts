@@ -25,7 +25,12 @@ const menus: MenuItemType[] = [
     groupTitle: '基础组件',
     children: [
       { id: 'cell', path: '/components/cell', content: 'Cell [单元格]' },
-      { id: 'icon', path: '/components/icon', content: 'Icon [图标]' },
+      {
+        id: 'icon',
+        path: '/components/icon',
+        content: 'Icon [图标]',
+        hide: ua().device === 'Mobile'
+      },
       { id: 'overlay', path: '/components/overlay', content: 'Overlay [遮罩层]' },
       { id: 'popup', path: '/components/popup', content: 'Popup [弹出层]' },
       { id: 'space', path: '/components/space', content: 'Space [间距]' },
@@ -57,7 +62,14 @@ const menus: MenuItemType[] = [
   }
 ]
 
-export const getMenuList = () => menus.filter((item) => !item.hide)
+export const getMenuList = () => {
+  return menus
+    .filter((item) => !item.hide)
+    .map((item) => {
+      item.children = item.children?.filter((child) => !child.hide)
+      return item
+    })
+}
 
 /**
  * 查找菜单信息

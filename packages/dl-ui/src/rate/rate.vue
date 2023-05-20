@@ -9,12 +9,14 @@
         :style="rateItemStyle"
         @click="handleChange(i)"
       >
-        <star-outlined
+        <component
+          :is="uncheckedIcon"
           v-if="i > innerValue"
           :size="size!"
           :color="disabled ? 'var(--d-disable-color)' : 'var(--d-secondary-text-color)'"
         />
-        <star-filled
+        <component
+          :is="checkedIcon"
           v-if="i <= innerValue"
           :size="size!"
           :class="bem('item', 'active', true)"
@@ -26,23 +28,18 @@
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties, defineComponent, SetupContext } from 'vue'
+import { computed, CSSProperties, defineComponent } from 'vue'
 import { createNamespace } from '@xuanmo/dl-common'
 import { isNumber } from '@xuanmo/javascript-utils'
 import useModelValue from '../hooks/use-model-value'
 import { RATE_PROPS } from './props'
-import { StarFilled, StarOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('rate')
 
 export default defineComponent({
   name,
-  components: {
-    StarFilled,
-    StarOutlined
-  },
   props: RATE_PROPS,
-  setup(props, context: SetupContext) {
+  setup(props, context) {
     const [innerValue, updateValue] = useModelValue<number, typeof props>(
       props as never,
       context.emit

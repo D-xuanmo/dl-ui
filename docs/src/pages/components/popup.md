@@ -81,7 +81,6 @@ function handleShowPopup4() {
 |duration|`number`|`0.3`|过渡动画时间|N|
 |round|`boolean`|`false`|实现显示未圆角，`placement`不等于`center`有效|N|
 |closeable|`boolean`|`false`|是否显示关闭图标|N|
-|close-icon|`string`|`close-o`|同`Icon`组件`name`属性|N|
 |popup-class|`string`|-|弹出层 className|N|
 |popup-body-class|`string`|-|弹出层主体 className|N|
 |popup-style|`CSSProperties`|-|弹出层style|N|
@@ -109,6 +108,7 @@ function handleShowPopup4() {
 |default|弹出层内容|
 |header-left|头部左侧内容|
 |header-right|头部右侧内容|
+|close-icon|关闭图标|
 
 ## TypeScript 类型
 

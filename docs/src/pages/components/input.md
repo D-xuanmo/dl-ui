@@ -31,16 +31,8 @@
       v-model="value"
       label="显示图标"
       placeholder="请输入文字"
-      left-icon="tips-f"
-      left-icon-color="#f00"
-    />
-    <d-input
-      v-model="value"
-      label="图标大小"
-      placeholder="请输入文字"
-      left-icon="tips-f"
-      left-icon-color="#f00"
-      left-icon-size="small"
+      :left-icon="TipsOutlined"
+      :left-icon-props="{ color: '#f00' }"
     />
     <d-input v-model="value" label="超长文字展示" placeholder="请输入文字" label-align="right" />
   </d-cell-group>
@@ -48,6 +40,8 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { TipsOutlined } from '@xuanmo/dl-icons'
+
 const value = ref('')
 const number = ref('')
 
@@ -71,9 +65,8 @@ function onBlur(value: string) {
 |label-width|`string`|-|左侧显示文字宽度，单位：`px`|N|
 |label-align|`string`|left|左侧显示文字对齐方式，可选值：`left/center/right`|N|
 |hide-label|`boolean`|false|隐藏左侧显示文字|N|
-|left-icon|`string`|-|左侧图标名|N|
-|left-icon-size|`string`|-|左侧图标大小，同 `Icon` 组件大小|N|
-|left-icon-color|`string`|-|左侧图标颜色|N|
+|left-icon|`Component`|-|左侧图标|N|
+|left-icon-props|`object`|-|图标组件 props|N|
 |colon|`boolean`|-|是否显示左侧冒号|N|
 |required|`boolean`|-|是否必填|N|
 |placeholder|`string`|-|输入框占位符|N|

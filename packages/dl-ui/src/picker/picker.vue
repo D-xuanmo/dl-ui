@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties, defineComponent, ref, SetupContext, watch } from 'vue'
+import { computed, CSSProperties, defineComponent, ref, watch } from 'vue'
 import { createNamespace } from '@xuanmo/dl-common'
 import useModelValue from '../hooks/use-model-value'
 import { ICascaderOption, IData, OmitValueProperties } from '@xuanmo/dl-common'
@@ -49,7 +49,7 @@ export default defineComponent({
   components: { RightOutlined, DScrollRadio, DButton },
   props: PICKER_PROPS,
   emits: ['update:visible', 'update:model-value', 'change', 'confirm', 'close'],
-  setup(props, context: SetupContext<EventType>) {
+  setup(props, context) {
     const className = bem()
     const contentClassName = bem('content')
 
@@ -58,7 +58,7 @@ export default defineComponent({
       OmitValueProperties<typeof props>,
       'visible',
       EventType
-    >(props as OmitValueProperties<typeof props>, context.emit, 'visible', 'update:visible')
+    >(props as any, context.emit, 'visible', 'update:visible')
 
     const innerVisible = ref(false)
 

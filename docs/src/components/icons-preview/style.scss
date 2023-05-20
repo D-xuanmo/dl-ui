@@ -1,0 +1,20 @@
+.dl-icons-preview {
+  #{&} {
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &__item {
+      width: calc(100% / 8);
+      margin-bottom: 16px;
+      list-style: none;
+      text-align: center;
+
+      &--title {
+        margin-top: 8px;
+        font-size: 12px;
+      }
+    }
+  }
+}

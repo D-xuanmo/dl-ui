@@ -22,57 +22,83 @@
 
   <dl-demo-block>
     <p>尺寸</p>
-    <d-button size="small" fill="solid" theme="primary">small</d-button>
-    <d-button size="medium" fill="solid" theme="primary" class="m-l-5px m-r-5px">medium</d-button>
-    <d-button size="large" fill="solid" theme="primary">large</d-button>
+    <d-space :gap="10">
+      <d-button size="small" fill="solid" theme="primary">small</d-button>
+      <d-button size="medium" fill="solid" theme="primary">medium</d-button>
+      <d-button size="large" fill="solid" theme="primary">large</d-button>
+    </d-space>
   </dl-demo-block>
 
   <dl-demo-block>
     <p>主题</p>
-    <d-button theme="default" class="m-r-5px m-b-5px">default</d-button>
-    <d-button theme="primary" class="m-r-5px m-b-5px">primary</d-button>
-    <d-button theme="success" class="m-r-5px m-b-5px">success</d-button>
-    <d-button theme="warning" class="m-r-5px m-b-5px">warning</d-button>
-    <d-button theme="danger" class="m-r-5px m-b-5px">danger</d-button>
+    <d-space :gap="10" wrap>
+      <d-button theme="default">default</d-button>
+      <d-button theme="primary">primary</d-button>
+      <d-button theme="success">success</d-button>
+      <d-button theme="warning">warning</d-button>
+      <d-button theme="danger">danger</d-button>
+    </d-space>
   </dl-demo-block>
 
   <dl-demo-block>
     <p>镂空主题</p>
-    <d-button block theme="default" fill="outline" class="m-b-10px">default</d-button>
-    <d-button block theme="primary" fill="outline" class="m-b-10px">primary</d-button>
-    <d-button block theme="success" fill="outline" class="m-b-10px">success</d-button>
-    <d-button block theme="warning" fill="outline" class="m-b-10px">warning</d-button>
-    <d-button block theme="danger" fill="outline" class="m-b-10px">danger</d-button>
+    <d-space :gap="10" direction="vertical">
+      <d-button block theme="default" fill="outline">default</d-button>
+      <d-button block theme="primary" fill="outline">primary</d-button>
+      <d-button block theme="success" fill="outline">success</d-button>
+      <d-button block theme="warning" fill="outline">warning</d-button>
+      <d-button block theme="danger" fill="outline">danger</d-button>
+    </d-space>
   </dl-demo-block>
 
   <dl-demo-block>
     <p>形状</p>
-    <d-button theme="primary">default</d-button>
-    <d-button shape="rounded" theme="primary" class="m-l-5px m-r-5px">rounded</d-button>
-    <d-button shape="rectangular" theme="primary">rectangular</d-button>
+    <d-space :gap="10">
+      <d-button theme="primary">default</d-button>
+      <d-button shape="rounded" theme="primary">rounded</d-button>
+      <d-button shape="rectangular" theme="primary">rectangular</d-button>
+    </d-space>
   </dl-demo-block>
 
   <dl-demo-block>
     <p>禁用</p>
-    <d-button theme="primary" disabled>default</d-button>
-    <d-button theme="success" fill="outline" disabled class="m-l-5px m-r-5px">default</d-button>
-    <d-button shape="rounded" disabled theme="danger">rounded</d-button>
+    <d-space :gap="10">
+      <d-button theme="primary" disabled>default</d-button>
+      <d-button theme="success" fill="outline" disabled>default</d-button>
+      <d-button shape="rounded" disabled theme="danger">rounded</d-button>
+    </d-space>
   </dl-demo-block>
 
   <dl-demo-block>
     <p>加载状态</p>
-    <d-button theme="primary" loading>default</d-button>
-    <d-button theme="success" fill="outline" loading class="m-l-5px m-r-5px">default</d-button>
-    <d-button shape="rounded" loading theme="danger">rounded</d-button>
+    <d-space :gap="10">
+      <d-button theme="primary" loading>default</d-button>
+      <d-button theme="success" fill="outline" loading>default</d-button>
+      <d-button shape="rounded" loading theme="danger">rounded</d-button>
+    </d-space>
   </dl-demo-block>
 
   <dl-demo-block>
     <p>图标模式</p>
-    <d-button theme="primary" icon="star" />
-    <d-button theme="success" icon="star-f" class="m-l-5px m-r-5px">default</d-button>
-    <d-button theme="success" fill="outline" icon="star-f">default</d-button>
+    <d-space :gap="10">
+      <d-button theme="primary">
+        <template #icon>
+          <star-outlined />
+        </template>
+      </d-button>
+      <d-button theme="success">
+        <template #icon>
+          <star-outlined />
+        </template>
+        default
+      </d-button>
+    </d-space>
   </dl-demo-block>
 </template>
+
+<script lang="ts" setup>
+import { StarOutlined } from '@xuanmo/dl-icons'
+</script>
 ```
 
 ## API
@@ -89,7 +115,12 @@
 |fill|`'solid' \| 'outline' \| 'none'`| `solid`| 填充模式，`outline` 为镂空展示 | N |
 |shape|`'default' \| 'rounded' \| 'rectangular'`|`default`|按钮形状|N|
 |loading|`boolean`|`false`|是否显示 loading 效果|N|
-|link|`boolean`|`false`|链接模式|N|
+|link|`boolean`|`false`|链接模式|N|### Slots
+
+|名称|说明|
+|---|----|
+|default|内容|
+|icon|按钮图标|
 
 ### TypeScript 类型
 

@@ -6,7 +6,7 @@
   </d-cell-group>
   <d-cell-group title="图标修改">
     <d-cell content-align="left">
-      <d-rate v-model="value" unchecked-icon="heart" checked-icon="heart-f" />
+      <d-rate v-model="value" :unchecked-icon="HeartOutlined" :checked-icon="HeartFilled" />
     </d-cell>
   </d-cell-group>
   <d-cell-group title="大小、颜色调整">
@@ -24,6 +24,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { HeartFilled, HeartOutlined } from '@xuanmo/dl-icons'
 
 const value = ref(2)
 </script>

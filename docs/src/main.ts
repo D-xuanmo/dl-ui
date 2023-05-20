@@ -3,6 +3,8 @@ import App from './App.vue'
 import routes from './routes'
 import DLUI, { validator } from '@xuanmo/dl-ui'
 
+import IconsPreview from './components/icons-preview'
+
 import DemoBlock from './components/demo-block'
 
 // 引入 CSS 相关资源
@@ -24,4 +26,5 @@ app
   .use(DLUI)
   .component('VueCode', DocPreview)
   .component('CustomInput', CustomInput)
+  .component('IconsPreview', IconsPreview)
   .mount('#app')

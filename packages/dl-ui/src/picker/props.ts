@@ -44,7 +44,10 @@ export const PICKER_PROPS = {
   /**
    * 支持设置一个顶部标题
    */
-  title: String,
+  title: {
+    type: String,
+    default: ''
+  },
 
   /**
    * 关闭按钮文字

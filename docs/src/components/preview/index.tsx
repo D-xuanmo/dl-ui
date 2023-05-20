@@ -1,14 +1,13 @@
 import { defineComponent, CSSProperties, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { PLAYGROUND_SHORT_URL } from '@doc/constants'
 import QRCode from 'qrcode'
 import qs from 'qs'
-import qrcodeIcon from '../../assets/images/QRCode.svg'
-import playgroundIcon from '../../assets/images/CodeSandbox.svg'
-import CopyCode from './copy-code.vue'
-import './style.scss'
 import { createNamespace } from '@doc/utils'
 import { addUnit } from '@xuanmo/dl-common'
+import Playground from '@doc/components/preview/playground'
+import MobilePreview from '@doc/components/preview/mobile-preview'
+import PreviewOnly from '@doc/components/preview/preview-only'
+import './style.scss'
 
 const [name, bem] = createNamespace('doc-preview')
 
@@ -19,15 +18,11 @@ const props = {
 
 const DocPreview = defineComponent({
   name,
-  components: {
-    'copy-code': CopyCode
-  },
   props,
   setup(props, { slots }) {
     const route = useRoute()
     const showCode = ref(false)
     const qrcode = ref('')
-    const playgroundRef = ref<HTMLIFrameElement | null>(null)
     const demoURL = ref('')
 
     watch(
@@ -48,7 +43,7 @@ const DocPreview = defineComponent({
     )
 
     return () => {
-      const { client = 'PC', playground, height, width } = qs.parse(props.params!)
+      const { client = 'PC', playground, height, width, preview } = qs.parse(props.params!)
       const isMobile = client === 'Mobile'
 
       const wrapperStyle = {
@@ -60,71 +55,43 @@ const DocPreview = defineComponent({
         showCode.value = !showCode.value
       }
 
-      // PC 模版
-      const pcContent =
-        !isMobile && !playground ? (
-          <>
-            <div class={bem('runtime')}>{slots.default?.()}</div>
-            <div class={bem('toolbar', { active: showCode.value })}>
-              <span onClick={toggleCodeVisible}>{!showCode.value ? '显示' : '隐藏'}代码</span>
-            </div>
-            <div
-              class={bem('code', { active: showCode.value })}
-              v-html={decodeURIComponent(props.source as string)}
-            />
-          </>
-        ) : null
+      let content = null
 
-      // H5 模版
-      const mobileContent = isMobile ? (
-        <div class={bem('out-content')}>
-          <div class={bem('content')}>
-            <div
-              class={bem('code', { active: showCode.value })}
-              v-html={decodeURIComponent(props.source as string)}
-            />
-            <div class={bem('runtime')}>
-              <iframe src={`${demoURL.value}?preview=true`} />
-            </div>
-          </div>
-          <div class={bem('toolbar')}>
-            <d-space>
-              <copy-code code={props.source} />
-            </d-space>
-            <d-space gap={10}>
-              <div class={bem('qrcode')}>
-                <img class={bem('qrcode-trigger')} src={qrcodeIcon} />
-                <div class={bem('qrcode-img')}>
-                  <img src={qrcode.value} />
-                </div>
+      if (preview) {
+        content = <PreviewOnly code={slots.default?.()} />
+      } else {
+        if (!isMobile && !playground) {
+          content = (
+            <>
+              <PreviewOnly code={slots.default?.()} />
+              <div class={bem('toolbar', { active: showCode.value })}>
+                <span style={{ cursor: 'pointer' }} onClick={toggleCodeVisible}>
+                  {!showCode.value ? '显示' : '隐藏'}代码
+                </span>
               </div>
-              {playground && (
-                <a
-                  href={`${PLAYGROUND_SHORT_URL}${playground}`}
-                  target="_blank"
-                  title="在 Playground 中编辑"
-                >
-                  <img src={playgroundIcon} />
-                </a>
-              )}
-            </d-space>
-          </div>
-        </div>
-      ) : null
-
-      // 演练场
-      const playgroundContent =
-        playground && !isMobile ? (
-          <div class={bem('playground')}>
-            <iframe ref={playgroundRef} src={`${PLAYGROUND_SHORT_URL}${playground}`} />
-          </div>
-        ) : null
+              <div
+                class={bem('code', { active: showCode.value })}
+                v-html={decodeURIComponent(props.source as string)}
+              />
+            </>
+          )
+        } else if (isMobile) {
+          content = (
+            <MobilePreview
+              sourceCode={props.source!}
+              previewURL={demoURL.value}
+              qrcodeImage={qrcode.value}
+              playgroundKey={playground as string}
+            />
+          )
+        } else if (playground && !isMobile) {
+          content = <Playground playgroundKey={playground as string} />
+        }
+      }
 
       return (
         <div class={bem('wrapper', { h5: isMobile })} style={wrapperStyle}>
-          {pcContent}
-          {mobileContent}
-          {playgroundContent}
+          {content}
         </div>
       )
     }

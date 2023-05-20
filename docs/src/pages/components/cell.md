@@ -21,17 +21,20 @@
     <template #suffix>单位</template>
   </d-cell>
   <d-cell title="显示图标" left-icon="tips" right-icon="close" />
-  <d-cell
-    title="显示图标"
-    content="图标大小、颜色控制"
-    left-icon="tips"
-    left-icon-size="small"
-    left-icon-color="#f00"
-    right-icon="close"
-    right-icon-color="#f00"
-  />
+  <d-cell title="显示图标" content="图标大小、颜色控制">
+    <template #left-icon>
+      <tips-outlined size="small" color="#f00" />
+    </template>
+    <template #right-icon>
+      <close-outlined color="#f00" />
+    </template>
+  </d-cell>
   <d-cell title="显示右侧箭头" arrow content="正文内容" />
 </template>
+
+<script setup lang="ts">
+import { TipsOutlined, CloseOutlined } from '@xuanmo/dl-icons'
+</script>
 ```
 
 ## API
@@ -62,14 +65,6 @@
 |disabled|`boolean`|-|是否禁用|N|
 |suffix|`string`|-|扩展内容|N|
 |arrow|`boolean`|`false`|是否显示右侧箭头|N|
-|left-icon|`string`|-|显示左侧图标|N|
-|left-icon-size|`string`|-|左侧图标大小，继承 `Icon` 组件 `Props`| N|
-|left-icon-color|`string`|-|左侧图标颜色|N|
-|left-icon-props|`Record<string, any>`|-|左侧 `Icon` 图标组件 `Props`|N|
-|right-icon|`string`|-|显示右侧图标|N|
-|right-icon-size|`string`|-|右侧图标大小，继承 `Icon` 组件 `Props`|N|
-|right-icon-color|`string`|-|右侧图标颜色|N|
-|right-icon-props|`Record<string, any>`|-|右侧 `Icon` 图标组件 `Props`|N|
 |border|`boolean`|true|是否显示边框|N|
 |layout|`'horizontal' \| 'vertical'`|`horizontal`|布局类型|N|
 
@@ -79,6 +74,8 @@
 |---|----|
 |default|自定义内容|
 |title|自定义标题|
+|left-icon|左侧标题自定义图标|
+|right-icon|右侧自定义图标|
 |suffix|自定义扩展内容|
 
 ### TypeScript 类型
