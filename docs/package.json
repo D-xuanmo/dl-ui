@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite --force",
-    "build": "vue-tsc --noEmit && vite build --base=/-/dl-ui",
+    "build": "yarn workspace @xuanmo/dl-ui build && vue-tsc --noEmit && vite build --base=/-/dl-ui",
     "preview": "vite preview"
   },
   "files": [
