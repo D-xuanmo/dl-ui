@@ -10,12 +10,13 @@
     "docs"
   ],
   "scripts": {
-    "dev": "yarn workspace docs dev",
-    "build:docs": "yarn workspace docs build",
-    "build:lib": "yarn workspace @xuanmo/dl-ui build",
+    "prepare": "husky install",
+    "prestart": "build:lib",
+    "start": "yarn workspace docs dev",
     "build:common": "yarn workspace @xuanmo/dl-common build",
     "build:icons": "yarn workspace @xuanmo/dl-icons build",
-    "prepare": "husky install",
+    "build:docs": "yarn workspace docs build",
+    "build:lib": "yarn workspace @xuanmo/dl-ui build",
     "prettier": "npx prettier --write .",
     "lint": "eslint . --ext js,ts,tsx,vue && npm run lint:tsc",
     "lint:tsc": "yarn workspace @xuanmo/dl-ui tsc:clear"
