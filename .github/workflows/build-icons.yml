@@ -18,7 +18,7 @@ jobs:
     - run: corepack enable
     - run: yarn
     - shell: bash
-      run: cp -r .npmignore ./packages/dl-icons && cp -r LICENSE ./packages/dl-icons && npm run build:icons
+      run: cp -r README.md ./packages/dl-icons && cp -r .npmignore ./packages/dl-icons && cp -r LICENSE ./packages/dl-icons && npm run build:icons
     - run: cd packages/dl-icons && npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

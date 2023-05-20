@@ -18,7 +18,7 @@ jobs:
     - run: corepack enable
     - run: yarn
     - shell: bash
-      run: cp -r .npmignore ./packages/dl-common && cp -r LICENSE ./packages/dl-common && npm run build:common
+      run: cp -r README.md ./packages/dl-common && cp -r .npmignore ./packages/dl-common && cp -r LICENSE ./packages/dl-common && npm run build:common
     - run: cd packages/dl-common && npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

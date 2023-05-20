@@ -138,7 +138,7 @@ import type {
 
 ## IDay 对象
 
-公用类型 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/common.ts](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/common.ts)
+公用类型 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/common.ts](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/common.ts)
 
 每个日期为一个对象，包含以下属性，可用于实际场景的扩展
 
