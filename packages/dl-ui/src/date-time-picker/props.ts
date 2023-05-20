@@ -1,4 +1,4 @@
-import { COMMON_PROPS } from '../common'
+import { COMMON_PROPS } from '@xuanmo/dl-common'
 import { ExtractPropTypes, PropType } from 'vue'
 import { DateTimePickerOption } from './types'
 

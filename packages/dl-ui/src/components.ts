@@ -1,7 +1,6 @@
 export * from './input'
 export * from './cell'
 export * from './cell-group'
-export * from './icon'
 export * from './switch'
 export * from './overlay'
 export * from './popup'

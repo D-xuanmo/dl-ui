@@ -1,7 +1,7 @@
 <template>
   <button :class="wrapperClassName" :disabled="loading || disabled">
-    <d-icon v-if="loading" name="loading" spin :class="iconLoadingClassName" color="inherit" />
-    <d-icon v-if="icon" :name="icon" color="inherit" />
+    <loading-outlined v-if="loading" spin :class="iconLoadingClassName" color="inherit" />
+    <slot name="icon" />
     <span :class="innerTextClassName"><slot /></span>
   </button>
 </template>
@@ -10,14 +10,14 @@
 import { computed, defineComponent } from 'vue'
 import { createNamespace } from '@xuanmo/dl-common'
 import { BUTTON_PROPS } from './props'
-import { DIcon } from '../icon'
+import { LoadingOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('button')
 
 export default defineComponent({
   name,
   components: {
-    DIcon
+    LoadingOutlined
   },
   props: BUTTON_PROPS,
   setup(props) {

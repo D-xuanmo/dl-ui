@@ -1,5 +1,5 @@
 import { createBEM, createNamespace, Modifiers } from '@xuanmo/dl-common'
-import { ICascaderOption, IData } from '../common'
+import { ICascaderOption, IData } from '@xuanmo/dl-common'
 
 function createCascaderNameSpace(): [string, ReturnType<typeof createBEM>]
 

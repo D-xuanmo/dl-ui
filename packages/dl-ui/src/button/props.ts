@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { SizeType, ThemeType } from '../common'
+import { SizeType, ThemeType } from '@xuanmo/dl-common'
 
 export type ButtonProps = ExtractPropTypes<typeof BUTTON_PROPS>
 
@@ -26,14 +26,6 @@ export const BUTTON_PROPS = {
   disabled: {
     type: Boolean,
     default: false
-  },
-
-  /**
-   * 图标
-   */
-  icon: {
-    type: String,
-    default: undefined
   },
 
   /**

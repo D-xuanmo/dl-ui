@@ -16,14 +16,17 @@
     <template #suffix>单位</template>
   </d-cell>
   <d-cell title="显示图标" left-icon="tips" right-icon="close" />
-  <d-cell
-    title="显示图标"
-    content="图标大小、颜色控制"
-    left-icon="tips"
-    left-icon-size="small"
-    left-icon-color="#f00"
-    right-icon="close"
-    right-icon-color="#f00"
-  />
+  <d-cell title="显示图标" content="图标大小、颜色控制">
+    <template #left-icon>
+      <tips-outlined size="small" color="#f00" />
+    </template>
+    <template #right-icon>
+      <close-outlined color="#f00" />
+    </template>
+  </d-cell>
   <d-cell title="显示右侧箭头" arrow content="正文内容" />
 </template>
+
+<script setup lang="ts">
+import { TipsOutlined, CloseOutlined } from '@xuanmo/dl-icons'
+</script>

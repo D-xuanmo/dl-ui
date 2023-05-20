@@ -1,6 +1,6 @@
 import { PickerOptions, PickerOption, PickerValue } from './props'
 import { isObject } from '@xuanmo/javascript-utils'
-import { ICascaderOption, IData } from '../common'
+import { ICascaderOption, IData } from '@xuanmo/dl-common'
 
 /**
  * 查找默认一级数据

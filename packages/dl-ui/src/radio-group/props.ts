@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { COMMON_PROPS, IData, DirectionType } from '../common'
+import { COMMON_PROPS, IData, DirectionType } from '@xuanmo/dl-common'
 
 export type RadioGroupProps = ExtractPropTypes<typeof RADIO_GROUP_PROPS>
 

@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { COMMON_PROPS, SizeType } from '../common'
+import { COMMON_PROPS, SizeType } from '@xuanmo/dl-common'
 
 export type SwitchProps = ExtractPropTypes<typeof SWITCH_PROPS>
 

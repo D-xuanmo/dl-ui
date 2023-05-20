@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { IData, DirectionType, COMMON_PROPS } from '../common'
+import { IData, DirectionType, COMMON_PROPS } from '@xuanmo/dl-common'
 
 export type CheckboxGroupProps = ExtractPropTypes<typeof CHECKBOX_GROUP_PROPS>
 

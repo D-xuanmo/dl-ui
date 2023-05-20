@@ -1,4 +1,4 @@
-import { ICascaderOption, CascaderValue, COMMON_PROPS, IData } from '../common'
+import { ICascaderOption, CascaderValue, COMMON_PROPS, IData } from '@xuanmo/dl-common'
 import { ExtractPropTypes, PropType } from 'vue'
 
 export type CascaderProps = ExtractPropTypes<typeof CASCADER_PROPS>

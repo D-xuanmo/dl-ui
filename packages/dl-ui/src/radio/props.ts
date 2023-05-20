@@ -26,9 +26,5 @@ export const RADIO_PROPS = {
    */
   disabled: Boolean,
 
-  /**
-   * 图标名
-   */
-  icon: String,
   name: String
 }

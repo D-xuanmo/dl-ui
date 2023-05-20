@@ -1,5 +1,5 @@
 import { CSSProperties, ExtractPropTypes, PropType, TeleportProps } from 'vue'
-import { PlacementType } from '../common'
+import { PlacementType } from '@xuanmo/dl-common'
 import { TRANSITION_DURATION } from '@xuanmo/dl-common'
 
 export type PopupProps = ExtractPropTypes<typeof POPUP_PROPS>
@@ -21,10 +21,6 @@ export const POPUP_PROPS = {
   },
   round: Boolean,
   closeable: Boolean,
-  closeIcon: {
-    type: String,
-    default: 'close'
-  },
   teleport: {
     type: String as PropType<TeleportProps['to']>,
     default: 'body'

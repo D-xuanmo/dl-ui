@@ -2,7 +2,7 @@ import { defineComponent, provide, inject, watchEffect, ref, Ref } from 'vue'
 import { createNamespace, LABEL_WIDTH } from '@xuanmo/dl-common'
 import { CELL_GROUP_CONTEXT_KEY, GLOBAL_CONFIG_CONTEXT_KEY } from '../context'
 import { CELL_GROUP_PROPS } from './props'
-import { DirectionType } from '../common'
+import { DirectionType } from '@xuanmo/dl-common'
 
 const [name, bem] = createNamespace('cell-group')
 

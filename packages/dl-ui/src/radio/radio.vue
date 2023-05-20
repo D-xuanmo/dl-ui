@@ -1,6 +1,7 @@
 <template>
   <div :class="wrapperClassName" @click="handleChange">
-    <d-icon :name="iconName" :color="iconColor" />
+    <check-circle-filled v-if="checked" :color="iconColor" />
+    <border-circle-outlined v-else :color="iconColor" />
     <span v-if="label" :class="labelClassName">{{ label }}</span>
   </div>
 </template>
@@ -11,10 +12,15 @@ import { createNamespace } from '@xuanmo/dl-common'
 import { RADIO_PROPS } from './props'
 import { isEmpty } from '@xuanmo/javascript-utils'
 import { RADIO_GROUP_CONTEXT_KEY } from '../context'
+import { BorderCircleOutlined, CheckCircleFilled } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('radio')
 export default defineComponent({
   name,
+  components: {
+    BorderCircleOutlined,
+    CheckCircleFilled
+  },
   props: RADIO_PROPS,
   setup(props) {
     const { value, disabled, readonly, onChangeEvent } = inject(RADIO_GROUP_CONTEXT_KEY)!
@@ -33,7 +39,6 @@ export default defineComponent({
       return isEmpty(value?.value) ? props.defaultChecked : value?.value === props.value
     })
 
-    const iconName = computed<string>(() => (checked.value ? 'success-f' : 'circle'))
     const iconColor = computed(() => {
       if (disabled.value || readonly.value) return 'var(--d-disable-color)'
       return checked.value ? 'var(--d-primary)' : 'var(--d-secondary-text-color)'
@@ -47,8 +52,8 @@ export default defineComponent({
     return {
       wrapperClassName,
       labelClassName,
-      iconName,
       iconColor,
+      checked,
       handleChange
     }
   }

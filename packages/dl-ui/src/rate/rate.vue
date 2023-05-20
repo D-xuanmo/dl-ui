@@ -9,15 +9,13 @@
         :style="rateItemStyle"
         @click="handleChange(i)"
       >
-        <d-icon
+        <star-outlined
           v-if="i > innerValue"
-          :name="uncheckedIcon"
           :size="size!"
           :color="disabled ? 'var(--d-disable-color)' : 'var(--d-secondary-text-color)'"
         />
-        <d-icon
+        <star-filled
           v-if="i <= innerValue"
-          :name="checkedIcon"
           :size="size!"
           :class="bem('item', 'active', true)"
           :color="disabled ? 'var(--d-disable-color)' : activeColor"
@@ -33,11 +31,16 @@ import { createNamespace } from '@xuanmo/dl-common'
 import { isNumber } from '@xuanmo/javascript-utils'
 import useModelValue from '../hooks/use-model-value'
 import { RATE_PROPS } from './props'
+import { StarFilled, StarOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('rate')
 
 export default defineComponent({
   name,
+  components: {
+    StarFilled,
+    StarOutlined
+  },
   props: RATE_PROPS,
   setup(props, context: SetupContext) {
     const [innerValue, updateValue] = useModelValue<number, typeof props>(

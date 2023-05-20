@@ -1,6 +1,6 @@
 import { PropType } from 'vue'
 import { pickProps } from '@xuanmo/dl-common'
-import { IData } from '../common'
+import { IData } from '@xuanmo/dl-common'
 
 export const SCROLL_RADIO_PROPS = {
   value: {

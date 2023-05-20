@@ -1,7 +1,7 @@
 <template>
   <span v-if="!controlled" :class="triggerClassName" @click="showPicker">
     <span style="vertical-align: middle">{{ displayValue }}</span>
-    <d-icon v-if="!readonly" name="arrow-right" color="var(--d-secondary-text-color)" />
+    <right-outlined v-if="!readonly" color="var(--d-secondary-text-color)" />
   </span>
   <d-popup :visible="innerVisible" placement="bottom" :title="title" @update:visible="handleClose">
     <template #header-left>
@@ -33,20 +33,20 @@
 import { computed, CSSProperties, defineComponent, ref, SetupContext, watch } from 'vue'
 import { createNamespace } from '@xuanmo/dl-common'
 import useModelValue from '../hooks/use-model-value'
-import { ICascaderOption, IData, OmitValueProperties } from '../common'
+import { ICascaderOption, IData, OmitValueProperties } from '@xuanmo/dl-common'
 import { PickerOption, PICKER_PROPS, PickerValue } from './props'
 import { debounce, deepCopy, isEmpty, isObject } from '@xuanmo/javascript-utils'
 import { findCascadeFirstLevelData, findDisplayName, formatCascade } from './utils'
 import { EventType } from './types'
-import DIcon from '../icon'
 import DScrollRadio from '../scroll-radio'
 import DButton from '../button'
+import { RightOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('picker')
 
 export default defineComponent({
   name,
-  components: { DIcon, DScrollRadio, DButton },
+  components: { RightOutlined, DScrollRadio, DButton },
   props: PICKER_PROPS,
   emits: ['update:visible', 'update:model-value', 'change', 'confirm', 'close'],
   setup(props, context: SetupContext<EventType>) {

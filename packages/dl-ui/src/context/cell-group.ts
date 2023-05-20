@@ -1,6 +1,6 @@
 import { InjectionKey, Ref } from 'vue'
 import { CellGroupProps } from '../cell-group'
-import { DirectionType } from '../common'
+import { DirectionType } from '@xuanmo/dl-common'
 
 interface CellGroupConfig
   extends Pick<CellGroupProps, 'cellTitleWidth' | 'cellContentAlign' | 'border'> {

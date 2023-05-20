@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { DirectionType, HorizontalAlignType, SizeType } from '../common'
+import { DirectionType, HorizontalAlignType, SizeType } from '@xuanmo/dl-common'
 
 export type CellProps = ExtractPropTypes<typeof CELL_PROPS>
 
@@ -13,10 +13,6 @@ export const CELL_PROPS = {
   },
   hideTitle: Boolean,
   required: Boolean,
-  leftIcon: String,
-  leftIconSize: String as PropType<SizeType | string>,
-  leftIconColor: String,
-  leftIconProps: Object,
 
   content: String as PropType<string | undefined>,
   contentClass: String,
@@ -25,10 +21,6 @@ export const CELL_PROPS = {
 
   suffix: String,
   description: String,
-  rightIcon: String,
-  rightIconSize: String as PropType<SizeType | string>,
-  rightIconColor: String,
-  rightIconProps: Object,
 
   arrow: Boolean,
   border: {

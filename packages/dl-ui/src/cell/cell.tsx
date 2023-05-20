@@ -1,11 +1,11 @@
 import { computed, defineComponent, provide, ref } from 'vue'
 import { createNamespace, addUnit } from '@xuanmo/dl-common'
 import { isEmpty, toBoolean } from '@xuanmo/javascript-utils'
-import DIcon from '../icon'
 import { CELL_PROPS } from './props'
 import { useGlobalConfig } from './utils'
 import { CELL_GROUP_CONTEXT_KEY } from '../context'
-import { DirectionType } from '../common'
+import { DirectionType } from '@xuanmo/dl-common'
+import { RightOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('cell')
 
@@ -29,14 +29,6 @@ export default defineComponent({
         contentClass,
         disabled,
         suffix,
-        leftIcon,
-        leftIconSize,
-        leftIconColor,
-        leftIconProps,
-        rightIcon,
-        rightIconColor,
-        rightIconSize,
-        rightIconProps,
         arrow,
         description
       } = props
@@ -72,14 +64,8 @@ export default defineComponent({
               slots.title()
             ) : (
               <>
-                {leftIcon ? (
-                  <DIcon
-                    name={leftIcon}
-                    class={bem('title', 'icon', true)}
-                    size={leftIconSize}
-                    color={leftIconColor}
-                    {...leftIconProps}
-                  />
+                {slots['left-icon'] ? (
+                  <span class={bem('title', 'icon', true)}>{slots['left-icon']()}</span>
                 ) : null}
                 <span>{title}</span>
                 {required ? <span class={bem('title', 'mark', true)}> *</span> : null}
@@ -92,14 +78,8 @@ export default defineComponent({
         <div class={bem('description')}>{description}</div>
       ) : null
 
-      const renderRightIcon = rightIcon && (
-        <DIcon
-          name={rightIcon}
-          color={rightIconColor}
-          size={rightIconSize}
-          class={bem('right-icon')}
-          {...rightIconProps}
-        />
+      const renderRightIcon = slots['right-icon'] && (
+        <span class={bem('right-icon')}>{slots['right-icon']()}</span>
       )
 
       const renderSuffix =
@@ -108,7 +88,7 @@ export default defineComponent({
         ) : null
 
       const renderArrow = arrow ? (
-        <DIcon name="arrow-right" class={bem('arrow')} color="var(--d-secondary-text-color)" />
+        <RightOutlined className={bem('arrow')} color="var(--d-secondary-text-color)" />
       ) : null
 
       function handleClick(event: Event) {

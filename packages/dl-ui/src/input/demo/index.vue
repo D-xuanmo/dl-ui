@@ -26,16 +26,8 @@
       v-model="value"
       label="显示图标"
       placeholder="请输入文字"
-      left-icon="tips-f"
-      left-icon-color="#f00"
-    />
-    <d-input
-      v-model="value"
-      label="图标大小"
-      placeholder="请输入文字"
-      left-icon="tips-f"
-      left-icon-color="#f00"
-      left-icon-size="small"
+      :left-icon="TipsOutlined"
+      :left-icon-props="{ color: '#f00' }"
     />
     <d-input v-model="value" label="超长文字展示" placeholder="请输入文字" label-align="right" />
   </d-cell-group>
@@ -43,6 +35,8 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { TipsOutlined } from '@xuanmo/dl-icons'
+
 const value = ref('')
 const number = ref('')
 

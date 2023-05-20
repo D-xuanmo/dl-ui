@@ -1,5 +1,5 @@
 import { CSSProperties, ExtractPropTypes, PropType } from 'vue'
-import { COMMON_PROPS, IData } from '../common'
+import { COMMON_PROPS, IData } from '@xuanmo/dl-common'
 import { pickProps } from '@xuanmo/dl-common'
 
 export type CalendarValue = string | Array<string>

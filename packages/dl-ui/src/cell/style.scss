@@ -92,6 +92,10 @@
 
     &--icon {
       margin-right: var(--d-gap-xxs);
+
+      & + * {
+        vertical-align: middle;
+      }
     }
   }
 

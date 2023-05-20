@@ -1,5 +1,5 @@
-import { ExtractPropTypes, PropType } from 'vue'
-import { FieldFormatterTrigger, HorizontalAlignType, SizeType } from '../common'
+import { Component, ExtractPropTypes, PropType } from 'vue'
+import { FieldFormatterTrigger, HorizontalAlignType, SizeType } from '@xuanmo/dl-common'
 
 export type InputProps = ExtractPropTypes<typeof INPUT_PROPS>
 
@@ -37,16 +37,12 @@ export const INPUT_PROPS = {
   },
   hideLabel: Boolean,
   leftIcon: {
-    type: String,
-    default: ''
+    type: [Function, String] as PropType<Component>,
+    default: undefined
   },
-  leftIconSize: {
-    type: String as PropType<SizeType | string>,
-    default: 'medium'
-  },
-  leftIconColor: {
-    type: String,
-    default: ''
+  leftIconProps: {
+    type: Object,
+    default: () => ({})
   },
   colon: Boolean,
   required: Boolean,

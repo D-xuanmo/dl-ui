@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { ICascaderOption, COMMON_PROPS, IData } from '../common'
+import { ICascaderOption, COMMON_PROPS, IData } from '@xuanmo/dl-common'
 
 export type PickerValue = string[] | number[] | IData[]
 

@@ -1,4 +1,4 @@
-import { COMMON_PROPS } from '../common'
+import { COMMON_PROPS } from '@xuanmo/dl-common'
 import { ExtractPropTypes, PropType } from 'vue'
 
 export type CheckboxProps = ExtractPropTypes<typeof CHECKBOX_PROPS>
@@ -11,6 +11,5 @@ export const CHECKBOX_PROPS = {
   },
   label: String,
   defaultChecked: Boolean,
-  icon: String,
   name: String
 }

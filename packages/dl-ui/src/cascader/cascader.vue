@@ -1,7 +1,7 @@
 <template>
   <span :class="triggerClassName" @click="showPicker">
     <span style="vertical-align: middle">{{ displayName || placeholder }}</span>
-    <d-icon v-if="!readonly" name="arrow-right" color="var(--d-secondary-text-color)" />
+    <right-outlined v-if="!readonly" color="var(--d-secondary-text-color)" />
   </span>
   <d-popup
     :visible="visible"
@@ -35,8 +35,8 @@
           @click="handleChange(option)"
         >
           <span>{{ option.label }}</span>
-          <d-icon v-if="loadingMap.get(option.value)" name="loading" spin size="medium" />
-          <d-icon v-if="option.value === activeTab" name="success-1" size="large" />
+          <loading-outlined v-if="loadingMap.get(option.value)" spin size="medium" />
+          <check-outlined v-if="option.value === activeTab" size="large" />
         </div>
       </d-tab-panel>
     </d-tabs>
@@ -48,13 +48,13 @@ import { computed, defineComponent, ref, SetupContext, watch } from 'vue'
 import { cascaderOptionsToMap, createCascaderNameSpace } from './utils'
 import { CASCADER_PROPS } from './props'
 import { pickLastItem, isEmpty, isObject, deepCopy } from '@xuanmo/javascript-utils'
-import { ICascaderOption, CascaderObjectValue, CascaderValue, IData } from '../common'
+import { ICascaderOption, CascaderObjectValue, CascaderValue, IData } from '@xuanmo/dl-common'
 import useModelValue from '../hooks/use-model-value'
 import DPopup from '../popup'
 import { DTabs, DTabPanel } from '../tabs'
-import DIcon from '../icon'
 import { TabsItemType } from '../tabs/types'
 import DButton from '../button'
+import { RightOutlined, LoadingOutlined, CheckOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createCascaderNameSpace()
 
@@ -64,7 +64,9 @@ export default defineComponent({
     DPopup,
     DTabs,
     DTabPanel,
-    DIcon,
+    RightOutlined,
+    LoadingOutlined,
+    CheckOutlined,
     DButton
   },
   props: CASCADER_PROPS,
@@ -213,7 +215,7 @@ export default defineComponent({
       activePath.value = isEmpty(path) ? ([placeholder] as any) : path
       activeOptions.value = isEmpty(path) ? originalOptions : options
       activeTab.value = pickLastItem(path)?.value || placeholder.value
-      displayName.value = path?.map((item) => item.label).join('/')
+      displayName.value = path?.map((item) => item.label).join('/') ?? ''
     }
 
     const handleCancel = () => {

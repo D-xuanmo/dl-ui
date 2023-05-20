@@ -69,10 +69,10 @@ export const IMAGE_PROPS = {
   /**
    * 加载中图标，默认：loading-2
    */
-  loadingIcon: {
-    type: String,
-    default: 'loading-2'
-  },
+  // loadingIcon: {
+  //   type: String,
+  //   default: 'loading-2'
+  // },
 
   /**
    * 是否显示加载失败，外部控制
@@ -82,10 +82,10 @@ export const IMAGE_PROPS = {
   /**
    * 加载失败图标
    */
-  errorIcon: {
-    type: String,
-    default: 'image-fail'
-  },
+  // errorIcon: {
+  //   type: String,
+  //   default: 'image-fail'
+  // },
 
   /**
    * 加载失败文案

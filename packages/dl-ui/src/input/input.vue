@@ -4,16 +4,20 @@
     :title-class="labelClass"
     :title-width="labelWidth"
     :title-align="labelAlign"
-    :left-icon="leftIcon"
-    :left-icon-size="leftIconSize"
-    :left-icon-color="leftIconColor"
     :required="required"
     :disabled="disabled"
     :hide-title="hideLabel"
-    :right-icon="innerValue && clearable ? 'close-f' : undefined"
-    right-icon-color="var(--d-secondary-text-color)"
-    :right-icon-props="{ onClick: handleClear }"
   >
+    <template #left-icon>
+      <component :is="leftIcon" v-bind="leftIconProps" />
+    </template>
+    <template #right-icon>
+      <close-filled
+        v-if="innerValue && clearable"
+        color="var(--d-secondary-text-color)"
+        @click="handleClear"
+      />
+    </template>
     <input
       :value="innerValue"
       :type="type"
@@ -45,13 +49,15 @@ import { createNamespace } from '@xuanmo/dl-common'
 import Cell from '../cell'
 import useModelValue from '../hooks/use-model-value'
 import { INPUT_PROPS } from './props'
+import { CloseFilled } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('input')
 
 export default defineComponent({
   name,
   components: {
-    Cell
+    Cell,
+    CloseFilled
   },
   props: INPUT_PROPS,
   emits: ['update:model-value', 'blur', 'clear', 'focus', 'click-input'],

@@ -1,5 +1,5 @@
 import { InjectionKey } from 'vue'
-import { DirectionType, HorizontalAlignType } from '../common'
+import { DirectionType, HorizontalAlignType } from '@xuanmo/dl-common'
 
 export type GlobalConfigType = {
   /** 主题 */

@@ -1,5 +1,5 @@
 import { ExtractPropTypes } from 'vue'
-import { COMMON_PROPS } from '../common'
+import { COMMON_PROPS } from '@xuanmo/dl-common'
 
 export type TextareaProps = ExtractPropTypes<typeof TEXTAREA_PROPS>
 

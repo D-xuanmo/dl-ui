@@ -2,14 +2,9 @@
   <div :class="wrapperClassName" :style="wrapperStyle">
     <img :src="src" :alt="alt" :style="imageStyle" @load="handleLoad" @error="handleError" />
     <div v-if="loading || loadError" :class="tipsClassName">
-      <d-icon
-        v-if="loading && !loadError"
-        :name="loadingIcon"
-        :class="tipsIconClassName"
-        :spin="loading"
-      />
+      <loading2-outlined v-if="loading && !loadError" :class="tipsIconClassName" :spin="loading" />
       <template v-if="loadError">
-        <d-icon :name="errorIcon" :class="tipsIconClassName" />
+        <image-fail-outlined :class="tipsIconClassName" />
         <p>{{ errorText }}</p>
       </template>
     </div>
@@ -20,11 +15,16 @@
 import { computed, CSSProperties, defineComponent, ref, watch } from 'vue'
 import { createNamespace, addUnit } from '@xuanmo/dl-common'
 import { IMAGE_PROPS } from './props'
+import { Loading2Outlined, ImageFailOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('image')
 
 export default defineComponent({
   name,
+  components: {
+    Loading2Outlined,
+    ImageFailOutlined
+  },
   props: IMAGE_PROPS,
   setup(props) {
     const wrapperClassName = bem()

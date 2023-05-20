@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { SizeType, COMMON_PROPS } from '../common'
+import { SizeType, COMMON_PROPS } from '@xuanmo/dl-common'
 
 export type RateProps = ExtractPropTypes<typeof RATE_PROPS>
 
@@ -37,18 +37,18 @@ export const RATE_PROPS = {
   /**
    * 选中的图标
    */
-  checkedIcon: {
-    type: String,
-    default: 'star-f'
-  },
+  // checkedIcon: {
+  //   type: String,
+  //   default: 'star-f'
+  // },
 
   /**
    * 未选中的图标
    */
-  uncheckedIcon: {
-    type: String,
-    default: 'star'
-  },
+  // uncheckedIcon: {
+  //   type: String,
+  //   default: 'star'
+  // },
 
   /**
    * 选中时图标颜色

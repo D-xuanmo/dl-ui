@@ -11,7 +11,7 @@
             :capture="capture"
             @change="handleChange"
           />
-          <d-icon name="camera-f" :class="triggerIconClassName" />
+          <camera-filled :class="triggerIconClassName" />
         </div>
       </template>
     </upload-list>
@@ -22,17 +22,17 @@
 import { computed, CSSProperties, defineComponent, ref } from 'vue'
 import { UploadListItemType, UPLOAD_PROPS } from './props'
 import { createUploadNameSpace } from './utils'
-import Icon from '../icon'
 import UploadList from './upload-list.vue'
 import { debugWarn, deepCopy, isObject, throwError } from '@xuanmo/javascript-utils'
 import { addUnit, filePreview, request } from '@xuanmo/dl-common'
+import { CameraFilled } from '@xuanmo/dl-icons'
 
 const [name, bem] = createUploadNameSpace()
 
 export default defineComponent({
   name,
   components: {
-    [Icon.name]: Icon,
+    CameraFilled,
     UploadList
   },
   props: UPLOAD_PROPS,

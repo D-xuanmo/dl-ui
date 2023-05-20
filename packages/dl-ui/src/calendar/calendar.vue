@@ -1,7 +1,7 @@
 <template>
   <span :class="triggerClassName" @click="handleShowPopup">
     <span>{{ displayValue || placeholder }}</span>
-    <d-icon v-if="!readonly" name="arrow-right" color="var(--d-secondary-text-color)" />
+    <right-outlined v-if="!readonly" color="var(--d-secondary-text-color)" />
   </span>
   <d-popup
     :visible="popupVisible"
@@ -39,20 +39,20 @@ import { createNamespace } from '@xuanmo/dl-common'
 import { CALENDAR_PROPS, IDay } from './props'
 import useModelValue from '../hooks/use-model-value'
 import { isEmpty, pickLastItem } from '@xuanmo/javascript-utils'
-import DIcon from '../icon'
 import DPopup from '../popup'
 import CalendarHeader from './header.vue'
 import CalendarDay from './day.vue'
 import DButton from '../button'
 import { generateDay, useCurrentDays } from './utils'
 import dateJS from '@xuanmo/datejs'
+import { RightOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('calendar')
 
 export default defineComponent({
   name,
   components: {
-    DIcon,
+    RightOutlined,
     DPopup,
     DButton,
     CalendarHeader,

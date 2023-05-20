@@ -1,0 +1,25 @@
+{
+  "name": "@xuanmo/dl-icons",
+  "version": "0.0.1-alpha.1",
+  "author": {
+    "name": "xuanmo",
+    "email": "me@xuanmo.xin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/D-xuanmo/dl-ui"
+  },
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/main.d.ts",
+  "scripts": {
+    "build": "vite build && npm run tsc",
+    "tsc": "vue-tsc --emitDeclarationOnly -p tsconfig.json",
+    "preview": "vite preview",
+    "clear": "rimraf dist",
+    "tsc:clear": "rimraf dist && npm run tsc"
+  },
+  "dependencies": {
+    "vue": "^3.2.47"
+  }
+}

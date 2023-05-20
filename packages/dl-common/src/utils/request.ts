@@ -63,6 +63,6 @@ class Request {
 
 const requestHandler = new Request()
 
-const request = requestHandler.request
+const request = (config: IRequestOptions) => requestHandler.request(config)
 
 export { Request, request }

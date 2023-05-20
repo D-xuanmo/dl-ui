@@ -1,8 +1,8 @@
 <template>
   <header :class="headerClassName">
     <d-space :gap="10">
-      <d-icon name="double-arrow-left" size="large" @click="togglePrevYear" />
-      <d-icon name="arrow-left" size="large" @click="togglePrevMonth" />
+      <double-left-outlined size="large" @click="togglePrevYear" />
+      <left-outlined size="large" @click="togglePrevMonth" />
     </d-space>
     <span :class="dateClassName">
       <d-date-time-picker
@@ -14,13 +14,13 @@
         @update:model-value="toggleMonth"
       >
         <template #trigger-arrow>
-          <d-icon name="arrow-bottom-f" size="small" color="var(--d-secondary-text-color)" />
+          <arrow-down-filled size="small" color="var(--d-secondary-text-color)" />
         </template>
       </d-date-time-picker>
     </span>
     <d-space :gap="10">
-      <d-icon name="arrow-right" size="large" @click="toggleNextMonth" />
-      <d-icon name="double-arrow-right" size="large" @click="toggleNextYear" />
+      <right-outlined size="large" @click="toggleNextMonth" />
+      <double-right-outlined size="large" @click="toggleNextYear" />
     </d-space>
   </header>
   <ul :class="weekClassName">
@@ -34,9 +34,15 @@ import { createNamespace } from '@xuanmo/dl-common'
 import { CALENDAR_HEADER_PROPS } from './props'
 import useModelValue from '../hooks/use-model-value'
 import DDateTimePicker from '../date-time-picker'
-import DIcon from '../icon'
 import DSpace from '../space'
 import dateJS from '@xuanmo/datejs'
+import {
+  DoubleLeftOutlined,
+  DoubleRightOutlined,
+  LeftOutlined,
+  RightOutlined,
+  ArrowDownFilled
+} from '@xuanmo/dl-icons'
 
 const [, bem] = createNamespace('calendar')
 
@@ -44,7 +50,11 @@ export default defineComponent({
   name: 'CalendarHeader',
   components: {
     DDateTimePicker,
-    DIcon,
+    DoubleLeftOutlined,
+    DoubleRightOutlined,
+    LeftOutlined,
+    RightOutlined,
+    ArrowDownFilled,
     DSpace
   },
   props: CALENDAR_HEADER_PROPS,

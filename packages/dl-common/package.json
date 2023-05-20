@@ -1,6 +1,6 @@
 {
   "name": "@xuanmo/dl-common",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "author": {
     "name": "xuanmo",
     "email": "me@xuanmo.xin"
@@ -21,9 +21,5 @@
   },
   "dependencies": {
     "vue": "^3.2.47"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^4.1.0",
-    "vite": "^4.3.2"
   }
 }

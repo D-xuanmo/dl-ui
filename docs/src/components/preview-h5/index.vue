@@ -1,7 +1,7 @@
 <template>
   <div :class="bem('wrapper')">
     <header v-if="!isPreview && !isComponentListPage" :class="bem('header')">
-      <d-icon name="arrow-left" @click="goBack" />
+      <left-outlined @click="goBack" />
       <h2 :class="bem('header', 'title', true)">{{ title }}</h2>
     </header>
     <div :class="bem('content')"><router-view /></div>
@@ -13,11 +13,15 @@ import { computed, defineComponent, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { toBoolean } from '@xuanmo/javascript-utils'
 import { createNamespace } from '@doc/utils'
+import { LeftOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('preview-mobile')
 
 export default defineComponent({
   name,
+  components: {
+    LeftOutlined
+  },
   setup() {
     const route = useRoute()
     const router = useRouter()

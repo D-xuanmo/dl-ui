@@ -2,7 +2,7 @@
   <button :class="wrapperClassName" :disabled="disabled || readonly" @click="handleChange">
     <div :class="bem('handle', { active: innerValue })">
       <slot name="icon">
-        <d-icon v-if="loading" name="loading" spin size="small" color="var(--d-primary)" />
+        <loading-outlined v-if="loading" spin size="small" color="var(--d-primary)" />
       </slot>
       <slot v-if="innerValue" name="checked-icon"></slot>
       <slot v-if="!innerValue" name="unchecked-icon"></slot>
@@ -14,14 +14,14 @@
 import { computed, defineComponent, SetupContext } from 'vue'
 import { createNamespace } from '@xuanmo/dl-common'
 import useModelValue from '../hooks/use-model-value'
-import DIcon from '../icon'
 import { isBoolean, throwError, debugWarn, isPromise } from '@xuanmo/javascript-utils'
 import { SWITCH_PROPS } from './props'
+import { LoadingOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('switch')
 export default defineComponent({
   name,
-  components: { DIcon },
+  components: { LoadingOutlined },
   props: SWITCH_PROPS,
   emits: ['update:model-value'],
   setup(props, { emit }) {

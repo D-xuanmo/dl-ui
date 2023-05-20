@@ -30,9 +30,8 @@
             <div v-if="$slots['header-right']" :class="bem('header', 'right', true)">
               <slot name="header-right" />
             </div>
-            <d-icon
+            <close-outlined
               v-if="closeable"
-              :name="closeIcon"
               :class="bem('header', 'closable', true)"
               @click="handleClickIcon"
             />
@@ -50,12 +49,13 @@ import { createNamespace } from '@xuanmo/dl-common'
 import DOverlay from '../overlay'
 import useZIndex from '../hooks/use-z-index'
 import { POPUP_PROPS } from './props'
+import { CloseOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('popup')
 
 export default defineComponent({
   name,
-  components: { DOverlay },
+  components: { DOverlay, CloseOutlined },
   props: POPUP_PROPS,
   emits: ['update:visible', 'open', 'opened', 'close', 'closed', 'click-overlay-icon'],
   setup(props, { emit, slots }) {

@@ -2,7 +2,7 @@
   <span :class="triggerClassName" @click="showPicker">
     <span>{{ displayValue }}</span>
     <slot v-if="!readonly" name="trigger-arrow">
-      <d-icon name="arrow-right" color="var(--d-secondary-text-color)" />
+      <right-outlined color="var(--d-secondary-text-color)" />
     </slot>
   </span>
   <d-picker
@@ -29,12 +29,13 @@ import { DATE_PICKER_PROPS, DateTimePickerType } from './props'
 import { PickerValue } from '../picker/props'
 import dateJS from '@xuanmo/datejs'
 import { DateTimePickerOption } from './types'
+import { RightOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('date-time-picker')
 
 export default defineComponent({
   name,
-  components: { DPicker },
+  components: { DPicker, RightOutlined },
   props: DATE_PICKER_PROPS,
   emits: ['update:model-value'],
   setup(props, { emit }) {

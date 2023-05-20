@@ -2,7 +2,7 @@ import { ExtractPropTypes, PropType } from 'vue'
 import { IFormModelItem } from './types'
 import { pickProps } from '@xuanmo/dl-common'
 import type { FormStore } from './store'
-import { COMMON_PROPS, DirectionType, HorizontalAlignType } from '../common'
+import { COMMON_PROPS, DirectionType, HorizontalAlignType } from '@xuanmo/dl-common'
 
 export type FormProps = ExtractPropTypes<typeof FORM_PROPS>
 

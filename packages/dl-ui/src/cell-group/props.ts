@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { DirectionType, HorizontalAlignType } from '../common'
+import { DirectionType, HorizontalAlignType } from '@xuanmo/dl-common'
 
 export type CellGroupProps = ExtractPropTypes<typeof CELL_GROUP_PROPS>
 

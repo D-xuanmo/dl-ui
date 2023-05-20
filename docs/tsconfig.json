@@ -8,7 +8,7 @@
       "@xuanmo/dl-ui/*": ["../packages/dl-ui/src/*"],
       "@doc/*": ["src/*"]
     },
-    "types": ["vite/client", "vite-plugin-svg-icons/client"]
+    "types": ["vite/client"]
   },
   "include": ["./**/*.md", "./**/*.ts", "./**/*.tsx", "../packages/**/**.ts"],
   "references": [

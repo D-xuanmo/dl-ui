@@ -1,0 +1,55 @@
+$prefix: d;
+
+:root {
+  --d-icon-size-small: 16px;
+  --d-icon-size-medium: 20px;
+  --d-icon-size-large: 24px;
+}
+
+.#{$prefix}-icon {
+  display: inline-block;
+  line-height: 0;
+  vertical-align: middle;
+
+  & + * {
+    vertical-align: middle;
+  }
+
+  > svg {
+    display: inline-block;
+  }
+
+  &--small {
+    > svg {
+      width: var(--d-icon-size-small);
+      height: var(--d-icon-size-small);
+    }
+  }
+
+  &--medium {
+    > svg {
+      width: var(--d-icon-size-medium);
+      height: var(--d-icon-size-medium);
+    }
+  }
+
+  &--large {
+    > svg {
+      width: var(--d-icon-size-large);
+      height: var(--d-icon-size-large);
+    }
+  }
+
+  &--spin {
+    > svg {
+      animation: #{$prefix}-icon-spin 1s infinite linear;
+      transform-origin: center;
+    }
+  }
+}
+
+@keyframes #{$prefix}-icon-spin {
+  to {
+    transform: rotateZ(360deg);
+  }
+}
