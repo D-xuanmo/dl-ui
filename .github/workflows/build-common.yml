@@ -15,7 +15,7 @@ jobs:
       with:
         node-version: 18
         registry-url: https://registry.npmjs.org/
-        corepack: true
+    - run: corepack enable
     - run: yarn
     - shell: bash
       run: cp -r .npmignore ./packages/dl-common && cp -r LICENSE ./packages/dl-common && npm run build:common

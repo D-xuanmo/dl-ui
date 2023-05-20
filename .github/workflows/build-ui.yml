@@ -15,7 +15,7 @@ jobs:
       with:
         node-version: 18
         registry-url: https://registry.npmjs.org/
-        corepack: true
+    - run: corepack enable
     - run: yarn
     - shell: bash
       run: cp -r README.md ./packages/dl-ui && cp -r .npmignore ./packages/dl-ui && cp -r LICENSE ./packages/dl-ui && npm run build:lib
