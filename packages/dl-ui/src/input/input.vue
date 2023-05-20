@@ -12,7 +12,7 @@
       <component :is="leftIcon" v-bind="leftIconProps" />
     </template>
     <template #right-icon>
-      <close-filled
+      <CloseFilled
         v-if="innerValue && clearable"
         color="var(--d-secondary-text-color)"
         @click="handleClear"

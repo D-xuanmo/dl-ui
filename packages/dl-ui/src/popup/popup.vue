@@ -1,6 +1,6 @@
 <template>
   <teleport :to="teleport">
-    <d-overlay
+    <DOverlay
       v-if="overlay"
       :visible="visible"
       :overlay-class="overlayClass"
@@ -35,7 +35,7 @@
               :class="bem('header', 'closable', true)"
               @click="handleClickIcon"
             >
-              <slot name="close-icon"><close-outlined /></slot>
+              <slot name="close-icon"><CloseOutlined /></slot>
             </span>
           </header>
           <div :class="[bem('body'), popupBodyClass]"><slot /></div>

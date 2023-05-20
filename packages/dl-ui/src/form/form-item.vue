@@ -1,5 +1,5 @@
 <template>
-  <d-cell
+  <DCell
     :class="itemClassName"
     content-align="left"
     :title-width="labelWidth"
@@ -31,7 +31,7 @@
       @update:model-value="handleChange"
     />
     <div v-if="errorMessage" :class="errorClassName">{{ errorMessage }}</div>
-  </d-cell>
+  </DCell>
 </template>
 
 <script lang="ts">

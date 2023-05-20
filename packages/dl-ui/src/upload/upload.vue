@@ -1,6 +1,6 @@
 <template>
   <div :class="wrapperClassName">
-    <upload-list :list="previewList" :deletable="canDeletable" @delete="handleDeleteItem">
+    <UploadList :list="previewList" :deletable="canDeletable" @delete="handleDeleteItem">
       <template #trigger>
         <div v-if="!readonly" :class="triggerClassName" :style="triggerStyle">
           <input
@@ -11,10 +11,10 @@
             :capture="capture"
             @change="handleChange"
           />
-          <camera-filled :class="triggerIconClassName" />
+          <CameraFilled :class="triggerIconClassName" />
         </div>
       </template>
-    </upload-list>
+    </UploadList>
   </div>
 </template>
 
@@ -78,7 +78,7 @@ export default defineComponent({
         request({
           url: props.action!,
           method: 'POST',
-          headers: props.headerParams,
+          headers: props.headerParams as any,
           data: formData
         })
           .then((response: any) => {

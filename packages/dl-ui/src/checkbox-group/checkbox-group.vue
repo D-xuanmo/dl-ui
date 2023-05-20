@@ -1,7 +1,7 @@
 <template>
   <div :class="wrapperClassName">
     <template v-if="options">
-      <d-checkbox
+      <DCheckbox
         v-for="option in options"
         :key="option.value"
         :label="option.label"

@@ -2,16 +2,16 @@
   <div :class="wrapperClassName" :style="wrapperStyle">
     <ul ref="wrapperRef" :class="scrollClassName">
       <template v-if="needPlaceholder">
-        <scroll-radio-item v-for="item in markNum" :key="item" :option-height="optionHeight" />
+        <ScrollRadioItem v-for="item in markNum" :key="item" :option-height="optionHeight" />
       </template>
-      <scroll-radio-item
+      <ScrollRadioItem
         v-for="item in options"
         :key="item.value"
         :option="item"
         :option-height="optionHeight"
       />
       <template v-if="needPlaceholder">
-        <scroll-radio-item v-for="item in markNum" :key="item" :option-height="optionHeight" />
+        <ScrollRadioItem v-for="item in markNum" :key="item" :option-height="optionHeight" />
       </template>
     </ul>
     <div :class="maskClassName">

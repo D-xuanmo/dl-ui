@@ -1,9 +1,9 @@
 <template>
   <span :class="triggerClassName" @click="showPicker">
     <span style="vertical-align: middle">{{ displayName || placeholder }}</span>
-    <right-outlined v-if="!readonly" color="var(--d-secondary-text-color)" />
+    <RightOutlined v-if="!readonly" color="var(--d-secondary-text-color)" />
   </span>
-  <d-popup
+  <DPopup
     :visible="visible"
     :title="title"
     :popup-class="wrapperClassName"
@@ -12,17 +12,17 @@
     @update:visible="handleCancel"
   >
     <template #header-left>
-      <d-button v-if="cancelButtonText" link @click="handleCancel">
+      <DButton v-if="cancelButtonText" link @click="handleCancel">
         {{ cancelButtonText }}
-      </d-button>
+      </DButton>
     </template>
     <template #header-right>
-      <d-button v-if="confirmButtonText" link theme="primary" @click="handleConfirm">
+      <DButton v-if="confirmButtonText" link theme="primary" @click="handleConfirm">
         {{ confirmButtonText }}
-      </d-button>
+      </DButton>
     </template>
-    <d-tabs v-model="activeTab" :class="contentClassName" sticky @tab-click="handleTabChange">
-      <d-tab-panel
+    <DTabs v-model="activeTab" :class="contentClassName" sticky @tab-click="handleTabChange">
+      <DTabPanel
         v-for="item in activePath"
         :key="item.value"
         :label="item.label"
@@ -35,12 +35,12 @@
           @click="handleChange(option)"
         >
           <span>{{ option.label }}</span>
-          <loading-outlined v-if="loadingMap.get(option.value)" spin size="medium" />
-          <check-outlined v-if="option.value === activeTab" size="large" />
+          <LoadingOutlined v-if="loadingMap.get(option.value)" spin size="medium" />
+          <CheckOutlined v-if="option.value === activeTab" size="large" />
         </div>
-      </d-tab-panel>
-    </d-tabs>
-  </d-popup>
+      </DTabPanel>
+    </DTabs>
+  </DPopup>
 </template>
 
 <script lang="ts">

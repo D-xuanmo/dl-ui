@@ -2,9 +2,9 @@
   <div :class="wrapperClassName" :style="wrapperStyle">
     <img :src="src" :alt="alt" :style="imageStyle" @load="handleLoad" @error="handleError" />
     <div v-if="loading || loadError" :class="tipsClassName">
-      <loading2-outlined v-if="loading && !loadError" :class="tipsIconClassName" :spin="loading" />
+      <Loading2Outlined v-if="loading && !loadError" :class="tipsIconClassName" :spin="loading" />
       <template v-if="loadError">
-        <image-fail-outlined :class="tipsIconClassName" />
+        <ImageFailOutlined :class="tipsIconClassName" />
         <p>{{ errorText }}</p>
       </template>
     </div>

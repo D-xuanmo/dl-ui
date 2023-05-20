@@ -1,13 +1,13 @@
 <template>
   <ul ref="navRef" :class="wrapperClassName">
-    <nav-item
+    <NavItem
       v-for="(item, index) in navList"
       :key="item.name"
       :active="item.name === active"
       @click="handleTabClick(item, index)"
     >
       {{ item.label }}
-    </nav-item>
+    </NavItem>
     <li :class="lineClassName" :style="lineStyle" />
   </ul>
 </template>

@@ -1,11 +1,11 @@
 <template>
   <header :class="headerClassName">
-    <d-space :gap="10">
-      <double-left-outlined size="large" @click="togglePrevYear" />
-      <left-outlined size="large" @click="togglePrevMonth" />
-    </d-space>
+    <DSpace :gap="10">
+      <DoubleLeftOutlined size="large" @click="togglePrevYear" />
+      <LeftOutlined size="large" @click="togglePrevMonth" />
+    </DSpace>
     <span :class="dateClassName">
-      <d-date-time-picker
+      <DDateTimePicker
         :model-value="datePickerValue"
         type="year-month"
         :min-date="minDate"
@@ -14,14 +14,14 @@
         @update:model-value="toggleMonth"
       >
         <template #trigger-arrow>
-          <arrow-down-filled size="small" color="var(--d-secondary-text-color)" />
+          <ArrowDownFilled size="small" color="var(--d-secondary-text-color)" />
         </template>
-      </d-date-time-picker>
+      </DDateTimePicker>
     </span>
-    <d-space :gap="10">
-      <right-outlined size="large" @click="toggleNextMonth" />
-      <double-right-outlined size="large" @click="toggleNextYear" />
-    </d-space>
+    <DSpace :gap="10">
+      <RightOutlined size="large" @click="toggleNextMonth" />
+      <DoubleRightOutlined size="large" @click="toggleNextYear" />
+    </DSpace>
   </header>
   <ul :class="weekClassName">
     <li v-for="item in weekList" :key="item.id">{{ item.text }}</li>

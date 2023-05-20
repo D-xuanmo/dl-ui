@@ -1,22 +1,22 @@
 <template>
   <span v-if="!controlled" :class="triggerClassName" @click="showPicker">
     <span style="vertical-align: middle">{{ displayValue }}</span>
-    <right-outlined v-if="!readonly" color="var(--d-secondary-text-color)" />
+    <RightOutlined v-if="!readonly" color="var(--d-secondary-text-color)" />
   </span>
-  <d-popup :visible="innerVisible" placement="bottom" :title="title" @update:visible="handleClose">
+  <DPopup :visible="innerVisible" placement="bottom" :title="title" @update:visible="handleClose">
     <template #header-left>
-      <d-button v-if="cancelButtonText" link @touchstart="handleClose">
+      <DButton v-if="cancelButtonText" link @touchstart="handleClose">
         {{ cancelButtonText }}
-      </d-button>
+      </DButton>
     </template>
     <template #header-right>
-      <d-button v-if="confirmButtonText" link theme="primary" @click="handleConfirm">
+      <DButton v-if="confirmButtonText" link theme="primary" @click="handleConfirm">
         {{ confirmButtonText }}
-      </d-button>
+      </DButton>
     </template>
     <div :class="className">
       <div :class="contentClassName" :style="contentStyle">
-        <d-scroll-radio
+        <DScrollRadio
           v-for="(item, index) in formattedColumns"
           :key="`@${index}`"
           :options="item"
@@ -26,7 +26,7 @@
         />
       </div>
     </div>
-  </d-popup>
+  </DPopup>
 </template>
 
 <script lang="ts">

@@ -1,9 +1,9 @@
 <template>
   <span :class="triggerClassName" @click="handleShowPopup">
     <span>{{ displayValue || placeholder }}</span>
-    <right-outlined v-if="!readonly" color="var(--d-secondary-text-color)" />
+    <RightOutlined v-if="!readonly" color="var(--d-secondary-text-color)" />
   </span>
-  <d-popup
+  <DPopup
     :visible="popupVisible"
     :popup-class="wrapperClassName"
     :popup-body-class="bodyClassName"
@@ -12,14 +12,14 @@
     closeable
     @update:visible="handleClosePopup"
   >
-    <calendar-header
+    <CalendarHeader
       v-model="currentDay"
       :min-date="minDate"
       :max-date="maxDate"
       :month-formatter="monthFormatter"
     />
     <ul :class="daysClassName">
-      <calendar-day
+      <CalendarDay
         v-for="item in currentDays"
         :key="item.id"
         :date="item"
@@ -27,10 +27,10 @@
         @select="handleSelect"
       />
     </ul>
-    <d-button theme="primary" size="large" block :disabled="!isSelected" @click="handleConfirm">
+    <DButton theme="primary" size="large" block :disabled="!isSelected" @click="handleConfirm">
       {{ confirmButtonText }}
-    </d-button>
-  </d-popup>
+    </DButton>
+  </DPopup>
 </template>
 
 <script lang="ts">

@@ -2,7 +2,7 @@
   <button :class="wrapperClassName" :disabled="disabled || readonly" @click="handleChange">
     <div :class="bem('handle', { active: innerValue })">
       <slot name="icon">
-        <loading-outlined v-if="loading" spin size="small" color="var(--d-primary)" />
+        <LoadingOutlined v-if="loading" spin size="small" color="var(--d-primary)" />
       </slot>
       <slot v-if="innerValue" name="checked-icon"></slot>
       <slot v-if="!innerValue" name="unchecked-icon"></slot>
