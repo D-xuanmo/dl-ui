@@ -3,7 +3,7 @@ import { mountComponent } from '@xuanmo/dl-common'
 import { MessageProps } from './props'
 import DMessage from './message.vue'
 
-type MessageInstance = {
+export type MessageInstance = {
   open: () => void
   destroy: () => void
 }
@@ -14,7 +14,7 @@ const defaultProps: Partial<MessageProps> = {
   duration: 1500
 }
 
-function createInstance(props: MessageProps) {
+function createInstance(props: Partial<Omit<MessageProps, 'visible'>>) {
   const { instance, unmount } = mountComponent(
     {
       setup() {
@@ -58,7 +58,7 @@ function createInstance(props: MessageProps) {
   return instance as unknown as MessageInstance
 }
 
-export function showMessage(props: MessageProps) {
+export function showMessage(props: Partial<Omit<MessageProps, 'visible'>>) {
   const instance = createInstance(props)
   messageInstances.push(instance)
   instance.open()

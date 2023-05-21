@@ -2,6 +2,7 @@ import copyIcon from '../../assets/images/copy.svg'
 import { computed, defineComponent, ref } from 'vue'
 import { CloseFilled, CheckCircleFilled } from '@xuanmo/dl-icons'
 import { createBEM } from './utils'
+import { showMessage } from '@xuanmo/dl-ui'
 
 export default defineComponent({
   name: 'CopyCode',
@@ -30,10 +31,18 @@ export default defineComponent({
         .then(() => {
           status.value = true
           statusColor.value = 'var(--d-success)'
+          showMessage({
+            content: '复制成功',
+            theme: 'success'
+          })
         })
         .catch(() => {
           status.value = false
           statusColor.value = 'var(--d-error)'
+          showMessage({
+            content: '复制失败',
+            theme: 'error'
+          })
         })
       setTimeout(() => {
         status.value = null

@@ -4,6 +4,8 @@
   --d-message-padding: var(--d-gap-xs) var(--d-gap-sm);
   --d-message-text-gap: var(--d-gap-xs);
   --d-message-close-icon-gap: var(--d-gap-md);
+  --d-message-box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+    0 9px 28px 8px rgba(0, 0, 0, 0.05);
 }
 
 .#{$prefix}-message {
@@ -24,7 +26,7 @@
     align-items: center;
     padding: var(--d-message-padding);
     border-radius: var(--d-radius-lg);
-    box-shadow: var(--d-box-shadow);
+    box-shadow: var(--d-message-box-shadow);
     background: var(--d-white-color);
   }
 
