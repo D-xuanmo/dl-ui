@@ -58,6 +58,7 @@ import {
 ## 自定义开发图标
 
 - 引入基础图标组件 `import { DIcon } from '@xuanmo/dl-icons'`，传入对应 `Svg` 即可完成图标自定义
+- 自定义组件源码 [https://github.com/D-xuanmo/dl-ui/blob/develop/docs/src/components/example/custom-icon.vue](https://github.com/D-xuanmo/dl-ui/blob/develop/docs/src/components/example/custom-icon.vue)
 
 ```vue
 <template>
