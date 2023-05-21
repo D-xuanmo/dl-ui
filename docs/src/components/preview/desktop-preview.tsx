@@ -35,7 +35,7 @@ export default defineComponent({
         <header class={createBEM('desktop-header')}>
           <h2 class={createBEM('desktop', 'title', true)}>{props.title}</h2>
           <DSpace class={createBEM('desktop-toolbar')} gap={10}>
-            <a href={generatePlaygroundURL(props.playground)} title="在线编辑">
+            <a href={generatePlaygroundURL(props.playground)} title="在线编辑" target="_blank">
               <CodeSandbox size="small" />
             </a>
             <a href="javascript:;" title="复制代码">
