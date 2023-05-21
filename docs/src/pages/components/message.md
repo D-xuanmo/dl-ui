@@ -1,49 +1,107 @@
+---
+columns: 2
+---
+
 # Message 消息提示
 
-页面顶部展示一段消息提示
+页面顶部展示一段消息提示。
 
-```vue client=Mobile
+```vue client=PC playground=Message title=基础
 <template>
-  <dl-demo-block title="基础用法">
-    <d-space :gap="10" direction="vertical">
-      <d-button block @click="handleShowMessageFC()">文字信息</d-button>
-      <d-button block @click="handleShowMessage2">带关闭按钮</d-button>
-      <d-button block @click="handleShowLoadingMessage">显示 loading</d-button>
-    </d-space>
-  </dl-demo-block>
-  <dl-demo-block title="显示主题">
-    <d-space :gap="10" direction="vertical">
-      <d-button block fill="outline" theme="default" @click="handleShowMessageFC('info')">
-        普通信息
-      </d-button>
-      <d-button block fill="outline" theme="success" @click="handleShowMessageFC('success')">
-        成功信息
-      </d-button>
-      <d-button block fill="outline" theme="warning" @click="handleShowMessageFC('warning')">
-        警告信息
-      </d-button>
-      <d-button block fill="outline" theme="danger" @click="handleShowMessageFC('error')">
-        错误信息
-      </d-button>
-    </d-space>
-  </dl-demo-block>
-  <dl-demo-block title="手动关闭">
-    <d-space :gap="10">
-      <d-button block fill="outline" theme="default" @click="handleShowMessage">
-        打开消息
-      </d-button>
-      <d-button block fill="outline" theme="default" @click="handleCloseMessage">
-        关闭消息
-      </d-button>
-    </d-space>
-  </dl-demo-block>
+  <d-space :gap="10">
+    <d-button @click="handleShowMessage">文字信息</d-button>
+    <d-button @click="showMessage('消息内容')">文字信息</d-button>
+    <d-button block @click="handleShowMessage2">带关闭按钮</d-button>
+  </d-space>
+</template>
+
+<script setup lang="ts">
+import { showMessage } from '@xuanmo/dl-ui'
+
+const handleShowMessage = () => {
+  showMessage({
+    content: '我是一段消息提示',
+  })
+}
+
+const handleShowMessage2 = () => {
+  showMessage({
+    content: '带关闭的消息',
+    // 设置为 0，不自动关闭
+    duration: 5000,
+    theme: 'success',
+    closeable: true
+  })
+}
+</script>
+```
+
+```vue client=PC playground=Message title=主题切换
+<template>
+  <d-space :gap="10">
+    <d-button fill="outline" theme="default" @click="handleShowMessage('info')">
+      普通信息
+    </d-button>
+    <d-button fill="outline" theme="success" @click="handleShowMessage('success')">
+      成功信息
+    </d-button>
+    <d-button fill="outline" theme="warning" @click="handleShowMessage('warning')">
+      警告信息
+    </d-button>
+    <d-button fill="outline" theme="danger" @click="handleShowMessage('error')">
+      错误信息
+    </d-button>
+  </d-space>
 </template>
 
 <script setup lang="ts">
 import { showMessage } from '@xuanmo/dl-ui'
 import { MessageType } from '@xuanmo/dl-common'
 
-let messageInstance = null
+const handleShowMessage = (theme?: MessageType) => {
+  showMessage({
+    content: '我是一段提示内容',
+    theme
+  })
+}
+</script>
+```
+
+```vue client=PC playground=Message title=loading 加载
+<template>
+  <d-button @click="handleShowLoadingMessage">显示 loading</d-button>
+</template>
+
+<script setup lang="ts">
+import { showMessage } from '@xuanmo/dl-ui'
+
+const handleShowLoadingMessage = () => {
+  const { destroy } = showMessage({
+    content: '加载中...',
+    duration: 0,
+    type: 'loading'
+  })
+  setTimeout(destroy, 3000)
+}
+</script>
+```
+
+```vue client=PC playground=Message title=手动关闭
+<template>
+  <d-space :gap="10">
+    <d-button block fill="outline" theme="default" @click="handleShowMessage">
+      打开消息
+    </d-button>
+    <d-button block fill="outline" theme="default" @click="handleCloseMessage">
+      关闭消息
+    </d-button>
+  </d-space>
+</template>
+
+<script setup lang="ts">
+import { showMessage, MessageInstance } from '@xuanmo/dl-ui'
+
+let messageInstance: MessageInstance = null
 
 const handleShowMessage = () => {
   messageInstance = showMessage({
@@ -54,31 +112,20 @@ const handleShowMessage = () => {
 }
 
 const handleCloseMessage = () => messageInstance?.destroy()
+</script>
+```
 
-const handleShowMessage2 = () => {
-  showMessage({
-    content: '带关闭的消息',
-    // 设置为 0，不自动关闭
-    duration: 5000,
-    closeable: true
-  })
-}
+```vue client=PC playground=Message title=快捷使用
+<template>
+  <d-space :gap="10">
+    <d-button fill="outline" theme="success" @click="showSuccessMessage('success')">成功消息</d-button>
+    <d-button fill="outline" theme="warning" @click="showWarningMessage('warning')">警告信息</d-button>
+    <d-button fill="outline" theme="danger" @click="showFailMessage('fail')">失败信息</d-button>
+  </d-space>
+</template>
 
-const handleShowLoadingMessage = () => {
-  const { destroy } = showMessage({
-    content: '加载中...',
-    duration: 0,
-    type: 'loading'
-  })
-  setTimeout(destroy, 3000)
-}
-
-const handleShowMessageFC = (theme?: MessageType) => {
-  showMessage({
-    content: '函数调用模式',
-    theme
-  })
-}
+<script setup lang="ts">
+import { showSuccessMessage, showFailMessage, showWarningMessage } from '@xuanmo/dl-ui'
 </script>
 ```
 
@@ -92,18 +139,16 @@ const handleShowMessageFC = (theme?: MessageType) => {
 |content|`string`|-|消息内容|Y|
 |content|`string`|-|消息内容|N|
 |type|`'text' \| 'loading'`|`text`|消息类型，默认文本|N|
-|theme|`MessageType`|-|消息主题|N|
+|theme|`MessageType`|`info`|消息主题|N|
 |closeable|`boolean`|-|是否显示关闭图标|N|
-|duration|`number`|`1500`|消息提示时间，单位毫秒|N|
+|duration|`number`|`2000`|消息提示时间，单位毫秒|N|
 
 ### 函数调用
 
 ```typescript
 import { showMessage } from '@xuanmo/dl-ui'
 
-showMessage({
-  content: '消息内容'
-})
+showMessage('消息内容')
 ```
 
 ### TypesScript 类型

@@ -35,7 +35,7 @@ export const MESSAGE_PROPS = {
    */
   theme: {
     type: String as PropType<MessageType>,
-    default: undefined
+    default: ''
   },
 
   /**
@@ -51,6 +51,6 @@ export const MESSAGE_PROPS = {
    */
   duration: {
     type: Number,
-    default: 1500
+    default: 2000
   }
 }

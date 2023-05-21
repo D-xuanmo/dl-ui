@@ -11,7 +11,7 @@ export type MessageInstance = {
 const messageInstances: MessageInstance[] = []
 
 const defaultProps: Partial<MessageProps> = {
-  duration: 1500
+  duration: 2000
 }
 
 function createInstance(props: Partial<Omit<MessageProps, 'visible'>>) {
@@ -58,11 +58,49 @@ function createInstance(props: Partial<Omit<MessageProps, 'visible'>>) {
   return instance as unknown as MessageInstance
 }
 
-export function showMessage(props: Partial<Omit<MessageProps, 'visible'>>) {
-  const instance = createInstance(props)
+export function showMessage(props: string | Partial<Omit<MessageProps, 'visible'>>) {
+  let options: Partial<Omit<MessageProps, 'visible'>>
+  if (typeof props === 'string') {
+    options = {
+      content: props
+    }
+  } else {
+    options = props
+  }
+  const instance = createInstance(options)
   messageInstances.push(instance)
   instance.open()
   return instance
+}
+
+export function showSuccessMessage(
+  content: string,
+  props?: Partial<Omit<MessageProps, 'visible'>>
+) {
+  return showMessage({
+    content,
+    theme: 'success',
+    ...props
+  })
+}
+
+export function showWarningMessage(
+  content: string,
+  props?: Partial<Omit<MessageProps, 'visible'>>
+) {
+  return showMessage({
+    content,
+    theme: 'warning',
+    ...props
+  })
+}
+
+export function showFailMessage(content: string, props?: Partial<Omit<MessageProps, 'visible'>>) {
+  return showMessage({
+    content,
+    theme: 'error',
+    ...props
+  })
 }
 
 /**
