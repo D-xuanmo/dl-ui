@@ -1,6 +1,6 @@
 import { computed, ref, SetupContext, watchEffect, WritableComputedRef, EmitsOptions } from 'vue'
 
-type Props<P, V> = P & { modelValue?: V } & { value?: V }
+type Props<P, V> = P & { modelValue?: V }
 
 type UseDefaultReturnType<V> = [WritableComputedRef<V>, (value: V) => void]
 

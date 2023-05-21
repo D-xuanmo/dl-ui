@@ -24,7 +24,7 @@ export const RATE_PROPS = {
    */
   size: {
     type: String as PropType<SizeType | string>,
-    default: 'large'
+    default: 'medium'
   },
 
   /**

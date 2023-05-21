@@ -2307,7 +2307,7 @@ __metadata:
     "@xuanmo/javascript-utils": ^0.0.49
     "@xuanmo/validator": ^0.0.11
     autoprefixer: ^10.4.7
-    eslint: ^8.40.0
+    eslint: ^8.41.0
     eslint-config-prettier: ^8.8.0
     eslint-config-standard: ^17.0.0
     eslint-plugin-import: ^2.27.5
@@ -2969,7 +2969,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.40.0":
+"eslint@npm:^8.41.0":
   version: 8.41.0
   resolution: "eslint@npm:8.41.0"
   dependencies:

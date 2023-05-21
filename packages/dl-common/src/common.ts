@@ -13,6 +13,9 @@ export type PlacementType = 'top' | 'right' | 'bottom' | 'left' | 'center'
 /** 主题类型 */
 export type ThemeType = 'primary' | 'success' | 'warning' | 'danger' | 'default'
 
+/** 消息类型 */
+export type MessageType = 'info' | 'success' | 'warning' | 'error'
+
 /** 数据基础类型，单选、多选、选择器等组件 */
 export interface IData<T = string | number> {
   label: string

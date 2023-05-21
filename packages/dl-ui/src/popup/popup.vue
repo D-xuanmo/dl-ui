@@ -10,6 +10,7 @@
     />
     <transition
       :name="transitionPosition"
+      :appear="transitionAppear"
       @enter="onEnter"
       @after-enter="onAfterEnter"
       @leave="onLeave"
@@ -17,11 +18,11 @@
     >
       <div
         v-if="visible"
-        :class="bem('container')"
+        :class="[bem('container'), popupContainerClass]"
         :style="style"
         @click="closeOnClickOverlay && handleClose()"
       >
-        <div :class="classes" :style="popupStyle" @click.stop>
+        <div :class="wrapperClassName" :style="popupStyle" @click.stop>
           <header v-if="showHeader" center :class="bem('header')">
             <div v-if="$slots['header-left']" :class="bem('header', 'left', true)">
               <slot name="header-left" />
@@ -35,7 +36,7 @@
               :class="bem('header', 'closable', true)"
               @click="handleClickIcon"
             >
-              <slot name="close-icon"><CloseOutlined /></slot>
+              <slot name="close-icon"><CloseOutlined size="large" /></slot>
             </span>
           </header>
           <div :class="[bem('body'), popupBodyClass]"><slot /></div>
@@ -70,7 +71,7 @@ export default defineComponent({
       )
     })
 
-    const classes = computed(() =>
+    const wrapperClassName = computed(() =>
       [
         bem('wrapper', {
           [props.placement]: props.placement,
@@ -104,7 +105,7 @@ export default defineComponent({
 
     return {
       transitionPosition,
-      classes,
+      wrapperClassName,
       style,
       overlayZIndex,
       isCenter,

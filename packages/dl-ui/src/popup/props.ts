@@ -22,10 +22,16 @@ export const POPUP_PROPS = {
   round: Boolean,
   closeable: Boolean,
   teleport: {
-    type: String as PropType<TeleportProps['to']>,
+    type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body'
   },
 
+  transitionAppear: {
+    type: Boolean,
+    default: false
+  },
+
+  popupContainerClass: String,
   popupClass: String,
   popupBodyClass: String,
   popupStyle: {

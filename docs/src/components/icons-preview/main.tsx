@@ -23,7 +23,7 @@ export default defineComponent({
         }
         if (/Filled$/.exec(key)) {
           filledIcons.push(item)
-        } else {
+        } else if (/Outlined$/.exec(key)) {
           outlinedIcons.push(item)
         }
       }

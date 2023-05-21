@@ -3,29 +3,33 @@
 - 图标基于 `SVG` 创建；
 - 图标为独立包，通过 `@xuanmo/dl-icons` 引入图标
 
+## 所有图标预览
+
 ```vue preview
 <template>
   <icons-preview />
 </template>
 ```
 
-```vue 
+## 图标示例
+
+```vue
 <template>
   <d-cell-group title="基础用法">
-    <d-cell content-align="left">
+    <d-cell>
       <CheckSquareFilled />
       <check-square-filled />
     </d-cell>
   </d-cell-group>
   <d-cell-group title="旋转">
-    <d-cell content-align="left">
+    <d-cell>
       <LoadingOutlined spin />
       <Loading2Outlined spin />
       <StarOutlined spin />
     </d-cell>
   </d-cell-group>
   <d-cell-group title="大小调整">
-    <d-cell content-align="left">
+    <d-cell>
       <StarOutlined size="small" />
       <StarOutlined size="medium" />
       <StarOutlined size="large" />
@@ -33,7 +37,7 @@
     </d-cell>
   </d-cell-group>
   <d-cell-group title="颜色修改">
-    <d-cell content-align="left">
+    <d-cell>
       <StarOutlined color="#f00" />
       <StarOutlined color="#ed7b2f" />
       <StarOutlined color="var(--d-primary)" />
@@ -44,10 +48,36 @@
 <script setup lang='ts'>
 import {
   CheckSquareFilled,
-  LoadingOutlined, 
+  LoadingOutlined,
   Loading2Outlined,
   StarOutlined
 } from '@xuanmo/dl-icons'
+</script>
+```
+
+## 自定义开发图标
+
+- 引入基础图标组件 `import { DIcon } from '@xuanmo/dl-icons'`，传入对应 `Svg` 即可完成图标自定义
+
+```vue
+<template>
+  <d-cell-group title="基础用法">
+    <d-cell>
+      <custom-icon color='var(--d-success)' />
+      <custom-icon color='var(--d-warning)' />
+    </d-cell>
+  </d-cell-group>
+  <d-cell-group title="修改大小、旋转图标">
+    <d-cell>
+      <custom-icon size='small' />
+      <custom-icon size='medium' />
+      <custom-icon size='large' />
+      <custom-icon size='36px' spin />
+    </d-cell>
+  </d-cell-group>
+</template>
+<script setup>
+import CustomIcon from 'docs/src/components/example/custom-icon.vue'
 </script>
 ```
 
@@ -67,6 +97,6 @@ import {
 
 |变量名|默认值|描述|
 |-----|-----|----|
-|--d-icon-size-small|16px|图标 `size=small` 时尺寸|
-|--d-icon-size-medium|20px|图标 `size=medium` 时尺寸|
-|--d-icon-size-large|24px|图标 `size=large` 时尺寸|
+|--d-icon-size-small|20px|图标 `size=small` 时尺寸|
+|--d-icon-size-medium|24px|图标 `size=medium` 时尺寸|
+|--d-icon-size-large|28px|图标 `size=large` 时尺寸|

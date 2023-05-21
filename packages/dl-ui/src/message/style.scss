@@ -1,0 +1,40 @@
+@import '../style/prefix';
+
+:root {
+  --d-message-padding: var(--d-gap-xs) var(--d-gap-sm);
+  --d-message-text-gap: var(--d-gap-xs);
+  --d-message-close-icon-gap: var(--d-gap-md);
+}
+
+.#{$prefix}-message {
+  height: 0;
+
+  &__wrapper {
+    flex-direction: row;
+    justify-content: center;
+    max-width: 80%;
+    max-height: initial;
+    padding: 0;
+    background: none;
+  }
+
+  &__content {
+    flex: unset;
+    display: inline-flex;
+    align-items: center;
+    padding: var(--d-message-padding);
+    border-radius: var(--d-radius-lg);
+    box-shadow: var(--d-box-shadow);
+    background: var(--d-white-color);
+  }
+
+  &__text {
+    flex: 1;
+    margin-left: var(--d-message-text-gap);
+    vertical-align: middle;
+
+    & + * {
+      margin-left: var(--d-message-close-icon-gap);
+    }
+  }
+}

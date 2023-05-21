@@ -3,6 +3,16 @@
     &__list {
       display: flex;
       flex-wrap: wrap;
+
+      &--title {
+        font-size: 18px;
+      }
+
+      &-wrapper {
+        & + * {
+          margin-top: 20px;
+        }
+      }
     }
 
     &__item {

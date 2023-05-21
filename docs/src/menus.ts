@@ -59,6 +59,11 @@ const menus: MenuItemType[] = [
       { id: 'upload', path: '/components/upload', content: 'Upload [文件上传]' },
       { id: 'form', path: '/components/form', content: 'Form [表单]' }
     ]
+  },
+  {
+    id: createRandomID(),
+    groupTitle: '展示组件',
+    children: [{ id: 'message', path: '/components/message', content: 'Message [消息提示]' }]
   }
 ]
 
