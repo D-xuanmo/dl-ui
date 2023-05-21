@@ -878,7 +878,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mdast@npm:^3.0.0, @types/mdast@npm:^3.0.10":
+"@types/mdast@npm:^3.0.0, @types/mdast@npm:^3.0.11":
   version: 3.0.11
   resolution: "@types/mdast@npm:3.0.11"
   dependencies:
@@ -1373,20 +1373,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xuanmo/vite-plugin-md-preview@npm:^0.0.12":
-  version: 0.0.12
-  resolution: "@xuanmo/vite-plugin-md-preview@npm:0.0.12"
+"@xuanmo/vite-plugin-md-preview@npm:^0.0.13":
+  version: 0.0.13
+  resolution: "@xuanmo/vite-plugin-md-preview@npm:0.0.13"
   dependencies:
-    "@types/mdast": ^3.0.10
+    "@types/mdast": ^3.0.11
     debug: ^4.3.4
     fs-extra: ^8.1.0
-    remark: ^14.0.2
+    remark: ^14.0.3
     shiki: ^0.10.1
     unified: ^10.1.2
-    unist-util-visit: ^4.1.0
+    unist-util-visit: ^4.1.2
   peerDependencies:
     vite-plugin-md: ^0.13.1
-  checksum: ab825fc3778016ba20dcc2ef38bda416a02e027ceee2d7e65b81cff1f2f2afb7b58ddd89f8bb73a90e45f7926356ccbb1518a6043c968da4328cb166fce8b80b
+  checksum: 65ace71ed2c633451fe74e07d78fdbed1bfaa36007f8ca72598a7bca929a8fe8bcc876e29b3e657e282078b00ae56695f950e35e86784a8ba9a85eccf25651b4
   languageName: node
   linkType: hard
 
@@ -2336,7 +2336,7 @@ __metadata:
     "@types/qs": ^6.9.7
     "@xuanmo/dl-ui": "workspace:*"
     "@xuanmo/normalize.css": ^1.0.9
-    "@xuanmo/vite-plugin-md-preview": ^0.0.12
+    "@xuanmo/vite-plugin-md-preview": ^0.0.13
     markdown-it-shiki: ^0.5.1
     qrcode: ^1.5.3
     qs: ^6.11.1
@@ -5658,7 +5658,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark@npm:^14.0.2":
+"remark@npm:^14.0.3":
   version: 14.0.3
   resolution: "remark@npm:14.0.3"
   dependencies:
@@ -6540,7 +6540,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unist-util-visit@npm:^4.0.0, unist-util-visit@npm:^4.1.0":
+"unist-util-visit@npm:^4.0.0, unist-util-visit@npm:^4.1.2":
   version: 4.1.2
   resolution: "unist-util-visit@npm:4.1.2"
   dependencies:

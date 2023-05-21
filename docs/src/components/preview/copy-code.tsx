@@ -1,8 +1,7 @@
-import copyIcon from '../../assets/images/copy.svg'
 import { computed, defineComponent, ref } from 'vue'
-import { CloseFilled, CheckCircleFilled } from '@xuanmo/dl-icons'
 import { createBEM } from './utils'
 import { showMessage } from '@xuanmo/dl-ui'
+import CopyOutlined from '@doc/components/icons/copy-outlined'
 
 export default defineComponent({
   name: 'CopyCode',
@@ -14,7 +13,6 @@ export default defineComponent({
   },
   setup(props) {
     const status = ref<boolean | null>(null)
-    const statusColor = ref('var(--d-success)')
 
     const className = createBEM('copy')
     const scrollClassName = computed(() =>
@@ -29,16 +27,12 @@ export default defineComponent({
       window.navigator.clipboard
         .writeText(el.innerText)
         .then(() => {
-          status.value = true
-          statusColor.value = 'var(--d-success)'
           showMessage({
             content: '复制成功',
             theme: 'success'
           })
         })
         .catch(() => {
-          status.value = false
-          statusColor.value = 'var(--d-error)'
           showMessage({
             content: '复制失败',
             theme: 'error'
@@ -50,14 +44,12 @@ export default defineComponent({
     }
 
     return () => {
-      const successIcon = status.value && <CheckCircleFilled color={statusColor.value} />
-      const failIcon = status.value === false && <CloseFilled color={statusColor.value} />
       return (
         <div class={className} onClick={handleCopy}>
           <div class={scrollClassName.value}>
-            <img src={copyIcon} title="复制代码" />
-            {successIcon}
-            {failIcon}
+            <span title="复制代码">
+              <CopyOutlined size="small" />
+            </span>
           </div>
         </div>
       )

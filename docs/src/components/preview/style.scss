@@ -65,6 +65,53 @@
     }
   }
 
+  &__desktop {
+    padding: 16px;
+
+    .dl-doc-preview__runtime {
+      padding-bottom: 0;
+    }
+
+    #{&} {
+      &-header {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &--title {
+        margin: 0 !important;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      &-toolbar {
+        cursor: pointer;
+
+        a {
+          color: var(--d-primary-text-color);
+
+          &:hover {
+            color: var(--d-primary);
+          }
+        }
+      }
+
+      &-code {
+        display: none;
+        width: 100%;
+        overflow-x: auto;
+
+        &--active {
+          display: block;
+        }
+
+        .shiki {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+
   &__runtime {
     padding: var(--d-gap-sm);
   }

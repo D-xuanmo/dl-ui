@@ -1,9 +1,8 @@
 import { FunctionalComponent } from 'vue'
 import qrcodeIcon from '@doc/assets/images/QRCode.svg'
-import { PLAYGROUND_SHORT_URL } from '@doc/constants'
-import playgroundIcon from '@doc/assets/images/CodeSandbox.svg'
-import { createBEM } from './utils'
+import { createBEM, generatePlaygroundURL } from './utils'
 import CopyCode from './copy-code'
+import CodeSandbox from '@doc/components/icons/code-sandbox'
 
 type MobilePreviewProps = {
   // 源码
@@ -40,11 +39,11 @@ const MobilePreview: FunctionalComponent<MobilePreviewProps> = (props) => {
           </div>
           {playgroundKey && (
             <a
-              href={`${PLAYGROUND_SHORT_URL}${playgroundKey}`}
+              href={generatePlaygroundURL(playgroundKey)}
               target="_blank"
               title="在 Playground 中编辑"
             >
-              <img src={playgroundIcon} />
+              <CodeSandbox />
             </a>
           )}
         </d-space>

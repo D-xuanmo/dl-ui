@@ -11,6 +11,7 @@ import DemoBlock from './components/demo-block'
 import '@xuanmo/normalize.css/class.scss'
 import './assets/style/index.scss'
 import DocPreview from '@doc/components/preview'
+import MultiColumns from '@doc/components/preview/multi-columns'
 
 // 引入校验国际化词条
 import zhCN from '@xuanmo/validator/locale/zh-CN.json'
@@ -25,6 +26,7 @@ app
   .use(DemoBlock)
   .use(DLUI)
   .component('VueCode', DocPreview)
+  .component('VueMarkdown', MultiColumns)
   .component('CustomInput', CustomInput)
   .component('IconsPreview', IconsPreview)
   .mount('#app')

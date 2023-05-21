@@ -130,6 +130,19 @@ blockquote {
     }
   }
 
+  &__multi-columns {
+    display: flex;
+    justify-content: space-between;
+
+    &--item {
+      width: calc(50% - 8px);
+    }
+
+    .dl-doc-preview__wrapper {
+      margin-bottom: 16px;
+    }
+  }
+
   &__out-content {
     flex: 1;
     display: flex;

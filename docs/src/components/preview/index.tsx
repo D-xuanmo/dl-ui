@@ -8,6 +8,7 @@ import Playground from '@doc/components/preview/playground'
 import MobilePreview from '@doc/components/preview/mobile-preview'
 import PreviewOnly from '@doc/components/preview/preview-only'
 import './style.scss'
+import DesktopPreview from '@doc/components/preview/desktop-preview'
 
 const [name, bem] = createNamespace('doc-preview')
 
@@ -21,7 +22,6 @@ const DocPreview = defineComponent({
   props,
   setup(props, { slots }) {
     const route = useRoute()
-    const showCode = ref(false)
     const qrcode = ref('')
     const demoURL = ref('')
 
@@ -43,37 +43,31 @@ const DocPreview = defineComponent({
     )
 
     return () => {
-      const { client = 'PC', playground, height, width, preview } = qs.parse(props.params!)
+      const {
+        client = 'PC',
+        playground,
+        height,
+        width,
+        preview,
+        title
+      } = qs.parse(props.params!) as any
       const isMobile = client === 'Mobile'
 
       const wrapperStyle = {
-        width: addUnit(width as string),
-        height: addUnit(height as string)
+        width: addUnit(width),
+        height: addUnit(height)
       } as CSSProperties
-
-      const toggleCodeVisible = () => {
-        showCode.value = !showCode.value
-      }
 
       let content = null
 
       if (preview) {
         content = <PreviewOnly code={slots.default?.()} />
       } else {
-        if (!isMobile && !playground) {
+        if (['PC', undefined].includes(client)) {
           content = (
-            <>
-              <PreviewOnly code={slots.default?.()} />
-              <div class={bem('toolbar', { active: showCode.value })}>
-                <span style={{ cursor: 'pointer' }} onClick={toggleCodeVisible}>
-                  {!showCode.value ? '显示' : '隐藏'}代码
-                </span>
-              </div>
-              <div
-                class={bem('code', { active: showCode.value })}
-                v-html={decodeURIComponent(props.source as string)}
-              />
-            </>
+            <DesktopPreview source={props.source} title={title} playground={playground}>
+              {slots.default?.()}
+            </DesktopPreview>
           )
         } else if (isMobile) {
           content = (
