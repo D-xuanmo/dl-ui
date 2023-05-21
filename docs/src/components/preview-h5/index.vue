@@ -1,7 +1,7 @@
 <template>
   <div :class="bem('wrapper')">
     <header v-if="!isPreview && !isComponentListPage" :class="bem('header')">
-      <left-outlined @click="goBack" />
+      <LeftOutlined size="large" @click="goBack" />
       <h2 :class="bem('header', 'title', true)">{{ title }}</h2>
     </header>
     <div :class="bem('content')"><router-view /></div>
@@ -60,6 +60,7 @@ export default defineComponent({
 
   &__header {
     display: flex;
+    align-items: center;
     padding: var(--d-gap-xs) var(--d-gap-sm);
     background-color: var(--d-white-color);
     box-shadow: var(--d-box-shadow);
