@@ -1,11 +1,11 @@
 <template>
   <li :class="itemClassName" @click="handleSelect">
     <div :class="contentClassName">
-      <span :class="tipsClassName" :style="formatted.topTextStyle">
+      <span v-if="formatted.topText" :class="tipsClassName" :style="formatted.topTextStyle">
         {{ formatted.topText }}
       </span>
       <span :class="innerClassName">{{ formatted.label }}</span>
-      <span :class="tipsClassName" :style="formatted.bottomTextStyle">
+      <span v-if="formatted.bottomText" :class="tipsClassName" :style="formatted.bottomTextStyle">
         {{ formatted.bottomText }}
       </span>
     </div>
