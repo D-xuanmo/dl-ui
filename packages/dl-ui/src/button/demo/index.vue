@@ -68,7 +68,7 @@
 
   <dl-demo-block>
     <p>加载状态</p>
-    <d-space :gap="10">
+    <d-space :gap="10" wrap>
       <d-button theme="primary" loading>default</d-button>
       <d-button theme="success" fill="outline" loading>default</d-button>
       <d-button shape="rounded" loading theme="danger">rounded</d-button>
