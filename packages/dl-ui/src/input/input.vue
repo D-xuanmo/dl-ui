@@ -8,15 +8,11 @@
     :disabled="disabled"
     :hide-title="hideLabel"
   >
-    <template #left-icon>
+    <template v-if="leftIcon" #left-icon>
       <component :is="leftIcon" v-bind="leftIconProps" />
     </template>
-    <template #right-icon>
-      <CloseFilled
-        v-if="innerValue && clearable"
-        color="var(--d-secondary-text-color)"
-        @click="handleClear"
-      />
+    <template v-if="innerValue && clearable" #right-icon>
+      <CloseFilled color="var(--d-secondary-text-color)" @click="handleClear" />
     </template>
     <input
       :value="innerValue"
@@ -66,7 +62,6 @@ export default defineComponent({
       bem({
         disabled: props.disabled,
         readonly: props.readonly,
-        right: props.suffix,
         [`${props.inputAlign}`]: props.inputAlign
       })
     )

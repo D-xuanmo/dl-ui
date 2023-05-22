@@ -80,7 +80,7 @@
     &--selected {
       #{$dayPrefix} {
         &-content {
-          border-radius: var(--d-radius-lg);
+          border-radius: var(--d-radius-large);
           background: var(--d-primary);
           color: #fff;
         }
@@ -90,7 +90,7 @@
     &--start {
       #{$dayPrefix} {
         &-content {
-          border-radius: var(--d-radius-lg) 0 0 var(--d-radius-lg);
+          border-radius: var(--d-radius-large) 0 0 var(--d-radius-large);
         }
       }
     }
@@ -108,7 +108,7 @@
     &--end {
       #{$dayPrefix} {
         &-content {
-          border-radius: 0 var(--d-radius-lg) var(--d-radius-lg) 0;
+          border-radius: 0 var(--d-radius-large) var(--d-radius-large) 0;
         }
       }
     }
