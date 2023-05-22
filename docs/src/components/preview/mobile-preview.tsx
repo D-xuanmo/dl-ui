@@ -25,7 +25,14 @@ type MobilePreviewProps = {
 }
 
 const MobilePreview: FunctionalComponent<MobilePreviewProps, any> = (props, { slots }) => {
-  const { sourceCode, playgroundKey, qrcodeImage, previewURL, previewType, title } = props
+  const {
+    sourceCode,
+    playgroundKey,
+    qrcodeImage,
+    previewURL,
+    previewType,
+    title = '代码演示'
+  } = props
   const previewContent =
     previewType === 'iframe' ? (
       <iframe src={`${previewURL}?preview=true`} />

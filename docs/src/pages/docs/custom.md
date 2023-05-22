@@ -6,10 +6,11 @@
 
 变量源文件 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/style/var.scss](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/style/var.scss)
 
-```scss
+```css
 :root {
   // 主题色
   --d-primary: #1b62eb;
+  --d-primary-1: #ecf2fe;
 
   // 提示类颜色
   --d-success: #00a870;
@@ -39,12 +40,18 @@
   --d-border: 1px solid var(--d-border-color);
 
   // 阴影
-  --d-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  --d-shadow-1: 0 1px 10px rgba(0, 0, 0, 5%), 0 4px 5px rgba(0, 0, 0, 8%),
+  0 2px 4px -1px rgba(0, 0, 0, 12%);
+  --d-shadow-2: 0 3px 14px 2px rgba(0, 0, 0, 5%), 0 8px 10px 1px rgba(0, 0, 0, 6%),
+  0 5px 5px -3px rgba(0, 0, 0, 10%);
+  --d-shadow-3: 0 6px 30px 5px rgba(0, 0, 0, 5%), 0 16px 24px 2px rgba(0, 0, 0, 4%),
+  0 8px 10px -5px rgba(0, 0, 0, 8%);
 
   // 圆角
-  --d-radius-xs: 2px;
-  --d-radius-md: 4px;
-  --d-radius-lg: 8px;
+  --d-radius-small: 3px;
+  --d-radius-medium: 6px;
+  --d-radius-large: 9px;
+  --d-radius-extraLarge: 12px;
 
   // 文字大小
   --d-font-size-xs: 10px;

@@ -150,7 +150,7 @@ type SizeType = 'small' | 'medium' | 'large'
 
 |变量名|默认值|描述|
 |-----|-----|----|
-|--d-button-large-height|44px|按钮 `size=large` 时高度|
-|--d-button-medium-height|40px|按钮 `size=medium` 时高度|
-|--d-button-small-height|36px|按钮 `size=small` 时高度|
+|--d-button-large|48px|按钮 `size=large` 时高度|
+|--d-button-medium|40px|按钮 `size=medium` 时高度|
+|--d-button-small|32px|按钮 `size=small` 时高度|
 |--d-button-disabled-opacity|0.5|按钮禁用透明度|
