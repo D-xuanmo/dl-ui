@@ -44,7 +44,7 @@ const getRoutes = () => {
  * 访问路径为：/demo/cell
  */
 const getDemoRoutes = () => {
-  const demoModules = import.meta.glob('../../../packages/dl-ui/src/**/demo/index.vue')
+  const demoModules = import.meta.glob('../../../packages/dl-ui/src/**/demo/*.vue')
   const routes: RouteRecordRaw[] = [
     {
       path: '/demo/component-list',
@@ -52,9 +52,10 @@ const getDemoRoutes = () => {
     }
   ]
   for (const [key, module] of Object.entries(demoModules)) {
-    const { path } = /(?<path>\/[a-z\d-]+)\/demo\/index\.vue$/.exec(key)?.groups ?? {}
+    const { path, fileName } =
+      /(?<path>\/[a-z\d-]+)\/demo\/(?<fileName>\w+)\.vue$/.exec(key)?.groups ?? {}
     routes.push({
-      path: `/demo${path}`,
+      path: `/demo${path}${fileName === 'index' ? '' : `/${fileName}`}`,
       component: module,
       meta: {
         isDemo: true

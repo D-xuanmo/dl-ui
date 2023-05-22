@@ -63,7 +63,7 @@ export default defineComponent({
     align-items: center;
     padding: var(--d-gap-xs) var(--d-gap-sm);
     background-color: var(--d-white-color);
-    box-shadow: var(--d-box-shadow);
+    box-shadow: var(--d-box-shadow-1);
 
     &--title {
       flex: 1;

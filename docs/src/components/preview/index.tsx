@@ -49,6 +49,7 @@ const DocPreview = defineComponent({
         height,
         width,
         preview,
+        previewType = 'self',
         title
       } = qs.parse(props.params!) as any
       const isMobile = client === 'Mobile'
@@ -74,17 +75,20 @@ const DocPreview = defineComponent({
             <MobilePreview
               sourceCode={props.source!}
               previewURL={demoURL.value}
+              previewType={previewType}
               qrcodeImage={qrcode.value}
-              playgroundKey={playground as string}
-            />
+              playgroundKey={playground}
+            >
+              {slots.default?.()}
+            </MobilePreview>
           )
         } else if (playground && !isMobile) {
-          content = <Playground playgroundKey={playground as string} />
+          content = <Playground playgroundKey={playground} />
         }
       }
 
       return (
-        <div class={bem('wrapper', { h5: isMobile })} style={wrapperStyle}>
+        <div class={bem('wrapper')} style={wrapperStyle}>
           {content}
         </div>
       )

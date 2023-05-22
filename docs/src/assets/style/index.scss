@@ -242,7 +242,7 @@ blockquote {
       width: 100%;
       border: var(--d-border);
       border-collapse: collapse;
-      border-radius: var(--d-radius-lg);
+      border-radius: var(--d-radius-large);
       overflow: hidden;
       box-shadow: inset 1px 0 0 #e7e7e7, inset -1px -1px 0 #e7e7e7;
 
@@ -297,7 +297,7 @@ blockquote {
   box-sizing: border-box;
   margin-top: var(--d-gap-sm);
   padding: var(--d-gap-sm);
-  border-radius: var(--d-radius-md);
+  border-radius: var(--d-radius-medium);
   background: var(--d-gray-1) !important;
   line-height: 1.8;
 }

@@ -24,47 +24,9 @@
       margin-top: 0;
       background: none !important;
     }
-
-    &--h5 {
-      height: 500px;
-
-      #{$prefix} {
-        &__out-content {
-          display: flex;
-          flex-direction: column;
-          height: 100%;
-        }
-
-        &__content {
-          display: flex;
-          flex: 1;
-          padding: 0;
-          overflow: hidden;
-        }
-
-        &__code {
-          flex: 1;
-          display: block;
-          height: 100%;
-          margin-top: 0;
-          padding: 0;
-          overflow: auto;
-        }
-
-        &__runtime {
-          width: 375px;
-          height: 100%;
-          padding: 0;
-          overflow: hidden;
-        }
-
-        &__toolbar {
-          margin-top: 0;
-        }
-      }
-    }
   }
 
+  // PC 模式
   &__desktop {
     padding: 16px;
 
@@ -109,6 +71,81 @@
 
         .shiki {
           padding-top: 10px;
+        }
+      }
+    }
+  }
+
+  // Mobile 模式
+  &__mobile {
+    $mPrefix: &;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+
+    &--iframe {
+      #{$mPrefix} {
+        &-runtime--inner {
+          overflow: hidden;
+        }
+      }
+    }
+    &--self {
+      #{$mPrefix} {
+        &-runtime--inner {
+          background: #f7f8fa;
+        }
+      }
+    }
+
+    &-content {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    &-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      border-right: var(--d-border);
+      overflow: hidden;
+    }
+
+    &-code {
+      flex: 1;
+      overflow: auto;
+    }
+
+    &-runtime {
+      display: flex;
+      flex-direction: column;
+      width: 375px;
+      overflow: hidden;
+
+      &--inner {
+        flex: 1;
+        overflow-y: auto;
+      }
+
+      #{$mPrefix} {
+        &-toolbar {
+          border-top: var(--d-border);
+          border-bottom: 0;
+        }
+      }
+    }
+
+    &-toolbar {
+      padding: var(--d-gap-xs) var(--d-gap-sm);
+      border-bottom: var(--d-border);
+
+      a {
+        cursor: pointer;
+        color: var(--d-primary-text-color);
+
+        &:hover {
+          color: var(--d-primary);
         }
       }
     }

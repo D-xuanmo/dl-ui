@@ -1,8 +1,11 @@
 import { FunctionalComponent } from 'vue'
-import qrcodeIcon from '@doc/assets/images/QRCode.svg'
 import { createBEM, generatePlaygroundURL } from './utils'
 import CopyCode from './copy-code'
 import CodeSandbox from '@doc/components/icons/code-sandbox'
+import PreviewOnly from '@doc/components/preview/preview-only'
+import { DSpace } from '@xuanmo/dl-ui'
+import QRCodeOutlined from '@doc/components/icons/qrcode-outlined'
+import BrowserOutlined from '@doc/components/icons/browser-outlined'
 
 type MobilePreviewProps = {
   // 源码
@@ -13,40 +16,58 @@ type MobilePreviewProps = {
 
   previewURL: string
 
+  // 预览模式
+  previewType: 'iframe' | 'self'
+
   playgroundKey: string
 }
 
-const MobilePreview: FunctionalComponent<MobilePreviewProps> = (props) => {
-  const { sourceCode, playgroundKey, qrcodeImage, previewURL } = props
+const MobilePreview: FunctionalComponent<MobilePreviewProps, any> = (props, { slots }) => {
+  const { sourceCode, playgroundKey, qrcodeImage, previewURL, previewType } = props
+  const previewContent =
+    previewType === 'iframe' ? (
+      <iframe src={`${previewURL}?preview=true`} />
+    ) : (
+      <PreviewOnly code={slots.default?.()} />
+    )
   return (
-    <div class={createBEM('out-content')}>
-      <div class={createBEM('content')}>
-        <div class={createBEM('code')} v-html={decodeURIComponent(sourceCode as string)} />
-        <div class={createBEM('runtime')}>
-          <iframe src={`${previewURL}?preview=true`} />
-        </div>
-      </div>
-      <div class={createBEM('toolbar')}>
-        <d-space>
-          <CopyCode code={sourceCode} />
-        </d-space>
-        <d-space gap={10}>
-          <div class={createBEM('qrcode')}>
-            <img class={createBEM('qrcode-trigger')} src={qrcodeIcon} />
-            <div class={createBEM('qrcode-img')}>
-              <img src={qrcodeImage} />
-            </div>
+    <div class={createBEM('mobile', { [previewType]: true })}>
+      <div class={createBEM('mobile-content')}>
+        <div class={createBEM('mobile-left')}>
+          <div class={createBEM('mobile-toolbar')}>
+            <DSpace justify="between">
+              {playgroundKey && (
+                <a
+                  href={generatePlaygroundURL(playgroundKey)}
+                  target="_blank"
+                  title="在 Playground 中编辑"
+                >
+                  <CodeSandbox />
+                </a>
+              )}
+              <a href="javascript:">
+                <CopyCode code={sourceCode} />
+              </a>
+            </DSpace>
           </div>
-          {playgroundKey && (
-            <a
-              href={generatePlaygroundURL(playgroundKey)}
-              target="_blank"
-              title="在 Playground 中编辑"
-            >
-              <CodeSandbox />
-            </a>
-          )}
-        </d-space>
+          <div class={createBEM('mobile-code')} v-html={decodeURIComponent(sourceCode as string)} />
+        </div>
+        <div class={createBEM('mobile-runtime')}>
+          <div class={createBEM('mobile-runtime', 'inner', true)}>{previewContent}</div>
+          <div class={createBEM('mobile-toolbar')}>
+            <DSpace justify="end" gap={16}>
+              <a href={`${previewURL}?preview=true`} target="_blank">
+                <BrowserOutlined />
+              </a>
+              <div class={createBEM('qrcode')}>
+                <QRCodeOutlined class={createBEM('qrcode-trigger')} />
+                <div class={createBEM('qrcode-img')}>
+                  <img src={qrcodeImage} />
+                </div>
+              </div>
+            </DSpace>
+          </div>
+        </div>
       </div>
     </div>
   )
