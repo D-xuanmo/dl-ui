@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { dCookie } from '@xuanmo/javascript-utils'
 import { UploadListItemType } from '../props'
 
@@ -29,7 +29,7 @@ const uploadData = {
 }
 
 const headerParams = {
-  'X-XSRF-TOKEN': dCookie.getItem('csrfToken')
+  'X-XSRF-TOKEN': dCookie().getItem('csrfToken')
 }
 
 const uploadAfterHandler = (response: any) => {
@@ -38,6 +38,14 @@ const uploadAfterHandler = (response: any) => {
     deletable: true
   }
 }
+
+onMounted(() => {
+  document.querySelector('.d-preview-mobile__content')?.classList.add('bg-white')
+})
+
+onUnmounted(() => {
+  document.querySelector('.d-preview-mobile__content')?.classList.remove('bg-white')
+})
 </script>
 ```
 

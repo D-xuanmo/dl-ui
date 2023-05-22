@@ -1,13 +1,4 @@
 <template>
-  <d-cell-group title="CellGroup 分组">
-    <d-cell title="我是标题" content="内容" />
-    <d-cell title="我是标题" content="内容" />
-  </d-cell-group>
-  <d-cell-group title="展示圆角" round>
-    <d-cell title="我是标题" content="内容" />
-    <d-cell title="我是标题" content="内容" />
-  </d-cell-group>
-
   <d-cell title="我是标题" content="内容" />
   <d-cell title="我是标题" content="必填标识" required />
   <d-cell content="隐藏标题" hide-title />

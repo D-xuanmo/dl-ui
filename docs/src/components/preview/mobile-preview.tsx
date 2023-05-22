@@ -19,11 +19,13 @@ type MobilePreviewProps = {
   // 预览模式
   previewType: 'iframe' | 'self'
 
+  title: string
+
   playgroundKey: string
 }
 
 const MobilePreview: FunctionalComponent<MobilePreviewProps, any> = (props, { slots }) => {
-  const { sourceCode, playgroundKey, qrcodeImage, previewURL, previewType } = props
+  const { sourceCode, playgroundKey, qrcodeImage, previewURL, previewType, title } = props
   const previewContent =
     previewType === 'iframe' ? (
       <iframe src={`${previewURL}?preview=true`} />
@@ -36,18 +38,21 @@ const MobilePreview: FunctionalComponent<MobilePreviewProps, any> = (props, { sl
         <div class={createBEM('mobile-left')}>
           <div class={createBEM('mobile-toolbar')}>
             <DSpace justify="between">
-              {playgroundKey && (
-                <a
-                  href={generatePlaygroundURL(playgroundKey)}
-                  target="_blank"
-                  title="在 Playground 中编辑"
-                >
-                  <CodeSandbox />
+              <h3>{title}</h3>
+              <DSpace gap={16}>
+                {playgroundKey && (
+                  <a
+                    href={generatePlaygroundURL(playgroundKey)}
+                    target="_blank"
+                    title="在 Playground 中编辑"
+                  >
+                    <CodeSandbox />
+                  </a>
+                )}
+                <a href="javascript:">
+                  <CopyCode code={sourceCode} />
                 </a>
-              )}
-              <a href="javascript:">
-                <CopyCode code={sourceCode} />
-              </a>
+              </DSpace>
             </DSpace>
           </div>
           <div class={createBEM('mobile-code')} v-html={decodeURIComponent(sourceCode as string)} />

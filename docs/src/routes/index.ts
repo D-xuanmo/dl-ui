@@ -53,7 +53,7 @@ const getDemoRoutes = () => {
   ]
   for (const [key, module] of Object.entries(demoModules)) {
     const { path, fileName } =
-      /(?<path>\/[a-z\d-]+)\/demo\/(?<fileName>\w+)\.vue$/.exec(key)?.groups ?? {}
+      /(?<path>\/[a-z\d-]+)\/demo\/(?<fileName>[\w-]+)\.vue$/.exec(key)?.groups ?? {}
     routes.push({
       path: `/demo${path}${fileName === 'index' ? '' : `/${fileName}`}`,
       component: module,

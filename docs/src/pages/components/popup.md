@@ -124,5 +124,5 @@ import type { PopupProps } from '@xuanmo/dl-ui'
 |-----|-----|----|
 |--d-popup-header-gap-bottom|var(--d-gap-xs)|头部下外边距|
 |--d-popup-padding|var(--d-gap-sm)|内边距|
-|--d-popup-radius|var(--d-radius-lg)|圆角大小|
+|--d-popup-radius|var(--d-radius-large)|圆角大小|
 |--d-popup-title-font-size|var(--d-font-size-md)|头部标题文字大小|

@@ -81,7 +81,7 @@
     $mPrefix: &;
     display: flex;
     flex-direction: column;
-    height: 500px;
+    max-height: 500px;
 
     &--iframe {
       #{$mPrefix} {
@@ -147,6 +147,10 @@
         &:hover {
           color: var(--d-primary);
         }
+      }
+
+      h3 {
+        margin: 0 !important;
       }
     }
   }

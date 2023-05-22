@@ -2,7 +2,9 @@
 
 用于展示 2 列信息，左侧为标题，右侧为内容的场景
 
-```vue client=Mobile playground=MCell
+## 代码演示
+
+```vue title=分组 client=Mobile previewType=self playground=MCell secondPath=CellGroup
 <template>
   <d-cell-group title="CellGroup 分组">
     <d-cell title="我是标题" content="内容" />
@@ -12,12 +14,17 @@
     <d-cell title="我是标题" content="内容" />
     <d-cell title="我是标题" content="内容" />
   </d-cell-group>
+</template>
+```
 
+```vue title=单元格 client=Mobile previewType=self playground=MCell
+<template>
   <d-cell title="我是标题" content="内容" />
+  <d-cell title="我是标题" content="内容" description='我是一段描述' />
   <d-cell title="我是标题" content="必填标识" required />
   <d-cell content="隐藏标题" hide-title />
   <d-cell title="扩展内容" content="正文" suffix="单位" />
-  <d-cell title="扩展内容" content="正文">
+  <d-cell title="扩展内容(slot)" content="正文">
     <template #suffix>单位</template>
   </d-cell>
   <d-cell title="显示图标" left-icon="tips" right-icon="close" />
@@ -67,6 +74,7 @@ import { TipsOutlined, CloseOutlined } from '@xuanmo/dl-icons'
 |arrow|`boolean`|`false`|是否显示右侧箭头|N|
 |border|`boolean`|true|是否显示边框|N|
 |layout|`'horizontal' \| 'vertical'`|`horizontal`|布局类型|N|
+|description|`string`|-|描述|N|
 
 ### Cell Slots
 
@@ -93,6 +101,6 @@ import type { CellGroupProps, CellProps } from '@xuanmo/dl-ui'
 |--d-cell-group-title-gap-bottom|var(--d-gap-xs)|标题下外边距|
 |--d-cell-group-title-gap-padding|var(--d-gap-sm)|标题左右内边距|
 |--d-cell-group-gap-bottom|var(--d-gap-sm)|分组与分组间的边距|
-|--d-cell-group-radius|var(--d-radius-lg)|分组圆角|
+|--d-cell-group-radius|var(--d-radius-large)|分组圆角|
 |--d-cell-padding|var(--d-horizontal-gap) var(--d-gap-sm)|单元格内边距|
 |--d-cell-background|var(--d-white-color)|单元格背景色|

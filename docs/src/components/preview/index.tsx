@@ -24,6 +24,17 @@ const DocPreview = defineComponent({
     const route = useRoute()
     const qrcode = ref('')
     const demoURL = ref('')
+    const {
+      client = 'PC',
+      playground,
+      height,
+      width,
+      preview,
+      previewType = 'self',
+      secondPath,
+      title
+    } = qs.parse(props.params!) as any
+    const isMobile = client === 'Mobile'
 
     watch(
       () => route,
@@ -32,7 +43,7 @@ const DocPreview = defineComponent({
         demoURL.value = `${window.location.origin}${import.meta.env.BASE_URL.replace(
           /\/$/,
           ''
-        )}/demo/${name}`
+        )}/demo/${name}${secondPath ? `/${secondPath}` : ''}`
         QRCode.toDataURL(demoURL.value).then((url) => {
           qrcode.value = url
         })
@@ -43,17 +54,6 @@ const DocPreview = defineComponent({
     )
 
     return () => {
-      const {
-        client = 'PC',
-        playground,
-        height,
-        width,
-        preview,
-        previewType = 'self',
-        title
-      } = qs.parse(props.params!) as any
-      const isMobile = client === 'Mobile'
-
       const wrapperStyle = {
         width: addUnit(width),
         height: addUnit(height)
@@ -73,6 +73,7 @@ const DocPreview = defineComponent({
         } else if (isMobile) {
           content = (
             <MobilePreview
+              title={title}
               sourceCode={props.source!}
               previewURL={demoURL.value}
               previewType={previewType}
