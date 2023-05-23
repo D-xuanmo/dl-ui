@@ -2,7 +2,7 @@
 
 主要用于数据录入、校验等
 
-```vue client=Mobile playground=Form
+```vue client=Mobile playground=Form previewType=iframe
 <template>
   <d-form
     :store="formStore"
@@ -46,7 +46,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-// 以下类型从 @xuanmo/dl-ui 中引入
 import {
   InputProps,
   PickerProps,
@@ -58,6 +57,7 @@ import {
   FormStore,
   DirectionType
 } from '@xuanmo/dl-ui'
+import { dCookie } from '@xuanmo/javascript-utils'
 
 const FORM_MODEL: FormStoreInitialConfig = {
   groups: [
@@ -234,7 +234,7 @@ const FORM_MODEL: FormStoreInitialConfig = {
           type: 'media'
         },
         headerParams: {
-          'X-XSRF-TOKEN': dCookie.getItem('csrfToken')
+          'X-XSRF-TOKEN': dCookie().getItem('csrfToken')
         },
         uploadAfter(response) {
           // 返回上传组件需要的格式

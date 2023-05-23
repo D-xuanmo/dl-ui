@@ -2,7 +2,7 @@
 
 用于选择日期或者日期区间
 
-```vue client=Mobile playground=MCalendar
+```vue client=Mobile playground=MCalendar previewType=iframe
 <template>
   <d-cell-group title="基础用法">
     <d-cell title="单选">

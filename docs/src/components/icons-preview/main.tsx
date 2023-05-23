@@ -1,13 +1,33 @@
-import { defineComponent } from 'vue'
+import { defineComponent, FunctionalComponent } from 'vue'
 import * as icons from '@xuanmo/dl-icons'
 import { createNamespace } from '@doc/utils'
 import './style.scss'
+import { copyText } from '@doc/utils/copy'
 
 const [name, bem] = createNamespace('icons-preview')
 
 type Icon = {
   name: string
   Comp: any
+}
+
+type ListItemProps = {
+  data: Icon
+}
+
+const ListItem: FunctionalComponent<ListItemProps> = (props) => {
+  const { Comp, name } = props.data
+
+  const handleCopy = () => {
+    copyText(`<${name} />`, `<${name} /> 复制成功 🎉`)
+  }
+
+  return (
+    <li class={bem('item')} onClick={handleCopy}>
+      <Comp key={name} size="30px" />
+      <p class={bem('item', 'title', true)}>{name}</p>
+    </li>
+  )
 }
 
 export default defineComponent({
@@ -27,24 +47,8 @@ export default defineComponent({
           outlinedIcons.push(item)
         }
       }
-      const outlinedIconList = outlinedIcons.map((item) => {
-        const { name, Comp } = item
-        return (
-          <li class={bem('item')}>
-            <Comp key={name} size="30px" />
-            <p class={bem('item', 'title', true)}>{name}</p>
-          </li>
-        )
-      })
-      const filledIconList = filledIcons.map((item) => {
-        const { name, Comp } = item
-        return (
-          <li class={bem('item')}>
-            <Comp key={name} size="30px" />
-            <p class={bem('item', 'title', true)}>{name}</p>
-          </li>
-        )
-      })
+      const outlinedIconList = outlinedIcons.map((item) => <ListItem data={item} />)
+      const filledIconList = filledIcons.map((item) => <ListItem data={item} />)
       return (
         <div class={bem()}>
           <div class={bem('list-wrapper')}>

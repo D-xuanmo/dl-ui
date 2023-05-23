@@ -2,7 +2,7 @@
 
 用于弹框选择数据、弹框提示等场景
 
-```vue client=Mobile playground=MPopup
+```vue client=Mobile playground=MPopup previewType=iframe
 <template>
   <d-cell-group round title="基础用法">
     <d-cell title="基础弹框" arrow @click="handleShowPopup" />

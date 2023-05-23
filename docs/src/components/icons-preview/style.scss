@@ -20,6 +20,11 @@
       margin-bottom: 16px;
       list-style: none;
       text-align: center;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--d-primary);
+      }
 
       &--title {
         margin-top: 8px;

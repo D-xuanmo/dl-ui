@@ -2,7 +2,7 @@
 
 可以在页面添加一层遮罩层，一般用于弹框的背景。
 
-```vue client=Mobile playground=MOverlay
+```vue client=Mobile playground=MOverlay previewType=iframe
 <template>
   <d-cell title="打开遮罩层" content-align="right">
     <d-switch v-model="visible" />

@@ -4,7 +4,7 @@
 
 最新中国内地行政区域数据下载 [https://github.com/D-xuanmo/china-region](https://github.com/D-xuanmo/china-region)
 
-```vue client=Mobile playground=MCascader
+```vue client=Mobile playground=MCascader previewType=iframe
 <template>
   <d-cell-group cell-title-width="100px">
     <d-cell title="基础用法">
