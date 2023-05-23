@@ -19,12 +19,6 @@
   position: initial;
   height: auto;
 
-  & + & {
-    #{$iPrefix}__content {
-      box-shadow: none;
-    }
-  }
-
   &__wrapper {
     position: initial;
     flex-direction: row;
