@@ -1,8 +1,8 @@
 # Cascader 级联选择器
 
-用于树形数据选择，常用于地址选择
+用于树形数据选择，常用于地址选择。
 
-最新中国内地行政区域数据下载 [https://github.com/D-xuanmo/china-region](https://github.com/D-xuanmo/china-region)
+最新中国内地行政区域数据下载 [https://github.com/D-xuanmo/china-region](https://github.com/D-xuanmo/china-region)。
 
 ```vue client=Mobile playground=MCascader previewType=iframe
 <template>

@@ -1,8 +1,8 @@
 # Switch 开关
 
-用于打开、关闭状态间的切换
+用于打开、关闭状态间的切换；
 
-通过 `before-change` 钩子拦截，返回 `true` 则切换，返回 `false` 或者 `Promise.reject` 则不切换
+通过 `before-change` 钩子拦截，返回 `true` 则切换，返回 `false` 或者 `Promise.reject` 则不切换。
 
 ```vue client=Mobile playground=MSwitch
 <template>

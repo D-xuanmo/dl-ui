@@ -1,6 +1,6 @@
 # Upload 文件上传
 
-用于图片、文件的上传
+用于图片、文件的上传。
 
 ```vue client=Mobile playground=MUpload
 <template>

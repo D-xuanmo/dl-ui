@@ -1,6 +1,6 @@
 # Textarea 文本域
 
-用于输入多行内容
+用于输入多行内容。
 
 ```vue client=Mobile playground=MTextarea
 <template>

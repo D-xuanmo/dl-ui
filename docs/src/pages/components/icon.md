@@ -1,7 +1,7 @@
 # Icon 图标
 
 - 图标基于 `SVG` 创建；
-- 图标为独立包，通过 `@xuanmo/dl-icons` 引入图标
+- 图标为独立包，通过 `@xuanmo/dl-icons` 引入图标。
 
 ## 所有图标预览
 

@@ -1,6 +1,6 @@
 # DateTimePicker 日期时间选择器
 
-用于选择日期、时间
+用于选择日期、时间。
 
 ```vue client=Mobile playground=MDateTimePicker previewType=iframe
 <template>

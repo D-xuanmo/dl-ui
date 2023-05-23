@@ -1,5 +1,7 @@
 # Rate 评分
 
+用于评分。
+
 ```vue client=Mobile playground=MRate
 <template>
   <d-cell-group title="基础用法">

@@ -1,6 +1,6 @@
 # Input 输入框
 
-用于文本类数据录入操作
+用于文本类数据录入操作。
 
 ```vue client=Mobile playground=MInput
 <template>

@@ -1,6 +1,6 @@
 # Calendar 日历
 
-用于选择日期或者日期区间
+用于选择日期或者日期区间。
 
 ```vue client=Mobile playground=MCalendar previewType=iframe
 <template>

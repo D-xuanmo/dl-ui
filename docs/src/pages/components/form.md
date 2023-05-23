@@ -1,6 +1,6 @@
 # Form 表单
 
-主要用于数据录入、校验等
+用于数据录入等。
 
 ```vue client=Mobile playground=Form previewType=iframe
 <template>
