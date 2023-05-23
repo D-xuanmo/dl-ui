@@ -1,5 +1,5 @@
 import { getCurrentInstance, reactive } from 'vue'
-import { mountComponent } from '@xuanmo/dl-common'
+import { mountComponent, PREFIX } from '@xuanmo/dl-common'
 import { MessageProps } from './props'
 import DMessage from './message.vue'
 
@@ -8,13 +8,15 @@ export type MessageInstance = {
   destroy: () => void
 }
 
-const messageInstances: MessageInstance[] = []
+let wrapperId: string | null = null
+
+const messageInstances: Map<string, MessageInstance> = new Map()
 
 const defaultProps: Partial<MessageProps> = {
   duration: 2000
 }
 
-function createInstance(props: Partial<Omit<MessageProps, 'visible'>>) {
+function createInstance(props: Partial<Omit<MessageProps, 'visible'>>, id: string) {
   const { instance, unmount } = mountComponent(
     {
       setup() {
@@ -29,14 +31,16 @@ function createInstance(props: Partial<Omit<MessageProps, 'visible'>>) {
         const handleClose = () => {
           toggleVisible(false)
           setTimeout(() => {
+            messageInstances.delete(id)
             unmount()
-          }, defaultProps.duration ?? props.duration)
+          }, (defaultProps.duration ?? props.duration)! + 10)
         }
 
         ;(getCurrentInstance() as any).render = () => {
           const attrs = {
             ...defaultProps,
             ...props,
+            teleport: `#${wrapperId}`,
             visible: state.show,
             'transition-appear': true,
             'onUpdate:visible': handleClose
@@ -67,8 +71,20 @@ export function showMessage(props: string | Partial<Omit<MessageProps, 'visible'
   } else {
     options = props
   }
-  const instance = createInstance(options)
-  messageInstances.push(instance)
+
+  if (!wrapperId) {
+    const wrapperDOM = document.createElement('div')
+    wrapperId = `${PREFIX}-message-container`
+    wrapperDOM.setAttribute('id', wrapperId)
+
+    if (!document.body.querySelector(`#${wrapperId}`)) {
+      document.body.appendChild(wrapperDOM)
+    }
+  }
+
+  const id = `${Date.now()}`
+  const instance = createInstance(options, id)
+  messageInstances.set(id, instance)
   instance.open()
   return instance
 }

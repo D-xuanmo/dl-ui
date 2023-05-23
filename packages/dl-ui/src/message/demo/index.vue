@@ -70,7 +70,7 @@ const handleShowLoadingMessage = () => {
 
 const handleShowMessageFC = (theme?: MessageType) => {
   showMessage({
-    content: '函数调用模式',
+    content: '我是来自加玛帝国的小炎子',
     theme
   })
 }

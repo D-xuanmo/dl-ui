@@ -1,12 +1,12 @@
 <template>
   <DPopup
     v-bind="$attrs"
+    :teleport="teleport"
     :visible="innerVisible"
     placement="top"
     :popup-container-class="containerClassName"
     :popup-class="wrapperClassName"
     :popup-body-class="contentClassName"
-    :popup-style="contentStyle"
     :overlay="false"
     @update:visible="handleClose"
   >
@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { CSSProperties, defineComponent, watch } from 'vue'
+import { defineComponent, watch } from 'vue'
 import { createNamespace } from '@xuanmo/dl-common'
 import DPopup from '../popup'
 import { MESSAGE_PROPS, MessageProps } from './props'
@@ -60,13 +60,6 @@ export default defineComponent({
     const contentClassName = bem('content')
     const textClassName = bem('text')
 
-    const contentStyle: CSSProperties = {
-      top: '10px',
-      left: '0',
-      right: '0',
-      margin: '0 auto'
-    }
-
     const [innerVisible, updateVisible] = useModelValue<
       boolean,
       MessageProps,
@@ -92,7 +85,6 @@ export default defineComponent({
       contentClassName,
       wrapperClassName,
       innerVisible,
-      contentStyle,
       textClassName,
       handleClose
     }

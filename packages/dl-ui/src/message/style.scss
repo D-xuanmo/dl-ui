@@ -7,14 +7,31 @@
   --d-message-box-shadow: var(--d-shadow-3);
 }
 
+##{$prefix}-message-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
 .#{$prefix}-message {
-  height: 0;
+  $iPrefix: &;
+  position: initial;
+  height: auto;
+
+  & + & {
+    #{$iPrefix}__content {
+      box-shadow: none;
+    }
+  }
 
   &__wrapper {
+    position: initial;
     flex-direction: row;
     justify-content: center;
     max-width: 80%;
     max-height: initial;
+    margin: 10px auto 0;
     padding: 0;
     background: none;
   }

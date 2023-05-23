@@ -1,4 +1,4 @@
-import { Component, ExtractPropTypes, PropType } from 'vue'
+import { Component, ExtractPropTypes, PropType, TeleportProps } from 'vue'
 import { MessageType } from '@xuanmo/dl-common'
 
 export type MessageProps = ExtractPropTypes<typeof MESSAGE_PROPS>
@@ -52,5 +52,10 @@ export const MESSAGE_PROPS = {
   duration: {
     type: Number,
     default: 2000
+  },
+
+  teleport: {
+    type: [String, Object] as PropType<TeleportProps['to']>,
+    default: 'body'
   }
 }

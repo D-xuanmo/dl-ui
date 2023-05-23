@@ -1,5 +1,5 @@
 <template>
-  <teleport :to="teleport">
+  <teleport :to="(teleport as string)">
     <DOverlay
       v-if="overlay"
       :visible="visible"
