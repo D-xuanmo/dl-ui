@@ -26,7 +26,9 @@ export default defineComponent({
         [`theme-${props.theme}`]: true,
         [`size-${props.size}`]: true,
         [`shape-${props.shape}`]: !props.link,
-        [`fill-${props.fill}`]: !props.link,
+        'fill-outline': props.dashed,
+        dashed: props.dashed,
+        [`fill-${props.fill}`]: !props.link && !props.dashed,
         block: props.block,
         disabled: props.disabled,
         'is-link': props.link

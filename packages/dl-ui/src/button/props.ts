@@ -45,7 +45,7 @@ export const BUTTON_PROPS = {
    * 按钮形状
    */
   shape: {
-    type: String as PropType<'default' | 'rounded' | 'rectangular'>,
+    type: String as PropType<'default' | 'round' | 'rectangular'>,
     default: 'default'
   },
 
@@ -57,5 +57,13 @@ export const BUTTON_PROPS = {
   /**
    * 链接模式
    */
-  link: Boolean
+  link: Boolean,
+
+  /**
+   * 虚线模式
+   */
+  dashed: {
+    type: Boolean,
+    default: false
+  }
 }
