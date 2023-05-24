@@ -9,147 +9,99 @@ columns: 2
 ```vue client=PC playground=Message title=基础
 <template>
   <d-space :gap="10">
-    <d-button @click="handleShowMessage">文字信息</d-button>
-    <d-button @click="showMessage('消息内容')">文字信息</d-button>
-    <d-button block @click="handleShowMessage2">带关闭按钮</d-button>
+    <d-button fill="outline" @click="showInfo">info</d-button>
+    <d-button fill="outline" @click="showSuccess">success</d-button>
+    <d-button fill="outline" @click="showWarning">warning</d-button>
+    <d-button fill="outline" @click="showError">error</d-button>
+      <d-button fill="outline" @click="showLoading">loading</d-button>
   </d-space>
 </template>
 
 <script setup lang="ts">
-import { showMessage } from '@xuanmo/dl-ui'
-
-const handleShowMessage = () => {
-  showMessage({
-    content: '我是一段消息提示',
-  })
-}
-
-const handleShowMessage2 = () => {
-  showMessage({
-    content: '带关闭的消息',
-    // 设置为 0，不自动关闭
-    duration: 5000,
-    theme: 'success',
-    closeable: true
-  })
-}
+import { message } from '@xuanmo/dl-ui'
+const showInfo = () => message.info('消息内容')
+const showSuccess = () => message.success('成功消息内容')
+const showWarning = () => message.warning('警告消息内容')
+const showError = () => message.error('消息内容')
+const showLoading = () => message.loading('加载中...')
 </script>
 ```
 
-```vue client=PC playground=Message title=主题切换
+```vue client=PC playground=Message title=手动开启、关闭
 <template>
   <d-space :gap="10">
-    <d-button fill="outline" theme="default" @click="handleShowMessage('info')">
-      普通信息
-    </d-button>
-    <d-button fill="outline" theme="success" @click="handleShowMessage('success')">
-      成功信息
-    </d-button>
-    <d-button fill="outline" theme="warning" @click="handleShowMessage('warning')">
-      警告信息
-    </d-button>
-    <d-button fill="outline" theme="danger" @click="handleShowMessage('error')">
-      错误信息
-    </d-button>
+    <d-button fill="outline" @click="manual">打开</d-button>
+    <d-button fill="outline" @click="messageInstance?.destroy()">关闭</d-button>
   </d-space>
 </template>
 
 <script setup lang="ts">
-import { showMessage } from '@xuanmo/dl-ui'
-import { MessageType } from '@xuanmo/dl-common'
-
-const handleShowMessage = (theme?: MessageType) => {
-  showMessage({
-    content: '我是一段提示内容',
-    theme
-  })
-}
-</script>
-```
-
-```vue client=PC playground=Message title=loading 加载
-<template>
-  <d-button @click="handleShowLoadingMessage">显示 loading</d-button>
-</template>
-
-<script setup lang="ts">
-import { showMessage } from '@xuanmo/dl-ui'
-
-const handleShowLoadingMessage = () => {
-  const { destroy } = showMessage({
-    content: '加载中...',
-    duration: 0,
-    type: 'loading'
-  })
-  setTimeout(destroy, 3000)
-}
-</script>
-```
-
-```vue client=PC playground=Message title=手动关闭
-<template>
-  <d-space :gap="10">
-    <d-button block fill="outline" theme="default" @click="handleShowMessage">
-      打开消息
-    </d-button>
-    <d-button block fill="outline" theme="default" @click="handleCloseMessage">
-      关闭消息
-    </d-button>
-  </d-space>
-</template>
-
-<script setup lang="ts">
-import { showMessage, MessageInstance } from '@xuanmo/dl-ui'
-
-let messageInstance: MessageInstance = null
-
-const handleShowMessage = () => {
-  messageInstance = showMessage({
-    content: '我是一段不会自动关闭的消息',
-    // 设置为 0，不自动关闭
+import { message, MessageInstance } from '@xuanmo/dl-ui'
+let messageInstance: MessageInstance | null = null
+const manual = () => {
+  messageInstance = message.info('我不会自动关闭', {
     duration: 0
   })
 }
-
-const handleCloseMessage = () => messageInstance?.destroy()
 </script>
 ```
 
-```vue client=PC playground=Message title=快捷使用
+```vue client=PC playground=Message title=不显示图标
 <template>
-  <d-space :gap="10">
-    <d-button fill="outline" theme="success" @click="showSuccessMessage('success')">成功消息</d-button>
-    <d-button fill="outline" theme="warning" @click="showWarningMessage('warning')">警告信息</d-button>
-    <d-button fill="outline" theme="danger" @click="showFailMessage('fail')">失败信息</d-button>
-  </d-space>
+  <d-button fill="outline" @click="showInfo">打开</d-button>
 </template>
 
 <script setup lang="ts">
-import { showSuccessMessage, showFailMessage, showWarningMessage } from '@xuanmo/dl-ui'
+import { message } from '@xuanmo/dl-ui'
+const showInfo = () => message.text('消息内容')
+</script>
+```
+
+```vue client=PC playground=Message title=显示关闭
+<template>
+  <d-button fill="outline" @click="showInfo">打开</d-button>
+</template>
+
+<script setup lang="ts">
+import { message } from '@xuanmo/dl-ui'
+const showInfo = () => message.info('消息内容', {
+  closeable: true,
+  duration: 5000
+})
+</script>
+```
+
+```vue client=PC playground=Message title=关闭所有消息
+<template>
+  <d-button fill="outline" @click="message.destroyAll">close all</d-button>
+</template>
+
+<script setup lang="ts">
+import { message } from '@xuanmo/dl-ui'
 </script>
 ```
 
 ## API
 
-### Props
+### Message Option
 
 |参数|类型|默认值|说明|必传|
 |---|----|-----|---|----|
-|visible|`boolean`|`false`|消息展示状态|N|
-|content|`string`|-|消息内容|Y|
-|content|`string`|-|消息内容|N|
-|type|`'text' \| 'loading'`|`text`|消息类型，默认文本|N|
-|theme|`MessageType`|`info`|消息主题|N|
 |closeable|`boolean`|-|是否显示关闭图标|N|
 |duration|`number`|`2000`|消息提示时间，单位毫秒|N|
 
-### 函数调用
+### Message Methods
 
-```typescript
-import { showMessage } from '@xuanmo/dl-ui'
+|名称|类型|说明|
+|---|----|---|
+|text|`(content: string, option?: MessageOption) => MessageInstance`|展示无图标信息|
+|info|`(content: string, option?: MessageOption) => MessageInstance`|调用 `info` 类型信息|
+|success|`(content: string, option?: MessageOption) => MessageInstance`|调用 `success` 类型信息|
+|warning|`(content: string, option?: MessageOption) => MessageInstance`|调用 `warning` 类型信息|
+|error|`(content: string, option?: MessageOption) => MessageInstance`|调用 `error` 类型信息|
+|loading|`(content: string, option?: MessageOption) => MessageInstance`|调用 `loading` 类型信息|
+|destroyAll|`() => void`|销毁页面所有 message 实例|
 
-showMessage('消息内容')
-```
 
 ### TypesScript 类型
 
@@ -166,7 +118,7 @@ type MessageInstance = {
 }
 
 import type {
-  showMessage,
+  message,
   closeAllMessage,
   MessageProps,
   MessageInstance

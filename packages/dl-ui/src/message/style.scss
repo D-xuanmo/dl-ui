@@ -15,25 +15,22 @@
 }
 
 .#{$prefix}-message {
-  $iPrefix: &;
-  position: initial;
-  height: auto;
+  text-align: center;
 
-  &__wrapper {
-    position: initial;
-    flex-direction: row;
-    justify-content: center;
-    max-width: 80%;
-    max-height: initial;
-    margin: 10px auto 0;
-    padding: 0;
-    background: none;
+  &-enter-active,
+  &-leave-active {
+    transition: all 0.3s ease;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    transform: translateY(-100%);
   }
 
   &__content {
-    flex: unset;
     display: inline-flex;
     align-items: center;
+    margin: 10px auto 0;
     padding: var(--d-message-padding);
     border-radius: var(--d-radius-large);
     box-shadow: var(--d-message-box-shadow);
@@ -48,5 +45,9 @@
     & + * {
       margin-left: var(--d-message-close-icon-gap);
     }
+  }
+
+  &__closeable {
+    cursor: pointer;
   }
 }

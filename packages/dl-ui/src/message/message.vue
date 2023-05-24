@@ -1,33 +1,28 @@
 <template>
-  <DPopup
-    v-bind="$attrs"
-    :teleport="teleport"
-    :visible="innerVisible"
-    placement="top"
-    :popup-container-class="containerClassName"
-    :popup-class="wrapperClassName"
-    :popup-body-class="contentClassName"
-    :overlay="false"
-    @update:visible="handleClose"
-  >
-    <template v-if="type === 'text'">
-      <TipsFilled v-if="theme === 'info'" color="var(--d-primary)" />
-      <CheckCircleFilled v-if="theme === 'success'" color="var(--d-success)" />
-      <WarningFilled v-if="theme === 'warning'" color="var(--d-warning)" />
-      <CloseFilled v-if="theme === 'error'" color="var(--d-error)" />
-    </template>
-    <template v-else-if="type === 'loading'">
-      <Loading2Outlined spin color="var(--d-primary)" />
-    </template>
-    <span :class="textClassName">{{ content }}</span>
-    <CloseOutlined v-if="closeable" @click="handleClose" />
-  </DPopup>
+  <Teleport :to="(teleport as string)">
+    <Transition :name="name" appear>
+      <div v-if="visible" :class="containerClassName">
+        <div :class="contentClassName">
+          <template v-if="type === 'text'">
+            <TipsFilled v-if="theme === 'info'" color="var(--d-primary)" />
+            <CheckCircleFilled v-if="theme === 'success'" color="var(--d-success)" />
+            <WarningFilled v-if="theme === 'warning'" color="var(--d-warning)" />
+            <CloseFilled v-if="theme === 'error'" color="var(--d-error)" />
+          </template>
+          <template v-else-if="type === 'loading'">
+            <Loading2Outlined spin color="var(--d-primary)" />
+          </template>
+          <span :class="textClassName">{{ content }}</span>
+          <CloseOutlined v-if="closeable" :class="closeIconClassName" @click="handleClose" />
+        </div>
+      </div>
+    </Transition>
+  </Teleport>
 </template>
 
 <script lang="ts">
 import { defineComponent, watch } from 'vue'
 import { createNamespace } from '@xuanmo/dl-common'
-import DPopup from '../popup'
 import { MESSAGE_PROPS, MessageProps } from './props'
 import useModelValue from '../hooks/use-model-value'
 import {
@@ -44,7 +39,6 @@ const [name, bem] = createNamespace('message')
 export default defineComponent({
   name,
   components: {
-    DPopup,
     CheckCircleFilled,
     CloseFilled,
     WarningFilled,
@@ -52,13 +46,14 @@ export default defineComponent({
     CloseOutlined,
     Loading2Outlined
   },
+  inheritAttrs: false,
   props: MESSAGE_PROPS,
   emits: ['update:visible'],
   setup(props, { emit }) {
     const containerClassName = bem()
-    const wrapperClassName = bem('wrapper')
     const contentClassName = bem('content')
     const textClassName = bem('text')
+    const closeIconClassName = bem('closeable')
 
     const [innerVisible, updateVisible] = useModelValue<
       boolean,
@@ -81,9 +76,10 @@ export default defineComponent({
     )
 
     return {
+      name,
       containerClassName,
       contentClassName,
-      wrapperClassName,
+      closeIconClassName,
       innerVisible,
       textClassName,
       handleClose

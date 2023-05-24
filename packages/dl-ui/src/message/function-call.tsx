@@ -8,6 +8,8 @@ export type MessageInstance = {
   destroy: () => void
 }
 
+type MessageOption = Partial<Pick<MessageProps, 'duration' | 'closeable'>>
+
 let wrapperId: string | null = null
 
 const messageInstances: Map<string, MessageInstance> = new Map()
@@ -16,7 +18,7 @@ const defaultProps: Partial<MessageProps> = {
   duration: 2000
 }
 
-function createInstance(props: Partial<Omit<MessageProps, 'visible'>>, id: string) {
+function createInstance(option: MessageOption, id: string) {
   const { instance, unmount } = mountComponent(
     {
       setup() {
@@ -33,13 +35,13 @@ function createInstance(props: Partial<Omit<MessageProps, 'visible'>>, id: strin
           setTimeout(() => {
             messageInstances.delete(id)
             unmount()
-          }, (defaultProps.duration ?? props.duration)! + 10)
+          }, defaultProps.duration ?? option.duration)
         }
 
         ;(getCurrentInstance() as any).render = () => {
           const attrs = {
             ...defaultProps,
-            ...props,
+            ...option,
             teleport: `#${wrapperId}`,
             visible: state.show,
             'transition-appear': true,
@@ -62,7 +64,7 @@ function createInstance(props: Partial<Omit<MessageProps, 'visible'>>, id: strin
   return instance as unknown as MessageInstance
 }
 
-export function showMessage(props: string | Partial<Omit<MessageProps, 'visible'>>) {
+function showMessage(props: string | Partial<Omit<MessageProps, 'visible'>>) {
   let options: Partial<Omit<MessageProps, 'visible'>>
   if (typeof props === 'string') {
     options = {
@@ -89,41 +91,45 @@ export function showMessage(props: string | Partial<Omit<MessageProps, 'visible'
   return instance
 }
 
-export function showSuccessMessage(
-  content: string,
-  props?: Partial<Omit<MessageProps, 'visible'>>
-) {
-  return showMessage({
-    content,
-    theme: 'success',
-    ...props
-  })
-}
-
-export function showWarningMessage(
-  content: string,
-  props?: Partial<Omit<MessageProps, 'visible'>>
-) {
-  return showMessage({
-    content,
-    theme: 'warning',
-    ...props
-  })
-}
-
-export function showFailMessage(content: string, props?: Partial<Omit<MessageProps, 'visible'>>) {
-  return showMessage({
-    content,
-    theme: 'error',
-    ...props
-  })
-}
-
-/**
- * 关闭页面所有消息提示
- */
-export function closeAllMessage() {
-  messageInstances.forEach((instance) => {
-    instance.destroy
-  })
+export const message = {
+  text: (content: string, option?: MessageOption) =>
+    showMessage({
+      content,
+      ...option
+    }),
+  info: (content: string, option?: MessageOption) =>
+    showMessage({
+      content,
+      theme: 'info',
+      ...option
+    }),
+  success: (content: string, option?: MessageOption) =>
+    showMessage({
+      content,
+      theme: 'success',
+      ...option
+    }),
+  warning: (content: string, option?: MessageOption) =>
+    showMessage({
+      content,
+      theme: 'warning',
+      ...option
+    }),
+  error: (content: string, option?: MessageOption) =>
+    showMessage({
+      content,
+      theme: 'error',
+      ...option
+    }),
+  loading: (content: string, option?: MessageOption) =>
+    showMessage({
+      content,
+      type: 'loading',
+      ...option
+    }),
+  destroyAll() {
+    messageInstances.forEach((instance) => {
+      instance.destroy()
+    })
+  }
 }
