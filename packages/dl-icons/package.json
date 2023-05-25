@@ -22,5 +22,8 @@
   "dependencies": {
     "vue": "^3.2.47"
   },
-  "keywords": ["svg icon", "icon"]
+  "keywords": [
+    "svg icon",
+    "icon"
+  ]
 }
