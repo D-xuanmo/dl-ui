@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
-import CopyOutlined from '@doc/components/icons/copy-outlined'
 import { copyText } from '@doc/utils/copy'
+import { CopyOutlined } from '@xuanmo/dl-icons'
 
 export default defineComponent({
   name: 'CopyCode',

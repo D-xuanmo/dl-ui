@@ -2,9 +2,9 @@ import { defineComponent, ref, useSlots } from 'vue'
 import PreviewOnly from '@doc/components/preview/preview-only'
 import { createBEM, generatePlaygroundURL } from './utils'
 import CodeSandbox from '@doc/components/icons/code-sandbox'
-import CodeOutlined from '@doc/components/icons/code-outlined'
 import { DSpace } from '@xuanmo/dl-ui'
 import CopyCode from '@doc/components/preview/copy-code'
+import { CodeOutlined } from '@xuanmo/dl-icons'
 
 export default defineComponent({
   name: 'DesktopPreview',

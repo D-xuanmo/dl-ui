@@ -4,8 +4,8 @@ import CopyCode from './copy-code'
 import CodeSandbox from '@doc/components/icons/code-sandbox'
 import PreviewOnly from '@doc/components/preview/preview-only'
 import { DSpace } from '@xuanmo/dl-ui'
-import QRCodeOutlined from '@doc/components/icons/qrcode-outlined'
 import BrowserOutlined from '@doc/components/icons/browser-outlined'
+import { QrcodeOutlined } from '@xuanmo/dl-icons'
 
 type MobilePreviewProps = {
   // 源码
@@ -72,7 +72,7 @@ const MobilePreview: FunctionalComponent<MobilePreviewProps, any> = (props, { sl
                 <BrowserOutlined />
               </a>
               <div class={createBEM('qrcode')}>
-                <QRCodeOutlined class={createBEM('qrcode-trigger')} />
+                <QrcodeOutlined class={createBEM('qrcode-trigger')} />
                 <div class={createBEM('qrcode-img')}>
                   <img src={qrcodeImage} />
                 </div>
