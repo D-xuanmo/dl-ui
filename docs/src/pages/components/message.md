@@ -28,14 +28,18 @@ const showLoading = () => message.loading('加载中...')
 ```
 
 ```vue client=PC playground=Message title=手动开启、关闭
+
 <template>
-  <d-space :gap="10">
-    <d-button fill="outline" @click="manual">打开</d-button>
-    <d-button fill="outline" @click="messageInstance?.destroy()">关闭</d-button>
+  <markdown>
+    将 `duration` 设置为 `0`，则代表不自动关闭。
+  </markdown>
+  <d-space :gap='10'>
+    <d-button fill='outline' @click='manual'>打开</d-button>
+    <d-button fill='outline' @click='messageInstance?.destroy()'>关闭</d-button>
   </d-space>
 </template>
 
-<script setup lang="ts">
+<script setup lang='ts'>
 import { message, MessageInstance } from '@xuanmo/dl-ui'
 let messageInstance: MessageInstance | null = null
 const manual = () => {
@@ -73,6 +77,9 @@ const showInfo = () => message.info('消息内容', {
 
 ```vue client=PC playground=Message title=关闭所有消息
 <template>
+  <markdown>
+    调用 `destroyAll` 可关闭页面所有 `message` 实例。
+  </markdown>
   <d-button fill="outline" @click="message.destroyAll">close all</d-button>
 </template>
 

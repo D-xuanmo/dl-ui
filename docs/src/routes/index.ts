@@ -13,7 +13,7 @@ const getRoutes = () => {
   const routes: RouteRecordRaw[] = [
     {
       path: '/components',
-      redirect: '/components/cell'
+      redirect: '/components/button'
     },
     {
       path: '/docs',

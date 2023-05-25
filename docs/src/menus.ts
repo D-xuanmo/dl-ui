@@ -22,9 +22,9 @@ const menus: MenuItemType[] = [
   },
   {
     id: createRandomID(),
-    groupTitle: '基础组件',
+    groupTitle: '公用组件(PC、H5)',
     children: [
-      { id: 'cell', path: '/components/cell', content: 'Cell [单元格]' },
+      { id: 'button', path: '/components/button', content: 'Button [按钮]' },
       {
         id: 'icon',
         path: '/components/icon',
@@ -39,9 +39,13 @@ const menus: MenuItemType[] = [
   },
   {
     id: createRandomID(),
+    groupTitle: '基础组件',
+    children: [{ id: 'cell', path: '/components/cell', content: 'Cell [单元格]' }]
+  },
+  {
+    id: createRandomID(),
     groupTitle: '表单组件',
     children: [
-      { id: 'button', path: '/components/button', content: 'Button [按钮]' },
       { id: 'calendar', path: '/components/calendar', content: 'Calendar [日历]' },
       { id: 'cascader', path: '/components/cascader', content: 'Cascader [级联选择]' },
       { id: 'checkbox', path: '/components/checkbox', content: 'Checkbox [复选框]' },

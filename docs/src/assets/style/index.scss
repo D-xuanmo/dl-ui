@@ -211,7 +211,7 @@ blockquote {
         border: 0;
 
         @if $num != 1 {
-          margin-top: 24px !important;
+          margin-top: 24px;
         }
 
         @if $num == 2 {
@@ -287,7 +287,6 @@ blockquote {
       padding: 0.2em 0.4em;
       font-size: 0.9em;
       background: #f2f4f5;
-      border: 1px solid rgba(0, 0, 0, 0.06);
       border-radius: 3px;
     }
   }
@@ -300,4 +299,8 @@ blockquote {
   border-radius: var(--d-radius-medium);
   background: var(--d-gray-1) !important;
   line-height: 1.8;
+}
+
+.dl-markdown {
+  margin-bottom: var(--d-gap-xs);
 }

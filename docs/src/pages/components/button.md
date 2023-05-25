@@ -10,6 +10,9 @@ columns: 2
 
 ```vue client=PC playground=3hbs5el title=基础用法
 <template>
+  <markdown>
+    按钮 `theme` 分别为：`default`、`primary`、`success`、`warning`、`danger`。
+  </markdown>
   <d-space :gap="10" wrap>
     <d-button theme="default">default</d-button>
     <d-button theme="primary">primary</d-button>
@@ -22,6 +25,9 @@ columns: 2
 
 ```vue client=PC playground=3qt7u5f title=填充模式
 <template>
+  <markdown>
+    通过 `fill` 属性可改变按钮的填充模式，默认为：`solid`。
+  </markdown>
   <d-space :gap="10">
     <d-button fill="solid" theme="primary">solid</d-button>
     <d-button fill="outline">outline</d-button>
@@ -44,6 +50,9 @@ columns: 2
 
 ```vue client=PC playground=31fd1au title=按钮尺寸
 <template>
+  <markdown>
+    按钮尺寸分别有：`small`、`medium`、`large`，默认为：`medium`。
+  </markdown>
   <d-space :gap="10">
     <d-button size="small" fill="solid" theme="primary">small</d-button>
     <d-button size="medium" fill="solid" theme="primary">medium</d-button>
@@ -54,6 +63,9 @@ columns: 2
 
 ```vue client=PC playground=1kcishh title=虚线模式
 <template>
+  <markdown>
+    设置 `dashed` 可展示虚线按钮。
+  </markdown>
   <d-space :gap="10">
     <d-button theme="default" dashed>default</d-button>
     <d-button theme="primary" dashed>primary</d-button>
@@ -66,6 +78,9 @@ columns: 2
 
 ```vue client=PC playground=1i7qpa6 title=形状
 <template>
+  <markdown>
+    设置 `shape` 可切换按钮形状，值分别为：`default`、`round`、`rectangular`，默认为：`default`。
+  </markdown>
   <d-space :gap="10">
     <d-button theme="primary">default</d-button>
     <d-button shape="round" theme="primary">round</d-button>
