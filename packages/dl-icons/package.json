@@ -1,6 +1,6 @@
 {
   "name": "@xuanmo/dl-icons",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": {
     "name": "xuanmo",
     "email": "me@xuanmo.xin"
@@ -21,5 +21,6 @@
   },
   "dependencies": {
     "vue": "^3.2.47"
-  }
+  },
+  "keywords": ["svg icon", "icon"]
 }
