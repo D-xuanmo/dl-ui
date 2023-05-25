@@ -1,0 +1,9 @@
+<svg viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
+        <g transform="translate(4.000000, 3.000000)" stroke="currentColor" stroke-width="1.5">
+            <rect x="0" y="8.49298804" width="16" height="10.3529412" rx="1"></rect>
+            <path d="M3.29411522,8.47058804 L3.29411522,4.70809393 C3.29167059,2.29186804 5.14009412,0.266908043 7.56983529,0.0240798081 C9.99952941,-0.218748427 12.2199059,1.39956687 12.7058824,3.76748216" stroke-linecap="round"></path>
+            <line x1="8" y1="12.2352939" x2="8" y2="15.0588233" stroke-linecap="round"></line>
+        </g>
+    </g>
+</svg>

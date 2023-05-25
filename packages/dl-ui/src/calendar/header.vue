@@ -14,7 +14,7 @@
         @update:model-value="toggleMonth"
       >
         <template #trigger-arrow>
-          <ArrowDownFilled size="small" color="var(--d-secondary-text-color)" />
+          <CaretDownOutlined size="small" color="var(--d-secondary-text-color)" />
         </template>
       </DDateTimePicker>
     </span>
@@ -41,7 +41,7 @@ import {
   DoubleRightOutlined,
   LeftOutlined,
   RightOutlined,
-  ArrowDownFilled
+  CaretDownOutlined
 } from '@xuanmo/dl-icons'
 
 const [, bem] = createNamespace('calendar')
@@ -54,7 +54,7 @@ export default defineComponent({
     DoubleRightOutlined,
     LeftOutlined,
     RightOutlined,
-    ArrowDownFilled,
+    CaretDownOutlined,
     DSpace
   },
   props: CALENDAR_HEADER_PROPS,
