@@ -1,69 +1,88 @@
+---
+columns: 2
+---
+
 # Popup 弹出层
 
 用于弹框选择数据、弹框提示等场景。
 
-```vue client=Mobile playground=MPopup previewType=iframe
+```vue playground=2vujmjd title=基础用法
 <template>
-  <d-cell-group round title="基础用法">
-    <d-cell title="基础弹框" arrow @click="handleShowPopup" />
-    <d-popup v-model:visible="showPopup"> 我是内容 </d-popup>
-  </d-cell-group>
-
-  <d-cell-group round title="弹出位置">
-    <d-cell title="顶部弹出" content="placement: top" arrow @click="handleShowPopup2('top')" />
-    <d-cell
-      title="底部弹出"
-      content="placement: bottom"
-      arrow
-      @click="handleShowPopup2('bottom')"
-    />
-    <d-cell title="左侧弹出" content="placement: left" arrow @click="handleShowPopup2('left')" />
-    <d-cell title="右侧弹出" content="placement: right" arrow @click="handleShowPopup2('right')" />
-    <d-popup v-model:visible="showPopup2" :placement="placement" />
-  </d-cell-group>
-
-  <d-cell-group round title="其他设置">
-    <d-cell title="圆角显示" arrow @click="handleShowPopup3" />
-    <d-cell title="显示标题" arrow @click="handleShowPopup4" />
-    <d-popup v-model:visible="showPopup3" placement="bottom" round />
-    <d-popup
-      v-model:visible="showPopup4"
-      title="我是标题我是标题我是标题我是标题我是标题我是标题"
-      placement="bottom"
-      round
-      closeable
-      :popup-style="{ height: '50%' }"
-    >
-      我是内容
-    </d-popup>
-  </d-cell-group>
+  <d-button @click='showPopup = true'>打开</d-button>
+  <d-popup v-model:visible="showPopup"> 我是内容 </d-popup>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { PlacementType } from '../../common'
 
 const showPopup = ref(false)
-const showPopup2 = ref(false)
-const showPopup3 = ref(false)
-const showPopup4 = ref(false)
-const placement = ref<PlacementType>('top')
+</script>
+```
 
-function handleShowPopup() {
+```vue playground=2pfsnni title=弹出位置
+<template>
+  <markdown>
+    通过设置 `placement` 可改变弹出位置，值分别为：`top`、`bottom`、`left`、`right`。
+  </markdown>
+  <d-space :gap='10'>
+    <d-button @click="handleShowPopup('top')">top</d-button>
+    <d-button @click="handleShowPopup('bottom')">bottom</d-button>
+    <d-button @click="handleShowPopup('left')">left</d-button>
+    <d-button @click="handleShowPopup('right')">right</d-button>
+  </d-space>
+  <d-popup v-model:visible="showPopup" :placement="placement">
+    <div style='height: 100px'>{{ placement }}</div>
+  </d-popup>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+import { PlacementType } from '@xuanmo/dl-ui'
+
+const showPopup = ref(false)
+const placement = ref('top')
+
+function handleShowPopup(p: PlacementType) {
+  placement.value = p
   showPopup.value = true
 }
+</script>
+```
 
-function handleShowPopup2(p: PlacementType) {
-  placement.value = p
+```vue playground=326846 title=其他设置
+<template>
+  <markdown>此模式一般用于移动端。</markdown>
+  <d-space :gap='10'>
+    <d-button @click="handleShowPopup1('top')">圆角显示</d-button>
+    <d-button @click="handleShowPopup2('bottom')">显示标题</d-button>
+  </d-space>
+  <d-popup v-model:visible="showPopup1" placement="bottom" round>
+    <div style='height: 200px'>我是内容</div>
+  </d-popup>
+  <d-popup
+    v-model:visible="showPopup2"
+    title="我是标题我是标题我是标题我是标题我是标题我是标题"
+    placement="bottom"
+    round
+    closeable
+    :popup-style="{ height: '50%' }"
+  >
+    我是内容
+  </d-popup>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const showPopup1 = ref(false)
+const showPopup2 = ref(false)
+
+function handleShowPopup1() {
+  showPopup1.value = true
+}
+
+function handleShowPopup2() {
   showPopup2.value = true
-}
-
-function handleShowPopup3() {
-  showPopup3.value = true
-}
-
-function handleShowPopup4() {
-  showPopup4.value = true
 }
 </script>
 ```

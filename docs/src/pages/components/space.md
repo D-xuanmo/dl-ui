@@ -1,38 +1,51 @@
+---
+columns: 2
+---
+
 # Space 间距
 
 可用于给多个元素增加间距。
 
-```vue client=Mobile playground=Space
+```vue playground=2bl1idi title=水平方向
 <template>
-  <d-space direction="vertical" :gap="24">
-    <d-space :gap="8">
-      <d-button theme="primary">按钮</d-button>
-      <d-button theme="primary">按钮</d-button>
-      <d-button theme="primary">按钮</d-button>
-    </d-space>
+  <markdown>
+    通过 `gap` 可设置元素间的间距。
+  </markdown>
+  <d-space :gap="8">
+    <d-button theme="primary">按钮</d-button>
+    <d-button theme="primary">按钮</d-button>
+    <d-button theme="primary">按钮</d-button>
+  </d-space>
+</template>
+```
 
-    <d-space :gap="8" direction="vertical">
+```vue playground=3ica8m7 title=垂直方向
+<template>
+  <d-space :gap="8" direction="vertical">
+    <d-button block theme="primary">按钮</d-button>
+    <d-button block theme="primary">按钮</d-button>
+    <d-button block theme="primary">按钮</d-button>
+  </d-space>
+</template>
+```
+
+```vue playground=389vma8
+<template>
+  <d-space :gap='10' direction="vertical">
+    <p>水平对齐方式</p>
+    <d-radio-group v-model="justify" direction="horizontal">
+      <d-radio value="start" label="start" />
+      <d-radio value="center" label="center" />
+      <d-radio value="end" label="end" />
+      <d-radio value="between" label="between" />
+      <d-radio value="around" label="around" />
+      <d-radio value="evenly" label="evenly" />
+    </d-radio-group>
+    <d-space :gap="8" :justify="justify">
       <d-button block theme="primary">按钮</d-button>
       <d-button block theme="primary">按钮</d-button>
       <d-button block theme="primary">按钮</d-button>
     </d-space>
-
-    <div>
-      <p>水平对齐方式</p>
-      <d-radio-group v-model="justify" direction="horizontal">
-        <d-radio value="start" label="start" />
-        <d-radio value="center" label="center" />
-        <d-radio value="end" label="end" />
-        <d-radio value="between" label="between" />
-        <d-radio value="around" label="around" />
-        <d-radio value="evenly" label="evenly" />
-      </d-radio-group>
-      <d-space :gap="8" :justify="justify">
-        <d-button block theme="primary">按钮</d-button>
-        <d-button block theme="primary">按钮</d-button>
-        <d-button block theme="primary">按钮</d-button>
-      </d-space>
-    </div>
   </d-space>
 </template>
 
