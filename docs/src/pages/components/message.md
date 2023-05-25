@@ -13,7 +13,7 @@ columns: 2
     <d-button fill="outline" @click="showSuccess">success</d-button>
     <d-button fill="outline" @click="showWarning">warning</d-button>
     <d-button fill="outline" @click="showError">error</d-button>
-      <d-button fill="outline" @click="showLoading">loading</d-button>
+    <d-button fill="outline" @click="showLoading">loading</d-button>
   </d-space>
 </template>
 
@@ -103,12 +103,9 @@ import { message } from '@xuanmo/dl-ui'
 |destroyAll|`() => void`|销毁页面所有 message 实例|
 
 
-### TypesScript 类型
+### TypeScript 类型
 
 ```typescript
-/** 消息类型 */
-type MessageType = 'info' | 'success' | 'warning' | 'error'
-
 /**
  * 消息实例对象
  */
@@ -118,8 +115,6 @@ type MessageInstance = {
 }
 
 import type {
-  message,
-  closeAllMessage,
   MessageProps,
   MessageInstance
 } from '@xuanmo/dl-ui'

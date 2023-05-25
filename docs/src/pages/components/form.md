@@ -417,7 +417,7 @@ class FormStore {
 }
 ```
 
-### 其他类型
+### TypeScript 类型
 
 ```typescript
 /**

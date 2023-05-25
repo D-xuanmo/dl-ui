@@ -91,7 +91,7 @@ fetch(
 |confirm|确认事件|`(value: PickerValue) => void`|
 |close|关闭事件|`() => void`|
 
-## 选择器公用类型
+## TypeScript 类型
 
 公用类型 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/common.ts](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/common.ts)
 

@@ -133,7 +133,7 @@ fetch(
 |cancel-button-text|`string`|`取消`|关闭按钮文字|N|
 |confirm-button-text|`string`|`确认`|确认按钮文字|N|
 
-### 类型导出
+### TypeScript 类型
 
 ```typescript
 import type { CascaderProps, ICascaderOption, CascaderValue } from '@xuanmo/dl-ui'

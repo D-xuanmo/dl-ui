@@ -73,7 +73,7 @@ onUnmounted(() => {
 |before-upload|`BeforeUploadType`|-|文件上传前回调函数，返回false终止上传|N|
 |upload-after|`AfterUploadType`|-|文件上传成功回调，返回文件预览列表|N|
 
-### TS 类型说明
+### TypeScript 类型
 
 ```typescript
 /**

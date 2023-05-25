@@ -61,9 +61,9 @@ type SpaceJustifyType = 'start' | 'center' | 'end' | 'between' | 'around' | 'eve
 type SpaceAlignType = 'start' | 'center' | 'end' | 'baseline'
 type DirectionType = 'horizontal' | 'vertical'
 
-import type { 
-  SpaceJustifyType, 
-  SpaceAlignType, 
-  DirectionType 
+import type {
+  SpaceJustifyType,
+  SpaceAlignType,
+  DirectionType
 } from '@xuanmo/dl-ui'
 ```

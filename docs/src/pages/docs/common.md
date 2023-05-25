@@ -1,6 +1,6 @@
 # 全局说明
 
-## 公用 TS 类型
+## 公用 TypeScript 类型
 
 文件地址 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/common.ts](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/common.ts)
 

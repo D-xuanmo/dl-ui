@@ -54,7 +54,7 @@ const value5 = ref('22:58')
 |---|----|
 |trigger-arrow|自定义触发图标|
 
-### 公用类型
+### TypeScript 类型
 
 ```typescript
 type DateTimePickerValue = 'date' | 'year-month' | 'month-day' | 'time' | 'datetime' | 'date-hour'

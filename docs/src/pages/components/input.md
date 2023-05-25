@@ -97,7 +97,7 @@ function onBlur(value: string) {
 |---|----|
 |suffix|自定义扩展内容|
 
-### TypesScript 类型
+### TypeScript 类型
 
 ```typescript
 import type { InputProps } from '@xuanmo/dl-ui'
