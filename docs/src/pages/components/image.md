@@ -1,68 +1,88 @@
+---
+columns: 2
+---
+
 # Image 图片
 
 基于 `img` 标签封装，增加 `loading`、`加载失败` 效果。
 
-```vue client=Mobile playground=Image
+## 代码演示
+
+```vue playground=26icurf title=基础用法
 <template>
-  <dl-demo-block title="基础用法">
-    <d-image :src="imgSrc" width="100" />
-  </dl-demo-block>
+  <d-image src="https://upyun.xuanmo.xin/logo/dl-ui.svg" width="50" />
+</template>
+```
 
-  <dl-demo-block title="填充模式">
-    <d-space :gap="20" wrap>
-      <div>
-        <d-image :src="imgSrc" width="100" height="100" fit="cover" />
-        <p>cover</p>
-      </div>
-      <div>
-        <d-image :src="imgSrc" width="100" height="100" fit="contain" />
-        <p>contain</p>
-      </div>
-      <div>
-        <d-image :src="imgSrc" width="100" height="100" fit="none" />
-        <p>none</p>
-      </div>
-      <div>
-        <d-image :src="imgSrc" width="100" height="100" fit="scale-down" />
-        <p>scale-down</p>
-      </div>
-      <div>
-        <d-image :src="imgSrc" width="100" height="100" fit="fill" />
-        <p>fill</p>
-      </div>
-    </d-space>
-  </dl-demo-block>
-
-  <dl-demo-block title="位置">
-    <d-space :gap="20">
-      <div>
-        <d-image :src="imgSrc" width="100" height="100" fit="cover" position="left" />
-        <p>left</p>
-      </div>
-    </d-space>
-  </dl-demo-block>
-
-  <dl-demo-block title="显示加载效果">
-    <d-image
-      src="https://upyun.xuanmo.xin/logo/20230311103746211510.JPG"
-      width="100"
-      height="100"
-      show-loading
-    />
-  </dl-demo-block>
-
-  <dl-demo-block title="加载失败">
-    <d-image
-      src="https://upyun.xuanmo.xin/logo/202303111037462115101.JPG"
-      width="100"
-      height="100"
-    />
-  </dl-demo-block>
+```vue playground=fnal9u title=填充模式
+<template>
+  <markdown>通过 `fit` 属性可设置填充规则。</markdown>
+  <d-space :gap='20' wrap>
+    <div class='item'>
+      <d-image :src='imgSrc' width='50' height='50' fit='cover' />
+      <p style='text-align: center'>cover</p>
+    </div>
+    <div class='item'>
+      <d-image :src='imgSrc' width='50' height='50' fit='contain' />
+      <p style='text-align: center'>contain</p>
+    </div>
+    <div class='item'>
+      <d-image :src='imgSrc' width='50' height='50' fit='none' />
+      <p style='text-align: center'>none</p>
+    </div>
+    <div class='item'>
+      <d-image :src='imgSrc' width='50' height='50' fit='scale-down' />
+      <p style='text-align: center'>scale-down</p>
+    </div>
+    <div class='item'>
+      <d-image :src='imgSrc' width='50' height='50' fit='fill' />
+      <p style='text-align: center'>fill</p>
+    </div>
+  </d-space>
 </template>
 
-<script lang="ts" setup>
+<script lang='ts' setup>
 const imgSrc = 'https://upyun.xuanmo.xin/logo/x-logo.png'
 </script>
+
+<style scope>
+.item .d-image {
+  border: var(--d-border);
+}
+</style>
+```
+
+```vue playground=27di7gr title=填充位置
+<template>
+  <markdown>通过 `position` 属性可设置图片填充位置。</markdown>
+  <d-image 
+    src="https://upyun.xuanmo.xin/logo/dl-ui.svg" 
+    width="50" 
+    fit="cover" 
+    position="left" 
+  />
+</template>
+```
+
+```vue playground=2bfcco1 title=显示loading
+<template>
+  <d-image
+    src="https://upyun.xuanmo.xin/logo/20230311103746211510.JPG"
+    width="100"
+    height="100"
+    show-loading
+  />
+</template>
+```
+
+```vue playground=1uquphp title=加载失败
+<template>
+  <d-image
+    src="https://upyun.xuanmo.xin/logo/202303111037462115101.JPG"
+    width="100"
+    height="100"
+  />
+</template>
 ```
 
 ## API
@@ -80,11 +100,10 @@ const imgSrc = 'https://upyun.xuanmo.xin/logo/x-logo.png'
 |radius|`string \| number`|-|圆角大小，类型为数字时，单位：`px`|N|
 |round|`boolean`|-|是否为圆形，此参数优先级高于 `radius`|N|
 |show-loading|`boolean`|-|是否显示 loading|N|
-|loading-icon|`string`|-|loading 图标，与 `Icon` 组件 `name` 属性一致|N|
-|error-icon|`string`|-|加载失败图标，与 `Icon` 组件 `name` 属性一致|N|
 |error-text|`string`|-|加载失败提示文案|N|
 
 ### TypeScript 类型
+
 ```typescript
 import type { ImageProps } from '@xuanmo/dl-ui'
 ```
