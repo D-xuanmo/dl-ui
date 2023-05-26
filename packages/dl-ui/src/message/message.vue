@@ -13,7 +13,12 @@
             <Loading2Outlined spin color="var(--d-primary)" />
           </template>
           <span :class="textClassName">{{ content }}</span>
-          <CloseOutlined v-if="closeable" :class="closeIconClassName" @click="handleClose" />
+          <CloseOutlined
+            v-if="closeable"
+            :class="closeIconClassName"
+            size="small"
+            @click="handleClose"
+          />
         </div>
       </div>
     </Transition>
