@@ -4,13 +4,13 @@
       <div v-if="visible" :class="containerClassName">
         <div :class="contentClassName">
           <template v-if="type === 'text'">
-            <TipsFilled v-if="theme === 'info'" color="var(--d-primary)" />
-            <CheckCircleFilled v-if="theme === 'success'" color="var(--d-success)" />
-            <WarningFilled v-if="theme === 'warning'" color="var(--d-warning)" />
-            <CloseFilled v-if="theme === 'error'" color="var(--d-error)" />
+            <TipsFilled v-if="theme === 'info'" size="small" color="var(--d-primary)" />
+            <CheckCircleFilled v-if="theme === 'success'" size="small" color="var(--d-success)" />
+            <WarningFilled v-if="theme === 'warning'" size="small" color="var(--d-warning)" />
+            <CloseFilled v-if="theme === 'error'" size="small" color="var(--d-error)" />
           </template>
           <template v-else-if="type === 'loading'">
-            <Loading2Outlined spin color="var(--d-primary)" />
+            <Loading2Outlined size="small" spin color="var(--d-primary)" />
           </template>
           <span :class="textClassName">{{ content }}</span>
           <CloseOutlined

@@ -10,9 +10,9 @@
 ##{$prefix}-message-container {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
   z-index: 999999;
-  width: 100%;
+  transform: translateX(-50%);
 }
 
 .#{$prefix}-message {
