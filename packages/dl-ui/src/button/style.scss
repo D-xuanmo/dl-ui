@@ -59,6 +59,11 @@
               color: var(--d-primary-text-color);
             }
           }
+
+          &:hover {
+            border-color: var(--d-primary);
+            color: var(--d-primary);
+          }
         }
 
         &-primary {
@@ -92,6 +97,11 @@
 
           #{$prefix}__icon-loading {
             color: var(--d-primary-text-color);
+          }
+
+          &:hover {
+            border-color: var(--d-primary);
+            color: var(--d-primary);
           }
         }
 
@@ -130,6 +140,10 @@
             color: var(--d-error);
           }
         }
+      }
+
+      &#{$prefix}--dashed {
+        border-style: dashed;
       }
     }
 
@@ -197,9 +211,5 @@
         color: var(--d-error);
       }
     }
-  }
-
-  &--dashed {
-    border-style: dashed;
   }
 }
