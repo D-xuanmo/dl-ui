@@ -69,4 +69,4 @@ app.use(DLUI)
 
 ## 动态
 
-![Alt](https://repobeats.axiom.co/api/embed/6748b43f3a850bbfb9fa62bca5a734b06a9a2cf0.svg 'Repobeats analytics image')
+![Alt](https://repobeats.axiom.co/api/embed/f270a03be41013fefb30c5353188547b34b92941.svg "Repobeats analytics image")
