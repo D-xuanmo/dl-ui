@@ -25,7 +25,7 @@ const ListItem: FunctionalComponent<ListItemProps> = (props) => {
   return (
     <li class={bem('item')} onClick={handleCopy}>
       <Comp key={name} size="30px" />
-      <p class={bem('item', 'title', true)}>{name}</p>
+      <p class={bem('item-title')}>{name}</p>
     </li>
   )
 }
@@ -52,11 +52,11 @@ export default defineComponent({
       return (
         <div class={bem()}>
           <div class={bem('list-wrapper')}>
-            <p class={bem('list', 'title', true)}>线性图标</p>
+            <p class={bem('list-title')}>线性图标</p>
             <ul class={bem('list')}>{outlinedIconList}</ul>
           </div>
           <div class={bem('list-wrapper')}>
-            <p class={bem('list', 'title', true)}>面性图标</p>
+            <p class={bem('list-title')}>面性图标</p>
             <ul class={bem('list')}>{filledIconList}</ul>
           </div>
         </div>

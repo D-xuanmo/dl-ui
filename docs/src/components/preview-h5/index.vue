@@ -2,7 +2,7 @@
   <div :class="bem('wrapper')">
     <header v-if="!isPreview && !isComponentListPage" :class="bem('header')">
       <LeftOutlined size="large" @click="goBack" />
-      <h2 :class="bem('header', 'title', true)">{{ title }}</h2>
+      <h2 :class="bem('header-title')">{{ title }}</h2>
     </header>
     <div :class="bem('content')"><router-view /></div>
   </div>
@@ -65,7 +65,7 @@ export default defineComponent({
     background-color: var(--d-white-color);
     box-shadow: var(--d-box-shadow-1);
 
-    &--title {
+    &-title {
       flex: 1;
       text-align: center;
       text-transform: capitalize;

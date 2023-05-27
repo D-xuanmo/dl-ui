@@ -65,10 +65,10 @@ export default defineComponent({
             ) : (
               <>
                 {slots['left-icon'] ? (
-                  <span class={bem('title', 'icon', true)}>{slots['left-icon']()}</span>
+                  <span class={bem('title-icon')}>{slots['left-icon']()}</span>
                 ) : null}
                 <span>{title}</span>
-                {required ? <span class={bem('title', 'mark', true)}> *</span> : null}
+                {required ? <span class={bem('title-mark')}> *</span> : null}
               </>
             )}
           </div>

@@ -53,8 +53,8 @@ export default defineComponent({
   emits: ['change'],
   setup(props, { emit }) {
     const itemClassName = createFormBEM('item')
-    const errorClassName = createFormBEM('item', 'message', true)
-    const requiredMarkClassName = createFormBEM('item', 'required-mark', true)
+    const errorClassName = createFormBEM('item-message')
+    const requiredMarkClassName = createFormBEM('item-requiredMark')
 
     const itemDisable = computed(() => props.disabled || props.modelItem?.otherProps?.disabled)
     const itemReadonly = computed(() => props.readonly || props.modelItem?.otherProps?.readonly)

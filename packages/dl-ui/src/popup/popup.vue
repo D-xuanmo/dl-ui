@@ -24,18 +24,14 @@
       >
         <div :class="wrapperClassName" :style="popupStyle" @click.stop>
           <header v-if="showHeader" center :class="bem('header')">
-            <div v-if="$slots['header-left']" :class="bem('header', 'left', true)">
+            <div v-if="$slots['header-left']" :class="bem('header-left')">
               <slot name="header-left" />
             </div>
-            <div :class="bem('header', 'title', true)">{{ title }}</div>
-            <div v-if="$slots['header-right']" :class="bem('header', 'right', true)">
+            <div :class="bem('header-title')">{{ title }}</div>
+            <div v-if="$slots['header-right']" :class="bem('header-right')">
               <slot name="header-right" />
             </div>
-            <span
-              v-if="closeable"
-              :class="bem('header', 'closable', true)"
-              @click="handleClickIcon"
-            >
+            <span v-if="closeable" :class="bem('header-closable')" @click="handleClickIcon">
               <slot name="close-icon"><CloseOutlined size="large" /></slot>
             </span>
           </header>

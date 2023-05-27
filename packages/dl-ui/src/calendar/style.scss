@@ -113,11 +113,11 @@
       }
     }
 
-    &--inner {
+    &-inner {
       font-weight: bold;
     }
 
-    &--tips {
+    &-tips {
       flex: 1;
       font-size: var(--d-font-size-xs);
       @include ellipsis();

@@ -85,12 +85,12 @@
     margin-right: var(--d-gap-xs);
     word-break: break-word;
 
-    &--mark {
+    &-mark {
       vertical-align: middle;
       color: var(--d-error);
     }
 
-    &--icon {
+    &-icon {
       margin-right: var(--d-gap-xxs);
 
       & + * {

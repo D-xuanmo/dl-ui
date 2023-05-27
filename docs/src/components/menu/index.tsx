@@ -29,7 +29,7 @@ const Menu = defineComponent({
         // 如果有子级则递归执行自己
         const subMenu = Array.isArray(children) ? (
           <>
-            <p class={bem('item', 'group-title', true)}>{groupTitle}</p>
+            <p class={bem('item-group-title')}>{groupTitle}</p>
             <Menu data={children} class={bem('sub-menu')} />
           </>
         ) : null
@@ -40,8 +40,8 @@ const Menu = defineComponent({
           <li key={id} class={bem('item', { active: route.path === path })}>
             {content && (
               <p class={bem('item-link')} onClick={openPage}>
-                <span class={bem('item-link', 'title', true)}>{componentName}</span>
-                <span class={bem('item-link', 'describe', true)}>{describe}</span>
+                <span class={bem('item-link-title')}>{componentName}</span>
+                <span class={bem('item-link-describe')}>{describe}</span>
               </p>
             )}
             {subMenu}

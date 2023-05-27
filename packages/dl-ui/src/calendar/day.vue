@@ -37,8 +37,8 @@ export default defineComponent({
       })
     })
     const contentClassName = bem('day-content')
-    const innerClassName = bem('day', ['inner'], true)
-    const tipsClassName = bem('day', ['tips'], true)
+    const innerClassName = bem('day-inner')
+    const tipsClassName = bem('day-tips')
 
     const formatted = computed<IDay>(() => {
       return props.formatter ? props.formatter(props.date!) : props.date!

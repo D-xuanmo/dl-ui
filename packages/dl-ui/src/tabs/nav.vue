@@ -40,7 +40,7 @@ export default defineComponent({
   emits: ['tab-click'],
   setup(props, { emit }) {
     const wrapperClassName = bem()
-    const lineClassName = bem('nav', 'line', true)
+    const lineClassName = bem('nav-line')
     const navRef = ref<HTMLUListElement>()
     const lineStyle = ref<CSSProperties>({})
 

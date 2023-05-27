@@ -42,7 +42,7 @@
         justify-content: space-between;
       }
 
-      &--title {
+      &-title {
         margin: 0 !important;
         font-size: 16px;
         font-weight: 500;
@@ -90,6 +90,7 @@
         }
       }
     }
+
     &--self {
       #{$mPrefix} {
         &-runtime--inner {
@@ -123,7 +124,7 @@
       width: 375px;
       overflow: hidden;
 
-      &--inner {
+      &-inner {
         flex: 1;
         overflow-y: auto;
       }

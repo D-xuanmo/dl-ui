@@ -44,7 +44,7 @@ export default defineComponent({
         disabled: props.disabled || props.readonly
       })
     )
-    const triggerIconClassName = bem('trigger', ['icon'], true)
+    const triggerIconClassName = bem('trigger-icon')
     const fileList = ref<File[]>([])
     const localPreviewList = ref<UploadListItemType[]>([])
     const fileListDisposers: Map<number, () => void> = new Map()

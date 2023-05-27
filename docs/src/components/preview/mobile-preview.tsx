@@ -65,7 +65,7 @@ const MobilePreview: FunctionalComponent<MobilePreviewProps, any> = (props, { sl
           <div class={createBEM('mobile-code')} v-html={decodeURIComponent(sourceCode as string)} />
         </div>
         <div class={createBEM('mobile-runtime')}>
-          <div class={createBEM('mobile-runtime', 'inner', true)}>{previewContent}</div>
+          <div class={createBEM('mobile-runtime-inner')}>{previewContent}</div>
           <div class={createBEM('mobile-toolbar')}>
             <DSpace justify="end" gap={16}>
               <a href={`${previewURL}?preview=true`} target="_blank">

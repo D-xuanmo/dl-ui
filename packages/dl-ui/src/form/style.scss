@@ -8,12 +8,12 @@
       }
     }
 
-    &--message {
+    &-message {
       font-size: var(--d-font-size-sm);
       color: var(--d-error);
     }
 
-    &--required-mark {
+    &-requiredMark {
       margin-left: var(--d-gap-xxs);
       vertical-align: middle;
       color: var(--d-error);

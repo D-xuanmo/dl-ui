@@ -42,8 +42,8 @@ export default defineComponent({
     const wrapperClassName = bem()
     const scrollClassName = bem('scroll')
     const maskClassName = bem('mask')
-    const maskTopClassName = bem('mask', ['top'], true)
-    const maskBottomClassName = bem('mask', ['bottom'], true)
+    const maskTopClassName = bem('mask-top')
+    const maskBottomClassName = bem('mask-bottom')
     const wrapperRef = ref<HTMLUListElement | null>(null)
 
     const markNum = Math.floor(props.visibleOptionNum / 2)

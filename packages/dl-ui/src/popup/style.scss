@@ -24,7 +24,7 @@
     justify-content: space-between;
     margin-bottom: var(--d-popup-header-gap-bottom);
 
-    &--title {
+    &-title {
       flex: 1;
       font-size: var(--d-popup-title-font-size);
       text-align: center;
@@ -32,12 +32,12 @@
       @include ellipsis();
     }
 
-    &--left {
+    &-left {
       margin-right: var(--d-gap-xs);
     }
 
-    &--right,
-    &--closable {
+    &-right,
+    &-closable {
       margin-left: var(--d-gap-xs);
     }
   }

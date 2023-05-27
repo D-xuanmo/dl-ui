@@ -4,7 +4,7 @@
       display: flex;
       flex-wrap: wrap;
 
-      &--title {
+      &-title {
         font-size: 18px;
       }
 
@@ -26,7 +26,7 @@
         color: var(--d-primary);
       }
 
-      &--title {
+      &-title {
         margin-top: 8px;
         font-size: 12px;
       }

@@ -19,7 +19,6 @@
           :is="checkedIcon"
           v-if="i <= innerValue"
           :size="size!"
-          :class="bem('item', 'active', true)"
           :color="disabled ? 'var(--d-disable-color)' : activeColor"
         />
       </span>

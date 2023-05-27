@@ -33,7 +33,7 @@ export default defineComponent({
     return () => (
       <section class={createBEM('desktop')}>
         <header class={createBEM('desktop-header')}>
-          <h2 class={createBEM('desktop', 'title', true)}>{props.title}</h2>
+          <h2 class={createBEM('desktop-title')}>{props.title}</h2>
           <DSpace class={createBEM('desktop-toolbar')} gap={10}>
             <a href={generatePlaygroundURL(props.playground)} title="在线编辑" target="_blank">
               <CodeSandbox size="small" />

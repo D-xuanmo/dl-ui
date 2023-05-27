@@ -42,7 +42,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const wrapperClassName = bem()
     const itemClassName = bem('list-item')
-    const itemCloseClassName = bem('list-item', ['delete'], true)
+    const itemCloseClassName = bem('list-item-delete')
 
     const handleDeleteItem = (index: number, item: UploadListItemType) => {
       emit('delete', index, item)

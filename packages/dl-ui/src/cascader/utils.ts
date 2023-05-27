@@ -12,7 +12,7 @@ function createCascaderNameSpace(childName?: string) {
   if (childName) {
     return [
       createNamespace(`cascader-${childName}`)[0],
-      (el = childName, modifier?: Modifiers, only?: boolean) => bem(el, modifier, only)
+      (el = childName, modifier?: Modifiers) => bem(el, modifier)
     ]
   }
   return [name, bem]

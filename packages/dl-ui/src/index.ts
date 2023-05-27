@@ -1,5 +1,4 @@
 import { App } from 'vue'
-// import 'virtual:svg-icons-register'
 import * as components from './components'
 import '@xuanmo/dl-common/dist/index.css'
 import './style/index.scss'

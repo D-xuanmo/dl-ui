@@ -31,19 +31,19 @@
     height: 100%;
     pointer-events: none;
 
-    &--top,
-    &--bottom {
+    &-top,
+    &-bottom {
       position: absolute;
       left: 0;
       width: 100%;
       background-color: rgba(255, 255, 255, 0.6);
     }
 
-    &--top {
+    &-top {
       top: 0;
     }
 
-    &--bottom {
+    &-bottom {
       bottom: 0;
     }
   }

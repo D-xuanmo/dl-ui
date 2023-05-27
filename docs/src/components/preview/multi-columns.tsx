@@ -26,8 +26,8 @@ export default defineComponent({
     return () => {
       return (
         <div class={classNames('multi-columns')}>
-          <div class={classNames('multi-columns', 'item', true)}>{leftChildren}</div>
-          <div class={classNames('multi-columns', 'item', true)}>{rightChildren}</div>
+          <div class={classNames('multi-columns-item')}>{leftChildren}</div>
+          <div class={classNames('multi-columns-item')}>{rightChildren}</div>
         </div>
       )
     }
