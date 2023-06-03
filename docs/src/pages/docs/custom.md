@@ -4,7 +4,7 @@
 
 通过覆盖 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties) 可以实现主题定制，组件级可参考组件文档
 
-变量源文件 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/style/var.scss](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/src/style/var.scss)
+变量源文件 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/style/var.scss](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/style/var.scss)
 
 ```css
 :root {
