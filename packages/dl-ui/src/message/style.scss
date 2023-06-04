@@ -20,12 +20,13 @@
 
   &-enter-active,
   &-leave-active {
-    transition: all 0.3s ease;
+    transition: 0.3s ease;
   }
 
   &-enter-from,
   &-leave-to {
-    transform: translateY(-100%);
+    transition: 0.5s ease;
+    transform: translateY(-200%);
   }
 
   &__content {
