@@ -27,7 +27,7 @@
     </d-popup>
     <d-popup
       v-model:visible="showPopup4"
-      title="我是标题我是标题我是标题我是标题我是标题我是标题"
+      title="我是标题"
       placement="bottom"
       round
       closeable

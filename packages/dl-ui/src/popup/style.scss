@@ -20,6 +20,7 @@
   }
 
   &__header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     margin-bottom: var(--d-popup-header-gap-bottom);
@@ -36,9 +37,14 @@
       margin-right: var(--d-gap-xs);
     }
 
-    &-right,
-    &-closable {
+    &-right {
       margin-left: var(--d-gap-xs);
+    }
+
+    &-closable {
+      position: absolute;
+      top: 0;
+      right: 0;
     }
   }
 

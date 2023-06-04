@@ -61,7 +61,7 @@ function handleShowPopup(p: PlacementType) {
   </d-popup>
   <d-popup
     v-model:visible="showPopup2"
-    title="我是标题我是标题我是标题我是标题我是标题我是标题"
+    title="标题"
     placement="bottom"
     round
     closeable

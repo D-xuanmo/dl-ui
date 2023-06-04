@@ -32,7 +32,7 @@
               <slot name="header-right" />
             </div>
             <span v-if="closeable" :class="bem('header-closable')" @click="handleClickIcon">
-              <slot name="close-icon"><CloseOutlined size="large" /></slot>
+              <slot name="close-icon"><CloseOutlined /></slot>
             </span>
           </header>
           <div :class="[bem('body'), popupBodyClass]"><slot /></div>

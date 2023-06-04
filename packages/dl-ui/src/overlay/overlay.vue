@@ -1,12 +1,12 @@
 <template>
-  <teleport :to="teleport">
+  <teleport :to="(teleport as string)">
     <transition
       :name="name"
       @before-enter="onTransitionBefore"
       @after-leave="onTransitionAfterLeave"
     >
       <div
-        v-if="innerVisible"
+        v-show="innerVisible"
         :class="[bem(), overlayClass].join(' ')"
         :style="style"
         @click.stop="handleClose"
