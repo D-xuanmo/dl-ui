@@ -7,9 +7,12 @@ export {
   type CalendarValue,
   type CalendarProps,
   type CalendarDayFormatter,
-  type IDay,
   type CalendarType
 } from './props'
+
+export { type CalendarStore } from './store'
+
+export { type IDay } from './types'
 
 export default DCalendar
 

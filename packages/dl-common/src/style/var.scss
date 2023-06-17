@@ -72,4 +72,7 @@
 
   // 水平间距
   --d-horizontal-gap: calc(var(--d-gap-xxs) + var(--d-gap-xs));
+
+  // 滚动条宽度
+  --d-scrollbar-width: 8px;
 }

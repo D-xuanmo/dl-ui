@@ -1,5 +1,5 @@
 <template>
-  <button :class="wrapperClassName" :disabled="loading || disabled">
+  <button :class="[wrapperClassName, $attrs.class]" :disabled="loading || disabled">
     <LoadingOutlined v-if="loading" spin :class="iconLoadingClassName" color="inherit" />
     <slot name="icon" />
     <span :class="innerTextClassName"><slot /></span>

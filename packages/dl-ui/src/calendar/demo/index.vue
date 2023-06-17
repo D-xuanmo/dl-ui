@@ -48,7 +48,7 @@ const value1 = ref()
 const value2 = ref()
 const value3 = ref()
 const value4 = ref('2023/4/29')
-const value5 = ref(['2023/4/2', '2023/4/29', '2023/4/29'])
+const value5 = ref(['2023/4/2', '2023/4/5', '2023/4/6'])
 const value6 = ref(['2023/4/15', '2023/4/18'])
 const value7 = ref()
 const value8 = ref()
@@ -62,13 +62,13 @@ const formatter: CalendarDayFormatter = (day) => {
   if (day.value.getDay() === 0) {
     Object.assign(day, {
       topText: '周日',
-      bottomText: day.isPrevMonth ? '' : '￥800'
+      bottomText: day.disabled ? '' : '￥800'
     })
   }
   if (day.value.getDay() === 6) {
     Object.assign(day, {
       topText: '周六',
-      bottomText: day.isPrevMonth ? '' : '￥800'
+      bottomText: day.disabled ? '' : '￥800'
     })
   }
   if (dateJS(day.value).format('MMdd') === '0214') {

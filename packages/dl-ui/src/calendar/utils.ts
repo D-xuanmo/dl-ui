@@ -1,148 +1,62 @@
-import { computed, Ref } from 'vue'
 import dateJS from '@xuanmo/datejs'
-import { IDay } from './props'
+import { IDay } from './types'
 
-export const generateDayId = (date: Date) => {
-  return `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`
-}
+export const generateDayId = (date: Date) => dateJS(date).format('yyyy/MM/dd')
 
 export const generateDay = (date: Date, option?: Partial<IDay>): IDay => {
   return {
     id: generateDayId(date),
     value: date,
     label: `${date.getDate()}`,
-    isCurrentMonth: true,
-    isPrevMonth: false,
-    isNextMonth: false,
     ...option
   }
 }
 
 /**
- * 获取日期列表
- * @param currentDay 当天日期
- * @param selected 所有选择的日期 map
- * @param options
+ * 计算上月与本月相交的天数
+ * @param date
  */
-export const useCurrentDays = (
-  currentDay: Ref<Date>,
-  selected: Ref<Map<string, IDay | null>>,
-  options: {
-    startDay: Ref<IDay | null>
-    endDay: Ref<IDay | null>
-    disabledMinDay: Date
-    disabledMaxDay: Date
+export const calcIntersectDays = (date: Date) => {
+  const year = date.getFullYear()
+  const month = date.getMonth()
+  const result: IDay[] = []
+  // 上月的最后一天
+  const lastDay = dateJS(new Date(year, month - 1)).lastDay()
+  const lastWeek = new Date(year, month - 1, lastDay).getDay()
+  // 上月最后一天为周六，不计算相交日期
+  if (lastWeek === 6) return []
+  let i = 0
+  while (i <= lastWeek) {
+    const date = new Date(year, month - 1, lastDay - i)
+    result.unshift(
+      generateDay(date, {
+        isPlaceholder: true
+      })
+    )
+    i++
   }
-) => {
-  return computed<IDay[]>(() => {
-    const days: IDay[] = []
+  return result
+}
 
-    // 本月最后一天
-    const lastDay = dateJS(currentDay.value).lastDay()
+/**
+ * 生成指定日期区间列表
+ * @param startDate 开始日期
+ * @param endDate 结束日期
+ * @param cb
+ */
+export const generateDateRange = (startDate: Date, endDate: Date, cb?: (date: Date) => void) => {
+  const dates = []
 
-    // 本年
-    const year = currentDay.value.getFullYear()
+  // 获取两个日期的时间戳
+  const start = startDate.getTime() - 24 * 60 * 60 * 1000
+  const end = endDate.getTime() - 24 * 60 * 60 * 1000
 
-    // 本月
-    const month = currentDay.value.getMonth()
+  for (let i = start; i <= end; ) {
+    i = i + 24 * 60 * 60 * 1000
+    const date = new Date(i)
+    dates.push(date)
+    cb?.(date)
+  }
 
-    // 计算上月到本月的第一周相交的日期列表
-    {
-      // 本月的第一天
-      const maxDay = new Date(year, month, 1)
-
-      // 上月的最后一天
-      const lastDay = dateJS(new Date(year, month - 1)).lastDay()
-      let i = 0
-      while (i < maxDay.getDay()) {
-        const currentDay = lastDay - i
-        const currentDate = new Date(year, month - 1, currentDay)
-        days.unshift(
-          generateDay(currentDate, {
-            label: `${currentDay}`,
-            isCurrentMonth: false,
-            isPrevMonth: true
-          })
-        )
-        i++
-      }
-    }
-
-    // 计算本月的所有日期
-    {
-      let i = 1
-      while (i <= lastDay) {
-        const currentDate = new Date(year, month, i)
-        const currentTimestamp = +currentDate
-        const id = generateDayId(currentDate)
-        const day = generateDay(currentDate, {
-          label: `${i}`,
-          id,
-          type: selected.value.get(id)?.type,
-          disabled:
-            currentTimestamp < +options.disabledMinDay || currentTimestamp > +options.disabledMaxDay
-        })
-        if (options.startDay?.value && options.endDay?.value) {
-          const start = +options.startDay?.value?.value
-          const end = +options.endDay?.value?.value
-          if (start === currentTimestamp) {
-            Object.assign(day, {
-              type: 'start',
-              bottomText: '开始'
-            })
-          } else if (end === currentTimestamp) {
-            Object.assign(day, {
-              type: 'end',
-              bottomText: '结束'
-            })
-          } else {
-            if (currentTimestamp > start && currentTimestamp < end) {
-              Object.assign(day, {
-                type: 'middle'
-              })
-            }
-          }
-        }
-        days.push(day)
-        i++
-      }
-    }
-
-    // 计算本月最后一天与下月首周相交的日期列表
-    {
-      let i = new Date(year, month, lastDay).getDay()
-      let j = 1
-      let lastDate: Date | null = null
-      while (i < 6) {
-        const currentDate = new Date(year, month + 1, j)
-        lastDate = currentDate
-        days.push(
-          generateDay(currentDate, {
-            label: `${j}`,
-            isCurrentMonth: false,
-            isNextMonth: true
-          })
-        )
-        i++
-        j++
-      }
-      // 如果不足 42 个日期，补充一组日期
-      if (days.length < 42) {
-        const freezeDay = lastDate?.getDate() || 0
-        let i = freezeDay + 1
-        while (i <= freezeDay + 7) {
-          const currentDate = new Date(year, month + 1, i)
-          days.push(
-            generateDay(currentDate, {
-              label: `${i}`,
-              isCurrentMonth: false,
-              isNextMonth: true
-            })
-          )
-          i++
-        }
-      }
-    }
-    return days
-  })
+  return dates
 }

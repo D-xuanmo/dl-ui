@@ -157,18 +157,21 @@
   &--size {
     &-large {
       height: var(--d-button-large);
+      min-height: var(--d-button-large);
       padding: 0 var(--d-gap-sm);
       font-size: var(--d-font-size-lg);
     }
 
     &-medium {
       height: var(--d-button-medium);
+      min-height: var(--d-button-medium);
       padding: 0 var(--d-gap-sm);
       font-size: var(--d-font-size-md);
     }
 
     &-small {
       height: var(--d-button-small);
+      min-height: var(--d-button-small);
       padding: 0 var(--d-gap-sm);
       font-size: var(--d-font-size-sm);
     }
