@@ -1,5 +1,5 @@
 <template>
-  <Cell
+  <d-cell
     :title="`${colon ? `${label}：` : label}`"
     :title-class="labelClass"
     :title-width="labelWidth"
@@ -12,7 +12,7 @@
       <component :is="leftIcon" v-bind="leftIconProps" />
     </template>
     <template v-if="innerValue && clearable" #right-icon>
-      <CloseFilled color="var(--d-secondary-text-color)" @click="handleClear" />
+      <close-filled color="var(--d-secondary-text-color)" @click="handleClear" />
     </template>
     <input
       :value="innerValue"
@@ -36,7 +36,7 @@
         {{ suffix }}
       </slot>
     </template>
-  </Cell>
+  </d-cell>
 </template>
 
 <script lang="ts">

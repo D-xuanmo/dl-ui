@@ -1,19 +1,19 @@
 <template>
-  <Teleport :to="(teleport as string)">
-    <Transition :name="name" appear>
+  <teleport :to="(teleport as string)">
+    <transition :name="name" appear>
       <div v-if="visible" :class="containerClassName">
         <div :class="contentClassName">
           <template v-if="type === 'text'">
-            <TipsFilled v-if="theme === 'info'" size="small" color="var(--d-primary)" />
-            <CheckCircleFilled v-if="theme === 'success'" size="small" color="var(--d-success)" />
-            <WarningFilled v-if="theme === 'warning'" size="small" color="var(--d-warning)" />
-            <CloseFilled v-if="theme === 'error'" size="small" color="var(--d-error)" />
+            <tips-filled v-if="theme === 'info'" size="small" color="var(--d-primary)" />
+            <check-circle-filled v-if="theme === 'success'" size="small" color="var(--d-success)" />
+            <warning-filled v-if="theme === 'warning'" size="small" color="var(--d-warning)" />
+            <close-filled v-if="theme === 'error'" size="small" color="var(--d-error)" />
           </template>
           <template v-else-if="type === 'loading'">
-            <Loading2Outlined size="small" spin color="var(--d-primary)" />
+            <loading2-outlined size="small" spin color="var(--d-primary)" />
           </template>
           <span :class="textClassName">{{ content }}</span>
-          <CloseOutlined
+          <close-outlined
             v-if="closeable"
             :class="closeIconClassName"
             size="small"
@@ -21,8 +21,8 @@
           />
         </div>
       </div>
-    </Transition>
-  </Teleport>
+    </transition>
+  </teleport>
 </template>
 
 <script lang="ts">

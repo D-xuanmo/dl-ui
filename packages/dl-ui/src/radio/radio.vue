@@ -1,7 +1,7 @@
 <template>
   <div :class="wrapperClassName" @click="handleChange">
-    <CheckCircleFilled v-if="checked" :color="iconColor" />
-    <BorderCircleOutlined v-else :color="iconColor" />
+    <check-circle-filled v-if="checked" :color="iconColor" />
+    <border-circle-outlined v-else :color="iconColor" />
     <span v-if="label" :class="labelClassName">{{ label }}</span>
   </div>
 </template>

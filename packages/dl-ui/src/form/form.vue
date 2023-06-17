@@ -2,7 +2,7 @@
   <form :class="formClassName" @submit.prevent>
     <template v-if="store?.isGroupMode">
       <template v-for="[groupId, group] in store?.groups">
-        <DCellGroup
+        <d-cell-group
           v-if="group.hide !== true"
           :key="groupId"
           :title="group.title"
@@ -13,7 +13,7 @@
             <d-form-item
               v-if="store?.models.get(itemName)?.hide !== true"
               :key="itemName"
-              :model-item="store?.models.get(itemName)"
+              :model-item="store?.models.get(itemName)!"
               :store="store"
               :disabled="disabled"
               :readonly="readonly"
@@ -25,12 +25,12 @@
               @change="handleChange"
             />
           </template>
-        </DCellGroup>
+        </d-cell-group>
       </template>
     </template>
     <template v-else>
       <template v-for="[name, item] in store?.models">
-        <DFormItem
+        <d-form-item
           v-if="item.hide !== true"
           :key="name"
           :model-item="item"

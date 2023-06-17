@@ -1,7 +1,7 @@
 <template>
   <div :class="wrapperClassName">
     <template v-if="options">
-      <DRadio
+      <d-radio
         v-for="option in options"
         :key="option.value"
         :label="option.label"

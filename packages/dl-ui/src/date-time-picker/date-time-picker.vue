@@ -2,10 +2,10 @@
   <span :class="triggerClassName" @click="showPicker">
     <span>{{ displayValue }}</span>
     <slot v-if="!readonly" name="trigger-arrow">
-      <RightOutlined color="var(--d-secondary-text-color)" />
+      <right-outlined color="var(--d-secondary-text-color)" />
     </slot>
   </span>
-  <DPicker
+  <d-picker
     :visible="visible"
     :model-value="pickerValue"
     :options="columns"

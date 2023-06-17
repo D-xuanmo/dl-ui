@@ -1,6 +1,6 @@
 <template>
   <div :class="wrapperClassName">
-    <TabsNav :nav-list="items" :active="value" :style="navStyle" @tab-click="handleTabClick" />
+    <tabs-nav :nav-list="items" :active="value" :style="navStyle" @tab-click="handleTabClick" />
     <div :class="contentClassName">
       <component :is="childrenMap.get(value)?.component" />
     </div>

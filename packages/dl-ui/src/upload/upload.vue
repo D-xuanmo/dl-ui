@@ -1,6 +1,6 @@
 <template>
   <div :class="wrapperClassName">
-    <UploadList :list="previewList" :deletable="canDeletable" @delete="handleDeleteItem">
+    <upload-list :list="previewList" :deletable="canDeletable" @delete="handleDeleteItem">
       <template #trigger>
         <div v-if="!readonly" :class="triggerClassName" :style="triggerStyle">
           <input
@@ -11,10 +11,10 @@
             :capture="capture"
             @change="handleChange"
           />
-          <CameraFilled :class="triggerIconClassName" />
+          <camera-filled :class="triggerIconClassName" />
         </div>
       </template>
-    </UploadList>
+    </upload-list>
   </div>
 </template>
 

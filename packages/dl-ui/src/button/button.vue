@@ -1,6 +1,6 @@
 <template>
   <button :class="[wrapperClassName, $attrs.class]" :disabled="loading || disabled">
-    <LoadingOutlined v-if="loading" spin :class="iconLoadingClassName" color="inherit" />
+    <loading-outlined v-if="loading" spin :class="iconLoadingClassName" color="inherit" />
     <slot name="icon" />
     <span :class="innerTextClassName"><slot /></span>
   </button>
