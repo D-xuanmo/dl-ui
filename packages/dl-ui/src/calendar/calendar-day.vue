@@ -38,7 +38,6 @@ export default defineComponent({
         today,
         disabled: disabled.value,
         selected: props.day?.type,
-        placeholder: props.day.isPlaceholder,
         [props.day.type as string]: props.day?.type
       })
     })

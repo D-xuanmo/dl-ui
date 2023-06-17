@@ -28,11 +28,7 @@ export const calcIntersectDays = (date: Date) => {
   let i = 0
   while (i <= lastWeek) {
     const date = new Date(year, month - 1, lastDay - i)
-    result.unshift(
-      generateDay(date, {
-        isPlaceholder: true
-      })
-    )
+    result.unshift(generateDay(date))
     i++
   }
   return result

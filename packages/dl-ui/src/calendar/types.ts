@@ -15,9 +15,6 @@ export interface IDay extends IData<Date> {
   // 日期唯一标识，格式为：yyyy/MM 或者 yyyy/MM/dd
   id: string
 
-  // 非本月占位标识
-  isPlaceholder?: boolean
-
   // 是否为月份
   isMonth?: boolean
 

@@ -152,19 +152,19 @@ export interface IDay extends IData<Date> {
    * middle：区间时，中间选择的日期
    * end：区间时，结束日期
    */
-  type?: 'selected' | 'start' | 'middle' | 'end'
+  type?: 'selected' | 'start' | 'middle' | 'end' | null
 
-  // 日期唯一标识，格式为：yyyy/MM/dd
+  // 日期唯一标识，格式为：yyyy/MM 或者 yyyy/MM/dd
   id: string
 
-  // 是否为当月日期
-  isCurrentMonth: boolean
+  // 是否为月份
+  isMonth?: boolean
 
-  // 是否为上月日期
-  isPrevMonth: boolean
+  // 当月所有日期列表，只在 isMonth 为 true 时有此字段
+  days?: string[]
 
-  // 是否为下月日期
-  isNextMonth: boolean
+  // 上月与本月相交天数，只在 isMonth 为 true 时有此字段
+  intersectDayCount?: number
 
   // 日期顶部文字
   topText?: string
