@@ -1,6 +1,6 @@
 <template>
   <teleport :to="(teleport as string)">
-    <DOverlay
+    <d-overlay
       v-if="overlay"
       :visible="visible"
       :overlay-class="overlayClass"
@@ -16,34 +16,36 @@
       @leave="onLeave"
       @after-leave="onAfterLeave"
     >
-      <div
-        v-if="visible"
-        :class="[bem('container'), popupContainerClass]"
-        :style="style"
-        @click="closeOnClickOverlay && handleClose()"
-      >
-        <div :class="wrapperClassName" :style="popupStyle" @click.stop>
-          <header v-if="showHeader" center :class="bem('header')">
-            <div v-if="$slots['header-left']" :class="bem('header-left')">
-              <slot name="header-left" />
-            </div>
-            <div :class="bem('header-title')">{{ title }}</div>
-            <div v-if="$slots['header-right']" :class="bem('header-right')">
-              <slot name="header-right" />
-            </div>
-            <span v-if="closeable" :class="bem('header-closable')" @click="handleClickIcon">
-              <slot name="close-icon"><CloseOutlined /></slot>
-            </span>
-          </header>
-          <div :class="[bem('body'), popupBodyClass]"><slot /></div>
+      <template v-if="isLoaded">
+        <div
+          v-show="visible"
+          :class="[bem('container'), popupContainerClass]"
+          :style="style"
+          @click="closeOnClickOverlay && handleClose()"
+        >
+          <div :class="wrapperClassName" :style="popupStyle" @click.stop>
+            <header v-if="showHeader" :class="[bem('header'), popupHeaderClass]">
+              <div v-if="$slots['header-left']" :class="bem('header-left')">
+                <slot name="header-left" />
+              </div>
+              <div :class="bem('header-title')">{{ title }}</div>
+              <div v-if="$slots['header-right']" :class="bem('header-right')">
+                <slot name="header-right" />
+              </div>
+              <span v-if="closeable" :class="bem('header-closable')" @click="handleClickIcon">
+                <slot name="close-icon"><close-outlined /></slot>
+              </span>
+            </header>
+            <div :class="[bem('body'), popupBodyClass]"><slot /></div>
+          </div>
         </div>
-      </div>
+      </template>
     </transition>
   </teleport>
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties, defineComponent } from 'vue'
+import { computed, CSSProperties, defineComponent, ref, watch } from 'vue'
 import { createNamespace } from '@xuanmo/dl-common'
 import DOverlay from '../overlay'
 import useZIndex from '../hooks/use-z-index'
@@ -59,6 +61,7 @@ export default defineComponent({
   emits: ['update:visible', 'open', 'opened', 'close', 'closed', 'click-overlay-icon'],
   setup(props, { emit, slots }) {
     const isCenter = computed(() => props.placement === 'center')
+    const isLoaded = ref(!props.lazyRender)
 
     const showHeader = computed(() => {
       return (
@@ -99,6 +102,15 @@ export default defineComponent({
       emit('click-overlay-icon')
     }
 
+    watch(
+      () => props.visible,
+      (visible) => {
+        if (visible) {
+          isLoaded.value = true
+        }
+      }
+    )
+
     return {
       transitionPosition,
       wrapperClassName,
@@ -106,6 +118,7 @@ export default defineComponent({
       overlayZIndex,
       isCenter,
       showHeader,
+      isLoaded,
       bem,
       handleClose,
       onEnter,

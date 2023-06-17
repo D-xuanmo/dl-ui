@@ -33,6 +33,7 @@ export const POPUP_PROPS = {
 
   popupContainerClass: String,
   popupClass: String,
+  popupHeaderClass: String,
   popupBodyClass: String,
   popupStyle: {
     type: Object as PropType<CSSProperties>,
@@ -49,6 +50,14 @@ export const POPUP_PROPS = {
     default: {}
   },
   closeOnClickOverlay: {
+    type: Boolean,
+    default: true
+  },
+
+  /**
+   * 是否开启懒加载渲染，默认开启
+   */
+  lazyRender: {
     type: Boolean,
     default: true
   }
