@@ -143,8 +143,12 @@ columns: 2
     </d-grid-item>
     <d-grid-item :row="1" :column="1">
       <div class="x-panel__bluetooth">
-        <d-switch />
-        <p>蓝牙</p>
+        <d-switch>
+          <template #icon>
+            <bluetooth-outlined size="12" color="var(--d-secondary-text-color)" />
+          </template>
+        </d-switch>
+        蓝牙
       </div>
     </d-grid-item>
     <d-grid-item :row="1" :column="3">
@@ -185,10 +189,11 @@ columns: 2
 </template>
 
 <script lang="ts" setup>
-import { computed, reactive } from 'vue'
+import { computed, onUnmounted, reactive } from 'vue'
 import dateJS from '@xuanmo/datejs'
 import { ua } from '@xuanmo/javascript-utils'
 import { version } from '@xuanmo/dl-ui'
+import { BluetoothOutlined } from '@xuanmo/dl-icons'
 
 const uaInfo = ua()
 const xPanel = reactive({
@@ -203,6 +208,10 @@ const xPanel = reactive({
   color: false
 })
 
+const timer = setInterval(() => {
+  xPanel.time = dateJS().format('HH:mm')
+}, 1000)
+
 const className = computed(() => ({
   'x-panel': true,
   'x-panel--color': xPanel.color
@@ -211,7 +220,11 @@ const className = computed(() => ({
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 window.navigator.getBattery?.()?.then((result: any) => {
-  xPanel.battery = `${result.level * 100}%`
+  xPanel.battery = `${(result.level * 100).toFixed(0)}%`
+})
+
+onUnmounted(() => {
+  clearInterval(timer)
 })
 </script>
 
