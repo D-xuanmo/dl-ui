@@ -6,9 +6,6 @@ import { CalendarProps } from './props'
 import { isEmpty } from '@xuanmo/javascript-utils'
 
 interface State extends Pick<CalendarProps, 'minDate' | 'maxDate' | 'type' | 'monthFormatter'> {
-  // 用于展示的值
-  displayValue: string
-
   // 日期分组数据
   dateGroups: Map<string, IDay>
 
@@ -30,7 +27,6 @@ class CalendarStore {
 
   constructor(props: Pick<State, 'minDate' | 'maxDate' | 'type' | 'monthFormatter'>) {
     this.state = reactive<State>({
-      displayValue: '',
       dateGroups: new Map(),
       minDate: props.minDate,
       maxDate: props.maxDate,
