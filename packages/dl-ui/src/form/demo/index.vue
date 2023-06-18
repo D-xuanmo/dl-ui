@@ -89,9 +89,9 @@ const updateData = () => {
     cascader: ['310000000000', '310100000000', '310104000000', '310104007000'],
     datePicker: '2025/5/18',
     timePicker: '08:35',
-    calendarSingle: '2024/3/8',
-    calendarMultiple: ['2024/3/8', '2024/3/12'],
-    calendarRange: ['2024/3/8', '2024/3/12']
+    calendarSingle: '2023/3/8',
+    calendarMultiple: ['2023/3/8', '2023/3/12'],
+    calendarRange: ['2023/3/8', '2023/3/12']
   })
 }
 

@@ -85,7 +85,8 @@ const FORM_MODEL: FormStoreInitialConfig = {
       groupId: 'basic',
       value: '',
       otherProps: <CalendarProps>{
-        placeholder: '请选择'
+        placeholder: '请选择',
+        minDate: new Date(2023, 0, 1)
       }
     },
     {
@@ -96,7 +97,8 @@ const FORM_MODEL: FormStoreInitialConfig = {
       value: '',
       otherProps: <CalendarProps>{
         placeholder: '请选择',
-        type: 'multiple'
+        type: 'multiple',
+        minDate: new Date(2023, 0, 1)
       }
     },
     {
@@ -107,7 +109,8 @@ const FORM_MODEL: FormStoreInitialConfig = {
       value: '',
       otherProps: <CalendarProps>{
         placeholder: '请选择',
-        type: 'range'
+        type: 'range',
+        minDate: new Date(2023, 0, 1)
       }
     },
     {
@@ -262,9 +265,7 @@ const FORM_MODEL: FormStoreInitialConfig = {
       value: '',
       required: true,
       groupId: 'extend',
-      otherProps: {
-        placeholder: '可以实现很多目前不支持的场景'
-      }
+      description: '可以实现很多目前不支持的场景'
     },
     {
       name: 'customInput1',
@@ -273,9 +274,7 @@ const FORM_MODEL: FormStoreInitialConfig = {
       value: '',
       required: true,
       groupId: 'extend',
-      otherProps: {
-        placeholder: '直接传入一个 vue 组件'
-      }
+      description: '直接传入一个 Vue 组件'
     }
   ]
 }
