@@ -39,8 +39,11 @@ const menus: MenuItemType[] = [
   },
   {
     id: createRandomID(),
-    groupTitle: '基础组件',
-    children: [{ id: 'cell', path: '/components/cell', content: 'Cell [单元格]' }]
+    groupTitle: '布局组件',
+    children: [
+      { id: 'cell', path: '/components/cell', content: 'Cell [单元格]' },
+      { id: 'grid', path: '/components/grid', content: 'Grid [网格]' }
+    ]
   },
   {
     id: createRandomID(),
