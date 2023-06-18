@@ -210,7 +210,7 @@ const className = computed(() => ({
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-window.navigator.getBattery()?.then((result: any) => {
+window.navigator.getBattery?.()?.then((result: any) => {
   xPanel.battery = `${result.level * 100}%`
 })
 </script>
