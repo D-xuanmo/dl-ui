@@ -4,7 +4,7 @@
     "outDir": "dist"
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["src/**/*.scss"],
+  "exclude": ["src/**/demo", "src/**/*.scss"],
   "references": [
     {
       "path": "./tsconfig.node.json"
