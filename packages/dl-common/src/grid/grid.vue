@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent } from 'vue'
-import { addUnit, createNamespace } from '@xuanmo/dl-common'
+import { addUnit, createNamespace } from '../utils'
 import { GRID_PROPS } from './props'
 import { isEmpty } from '@xuanmo/javascript-utils'
 

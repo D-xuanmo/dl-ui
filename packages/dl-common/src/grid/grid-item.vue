@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent } from 'vue'
-import { createNamespace } from '@xuanmo/dl-common'
+import { createNamespace } from '../utils'
 import { GRID_ITEM_PROPS } from './props'
 
 const [name, bem] = createNamespace('grid-item')

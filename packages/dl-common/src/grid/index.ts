@@ -1,4 +1,4 @@
-import { withInstall } from '@xuanmo/dl-common'
+import { withInstall } from '../utils'
 import Grid from './grid.vue'
 import GridItem from './grid-item.vue'
 

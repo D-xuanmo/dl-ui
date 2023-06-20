@@ -75,11 +75,15 @@ export default defineComponent({
   &__content {
     flex: 1;
     overflow: auto;
-    padding: var(--d-gap-sm);
+    padding: 0 var(--d-gap-sm) var(--d-gap-sm);
     background: #f7f8fa;
 
     &.bg-white {
       background: #fff;
+    }
+
+    & > :first-child {
+      margin-top: var(--d-gap-sm);
     }
   }
 }

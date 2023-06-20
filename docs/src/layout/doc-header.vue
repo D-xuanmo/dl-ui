@@ -10,7 +10,7 @@
           size="small"
           fill="none"
           link
-          :theme="docButtonTheme"
+          :theme="getButtonTheme('/docs')"
           @click="handleClick('/docs')"
         >
           文档
@@ -19,10 +19,19 @@
           size="small"
           fill="none"
           link
-          :theme="compButtonTheme"
-          @click="handleClick('/components')"
+          :theme="getButtonTheme('/comp-common')"
+          @click="handleClick('/comp-common')"
         >
-          组件
+          公用组件
+        </d-button>
+        <d-button
+          size="small"
+          fill="none"
+          link
+          :theme="getButtonTheme('/comp-mobile')"
+          @click="handleClick('/comp-mobile')"
+        >
+          移动端组件
         </d-button>
       </d-space>
     </div>
@@ -44,8 +53,8 @@
 
 <script lang="ts" setup>
 import { classNames } from '@doc/utils'
-import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { RoutePath } from '@doc/env'
 
 const headerClassName = classNames('header')
 const leftClassName = classNames('header-left')
@@ -55,12 +64,9 @@ const rightClassName = classNames('header-right')
 const route = useRoute()
 const router = useRouter()
 
-const docButtonTheme = computed(() => {
-  return route.path.startsWith('/docs') ? 'primary' : 'default'
-})
-const compButtonTheme = computed(() => {
-  return route.path.startsWith('/components') ? 'primary' : 'default'
-})
+const getButtonTheme = (path: `/${RoutePath}`) => {
+  return route.path.startsWith(path) ? 'primary' : 'default'
+}
 
 const handleClick = (path: string) => {
   router.push(path)

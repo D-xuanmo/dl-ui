@@ -22,7 +22,7 @@
 <script lang="ts" setup>
 import { watch, ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import menus from './menus'
+import { getMenuList } from './menus'
 import DMenu from './components/menu'
 import DPreviewH5 from './components/preview-h5/index.vue'
 import DocHeader from './layout/doc-header.vue'
@@ -37,13 +37,7 @@ const outContentClassName = classNames('out-content')
 const menuClassName = classNames('menu')
 const innerContentClassName = classNames('inner-content')
 
-const menuData = computed(() => {
-  const docIds = ['introduce', 'docs']
-  if (route.path.startsWith('/docs')) {
-    return menus.filter((item) => docIds.includes(item.id))
-  }
-  return menus.filter((item) => !docIds.includes(item.id))
-})
+const menuData = computed(() => getMenuList(route.params.type as any))
 
 watch(
   () => route.path,
