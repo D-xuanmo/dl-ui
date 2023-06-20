@@ -1,13 +1,18 @@
 @import '../style/prefix.scss';
 
-.#{$prefix}-tabs {
+:root {
   --d-tabs-line-height: 40px;
+  --d-tabs-nav-padding: var(--d-gap-sm);
+}
 
+.#{$prefix}-tabs {
   &__nav {
     position: relative;
     display: flex;
+    padding: 0 var(--d-tabs-nav-padding);
     overflow: auto hidden;
     background: var(--d-white-color);
+    border-radius: var(--d-radius-medium);
 
     &::-webkit-scrollbar {
       display: none;

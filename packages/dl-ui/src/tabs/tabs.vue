@@ -2,7 +2,7 @@
   <div :class="wrapperClassName">
     <tabs-nav :nav-list="items" :active="value" :style="navStyle" @tab-click="handleTabClick" />
     <div :class="contentClassName">
-      <component :is="childrenMap.get(value)?.component" />
+      <component :is="childrenMap.get(value)?.component" :key="value" />
     </div>
   </div>
 </template>

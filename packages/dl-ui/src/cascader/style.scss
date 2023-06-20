@@ -32,4 +32,8 @@
       color: var(--d-primary);
     }
   }
+
+  .#{$prefix}-tabs__nav {
+    padding: 0;
+  }
 }
