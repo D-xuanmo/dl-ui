@@ -1,6 +1,6 @@
 <template>
   <dl-demo-block title="基础用法">
-    <d-space :gap="10">
+    <d-space :gap="10" wrap>
       <d-button fill="outline" theme="default" @click="showInfo">info</d-button>
       <d-button fill="outline" theme="default" @click="showLoading">loading</d-button>
       <d-button fill="outline" theme="success" @click="showSuccess">success</d-button>
