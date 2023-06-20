@@ -5,7 +5,7 @@
       <template v-if="!isDemoRoute">
         <!-- 左侧菜单 -->
         <div :class="menuClassName">
-          <DMenu :data="menuData" />
+          <d-menu :data="menuData" />
         </div>
 
         <!-- 文档内容区 -->

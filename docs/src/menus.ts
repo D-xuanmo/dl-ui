@@ -93,11 +93,13 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
 ])
 
 export const getMenuList = (path: RoutePath = 'docs') => {
-  return menuMap
-    .get(path)
-    ?.filter((item) => !item.hide)
-    .map((item) => {
-      item.children = item.children?.filter((child) => !child.hide)
-      return item
-    })
+  return (
+    menuMap
+      .get(path)
+      ?.filter((item) => !item.hide)
+      .map((item) => {
+        item.children = item.children?.filter((child) => !child.hide)
+        return item
+      }) ?? []
+  )
 }
