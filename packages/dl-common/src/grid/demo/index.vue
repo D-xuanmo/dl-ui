@@ -137,7 +137,7 @@
 <script lang="ts" setup>
 import { computed, onUnmounted, reactive } from 'vue'
 import dateJS from '@xuanmo/datejs'
-import { ua } from '@xuanmo/javascript-utils'
+import { ua } from '@xuanmo/utils'
 import { version } from '@xuanmo/dl-ui'
 import { BluetoothOutlined } from '@xuanmo/dl-icons'
 

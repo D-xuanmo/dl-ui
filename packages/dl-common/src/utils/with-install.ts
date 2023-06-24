@@ -1,5 +1,5 @@
 import { App, Plugin } from 'vue'
-import { toPascalCase } from '@xuanmo/javascript-utils'
+import { toPascalCase } from '@xuanmo/utils'
 
 export function withInstall<T>(options: T) {
   ;(options as Record<string, unknown>).install = (app: App) => {

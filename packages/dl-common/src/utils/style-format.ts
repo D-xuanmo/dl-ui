@@ -1,4 +1,4 @@
-import { isNumber } from '@xuanmo/javascript-utils'
+import { isNumber } from '@xuanmo/utils'
 
 /**
  * CSS 添加单位

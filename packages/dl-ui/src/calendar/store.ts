@@ -3,7 +3,7 @@ import { IDay } from './types'
 import dateJS from '@xuanmo/datejs'
 import { calcIntersectDays, generateDateRange, generateDay } from './utils'
 import { CalendarProps } from './props'
-import { isEmpty } from '@xuanmo/javascript-utils'
+import { isEmpty } from '@xuanmo/utils'
 
 interface State extends Pick<CalendarProps, 'minDate' | 'maxDate' | 'type' | 'monthFormatter'> {
   // 日期分组数据

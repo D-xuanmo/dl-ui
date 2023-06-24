@@ -26,7 +26,7 @@ import { computed, CSSProperties, defineComponent, onMounted, onUnmounted, ref, 
 import { addUnit, createNamespace } from '@xuanmo/dl-common'
 import { SCROLL_RADIO_PROPS } from './props'
 import ScrollRadioItem from './scroll-radio-item.vue'
-import { debounce } from '@xuanmo/javascript-utils'
+import { debounce } from '@xuanmo/utils'
 import { IData } from '@xuanmo/dl-common'
 
 const [name, bem] = createNamespace('scroll-radio')

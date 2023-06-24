@@ -1,6 +1,6 @@
 import { FormModel, IFormModelItem, FormGroups, FormGroupItem } from './types'
 import { markRaw, reactive, UnwrapNestedRefs } from 'vue'
-import { deepCopy, isObject } from '@xuanmo/javascript-utils'
+import { deepCopy, isObject } from '@xuanmo/utils'
 import { validator } from '../validator'
 
 export type FormStoreInitialConfig = ConstructorParameters<typeof FormStore>[number]

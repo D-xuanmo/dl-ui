@@ -10,7 +10,7 @@
     "url": "https://github.com/D-xuanmo/dl-ui"
   },
   "scripts": {
-    "build": "yarn workspace @xuanmo/dl-icons build && vite build && npm run tsc",
+    "build": "yarn workspace @xuanmo/dl-common build && vite build && npm run tsc",
     "preview": "vite preview",
     "tsc": "vue-tsc --emitDeclarationOnly -p tsconfig.build.json",
     "clear": "rimraf dist",

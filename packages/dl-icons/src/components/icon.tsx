@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { createNamespace } from '@xuanmo/dl-common'
+import { createNamespace } from './bem'
 import { ICON_PROPS } from './props'
 import './style.scss'
 

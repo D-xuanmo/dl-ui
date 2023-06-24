@@ -1,5 +1,5 @@
 import Icon from './icon'
-import { withInstall } from '@xuanmo/dl-common'
+import { withInstall } from './with-install'
 
 export { type IconProps } from './props'
 

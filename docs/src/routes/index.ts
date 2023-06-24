@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import { ua } from '@xuanmo/javascript-utils'
+import { ua } from '@xuanmo/utils'
 
 const generateRoutes = (modules: Record<string, () => Record<string, any>>) => {
   const routes: RouteRecordRaw[] = []

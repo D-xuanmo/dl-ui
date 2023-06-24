@@ -8,7 +8,7 @@
 import { computed, CSSProperties, defineComponent } from 'vue'
 import { addUnit, createNamespace } from '../utils'
 import { GRID_PROPS } from './props'
-import { isEmpty } from '@xuanmo/javascript-utils'
+import { isEmpty } from '@xuanmo/utils'
 
 const [name, bem] = createNamespace('grid')
 

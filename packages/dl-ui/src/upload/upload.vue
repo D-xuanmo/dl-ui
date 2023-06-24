@@ -23,7 +23,7 @@ import { computed, CSSProperties, defineComponent, ref } from 'vue'
 import { UploadListItemType, UPLOAD_PROPS } from './props'
 import { createUploadNameSpace } from './utils'
 import UploadList from './upload-list.vue'
-import { debugWarn, deepCopy, isObject, throwError } from '@xuanmo/javascript-utils'
+import { debugWarn, deepCopy, isObject, throwError } from '@xuanmo/utils'
 import { addUnit, filePreview, request } from '@xuanmo/dl-common'
 import { CameraFilled } from '@xuanmo/dl-icons'
 

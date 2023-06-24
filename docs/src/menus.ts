@@ -1,4 +1,4 @@
-import { createRandomID, ua } from '@xuanmo/javascript-utils'
+import { createRandomID, ua } from '@xuanmo/utils'
 import { MenuItemType } from './components/menu/types'
 import { RoutePath } from '@doc/env'
 

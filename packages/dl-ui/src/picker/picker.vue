@@ -41,7 +41,7 @@ import {
   useModelValue
 } from '@xuanmo/dl-common'
 import { PickerOption, PICKER_PROPS, PickerValue } from './props'
-import { debounce, deepCopy, isEmpty, isObject } from '@xuanmo/javascript-utils'
+import { debounce, deepCopy, isEmpty, isObject } from '@xuanmo/utils'
 import { findCascadeFirstLevelData, findDisplayName, formatCascade } from './utils'
 import { EventType } from './types'
 import DScrollRadio from '../scroll-radio'

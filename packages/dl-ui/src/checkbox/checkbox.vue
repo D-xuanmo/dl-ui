@@ -11,7 +11,7 @@
 <script lang="ts">
 import { computed, defineComponent, inject } from 'vue'
 import { createNamespace } from '@xuanmo/dl-common'
-import { isEmpty, deleteArrayItems } from '@xuanmo/javascript-utils'
+import { isEmpty, deleteArrayItems } from '@xuanmo/utils'
 import { CHECKBOX_PROPS } from './props'
 import { CHECKBOX_GROUP_CONTEXT_KEY } from '../context'
 import { CheckSquareFilled, BorderSquareOutlined } from '@xuanmo/dl-icons'

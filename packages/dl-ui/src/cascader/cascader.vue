@@ -47,7 +47,7 @@
 import { computed, defineComponent, ref, SetupContext, watch } from 'vue'
 import { cascaderOptionsToMap, createCascaderNameSpace } from './utils'
 import { CASCADER_PROPS } from './props'
-import { pickLastItem, isEmpty, isObject, deepCopy } from '@xuanmo/javascript-utils'
+import { pickLastItem, isEmpty, isObject, deepCopy } from '@xuanmo/utils'
 import {
   ICascaderOption,
   CascaderObjectValue,

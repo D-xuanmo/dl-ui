@@ -1,6 +1,8 @@
 import { PropType } from 'vue/dist/vue'
-import { SizeType } from '@xuanmo/dl-common'
 import { ExtractPropTypes } from 'vue'
+
+/** 所有大小类型定义 */
+type SizeType = 'small' | 'medium' | 'large'
 
 export type IconProps = Partial<ExtractPropTypes<typeof ICON_PROPS>>
 

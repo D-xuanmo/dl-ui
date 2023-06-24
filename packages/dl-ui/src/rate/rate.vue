@@ -29,7 +29,7 @@
 <script lang="ts">
 import { computed, CSSProperties, defineComponent } from 'vue'
 import { createNamespace, useModelValue } from '@xuanmo/dl-common'
-import { isNumber } from '@xuanmo/javascript-utils'
+import { isNumber } from '@xuanmo/utils'
 import { RATE_PROPS } from './props'
 
 const [name, bem] = createNamespace('rate')

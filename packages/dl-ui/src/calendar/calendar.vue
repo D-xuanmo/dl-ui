@@ -41,7 +41,7 @@
 import { computed, defineComponent, nextTick, provide, ref, SetupContext, watch } from 'vue'
 import { createNamespace, useModelValue, DButton, DPopup } from '@xuanmo/dl-common'
 import { CALENDAR_PROPS } from './props'
-import { isEmpty } from '@xuanmo/javascript-utils'
+import { isEmpty } from '@xuanmo/utils'
 import { generateDay } from './utils'
 import dateJS from '@xuanmo/datejs'
 import { RightOutlined } from '@xuanmo/dl-icons'

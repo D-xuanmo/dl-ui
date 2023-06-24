@@ -1,5 +1,5 @@
 import { PickerOptions, PickerOption, PickerValue } from './props'
-import { isObject } from '@xuanmo/javascript-utils'
+import { isObject } from '@xuanmo/utils'
 import { ICascaderOption, IData } from '@xuanmo/dl-common'
 
 /**

@@ -1,4 +1,4 @@
-import { isObject } from '@xuanmo/javascript-utils'
+import { isObject } from '@xuanmo/utils'
 
 interface IUploadProgressEvent extends ProgressEvent {
   percent: number

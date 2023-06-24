@@ -11,7 +11,7 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { toBoolean } from '@xuanmo/javascript-utils'
+import { toBoolean } from '@xuanmo/utils'
 import { createNamespace } from '@doc/utils'
 import { LeftOutlined } from '@xuanmo/dl-icons'
 

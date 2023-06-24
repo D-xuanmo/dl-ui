@@ -10,7 +10,7 @@
 import { computed, defineComponent, inject } from 'vue'
 import { createNamespace } from '@xuanmo/dl-common'
 import { RADIO_PROPS } from './props'
-import { isEmpty } from '@xuanmo/javascript-utils'
+import { isEmpty } from '@xuanmo/utils'
 import { RADIO_GROUP_CONTEXT_KEY } from '../context'
 import { BorderCircleOutlined, CheckCircleFilled } from '@xuanmo/dl-icons'
 

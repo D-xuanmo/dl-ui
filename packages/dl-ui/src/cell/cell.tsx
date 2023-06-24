@@ -1,6 +1,6 @@
 import { computed, defineComponent, provide, ref } from 'vue'
 import { createNamespace, addUnit } from '@xuanmo/dl-common'
-import { isEmpty, toBoolean } from '@xuanmo/javascript-utils'
+import { isEmpty, toBoolean } from '@xuanmo/utils'
 import { CELL_PROPS } from './props'
 import { useGlobalConfig } from './utils'
 import { CELL_GROUP_CONTEXT_KEY } from '../context'

@@ -1345,17 +1345,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xuanmo/javascript-utils@npm:^0.0.49":
-  version: 0.0.49
-  resolution: "@xuanmo/javascript-utils@npm:0.0.49"
-  checksum: 7b089e1362dfa1ba4c3bdce64d7a8227b1fa47dd017c0e46a35812ff768abb68495d02a3dfd30a6ab41a1b26ce4be9f97333623259cf671c4f94dea14374fd01
-  languageName: node
-  linkType: hard
-
 "@xuanmo/normalize.css@npm:^1.0.9":
   version: 1.0.9
   resolution: "@xuanmo/normalize.css@npm:1.0.9"
   checksum: 1c65d3c9fd035936211ea16c2f9df912bfe9db97eda2ef5a59ee29787e98cbb62a430cea8020cbc738521f1faf65c9d8bbe938d1fd76829c9eaf0102cb6386df
+  languageName: node
+  linkType: hard
+
+"@xuanmo/utils@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "@xuanmo/utils@npm:0.0.1"
+  checksum: 88ce1694f7f2fc04546f96f1865eaf0769d705b7390813961794d374c7712430388c46bae748241b85c8c7897d10b6ac7515134fc4729892263fce130f57d4e7
   languageName: node
   linkType: hard
 
@@ -2304,7 +2304,7 @@ __metadata:
     "@xuanmo/datejs": ^1.0.15
     "@xuanmo/dl-common": "workspace:*"
     "@xuanmo/dl-icons": "workspace:*"
-    "@xuanmo/javascript-utils": ^0.0.49
+    "@xuanmo/utils": ^0.0.1
     "@xuanmo/validator": ^0.0.11
     autoprefixer: ^10.4.7
     eslint: ^8.41.0
