@@ -1,5 +1,5 @@
 import Image from './image.vue'
-import { withInstall } from '@xuanmo/dl-common'
+import { withInstall } from '../utils'
 
 export const DImage = withInstall(Image)
 

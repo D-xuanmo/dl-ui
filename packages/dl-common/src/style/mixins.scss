@@ -1,0 +1,122 @@
+// 统一处理边框，宽度为 0.5px
+@mixin border($padding, $d: bottom) {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    background-color: var(--d-border-color);
+    transform: scaleY(0.5) translateX(-50%);
+  }
+
+  @if ($d == bottom) {
+    &::after {
+      bottom: 0;
+      left: 50%;
+      width: calc(100% - #{$padding});
+    }
+  } @else if ($d == top) {
+    &::after {
+      top: 0;
+      left: 50%;
+      width: calc(100% - #{$padding});
+    }
+  } @else if ($d == right) {
+    &::after {
+      top: 0;
+      right: 0;
+      width: 1px;
+      height: 100%;
+      transform: scaleX(0.5);
+    }
+  } @else if ($d == left) {
+    &::after {
+      top: 0;
+      left: 0;
+      width: 1px;
+      height: 100%;
+      transform: scaleX(0.5);
+    }
+  }
+}
+
+@mixin text-align {
+  &--left {
+    text-align: left;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+}
+
+// 文字显示省略号
+@mixin ellipsis($number: 1) {
+  @if ($number == 1) {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: keep-all;
+  } @else {
+    display: -webkit-box;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $number;
+  }
+}
+
+// 底部安全距离
+%safe-area-inset-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+// 禁用
+@mixin disabled {
+  &--disabled {
+    color: var(--d-disable-color);
+    cursor: not-allowed;
+    &::placeholder {
+      color: var(--d-disable-color);
+    }
+  }
+  &--readonly {
+    color: var(--d-primary-text-color);
+    cursor: text;
+    &::placeholder {
+      color: var(--d-disable-color);
+    }
+  }
+}
+
+@mixin placeholder {
+  color: var(--d-placeholder-color);
+}
+
+// 选择类型组件触发元素
+@mixin trigger {
+  &__trigger {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    @include disabled;
+
+    .#{$prefix}-icon {
+      margin-left: var(--d-gap-xxs);
+    }
+
+    span {
+      vertical-align: middle;
+    }
+
+    &--empty:not(.#{$prefix}-icon) {
+      @include placeholder;
+    }
+  }
+}

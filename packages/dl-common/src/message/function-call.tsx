@@ -1,5 +1,6 @@
 import { getCurrentInstance, reactive } from 'vue'
-import { mountComponent, PREFIX } from '@xuanmo/dl-common'
+import { PREFIX } from '../constants'
+import { mountComponent } from '../utils'
 import { MessageProps } from './props'
 import DMessage from './message.vue'
 

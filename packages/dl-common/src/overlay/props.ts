@@ -1,5 +1,5 @@
 import { CSSProperties, ExtractPropTypes, PropType, TeleportProps } from 'vue'
-import { TRANSITION_DURATION } from '@xuanmo/dl-common'
+import { TRANSITION_DURATION } from '../constants'
 
 export type OverlayProps = ExtractPropTypes<typeof OVERLAY_PROPS>
 

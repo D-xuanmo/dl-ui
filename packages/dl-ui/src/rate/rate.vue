@@ -28,9 +28,8 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent } from 'vue'
-import { createNamespace } from '@xuanmo/dl-common'
+import { createNamespace, useModelValue } from '@xuanmo/dl-common'
 import { isNumber } from '@xuanmo/javascript-utils'
-import useModelValue from '../hooks/use-model-value'
 import { RATE_PROPS } from './props'
 
 const [name, bem] = createNamespace('rate')

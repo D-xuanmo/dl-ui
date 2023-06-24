@@ -1,5 +1,5 @@
 import Popup from './popup.vue'
-import { withInstall } from '@xuanmo/dl-common'
+import { withInstall } from '../utils'
 
 export const DPopup = withInstall(Popup)
 

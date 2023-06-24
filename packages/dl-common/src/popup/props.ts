@@ -1,6 +1,6 @@
 import { CSSProperties, ExtractPropTypes, PropType, TeleportProps } from 'vue'
-import { PlacementType } from '@xuanmo/dl-common'
-import { TRANSITION_DURATION } from '@xuanmo/dl-common'
+import { PlacementType } from '../common'
+import { TRANSITION_DURATION } from '../constants'
 
 export type PopupProps = ExtractPropTypes<typeof POPUP_PROPS>
 

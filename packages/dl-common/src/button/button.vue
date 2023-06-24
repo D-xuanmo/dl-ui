@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { createNamespace } from '@xuanmo/dl-common'
+import { createNamespace } from '../utils'
 import { BUTTON_PROPS } from './props'
 import { LoadingOutlined } from '@xuanmo/dl-icons'
 

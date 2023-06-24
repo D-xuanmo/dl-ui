@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent, ref, watch } from 'vue'
-import { createNamespace, addUnit } from '@xuanmo/dl-common'
+import { createNamespace, addUnit } from '../utils'
 import { IMAGE_PROPS } from './props'
 import { Loading2Outlined, ImageFailOutlined } from '@xuanmo/dl-icons'
 

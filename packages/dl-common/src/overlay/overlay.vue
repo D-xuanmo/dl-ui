@@ -19,9 +19,9 @@
 
 <script lang="ts">
 import { CSSProperties, defineComponent, SetupContext, computed } from 'vue'
-import { createNamespace, PREFIX } from '@xuanmo/dl-common'
-import useModelValue from '../hooks/use-model-value'
-import useZIndex from '../hooks/use-z-index'
+import { createNamespace } from '../utils'
+import { useModelValue, useZIndex } from '../hooks'
+import { PREFIX } from '../constants'
 import { OVERLAY_PROPS } from './props'
 
 const [name, bem] = createNamespace('overlay')

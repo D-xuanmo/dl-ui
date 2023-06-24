@@ -46,9 +46,9 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent, ref, watch } from 'vue'
-import { createNamespace } from '@xuanmo/dl-common'
+import { useZIndex } from '../hooks'
+import { createNamespace } from '../utils'
 import DOverlay from '../overlay'
-import useZIndex from '../hooks/use-z-index'
 import { POPUP_PROPS } from './props'
 import { CloseOutlined } from '@xuanmo/dl-icons'
 

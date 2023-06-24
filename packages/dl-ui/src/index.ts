@@ -1,5 +1,14 @@
 import { App } from 'vue'
-import { DGrid, DGridItem } from '@xuanmo/dl-common'
+import {
+  DGrid,
+  DGridItem,
+  DMessage,
+  DButton,
+  DPopup,
+  DOverlay,
+  DSpace,
+  DImage
+} from '@xuanmo/dl-common'
 import * as components from './components'
 import '@xuanmo/dl-common/dist/index.css'
 import '@xuanmo/dl-icons/dist/index.css'
@@ -11,6 +20,12 @@ const install = function (app: App) {
   })
   app.use(DGrid)
   app.use(DGridItem)
+  app.use(DMessage)
+  app.use(DButton)
+  app.use(DPopup)
+  app.use(DOverlay)
+  app.use(DSpace)
+  app.use(DImage)
 }
 
 export type ComponentNames = keyof typeof components extends infer T

@@ -1,5 +1,5 @@
 import Space from './space'
-import { withInstall } from '@xuanmo/dl-common'
+import { withInstall } from '../utils'
 
 export const DSpace = withInstall(Space)
 

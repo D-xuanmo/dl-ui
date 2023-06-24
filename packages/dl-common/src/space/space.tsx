@@ -1,5 +1,5 @@
 import { computed, defineComponent } from 'vue'
-import { createNamespace, addUnit } from '@xuanmo/dl-common'
+import { createNamespace, addUnit } from '../utils'
 import { SPACE_PROPS } from './props'
 
 const [name, bem] = createNamespace('space')

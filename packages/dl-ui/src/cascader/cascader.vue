@@ -48,12 +48,17 @@ import { computed, defineComponent, ref, SetupContext, watch } from 'vue'
 import { cascaderOptionsToMap, createCascaderNameSpace } from './utils'
 import { CASCADER_PROPS } from './props'
 import { pickLastItem, isEmpty, isObject, deepCopy } from '@xuanmo/javascript-utils'
-import { ICascaderOption, CascaderObjectValue, CascaderValue, IData } from '@xuanmo/dl-common'
-import useModelValue from '../hooks/use-model-value'
-import DPopup from '../popup'
+import {
+  ICascaderOption,
+  CascaderObjectValue,
+  CascaderValue,
+  IData,
+  useModelValue,
+  DPopup,
+  DButton
+} from '@xuanmo/dl-common'
 import { DTabs, DTabPanel } from '../tabs'
 import { TabsItemType } from '../tabs/types'
-import DButton from '../button'
 import { RightOutlined, LoadingOutlined, CheckOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createCascaderNameSpace()

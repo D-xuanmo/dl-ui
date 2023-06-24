@@ -41,9 +41,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, SetupContext } from 'vue'
-import { createNamespace } from '@xuanmo/dl-common'
+import { createNamespace, useModelValue } from '@xuanmo/dl-common'
 import Cell from '../cell'
-import useModelValue from '../hooks/use-model-value'
 import { INPUT_PROPS } from './props'
 import { CloseFilled } from '@xuanmo/dl-icons'
 

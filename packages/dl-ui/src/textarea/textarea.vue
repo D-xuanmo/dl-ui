@@ -18,9 +18,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref, SetupContext } from 'vue'
-import { createNamespace } from '@xuanmo/dl-common'
+import { createNamespace, useModelValue } from '@xuanmo/dl-common'
 import { TEXTAREA_PROPS, TextareaProps } from './props'
-import useModelValue from '../hooks/use-model-value'
 import { useCalcTextareaHeight } from './utils'
 
 const [name, bem] = createNamespace('textarea')

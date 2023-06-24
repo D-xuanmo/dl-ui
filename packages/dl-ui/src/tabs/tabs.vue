@@ -9,9 +9,8 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent, Fragment, SetupContext } from 'vue'
-import { getComponentName } from '@xuanmo/dl-common'
+import { getComponentName, useModelValue } from '@xuanmo/dl-common'
 import { TABS_PROPS, TabsProps } from './props'
-import useModelValue from '../hooks/use-model-value'
 import { createTabsNameSpace } from './utils'
 import { TabsItemType, TabsValueType } from './types'
 import TabsNav from './nav.vue'

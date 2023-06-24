@@ -31,22 +31,27 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent, ref, watch } from 'vue'
-import { createNamespace } from '@xuanmo/dl-common'
-import useModelValue from '../hooks/use-model-value'
-import { ICascaderOption, IData, OmitValueProperties } from '@xuanmo/dl-common'
+import {
+  ICascaderOption,
+  IData,
+  OmitValueProperties,
+  DButton,
+  DPopup,
+  createNamespace,
+  useModelValue
+} from '@xuanmo/dl-common'
 import { PickerOption, PICKER_PROPS, PickerValue } from './props'
 import { debounce, deepCopy, isEmpty, isObject } from '@xuanmo/javascript-utils'
 import { findCascadeFirstLevelData, findDisplayName, formatCascade } from './utils'
 import { EventType } from './types'
 import DScrollRadio from '../scroll-radio'
-import DButton from '../button'
 import { RightOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('picker')
 
 export default defineComponent({
   name,
-  components: { RightOutlined, DScrollRadio, DButton },
+  components: { RightOutlined, DScrollRadio, DButton, DPopup },
   props: PICKER_PROPS,
   emits: ['update:visible', 'update:model-value', 'change', 'confirm', 'close'],
   setup(props, context) {

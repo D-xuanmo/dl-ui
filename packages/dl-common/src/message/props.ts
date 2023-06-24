@@ -1,5 +1,5 @@
 import { Component, ExtractPropTypes, PropType, TeleportProps } from 'vue'
-import { MessageType } from '@xuanmo/dl-common'
+import { MessageType } from '../common'
 
 export type MessageProps = ExtractPropTypes<typeof MESSAGE_PROPS>
 

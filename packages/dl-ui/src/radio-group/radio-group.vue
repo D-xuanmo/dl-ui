@@ -14,9 +14,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, provide, SetupContext } from 'vue'
-import { createNamespace } from '@xuanmo/dl-common'
+import { createNamespace, useModelValue } from '@xuanmo/dl-common'
 import { RADIO_GROUP_PROPS } from './props'
-import useModelValue from '../hooks/use-model-value'
 import { RADIO_GROUP_CONTEXT_KEY } from '../context'
 import DRadio from '../radio'
 

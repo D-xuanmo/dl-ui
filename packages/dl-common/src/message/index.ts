@@ -1,5 +1,5 @@
 import Message from './message.vue'
-import { withInstall } from '@xuanmo/dl-common'
+import { withInstall } from '../utils'
 
 export const DMessage = withInstall(Message)
 

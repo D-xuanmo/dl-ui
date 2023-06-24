@@ -39,12 +39,9 @@
 
 <script lang="ts">
 import { computed, defineComponent, nextTick, provide, ref, SetupContext, watch } from 'vue'
-import { createNamespace } from '@xuanmo/dl-common'
+import { createNamespace, useModelValue, DButton, DPopup } from '@xuanmo/dl-common'
 import { CALENDAR_PROPS } from './props'
-import useModelValue from '../hooks/use-model-value'
 import { isEmpty } from '@xuanmo/javascript-utils'
-import DPopup from '../popup'
-import DButton from '../button'
 import { generateDay } from './utils'
 import dateJS from '@xuanmo/datejs'
 import { RightOutlined } from '@xuanmo/dl-icons'

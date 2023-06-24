@@ -14,9 +14,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, provide, SetupContext, UnwrapRef } from 'vue'
-import { createNamespace } from '@xuanmo/dl-common'
+import { createNamespace, useModelValue } from '@xuanmo/dl-common'
 import { CHECKBOX_GROUP_PROPS } from './props'
-import useModelValue from '../hooks/use-model-value'
 import { CHECKBOX_GROUP_CONTEXT_KEY, CheckboxGroupContextType } from '../context'
 import DCheckbox from '../checkbox'
 

@@ -27,9 +27,9 @@
 
 <script lang="ts">
 import { defineComponent, watch } from 'vue'
-import { createNamespace } from '@xuanmo/dl-common'
+import { createNamespace } from '../utils'
 import { MESSAGE_PROPS, MessageProps } from './props'
-import useModelValue from '../hooks/use-model-value'
+import { useModelValue } from '../hooks'
 import {
   CheckCircleFilled,
   CloseFilled,

@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { DirectionType } from '@xuanmo/dl-common'
+import { DirectionType } from '../common'
 
 export type SpaceJustifyType = 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'
 

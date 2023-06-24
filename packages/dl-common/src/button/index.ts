@@ -1,5 +1,5 @@
 import Button from './button.vue'
-import { withInstall } from '@xuanmo/dl-common'
+import { withInstall } from '../utils'
 
 export const DButton = withInstall(Button)
 

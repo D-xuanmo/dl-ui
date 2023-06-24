@@ -26,15 +26,15 @@
 import { defineComponent } from 'vue'
 import { createUploadNameSpace } from './utils'
 import { UploadListItemType, uploadListProps } from './props'
-import Image from '../image'
 import { CloseFilled } from '@xuanmo/dl-icons'
+import { DImage } from '@xuanmo/dl-common'
 
 const [name, bem] = createUploadNameSpace('list')
 
 export default defineComponent({
   name,
   components: {
-    [Image.name]: Image,
+    DImage,
     CloseFilled
   },
   props: uploadListProps,

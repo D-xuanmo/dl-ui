@@ -12,8 +12,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, SetupContext } from 'vue'
-import { createNamespace } from '@xuanmo/dl-common'
-import useModelValue from '../hooks/use-model-value'
+import { createNamespace, useModelValue } from '@xuanmo/dl-common'
 import { isBoolean, throwError, debugWarn, isPromise } from '@xuanmo/javascript-utils'
 import { SWITCH_PROPS } from './props'
 import { LoadingOutlined } from '@xuanmo/dl-icons'

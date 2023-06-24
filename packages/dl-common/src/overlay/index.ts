@@ -1,5 +1,5 @@
 import Overlay from './overlay.vue'
-import { withInstall } from '@xuanmo/dl-common'
+import { withInstall } from '../utils'
 
 export const DOverlay = withInstall(Overlay)
 

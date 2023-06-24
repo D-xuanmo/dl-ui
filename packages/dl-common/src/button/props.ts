@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { SizeType, ThemeType } from '@xuanmo/dl-common'
+import { SizeType, ThemeType } from '../common'
 
 export type ButtonProps = ExtractPropTypes<typeof BUTTON_PROPS>
 

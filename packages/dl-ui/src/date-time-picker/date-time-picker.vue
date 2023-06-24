@@ -21,10 +21,9 @@
 
 <script lang="ts">
 import { computed, defineComponent, nextTick, ref, SetupContext, watch } from 'vue'
-import { createNamespace } from '@xuanmo/dl-common'
+import { createNamespace, useModelValue } from '@xuanmo/dl-common'
 import DPicker from '../picker'
 import DateUtil from './date-util'
-import useModelValue from '../hooks/use-model-value'
 import { DATE_PICKER_PROPS, DateTimePickerType } from './props'
 import { PickerValue } from '../picker/props'
 import dateJS from '@xuanmo/datejs'
