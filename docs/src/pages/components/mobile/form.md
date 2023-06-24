@@ -57,7 +57,7 @@ import {
   FormStore,
   DirectionType
 } from '@xuanmo/dl-ui'
-import { dCookie } from '@xuanmo/javascript-utils'
+import { dCookie } from '@xuanmo/utils'
 
 const FORM_MODEL: FormStoreInitialConfig = {
   groups: [

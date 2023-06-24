@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 import { onMounted, onUnmounted, ref } from 'vue'
-import { dCookie } from '@xuanmo/javascript-utils'
+import { dCookie } from '@xuanmo/utils'
 import { UploadListItemType } from '../props'
 
 const value = ref<UploadListItemType[]>([
