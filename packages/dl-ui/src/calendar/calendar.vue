@@ -11,6 +11,7 @@
     :title="title"
     placement="bottom"
     closeable
+    round
     @update:visible="handleClosePopup"
   >
     <calendar-header />
