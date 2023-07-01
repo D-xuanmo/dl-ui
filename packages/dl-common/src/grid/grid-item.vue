@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent } from 'vue'
-import { createNamespace } from '../utils'
+import { addUnit, createNamespace } from '../utils'
 import { GRID_ITEM_PROPS } from './props'
 
 const [name, bem] = createNamespace('grid-item')
@@ -19,7 +19,8 @@ export default defineComponent({
 
     const style = computed<CSSProperties>(() => ({
       gridRow: `span ${props.row} / span ${props.row}`,
-      gridColumn: `span ${props.column} / span 1`
+      gridColumn: `span ${props.column} / span 1`,
+      height: addUnit(props.height)
     }))
 
     return {

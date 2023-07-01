@@ -310,3 +310,4 @@ onUnmounted(() => {
 |---|----|-----|---|----|
 |row|`number \| string`|1|占用行数|N|
 |column|`number \| string`|1|占用列数|N|
+|height|`number \| string`|-|元素高度，CSS height|N|

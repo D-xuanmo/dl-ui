@@ -51,5 +51,10 @@ export const GRID_ITEM_PROPS = {
   column: {
     type: [Number, String],
     default: 1
+  },
+
+  height: {
+    type: [Number, String],
+    default: undefined
   }
 }
