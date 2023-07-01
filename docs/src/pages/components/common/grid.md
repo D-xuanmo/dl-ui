@@ -4,11 +4,11 @@ columns: 2
 
 # Grid 网格
 
-使用 [CSS3 grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) 实现，可实现更灵活的布局
+使用 [CSS3 Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) 实现，可实现更灵活的布局。
 
 ## 代码演示
 
-```vue client=PC title=网格1*4
+```vue client=PC playground=37kdei title=网格1*4
 <template>
   <d-grid :columns="4" :gap="8">
     <d-grid-item :row="1" :column="1">
@@ -40,7 +40,7 @@ columns: 2
 </style>
 ```
 
-```vue client=PC title=网格3*4
+```vue client=PC playground=2q6o4up title=网格3*4
 <template>
   <d-grid :columns="4" :gap="8">
     <d-grid-item :row="3" :column="1">
@@ -78,7 +78,7 @@ columns: 2
 </style>
 ```
 
-```vue client=PC title=网格4*6
+```vue client=PC playground=flrpv3 title=网格4*6
 <template>
   <d-grid :columns="6" :gap="8">
     <d-grid-item :row="3" :column="2">
@@ -128,7 +128,7 @@ columns: 2
 </style>
 ```
 
-```vue client=PC title=实际场景4*7
+```vue client=PC playground=2irner title=实际场景4*7
 <template>
   <d-grid :columns="7" :gap="6" :class="className">
     <d-grid-item :row="3" :column="2">
