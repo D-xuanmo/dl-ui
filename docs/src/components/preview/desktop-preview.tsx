@@ -41,7 +41,11 @@ export default defineComponent({
             <a href="javascript:;" title="复制代码">
               <CopyCode code={props.source} />
             </a>
-            <a href="javascript:;" title="复制代码" onClick={toggleCodeVisible}>
+            <a
+              href="javascript:;"
+              title={showCode.value ? '隐藏代码' : '查看代码'}
+              onClick={toggleCodeVisible}
+            >
               <CodeOutlined size="small" color={showCode.value ? 'var(--d-primary)' : undefined} />
             </a>
           </DSpace>
