@@ -20,6 +20,7 @@ export default defineComponent({
 
     const gridStyle = computed<CSSProperties>(() => {
       const style: CSSProperties = {
+        gridTemplateRows: props.rows,
         gridTemplateColumns: `repeat(${props.columns}, 1fr)`,
         gap: addUnit(props.gap)
       }

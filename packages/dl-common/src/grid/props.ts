@@ -12,6 +12,14 @@ export const GRID_PROPS = {
   },
 
   /**
+   * 显示定义网格每行高度
+   */
+  rows: {
+    type: String,
+    default: ''
+  },
+
+  /**
    * 间隙
    */
   gap: {
@@ -55,6 +63,6 @@ export const GRID_ITEM_PROPS = {
 
   height: {
     type: [Number, String],
-    default: undefined
+    default: '100%'
   }
 }
