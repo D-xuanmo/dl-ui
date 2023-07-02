@@ -85,7 +85,7 @@
 
     &--iframe {
       #{$mPrefix} {
-        &-runtime--inner {
+        &-runtime-inner {
           overflow: hidden;
         }
       }
@@ -93,7 +93,7 @@
 
     &--self {
       #{$mPrefix} {
-        &-runtime--inner {
+        &-runtime-inner {
           background: #f7f8fa;
         }
       }

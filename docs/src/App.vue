@@ -19,7 +19,7 @@
     </template>
 
     <!-- 移动端预览 -->
-    <d-grid-item v-else :column="12">
+    <d-grid-item v-else :column="12" style="overflow-y: auto">
       <d-preview-h5 />
     </d-grid-item>
   </d-grid>
