@@ -4,6 +4,19 @@
 
 通过 `before-change` 钩子拦截，返回 `true` 则切换，返回 `false` 或者 `Promise.reject` 则不切换。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DSwitch } from '@xuanmo/dl-ui'
+
+// 注册组件
+const app = createApp()
+app.use(DSwitch)
+```
+
+## 代码演示
+
 ```vue client=Mobile playground=MSwitch
 <template>
   <d-cell-group cell-content-align="right">

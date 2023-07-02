@@ -2,6 +2,19 @@
 
 用于选择日期或者日期区间。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DCalendar } from '@xuanmo/dl-ui'
+
+// 注册组件
+const app = createApp()
+app.use(DCalendar)
+```
+
+## 代码演示
+
 ```vue client=Mobile playground=MCalendar previewType=iframe
 <template>
   <d-cell-group title="基础用法">

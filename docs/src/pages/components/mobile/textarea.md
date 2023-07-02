@@ -2,6 +2,19 @@
 
 用于输入多行内容。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DTextarea } from '@xuanmo/dl-ui'
+
+// 注册组件
+const app = createApp()
+app.use(DTextarea)
+```
+
+## 代码演示
+
 ```vue client=Mobile playground=MTextarea
 <template>
   <d-cell-group cell-title-width="100">

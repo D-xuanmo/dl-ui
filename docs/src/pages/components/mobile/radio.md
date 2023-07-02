@@ -2,6 +2,19 @@
 
 用于选择数据中的某项，单选。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DRadioGroup, DRadio } from '@xuanmo/dl-ui'
+
+// 注册组件
+const app = createApp()
+app.use(DRadioGroup).use(DRadio)
+```
+
+## 代码演示
+
 ```vue client=Mobile playground=MRadio
 <template>
   <dl-demo-block title="基本用法">

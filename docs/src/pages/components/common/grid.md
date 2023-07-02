@@ -6,6 +6,19 @@ columns: 2
 
 使用 [CSS3 Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) 实现，可实现更灵活的布局。
 
+- 大屏布局示例：[https://uoo.ink/o5nlvb](https://uoo.ink/o5nlvb)
+
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DGrid, DGridItem } from '@xuanmo/dl-common'
+
+// 注册组件
+const app = createApp()
+app.use(DGrid).use(DGridItem)
+```
+
 ## 代码演示
 
 ```vue client=PC playground=37kdei title=网格1*4
@@ -299,6 +312,7 @@ onUnmounted(() => {
 
 |参数|类型|默认值|说明|必传|
 |---|----|-----|---|----|
+|rows|`CSSProperties['gridTemplateRows']`|-|定义每行具体高度，默认不传，则会自动计算|N|
 |columns|`number`|-|网格列数，列数可随意设置，保证子级的列总和与此参数一致即可|Y|
 |gap|`number \| string`|-|子级之间的间隙，`row-gap` 与 `column-gap` 一致时可简写，默认单位：`px`|N|
 |row-gap|`number \| string`|-|行与行之间的间隙，默认单位：`px`|N|

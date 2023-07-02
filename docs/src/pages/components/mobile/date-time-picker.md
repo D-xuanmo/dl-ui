@@ -2,6 +2,19 @@
 
 用于选择日期、时间。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DDateTimePicker } from '@xuanmo/dl-ui'
+
+// 注册组件
+const app = createApp()
+app.use(DDateTimePicker)
+```
+
+## 代码演示
+
 ```vue client=Mobile playground=MDateTimePicker previewType=iframe
 <template>
   <d-cell title="日期时间选择器">

@@ -2,6 +2,19 @@
 
 用于数据录入等。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DForm } from '@xuanmo/dl-ui'
+
+// 注册组件
+const app = createApp()
+app.use(DForm)
+```
+
+## 代码演示
+
 ```vue client=Mobile playground=Form previewType=iframe
 <template>
   <d-form

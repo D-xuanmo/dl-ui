@@ -2,6 +2,19 @@
 
 用于单例、多列或者树形数据进行集合选择。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DPicker } from '@xuanmo/dl-ui'
+
+// 注册组件
+const app = createApp()
+app.use(DPicker)
+```
+
+## 代码演示
+
 ```vue client=Mobile playground=MPicker previewType=iframe
 <template>
   <d-cell-group>

@@ -25,37 +25,27 @@ type MobilePreviewProps = {
 }
 
 const MobilePreview: FunctionalComponent<MobilePreviewProps, any> = (props, { slots }) => {
-  const {
-    sourceCode,
-    playgroundKey,
-    qrcodeImage,
-    previewURL,
-    previewType,
-    title = '代码演示'
-  } = props
+  const { sourceCode, playgroundKey, qrcodeImage, previewURL, previewType, title } = props
   const previewContent =
     previewType === 'iframe' ? (
       <iframe src={`${previewURL}?preview=true`} />
     ) : (
       <PreviewOnly code={slots.default?.()} />
     )
+  const playgroundBtn = (
+    <a href={generatePlaygroundURL(playgroundKey)} target="_blank" title="在 Playground 中编辑">
+      <CodeSandbox />
+    </a>
+  )
   return (
     <div class={createBEM('mobile', { [previewType]: true })}>
       <div class={createBEM('mobile-content')}>
         <div class={createBEM('mobile-left')}>
           <div class={createBEM('mobile-toolbar')}>
             <DSpace justify="between">
-              <h3>{title}</h3>
+              <h3>{title ?? playgroundBtn}</h3>
               <DSpace gap={16}>
-                {playgroundKey && (
-                  <a
-                    href={generatePlaygroundURL(playgroundKey)}
-                    target="_blank"
-                    title="在 Playground 中编辑"
-                  >
-                    <CodeSandbox />
-                  </a>
-                )}
+                {!title ? null : playgroundBtn}
                 <a href="javascript:">
                   <CopyCode code={sourceCode} />
                 </a>

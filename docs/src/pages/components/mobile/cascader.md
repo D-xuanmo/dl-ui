@@ -4,6 +4,19 @@
 
 最新中国内地行政区域数据下载 [https://github.com/D-xuanmo/china-region](https://github.com/D-xuanmo/china-region)。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DCascader } from '@xuanmo/dl-ui'
+
+// 注册组件
+const app = createApp()
+app.use(DCascader)
+```
+
+## 代码演示
+
 ```vue client=Mobile playground=MCascader previewType=iframe
 <template>
   <d-cell-group cell-title-width="100px">

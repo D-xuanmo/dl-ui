@@ -2,6 +2,19 @@
 
 可以在页面添加一层遮罩层，一般用于弹框的背景。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DOverlay } from '@xuanmo/dl-common'
+
+// 注册组件
+const app = createApp()
+app.use(DOverlay)
+```
+
+## 代码演示
+
 ```vue playground=Overlay title=基础用法
 <template>
   <d-space :gap='10'>

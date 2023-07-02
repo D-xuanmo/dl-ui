@@ -2,6 +2,19 @@
 
 用于选择数据中的某些项，多选。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DCheckboxGroup, DCheckbox } from '@xuanmo/dl-ui'
+
+// 注册组件
+const app = createApp()
+app.use(DCheckboxGroup).use(DCheckbox)
+```
+
+## 代码演示
+
 ```vue client=Mobile playground=MCheckbox
 <template>
   <dl-demo-block title="基础用法">

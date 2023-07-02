@@ -6,6 +6,19 @@ columns: 2
 
 用于弹框选择数据、弹框提示等场景。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DPopup } from '@xuanmo/dl-common'
+
+// 注册组件
+const app = createApp()
+app.use(DPopup)
+```
+
+## 代码演示
+
 ```vue playground=2vujmjd title=基础用法
 <template>
   <d-button @click='showPopup = true'>打开</d-button>

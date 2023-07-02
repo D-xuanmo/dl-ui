@@ -2,6 +2,19 @@
 
 用于图片、文件的上传。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DUpload } from '@xuanmo/dl-ui'
+
+// 注册组件
+const app = createApp()
+app.use(DUpload)
+```
+
+## 代码演示
+
 ```vue client=Mobile playground=MUpload
 <template>
   <d-upload

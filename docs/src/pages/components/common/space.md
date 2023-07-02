@@ -6,6 +6,19 @@ columns: 2
 
 可用于给多个元素增加间距。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DSpace } from '@xuanmo/dl-common'
+
+// 注册组件
+const app = createApp()
+app.use(DSpace)
+```
+
+## 代码演示
+
 ```vue playground=2bl1idi title=水平方向
 <template>
   <markdown>

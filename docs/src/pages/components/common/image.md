@@ -6,6 +6,17 @@ columns: 2
 
 基于 `img` 标签封装，增加 `loading`、`加载失败` 效果。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DImage } from '@xuanmo/dl-common'
+
+// 注册组件
+const app = createApp()
+app.use(DImage)
+```
+
 ## 代码演示
 
 ```vue playground=26icurf title=基础用法

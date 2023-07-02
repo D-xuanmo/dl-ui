@@ -2,6 +2,17 @@
 
 用于展示 2 列信息，左侧为标题，右侧为内容的场景。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DCell, DCellGroup } from '@xuanmo/dl-ui'
+
+// 注册组件
+const app = createApp()
+app.use(DCell).use(DCellGroup)
+```
+
 ## 代码演示
 
 ```vue title=分组 client=Mobile previewType=self playground=MCell secondPath=CellGroup

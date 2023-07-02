@@ -6,6 +6,14 @@ columns: 2
 
 页面顶部展示一段消息提示。
 
+## 引入
+
+```typescript
+import { message } from '@xuanmo/dl-common'
+```
+
+## 代码演示
+
 ```vue client=PC playground=Message title=基础
 <template>
   <d-space :gap="10">
@@ -124,5 +132,5 @@ type MessageInstance = {
 import type {
   MessageProps,
   MessageInstance
-} from '@xuanmo/dl-ui'
+} from '@xuanmo/dl-common'
 ```

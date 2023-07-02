@@ -215,7 +215,7 @@ blockquote {
         }
 
         @if $num == 2 {
-          margin: 24px 0 16px;
+          margin: 32px 0 16px !important;
         }
 
         @if $num > 2 {

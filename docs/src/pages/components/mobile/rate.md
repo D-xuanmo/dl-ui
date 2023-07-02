@@ -2,6 +2,19 @@
 
 用于评分。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DRate } from '@xuanmo/dl-ui'
+
+// 注册组件
+const app = createApp()
+app.use(DRate)
+```
+
+## 代码演示
+
 ```vue client=Mobile playground=MRate
 <template>
   <d-cell-group title="基础用法">

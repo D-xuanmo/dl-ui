@@ -6,6 +6,17 @@ columns: 2
 
 用来触发一些动作。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DButton } from '@xuanmo/dl-common'
+
+// 注册组件
+const app = createApp()
+app.use(DButton)
+```
+
 ## 代码演示
 
 ```vue client=PC playground=3hbs5el title=基础用法

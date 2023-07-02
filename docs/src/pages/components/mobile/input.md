@@ -2,6 +2,19 @@
 
 用于文本类数据录入操作。
 
+## 引入
+
+```typescript
+import { createApp } from 'vue';
+import { DInput } from '@xuanmo/dl-ui'
+
+// 注册组件
+const app = createApp()
+app.use(DInput)
+```
+
+## 代码演示
+
 ```vue client=Mobile playground=MInput
 <template>
   <d-cell-group title="基础用法">
