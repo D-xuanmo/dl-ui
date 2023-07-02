@@ -36,7 +36,6 @@ const getRoutes = (): RouteRecordRaw[] => {
       path: '/docs',
       redirect: '/docs/introduce'
     },
-    // ...generateRoutes(compModules, '/comp'),
     ...generateRoutes(mobileComps),
     ...generateRoutes(commonModules),
     ...generateRoutes(docModules)

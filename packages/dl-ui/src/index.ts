@@ -1,4 +1,7 @@
 import { App } from 'vue'
+import * as components from './components'
+
+// 引入所有 common 包组件
 import {
   DGrid,
   DGridItem,
@@ -9,9 +12,14 @@ import {
   DSpace,
   DImage
 } from '@xuanmo/dl-common'
-import * as components from './components'
-import '@xuanmo/dl-common/dist/index.css'
-import '@xuanmo/dl-icons/dist/index.css'
+
+// 引入公用样式
+import '../../dl-common/src/style/index.scss'
+
+// 引入图标样式
+import '../../dl-ui/src/style/index.scss'
+
+// 引入 UI 所有样式
 import './style/index.scss'
 
 const install = function (app: App) {

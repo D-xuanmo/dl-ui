@@ -37,6 +37,7 @@ export default defineConfig({
     preserveSymlinks: true,
     alias: {
       '@xuanmo/dl-ui': resolve(join(__dirname, '../packages/dl-ui/src')),
+      '@xuanmo/dl-common': resolve(join(__dirname, '../packages/dl-common/src')),
       '@doc': resolve(__dirname, 'src')
     }
   }
