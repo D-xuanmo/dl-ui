@@ -17,7 +17,7 @@ export default defineConfig({
       transforms: {
         before: transformer
       },
-      markdownItUses: [[shiki, { theme: 'min-light' }]]
+      markdownItUses: [[shiki, { theme: 'vitesse-light' }]]
     }),
     MarkdownPreview({
       shiki: {
