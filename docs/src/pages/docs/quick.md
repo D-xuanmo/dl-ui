@@ -2,17 +2,18 @@
 
 ## 全量功能安装
 
-`validator` 不是必须的，如果不需要表单校验可不用安装
+- `validator` 非必须包，如果不需要表单校验可不用安装；
+- `dl-icons` 非必须包，如果需要扩展图标，可自行安装
 
 ```bash
 # npm 安装
-$ npm i @xuanmo/{dl-ui,dl-common,validator}
+$ npm i @xuanmo/{dl-ui,dl-common,dl-icons,validator}
 
 # yarn 安装
-$ yarn add @xuanmo/{dl-ui,dl-common,validator}
+$ yarn add @xuanmo/{dl-ui,dl-common,dl-icons,validator}
 
 # pnpm 安装
-$ pnpm add @xuanmo/{dl-ui,dl-common,validator}
+$ pnpm add @xuanmo/{dl-ui,dl-common,dl-icons,validator}
 ```
 
 ## 完整引入组件
@@ -55,7 +56,8 @@ app.use(DButton)
 
 ## common 公用包
 
-一些 PC、H5 通用的组件，做了独立包拆分使用，不依赖 UI 包，引入如下：
+- `@xuanmo/dl-ui` 默认包含以下组件；
+- PC、H5 通用的组件，可独立使用，不依赖 UI 包，引入如下：
 
 ```typescript
 // 按需引入组件

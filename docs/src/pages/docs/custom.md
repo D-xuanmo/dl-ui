@@ -9,8 +9,12 @@
 ```css
 :root {
   // 主题色
-  --d-primary: #1b62eb;
-  --d-primary-1: #ecf2fe;
+  --d-primary: #1890ff;
+  --d-primary-5: #40a9ff;
+  --d-primary-4: #69c0ff;
+  --d-primary-3: #91d5ff;
+  --d-primary-2: #bae7ff;
+  --d-primary-1: #e6f7ff;
 
   // 提示类颜色
   --d-success: #00a870;
