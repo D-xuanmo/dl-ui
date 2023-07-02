@@ -17,7 +17,7 @@ import {
 import '../../dl-common/src/style/index.scss'
 
 // 引入图标样式
-import '../../dl-ui/src/style/index.scss'
+import '@xuanmo/dl-icons/dist/index.css'
 
 // 引入 UI 所有样式
 import './style/index.scss'
