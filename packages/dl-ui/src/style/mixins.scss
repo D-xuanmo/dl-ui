@@ -96,6 +96,10 @@
 
 @mixin placeholder {
   color: var(--d-placeholder-color);
+
+  &::placeholder {
+    color: var(--d-placeholder-color);
+  }
 }
 
 // 选择类型组件触发元素
