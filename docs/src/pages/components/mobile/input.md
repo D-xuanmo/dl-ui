@@ -18,36 +18,61 @@ app.use(DInput)
 ```vue client=Mobile playground=MInput
 <template>
   <d-cell-group title="基础用法">
-    <d-input v-model="value" label="输入框" placeholder="请输入文字" @blur="onBlur" />
-    <d-input v-model="value" placeholder="无标题显示" hide-label />
+    <d-cell title="输入框">
+      <d-input v-model="value" placeholder="请输入文字" @blur="onBlur" />
+    </d-cell>
+    <d-cell>
+      <d-input v-model="value" placeholder="无标题显示" hide-label />
+    </d-cell>
   </d-cell-group>
   <d-cell-group title="禁用、只读状态">
-    <d-input v-model="value" label="输入框禁用" placeholder="请输入文字" readonly />
-    <d-input v-model="value" label="输入框禁用" placeholder="请输入文字" disabled />
+    <d-cell title="输入框禁用">
+      <d-input v-model="value" placeholder="请输入文字" readonly />
+    </d-cell>
+    <d-cell title="输入框禁用">
+      <d-input v-model="value" placeholder="请输入文字" disabled />
+    </d-cell>
   </d-cell-group>
   <d-cell-group title="字数限制">
-    <d-input v-model="value" label="输入框" placeholder="请输入文字" :maxlength="10" />
+    <d-cell title="输入框">
+      <d-input v-model="value" placeholder="请输入文字" :maxlength="10" />
+    </d-cell>
   </d-cell-group>
   <d-cell-group title="扩展类型">
-    <d-input label="密码" placeholder="请输入密码" type="password" />
-    <d-input v-model="number" label="数字输入框" placeholder="请输入密码" type="number" />
-    <d-input v-model="value" label="邮箱" placeholder="请输入邮箱" type="email" />
-    <d-input v-model="value" label="单价" placeholder="请输入文字" suffix="元" />
-    <d-input v-model="value" label="单价" placeholder="请输入文字" suffix="元">
-      <template #suffix>slot 形式</template>
-    </d-input>
+    <d-cell title="密码">
+      <d-input placeholder="请输入密码" type="password" />
+    </d-cell>
+    <d-cell title="数字输入框">
+      <d-input v-model="number" placeholder="请输入密码" type="number" />
+    </d-cell>
+    <d-cell title="邮箱">
+      <d-input v-model="value" placeholder="请输入邮箱" type="email" />
+    </d-cell>
+    <d-cell title="单价" suffix="元">
+      <d-input v-model="value" placeholder="请输入文字" />
+    </d-cell>
+    <d-cell title="单价" suffix="元">
+      <d-input v-model="value" placeholder="请输入文字">
+        <template #suffix>slot 形式</template>
+      </d-input>
+    </d-cell>
   </d-cell-group>
   <d-cell-group title="其他设置">
-    <d-input v-model="value" label="显示冒号" placeholder="请输入文字" colon />
-    <d-input v-model="value" label="可被清除" placeholder="请输入文字" clearable />
-    <d-input
-      v-model="value"
-      label="显示图标"
-      placeholder="请输入文字"
-      :left-icon="TipsOutlined"
-      :left-icon-props="{ color: '#f00' }"
-    />
-    <d-input v-model="value" label="超长文字展示" placeholder="请输入文字" label-align="right" />
+    <d-cell title="显示冒号" colon>
+      <d-input v-model="value" placeholder="请输入文字" />
+    </d-cell>
+    <d-cell title="可被清除">
+      <d-input v-model="value" placeholder="请输入文字" clearable />
+    </d-cell>
+    <d-cell title="显示图标">
+      <template #left-icon>
+        <tips-outlined color="#f00" size="small" />
+      </template>
+      <d-input v-model="value" placeholder="请输入文字" />
+    </d-cell>
+    <d-cell title="超长文字展示" label-align="right">
+      <d-input v-model="value" placeholder="请输入文字" />
+    </d-cell>
   </d-cell-group>
 </template>
 
@@ -73,15 +98,6 @@ function onBlur(value: string) {
 |model-value/v-model|`string`|-|输入值|N|
 |type|`string`|text|输入框类型，可选值：`text/number/password/email/url`|N|
 |name|`string`|-|input 原生属性|N|
-|label|`string`|-|左侧显示文字|N|
-|label-class|`string`|-|左侧显示文字类名|N|
-|label-width|`string`|-|左侧显示文字宽度，单位：`px`|N|
-|label-align|`string`|left|左侧显示文字对齐方式，可选值：`left/center/right`|N|
-|hide-label|`boolean`|false|隐藏左侧显示文字|N|
-|left-icon|`Component`|-|左侧图标|N|
-|left-icon-props|`object`|-|图标组件 props|N|
-|colon|`boolean`|-|是否显示左侧冒号|N|
-|required|`boolean`|-|是否必填|N|
 |placeholder|`string`|-|输入框占位符|N|
 |disabled|`boolean`|-|是否禁用|N|
 |readonly|`boolean`|-|是否只读|N|
@@ -104,11 +120,6 @@ function onBlur(value: string) {
 |clear|清空内容按钮点击时触发|value: string, event: Event|
 |click-input|输入框点击时触发|value: string, event: Event|
 
-### Slots
-
-|名称|说明|
-|---|----|
-|suffix|自定义扩展内容|
 
 ### TypeScript 类型
 

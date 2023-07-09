@@ -16,7 +16,7 @@ app.use(DForm)
 
 ## 代码演示
 
-```vue client=Mobile title=移动端所有组件
+```vue client=Mobile title=移动端所有组件 playground=Form
 <template>
   <d-form
     ref='formRef'
@@ -475,7 +475,7 @@ fetch(
 </script>
 ```
 
-```vue title=自定义开发表单组件
+```vue title=自定义开发表单组件 playground=2dg8da9
 <template>
   <d-form
     ref='formRef'
@@ -508,7 +508,155 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 </script>
 ```
 
+```vue title=通过布局实现表单多样化（DGridLayout） playground=cl29qs
+<template>
+  <d-form
+    ref='formRef'
+    :models="formModel"
+    layout="vertical"
+  />
+  <d-space :gap='10' style='margin-top: 16px'>
+    <d-button theme="primary" @click="validate">验证</d-button>
+    <d-button @click="reset">重置</d-button>
+  </d-space>
+  <pre>{{ JSON.stringify(formData) }}</pre>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue'
+const formRef = ref()
+const formModel = [
+  {
+    id: 'grid',
+    component: 'DGridLayout',
+    layout: {
+      isContainer: true,
+      parent: 'root',
+      columns: 6,
+      gap: 16,
+      children: ['name', 'phone', 'email', 'sex', 'status', 'birthday']
+    }
+  },
+  {
+    id: 'name',
+    dataKey: 'name',
+    component: 'DInput',
+    label: '姓名',
+    value: '',
+    required: true,
+    layout: {
+      parent: 'grid',
+      column: 6
+    },
+    otherProps: {
+      placeholder: '请输入姓名'
+    }
+  },
+  {
+    id: 'phone',
+    dataKey: 'phone',
+    component: 'DInput',
+    label: '电话',
+    value: '',
+    rules: 'required',
+    layout: {
+      parent: 'grid',
+      column: 3
+    },
+    otherProps: {
+      placeholder: '请输入电话'
+    }
+  },
+  {
+    id: 'email',
+    dataKey: 'email',
+    component: 'DInput',
+    label: '邮箱',
+    value: '',
+    rules: 'required|email',
+    layout: {
+      parent: 'grid',
+      column: 3
+    },
+    otherProps: {
+      placeholder: '请输入邮箱'
+    }
+  },
+  {
+    id: 'birthday',
+    dataKey: 'birthday',
+    component: 'DCalendar',
+    label: '出生日期',
+    value: '',
+    rules: 'required',
+    layout: {
+      parent: 'grid',
+      column: 2
+    },
+    otherProps: {
+      placeholder: '请选择日期'
+    }
+  },
+  {
+    id: 'sex',
+    dataKey: 'sex',
+    component: 'DRadioGroup',
+    label: '性别',
+    value: '',
+    rules: 'required',
+    layout: {
+      parent: 'grid',
+      column: 2
+    },
+    otherProps: {
+      direction: 'horizontal',
+      options: [
+        { label: '男', value: '1' },
+        { label: '女', value: '2' },
+      ]
+    }
+  },
+  {
+    id: 'status',
+    dataKey: 'status',
+    component: 'DSwitch',
+    label: '状态',
+    value: '',
+    rules: 'required',
+    layout: {
+      parent: 'grid',
+      column: 2
+    },
+  },
+]
+const formData = computed(() => formRef.value?.store?.getFormData?.())
+
+const validate = () => {
+  formRef.value?.store.validate()
+}
+
+const reset = () => {
+  formRef.value?.store.reset()
+}
+</script>
+
+<style scoped>
+::v-deep(.d-grid-item) {
+  border-bottom: 1px solid var(--d-border-color);
+}
+::v-deep(.d-cell) {
+  padding-left: 0;
+  padding-right: 0;
+}
+</style>
+```
+
 ## API
+
+### 内置布局容器
+
+- `DFormCellGroup` 可以快速实现单列表单分组效果，参考链接：[https://uoo.ink/Form](https://uoo.ink/Form)
+- `DGridLayout` 通过网格系统实现更灵活的布局，参考链接：[https://uoo.ink/cl29qs](https://uoo.ink/cl29qs)
 
 ### Props
 
