@@ -13,7 +13,9 @@
     flex: 1;
     margin-right: var(--d-gap-xs);
     border: 0;
-    @include placeholder;
+    &::placeholder {
+      color: var(--d-placeholder-color);
+    }
     &:-webkit-autofill {
       background: none;
     }
