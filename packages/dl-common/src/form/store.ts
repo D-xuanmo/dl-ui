@@ -91,7 +91,7 @@ class FormStore {
    * 获取单个 item 信息
    * @param id
    */
-  public getItem = (id: string) => this.models.get(this.dataKeyMap.get(id))
+  public getItem = (id: string) => this.models.get(this.dataKeyMap.get(id)!)
 
   /**
    *
