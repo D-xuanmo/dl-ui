@@ -2,7 +2,7 @@ import { dCookie } from '@xuanmo/utils'
 import CustomInput from './custom-input.vue'
 import { IFormModelItem } from '../types'
 
-const FORM_MODEL: IFormModelItem[] = [
+const FORM_MODEL: Partial<IFormModelItem>[] = [
   {
     id: 'gridLayout',
     component: 'DGridLayout',
@@ -374,7 +374,7 @@ const FORM_MODEL: IFormModelItem[] = [
       headerParams: {
         'X-XSRF-TOKEN': dCookie().getItem('csrfToken')
       },
-      uploadAfter(response) {
+      uploadAfter(response: any) {
         // 返回上传组件需要的格式
         return {
           url: (response as any).data?.[0].url,

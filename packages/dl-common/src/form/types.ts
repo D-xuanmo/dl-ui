@@ -11,7 +11,7 @@ export interface IRenderModel<T = any> {
   id: string
 
   // 需要展示的标题
-  label: string
+  label?: string
 
   // 组件
   component: Component | (ComponentNames | string)
