@@ -1,16 +1,19 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { IFormModelItem } from './types'
-import { pickProps } from '@xuanmo/dl-common'
+import { FormModels } from './types'
 import type { FormStore } from './store'
-import { COMMON_PROPS, DirectionType, HorizontalAlignType } from '@xuanmo/dl-common'
+import { COMMON_PROPS, DirectionType, HorizontalAlignType } from '../common'
 
 export type FormProps = ExtractPropTypes<typeof FORM_PROPS>
 
 export const FORM_PROPS = {
   ...COMMON_PROPS,
+  models: {
+    type: Array as PropType<FormModels>,
+    required: true,
+    default: () => []
+  },
   store: {
-    type: Object as PropType<FormStore>,
-    required: true
+    type: Object as PropType<FormStore>
   },
   labelWidth: {
     type: [Number, String] as PropType<number | string>,
@@ -26,24 +29,9 @@ export const FORM_PROPS = {
   round: {
     type: Boolean,
     default: true
-  }
-}
-
-export const FORM_ITEM_PROPS = {
-  ...pickProps(FORM_PROPS, [
-    'disabled',
-    'readonly',
-    'store',
-    'layout',
-    'colon',
-    'requiredMarkPosition',
-    'hideLabel',
-    'labelWidth'
-  ]),
-  modelItem: {
-    type: Object as PropType<IFormModelItem>,
-    required: true,
-    default: () => ({})
   },
-  errorMessage: String
+  hasBackground: {
+    type: Boolean,
+    default: true
+  }
 }

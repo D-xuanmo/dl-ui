@@ -1,5 +1,5 @@
 import CellGroup from './cell-group'
-import { withInstall } from '@xuanmo/dl-common'
+import { withInstall } from '../utils'
 
 export const DCellGroup = withInstall(CellGroup)
 

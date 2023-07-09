@@ -1,8 +1,9 @@
-import { defineComponent, provide, inject, watchEffect, ref, Ref } from 'vue'
-import { createNamespace, LABEL_WIDTH } from '@xuanmo/dl-common'
-import { CELL_GROUP_CONTEXT_KEY, GLOBAL_CONFIG_CONTEXT_KEY } from '../context'
+import { defineComponent, provide, watchEffect, ref, Ref } from 'vue'
+import { createNamespace } from '../utils'
+import { CELL_GROUP_CONTEXT_KEY } from './context'
 import { CELL_GROUP_PROPS } from './props'
-import { DirectionType } from '@xuanmo/dl-common'
+import { DirectionType } from '../common'
+import { LABEL_WIDTH } from '../constants'
 
 const [name, bem] = createNamespace('cell-group')
 
@@ -10,12 +11,11 @@ export default defineComponent({
   name,
   props: CELL_GROUP_PROPS,
   setup(props, { slots }) {
-    const globalConfig = inject(GLOBAL_CONFIG_CONTEXT_KEY, {})
-    const layout = ref(props.layout || globalConfig?.cellLayout)
+    const layout = ref(props.layout)
 
     provide(CELL_GROUP_CONTEXT_KEY, {
-      cellTitleWidth: props.cellTitleWidth || globalConfig?.labelWidth || LABEL_WIDTH,
-      cellContentAlign: props.cellContentAlign || globalConfig?.contentAlign,
+      cellTitleWidth: props.cellTitleWidth || LABEL_WIDTH,
+      cellContentAlign: props.cellContentAlign,
       layout: layout as Ref<DirectionType>,
       border: props.border
     })

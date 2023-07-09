@@ -1,5 +1,6 @@
 <template>
   <d-form
+    :models="FORM_MODEL"
     :store="formStore"
     :disabled="formDisabled"
     :readonly="formReadonly"
@@ -33,7 +34,9 @@
   </d-cell-group>
   <d-cell-group title="表单数据">
     <d-cell>
-      <div>{{ formStore.getFormData() }}</div>
+      <pre style="white-space: break-spaces">
+        {{ JSON.stringify(formStore.getFormData(), null, 2) }}
+      </pre>
     </d-cell>
   </d-cell-group>
 </template>
@@ -42,7 +45,7 @@
 import { ref } from 'vue'
 import { FormStore } from '../store'
 import FORM_MODEL from './model'
-import { DirectionType } from '../../common'
+import { DirectionType } from '@xuanmo/dl-common'
 import { OnFormChange } from '../types'
 
 const formDisabled = ref(false)
@@ -50,7 +53,7 @@ const formReadonly = ref(false)
 const hideLabel = ref(false)
 const formLayout = ref<DirectionType>('horizontal')
 
-const formStore = new FormStore(FORM_MODEL)
+const formStore = new FormStore()
 
 const formLayoutOptions = [
   { label: 'horizontal', value: 'horizontal' },

@@ -1,4 +1,4 @@
-import { createNamespace } from '@xuanmo/dl-common'
+import { createNamespace } from '../utils'
 
 const [formNamespace, createFormBEM] = createNamespace('form')
 export { formNamespace, createFormBEM }

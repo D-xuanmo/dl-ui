@@ -1,6 +1,16 @@
 @import '../style/prefix';
 
 .#{$prefix}-form {
+  .#{$prefix}-cell {
+    background: none;
+  }
+
+  &--has-bg {
+    .#{$prefix}-cell {
+      background: var(--d-cell-background);
+    }
+  }
+
   &__item {
     .#{$prefix}-cell {
       &::after {

@@ -1,10 +1,10 @@
 import { computed, defineComponent, provide, ref } from 'vue'
-import { createNamespace, addUnit } from '@xuanmo/dl-common'
+import { createNamespace, addUnit } from '../utils'
 import { isEmpty, toBoolean } from '@xuanmo/utils'
 import { CELL_PROPS } from './props'
 import { useGlobalConfig } from './utils'
-import { CELL_GROUP_CONTEXT_KEY } from '../context'
-import { DirectionType } from '@xuanmo/dl-common'
+import { CELL_GROUP_CONTEXT_KEY } from '../cell-group/context'
+import { DirectionType } from '../common'
 import { RightOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('cell')

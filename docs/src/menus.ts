@@ -48,8 +48,16 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
       },
       {
         id: createRandomID(),
+        groupTitle: '表单',
+        children: [{ id: 'form', path: '/comp-common/form', content: 'Form [表单]' }]
+      },
+      {
+        id: createRandomID(),
         groupTitle: '布局',
-        children: [{ id: 'grid', path: '/comp-common/grid', content: 'Grid [网格]' }]
+        children: [
+          { id: 'cell', path: '/comp-common/cell', content: 'Cell [单元格]' },
+          { id: 'grid', path: '/comp-common/grid', content: 'Grid [网格]' }
+        ]
       },
       {
         id: createRandomID(),
@@ -61,11 +69,6 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
   [
     'comp-mobile',
     [
-      {
-        id: createRandomID(),
-        groupTitle: '布局',
-        children: [{ id: 'cell', path: '/comp-mobile/cell', content: 'Cell [单元格]' }]
-      },
       {
         id: createRandomID(),
         groupTitle: '表单',
@@ -84,8 +87,7 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
           { id: 'picker', path: '/comp-mobile/picker', content: 'Picker [选择器]' },
           { id: 'rate', path: '/comp-mobile/rate', content: 'Rate [评分]' },
           { id: 'radio', path: '/comp-mobile/radio', content: 'Radio [单选框]' },
-          { id: 'upload', path: '/comp-mobile/upload', content: 'Upload [文件上传]' },
-          { id: 'form', path: '/comp-mobile/form', content: 'Form [表单]' }
+          { id: 'upload', path: '/comp-mobile/upload', content: 'Upload [文件上传]' }
         ]
       }
     ]

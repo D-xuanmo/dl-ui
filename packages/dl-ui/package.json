@@ -1,6 +1,6 @@
 {
   "name": "@xuanmo/dl-ui",
-  "version": "0.0.2-beta.11",
+  "version": "0.0.2-beta.12",
   "author": {
     "name": "xuanmo",
     "email": "me@xuanmo.xin"
@@ -25,11 +25,10 @@
   "license": "MIT",
   "dependencies": {
     "@xuanmo/datejs": "^1.0.15",
-    "@xuanmo/validator": "^0.0.13",
     "vue": "^3.2.25"
   },
   "peerDependencies": {
-    "@xuanmo/validator": "^0.0.13",
+    "@xuanmo/validator": "^0.0.15",
     "vue": "^3.0.0"
   },
   "keywords": [

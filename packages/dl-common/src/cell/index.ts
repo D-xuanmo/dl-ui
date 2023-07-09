@@ -1,5 +1,5 @@
 import Cell from './cell'
-import { withInstall } from '@xuanmo/dl-common'
+import { withInstall } from '../utils'
 
 export const DCell = withInstall(Cell)
 

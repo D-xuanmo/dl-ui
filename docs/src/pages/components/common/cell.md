@@ -6,7 +6,7 @@
 
 ```typescript
 import { createApp } from 'vue';
-import { DCell, DCellGroup } from '@xuanmo/dl-ui'
+import { DCell, DCellGroup } from '@xuanmo/dl-common'
 
 // 注册组件
 const app = createApp()

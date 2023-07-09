@@ -42,7 +42,7 @@
 <script lang="ts">
 import { computed, defineComponent, SetupContext } from 'vue'
 import { createNamespace, useModelValue } from '@xuanmo/dl-common'
-import Cell from '../cell'
+import { DCell } from '@xuanmo/dl-common'
 import { INPUT_PROPS } from './props'
 import { CloseFilled } from '@xuanmo/dl-icons'
 
@@ -51,7 +51,7 @@ const [name, bem] = createNamespace('input')
 export default defineComponent({
   name,
   components: {
-    Cell,
+    DCell,
     CloseFilled
   },
   props: INPUT_PROPS,

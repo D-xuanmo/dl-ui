@@ -4,30 +4,38 @@ import { Component } from 'vue'
 /**
  * 表单数据模型
  */
-export type FormModel = Array<IFormModelItem>
+export type FormModels = Array<IFormModelItem>
 
-/**
- * 表单单个分组信息
- */
-export type FormGroupItem = {
+export interface IRenderModel<T = any> {
+  // 唯一标识，前端独立使用可与 dataKey 相同，非字段类型没有 dataKey 属性
   id: string
-  title: string
-  hide?: boolean
-}
 
-/**
- * 表单分组信息
- */
-export type FormGroups = Array<FormGroupItem>
-
-export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>> {
-  // 对应的数据键名
-  name: string
+  // 需要展示的标题
   label: string
-  value: TValue
 
   // 组件
   component: Component | (ComponentNames | string)
+
+  // 布局信息
+  layout: T & {
+    // 父级组件，默认为 root
+    parent: string
+
+    // 是否为容器组件，默认为字段组件
+    isContainer?: boolean
+
+    // 关联的子级
+    children?: string[]
+  }
+}
+
+export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>>
+  extends IRenderModel {
+  // 对应的数据键名
+  dataKey: string
+
+  // 当前字段数据
+  value: TValue
 
   // 是否必填，会展示必填星号
   required?: boolean
@@ -46,9 +54,6 @@ export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>> 
 
   // 是否隐藏当前字段，默认不隐藏
   hide?: boolean
-
-  // 对应的分组
-  groupId?: string
 
   // 描述字段
   description?: string
