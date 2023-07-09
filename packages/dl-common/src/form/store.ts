@@ -91,7 +91,7 @@ class FormStore {
    * 获取单个 item 信息
    * @param id
    */
-  public getItem = (id: string) => this.models.get(id)
+  public getItem = (id: string) => this.models.get(this.dataKeyMap.get(id))
 
   /**
    *
@@ -114,9 +114,9 @@ class FormStore {
    */
   public reset = () => {
     this.originalModel.forEach((item) => {
-      const model = this.models.get(item.dataKey)!
+      const model = this.getItem(item.dataKey)!
       Object.assign(model, { value: item.value })
-      this.models.set(item.dataKey, model)
+      this.updateItem(item.dataKey, model)
     })
   }
 
