@@ -21,9 +21,14 @@
   &-enter-active,
   &-leave-active {
     transition: 0.3s ease;
+    transform: scale(1);
   }
 
-  &-enter-from,
+  &-enter-from {
+    transition: 0.3s ease;
+    transform: scale(0.5);
+  }
+
   &-leave-to {
     transition: 0.5s ease;
     transform: translateY(-200%);
