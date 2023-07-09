@@ -1,24 +1,10 @@
 <template>
-  <d-cell
-    :title="`${colon ? `${label}：` : label}`"
-    :title-class="labelClass"
-    :title-width="labelWidth"
-    :title-align="labelAlign"
-    :required="required"
-    :disabled="disabled"
-    :hide-title="hideLabel"
-  >
-    <template v-if="leftIcon" #left-icon>
-      <component :is="leftIcon" v-bind="leftIconProps" />
-    </template>
-    <template v-if="innerValue && clearable" #right-icon>
-      <close-filled color="var(--d-secondary-text-color)" @click="handleClear" />
-    </template>
+  <div :class="inputClassName">
     <input
       :value="innerValue"
       :type="type"
       :name="name"
-      :class="inputClassName"
+      :class="innerClassName"
       :placeholder="placeholder"
       :maxlength="maxlength"
       :disabled="disabled"
@@ -30,19 +16,18 @@
       @focus="handleFocus"
       @click="handleClick"
     />
-
-    <template v-if="suffix" #suffix>
-      <slot name="suffix">
-        {{ suffix }}
-      </slot>
-    </template>
-  </d-cell>
+    <close-filled
+      v-if="innerValue && clearable"
+      color="var(--d-secondary-text-color)"
+      size="small"
+      @click="handleClear"
+    />
+  </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, SetupContext } from 'vue'
 import { createNamespace, useModelValue } from '@xuanmo/dl-common'
-import { DCell } from '@xuanmo/dl-common'
 import { INPUT_PROPS } from './props'
 import { CloseFilled } from '@xuanmo/dl-icons'
 
@@ -51,7 +36,6 @@ const [name, bem] = createNamespace('input')
 export default defineComponent({
   name,
   components: {
-    DCell,
     CloseFilled
   },
   props: INPUT_PROPS,
@@ -64,6 +48,7 @@ export default defineComponent({
         [`${props.inputAlign}`]: props.inputAlign
       })
     )
+    const innerClassName = bem('inner')
 
     const [innerValue, setValue] = useModelValue<string | number | undefined, typeof props>(
       props,
@@ -102,6 +87,7 @@ export default defineComponent({
       bem,
       innerValue,
       inputClassName,
+      innerClassName,
       handleInput,
       handleClear,
       handleBlur,

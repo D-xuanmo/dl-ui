@@ -17,41 +17,6 @@ export const INPUT_PROPS = {
     type: String,
     default: ''
   },
-
-  // label 相关参数
-  label: {
-    type: String,
-    default: ''
-  },
-  labelClass: {
-    type: String,
-    default: ''
-  },
-  labelWidth: {
-    type: String,
-    default: ''
-  },
-  labelAlign: {
-    type: String as PropType<HorizontalAlignType>,
-    default: 'left'
-  },
-  hideLabel: Boolean,
-  leftIcon: {
-    type: [Function, String] as PropType<Component>,
-    default: undefined
-  },
-  leftIconProps: {
-    type: Object,
-    default: () => ({})
-  },
-  colon: Boolean,
-  required: Boolean,
-
-  // 内容相关参数
-  placeholder: {
-    type: String,
-    default: ''
-  },
   disabled: Boolean,
   readonly: Boolean,
   autofocus: Boolean,
@@ -63,16 +28,15 @@ export const INPUT_PROPS = {
     type: Number,
     default: -1
   },
-  suffix: {
-    type: String,
-    default: ''
-  },
   autocomplete: {
     type: String,
     default: ''
   },
   clearable: Boolean,
-
+  placeholder: {
+    type: String,
+    default: ''
+  },
   formatter: {
     type: Function as PropType<(value: string | number | undefined) => string>,
     default: null
