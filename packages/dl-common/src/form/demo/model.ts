@@ -15,7 +15,7 @@ const FORM_MODEL: Partial<IFormModelItem>[] = [
   },
   {
     id: 'gridItem1',
-    dataKey: 'gridItem1',
+    dataKey: 'gridItemKey',
     component: 'DInput',
     label: 'item1',
     value: '',
