@@ -1,17 +1,31 @@
 # Form 表单
 
-- 主要提供数据处理、校验、联动等功能；
-- 表单组件不区分 PC、H5，表单只是作为一个容器，可以容纳 PC、H5、任意第三方组件库的表单组件，非表单组件也可以渲染，具体展示效果通过布局维度进行处理。
+## 整体架构
+
+- 表单不仅仅是表单，页面一切皆可为表单；
+- 表单主要提供数据处理、数据校验、联动等功能；
+- 表单不区分 PC、H5，表单只是作为一个容器，可以容纳 PC、H5、任意第三方组件库的组件，不关心子级的具体渲染，非表单组件也可以渲染，具体展示效果由子级统一处理；
+- 关于布局，组件库已实现[单例分组](/-/dl-ui/comp-common/cell)、[网格系统](/-/dl-ui/comp-common/grid)两个布局类组件，用户也可以自行实现布局组件，做不一样的展示效果，只需要通过父子级关系绑定即可。
+
+![](https://upyun.xuanmo.xin/dl-ui/20230711235904394385.svg)
 
 ## 引入
 
 ```typescript
 import { createApp } from 'vue';
-import { DForm, FormStore } from '@xuanmo/dl-common'
+import { 
+  // 表单组件
+  DForm,
+  // 单列分组容器（可选）
+  DFormCellGroup,
+  // 网格布局系统（可选）
+  DGridLayout, 
+  FormStore
+} from '@xuanmo/dl-common'
 
 // 注册组件
 const app = createApp()
-app.use(DForm)
+app.use(DForm).use(DFormCellGroup).use(DGridLayout)
 ```
 
 ## 代码演示
@@ -474,39 +488,6 @@ fetch(
 </script>
 ```
 
-```vue title=自定义开发表单组件 playground=2dg8da9
-<template>
-  <d-form
-    ref='formRef'
-    :models="formModel"
-    label-width="100"
-  />
-  <pre>{{ JSON.stringify(formData) }}</pre>
-</template>
-
-<script setup>
-import { ref, computed } from 'vue'
-const formRef = ref()
-const formModel = [
-  {
-    id: 'customInput',
-    dataKey: 'customInput',
-    // 组件源码：https://github.com/D-xuanmo/dl-ui/blob/develop/docs/src/components/example/custom-input.vue
-    // 这里也有直接传一个组件对象
-    component: 'CustomInput',
-    label: '自定义组件',
-    value: '',
-    required: true,
-    layout: {
-      parent: 'root'
-    },
-    description: '可以实现很多目前不支持的场景'
-  },
-]
-const formData = computed(() => formRef.value?.store?.getFormData?.())
-</script>
-```
-
 ```vue title=通过布局实现表单多样化（DGridLayout） playground=cl29qs
 <template>
   <d-form
@@ -619,7 +600,7 @@ const formModel = [
     dataKey: 'status',
     component: 'DSwitch',
     label: '状态',
-    value: '',
+    value: false,
     rules: 'required',
     layout: {
       parent: 'grid',
@@ -649,12 +630,51 @@ const reset = () => {
 </style>
 ```
 
+```vue title=自定义开发表单组件 playground=2dg8da9
+<template>
+  <d-form
+    ref='formRef'
+    :models="formModel"
+    label-width="100"
+  />
+  <pre>{{ JSON.stringify(formData) }}</pre>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue'
+const formRef = ref()
+const formModel = [
+  {
+    id: 'customInput',
+    dataKey: 'customInput',
+    // 组件源码：https://github.com/D-xuanmo/dl-ui/blob/develop/docs/src/components/example/custom-input.vue
+    // 这里也有直接传一个组件对象
+    component: 'CustomInput',
+    label: '自定义组件',
+    value: '',
+    required: true,
+    layout: {
+      parent: 'root'
+    },
+    description: '可以实现很多目前不支持的场景'
+  },
+]
+const formData = computed(() => formRef.value?.store?.getFormData?.())
+</script>
+```
+
 ## API
 
 ### 内置布局容器
 
 - `DFormCellGroup` 可以快速实现单列表单分组效果，参考链接：[https://uoo.ink/Form](https://uoo.ink/Form)
 - `DGridLayout` 通过网格系统实现更灵活的布局，参考链接：[https://uoo.ink/cl29qs](https://uoo.ink/cl29qs)
+
+### 开发表单组件
+
+1. 组件需要具备 `Vue3` 标准的 `v-model`，参考链接：[https://cn.vuejs.org/guide/components/v-model.html](https://cn.vuejs.org/guide/components/v-model.html)；
+2. 数据变更传递，通过 `update:modelValue` 事件；
+3. 组件不需要关系标题等标准属性，`FormItem` 会统一处理。
 
 ### Props
 

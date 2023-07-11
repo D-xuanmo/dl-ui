@@ -1,4 +1,4 @@
-import { Component, ExtractPropTypes, PropType } from 'vue'
+import { ExtractPropTypes, PropType } from 'vue'
 import { FieldFormatterTrigger, HorizontalAlignType } from '@xuanmo/dl-common'
 
 export type InputProps = ExtractPropTypes<typeof INPUT_PROPS>
