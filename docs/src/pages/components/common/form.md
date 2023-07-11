@@ -70,7 +70,6 @@ const formModel: IFormModelItem[] = [
     component: 'DFormCellGroup',
     layout: {
       parent: 'root',
-      isContainer: true,
       children: [
         'input',
         'textarea',
@@ -530,7 +529,6 @@ const formModel = [
     id: 'grid',
     component: 'DGridLayout',
     layout: {
-      isContainer: true,
       parent: 'root',
       columns: 6,
       gap: 16,
@@ -774,9 +772,6 @@ export interface IRenderModel<T = any> {
   layout: T & {
     // 父级组件，默认为 root
     parent: string
-
-    // 是否为容器组件，默认为字段组件
-    isContainer?: boolean
 
     // 关联的子级
     children?: string[]

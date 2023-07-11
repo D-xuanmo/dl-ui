@@ -1,8 +1,10 @@
 <template>
   <div :class="wrapperClassName">
     <div v-for="item in data" :key="item.id" :class="itemClassName">
-      <component :is="item.component" v-if="item.layout.isContainer" :model="item" />
-      <form-item v-else-if="item.layout.parent === 'root'" :model="item" />
+      <template v-if="item.layout.parent === 'root'">
+        <form-item v-if="item.dataKey" :model="item" />
+        <component :is="item.component" v-else :model="item" />
+      </template>
     </div>
   </div>
 </template>

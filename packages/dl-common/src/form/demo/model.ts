@@ -7,7 +7,6 @@ const FORM_MODEL: Partial<IFormModelItem>[] = [
     id: 'gridLayout',
     component: 'DGridLayout',
     layout: {
-      isContainer: true,
       parent: 'root',
       columns: 3,
       children: ['gridItem1', 'gridItem2', 'gridItem3']
@@ -55,7 +54,6 @@ const FORM_MODEL: Partial<IFormModelItem>[] = [
     component: 'DFormCellGroup',
     layout: {
       parent: 'root',
-      isContainer: true,
       children: [
         'input',
         'textarea',
@@ -84,7 +82,6 @@ const FORM_MODEL: Partial<IFormModelItem>[] = [
     component: 'DFormCellGroup',
     layout: {
       parent: 'root',
-      isContainer: true,
       children: ['customInput', 'customInput1']
     }
   },

@@ -21,9 +21,6 @@ export interface IRenderModel<T = any> {
     // 父级组件，默认为 root
     parent: string
 
-    // 是否为容器组件，默认为字段组件
-    isContainer?: boolean
-
     // 关联的子级
     children?: string[]
   }
