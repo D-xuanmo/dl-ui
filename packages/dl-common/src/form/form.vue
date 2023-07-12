@@ -1,6 +1,6 @@
 <template>
   <form :class="formClassName" @submit.prevent>
-    <button type="submit" style="display: none" />
+    <button type="submit" class="d-hide" />
     <form-render :data="store.getFormModels()" />
   </form>
 </template>

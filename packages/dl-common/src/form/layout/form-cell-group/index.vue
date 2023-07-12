@@ -1,6 +1,6 @@
 <template>
   <d-cell-group :title="model.label">
-    <form-item v-for="item in children" :key="item.dataKey" :model="item" />
+    <d-form-item v-for="item in children" :key="item.dataKey" :model="item" />
   </d-cell-group>
 </template>
 
@@ -9,7 +9,7 @@ import { createNamespace } from '../../../utils'
 import { computed, defineComponent, inject, PropType } from 'vue'
 import { IFormModelItem, IRenderModel } from '../../types'
 import { DCellGroup } from '../../../cell-group'
-import FormItem from '../../form-item.vue'
+import DFormItem from '../../components/form-item.vue'
 import { FORM_CONTEXT_KEY, IFormContext } from '../../context'
 
 const [name] = createNamespace('form-cell-group')
@@ -18,7 +18,7 @@ export default defineComponent({
   name,
   components: {
     DCellGroup,
-    FormItem
+    DFormItem
   },
   props: {
     model: {

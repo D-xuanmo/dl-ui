@@ -4,51 +4,6 @@ import { IFormModelItem } from '../types'
 
 const FORM_MODEL: Partial<IFormModelItem>[] = [
   {
-    id: 'gridLayout',
-    component: 'DGridLayout',
-    layout: {
-      parent: 'root',
-      columns: 3,
-      children: ['gridItem1', 'gridItem2', 'gridItem3']
-    }
-  },
-  {
-    id: 'gridItem1',
-    dataKey: 'gridItemKey',
-    component: 'DInput',
-    label: 'item1',
-    value: '',
-    required: true,
-    layout: {
-      parent: 'gridLayout'
-    },
-    otherProps: {
-      placeholder: '请输入文字'
-    }
-  },
-  {
-    id: 'gridItem2',
-    dataKey: 'gridItem2',
-    component: 'DRate',
-    label: 'item2',
-    value: 1,
-    required: true,
-    layout: {
-      parent: 'gridLayout'
-    }
-  },
-  {
-    id: 'gridItem3',
-    dataKey: 'gridItem3',
-    component: 'DTextarea',
-    label: 'item3',
-    value: '',
-    required: true,
-    layout: {
-      parent: 'gridLayout'
-    }
-  },
-  {
     id: 'basicGroup',
     label: '内置组件',
     component: 'DFormCellGroup',

@@ -36,11 +36,11 @@
 
 <script lang="ts">
 import { computed, defineComponent, inject, PropType } from 'vue'
-import { createNamespace } from '../utils'
-import DCell from '../cell'
-import { createFormBEM } from './constants'
-import { FORM_CONTEXT_KEY, IFormContext } from './context'
-import { IFormModelItem } from './types'
+import { createNamespace } from '../../utils'
+import DCell from '../../cell'
+import { createFormBEM } from '../constants'
+import { FORM_CONTEXT_KEY, IFormContext } from '../context'
+import { IFormModelItem } from '../types'
 
 const [name] = createNamespace('form-item')
 

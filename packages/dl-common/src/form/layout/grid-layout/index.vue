@@ -13,7 +13,7 @@
       :column="item.layout.column"
       :height="item.layout.height"
     >
-      <form-item :model="item" />
+      <d-form-item :model="item" />
     </d-grid-item>
   </d-grid>
 </template>
@@ -23,8 +23,8 @@ import { computed, defineComponent, inject, PropType } from 'vue'
 import { createNamespace } from '../../../utils'
 import { DGrid, DGridItem, GridProps } from '../../../grid'
 import { IFormModelItem, IRenderModel } from '../../types'
-import FormItem from '../../form-item.vue'
 import { FORM_CONTEXT_KEY, IFormContext } from '../../context'
+import DFormItem from '../../components/form-item.vue'
 
 const [name] = createNamespace('grid-layout')
 
@@ -33,7 +33,7 @@ export default defineComponent({
   components: {
     DGrid,
     DGridItem,
-    FormItem
+    DFormItem
   },
   props: {
     model: {
