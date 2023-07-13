@@ -674,7 +674,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 
 1. 组件需要具备 `Vue3` 标准的 `v-model`，参考链接：[https://cn.vuejs.org/guide/components/v-model.html](https://cn.vuejs.org/guide/components/v-model.html)；
 2. 数据变更传递，通过 `update:modelValue` 事件；
-3. 组件不需要关系标题等标准属性，`FormItem` 会统一处理。
+3. 组件不需要关心标题等标准属性，`FormItem` 会统一处理。
 
 ### Props
 

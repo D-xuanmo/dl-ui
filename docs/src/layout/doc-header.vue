@@ -13,7 +13,7 @@
           :theme="getButtonTheme('/docs')"
           @click="handleClick('/docs')"
         >
-          文档
+          首页
         </d-button>
         <d-button
           size="small"

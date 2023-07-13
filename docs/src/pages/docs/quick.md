@@ -69,7 +69,9 @@ import {
   DPopup,
   DOverlay,
   DSpace,
-  DImage
+  DImage,
+  install,
+  // ... 更多参考公用组件篇
 } from '@xuanmo/dl-common'
 
 // 引入样式
@@ -77,6 +79,6 @@ import '@xuanmo/dl-common/dist/index.css'
 
 const app = createApp()
 
-// 3. 注册组件
-app.use(DButton)
+// 全量注册
+app.use(install)
 ```

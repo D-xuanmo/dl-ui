@@ -6,20 +6,20 @@
 
 <p align="center">一个基于 Vue 3 的低代码组件库</p>
 
-## 安装
+## 全量功能安装
 
-### 通过 npm 安装
-
-```bash
-$ npm i @xuanmo/dl-ui
-```
-
-### 通过 yarn 或者 pnpm 安装
+- `validator` 非必须包，如果不需要表单校验可不用安装
+- `dl-icons` 非必须包，如果需要扩展图标，可自行安装
 
 ```bash
-$ yarn add @xuanmo/dl-ui
+# npm 安装
+$ npm i @xuanmo/{dl-ui,dl-common,dl-icons,validator}
 
-$ pnpm add @xuanmo/dl-ui
+# yarn 安装
+$ yarn add @xuanmo/{dl-ui,dl-common,dl-icons,validator}
+
+# pnpm 安装
+$ pnpm add @xuanmo/{dl-ui,dl-common,dl-icons,validator}
 ```
 
 ## 引入组件

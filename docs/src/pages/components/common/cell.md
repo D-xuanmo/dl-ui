@@ -1,3 +1,7 @@
+---
+columns: 2
+---
+
 # Cell 单元格
 
 用于展示 2 列信息，左侧为标题，右侧为内容的场景。
@@ -15,7 +19,7 @@ app.use(DCell).use(DCellGroup)
 
 ## 代码演示
 
-```vue title=分组 client=Mobile previewType=self playground=MCell secondPath=CellGroup
+```vue title=分组 previewType=self playground=MCell secondPath=CellGroup
 <template>
   <d-cell-group title="CellGroup 分组">
     <d-cell title="我是标题" content="内容" />
@@ -28,7 +32,7 @@ app.use(DCell).use(DCellGroup)
 </template>
 ```
 
-```vue title=单元格 client=Mobile previewType=self playground=MCell
+```vue title=单元格 previewType=self playground=MCell
 <template>
   <d-cell title="我是标题" content="内容" />
   <d-cell title="我是标题" content="内容" description='我是一段描述' />
