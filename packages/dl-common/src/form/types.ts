@@ -4,7 +4,7 @@ import { Component } from 'vue'
 /**
  * 表单数据模型
  */
-export type FormModels = Array<IFormModelItem>
+export type FormModels = Array<IFormModelItem | IRenderModel>
 
 export interface IRenderModel<T = any> {
   // 唯一标识，前端独立使用可与 dataKey 相同，非字段类型没有 dataKey 属性
