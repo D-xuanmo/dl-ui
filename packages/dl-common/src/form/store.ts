@@ -32,8 +32,8 @@ class FormStore {
   init = (options: { models: FormModels }) => {
     const { models } = options
     this.originalModel = deepCopy(models)
-    models.forEach((item) => {
-      this.dataKeyMap.set(item.dataKey, item.id)
+    ;(models as IFormModelItem[]).forEach((item) => {
+      if (item.dataKey) this.dataKeyMap.set(item.dataKey, item.id)
       this.models.set(item.id, {
         ...item,
         // 如果是一个 vue 组件，返回对象本身，不需要进行代理
@@ -113,10 +113,12 @@ class FormStore {
    * 表单重置
    */
   public reset = () => {
-    this.originalModel.forEach((item) => {
-      const model = this.getItem(item.dataKey)!
-      Object.assign(model, { value: item.value })
-      this.updateItem(item.dataKey, model)
+    ;(this.originalModel as IFormModelItem[]).forEach((item) => {
+      if (item.dataKey) {
+        const model = this.getItem(item.dataKey)!
+        Object.assign(model, { value: item.value })
+        this.updateItem(item.dataKey, model)
+      }
     })
   }
 
