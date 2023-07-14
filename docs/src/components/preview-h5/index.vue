@@ -1,7 +1,7 @@
 <template>
   <div :class="bem('wrapper')">
     <header v-if="!isPreview && !isComponentListPage" :class="bem('header')">
-      <LeftOutlined size="large" @click="goBack" />
+      <left-outlined size="large" @click="goBack" />
       <h2 :class="bem('header-title')">{{ title }}</h2>
     </header>
     <div :class="bem('content')"><router-view /></div>

@@ -1,13 +1,19 @@
 /**
+ * @created: 2023/7/14
  * @author: Xuanmo
- * @created: 2022-05-08
- * @description: CSS BEM 工具方法
+ * @desc: 创建命名空间，[namespace, BEM]
  */
 
 import { PREFIX } from '../constants'
 
+let prefix = PREFIX
+
 export type Modifier = string | { [key: string]: unknown }
 export type Modifiers = Modifier | Modifier[]
+
+export const createPrefix = (p: string) => (prefix = p)
+
+export const getComponentName = (name: string) => name?.replace(`${prefix}-`, '')
 
 /**
  * 生成 BEM 修饰符
@@ -46,13 +52,11 @@ export function createBEM(name: string) {
   }
 }
 
-export const getComponentName = (name: string) => name?.replace(`${PREFIX}-`, '')
-
 /**
  * 创建组件命名空间
  * @param name
  */
 export function createNamespace(name: string) {
-  const prefixName = `${PREFIX}-${name}`
+  const prefixName = `${prefix}-${name}`
   return [prefixName, createBEM(prefixName)] as const
 }

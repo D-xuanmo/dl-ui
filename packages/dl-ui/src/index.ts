@@ -1,8 +1,9 @@
 import { App } from 'vue'
-import * as components from './components'
 
 // 引入所有 common 包组件
 import { install as commonInstall, ComponentNames as CommonComponentNames } from '@xuanmo/dl-common'
+
+import * as components from './components'
 
 // 引入公用样式
 import '../../dl-common/src/style/index.scss'

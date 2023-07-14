@@ -30,7 +30,7 @@ const getRoutes = (): RouteRecordRaw[] => {
     },
     {
       path: '/comp-mobile',
-      redirect: '/comp-mobile/cell'
+      redirect: '/comp-mobile/calendar'
     },
     {
       path: '/docs',

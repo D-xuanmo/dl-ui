@@ -1,4 +1,4 @@
-export * from './bem'
+export * from './namespace'
 export * from './props'
 export * from './with-install'
 export * from './style-format'
