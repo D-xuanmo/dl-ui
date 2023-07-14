@@ -676,6 +676,10 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 2. 数据变更传递，通过 `update:modelValue` 事件；
 3. 组件不需要关心标题等标准属性，`FormItem` 会统一处理。
 
+### 更多案例
+
+1. 结合 [TDesign](https://tdesign.tencent.com/vue-next) 实现的表单，参考链接：[https://uoo.ink/DL-TDesign](https://uoo.ink/DL-TDesign)
+
 ### Props
 
 |参数|类型|默认值|说明|必传|
