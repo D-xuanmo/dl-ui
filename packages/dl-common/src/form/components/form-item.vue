@@ -28,6 +28,7 @@
       v-bind="model.otherProps"
       :disabled="formProps.disabled || model.otherProps?.disabled"
       :readonly="formProps.readonly || model.otherProps?.readonly"
+      :store="store"
       @update:model-value="handleChange"
     />
     <div v-if="errorMessage" :class="errorClassName">{{ errorMessage }}</div>
@@ -83,6 +84,7 @@ export default defineComponent({
       showRequiredMark,
       errorMessage,
       formProps,
+      store,
       handleChange
     }
   }
