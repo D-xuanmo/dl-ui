@@ -24,6 +24,9 @@ export interface IRenderModel<T = any> {
     // 关联的子级
     children?: string[]
   }
+
+  // 是否显示
+  display?: boolean
 }
 
 export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>>
