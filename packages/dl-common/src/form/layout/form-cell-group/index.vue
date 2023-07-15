@@ -1,6 +1,8 @@
 <template>
   <d-cell-group :title="model.label">
-    <d-form-item v-for="item in children" :key="item.dataKey" :model="item" />
+    <template v-for="item in children">
+      <d-form-item v-if="item.display" :key="item.dataKey" :model="item" />
+    </template>
   </d-cell-group>
 </template>
 

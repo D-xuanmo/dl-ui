@@ -51,8 +51,6 @@
     }
 
     &-vertical {
-      padding: var(--d-cell-padding) 0 0;
-
       > #{$parent} {
         &__layout {
           > #{$parent} {

@@ -6,15 +6,17 @@
     :row-gap="model.layout.rowGap"
     :column-gap="model.layout.columnGap"
   >
-    <d-grid-item
-      v-for="item in children"
-      :key="item.id"
-      :row="item.layout.row"
-      :column="item.layout.column"
-      :height="item.layout.height"
-    >
-      <d-form-item :model="item" />
-    </d-grid-item>
+    <template v-for="item in children">
+      <d-grid-item
+        v-if="item.display"
+        :key="item.id"
+        :row="item.layout.row"
+        :column="item.layout.column"
+        :height="item.layout.height"
+      >
+        <d-form-item :model="item" />
+      </d-grid-item>
+    </template>
   </d-grid>
 </template>
 

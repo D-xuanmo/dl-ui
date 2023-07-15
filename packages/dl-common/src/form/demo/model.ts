@@ -1,8 +1,8 @@
 import { dCookie } from '@xuanmo/utils'
 import CustomInput from './custom-input.vue'
-import { IFormModelItem } from '../types'
+import { FormModels } from '../types'
 
-const FORM_MODEL: Partial<IFormModelItem>[] = [
+const FORM_MODEL: FormModels = [
   {
     id: 'basicGroup',
     label: '内置组件',
@@ -357,7 +357,7 @@ const FORM_MODEL: Partial<IFormModelItem>[] = [
     layout: {
       parent: 'customGroup'
     },
-    description: '直接传入一个 Vue 组件'
+    description: '直接传入一个 Vue 组件对象'
   }
 ]
 

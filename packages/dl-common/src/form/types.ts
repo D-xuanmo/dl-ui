@@ -52,9 +52,6 @@ export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>>
   // 错误信息，用于覆盖校验失败的提示，不建议使用
   errorMessage?: string
 
-  // 是否隐藏当前字段，默认不隐藏
-  hide?: boolean
-
   // 描述字段
   description?: string
 

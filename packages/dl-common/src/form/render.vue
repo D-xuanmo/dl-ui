@@ -2,7 +2,7 @@
   <div :class="wrapperClassName">
     <template v-for="item in data">
       <div
-        v-if="item.layout.parent === 'root' && item.display !== false"
+        v-if="item.layout.parent === 'root' && item.display"
         :key="item.id"
         :class="itemClassName"
       >

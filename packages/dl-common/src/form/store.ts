@@ -1,6 +1,6 @@
 import { FormModels, IFormModelItem } from './types'
 import { markRaw, reactive, UnwrapNestedRefs } from 'vue'
-import { deepCopy, isObject } from '@xuanmo/utils'
+import { deepCopy, isEmpty, isObject } from '@xuanmo/utils'
 import { validator } from '../validator'
 
 class FormStore {
@@ -36,6 +36,7 @@ class FormStore {
       if (item.dataKey) this.dataKeyMap.set(item.dataKey, item.id)
       this.models.set(item.id, {
         ...item,
+        display: isEmpty(item.display) ? true : item.display,
         // 如果是一个 vue 组件，返回对象本身，不需要进行代理
         component: isObject(item.component) ? markRaw(item.component as object) : item.component
       })
@@ -76,14 +77,14 @@ class FormStore {
 
   /**
    * 更新单个 item 信息
-   * @param key
+   * @param id
    * @param item
    */
-  public updateItem = (key: string, item: Partial<IFormModelItem>) => {
-    const newItem = this.getItem(key)
+  public updateItem = (id: string, item: Partial<IFormModelItem>) => {
+    const newItem = this.getItem(id)
     if (newItem) {
       Object.assign(newItem, item)
-      this.models.set(this.getModelIdByDataKey(key), newItem)
+      this.models.set(this.getModelIdByDataKey(id), newItem)
     }
   }
 
@@ -91,7 +92,7 @@ class FormStore {
    * 获取单个 item 信息
    * @param id
    */
-  public getItem = (id: string) => this.models.get(this.getModelIdByDataKey(id))
+  public getItem = (id: string) => this.models.get(this.dataKeyMap.get(id) || id)
 
   /**
    * 获取单个字段 value
@@ -115,6 +116,17 @@ class FormStore {
       }
       return prev
     }, {})
+  }
+
+  /**
+   * 更新单个显示隐藏
+   * @param id
+   * @param display
+   */
+  public updateSingleDisplay = (id: string, display: boolean) => {
+    this.updateItem(id, {
+      display
+    })
   }
 
   /**

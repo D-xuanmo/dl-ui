@@ -28,6 +28,7 @@
         <d-button @click="getFormData">获取数据</d-button>
         <d-button @click="updateData">更新数据</d-button>
         <d-button @click="hideFirstRow">隐藏第一行</d-button>
+        <d-button @click="showFirstRow">显示第一行</d-button>
         <d-button @click="reset">重置</d-button>
       </d-space>
     </d-cell>
@@ -99,9 +100,12 @@ const updateData = () => {
 }
 
 const hideFirstRow = () => {
-  formStore.updateItem('input', {
-    hide: true
-  })
+  console.log(formStore.getSingleValue('input'))
+  formStore.updateSingleDisplay('input', false)
+}
+
+const showFirstRow = () => {
+  formStore.updateSingleDisplay('input', true)
 }
 
 const reset = () => {
