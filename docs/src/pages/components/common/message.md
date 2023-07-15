@@ -26,7 +26,7 @@ import { message } from '@xuanmo/dl-common'
 </template>
 
 <script setup lang="ts">
-import { message } from '@xuanmo/dl-ui'
+import { message } from '@xuanmo/dl-common'
 const showInfo = () => message.info('消息内容')
 const showSuccess = () => message.success('成功消息内容')
 const showWarning = () => message.warning('警告消息内容')
@@ -48,7 +48,7 @@ const showLoading = () => message.loading('加载中...')
 </template>
 
 <script setup lang='ts'>
-import { message, MessageInstance } from '@xuanmo/dl-ui'
+import { message, MessageInstance } from '@xuanmo/dl-common'
 let messageInstance: MessageInstance | null = null
 const manual = () => {
   messageInstance = message.info('我不会自动关闭', {
@@ -64,7 +64,7 @@ const manual = () => {
 </template>
 
 <script setup lang="ts">
-import { message } from '@xuanmo/dl-ui'
+import { message } from '@xuanmo/dl-common'
 const showInfo = () => message.text('消息内容')
 </script>
 ```
@@ -75,7 +75,7 @@ const showInfo = () => message.text('消息内容')
 </template>
 
 <script setup lang="ts">
-import { message } from '@xuanmo/dl-ui'
+import { message } from '@xuanmo/dl-common'
 const showInfo = () => message.info('消息内容', {
   closeable: true,
   duration: 5000
@@ -92,7 +92,7 @@ const showInfo = () => message.info('消息内容', {
 </template>
 
 <script setup lang="ts">
-import { message } from '@xuanmo/dl-ui'
+import { message } from '@xuanmo/dl-common'
 </script>
 ```
 

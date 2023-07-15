@@ -1,8 +1,12 @@
-import './style/index.scss'
 import { App } from 'vue'
 import { version } from '../package.json'
 
 import * as components from './components'
+
+import './style/index.scss'
+
+// 引入图标样式
+import '@xuanmo/dl-icons/dist/index.css'
 
 const install = function (app: App) {
   Object.values(components).forEach((component: any) => {
