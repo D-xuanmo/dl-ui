@@ -1,5 +1,6 @@
 import './style/index.scss'
 import { App } from 'vue'
+import { version } from '../package.json'
 
 import * as components from './components'
 
@@ -8,6 +9,8 @@ const install = function (app: App) {
     if (/^d-/.test(component?.name)) app.use(component)
   })
 }
+
+export { version }
 
 export type ComponentNames = keyof typeof components extends infer T
   ? T extends `D${infer Name}`
@@ -22,4 +25,4 @@ export * from './common'
 export * from './hooks'
 export * from './validator'
 
-export { install }
+export default { install, version }

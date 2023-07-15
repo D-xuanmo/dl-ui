@@ -1,7 +1,7 @@
 import { App } from 'vue'
 
 // 引入所有 common 包组件
-import { install as commonInstall, ComponentNames as CommonComponentNames } from '@xuanmo/dl-common'
+import DLCommon, { ComponentNames as CommonComponentNames } from '@xuanmo/dl-common'
 
 import * as components from './components'
 
@@ -18,7 +18,7 @@ const install = function (app: App) {
   Object.values(components).forEach((component: any) => {
     if (/^d-/.test(component?.name)) app.use(component)
   })
-  app.use(commonInstall)
+  app.use(DLCommon)
 }
 
 export type ComponentNames = CommonComponentNames & keyof typeof components extends infer T

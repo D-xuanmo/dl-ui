@@ -7,7 +7,7 @@ import GridLayout from './layout/grid-layout/index.vue'
 export const DForm = withInstall(Form)
 export const DFormCellGroup = withInstall(FormCellGroup)
 export const DGridLayout = withInstall(GridLayout)
-export const DFormItem = FormItem
+export const DFormItem = withInstall(FormItem)
 
 export type { FormProps } from './props'
 
