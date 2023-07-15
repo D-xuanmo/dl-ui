@@ -51,6 +51,9 @@
     }
 
     &-vertical {
+      padding-left: 0;
+      padding-right: 0;
+
       > #{$parent} {
         &__layout {
           > #{$parent} {
