@@ -25,7 +25,8 @@ export default defineComponent({
     const store = props.store || new FormStore()
     const formClassName = computed(() =>
       createFormBEM({
-        'has-bg': props.hasBackground
+        'has-bg': props.hasBackground,
+        [props.clientType]: true
       })
     )
 

@@ -13,13 +13,13 @@
 
 ```typescript
 import { createApp } from 'vue';
-import { 
+import {
   // 表单组件
   DForm,
   // 单列分组容器（可选）
   DFormCellGroup,
   // 网格布局系统（可选）
-  DGridLayout, 
+  DGridLayout,
   FormStore
 } from '@xuanmo/dl-common'
 
@@ -35,6 +35,7 @@ app.use(DForm).use(DFormCellGroup).use(DGridLayout)
   <d-form
     ref='formRef'
     :models="formModel"
+    client-type="MOBILE"
     :disabled="formDisabled"
     :readonly="formReadonly"
     :layout="formLayout"
@@ -493,6 +494,7 @@ fetch(
   <d-form
     ref='formRef'
     :models="formModel"
+    client-type="PC"
     layout="vertical"
   />
   <d-space :gap='10' style='margin-top: 16px'>
@@ -623,10 +625,6 @@ const reset = () => {
 ::v-deep(.d-grid-item) {
   border-bottom: 1px solid var(--d-border-color);
 }
-::v-deep(.d-cell) {
-  padding-left: 0;
-  padding-right: 0;
-}
 </style>
 ```
 
@@ -685,6 +683,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 |参数|类型|默认值|说明|必传|
 |---|---|------|---|---|
 |models|`FormModels`|-|表单模型|Y|
+|client-type|`PC \| MOBILE`|`PC`|终端类型|N|
 |store|`FormStore`|-|表单 store，如果需要对 store 进行扩展，可传入处理后的 store，默认通过 `ref` 即可获取到组件内 store 实例|N|
 |disabled|`boolean`|-|表单禁用|N|
 |readonly|`boolean`|-|表单只读|N|

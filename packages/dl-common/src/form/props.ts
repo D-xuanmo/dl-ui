@@ -33,5 +33,9 @@ export const FORM_PROPS = {
   hasBackground: {
     type: Boolean,
     default: true
+  },
+  clientType: {
+    type: String as PropType<'PC' | 'MOBILE'>,
+    default: 'PC'
   }
 }

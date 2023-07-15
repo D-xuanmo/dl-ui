@@ -1,6 +1,7 @@
 <template>
   <d-form
     :models="FORM_MODEL"
+    client-type="MOBILE"
     :store="formStore"
     :disabled="formDisabled"
     :readonly="formReadonly"
