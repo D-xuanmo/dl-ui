@@ -1,6 +1,6 @@
 {
   "name": "@xuanmo/dl-common",
-  "version": "0.0.2-beta.17",
+  "version": "0.0.2-beta.18",
   "author": {
     "name": "xuanmo",
     "email": "me@xuanmo.xin"
@@ -11,7 +11,7 @@
   },
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/src/index.d.ts",
   "scripts": {
     "build": "yarn workspace @xuanmo/dl-icons build && vite build && npm run tsc",
     "tsc": "vue-tsc --emitDeclarationOnly -p tsconfig.json",
