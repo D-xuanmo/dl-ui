@@ -74,6 +74,7 @@ export default defineComponent({
     CheckOutlined,
     DButton
   },
+  inheritAttrs: false,
   props: CASCADER_PROPS,
   emits: ['update:model-value'],
   setup(props, { emit }) {

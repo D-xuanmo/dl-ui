@@ -35,6 +35,7 @@ const [name, bem] = createNamespace('date-time-picker')
 export default defineComponent({
   name,
   components: { DPicker, RightOutlined },
+  inheritAttrs: false,
   props: DATE_PICKER_PROPS,
   emits: ['update:model-value'],
   setup(props, { emit }) {

@@ -52,6 +52,7 @@ const [name, bem] = createNamespace('picker')
 export default defineComponent({
   name,
   components: { RightOutlined, DScrollRadio, DButton, DPopup },
+  inheritAttrs: false,
   props: PICKER_PROPS,
   emits: ['update:visible', 'update:model-value', 'change', 'confirm', 'close'],
   setup(props, context) {

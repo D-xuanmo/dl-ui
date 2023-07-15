@@ -62,6 +62,7 @@ export default defineComponent({
     CalendarHeader,
     CalendarMonth
   },
+  inheritAttrs: false,
   props: CALENDAR_PROPS,
   emits: ['update:model-value', 'select'],
   setup(props, { emit }) {
