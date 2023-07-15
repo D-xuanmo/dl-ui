@@ -7,7 +7,7 @@
 <script lang="ts">
 import { computed, CSSProperties, defineComponent } from 'vue'
 import { addUnit, createNamespace } from '../utils'
-import { GRID_PROPS } from './props'
+import { AlignEnum, GRID_PROPS, JustifyEnum } from './props'
 import { isEmpty } from '@xuanmo/utils'
 
 const [name, bem] = createNamespace('grid')
@@ -19,10 +19,22 @@ export default defineComponent({
     const wrapperClassName = bem()
 
     const gridStyle = computed<CSSProperties>(() => {
+      const justify: Record<JustifyEnum, string> = {
+        left: 'start',
+        center: 'center',
+        right: 'end'
+      }
+      const align: Record<AlignEnum, string> = {
+        top: 'start',
+        middle: 'center',
+        bottom: 'end'
+      }
       const style: CSSProperties = {
         gridTemplateRows: props.rows,
         gridTemplateColumns: `repeat(${props.columns}, 1fr)`,
-        gap: addUnit(props.gap)
+        gap: addUnit(props.gap),
+        justifyItems: justify[props.justify],
+        alignContent: align[props.align]
       }
       if (!isEmpty(props.rowGap)) {
         Object.assign(style, {

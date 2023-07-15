@@ -317,6 +317,8 @@ onUnmounted(() => {
 |gap|`number \| string`|-|子级之间的间隙，`row-gap` 与 `column-gap` 一致时可简写，默认单位：`px`|N|
 |row-gap|`number \| string`|-|行与行之间的间隙，默认单位：`px`|N|
 |column-gap|`number \| string`|-|列与列之间的间隙，默认单位：`px`|N|
+|justify|`'left' \| 'center' \| 'right'`|-|内容水平对齐方式|N|
+|align|`'top' \| 'middle' \| 'bottom'`|-|内容垂直对齐方式|N|
 
 ### Grid Item Props
 

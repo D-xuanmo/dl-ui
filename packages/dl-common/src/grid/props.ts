@@ -1,6 +1,10 @@
-import { ExtractPropTypes } from 'vue'
+import { ExtractPropTypes, PropType } from 'vue'
 
 export type GridProps = ExtractPropTypes<typeof GRID_PROPS>
+
+export type JustifyEnum = 'left' | 'center' | 'right'
+
+export type AlignEnum = 'top' | 'middle' | 'bottom'
 
 export const GRID_PROPS = {
   /**
@@ -41,6 +45,22 @@ export const GRID_PROPS = {
   columnGap: {
     type: [Number, String],
     default: undefined
+  },
+
+  /**
+   * 水平对齐方式
+   */
+  justify: {
+    type: String as PropType<JustifyEnum>,
+    default: 'normal'
+  },
+
+  /**
+   * 垂直对齐方式
+   */
+  align: {
+    type: String as PropType<AlignEnum>,
+    default: 'normal'
   }
 }
 
