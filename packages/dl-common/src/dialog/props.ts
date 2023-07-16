@@ -1,4 +1,4 @@
-import { ExtractPropTypes, PropType } from 'vue'
+import { ExtractPropTypes, PropType, TeleportProps } from 'vue'
 import { MessageThemeEnum } from '../common'
 
 export type DialogProps = ExtractPropTypes<typeof DIALOG_PROPS>
@@ -120,7 +120,15 @@ export const DIALOG_PROPS = {
    * 顶部距离
    */
   top: {
-    type: String,
+    type: [Number, String],
     default: '20%'
+  },
+
+  /**
+   * 指定挂载节点
+   */
+  teleport: {
+    type: [String, Object] as PropType<TeleportProps['to']>,
+    default: 'body'
   }
 }

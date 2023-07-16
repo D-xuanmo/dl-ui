@@ -1,6 +1,8 @@
 <template>
   <d-popup
+    :teleport="teleport"
     :visible="innerValue"
+    :overlay="showOverlay"
     :closable="closable"
     :close-on-overlay-click="closeOnOverlayClick"
     :popup-container-class="containerClass"
@@ -13,18 +15,23 @@
     <template #title>
       <div :class="titleClass">
         <template v-if="showIcon">
-          <check-circle-filled
-            v-if="theme === 'success'"
-            :class="titleIconClass"
-            color="var(--d-success)"
-          />
-          <warning-filled
-            v-if="theme === 'warning'"
-            :class="titleIconClass"
-            color="var(--d-warning)"
-          />
-          <close-filled v-if="theme === 'error'" :class="titleIconClass" color="var(--d-error)" />
-          <tips-filled v-if="theme === 'info'" :class="titleIconClass" color="var(--d-primary)" />
+          <span v-if="$slots['icon']" :class="titleIconClass">
+            <slot name="icon" />
+          </span>
+          <template v-else>
+            <check-circle-filled
+              v-if="theme === 'success'"
+              :class="titleIconClass"
+              color="var(--d-success)"
+            />
+            <warning-filled
+              v-if="theme === 'warning'"
+              :class="titleIconClass"
+              color="var(--d-warning)"
+            />
+            <close-filled v-if="theme === 'error'" :class="titleIconClass" color="var(--d-error)" />
+            <tips-filled v-if="theme === 'info'" :class="titleIconClass" color="var(--d-primary)" />
+          </template>
         </template>
         <span :class="titleTextClass">{{ title }}</span>
       </div>
@@ -52,7 +59,7 @@
 import { addUnit, createNamespace } from '../utils'
 import { computed, CSSProperties, defineComponent, watch } from 'vue'
 import { useModelValue } from '../hooks'
-import { DIALOG_PROPS } from './props'
+import { DIALOG_PROPS, DialogProps } from './props'
 import { SetupContext } from 'vue'
 import DPopup from '../popup'
 import DButton from '../button'
@@ -75,7 +82,11 @@ export default defineComponent({
   props: DIALOG_PROPS,
   emits: ['update:visible', 'confirm', 'cancel'],
   setup(props, context: SetupContext) {
-    const containerClass = bem()
+    const containerClass = computed(() =>
+      bem({
+        'hide-overlay': !props.showOverlay
+      })
+    )
     const wrapperClass = bem('wrapper')
     const headerClass = bem('header')
     const titleClass = bem('title')
@@ -85,7 +96,12 @@ export default defineComponent({
     const footerClass = bem('footer')
     const cancelButtonClass = bem('cancel-button')
     const confirmButtonClass = bem('confirm-button')
-    const [innerValue, setValue] = useModelValue(props, context.emit, 'visible', 'update:visible')
+    const [innerValue, setValue] = useModelValue<boolean, DialogProps, 'visible'>(
+      props,
+      context.emit,
+      'visible',
+      'update:visible'
+    )
 
     const style = computed<CSSProperties>(() => ({
       top: addUnit(props.top),

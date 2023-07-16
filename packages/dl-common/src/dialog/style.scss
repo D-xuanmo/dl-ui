@@ -8,6 +8,15 @@
 }
 
 .#{$prefix}-dialog {
+  $dialogPrefix: &;
+  &--hide-overlay {
+    #{$dialogPrefix} {
+      &__wrapper {
+        border: var(--d-border);
+      }
+    }
+  }
+
   &__wrapper {
     padding: var(--d-dialog-padding);
     border-radius: var(--d-radius-medium);
@@ -27,9 +36,11 @@
 
     &-icon {
       margin-right: var(--d-gap-xs);
+      vertical-align: middle;
     }
 
     &-text {
+      vertical-align: middle;
       font-size: var(--d-dialog-title-font-size);
       font-weight: 500;
     }
