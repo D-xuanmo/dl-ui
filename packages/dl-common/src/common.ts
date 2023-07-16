@@ -14,7 +14,7 @@ export type PlacementEnum = 'top' | 'right' | 'bottom' | 'left' | 'center'
 export type ThemeEnum = 'primary' | 'success' | 'warning' | 'danger' | 'default'
 
 /** 消息类型 */
-export type MessageEnum = 'info' | 'success' | 'warning' | 'error'
+export type MessageThemeEnum = 'info' | 'success' | 'warning' | 'error'
 
 /** 数据基础类型，单选、多选、选择器等组件 */
 export interface IData<T = string | number> {

@@ -10,7 +10,7 @@
     :popup-body-class="bodyClassName"
     :title="title"
     placement="bottom"
-    closeable
+    closable
     round
     @update:visible="handleClosePopup"
   >

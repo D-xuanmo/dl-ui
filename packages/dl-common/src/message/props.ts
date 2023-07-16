@@ -1,5 +1,5 @@
 import { Component, ExtractPropTypes, PropType, TeleportProps } from 'vue'
-import { MessageEnum } from '../common'
+import { MessageThemeEnum } from '../common'
 
 export type MessageProps = ExtractPropTypes<typeof MESSAGE_PROPS>
 
@@ -34,14 +34,14 @@ export const MESSAGE_PROPS = {
    * 消息主题
    */
   theme: {
-    type: String as PropType<MessageEnum>,
+    type: String as PropType<MessageThemeEnum>,
     default: ''
   },
 
   /**
    * 是否显示关闭图标
    */
-  closeable: {
+  closable: {
     type: Boolean,
     default: false
   },

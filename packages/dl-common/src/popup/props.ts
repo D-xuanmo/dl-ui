@@ -20,7 +20,7 @@ export const POPUP_PROPS = {
     default: TRANSITION_DURATION
   },
   round: Boolean,
-  closeable: Boolean,
+  closable: Boolean,
   teleport: {
     type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body'

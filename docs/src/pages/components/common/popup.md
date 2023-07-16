@@ -77,7 +77,7 @@ function handleShowPopup(p: PlacementEnum) {
     title="标题"
     placement="bottom"
     round
-    closeable
+    closable
     :popup-style="{ height: '50%' }"
   >
     我是内容
@@ -112,7 +112,8 @@ function handleShowPopup2() {
 |z-index|`number`|`2000`|CSS z-index|N|
 |duration|`number`|`0.3`|过渡动画时间|N|
 |round|`boolean`|`false`|实现显示未圆角，`placement`不等于`center`有效|N|
-|closeable|`boolean`|`false`|是否显示关闭图标|N|
+|closable|`boolean`|`false`|是否显示关闭图标|N|
+|popup-container-class|`string`|-|弹出层容器 className|N|
 |popup-class|`string`|-|弹出层 className|N|
 |popup-header-class|`string`|-|弹出层头部 className|N|
 |popup-body-class|`string`|-|弹出层主体 className|N|

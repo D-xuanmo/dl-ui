@@ -30,7 +30,7 @@
       title="我是标题"
       placement="bottom"
       round
-      closeable
+      closable
       :popup-style="{ height: '50%' }"
     >
       我是内容

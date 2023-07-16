@@ -32,7 +32,7 @@
               <div v-if="$slots['header-right']" :class="bem('header-right')">
                 <slot name="header-right" />
               </div>
-              <span v-if="closeable" :class="bem('header-closable')" @click="handleClickIcon">
+              <span v-if="closable" :class="bem('header-closable')" @click="handleClickIcon">
                 <slot name="close-icon"><close-outlined /></slot>
               </span>
             </header>
@@ -61,12 +61,12 @@ export default defineComponent({
   emits: ['update:visible', 'open', 'opened', 'close', 'closed', 'click-overlay-icon'],
   setup(props, { emit, slots }) {
     const isCenter = computed(() => props.placement === 'center')
-    const isLoaded = ref(!props.lazyRender)
+    const isLoaded = ref(props.visible ? true : !props.lazyRender)
 
     const showHeader = computed(() => {
       return (
         !isCenter.value &&
-        (props.title || props.closeable || slots['header-left'] || slots['header-right'])
+        (props.title || props.closable || slots['header-left'] || slots['header-right'])
       )
     })
 

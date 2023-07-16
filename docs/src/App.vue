@@ -1,7 +1,7 @@
 <template>
-  <d-grid :columns="12" :class="containerClassName">
+  <d-grid :rows="isDemoRoute ? undefined : '50px'" :columns="12" :class="containerClassName">
     <template v-if="!isDemoRoute">
-      <d-grid-item :column="12">
+      <d-grid-item :column="12" :class="headerClass">
         <doc-header />
       </d-grid-item>
 
@@ -39,6 +39,7 @@ const demoPath = ref('')
 const route = useRoute()
 
 const containerClassName = computed(() => classNames({ mobile: isDemoRoute.value }))
+const headerClass = classNames('header')
 const menuClassName = classNames('menu')
 const contentClassName = classNames('content')
 

@@ -9,7 +9,7 @@ export type MessageInstance = {
   destroy: () => void
 }
 
-type MessageOption = Partial<Pick<MessageProps, 'duration' | 'closeable'>>
+type MessageOption = Partial<Pick<MessageProps, 'duration' | 'closable'>>
 
 let wrapperId: string | null = null
 

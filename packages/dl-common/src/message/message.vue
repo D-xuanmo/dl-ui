@@ -14,7 +14,7 @@
           </template>
           <span :class="textClassName">{{ content }}</span>
           <close-outlined
-            v-if="closeable"
+            v-if="closable"
             :class="closeIconClassName"
             size="small"
             @click="handleClose"
@@ -58,7 +58,7 @@ export default defineComponent({
     const containerClassName = bem()
     const contentClassName = bem('content')
     const textClassName = bem('text')
-    const closeIconClassName = bem('closeable')
+    const closeIconClassName = bem('closable')
 
     const [innerVisible, updateVisible] = useModelValue<
       boolean,

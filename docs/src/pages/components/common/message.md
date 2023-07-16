@@ -77,7 +77,7 @@ const showInfo = () => message.text('消息内容')
 <script setup lang="ts">
 import { message } from '@xuanmo/dl-common'
 const showInfo = () => message.info('消息内容', {
-  closeable: true,
+  closable: true,
   duration: 5000
 })
 </script>
@@ -102,7 +102,7 @@ import { message } from '@xuanmo/dl-common'
 
 |参数|类型|默认值|说明|必传|
 |---|----|-----|---|----|
-|closeable|`boolean`|-|是否显示关闭图标|N|
+|closable|`boolean`|-|是否显示关闭图标|N|
 |duration|`number`|`2000`|消息提示时间，单位毫秒|N|
 
 ### Message Methods
