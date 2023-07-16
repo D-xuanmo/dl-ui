@@ -24,11 +24,11 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: var(--d-popup-header-gap-bottom);
+    text-align: center;
 
     &-title {
       flex: 1;
       font-size: var(--d-popup-title-font-size);
-      text-align: center;
       color: var(--d-title-color);
       @include ellipsis();
     }
@@ -45,6 +45,7 @@
       position: absolute;
       top: 0;
       right: 0;
+      cursor: pointer;
     }
   }
 

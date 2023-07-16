@@ -49,7 +49,7 @@ export const POPUP_PROPS = {
     type: Object as PropType<CSSProperties>,
     default: {}
   },
-  closeOnClickOverlay: {
+  closeOnOverlayClick: {
     type: Boolean,
     default: true
   },

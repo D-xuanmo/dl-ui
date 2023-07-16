@@ -1,0 +1,46 @@
+@import '../style/prefix';
+@import '../style/mixins';
+
+:root {
+  --d-dialog-title-font-size: 18px;
+  --d-dialog-content-gap: var(--d-gap-sm);
+  --d-dialog-padding: var(--d-gap-md);
+}
+
+.#{$prefix}-dialog {
+  &__wrapper {
+    padding: var(--d-dialog-padding);
+    border-radius: var(--d-radius-medium);
+  }
+
+  &__header {
+    margin-bottom: var(--d-dialog-content-gap);
+    text-align: left;
+  }
+
+  &__title {
+    flex: 1;
+    // 32px = icon size 24px + 8px
+    max-width: calc(100% - 32px);
+    color: var(--d-title-color);
+    @include ellipsis();
+
+    &-icon {
+      margin-right: var(--d-gap-xs);
+    }
+
+    &-text {
+      font-size: var(--d-dialog-title-font-size);
+      font-weight: 500;
+    }
+  }
+
+  &__footer {
+    margin-top: var(--d-dialog-content-gap);
+  }
+
+  &__cancel-button {
+    background: var(--d-gray-3);
+    color: var(--d-primary-text-color);
+  }
+}

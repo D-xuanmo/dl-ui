@@ -21,14 +21,16 @@
           v-show="visible"
           :class="[bem('container'), popupContainerClass]"
           :style="style"
-          @click="closeOnClickOverlay && handleClose()"
+          @click="closeOnOverlayClick && handleClose()"
         >
           <div :class="wrapperClassName" :style="popupStyle" @click.stop>
             <header v-if="showHeader" :class="[bem('header'), popupHeaderClass]">
               <div v-if="$slots['header-left']" :class="bem('header-left')">
                 <slot name="header-left" />
               </div>
-              <div :class="bem('header-title')">{{ title }}</div>
+              <slot name="title">
+                <div :class="bem('header-title')">{{ title }}</div>
+              </slot>
               <div v-if="$slots['header-right']" :class="bem('header-right')">
                 <slot name="header-right" />
               </div>
@@ -37,6 +39,7 @@
               </span>
             </header>
             <div :class="[bem('body'), popupBodyClass]"><slot /></div>
+            <slot name="footer" />
           </div>
         </div>
       </template>
@@ -65,8 +68,11 @@ export default defineComponent({
 
     const showHeader = computed(() => {
       return (
-        !isCenter.value &&
-        (props.title || props.closable || slots['header-left'] || slots['header-right'])
+        props.title ||
+        props.closable ||
+        slots['title'] ||
+        slots['header-left'] ||
+        slots['header-right']
       )
     })
 
@@ -96,7 +102,10 @@ export default defineComponent({
     const onAfterEnter = () => emit('opened')
     const onLeave = () => emit('close')
     const onAfterLeave = () => emit('closed')
-    const handleClose = () => emit('update:visible', false)
+    const handleClose = () => {
+      emit('update:visible', false)
+      emit('close')
+    }
     const handleClickIcon = () => {
       handleClose()
       emit('click-overlay-icon')
