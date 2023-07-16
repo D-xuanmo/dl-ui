@@ -1,5 +1,5 @@
 import { Component, ExtractPropTypes, PropType, TeleportProps } from 'vue'
-import { MessageType } from '../common'
+import { MessageEnum } from '../common'
 
 export type MessageProps = ExtractPropTypes<typeof MESSAGE_PROPS>
 
@@ -34,7 +34,7 @@ export const MESSAGE_PROPS = {
    * 消息主题
    */
   theme: {
-    type: String as PropType<MessageType>,
+    type: String as PropType<MessageEnum>,
     default: ''
   },
 

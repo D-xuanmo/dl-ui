@@ -2,19 +2,19 @@
 export type HorizontalAlignType = 'left' | 'center' | 'right'
 
 /** 所有大小类型定义 */
-export type SizeType = 'small' | 'medium' | 'large'
+export type SizeEnum = 'small' | 'medium' | 'large'
 
 /** 格式化触发时机 */
 export type FieldFormatterTrigger = 'onChange' | 'onBlur'
 
 /** 弹框位置类型 */
-export type PlacementType = 'top' | 'right' | 'bottom' | 'left' | 'center'
+export type PlacementEnum = 'top' | 'right' | 'bottom' | 'left' | 'center'
 
 /** 主题类型 */
-export type ThemeType = 'primary' | 'success' | 'warning' | 'danger' | 'default'
+export type ThemeEnum = 'primary' | 'success' | 'warning' | 'danger' | 'default'
 
 /** 消息类型 */
-export type MessageType = 'info' | 'success' | 'warning' | 'error'
+export type MessageEnum = 'info' | 'success' | 'warning' | 'error'
 
 /** 数据基础类型，单选、多选、选择器等组件 */
 export interface IData<T = string | number> {

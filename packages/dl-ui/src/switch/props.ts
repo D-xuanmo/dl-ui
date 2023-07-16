@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { COMMON_PROPS, SizeType } from '@xuanmo/dl-common'
+import { COMMON_PROPS, SizeEnum } from '@xuanmo/dl-common'
 
 export type SwitchProps = ExtractPropTypes<typeof SWITCH_PROPS>
 
@@ -10,7 +10,7 @@ export const SWITCH_PROPS = {
     default: undefined
   },
   size: {
-    type: String as PropType<SizeType>,
+    type: String as PropType<SizeEnum>,
     default: 'medium'
   },
   loading: Boolean,

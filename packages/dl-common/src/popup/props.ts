@@ -1,5 +1,5 @@
 import { CSSProperties, ExtractPropTypes, PropType, TeleportProps } from 'vue'
-import { PlacementType } from '../common'
+import { PlacementEnum } from '../common'
 import { TRANSITION_DURATION } from '../constants'
 
 export type PopupProps = ExtractPropTypes<typeof POPUP_PROPS>
@@ -8,7 +8,7 @@ export const POPUP_PROPS = {
   visible: Boolean,
   title: String,
   placement: {
-    type: String as PropType<PlacementType>,
+    type: String as PropType<PlacementEnum>,
     default: 'center'
   },
   zIndex: {

@@ -40,19 +40,19 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { PlacementType } from '../../common'
+import { PlacementEnum } from '../../common'
 
 const showPopup = ref(false)
 const showPopup2 = ref(false)
 const showPopup3 = ref(false)
 const showPopup4 = ref(false)
-const placement = ref<PlacementType>('top')
+const placement = ref<PlacementEnum>('top')
 
 function handleShowPopup() {
   showPopup.value = true
 }
 
-function handleShowPopup2(p: PlacementType) {
+function handleShowPopup2(p: PlacementEnum) {
   placement.value = p
   showPopup2.value = true
 }

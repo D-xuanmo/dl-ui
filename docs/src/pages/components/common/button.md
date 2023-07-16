@@ -168,8 +168,8 @@ import { StarOutlined } from '@xuanmo/dl-icons'
 
 |参数|类型|默认值|说明|必传|
 |---|----|-----|---|----|
-|theme|`ThemeType`|`default`|主题颜色|N|
-|size|`SizeType`|`medium`|按钮大小|N|
+|theme|`ThemeEnum`|`default`|主题颜色|N|
+|size|`SizeEnum`|`medium`|按钮大小|N|
 |disabled|`boolean`|`false`|是否禁用按钮|N|
 |icon|`string`|-|按钮前图标，与 `Icon` 组件 `name` 一致|N|
 |block|`boolean`|`false`|是否展示为块级元素|N|
@@ -188,7 +188,7 @@ import { StarOutlined } from '@xuanmo/dl-icons'
 ```typescript
 import type { ButtonProps } from '@xuanmo/dl-ui'
 
-type SizeType = 'small' | 'medium' | 'large'
+type SizeEnum = 'small' | 'medium' | 'large'
 ```
 
 ## 主题定制

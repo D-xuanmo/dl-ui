@@ -1,6 +1,6 @@
 {
   "name": "@xuanmo/dl-common",
-  "version": "0.0.2-beta.28",
+  "version": "0.0.2-beta.29",
   "author": {
     "name": "xuanmo",
     "email": "me@xuanmo.xin"
@@ -9,7 +9,7 @@
     "type": "git",
     "url": "https://github.com/D-xuanmo/dl-ui"
   },
-  "main": "./dist/index.umd.js",
+  "main": "./dist/index.9md.js",
   "module": "./dist/index.es.js",
   "types": "./dist/src/index.d.ts",
   "scripts": {

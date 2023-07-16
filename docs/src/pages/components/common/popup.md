@@ -50,12 +50,12 @@ const showPopup = ref(false)
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { PlacementType } from '@xuanmo/dl-ui'
+import { PlacementEnum } from '@xuanmo/dl-ui'
 
 const showPopup = ref(false)
 const placement = ref('top')
 
-function handleShowPopup(p: PlacementType) {
+function handleShowPopup(p: PlacementEnum) {
   placement.value = p
   showPopup.value = true
 }

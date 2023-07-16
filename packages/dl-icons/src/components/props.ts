@@ -2,7 +2,7 @@ import { PropType } from 'vue/dist/vue'
 import { ExtractPropTypes } from 'vue'
 
 /** 所有大小类型定义 */
-type SizeType = 'small' | 'medium' | 'large'
+type SizeEnum = 'small' | 'medium' | 'large'
 
 export type IconProps = Partial<ExtractPropTypes<typeof ICON_PROPS>>
 
@@ -12,7 +12,7 @@ export const ICON_PROPS = {
     default: 'inherit'
   },
   size: {
-    type: String as PropType<SizeType | string>,
+    type: String as PropType<SizeEnum | string>,
     default: 'medium'
   },
   class: {

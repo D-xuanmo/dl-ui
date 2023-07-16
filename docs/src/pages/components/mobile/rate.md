@@ -56,7 +56,7 @@ const value = ref(2)
 |----|---|-----|---|----|
 |model-value/v-model|`number`|-|当前选中评分值|Y|
 |count|`number`|5|图标个数|N|
-|size|`SizeType \| string`|`medium`|图标大小|N|
+|size|`SizeEnum \| string`|`medium`|图标大小|N|
 |gap|`number`|4|图标间距|N|
 |checked-icon|`string`|`star-f`|选中图标，与 `Icon` 组件 `name` 一致|N|
 |unchecked-icon|`string`|`star`|未选中的图标，与 `Icon` 组件 `name` 一致|N|
