@@ -2,4 +2,8 @@
 
 .#{$prefix}-grid {
   display: grid;
+
+  &-item {
+    min-height: 0;
+  }
 }
