@@ -17,16 +17,16 @@
 </template>
 
 <script setup lang="ts">
-import { message, MessageInstance } from '../'
-const showInfo = () => message.info('消息内容')
-const showSuccess = () => message.success('成功消息内容')
-const showWarning = () => message.warning('警告消息内容')
-const showError = () => message.error('消息内容')
-const showLoading = () => message.loading('加载中...')
+import { MessagePlugin, MessageInstance } from '../'
+const showInfo = () => MessagePlugin.info('消息内容')
+const showSuccess = () => MessagePlugin.success('成功消息内容')
+const showWarning = () => MessagePlugin.warning('警告消息内容')
+const showError = () => MessagePlugin.error('消息内容')
+const showLoading = () => MessagePlugin.loading('加载中...')
 
 let messageInstance: MessageInstance | null = null
 const manual = () => {
-  messageInstance = message.info('我不会自动关闭', {
+  messageInstance = MessagePlugin.info('我不会自动关闭', {
     duration: 0
   })
 }

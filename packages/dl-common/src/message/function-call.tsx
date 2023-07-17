@@ -92,7 +92,7 @@ function showMessage(props: string | Partial<Omit<MessageProps, 'visible'>>) {
   return instance
 }
 
-export const message = {
+export const MessagePlugin = {
   text: (content: string, option?: MessageOption) =>
     showMessage({
       content,

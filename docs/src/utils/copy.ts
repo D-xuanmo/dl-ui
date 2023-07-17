@@ -1,12 +1,12 @@
-import { message } from '@xuanmo/dl-ui'
+import { MessagePlugin } from '@xuanmo/dl-ui'
 
 export const copyText = (text: string, successMsg = '复制成功 🎉') => {
   window.navigator.clipboard
     .writeText(text)
     .then(() => {
-      message.success(successMsg)
+      MessagePlugin.success(successMsg)
     })
     .catch(() => {
-      message.error('复制失败')
+      MessagePlugin.error('复制失败')
     })
 }
