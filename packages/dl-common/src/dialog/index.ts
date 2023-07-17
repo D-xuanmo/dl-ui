@@ -1,4 +1,4 @@
-import Dialog from './dialog.tsx'
+import Dialog from './dialog'
 import { withInstall } from '../utils'
 
 export const DDialog = withInstall(Dialog)
