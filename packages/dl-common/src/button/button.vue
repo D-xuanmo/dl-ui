@@ -1,5 +1,9 @@
 <template>
-  <button :class="[wrapperClassName, $attrs.class]" :disabled="loading || disabled">
+  <button
+    :class="[wrapperClassName, $attrs.class]"
+    :disabled="loading || disabled"
+    @click="onClick"
+  >
     <loading-outlined v-if="loading" spin :class="iconLoadingClassName" color="inherit" />
     <slot name="icon" />
     <span :class="innerTextClassName"><slot /></span>
@@ -20,7 +24,8 @@ export default defineComponent({
     LoadingOutlined
   },
   props: BUTTON_PROPS,
-  setup(props) {
+  emits: ['click'],
+  setup(props, context) {
     const wrapperClassName = computed(() =>
       bem({
         [`theme-${props.theme}`]: true,
@@ -34,11 +39,16 @@ export default defineComponent({
         'is-link': props.link
       })
     )
+    const onClick = (event: MouseEvent) => {
+      context.emit('click', event)
+    }
+
     return {
       wrapperClassName,
       innerTextClassName: bem('text'),
       iconLoadingClassName: bem('icon-loading'),
-      customIconClassName: bem('custom-icon')
+      customIconClassName: bem('custom-icon'),
+      onClick
     }
   }
 })

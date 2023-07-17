@@ -65,5 +65,10 @@ export const BUTTON_PROPS = {
   dashed: {
     type: Boolean,
     default: false
+  },
+
+  onClick: {
+    type: Function as PropType<(event: MouseEvent) => void>,
+    default: () => {}
   }
 }

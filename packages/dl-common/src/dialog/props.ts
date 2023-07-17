@@ -1,5 +1,6 @@
-import { ExtractPropTypes, PropType, TeleportProps } from 'vue'
+import { ExtractPropTypes, PropType, TeleportProps, VNode } from 'vue'
 import { MessageThemeEnum } from '../common'
+import { ButtonProps } from '../button'
 
 export type DialogProps = ExtractPropTypes<typeof DIALOG_PROPS>
 
@@ -37,11 +38,43 @@ export const DIALOG_PROPS = {
   },
 
   /**
+   * 关闭按钮 props
+   */
+  cancelButtonProps: {
+    type: Object as PropType<ButtonProps | undefined>,
+    default: () => ({})
+  },
+
+  /**
+   * 隐藏取消按钮
+   */
+  hideCancelButton: {
+    type: Boolean,
+    default: false
+  },
+
+  /**
    * 确认按钮文字
    */
   confirmButtonText: {
     type: String,
     default: '确认'
+  },
+
+  /**
+   * 确认按钮 props
+   */
+  confirmButtonProps: {
+    type: Object as PropType<ButtonProps | undefined>,
+    default: () => ({})
+  },
+
+  /**
+   * 隐藏确认按钮
+   */
+  hideConfirmButton: {
+    type: Boolean,
+    default: false
   },
 
   /**
@@ -130,5 +163,29 @@ export const DIALOG_PROPS = {
   teleport: {
     type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body'
+  },
+
+  /**
+   * 显示底部
+   */
+  footer: {
+    type: [Boolean, Object] as PropType<boolean | VNode[]>,
+    default: true
+  },
+
+  /**
+   * 确认事件
+   */
+  onConfirm: {
+    type: Function as PropType<() => void>,
+    default: undefined
+  },
+
+  /**
+   * 关闭事件
+   */
+  onClose: {
+    type: Function as PropType<() => void>,
+    default: undefined
   }
 }

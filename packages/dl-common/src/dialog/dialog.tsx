@@ -1,0 +1,168 @@
+import { addUnit, createNamespace } from '../utils'
+import { computed, CSSProperties, defineComponent, watch } from 'vue'
+import { useModelValue } from '../hooks'
+import { DIALOG_PROPS, DialogProps } from './props'
+import { SetupContext } from 'vue'
+import DPopup from '../popup'
+import DButton from '../button'
+import DSpace from '../space'
+import { CheckCircleFilled, CloseFilled, TipsFilled, WarningFilled } from '@xuanmo/dl-icons'
+import { MessageThemeEnum } from '../common'
+
+const [name, bem] = createNamespace('dialog')
+
+export default defineComponent({
+  name,
+  components: {
+    DPopup,
+    DButton,
+    DSpace,
+    CheckCircleFilled,
+    CloseFilled,
+    TipsFilled,
+    WarningFilled
+  },
+  props: DIALOG_PROPS,
+  emits: ['update:visible', 'confirm', 'close'],
+  setup(props, context: SetupContext) {
+    const containerClass = computed(() =>
+      bem({
+        'hide-overlay': !props.showOverlay
+      })
+    )
+    const wrapperClass = bem('wrapper')
+    const headerClass = bem('header')
+    const titleClass = bem('title')
+    const titleIconClass = bem('title-icon')
+    const titleTextClass = bem('title-text')
+    const bodyClass = bem('body')
+    const footerClass = bem('footer')
+    const cancelButtonClass = bem('cancel-button')
+    const confirmButtonClass = bem('confirm-button')
+    const [innerValue, setValue] = useModelValue<boolean, DialogProps, 'visible'>(
+      props,
+      context.emit,
+      'visible',
+      'update:visible'
+    )
+
+    const style = computed<CSSProperties>(() => ({
+      top: addUnit(props.top),
+      width: addUnit(props.width),
+      height: addUnit(props.height)
+    }))
+
+    const handleClose = () => {
+      setValue(false)
+      props.onClose?.()
+      context.emit('close')
+    }
+
+    const handleConfirm = () => {
+      setValue(false)
+      props.onConfirm?.()
+      context.emit('confirm')
+    }
+
+    const closeOnEsc = (event: KeyboardEvent) => {
+      if (event.keyCode === 27 || event.code === 'Escape') handleClose()
+    }
+
+    watch(
+      () => innerValue.value,
+      (visible) => {
+        if (props.closeOnEsc) {
+          if (visible) {
+            document.addEventListener('keydown', closeOnEsc)
+          } else {
+            document.removeEventListener('keydown', closeOnEsc)
+          }
+        }
+      }
+    )
+
+    const getIcon = () => {
+      if (!props.showIcon) return null
+      if (context.slots.icon) return context.slots.icon()
+      const icons: Record<MessageThemeEnum, any> = {
+        info: <TipsFilled className={titleIconClass} color="var(--d-primary)" />,
+        success: <CheckCircleFilled className={titleIconClass} color="var(--d-success)" />,
+        warning: <WarningFilled className={titleIconClass} color="var(--d-warning)" />,
+        error: <CloseFilled className={titleIconClass} color="var(--d-error)" />
+      }
+      return icons[props.theme]
+    }
+
+    const renderTitle = () => (
+      <div class={titleClass}>
+        {getIcon()}
+        <span class={titleTextClass}>{props.title}</span>
+      </div>
+    )
+
+    const renderBody = () => {
+      const content = context.slots.default?.() || props.content || null
+      if (props.destroyOnClose) {
+        return innerValue.value ? content : null
+      }
+      return content
+    }
+
+    const renderFooter = () => {
+      if (!props.footer) return null
+      if (Array.isArray(props.footer)) return props.footer
+      const cancel = props.hideCancelButton ? null : (
+        <DButton
+          class={cancelButtonClass}
+          size="small"
+          fill="none"
+          {...props.cancelButtonProps}
+          onClick={handleClose}
+        >
+          {props.cancelButtonText}
+        </DButton>
+      )
+      const confirm = props.hideConfirmButton ? null : (
+        <DButton
+          class={confirmButtonClass}
+          size="small"
+          theme="primary"
+          {...props.confirmButtonProps}
+          onClick={handleConfirm}
+        >
+          {props.confirmButtonText}
+        </DButton>
+      )
+      return (
+        context.slots?.footer?.() || (
+          <DSpace class={footerClass} justify="end" gap={8}>
+            {cancel}
+            {confirm}
+          </DSpace>
+        )
+      )
+    }
+
+    return () => (
+      <DPopup
+        teleport={props.teleport}
+        visible={innerValue.value}
+        overlay={props.showOverlay}
+        closable={props.closable}
+        closeOnOverlayClick={props.closeOnOverlayClick}
+        popupContainerClass={containerClass.value}
+        popupClass={wrapperClass}
+        popupHeaderClass={headerClass}
+        popupBodyClass={bodyClass}
+        popupStyle={style.value}
+        onClose={handleClose}
+      >
+        {{
+          default: renderBody,
+          title: renderTitle,
+          footer: renderFooter
+        }}
+      </DPopup>
+    )
+  }
+})

@@ -7,6 +7,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { DialogPlugin } from '@xuanmo/dl-ui'
+
+console.log(DialogPlugin)
 
 const visible = ref(false)
 </script>

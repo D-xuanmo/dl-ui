@@ -48,8 +48,6 @@ function createInstance(option: MessageOption, id: string) {
             'transition-appear': true,
             'onUpdate:visible': handleClose
           }
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           return <DMessage {...attrs} />
         }
 
@@ -85,7 +83,7 @@ function showMessage(props: string | Partial<Omit<MessageProps, 'visible'>>) {
     }
   }
 
-  const id = `${Date.now()}`
+  const id = `message@${Date.now()}`
   const instance = createInstance(options, id)
   messageInstances.set(id, instance)
   instance.open()

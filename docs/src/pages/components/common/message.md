@@ -105,7 +105,7 @@ import { MessagePlugin } from '@xuanmo/dl-common'
 |closable|`boolean`|-|是否显示关闭图标|N|
 |duration|`number`|`2000`|消息提示时间，单位毫秒|N|
 
-### Message Methods
+### Message Plugin
 
 |名称|类型|说明|
 |---|----|---|

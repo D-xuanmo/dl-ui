@@ -84,10 +84,10 @@ const visible5 = ref(false)
 ```vue title=隐藏遮罩层
 <template>
   <d-button @click="visible = true">显示对话框</d-button>
-  <d-dialog 
-    v-model:visible="visible" 
-    title="标题" 
-    :show-overlay="false" 
+  <d-dialog
+    v-model:visible="visible"
+    title="标题"
+    :show-overlay="false"
     :close-on-overlay-click="false"
   >
     对话框内容
@@ -98,6 +98,41 @@ const visible5 = ref(false)
 import { ref } from 'vue'
 
 const visible = ref(false)
+</script>
+```
+
+```vue title=插件形式调用
+<template>
+  <d-space :gap='8'>
+    <d-button @click="showDialog1">显示对话框</d-button>
+    <d-button @click="showDialog2">显示图标</d-button>
+    <d-button @click="showDialog3">alert</d-button>
+  </d-space>
+</template>
+
+<script setup lang="ts">
+import { DialogPlugin } from '@xuanmo/dl-common'
+
+const showDialog1 = () => {
+  DialogPlugin.confirm({
+    title: '对话框标题',
+    content: '对话框内容'
+  })
+}
+const showDialog2 = () => {
+  DialogPlugin.confirm({
+    title: '对话框标题',
+    content: '对话框内容',
+    showIcon: true
+  })
+}
+const showDialog3 = () => {
+  DialogPlugin.alert({
+    title: '对话框标题',
+    content: '对话框内容',
+    showIcon: true
+  })
+}
 </script>
 ```
 
@@ -117,12 +152,19 @@ const visible = ref(false)
 |show-icon|`boolean`|`false`|是否显示图标|N|
 |theme|`'info' \| 'success' \| 'warning' \| 'error'`|-|显示主题|N|
 |cancel-button-text|`string`|`取消`|取消按钮文字|N|
+|cancel-button-props|`ButtonProps`|-|可复写按钮参数|N|
+|hide-cancel-button|`boolean`|`false`|隐藏取消按钮|N|
 |confirm-button-text|`string`|`确认`|确认按钮文字|N|
+|confirm-button-props|`ButtonProps`|-|可复写按钮参数|N|
+|hide-confirm-button|`boolean`|`false`|隐藏确认按钮|N|
+|footer|`boolean \| VNode[]`|-|类型为 `boolean` 时，控制底部显示隐藏，为 `VNode[]` 时，复写整个底部|N|
 |destroy-on-close|`boolean`|`false`|是否关闭对话框销毁子元素|N|
 |width|`'number' \| 'string'`|`480px`|对话框宽度|N|
 |height|`'number' \| 'string'`|-|对话框高度|N|
 |top|`'number' \| 'string'`|-|对话框距离顶部距离|N|
 |teleport|`TeleportProps['to']`|`body`|选择要插入的 DOM 节点，同 `Teleport` 组件，[参考链接](https://staging-cn.vuejs.org/guide/built-ins/teleport.html#basic-usage) |N|
+|onClose|`() => void`|-|对话框关闭事件|N|
+|onConfirm|`() => void`|-|对话框确认事件|N|
 
 ### Events
 
@@ -140,8 +182,15 @@ const visible = ref(false)
 |icon|自定义图标|
 |footer|自定义底部|
 
+### Dialog Plugin
+
+|名称|类型|说明|
+|---|----|---|
+|confirm|`(options: Omit<DialogProps, 'visible'>) => DialogInstance`|显示对话框|
+|alert|`(options: Omit<DialogProps, 'visible'>) => DialogInstance`|显示确认框|
+
 ### TS 类型
 
 ```typescript
-import { DialogProps } from '@xuanmo/dl-common'
+import { DialogProps, DialogInstance } from '@xuanmo/dl-common'
 ```
