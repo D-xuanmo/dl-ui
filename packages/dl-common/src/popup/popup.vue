@@ -81,7 +81,7 @@ export default defineComponent({
         bem('wrapper', {
           [props.placement]: props.placement,
           round: props.round,
-          notCenter: isCenter
+          notCenter: !isCenter.value
         }),
         props.popupClass
       ].join(' ')
@@ -90,7 +90,9 @@ export default defineComponent({
     const [overlayZIndex] = useZIndex(props)
     const [zIndex] = useZIndex(props)
 
-    const transitionPosition = computed(() => `${name}-${props.placement}`)
+    const transitionPosition = computed(
+      () => `${props.transitionPrefix || name}-${props.placement}`
+    )
 
     const style = computed<CSSProperties>(() => ({
       zIndex: zIndex.value,

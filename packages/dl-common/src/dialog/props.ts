@@ -158,6 +158,16 @@ export const DIALOG_PROPS = {
   },
 
   /**
+   * 对话框位置
+   * 为 top 时，默认距离顶部 20%
+   * 为 center 时，上下左右居中显示
+   */
+  placement: {
+    type: String as PropType<'top' | 'center'>,
+    default: 'top'
+  },
+
+  /**
    * 指定挂载节点
    */
   teleport: {

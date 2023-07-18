@@ -26,6 +26,13 @@ export const POPUP_PROPS = {
     default: 'body'
   },
 
+  /**
+   * 动画前缀
+   */
+  transitionPrefix: {
+    type: String,
+    default: undefined
+  },
   transitionAppear: {
     type: Boolean,
     default: false

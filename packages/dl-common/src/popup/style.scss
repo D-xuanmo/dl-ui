@@ -128,15 +128,6 @@
     }
   }
 
-  &-center-enter-to,
-  &-center-leave-from {
-    #{$prefix} {
-      &__wrapper {
-        transform: translate(-50%, -50%) scale(1);
-      }
-    }
-  }
-
   // 顶部过渡
   &-top-enter-active,
   &-top-leave-active {

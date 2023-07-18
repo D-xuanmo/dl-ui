@@ -8,7 +8,7 @@ export type SizeEnum = 'small' | 'medium' | 'large'
 export type FieldFormatterTrigger = 'onChange' | 'onBlur'
 
 /** 弹框位置类型 */
-export type PlacementEnum = 'top' | 'right' | 'bottom' | 'left' | 'center'
+export type PlacementEnum = 'top' | 'right' | 'bottom' | 'left' | 'center' | 'custom'
 
 /** 主题类型 */
 export type ThemeEnum = 'primary' | 'success' | 'warning' | 'danger' | 'default'

@@ -27,7 +27,8 @@ export default defineComponent({
   setup(props, context: SetupContext) {
     const containerClass = computed(() =>
       bem({
-        'hide-overlay': !props.showOverlay
+        'hide-overlay': !props.showOverlay,
+        [props.placement]: props.placement
       })
     )
     const wrapperClass = bem('wrapper')
@@ -47,7 +48,7 @@ export default defineComponent({
     )
 
     const style = computed<CSSProperties>(() => ({
-      top: addUnit(props.top),
+      top: props.placement === 'center' ? '50%' : addUnit(props.top),
       width: addUnit(props.width),
       height: addUnit(props.height)
     }))
@@ -145,6 +146,8 @@ export default defineComponent({
       <DPopup
         teleport={props.teleport}
         visible={innerValue.value}
+        placement="custom"
+        transitionPrefix={name}
         overlay={props.showOverlay}
         closable={props.closable}
         closeOnOverlayClick={props.closeOnOverlayClick}

@@ -18,8 +18,64 @@
   }
 
   &__wrapper {
+    left: 50%;
     padding: var(--d-dialog-padding);
     border-radius: var(--d-radius-medium);
+    transition: transform 0.3s ease;
+  }
+
+  &--top {
+    #{$dialogPrefix} {
+      &__wrapper {
+        transform: translate(-50%, 0) scale(1);
+      }
+    }
+    &#{$dialogPrefix} {
+      &-custom-enter-active,
+      &-custom-leave-active {
+        #{$dialogPrefix} {
+          &__wrapper {
+            transform: translate(-50%, 0) scale(1);
+          }
+        }
+      }
+
+      &-custom-leave-to,
+      &-custom-enter-from {
+        #{$dialogPrefix} {
+          &__wrapper {
+            transform: translate(-50%, 0) scale(0);
+          }
+        }
+      }
+    }
+  }
+
+  &--center {
+    #{$dialogPrefix} {
+      &__wrapper {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+    &#{$dialogPrefix} {
+      &-custom-enter-active,
+      &-custom-leave-active {
+        #{$dialogPrefix} {
+          &__wrapper {
+            transform: translate(-50%, -50%) scale(1);
+          }
+        }
+      }
+
+      &-custom-leave-to,
+      &-custom-enter-from {
+        #{$dialogPrefix} {
+          &__wrapper {
+            transform: translate(-50%, -50%) scale(0);
+          }
+        }
+      }
+    }
   }
 
   &__header {
