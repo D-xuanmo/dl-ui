@@ -54,13 +54,11 @@ export default defineComponent({
 
     const handleClose = () => {
       setValue(false)
-      props.onClose?.()
       context.emit('close')
     }
 
     const handleConfirm = () => {
       setValue(false)
-      props.onConfirm?.()
       context.emit('confirm')
     }
 
