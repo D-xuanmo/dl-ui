@@ -6,7 +6,7 @@ import * as components from './components'
 import './style/index.scss'
 
 // 引入图标样式
-import '@xuanmo/dl-icons/dist/index.css'
+import '../../dl-icons/src/style.scss'
 
 const install = function (app: App) {
   Object.values(components).forEach((component: any) => {
