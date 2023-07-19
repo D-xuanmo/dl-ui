@@ -30,6 +30,14 @@ export const DIALOG_PROPS = {
   },
 
   /**
+   * 控制按钮 loading
+   */
+  loading: {
+    type: Boolean,
+    default: false
+  },
+
+  /**
    * 关闭按钮文字
    */
   cancelButtonText: {
@@ -41,7 +49,7 @@ export const DIALOG_PROPS = {
    * 关闭按钮 props
    */
   cancelButtonProps: {
-    type: Object as PropType<ButtonProps | undefined>,
+    type: Object as PropType<Partial<ButtonProps> | undefined>,
     default: () => ({})
   },
 
@@ -65,7 +73,7 @@ export const DIALOG_PROPS = {
    * 确认按钮 props
    */
   confirmButtonProps: {
-    type: Object as PropType<ButtonProps | undefined>,
+    type: Object as PropType<Partial<ButtonProps> | undefined>,
     default: () => ({})
   },
 

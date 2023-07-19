@@ -4,7 +4,13 @@
     :disabled="loading || disabled"
     @click="onClick"
   >
-    <loading-outlined v-if="loading" spin :class="iconLoadingClassName" color="inherit" />
+    <loading-outlined
+      v-if="loading"
+      spin
+      :class="iconLoadingClassName"
+      size="small"
+      color="inherit"
+    />
     <slot name="icon" />
     <span :class="innerTextClassName"><slot /></span>
   </button>

@@ -115,6 +115,7 @@ export default defineComponent({
           class={cancelButtonClass}
           size="small"
           fill="none"
+          disabled={props.loading}
           {...props.cancelButtonProps}
           onClick={handleClose}
         >
@@ -126,6 +127,7 @@ export default defineComponent({
           class={confirmButtonClass}
           size="small"
           theme="primary"
+          loading={props.loading}
           {...props.confirmButtonProps}
           onClick={handleConfirm}
         >

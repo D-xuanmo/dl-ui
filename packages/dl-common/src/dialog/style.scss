@@ -3,7 +3,6 @@
 
 :root {
   --d-dialog-title-font-size: 18px;
-  --d-dialog-content-gap: var(--d-gap-sm);
   --d-dialog-padding: var(--d-gap-md);
 }
 
@@ -79,7 +78,7 @@
   }
 
   &__header {
-    margin-bottom: var(--d-dialog-content-gap);
+    margin-bottom: var(--d-dialog-padding);
     text-align: left;
   }
 
@@ -103,7 +102,7 @@
   }
 
   &__footer {
-    margin-top: var(--d-dialog-content-gap);
+    margin-top: var(--d-dialog-padding);
   }
 
   &__cancel-button {
