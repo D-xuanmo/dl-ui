@@ -133,6 +133,7 @@ class FormStore {
    * 表单重置
    */
   public reset = () => {
+    this.clearMessages()
     ;(this.originalModel as IFormModelItem[]).forEach((item) => {
       if (item.dataKey) {
         const model = this.getItem(item.dataKey)!

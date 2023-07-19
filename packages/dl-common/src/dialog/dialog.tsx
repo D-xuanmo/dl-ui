@@ -54,13 +54,13 @@ export default defineComponent({
     }))
 
     const handleClose = () => {
-      setValue(false)
       context.emit('close')
+      setValue(false)
     }
 
     const handleConfirm = () => {
-      setValue(false)
       context.emit('confirm')
+      setValue(false)
     }
 
     const closeOnEsc = (event: KeyboardEvent) => {

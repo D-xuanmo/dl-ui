@@ -116,7 +116,10 @@ import { DialogPlugin } from '@xuanmo/dl-common'
 const showDialog1 = () => {
   DialogPlugin.confirm({
     title: '对话框标题',
-    content: '对话框内容'
+    content: '对话框内容',
+    onConfirm() {
+      debugger
+    }
   })
 }
 const showDialog2 = () => {
