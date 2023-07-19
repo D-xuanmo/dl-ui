@@ -60,7 +60,7 @@ class FormStore {
    * @param value
    */
   public updateSingleValue = (dataKey: string, value: any) => {
-    this.updateItem(this.getModelIdByDataKey(dataKey), { value })
+    this.updateModel(this.getModelIdByDataKey(dataKey), { value })
   }
 
   /**
@@ -80,7 +80,7 @@ class FormStore {
    * @param id
    * @param item
    */
-  public updateItem = (id: string, item: Partial<IFormModelItem>) => {
+  public updateModel = (id: string, item: Partial<IFormModelItem>) => {
     const newItem = this.getItem(id)
     if (newItem) {
       Object.assign(newItem, item)
@@ -124,7 +124,7 @@ class FormStore {
    * @param display
    */
   public updateSingleDisplay = (id: string, display: boolean) => {
-    this.updateItem(id, {
+    this.updateModel(id, {
       display
     })
   }
@@ -137,7 +137,7 @@ class FormStore {
       if (item.dataKey) {
         const model = this.getItem(item.dataKey)!
         Object.assign(model, { value: item.value })
-        this.updateItem(item.dataKey, model)
+        this.updateModel(item.dataKey, model)
       }
     })
   }

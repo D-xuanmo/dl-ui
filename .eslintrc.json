@@ -27,6 +27,13 @@
     "@typescript-eslint/no-non-null-assertion": 0,
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/no-explicit-any": 0,
-    "vue/valid-attribute-name": 0
+    "vue/valid-attribute-name": 0,
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "ignoreRestSiblings": true
+      }
+    ]
   }
 }

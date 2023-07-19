@@ -118,9 +118,7 @@ const formModel: IFormModelItem[] = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      placeholder: '请输入文字'
-    }
+    placeholder: '请输入文字'
   },
   {
     id: 'textarea',
@@ -132,11 +130,9 @@ const formModel: IFormModelItem[] = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      placeholder: '请输入文字',
-      maxlength: 80,
-      showWordLimit: true
-    }
+    placeholder: '请输入文字',
+    maxlength: 80,
+    showWordLimit: true
   },
   {
     id: 'disabledInput',
@@ -147,10 +143,8 @@ const formModel: IFormModelItem[] = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      placeholder: '这个输入框被禁用了',
-      disabled: true
-    }
+    placeholder: '这个输入框被禁用了',
+    disabled: true
   },
   {
     id: 'email',
@@ -162,9 +156,7 @@ const formModel: IFormModelItem[] = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      placeholder: '请输入邮箱'
-    }
+    placeholder: '请输入邮箱'
   },
   {
     id: 'switch',
@@ -195,10 +187,8 @@ const formModel: IFormModelItem[] = [
       parent: 'basicGroup'
     },
     value: '',
-    otherProps: {
-      placeholder: '请选择',
-      minDate: new Date(2023, 0, 1)
-    }
+    placeholder: '请选择',
+    minDate: new Date(2023, 0, 1)
   },
   {
     id: 'calendarMultiple',
@@ -209,11 +199,9 @@ const formModel: IFormModelItem[] = [
       parent: 'basicGroup'
     },
     value: '',
-    otherProps: {
-      placeholder: '请选择',
-      type: 'multiple',
-      minDate: new Date(2023, 0, 1)
-    }
+    placeholder: '请选择',
+    type: 'multiple',
+    minDate: new Date(2023, 0, 1)
   },
   {
     id: 'calendarRange',
@@ -224,11 +212,9 @@ const formModel: IFormModelItem[] = [
       parent: 'basicGroup'
     },
     value: '',
-    otherProps: {
-      placeholder: '请选择',
-      type: 'range',
-      minDate: new Date(2023, 0, 1)
-    }
+    placeholder: '请选择',
+    type: 'range',
+    minDate: new Date(2023, 0, 1)
   },
   {
     id: 'picker',
@@ -239,13 +225,11 @@ const formModel: IFormModelItem[] = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      options: [
-        { label: '选项1', value: '1' },
-        { label: '选项2', value: '2' },
-        { label: '选项3', value: '3' }
-      ]
-    }
+    options: [
+      { label: '选项1', value: '1' },
+      { label: '选项2', value: '2' },
+      { label: '选项3', value: '3' }
+    ]
   },
   {
     id: 'multiPicker',
@@ -256,21 +240,19 @@ const formModel: IFormModelItem[] = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      title: '多列选择器',
-      options: [
-        [
-          { label: '选项1', value: '1' },
-          { label: '选项2', value: '2' },
-          { label: '选项3', value: '3' }
-        ],
-        [
-          { label: '选项1-1', value: '1-1' },
-          { label: '选项2-2', value: '2-2' },
-          { label: '选项3-3', value: '3-3' }
-        ]
+    title: '多列选择器',
+    options: [
+      [
+        { label: '选项1', value: '1' },
+        { label: '选项2', value: '2' },
+        { label: '选项3', value: '3' }
+      ],
+      [
+        { label: '选项1-1', value: '1-1' },
+        { label: '选项2-2', value: '2-2' },
+        { label: '选项3-3', value: '3-3' }
       ]
-    }
+    ]
   },
   {
     id: 'cascaderPicker',
@@ -287,11 +269,9 @@ const formModel: IFormModelItem[] = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      title: '使用选择器模拟级联选择',
-      placeholder: '数据加载中...',
-      options: []
-    }
+    title: '使用选择器模拟级联选择',
+    placeholder: '数据加载中...',
+    options: []
   },
   {
     id: 'cascader',
@@ -308,10 +288,8 @@ const formModel: IFormModelItem[] = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      placeholder: '数据加载中...',
-      options: []
-    }
+    placeholder: '数据加载中...',
+    options: []
   },
   {
     id: 'datePicker',
@@ -332,9 +310,7 @@ const formModel: IFormModelItem[] = [
       parent: 'basicGroup'
     },
     value: '22:58',
-    otherProps: {
-      type: 'time'
-    }
+    type: 'time'
   },
   {
     id: 'radio',
@@ -345,14 +321,12 @@ const formModel: IFormModelItem[] = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      direction: 'horizontal',
-      options: [
-        { label: '选项1', value: '1' },
-        { label: '选项2', value: '2' },
-        { label: '选项3', value: '3' }
-      ]
-    }
+    direction: 'horizontal',
+    options: [
+      { label: '选项1', value: '1' },
+      { label: '选项2', value: '2' },
+      { label: '选项3', value: '3' }
+    ]
   },
   {
     id: 'checkbox',
@@ -363,14 +337,12 @@ const formModel: IFormModelItem[] = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      direction: 'horizontal',
-      options: [
-        { label: '选项1', value: '1' },
-        { label: '选项2', value: '2' },
-        { label: '选项3', value: '3' }
-      ]
-    }
+    direction: 'horizontal',
+    options: [
+      { label: '选项1', value: '1' },
+      { label: '选项2', value: '2' },
+      { label: '选项3', value: '3' }
+    ]
   },
   {
     id: 'upload',
@@ -385,20 +357,18 @@ const formModel: IFormModelItem[] = [
         url: 'https://www.xuanmo.xin/api/file-server/read-file/cf5be5e5-a84b-41e9-b91a-c99646039f15'
       }
     ],
-    otherProps: {
-      action: '/api/file-server/p/upload',
-      data: {
-        type: 'media'
-      },
-      headerParams: {
-        'X-XSRF-TOKEN': dCookie().getItem('csrfToken')
-      },
-      uploadAfter(response) {
-        // 返回上传组件需要的格式
-        return {
-          url: (response as any).data?.[0].url,
-          deletable: true
-        }
+    action: '/api/file-server/p/upload',
+    data: {
+      type: 'media'
+    },
+    headerParams: {
+      'X-XSRF-TOKEN': dCookie().getItem('csrfToken')
+    },
+    uploadAfter(response) {
+      // 返回上传组件需要的格式
+      return {
+        url: (response as any).data?.[0].url,
+        deletable: true
       }
     }
   }
@@ -474,16 +444,10 @@ fetch(
 ).then(async (res) => {
   const options = await res.json()
   formRef.value.store.updateItem('cascaderPicker', {
-    otherProps: {
-      ...formRef.value.store.getItem('cascader')?.otherProps,
-      options
-    }
+    options
   })
   formRef.value.store.updateItem('cascader', {
-    otherProps: {
-      ...formRef.value.store.getItem('cascader')?.otherProps,
-      options
-    }
+    options
   })
 })
 </script>
@@ -529,9 +493,7 @@ const formModel = [
       parent: 'grid',
       column: 6
     },
-    otherProps: {
-      placeholder: '请输入姓名'
-    }
+    placeholder: '请输入姓名'
   },
   {
     id: 'phone',
@@ -544,9 +506,7 @@ const formModel = [
       parent: 'grid',
       column: 3
     },
-    otherProps: {
-      placeholder: '请输入电话'
-    }
+    placeholder: '请输入电话'
   },
   {
     id: 'email',
@@ -559,9 +519,7 @@ const formModel = [
       parent: 'grid',
       column: 3
     },
-    otherProps: {
-      placeholder: '请输入邮箱'
-    }
+    placeholder: '请输入邮箱'
   },
   {
     id: 'birthday',
@@ -574,9 +532,7 @@ const formModel = [
       parent: 'grid',
       column: 2
     },
-    otherProps: {
-      placeholder: '请选择日期'
-    }
+    placeholder: '请选择日期'
   },
   {
     id: 'sex',
@@ -589,13 +545,11 @@ const formModel = [
       parent: 'grid',
       column: 2
     },
-    otherProps: {
-      direction: 'horizontal',
-      options: [
-        { label: '男', value: '1' },
-        { label: '女', value: '2' },
-      ]
-    }
+    direction: 'horizontal',
+    options: [
+      { label: '男', value: '1' },
+      { label: '女', value: '2' },
+    ]
   },
   {
     id: 'status',
@@ -735,7 +689,7 @@ class FormStore {
    * @param key
    * @param item
    */
-  updateItem: (key: string, item: Partial<IFormModelItem>) => void;
+  updateModel: (key: string, item: Partial<IFormModelItem>) => void;
 
   /**
    * 获取单个 item 信息
@@ -773,7 +727,7 @@ class FormStore {
 }
 ```
 
-### TypeScript 类型
+### TS 类型
 
 ```typescript
 /**
@@ -799,10 +753,18 @@ export interface IRenderModel<T = any> {
     // 关联的子级
     children?: string[]
   }
+
+  // 是否显示
+  display?: boolean
+
+  // 禁用
+  disabled?: boolean
+
+  // 只读
+  readonly?: boolean
 }
 
-export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>>
-  extends IRenderModel {
+export interface IFormModelItem<TValue = unknown> extends IRenderModel {
   // 对应的数据键名
   dataKey: string
 
@@ -830,7 +792,7 @@ export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>>
   // 描述字段
   description?: string
 
-  // 组件的其他参数
-  otherProps?: TProps
+  // 外部更多属性
+  [key: string]: any
 }
 ```

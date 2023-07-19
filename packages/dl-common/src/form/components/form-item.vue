@@ -23,11 +23,11 @@
       </span>
     </template>
     <component
+      v-bind="omitSystemProps(model)"
       :is="model.component"
       :model-value="model.value"
-      v-bind="model.otherProps"
-      :disabled="formProps.disabled || model.otherProps?.disabled"
-      :readonly="formProps.readonly || model.otherProps?.readonly"
+      :disabled="formProps.disabled || model.disabled"
+      :readonly="formProps.readonly || model.readonly"
       :store="store"
       @update:model-value="handleChange"
     />
@@ -42,6 +42,7 @@ import DCell from '../../cell'
 import { createFormBEM } from '../constants'
 import { FORM_CONTEXT_KEY, IFormContext } from '../context'
 import { IFormModelItem } from '../types'
+import { omitSystemProps } from '../utils'
 
 const [name] = createNamespace('form-item')
 
@@ -85,7 +86,8 @@ export default defineComponent({
       errorMessage,
       formProps,
       store,
-      handleChange
+      handleChange,
+      omitSystemProps
     }
   }
 })

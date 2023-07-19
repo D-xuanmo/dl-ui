@@ -51,9 +51,7 @@ const FORM_MODEL: FormModels = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      placeholder: '请输入文字'
-    }
+    placeholder: '请输入文字'
   },
   {
     id: 'textarea',
@@ -65,11 +63,9 @@ const FORM_MODEL: FormModels = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      placeholder: '请输入文字',
-      maxlength: 80,
-      showWordLimit: true
-    }
+    placeholder: '请输入文字',
+    maxlength: 80,
+    showWordLimit: true
   },
   {
     id: 'disabledInput',
@@ -80,10 +76,8 @@ const FORM_MODEL: FormModels = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      placeholder: '这个输入框被禁用了',
-      disabled: true
-    }
+    placeholder: '这个输入框被禁用了',
+    disabled: true
   },
   {
     id: 'email',
@@ -95,9 +89,7 @@ const FORM_MODEL: FormModels = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      placeholder: '请输入邮箱'
-    }
+    placeholder: '请输入邮箱'
   },
   {
     id: 'switch',
@@ -128,10 +120,8 @@ const FORM_MODEL: FormModels = [
       parent: 'basicGroup'
     },
     value: '',
-    otherProps: {
-      placeholder: '请选择',
-      minDate: new Date(2023, 0, 1)
-    }
+    placeholder: '请选择',
+    minDate: new Date(2023, 0, 1)
   },
   {
     id: 'calendarMultiple',
@@ -142,11 +132,9 @@ const FORM_MODEL: FormModels = [
       parent: 'basicGroup'
     },
     value: '',
-    otherProps: {
-      placeholder: '请选择',
-      type: 'multiple',
-      minDate: new Date(2023, 0, 1)
-    }
+    placeholder: '请选择',
+    type: 'multiple',
+    minDate: new Date(2023, 0, 1)
   },
   {
     id: 'calendarRange',
@@ -157,11 +145,9 @@ const FORM_MODEL: FormModels = [
       parent: 'basicGroup'
     },
     value: '',
-    otherProps: {
-      placeholder: '请选择',
-      type: 'range',
-      minDate: new Date(2023, 0, 1)
-    }
+    placeholder: '请选择',
+    type: 'range',
+    minDate: new Date(2023, 0, 1)
   },
   {
     id: 'picker',
@@ -172,13 +158,11 @@ const FORM_MODEL: FormModels = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      options: [
-        { label: '选项1', value: '1' },
-        { label: '选项2', value: '2' },
-        { label: '选项3', value: '3' }
-      ]
-    }
+    options: [
+      { label: '选项1', value: '1' },
+      { label: '选项2', value: '2' },
+      { label: '选项3', value: '3' }
+    ]
   },
   {
     id: 'multiPicker',
@@ -189,21 +173,19 @@ const FORM_MODEL: FormModels = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      title: '多列选择器',
-      options: [
-        [
-          { label: '选项1', value: '1' },
-          { label: '选项2', value: '2' },
-          { label: '选项3', value: '3' }
-        ],
-        [
-          { label: '选项1-1', value: '1-1' },
-          { label: '选项2-2', value: '2-2' },
-          { label: '选项3-3', value: '3-3' }
-        ]
+    title: '多列选择器',
+    options: [
+      [
+        { label: '选项1', value: '1' },
+        { label: '选项2', value: '2' },
+        { label: '选项3', value: '3' }
+      ],
+      [
+        { label: '选项1-1', value: '1-1' },
+        { label: '选项2-2', value: '2-2' },
+        { label: '选项3-3', value: '3-3' }
       ]
-    }
+    ]
   },
   {
     id: 'cascaderPicker',
@@ -220,11 +202,9 @@ const FORM_MODEL: FormModels = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      title: '使用选择器模拟级联选择',
-      placeholder: '数据加载中...',
-      options: []
-    }
+    title: '使用选择器模拟级联选择',
+    placeholder: '数据加载中...',
+    options: []
   },
   {
     id: 'cascader',
@@ -241,10 +221,8 @@ const FORM_MODEL: FormModels = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      placeholder: '数据加载中...',
-      options: []
-    }
+    placeholder: '数据加载中...',
+    options: []
   },
   {
     id: 'datePicker',
@@ -265,9 +243,7 @@ const FORM_MODEL: FormModels = [
       parent: 'basicGroup'
     },
     value: '22:58',
-    otherProps: {
-      type: 'time'
-    }
+    type: 'time'
   },
   {
     id: 'radio',
@@ -278,14 +254,12 @@ const FORM_MODEL: FormModels = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      direction: 'horizontal',
-      options: [
-        { label: '选项1', value: '1' },
-        { label: '选项2', value: '2' },
-        { label: '选项3', value: '3' }
-      ]
-    }
+    direction: 'horizontal',
+    options: [
+      { label: '选项1', value: '1' },
+      { label: '选项2', value: '2' },
+      { label: '选项3', value: '3' }
+    ]
   },
   {
     id: 'checkbox',
@@ -296,14 +270,12 @@ const FORM_MODEL: FormModels = [
     layout: {
       parent: 'basicGroup'
     },
-    otherProps: {
-      direction: 'horizontal',
-      options: [
-        { label: '选项1', value: '1' },
-        { label: '选项2', value: '2' },
-        { label: '选项3', value: '3' }
-      ]
-    }
+    direction: 'horizontal',
+    options: [
+      { label: '选项1', value: '1' },
+      { label: '选项2', value: '2' },
+      { label: '选项3', value: '3' }
+    ]
   },
   {
     id: 'upload',
@@ -318,20 +290,18 @@ const FORM_MODEL: FormModels = [
         url: 'https://www.xuanmo.xin/api/file-server/read-file/cf5be5e5-a84b-41e9-b91a-c99646039f15'
       }
     ],
-    otherProps: {
-      action: '/api/file-server/p/upload',
-      data: {
-        type: 'media'
-      },
-      headerParams: {
-        'X-XSRF-TOKEN': dCookie().getItem('csrfToken')
-      },
-      uploadAfter(response: any) {
-        // 返回上传组件需要的格式
-        return {
-          url: (response as any).data?.[0].url,
-          deletable: true
-        }
+    action: '/api/file-server/p/upload',
+    data: {
+      type: 'media'
+    },
+    headerParams: {
+      'X-XSRF-TOKEN': dCookie().getItem('csrfToken')
+    },
+    uploadAfter(response: any) {
+      // 返回上传组件需要的格式
+      return {
+        url: (response as any).data?.[0].url,
+        deletable: true
       }
     }
   },

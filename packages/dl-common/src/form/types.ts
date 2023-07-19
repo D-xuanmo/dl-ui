@@ -27,10 +27,15 @@ export interface IRenderModel<T = any> {
 
   // 是否显示
   display?: boolean
+
+  // 禁用
+  disabled?: boolean
+
+  // 只读
+  readonly?: boolean
 }
 
-export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>>
-  extends IRenderModel {
+export interface IFormModelItem<TValue = unknown> extends IRenderModel {
   // 对应的数据键名
   dataKey: string
 
@@ -55,8 +60,8 @@ export interface IFormModelItem<TValue = unknown, TProps = Record<string, any>>
   // 描述字段
   description?: string
 
-  // 组件的其他参数
-  otherProps?: TProps
+  // 外部更多属性
+  [key: string]: any
 }
 
 export type OnFormChange = (value: Record<string, unknown>, model: IFormModelItem) => void
