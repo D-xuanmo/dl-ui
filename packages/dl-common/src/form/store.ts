@@ -187,14 +187,14 @@ class FormStore {
   /**
    * 清空所有校验信息
    */
-  private clearMessages = () => {
+  public clearMessages = () => {
     Object.keys(this.errorMessages).forEach((key) => (this.errorMessages[key] = ''))
   }
 
   /**
    * 转换表单模型
    */
-  private convertModel = () => Array.from(this.models.values())
+  public convertModel = () => Array.from(this.models.values())
 }
 
 export { FormStore }
