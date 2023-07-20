@@ -5,6 +5,7 @@ import { getCurrentInstance, reactive, ref } from 'vue'
 export type DialogInstance = {
   open: () => void
   close: () => void
+  update: (options: Partial<Omit<DialogProps, 'visible'>>) => void
 }
 
 const dialogInstances: Map<string, DialogInstance> = new Map()
