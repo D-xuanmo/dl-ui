@@ -139,6 +139,41 @@ const showDialog3 = () => {
 </script>
 ```
 
+```vue title=异步场景
+<template>
+  <d-space :gap='8'>
+    <d-button @click="showDialog">显示对话框</d-button>
+  </d-space>
+</template>
+
+<script setup lang="ts">
+import { DialogPlugin, MessagePlugin } from '@xuanmo/dl-common'
+
+const showDialog = () => {
+  const dialog = DialogPlugin.confirm({
+    content: '可以实现一些异步场景',
+    onConfirm() {
+      dialog.update({ loading: true })
+      return new Promise((resolve) => {
+        let count = 3
+        dialog.update({ content: `倒计时${count}秒` })
+        const timer = setInterval(() => {
+          count--
+          dialog.update({ content: `倒计时${count}秒` })
+        }, 1000)
+        setTimeout(() => {
+          dialog.update({ loading: false })
+          MessagePlugin.success('完成')
+          clearInterval(timer)
+          resolve(true)
+        }, 3000)
+      })
+    }
+  })
+}
+</script>
+```
+
 ## API
 
 ### Dialog Props
@@ -169,7 +204,7 @@ const showDialog3 = () => {
 |placement|`'top' \| 'center'`|`top`|对话框位置，top 时，距离顶部默认 20%；center 时，垂直居中|N|
 |teleport|`TeleportProps['to']`|`body`|选择要插入的 DOM 节点，同 `Teleport` 组件，[参考链接](https://staging-cn.vuejs.org/guide/built-ins/teleport.html#basic-usage) |N|
 |onClose|`() => void`|-|对话框关闭事件|N|
-|onConfirm|`() => void`|-|对话框确认事件|N|
+|onConfirm|`() => void \| Promise<boolean>`|-|对话框确认事件，返回 `Promise<false>` 则不会关闭弹框|N|
 
 ### Events
 

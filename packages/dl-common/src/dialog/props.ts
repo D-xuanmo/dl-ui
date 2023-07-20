@@ -195,7 +195,7 @@ export const DIALOG_PROPS = {
    * 确认事件
    */
   onConfirm: {
-    type: Function as PropType<() => void>,
+    type: Function as PropType<() => void | Promise<boolean>>,
     default: undefined
   },
 

@@ -1,6 +1,6 @@
 import { DDialog, DialogProps } from './index'
 import { mountComponent } from '../utils'
-import { getCurrentInstance, ref } from 'vue'
+import { getCurrentInstance, reactive, ref } from 'vue'
 
 export type DialogInstance = {
   open: () => void
@@ -9,10 +9,11 @@ export type DialogInstance = {
 
 const dialogInstances: Map<string, DialogInstance> = new Map()
 
-function createInstance(options: Omit<DialogProps, 'visible'>) {
+function createInstance(options: Partial<Omit<DialogProps, 'visible'>>) {
   const { instance, unmount } = mountComponent({
     setup() {
       const visible = ref(false)
+      const dialogProps = reactive(options)
 
       const open = () => {
         visible.value = true
@@ -23,9 +24,13 @@ function createInstance(options: Omit<DialogProps, 'visible'>) {
         unmount()
       }
 
+      const update = (options: Omit<DialogProps, 'visible'>) => {
+        Object.assign(dialogProps, options)
+      }
+
       ;(getCurrentInstance() as any).render = () => {
         const props = {
-          ...options,
+          ...dialogProps,
           visible: visible.value,
           'onUpdate:visible': close
         }
@@ -34,7 +39,8 @@ function createInstance(options: Omit<DialogProps, 'visible'>) {
 
       return {
         open,
-        close
+        close,
+        update
       }
     }
   })
@@ -42,7 +48,7 @@ function createInstance(options: Omit<DialogProps, 'visible'>) {
   return instance as unknown as DialogInstance
 }
 
-function showDialog(props: Omit<DialogProps, 'visible'>) {
+function showDialog(props: Partial<Omit<DialogProps, 'visible'>>) {
   const id = `dialog@${Date.now()}`
   const dialogInstance = createInstance(props)
   dialogInstance.open()
@@ -51,7 +57,7 @@ function showDialog(props: Omit<DialogProps, 'visible'>) {
 }
 
 export const DialogPlugin = {
-  confirm: (options: Omit<DialogProps, 'visible'>) => showDialog(options),
+  confirm: (options: Partial<Omit<DialogProps, 'visible'>>) => showDialog(options),
   alert: (options: Omit<DialogProps, 'visible'>) =>
     showDialog({
       ...options,

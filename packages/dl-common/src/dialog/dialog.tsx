@@ -59,8 +59,16 @@ export default defineComponent({
     }
 
     const handleConfirm = () => {
-      context.emit('confirm')
-      setValue(false)
+      const { onConfirm } = props
+      if (onConfirm) {
+        Promise.resolve(onConfirm()).then((result) => {
+          if (result === false) return
+          setValue(false)
+        })
+      } else {
+        context.emit('confirm')
+        setValue(false)
+      }
     }
 
     const closeOnEsc = (event: KeyboardEvent) => {
