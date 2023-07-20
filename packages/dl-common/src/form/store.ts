@@ -148,8 +148,12 @@ class FormStore {
    */
   public validate = () =>
     new Promise((resolve, reject) => {
+      const models = this.convertModel().filter((item) => {
+        // 隐藏字段、禁用字段、只读字段不参与校验
+        return item.display !== false && item.disabled !== true && item.readonly !== true
+      })
       validator
-        .validate(this.convertModel())
+        .validate(models)
         .then(() => {
           this.clearMessages()
           resolve(true)

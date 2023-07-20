@@ -47,6 +47,7 @@ const FORM_MODEL: FormModels = [
     label: '输入框',
     value: '',
     description: '1、这是一段很长很长的备注。\n2、我这一段备注不仅长而且有两行',
+    disabled: true,
     required: true,
     layout: {
       parent: 'basicGroup'

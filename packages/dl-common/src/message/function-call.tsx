@@ -20,45 +20,42 @@ const defaultProps: Partial<MessageProps> = {
 }
 
 function createInstance(option: MessageOption, id: string) {
-  const { instance, unmount } = mountComponent(
-    {
-      setup() {
-        const state = reactive({
-          show: false
-        })
+  const { instance, unmount } = mountComponent({
+    setup() {
+      const state = reactive({
+        show: false
+      })
 
-        const toggleVisible = (visible: boolean) => (state.show = visible)
+      const toggleVisible = (visible: boolean) => (state.show = visible)
 
-        const handleOpen = () => toggleVisible(true)
+      const handleOpen = () => toggleVisible(true)
 
-        const handleClose = () => {
-          toggleVisible(false)
-          setTimeout(() => {
-            messageInstances.delete(id)
-            unmount()
-          }, defaultProps.duration ?? option.duration)
-        }
-
-        ;(getCurrentInstance() as any).render = () => {
-          const attrs = {
-            ...defaultProps,
-            ...option,
-            teleport: `#${wrapperId}`,
-            visible: state.show,
-            'transition-appear': true,
-            'onUpdate:visible': handleClose
-          }
-          return <DMessage {...attrs} />
-        }
-
-        return {
-          open: handleOpen,
-          destroy: handleClose
-        }
+      const handleClose = () => {
+        toggleVisible(false)
+        setTimeout(() => {
+          messageInstances.delete(id)
+          unmount()
+        }, defaultProps.duration ?? option.duration)
       }
-    },
-    false
-  )
+
+      ;(getCurrentInstance() as any).render = () => {
+        const attrs = {
+          ...defaultProps,
+          ...option,
+          teleport: `#${wrapperId}`,
+          visible: state.show,
+          'transition-appear': true,
+          'onUpdate:visible': handleClose
+        }
+        return <DMessage {...attrs} />
+      }
+
+      return {
+        open: handleOpen,
+        destroy: handleClose
+      }
+    }
+  })
 
   return instance as unknown as MessageInstance
 }
