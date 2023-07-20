@@ -22,18 +22,14 @@ $ pnpm add @xuanmo/{dl-ui,dl-common,dl-icons,validator}
 import { createApp } from 'vue'
 
 // 1. 引入组件
-import DLUI, { validator } from '@xuanmo/dl-ui'
+import DLUI from '@xuanmo/dl-ui'
 
-// 2. 引入校验国际化并注册
-import zhCN from '@xuanmo/validator/locale/zh-CN.json'
-validator.localize(zhCN)
-
-// 3. 引入组件样式
+// 2. 引入组件样式
 import '@xuanmo/dl-ui/dist/index.css'
 
 const app = createApp()
 
-// 4. 注册组件
+// 3. 注册组件
 app.use(DLUI)
 ```
 
@@ -60,19 +56,21 @@ app.use(DButton)
 - PC、H5 通用的组件，可独立使用，不依赖 UI 包，引入如下：
 
 ```typescript
+// 全量引入
+import DLCommon from '@xuanmo/dl-common'
+
 // 按需引入组件
-import {
-  DGrid,
-  DGridItem,
-  DMessage,
-  DButton,
-  DPopup,
-  DOverlay,
-  DSpace,
-  DImage,
-  install,
-  // ... 更多参考公用组件篇
-} from '@xuanmo/dl-common'
+// import {
+//   DGrid,
+//   DGridItem,
+//   DMessage,
+//   DButton,
+//   DPopup,
+//   DOverlay,
+//   DSpace,
+//   DImage,
+//   // ... 更多参考公用组件篇
+// } from '@xuanmo/dl-common'
 
 // 引入样式
 import '@xuanmo/dl-common/dist/index.css'
@@ -80,5 +78,5 @@ import '@xuanmo/dl-common/dist/index.css'
 const app = createApp()
 
 // 全量注册
-app.use(install)
+app.use(DLCommon)
 ```

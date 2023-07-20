@@ -28,18 +28,14 @@ $ pnpm add @xuanmo/{dl-ui,dl-common,dl-icons,validator}
 import { createApp } from 'vue'
 
 // 1. 引入组件
-import DLUI, { validator } from '@xuanmo/dl-ui'
-
-// 2. 引入校验国际化并注册
-import zhCN from '@xuanmo/validator/locale/zh-CN.json'
-validator.localize(zhCN)
+import DLUI from '@xuanmo/dl-ui'
 
 // 3. 引入组件样式
 import '@xuanmo/dl-ui/dist/index.css'
 
 const app = createApp()
 
-// 4. 注册组件
+// 3. 注册组件
 app.use(DLUI)
 ```
 
