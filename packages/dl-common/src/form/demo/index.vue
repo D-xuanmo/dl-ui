@@ -102,11 +102,11 @@ const updateData = () => {
 
 const hideFirstRow = () => {
   console.log(formStore.getSingleValue('input'))
-  formStore.updateSingleDisplay('input', false)
+  formStore.setDisplay('input', false)
 }
 
 const showFirstRow = () => {
-  formStore.updateSingleDisplay('input', true)
+  formStore.setDisplay('input', true)
 }
 
 const reset = () => {

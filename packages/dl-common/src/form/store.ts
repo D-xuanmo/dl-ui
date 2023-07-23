@@ -119,13 +119,46 @@ class FormStore {
   }
 
   /**
-   * 更新单个显示隐藏
+   * 设置显示隐藏
    * @param id
    * @param display
    */
-  public updateSingleDisplay = (id: string, display: boolean) => {
+  public setDisplay = (id: string, display: boolean) => {
     this.updateModel(id, {
       display
+    })
+  }
+
+  /**
+   * 设置只读
+   * @param id
+   * @param readonly
+   */
+  public setReadonly = (id: string, readonly: boolean) => {
+    this.updateModel(id, {
+      readonly
+    })
+  }
+
+  /**
+   * 设置禁用
+   * @param id
+   * @param disabled
+   */
+  public setDisabled = (id: string, disabled: boolean) => {
+    this.updateModel(id, {
+      disabled
+    })
+  }
+
+  /**
+   * 设置禁用
+   * @param id
+   * @param required
+   */
+  public setRequired = (id: string, required: boolean) => {
+    this.updateModel(id, {
+      required
     })
   }
 
@@ -133,7 +166,6 @@ class FormStore {
    * 表单重置
    */
   public reset = () => {
-    this.clearMessages()
     ;(this.originalModel as IFormModelItem[]).forEach((item) => {
       if (item.dataKey) {
         const model = this.getItem(item.dataKey)!
@@ -141,6 +173,7 @@ class FormStore {
         this.updateModel(item.dataKey, model)
       }
     })
+    this.clearMessages()
   }
 
   /**
@@ -167,27 +200,27 @@ class FormStore {
 
   /**
    * 单个校验
-   * @param name 字段名
+   * @param dataKey 数据键名
    */
-  public singleValidate = (name: string) => {
-    const item = this.getItem(name)
+  public singleValidate = (dataKey: string) => {
+    const item = this.getItem(dataKey)
     if (item) {
       validator
         .validate([item])
         .then(() => {
-          this.errorMessages[name] = ''
+          this.errorMessages[dataKey] = ''
         })
         .catch((error) => {
-          this.errorMessages[name] = error[name]
+          this.errorMessages[dataKey] = error[dataKey]
         })
     }
   }
 
   /**
    * 获取单个字段的错误信息
-   * @param key
+   * @param dataKey 数据键名
    */
-  public getSingleMessage = (key: string) => this.errorMessages[key]
+  public getSingleMessage = (dataKey: string) => this.errorMessages[dataKey]
 
   /**
    * 清空所有校验信息
