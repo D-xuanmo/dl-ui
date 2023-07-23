@@ -2,7 +2,6 @@
 @import '../style/mixins';
 
 :root {
-  --d-popup-header-gap-bottom: var(--d-gap-sm);
   --d-popup-title-font-size: var(--d-font-size-md);
   --d-popup-padding: var(--d-gap-sm);
   --d-popup-radius: var(--d-radius-large);
@@ -23,7 +22,7 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    margin-bottom: var(--d-popup-header-gap-bottom);
+    padding: var(--d-popup-padding) var(--d-popup-padding) 0;
     text-align: center;
 
     &-title {
@@ -43,15 +42,14 @@
 
     &-closable {
       position: absolute;
-      top: 0;
-      right: 0;
+      top: var(--d-popup-padding);
+      right: var(--d-popup-padding);
       cursor: pointer;
     }
   }
 
   &__wrapper {
     position: absolute;
-    padding: var(--d-popup-padding);
     background-color: var(--d-white-color);
 
     &--round {
@@ -105,6 +103,7 @@
 
   &__body {
     flex: 1;
+    padding: var(--d-popup-padding);
     overflow: auto;
   }
 
