@@ -121,8 +121,7 @@ export default defineComponent({
       const cancel = props.hideCancelButton ? null : (
         <DButton
           class={cancelButtonClass}
-          size="small"
-          fill="none"
+          fill="outline"
           disabled={props.loading}
           {...props.cancelButtonProps}
           onClick={handleClose}
@@ -133,7 +132,6 @@ export default defineComponent({
       const confirm = props.hideConfirmButton ? null : (
         <DButton
           class={confirmButtonClass}
-          size="small"
           theme="primary"
           loading={props.loading}
           {...props.confirmButtonProps}

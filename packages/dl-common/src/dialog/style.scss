@@ -18,6 +18,8 @@
 
   &__wrapper {
     left: 50%;
+    // 防止内容溢出屏幕
+    max-width: 100%;
     padding: var(--d-dialog-padding);
     border-radius: var(--d-radius-medium);
     transition: transform 0.3s ease;
