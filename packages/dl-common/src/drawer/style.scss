@@ -1,0 +1,32 @@
+@import '../style/prefix';
+
+.#{$prefix}-drawer {
+  &__header {
+    padding: var(--d-gap-sm) var(--d-gap-md);
+    border-bottom: var(--d-border);
+    text-align: left;
+  }
+
+  &__title {
+    flex: 1;
+    // 32px = icon size 24px + 8px
+    max-width: calc(100% - 32px);
+    color: var(--d-title-color);
+    @include ellipsis();
+
+    &-text {
+      vertical-align: middle;
+      font-size: var(--d-dialog-title-font-size);
+      font-weight: 500;
+    }
+  }
+
+  &__body {
+    padding: var(--d-gap-md);
+  }
+
+  &__footer {
+    padding: var(--d-gap-sm) var(--d-gap-md);
+    border-top: var(--d-border);
+  }
+}

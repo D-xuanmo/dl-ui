@@ -13,7 +13,6 @@
       :appear="transitionAppear"
       @enter="onEnter"
       @after-enter="onAfterEnter"
-      @leave="onLeave"
       @after-leave="onAfterLeave"
     >
       <template v-if="isLoaded">
@@ -102,7 +101,6 @@ export default defineComponent({
 
     const onEnter = () => emit('open')
     const onAfterEnter = () => emit('opened')
-    const onLeave = () => emit('close')
     const onAfterLeave = () => emit('closed')
     const handleClose = () => {
       emit('update:visible', false)
@@ -134,7 +132,6 @@ export default defineComponent({
       handleClose,
       onEnter,
       onAfterEnter,
-      onLeave,
       onAfterLeave,
       handleClickIcon
     }
