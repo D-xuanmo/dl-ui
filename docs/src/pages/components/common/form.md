@@ -426,7 +426,7 @@ const updateData = () => {
 }
 
 const hideFirstRow = () => {
-  formRef.value.store.updateItem('input', {
+  formRef.value.store.updateModel('input', {
     hide: true
   })
 }
@@ -443,10 +443,10 @@ fetch(
   'https://my.xuanmo.xin:3202/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727'
 ).then(async (res) => {
   const options = await res.json()
-  formRef.value.store.updateItem('cascaderPicker', {
+  formRef.value.store.updateModel('cascaderPicker', {
     options
   })
-  formRef.value.store.updateItem('cascader', {
+  formRef.value.store.updateModel('cascader', {
     options
   })
 })
