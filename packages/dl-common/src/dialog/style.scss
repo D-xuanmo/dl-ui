@@ -20,7 +20,7 @@
     left: 50%;
     // 防止内容溢出屏幕
     max-width: 100%;
-    padding: var(--d-dialog-padding);
+    padding: 0;
     border-radius: var(--d-radius-medium);
     transition: transform 0.3s ease;
   }
@@ -80,8 +80,17 @@
   }
 
   &__header {
-    margin-bottom: var(--d-dialog-padding);
+    margin-bottom: 0;
+    padding: var(--d-dialog-padding) var(--d-dialog-padding) 0;
     text-align: left;
+  }
+
+  &__body {
+    padding: var(--d-dialog-padding);
+  }
+
+  &__footer {
+    padding: 0 var(--d-dialog-padding) var(--d-dialog-padding);
   }
 
   &__title {
@@ -103,8 +112,11 @@
     }
   }
 
-  &__footer {
-    margin-top: var(--d-dialog-padding);
+  .#{$prefix} {
+    &-popup__header-closable {
+      top: var(--d-dialog-padding);
+      right: var(--d-dialog-padding);
+    }
   }
 
   &__cancel-button {
