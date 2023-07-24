@@ -152,7 +152,7 @@ class FormStore {
   }
 
   /**
-   * 设置禁用
+   * 设置必填
    * @param id
    * @param required
    */

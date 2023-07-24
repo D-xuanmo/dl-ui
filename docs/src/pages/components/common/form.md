@@ -657,75 +657,24 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 
 ### FormStore API
 
-```typescript
-class FormStore {
-  /**
-   * 表单初始化
-   * @param options
-   */
-  init: (options: {
-    models: FormModels;
-  }) => void;
-
-  /**
-   * 通过 dataKey 获取 model id
-   * @param dataKey
-   */
-  getModelIdByDataKey: (dataKey: string) => string;
-
-  /**
-   * 获取表单模型
-   */
-  getFormModels: () => IFormModelItem<unknown, Record<string, any>>[];
-
-  /**
-   * 更新数据
-   * @param data
-   */
-  updateData: (data: Record<string, unknown>) => void;
-
-  /**
-   * 更新单个 item 信息
-   * @param key
-   * @param item
-   */
-  updateModel: (key: string, item: Partial<IFormModelItem>) => void;
-
-  /**
-   * 获取单个 item 信息
-   * @param id
-   */
-  getItem: (id: string) => IFormModelItem<unknown, Record<string, any>> | undefined;
-
-  /**
-   *
-   * @returns 获取表单数据
-   */
-  getFormData: () => Record<string, any>;
-
-  /**
-   * 表单重置
-   */
-  reset: () => void;
-
-  /**
-   * 表单校验
-   */
-  validate: () => Promise<unknown>;
-
-  /**
-   * 单个校验
-   * @param name 字段名
-   */
-  singleValidate: (name: string) => void;
-
-  /**
-   * 获取单个字段的错误信息
-   * @param key
-   */
-  getSingleMessage: (key: string) => string;
-}
-```
+|方法名|类型|说明|
+|-----|----|---|
+|getFormModels|`() => IFormModelItem<unknown>[]`|获取表单模型|
+|getSingleValue|`(dataKey: string) => unknown`|获取单个字段 value|
+|getFormData|`() => Record<string, any>`|获取表单数据|
+|getItem|`(id: string) => IFormModelItem<unknown> \| undefined`|获取单个 item 信息|
+|updateSingleValue|`(dataKey: string, value: any) => void`|更新单个字段数据|
+|updateData|`(data: Record<string, unknown>, validate?: boolean) => void`|更新多个字段数据，默认会执行校验|
+|updateModel|`(id: string, item: Partial<IFormModelItem>) => void`|更新单个 item 信息|
+|setRequired|`(id: string, required: boolean) => void`|设置必填|
+|setDisplay|`(id: string, display: boolean) => void`|设置显示隐藏|
+|setReadonly|`(id: string, readonly: boolean) => void`|设置只读|
+|setDisabled|`(id: string, disabled: boolean) => void`|设置禁用|
+|validate|`() => Promise<true \| ValidateReturnType>`|表单校验|
+|singleValidate|`(dataKey: string) => void`|单个字段校验|
+|getSingleMessage|`(dataKey: string) => string`|获取单个字段的错误信息|
+|clearMessages|`() => void`|清空所有校验信息|
+|reset|`() => void`|表单重置|
 
 ### TS 类型
 
