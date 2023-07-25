@@ -121,7 +121,7 @@ export default defineComponent({
       ;(scrollRef.value as HTMLDivElement)?.scrollTo(
         0,
         (scrollRef.value?.querySelector(`.${bem('day')}--selected`) as HTMLDivElement)?.offsetTop -
-          100
+          120
       )
     }
 
