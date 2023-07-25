@@ -1,5 +1,5 @@
 import { addUnit, createNamespace } from '../utils'
-import { computed, CSSProperties, defineComponent, watch } from 'vue'
+import { computed, CSSProperties, defineComponent } from 'vue'
 import { useModelValue } from '../hooks'
 import { DIALOG_PROPS, DialogProps } from './props'
 import { SetupContext } from 'vue'
@@ -8,6 +8,7 @@ import DButton from '../button'
 import DSpace from '../space'
 import { CheckCircleFilled, CloseFilled, TipsFilled, WarningFilled } from '@xuanmo/dl-icons'
 import { MessageThemeEnum } from '../common'
+import { useCloseOnEsc } from '../hooks/use-close-on-esc'
 
 const [name, bem] = createNamespace('dialog')
 
@@ -71,22 +72,11 @@ export default defineComponent({
       }
     }
 
-    const closeOnEsc = (event: KeyboardEvent) => {
-      if (event.keyCode === 27 || event.code === 'Escape') handleClose()
-    }
-
-    watch(
-      () => innerValue.value,
-      (visible) => {
-        if (props.closeOnEsc) {
-          if (visible) {
-            document.addEventListener('keydown', closeOnEsc)
-          } else {
-            document.removeEventListener('keydown', closeOnEsc)
-          }
-        }
-      }
-    )
+    useCloseOnEsc(innerValue, {
+      type: 'dialog',
+      closeOnEsc: props.closeOnEsc,
+      closeFN: handleClose
+    })
 
     const getIcon = () => {
       if (!props.showIcon) return null

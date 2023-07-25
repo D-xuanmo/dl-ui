@@ -1,10 +1,11 @@
-import { defineComponent, computed, CSSProperties, SetupContext, watch } from 'vue'
+import { defineComponent, computed, CSSProperties, SetupContext } from 'vue'
 import { addUnit, createNamespace } from '../utils'
 import { DRAWER_PROPS, DrawerProps } from './props'
 import DPopup from '../popup'
 import { useModelValue } from '../hooks'
 import DButton from '../button'
 import DSpace from '../space'
+import { useCloseOnEsc } from '../hooks/use-close-on-esc'
 
 const [name, bem] = createNamespace('drawer')
 
@@ -58,22 +59,11 @@ export default defineComponent({
       }
     }
 
-    const closeOnEsc = (event: KeyboardEvent) => {
-      if (event.keyCode === 27 || event.code === 'Escape') handleClose()
-    }
-
-    watch(
-      () => innerValue.value,
-      (visible) => {
-        if (props.closeOnEsc) {
-          if (visible) {
-            document.addEventListener('keydown', closeOnEsc)
-          } else {
-            document.removeEventListener('keydown', closeOnEsc)
-          }
-        }
-      }
-    )
+    useCloseOnEsc(innerValue, {
+      type: 'drawer',
+      closeOnEsc: props.closeOnEsc,
+      closeFN: handleClose
+    })
 
     const renderTitle = () => (
       <div class={titleClass}>
