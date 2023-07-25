@@ -8,7 +8,7 @@ import DButton from '../button'
 import DSpace from '../space'
 import { CheckCircleFilled, CloseFilled, TipsFilled, WarningFilled } from '@xuanmo/dl-icons'
 import { MessageThemeEnum } from '../common'
-import { useCloseOnEsc } from '../hooks/use-close-on-esc'
+import { useCloseOnEsc } from '../hooks'
 
 const [name, bem] = createNamespace('dialog')
 

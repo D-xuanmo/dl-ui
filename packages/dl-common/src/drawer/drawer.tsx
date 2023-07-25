@@ -5,7 +5,7 @@ import DPopup from '../popup'
 import { useModelValue } from '../hooks'
 import DButton from '../button'
 import DSpace from '../space'
-import { useCloseOnEsc } from '../hooks/use-close-on-esc'
+import { useCloseOnEsc } from '../hooks'
 
 const [name, bem] = createNamespace('drawer')
 
