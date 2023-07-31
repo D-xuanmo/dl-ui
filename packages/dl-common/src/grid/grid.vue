@@ -31,7 +31,8 @@ export default defineComponent({
       }
       const style: CSSProperties = {
         gridTemplateRows: props.rows,
-        gridTemplateColumns: `repeat(${props.columns}, 1fr)`,
+        gridTemplateColumns:
+          typeof props.columns === 'number' ? `repeat(${props.columns}, 1fr)` : props.columns,
         gap: addUnit(props.gap),
         justifyItems: justify[props.justify],
         alignContent: align[props.align]

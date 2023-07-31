@@ -56,7 +56,8 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
         groupTitle: '布局',
         children: [
           { id: 'cell', path: '/comp-common/cell', content: 'Cell [单元格]' },
-          { id: 'grid', path: '/comp-common/grid', content: 'Grid [网格]' }
+          { id: 'grid', path: '/comp-common/grid', content: 'Grid [网格]' },
+          { id: 'layout', path: '/comp-common/layout', content: 'Layout [布局]' }
         ]
       },
       {

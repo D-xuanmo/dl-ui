@@ -9,9 +9,10 @@ export type AlignEnum = 'top' | 'middle' | 'bottom'
 export const GRID_PROPS = {
   /**
    * 网格列数
+   * 类型为 string 时，可传入 gridTemplateColumns
    */
   columns: {
-    type: Number,
+    type: [Number, String],
     required: true
   },
 
