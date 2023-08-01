@@ -55,9 +55,3 @@ const Menu = defineComponent({
 })
 
 export default Menu
-
-declare module 'vue' {
-  export interface GlobalComponents {
-    DMenu: typeof Menu
-  }
-}

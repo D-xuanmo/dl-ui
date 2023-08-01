@@ -2,8 +2,6 @@
   $prefix: &;
 
   &__wrapper:not(&__sub-menu) {
-    padding-bottom: 30px;
-
     > #{$prefix}__item {
       padding-bottom: var(--d-gap-xs);
 
