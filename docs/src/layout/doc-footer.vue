@@ -8,7 +8,7 @@
       </ul>
     </d-space>
     <d-space direction="vertical">
-      <h3>联系我</h3>
+      <h3>联系方式</h3>
       <ul>
         <li>QQ：993901865</li>
         <li>微信：D-xuanmo</li>
