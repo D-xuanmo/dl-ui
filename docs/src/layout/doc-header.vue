@@ -1,7 +1,7 @@
 <template>
   <div :class="leftClassName">
-    <img src="https://upyun.xuanmo.xin/logo/dl-ui.svg" alt="Vue dl-ui" />
-    <h1>Vue DL UI</h1>
+    <logo />
+    <h1>Vue DLUI</h1>
   </div>
   <div :class="centerClassName">
     <d-space :gap="32" align="center" justify="end">
@@ -53,6 +53,7 @@
 import { classNames } from '@doc/utils'
 import { useRoute, useRouter } from 'vue-router'
 import { RoutePath } from '@doc/env'
+import Logo from './logo.vue'
 
 const leftClassName = classNames('header-left')
 const centerClassName = classNames('header-center')

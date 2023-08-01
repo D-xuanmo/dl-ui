@@ -66,7 +66,7 @@ app.use(DLUI)
 ## License
 
 - 本项目基于 [MIT](https://github.com/D-xuanmo/dl-ui/blob/develop/LICENSE) 协议，欢迎有兴趣的朋友一起交流
-- Copyright © 2022-PRESENT [D-Xuanmo](https://github.com/D-xuanmo)
+- Copyright © 2022-PRESENT [D-xuanmo](https://github.com/D-xuanmo)
 
 ## 动态
 

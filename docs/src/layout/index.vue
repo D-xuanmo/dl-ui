@@ -4,17 +4,14 @@
       <doc-header />
     </d-layout-header>
 
-    <!-- 左侧菜单开始 -->
     <d-layout-sider :class="menuClassName">
       <doc-menu :data="menuData" />
     </d-layout-sider>
-    <!-- 左侧菜单结束 -->
 
-    <!-- 文档内容开始 -->
     <d-layout-content :class="contentClassName">
       <router-view />
+      <doc-footer />
     </d-layout-content>
-    <!-- 文档内容结束 -->
   </d-layout>
 </template>
 
@@ -24,6 +21,7 @@ import { useRoute } from 'vue-router'
 import { getMenuList } from '../menus'
 import DocMenu from '../components/menu'
 import DocHeader from './doc-header.vue'
+import DocFooter from './doc-footer.vue'
 import { classNames } from '../utils'
 
 const route = useRoute()
@@ -122,11 +120,12 @@ const menuData = computed(() => getMenuList(route.params.type as any))
   }
 
   &__content {
-    padding: var(--d-gap-sm) 40px;
     overflow-y: auto;
     line-height: initial;
 
     .markdown-body {
+      padding: var(--d-gap-sm) 40px;
+
       > * + * {
         margin-top: 16px;
       }
