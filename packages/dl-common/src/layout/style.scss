@@ -83,6 +83,7 @@
     &__trigger {
       position: absolute;
       top: 50%;
+      z-index: 9;
       display: inline-flex;
       justify-content: center;
       align-items: center;
