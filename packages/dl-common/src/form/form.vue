@@ -12,7 +12,7 @@ import { formNamespace, createFormBEM } from './constants'
 import { OnFormChange } from './types'
 import { FORM_CONTEXT_KEY } from './context'
 import { FormStore } from './store'
-import FormRender from './render.vue'
+import FormRender from './components/form-render.vue'
 
 export default defineComponent({
   name: formNamespace,

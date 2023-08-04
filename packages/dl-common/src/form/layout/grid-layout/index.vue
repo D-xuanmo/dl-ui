@@ -14,19 +14,20 @@
         :column="item.layout.column"
         :height="item.layout.height"
       >
-        <d-form-item :model="item" />
+        <d-form-item v-if="item.dataKey" :model="item" />
+        <component :is="item.component" v-else :model="item" />
       </d-grid-item>
     </template>
   </d-grid>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, PropType } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { createNamespace } from '../../../utils'
 import { DGrid, DGridItem, GridProps } from '../../../grid'
-import { IFormModelItem, IRenderModel } from '../../types'
-import { FORM_CONTEXT_KEY, IFormContext } from '../../context'
+import { IRenderModel } from '../../types'
 import DFormItem from '../../components/form-item.vue'
+import { useLinkChildren } from '../../hooks/use-link-children'
 
 const [name] = createNamespace('grid-layout')
 
@@ -44,12 +45,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { store } = inject(FORM_CONTEXT_KEY) as IFormContext
-
-    const children = computed(() => {
-      return (props.model.layout.children?.map((item: string) => store.getItem(item)) ??
-        []) as IFormModelItem[]
-    })
+    const children = useLinkChildren(props.model.layout.children)
 
     return {
       children

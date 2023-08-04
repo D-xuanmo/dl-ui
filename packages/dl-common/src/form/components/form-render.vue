@@ -15,9 +15,9 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { createNamespace } from '../utils'
-import DFormItem from './components/form-item.vue'
-import { IFormModelItem } from './types'
+import { createNamespace } from '../../utils'
+import DFormItem from './form-item.vue'
+import { IFormModelItem } from '../types'
 
 const [name, bem] = createNamespace('render')
 
