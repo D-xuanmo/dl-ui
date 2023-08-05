@@ -5,20 +5,22 @@
       @before-enter="onTransitionBefore"
       @after-leave="onTransitionAfterLeave"
     >
-      <div
-        v-show="innerVisible"
-        :class="[bem(), overlayClass].join(' ')"
-        :style="style"
-        @click.stop="handleClose"
-      >
-        <slot />
-      </div>
+      <template v-if="isLoaded">
+        <div
+          v-show="innerVisible"
+          :class="[bem(), overlayClass].join(' ')"
+          :style="style"
+          @click.stop="handleClose"
+        >
+          <slot />
+        </div>
+      </template>
     </transition>
   </teleport>
 </template>
 
 <script lang="ts">
-import { CSSProperties, defineComponent, SetupContext, computed } from 'vue'
+import { CSSProperties, defineComponent, SetupContext, computed, ref, watch } from 'vue'
 import { createNamespace } from '../utils'
 import { useModelValue, useZIndex } from '../hooks'
 import { PREFIX } from '../constants'
@@ -37,6 +39,7 @@ export default defineComponent({
       'visible',
       'update:visible'
     )
+    const isLoaded = ref(props.visible ? true : !props.lazyRender)
 
     const [zIndex, setZIndex] = useZIndex(props, props.zIndex !== undefined)
 
@@ -64,10 +67,20 @@ export default defineComponent({
       }
     }
 
+    watch(
+      () => props.visible,
+      (visible) => {
+        if (visible) {
+          isLoaded.value = true
+        }
+      }
+    )
+
     return {
       name,
       innerVisible,
       style,
+      isLoaded,
       bem,
       handleClose,
       onTransitionBefore,

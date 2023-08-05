@@ -6,6 +6,7 @@
       :overlay-class="overlayClass"
       :z-index="overlayZIndex"
       :overlay-style="overlayStyle"
+      :lazy-render="lazyRender"
       @click="handleClose"
     />
     <transition

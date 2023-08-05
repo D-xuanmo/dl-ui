@@ -31,5 +31,13 @@ export const OVERLAY_PROPS = {
   teleport: {
     type: String as PropType<TeleportProps['to']>,
     default: 'body'
+  },
+
+  /**
+   * 是否开启懒加载渲染，默认开启
+   */
+  lazyRender: {
+    type: Boolean,
+    default: true
   }
 }
