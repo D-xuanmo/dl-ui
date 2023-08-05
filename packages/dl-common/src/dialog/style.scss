@@ -8,6 +8,8 @@
 
 .#{$prefix}-dialog {
   $dialogPrefix: &;
+  @include font-size(md);
+
   &--hide-overlay {
     #{$dialogPrefix} {
       &__wrapper {

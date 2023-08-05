@@ -47,6 +47,7 @@
 
     li {
       text-align: center;
+      @include font-size(md);
     }
   }
 
@@ -57,6 +58,12 @@
 
   &__confirm {
     margin-top: var(--d-gap-sm);
+  }
+
+  &__month {
+    &-title {
+      @include font-size(lg);
+    }
   }
 
   &__day {

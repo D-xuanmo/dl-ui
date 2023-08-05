@@ -4,6 +4,7 @@
 .#{$prefix}-picker {
   @include trigger;
   @include disabled;
+  @include font-size(md);
 
   &__content {
     display: flex;

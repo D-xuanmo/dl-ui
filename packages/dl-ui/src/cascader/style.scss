@@ -6,6 +6,7 @@
   flex-direction: column;
   height: 100%;
   @include trigger;
+  @include font-size(md);
 
   .#{$prefix}-popup__content {
     overflow: hidden;

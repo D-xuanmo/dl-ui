@@ -1,6 +1,8 @@
 @import '../style/prefix';
 
 .#{$prefix}-drawer {
+  @include font-size(md);
+
   &__header {
     padding: var(--d-gap-sm) var(--d-gap-md);
     border-bottom: var(--d-border);

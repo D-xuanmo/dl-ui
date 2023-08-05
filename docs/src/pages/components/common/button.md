@@ -137,12 +137,12 @@ app.use(DButton)
   <d-space :gap="10">
     <d-button theme="primary">
       <template #icon>
-        <star-outlined />
+        <star-outlined size="small" />
       </template>
     </d-button>
     <d-button theme="success">
       <template #icon>
-        <star-outlined />
+        <star-outlined size="small" />
       </template>
       default
     </d-button>

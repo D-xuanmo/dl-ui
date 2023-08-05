@@ -5,17 +5,10 @@
   </div>
   <div :class="centerClassName">
     <d-space :gap="32" align="center" justify="end">
-      <d-button
-        size="small"
-        fill="none"
-        link
-        :theme="getButtonTheme('/docs')"
-        @click="handleClick('/docs')"
-      >
+      <d-button fill="none" link :theme="getButtonTheme('/docs')" @click="handleClick('/docs')">
         文档
       </d-button>
       <d-button
-        size="small"
         fill="none"
         link
         :theme="getButtonTheme('/comp-common')"
@@ -24,7 +17,6 @@
         公用组件
       </d-button>
       <d-button
-        size="small"
         fill="none"
         link
         :theme="getButtonTheme('/comp-mobile')"
@@ -37,13 +29,13 @@
   <div :class="rightClassName">
     <d-space :gap="32" align="center" justify="end">
       <a href="https://run.xuanmo.xin/" target="_blank">
-        <d-button size="small" fill="none" link>Playground</d-button>
+        <d-button fill="none" link>Playground</d-button>
       </a>
       <a href="https://github.com/D-xuanmo/validator" target="_blank">
-        <d-button size="small" fill="none" link>数据校验</d-button>
+        <d-button fill="none" link>数据校验</d-button>
       </a>
       <a href="https://github.com/D-xuanmo/dl-ui" target="_blank">
-        <d-button size="small" fill="none" link>GitHub</d-button>
+        <d-button fill="none" link>GitHub</d-button>
       </a>
     </d-space>
   </div>

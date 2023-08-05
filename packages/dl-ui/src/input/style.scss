@@ -8,6 +8,7 @@
   caret-color: var(--d-primary);
   @include text-align;
   @include disabled;
+  @include font-size(md);
 
   &__inner {
     flex: 1;

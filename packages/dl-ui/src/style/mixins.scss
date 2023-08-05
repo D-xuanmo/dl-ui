@@ -124,3 +124,8 @@
     }
   }
 }
+
+@mixin font-size($size) {
+  font-size: var(--d-font-size-#{$size});
+  line-height: var(--d-line-height-#{$size});
+}
