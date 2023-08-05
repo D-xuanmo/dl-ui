@@ -25,9 +25,11 @@ export const useCloseOnEsc = (
   closeHandlerMap.set(id, closeFN)
   index++
 
-  const onClose = () => {
-    const [activeId] = [...visibleIdList].reverse()
-    if (activeId === id) closeHandlerMap.get(id)?.()
+  const onClose = (event: KeyboardEvent) => {
+    if (event.keyCode === 27 || event.code === 'Escape') {
+      const [activeId] = [...visibleIdList].reverse()
+      if (activeId === id) closeHandlerMap.get(id)?.()
+    }
   }
 
   onUnmounted(() => {
