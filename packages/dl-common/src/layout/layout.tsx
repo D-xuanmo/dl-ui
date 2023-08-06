@@ -1,4 +1,4 @@
-import { defineComponent, provide, reactive, ref, SetupContext } from 'vue'
+import { defineComponent, provide, reactive, ref, SetupContext, Fragment, VNode } from 'vue'
 import { addUnit, createNamespace, getComponentName } from '../utils'
 import DGrid from '../grid'
 import { LAYOUT_CONTEXT_KEY } from './context'
@@ -13,7 +13,21 @@ export default defineComponent({
     const rowsTemplate = ref('')
     const columnsMap = reactive<Map<string, string>>(new Map())
     const rows: Map<string, string> = new Map()
-    const children = context.slots.default?.()?.map((item: any) => {
+
+    // 递归查询子级，不包含 Fragment
+    const findChildren = (children: VNode[], result: any[] = []) => {
+      children.forEach((item: any) => {
+        if (item.type === Fragment && Array.isArray(item.children)) {
+          findChildren(item.children as VNode[], result)
+        }
+        if (item.type !== Fragment) {
+          result.push(item)
+        }
+      })
+      return result
+    }
+
+    const children = findChildren(context.slots.default?.() ?? []).map((item: any) => {
       const layoutId = createRandomID(8)
       item.props = {
         ...item.props,
@@ -57,11 +71,11 @@ export default defineComponent({
       return item
     })
 
+    rowsTemplate.value = Array.from(rows.values()).join(' ')
+
     const onColumnWidthChange = (layoutId: string, width: string) => {
       columnsMap.set(layoutId, width)
     }
-
-    rowsTemplate.value = Array.from(rows.values()).join(' ')
 
     provide(LAYOUT_CONTEXT_KEY, {
       columns: columnsCount,

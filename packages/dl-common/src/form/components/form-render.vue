@@ -6,8 +6,7 @@
         :key="item.id"
         :class="itemClassName"
       >
-        <d-form-item v-if="item.dataKey" :model="item" />
-        <component :is="item.component" v-else :model="item" />
+        <form-render-item :model="item" />
       </div>
     </template>
   </div>
@@ -16,15 +15,15 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 import { createNamespace } from '../../utils'
-import DFormItem from './form-item.vue'
 import { IFormModelItem } from '../types'
+import FormRenderItem from './form-render-item.vue'
 
-const [name, bem] = createNamespace('render')
+const [name, bem] = createNamespace('form-render')
 
 export default defineComponent({
   name,
   components: {
-    DFormItem
+    FormRenderItem
   },
   props: {
     data: {

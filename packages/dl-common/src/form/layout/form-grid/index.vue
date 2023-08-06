@@ -14,8 +14,7 @@
         :column="item.layout.column"
         :height="item.layout.height"
       >
-        <d-form-item v-if="item.dataKey" :model="item" />
-        <component :is="item.component" v-else :model="item" />
+        <form-render-item :model="item" />
       </d-grid-item>
     </template>
   </d-grid>
@@ -26,17 +25,17 @@ import { defineComponent, PropType } from 'vue'
 import { createNamespace } from '../../../utils'
 import { DGrid, DGridItem, GridProps } from '../../../grid'
 import { IRenderModel } from '../../types'
-import DFormItem from '../../components/form-item.vue'
 import { useLinkChildren } from '../../hooks/use-link-children'
+import FormRenderItem from '../../components/form-render-item.vue'
 
 const [name] = createNamespace('form-grid')
 
 export default defineComponent({
   name,
   components: {
+    FormRenderItem,
     DGrid,
-    DGridItem,
-    DFormItem
+    DGridItem
   },
   props: {
     model: {

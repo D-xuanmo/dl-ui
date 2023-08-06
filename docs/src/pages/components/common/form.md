@@ -5,7 +5,7 @@
 - 表单不仅仅是表单，页面一切皆可为表单；
 - 表单主要提供数据处理、数据校验、联动等功能；
 - 表单不区分 PC、H5，表单只是作为一个容器，可以容纳 PC、H5、任意第三方组件库的组件，不关心子级的具体渲染，非表单组件也可以渲染，具体展示效果由子级自行处理；
-- 关于布局，组件库已实现[单例分组](/-/dl-ui/comp-common/cell)、[网格系统](/-/dl-ui/comp-common/grid)两个布局类组件，用户也可以自行实现布局组件，做不一样的展示效果，只需要通过父子级关系绑定即可。
+- 关于布局，组件库已实现[单例分组](https://www.xuanmo.xin/-/dl-ui/comp-common/cell)、[网格系统](https://www.xuanmo.xin/-/dl-ui/comp-common/grid)、[框架](https://www.xuanmo.xin/-/dl-ui/comp-common/layout)等布局类组件，用户也可以自行实现布局组件，做不一样的展示效果，只需要通过父子级关系绑定即可。
 
 ![](https://upyun.xuanmo.xin/dl-ui/20230711235904394385.svg)
 
@@ -454,7 +454,7 @@ fetch(
 </script>
 ```
 
-```vue title=通过布局实现表单多样化（DFormGrid） playground=cl29qs
+```vue title=通过Grid组件实现布局 playground=cl29qs
 <template>
   <d-form
     ref='formRef'
@@ -583,6 +583,124 @@ const reset = () => {
 </style>
 ```
 
+```vue title=结合Layout组件实现布局
+<template>
+  <d-form :models="formModels" />
+</template>
+
+<script lang="ts" setup>
+const formModels = [
+  {
+    id: 'layout',
+    component: 'DFormLayout',
+    layout: {
+      parent: 'root',
+      children: ['header', 'footer', 'sider', 'content', 'sider1']
+    }
+  },
+  {
+    id: 'header',
+    component: 'DFormLayoutHeader',
+    layout: {
+      parent: 'layout',
+      children: ['headerContent'],
+      height: 80
+    }
+  },
+  {
+    id: 'footer',
+    component: 'DFormLayoutFooter',
+    layout: {
+      parent: 'layout',
+      children: ['footerContent'],
+      height: 80
+    }
+  },
+  {
+    id: 'sider',
+    component: 'DFormLayoutSider',
+    layout: {
+      parent: 'layout',
+      children: ['siderContent']
+    }
+  },
+  {
+    id: 'content',
+    component: 'DFormLayoutContent',
+    layout: {
+      parent: 'layout',
+      children: ['content2']
+    }
+  },
+  {
+    id: 'sider1',
+    component: 'DFormLayoutSider',
+    layout: {
+      parent: 'layout',
+      children: ['siderContent2'],
+      border: true,
+      placement: 'right'
+    }
+  },
+  {
+    id: 'headerContent',
+    dataKey: 'headerContent',
+    component: 'DRate',
+    layout: {
+      parent: 'header'
+    },
+    label: '评分',
+    value: 2,
+    description: '我是头部的评分'
+  },
+  {
+    id: 'siderContent',
+    dataKey: 'siderContent',
+    component: 'DSwitch',
+    layout: {
+      parent: 'sider'
+    },
+    label: '开关',
+    value: true,
+    description: '我是左侧的开关'
+  },
+  {
+    id: 'siderContent2',
+    dataKey: 'siderContent2',
+    component: 'DSwitch',
+    layout: {
+      parent: 'sider'
+    },
+    label: '开关2',
+    value: true,
+    description: '我是右侧的开关'
+  },
+  {
+    id: 'content2',
+    dataKey: 'content2',
+    component: 'DSwitch',
+    layout: {
+      parent: 'content'
+    },
+    label: '开关3',
+    value: false,
+    description: '我是内容区的开关'
+  },
+  {
+    id: 'footerContent',
+    dataKey: 'footerContent',
+    component: 'DRate',
+    layout: {
+      parent: 'footer'
+    },
+    label: '评分',
+    value: 5,
+    description: '我是底部的评分'
+  },
+]
+</script>
+```
+
 ```vue title=自定义开发表单组件 playground=2dg8da9
 <template>
   <d-form
@@ -621,7 +739,8 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 ### 内置布局容器
 
 - `DFormCellGroup` 可以快速实现单列表单分组效果，参考链接：[https://uoo.ink/Form](https://uoo.ink/Form)
-- `DFormGrid` 通过网格系统实现更灵活的布局，参考链接：[https://uoo.ink/cl29qs](https://uoo.ink/cl29qs)
+- `DFormGrid` 通过 Grid 网格组件实现更灵活的布局，参考链接：[https://uoo.ink/cl29qs](https://uoo.ink/cl29qs)
+- `DFormLayout` 通过 Layout 组件实现布局
 
 ### 开发表单组件
 

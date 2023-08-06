@@ -9,6 +9,8 @@ export const DFormCellGroup = withInstall(FormCellGroup)
 export const DFormGrid = withInstall(FormGrid)
 export const DFormItem = withInstall(FormItem)
 
+export * from './layout/form-layout'
+
 export type { FormProps } from './props'
 
 export { FormStore } from './store'

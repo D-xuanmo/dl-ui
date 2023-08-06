@@ -6,6 +6,8 @@ export const useLinkChildren = (children?: string[]) => {
   const { store } = inject(FORM_CONTEXT_KEY) as IFormContext
 
   return computed(() => {
-    return (children?.map((item: string) => store.getItem(item)) ?? []) as IFormModelItem[]
+    return (children?.map((item: string) => store.getItem(item)) ?? []).filter(
+      Boolean
+    ) as IFormModelItem[]
   })
 }
