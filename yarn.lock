@@ -1512,13 +1512,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xuanmo/validator@npm:^0.0.15":
-  version: 0.0.15
-  resolution: "@xuanmo/validator@npm:0.0.15"
+"@xuanmo/validator@npm:^0.0.16":
+  version: 0.0.16
+  resolution: "@xuanmo/validator@npm:0.0.16"
   dependencies:
     "@xuanmo/utils": ^0.0.1
     vite: ^4.4.2
-  checksum: 3ed64a964c02c84f5c7b1ac44a411ca71d6f8ab437d2f092c7d9b44225df35daf8e9b71aeb47de5d7b73c985df7db7c15c70c0c61fe97905359a37c246b1ade3
+  checksum: 4a815889f85597ff0e5a571d1537355331f9291ba9945f45efe804603813e15ada4a08b6511bf20a17257f3a4fc19e10a5868e3c9337e435ce81e933f1baf8d2
   languageName: node
   linkType: hard
 
@@ -2454,7 +2454,7 @@ __metadata:
     "@xuanmo/dl-common": "workspace:*"
     "@xuanmo/dl-icons": "workspace:*"
     "@xuanmo/utils": ^0.0.1
-    "@xuanmo/validator": ^0.0.15
+    "@xuanmo/validator": ^0.0.16
     autoprefixer: ^10.4.7
     eslint: ^8.41.0
     eslint-config-prettier: ^8.8.0
