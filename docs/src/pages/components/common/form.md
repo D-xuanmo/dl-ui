@@ -19,13 +19,14 @@ import {
   // 单列分组容器（可选）
   DFormCellGroup,
   // 网格布局系统（可选）
-  DGridLayout,
+  DFormGrid,
   FormStore
 } from '@xuanmo/dl-common'
+import { DFormGrid } from '@xuanmo/dl-common/src'
 
 // 注册组件
 const app = createApp()
-app.use(DForm).use(DFormCellGroup).use(DGridLayout)
+app.use(DForm).use(DFormCellGroup).use(DFormGrid)
 ```
 
 ## 代码演示
@@ -453,7 +454,7 @@ fetch(
 </script>
 ```
 
-```vue title=通过布局实现表单多样化（DGridLayout） playground=cl29qs
+```vue title=通过布局实现表单多样化（DFormGrid） playground=cl29qs
 <template>
   <d-form
     ref='formRef'
@@ -474,7 +475,7 @@ const formRef = ref()
 const formModel = [
   {
     id: 'grid',
-    component: 'DGridLayout',
+    component: 'DFormGrid',
     layout: {
       parent: 'root',
       columns: 6,
@@ -620,7 +621,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 ### 内置布局容器
 
 - `DFormCellGroup` 可以快速实现单列表单分组效果，参考链接：[https://uoo.ink/Form](https://uoo.ink/Form)
-- `DGridLayout` 通过网格系统实现更灵活的布局，参考链接：[https://uoo.ink/cl29qs](https://uoo.ink/cl29qs)
+- `DFormGrid` 通过网格系统实现更灵活的布局，参考链接：[https://uoo.ink/cl29qs](https://uoo.ink/cl29qs)
 
 ### 开发表单组件
 

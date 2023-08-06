@@ -29,7 +29,7 @@ import { IRenderModel } from '../../types'
 import DFormItem from '../../components/form-item.vue'
 import { useLinkChildren } from '../../hooks/use-link-children'
 
-const [name] = createNamespace('grid-layout')
+const [name] = createNamespace('form-grid')
 
 export default defineComponent({
   name,
