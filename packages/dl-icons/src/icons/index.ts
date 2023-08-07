@@ -44,6 +44,7 @@ export { default as PersonShareOutlined } from './person-share-outlined'
 export { default as SettingOutlined } from './setting-outlined'
 export { default as VideoOutlined } from './video-outlined'
 export { default as CloudOutlined } from './cloud-outlined'
+export { default as DeleteOutlined } from './delete-outlined'
 
 // ==================== 面性图标 ====================
 export { default as CameraFilled } from './camera-filled'
