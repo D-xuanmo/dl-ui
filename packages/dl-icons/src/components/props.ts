@@ -1,5 +1,4 @@
-import { PropType } from 'vue/dist/vue'
-import { ExtractPropTypes } from 'vue'
+import { ExtractPropTypes, PropType } from 'vue'
 
 /** 所有大小类型定义 */
 type SizeEnum = 'small' | 'medium' | 'large'
