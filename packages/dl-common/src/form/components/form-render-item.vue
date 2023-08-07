@@ -4,8 +4,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { PropType } from 'vue/dist/vue'
+import { defineComponent, PropType } from 'vue'
 import { IFormModelItem } from '../types'
 import { createNamespace } from '../../utils'
 import DFormItem from './form-item.vue'

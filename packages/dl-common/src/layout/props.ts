@@ -1,5 +1,4 @@
-import { PropType } from 'vue/dist/vue'
-import { ExtractPropTypes } from 'vue'
+import { ExtractPropTypes, PropType } from 'vue'
 
 export type LayoutSiderProps = ExtractPropTypes<typeof LAYOUT_SIDER_PROPS>
 export type LayoutHeaderProps = ExtractPropTypes<typeof LAYOUT_HEADER_PROPS>
