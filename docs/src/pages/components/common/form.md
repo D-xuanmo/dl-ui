@@ -16,13 +16,23 @@ import { createApp } from 'vue';
 import {
   // 表单组件
   DForm,
-  // 单列分组容器（可选）
+  
+  // 单列分组容器（可选），用法参考：https://www.xuanmo.xin/-/dl-ui/comp-common/cell
   DFormCellGroup,
-  // 网格布局系统（可选）
+  
+  // 网格布局系统（可选），用法参考：https://www.xuanmo.xin/-/dl-ui/comp-common/grid
   DFormGrid,
+  
+  // 以下 5 布局组件（可选），用法参考：https://www.xuanmo.xin/-/dl-ui/comp-common/layout
+  DFormLayout,
+  DFormLayoutHeader,
+  DFormLayoutFooter,
+  DFormLayoutSider,
+  DFormLayoutContent,
+  
+  // 表单 store
   FormStore
 } from '@xuanmo/dl-common'
-import { DFormGrid } from '@xuanmo/dl-common/src'
 
 // 注册组件
 const app = createApp()
@@ -752,7 +762,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 
 1. 结合 [TDesign](https://tdesign.tencent.com/vue-next) 实现的表单，参考链接：[https://uoo.ink/DL-TDesign](https://uoo.ink/DL-TDesign)
 
-### Props
+### Form Props
 
 |参数|类型|默认值|说明|必传|
 |---|---|------|---|---|
@@ -814,9 +824,24 @@ export interface IRenderModel<T = any> {
   // 组件
   component: Component | (ComponentNames | string)
 
-  // 布局信息
+  /**
+   * 布局信息，这里的泛型代表每个布局组件支持的 props
+   * @example
+   * [
+   *   <IRenderModel<Partial<GridProps>>>{
+   *     id: 'customGroup',
+   *     label: '自定义组件',
+   *     component: 'DFormCellGroup',
+   *     layout: {
+   *       parent: 'root',
+   *       children: ['customInput', 'customInput1'],
+   *       columns: 8
+   *     }
+   *   }
+   * ]
+   */
   layout: T & {
-    // 父级组件，默认为 root
+    // 父级组件，默认需要指定为 root
     parent: string
 
     // 关联的子级
@@ -848,8 +873,12 @@ export interface IFormModelItem<TValue = unknown> extends IRenderModel {
 
   // 隐藏 label，默认：false
   hideLabel?: boolean
-
-  // 校验规则
+  
+  /**
+   * 校验规则,，对应校验插件的 rules 字段
+   * @link https://github.com/D-xuanmo/validator
+   * @example 'email|min:5'
+   */
   rules?: string
 
   // 错误信息，用于覆盖校验失败的提示，不建议使用
