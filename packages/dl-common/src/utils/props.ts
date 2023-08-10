@@ -8,5 +8,5 @@ export function pickProps<T extends object, K extends keyof T>(props: T, keys: K
   keys.forEach((key) => {
     result[key] = props[key]
   })
-  return result as unknown as { [Key in keyof T]: T[Key] }
+  return result as { [Key in K]: T[Key] }
 }

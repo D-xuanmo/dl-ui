@@ -12,19 +12,11 @@ export const FORM_PROPS = {
     required: true,
     default: () => []
   },
-  store: {
-    type: Object as PropType<FormStore>
-  },
-  labelWidth: {
-    type: [Number, String] as PropType<number | string>,
-    default: 80
-  },
+  store: Object as PropType<FormStore>,
+  labelWidth: [Number, String] as PropType<number | string>,
   layout: String as PropType<DirectionType>,
   colon: Boolean,
-  requiredMarkPosition: {
-    type: String as PropType<Exclude<HorizontalAlignType, 'center'>>,
-    default: 'right'
-  },
+  requiredMarkPosition: String as PropType<Exclude<HorizontalAlignType, 'center'>>,
   hideLabel: Boolean,
   round: {
     type: Boolean,

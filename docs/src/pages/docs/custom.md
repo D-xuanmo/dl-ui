@@ -94,6 +94,10 @@
 
 ```typescript
 import { validator } from '@xuanmo/dl-ui'
+
+// 或者
+// import { validator } from '@xuanmo/dl-common'
+
 validator.extends({
   custom: {
     message: '自定义校验失败信息',

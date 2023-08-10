@@ -68,6 +68,17 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
           { id: 'dialog', path: '/comp-common/drawer', content: 'Drawer [抽屉]' },
           { id: 'message', path: '/comp-common/message', content: 'Message [消息提示]' }
         ]
+      },
+      {
+        id: createRandomID(),
+        groupTitle: '其他',
+        children: [
+          {
+            id: 'dialog',
+            path: '/comp-common/config-provider',
+            content: 'ConfigProvider [全局化配置]'
+          }
+        ]
       }
     ]
   ],

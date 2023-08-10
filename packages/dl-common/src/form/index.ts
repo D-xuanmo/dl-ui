@@ -11,7 +11,7 @@ export const DFormItem = withInstall(FormItem)
 
 export * from './layout/form-layout'
 
-export type { FormProps } from './props'
+export { type FormProps, FORM_PROPS } from './props'
 
 export { FormStore } from './store'
 

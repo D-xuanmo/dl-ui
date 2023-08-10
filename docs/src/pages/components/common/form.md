@@ -49,7 +49,6 @@ app.use(DForm).use(DFormCellGroup).use(DFormGrid)
     client-type="MOBILE"
     :disabled="formDisabled"
     :readonly="formReadonly"
-    :layout="formLayout"
     label-width="100"
     :hide-label="hideLabel"
     @change="handleChange"

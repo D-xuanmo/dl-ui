@@ -4,7 +4,7 @@
       <doc-header />
     </d-layout-header>
 
-    <d-layout-sider :class="menuClassName">
+    <d-layout-sider :class="menuClassName" width="250px">
       <doc-menu :data="menuData" />
     </d-layout-sider>
 

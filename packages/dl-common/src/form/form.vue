@@ -13,6 +13,7 @@ import { OnFormChange } from './types'
 import { FORM_CONTEXT_KEY } from './context'
 import { FormStore } from './store'
 import FormRender from './components/form-render.vue'
+import { useConfig } from '../hooks'
 
 export default defineComponent({
   name: formNamespace,
@@ -30,15 +31,18 @@ export default defineComponent({
       })
     )
 
-    const formProps = computed(() => ({
-      colon: props.colon,
-      disabled: props.disabled,
-      readonly: props.readonly,
-      layout: props.layout,
-      labelWidth: props.labelWidth,
-      hideLabel: props.hideLabel,
-      requiredMarkPosition: props.requiredMarkPosition
-    }))
+    const formProps = computed(() => {
+      const config = useConfig(['colon', 'requiredMarkPosition', 'layout', 'labelWidth'], props)
+      return {
+        colon: config.colon,
+        disabled: props.disabled,
+        readonly: props.readonly,
+        layout: config.layout,
+        labelWidth: config.labelWidth,
+        hideLabel: props.hideLabel,
+        requiredMarkPosition: config.requiredMarkPosition
+      }
+    })
 
     const handleChange: OnFormChange = (value, model) => {
       emit('change', value, model)
