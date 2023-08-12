@@ -6,6 +6,7 @@ import { useGlobalConfig } from './utils'
 import { CELL_GROUP_CONTEXT_KEY } from '../cell-group/context'
 import { DirectionType } from '../common'
 import { RightOutlined } from '@xuanmo/dl-icons'
+import { If, Then, Else, When } from 'vue-if'
 
 const [name, bem] = createNamespace('cell')
 
@@ -17,79 +18,81 @@ export default defineComponent({
     provide(CELL_GROUP_CONTEXT_KEY, {
       layout: ref<DirectionType>('horizontal')
     })
+    const globalConfig = useGlobalConfig(props)
+
+    const wrapperClassName = computed(() =>
+      bem({
+        'hide-title': globalConfig.value.hideTitle,
+        [`layout-${globalConfig.value.layout}`]: globalConfig.value.layout,
+        disabled: props.disabled,
+        border: globalConfig.value.border || globalConfig.value.border === undefined
+      })
+    )
 
     return () => {
-      const { labelWidth, contentAlign, hideTitle, layout, border } = useGlobalConfig(props)
-      const {
-        title,
-        titleAlign,
-        required,
-        content,
-        titleClass,
-        contentClass,
-        disabled,
-        suffix,
-        arrow,
-        description
-      } = props
-
-      const wrapperClassName = computed(() =>
-        bem({
-          'hide-title': hideTitle,
-          [`layout-${layout}`]: layout,
-          disabled,
-          border: border || border === undefined
-        })
-      )
-
       const titleClassName = bem('title', {
-        [titleClass ?? '']: toBoolean(titleClass),
-        [titleAlign]: titleAlign
+        [props.titleClass ?? '']: toBoolean(props.titleClass),
+        [props.titleAlign]: props.titleAlign
       })
 
       const contentClassName = bem('content', {
-        [contentClass ?? '']: toBoolean(contentClass),
-        [contentAlign]: contentAlign
+        [props.contentClass ?? '']: toBoolean(props.contentClass),
+        [globalConfig.value.contentAlign]: globalConfig.value.contentAlign
       })
 
-      const renderLabel =
-        hideTitle || (isEmpty(title) && isEmpty(slots.title)) ? null : (
-          <div
-            class={titleClassName}
-            style={{
-              width: addUnit(labelWidth)
-            }}
-          >
-            {slots.title ? (
-              slots.title()
-            ) : (
-              <>
-                {slots['left-icon'] ? (
-                  <span class={bem('title-icon')}>{slots['left-icon']()}</span>
-                ) : null}
-                <span>{title}</span>
-                {required ? <span class={bem('title-mark')}> *</span> : null}
-              </>
-            )}
+      const renderLabel = (
+        <When
+          condition={
+            !globalConfig.value.hideTitle || !(isEmpty(props.title) && isEmpty(slots.title))
+          }
+        >
+          <div class={titleClassName} style={{ width: addUnit(globalConfig.value.labelWidth) }}>
+            <If condition={!isEmpty(slots.title)}>
+              <Then>{slots.title?.()}</Then>
+              <Else>
+                <When condition={!isEmpty(slots['left-icon'])}>
+                  <span class={bem('title-icon')}>{slots['left-icon']!()}</span>
+                </When>
+                <When
+                  condition={props.required && globalConfig.value.requiredMarkPosition === 'left'}
+                >
+                  <span class={bem('title-mark')}>* </span>
+                </When>
+                <span>{props.title}</span>
+                <When
+                  condition={props.required && globalConfig.value.requiredMarkPosition === 'right'}
+                >
+                  <span class={bem('title-mark')}> *</span>
+                </When>
+              </Else>
+            </If>
           </div>
-        )
-
-      const renderDescription = description ? (
-        <div class={bem('description')}>{description}</div>
-      ) : null
-
-      const renderRightIcon = slots['right-icon'] && (
-        <span class={bem('right-icon')}>{slots['right-icon']()}</span>
+        </When>
       )
 
-      const renderSuffix =
-        slots.suffix || suffix ? (
-          <div class={bem('suffix')}>{slots.suffix ? slots.suffix() : suffix}</div>
-        ) : null
+      const renderDescription = (
+        <When condition={props.description}>
+          <div class={bem('description')}>{props.description}</div>
+        </When>
+      )
 
-      const renderArrow = arrow ? (
-        <RightOutlined className={bem('arrow')} color="var(--d-secondary-text-color)" />
-      ) : null
+      const renderRightIcon = (
+        <When condition={slots['right-icon'] as any}>
+          <span class={bem('right-icon')}>{slots['right-icon']!()}</span>
+        </When>
+      )
+
+      const renderSuffix = (
+        <When condition={(slots.suffix || props.suffix) as any}>
+          <div class={bem('suffix')}>{slots.suffix ? slots.suffix() : props.suffix}</div>
+        </When>
+      )
+
+      const renderArrow = (
+        <When condition={props.arrow}>
+          <RightOutlined className={bem('arrow')} color="var(--d-secondary-text-color)" />
+        </When>
+      )
 
       function handleClick(event: Event) {
         emit('click', event)
@@ -101,7 +104,12 @@ export default defineComponent({
             <div class={bem('wrapper')}>
               {renderLabel}
               <div class={contentClassName}>
-                <div class={bem('content-inner')}>{slots.default ? slots.default() : content}</div>
+                <div class={bem('content-inner')}>
+                  <If condition={!isEmpty(slots.default)}>
+                    <Then>{slots.default?.()}</Then>
+                    <Else>{props.content}</Else>
+                  </If>
+                </div>
                 {renderRightIcon}
                 {renderSuffix}
               </div>

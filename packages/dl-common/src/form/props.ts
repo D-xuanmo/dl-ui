@@ -15,7 +15,10 @@ export const FORM_PROPS = {
   store: Object as PropType<FormStore>,
   labelWidth: [Number, String] as PropType<number | string>,
   layout: String as PropType<DirectionType>,
-  colon: Boolean,
+  colon: {
+    type: Boolean,
+    default: undefined
+  },
   requiredMarkPosition: String as PropType<Exclude<HorizontalAlignType, 'center'>>,
   hideLabel: Boolean,
   round: {

@@ -34,12 +34,12 @@ export default defineComponent({
     const formProps = computed(() => {
       const config = useConfig(['colon', 'requiredMarkPosition', 'layout', 'labelWidth'], props)
       return {
-        colon: config.colon,
         disabled: props.disabled,
         readonly: props.readonly,
+        hideLabel: props.hideLabel,
+        colon: config.colon,
         layout: config.layout,
         labelWidth: config.labelWidth,
-        hideLabel: props.hideLabel,
         requiredMarkPosition: config.requiredMarkPosition
       }
     })
@@ -60,7 +60,8 @@ export default defineComponent({
 
     return {
       formClassName,
-      store
+      store,
+      formProps
     }
   }
 })

@@ -21,7 +21,8 @@ export default defineConfig({
           vue: 'Vue'
         },
         exports: 'named',
-        assetFileNames: 'index.[ext]'
+        assetFileNames: 'index.[ext]',
+        sourcemap: true
       }
     }
   }

@@ -13,6 +13,7 @@ export const CELL_PROPS = {
   },
   hideTitle: Boolean,
   required: Boolean,
+  requiredMarkPosition: String as PropType<Exclude<HorizontalAlignType, 'center'>>,
 
   content: String as PropType<string | undefined>,
   contentClass: String,

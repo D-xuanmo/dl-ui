@@ -1,24 +1,31 @@
 <template>
+  <d-cell-group title="表单操作" cell-title-width="100px">
+    <d-cell title="标题宽度">
+      <d-input v-model="labelWidth" type="number" />
+    </d-cell>
+    <d-cell title="显示冒号">
+      <d-switch v-model="colon" />
+    </d-cell>
+    <d-cell title="布局切换">
+      <d-radio-group v-model="formLayout" :options="formLayoutOptions" direction="horizontal" />
+    </d-cell>
+    <d-cell title="必填标识位置">
+      <d-radio-group
+        v-model="requiredMarkPosition"
+        :options="requiredMarkPositionOptions"
+        direction="horizontal"
+      />
+    </d-cell>
+  </d-cell-group>
+
   <d-config-provider
     :layout="formLayout"
     :required-mark-position="requiredMarkPosition"
     :label-width="labelWidth"
+    :colon="colon"
+    :theme="{ primary: '#0FB57DFF' }"
   >
-    <d-cell-group title="表单操作" cell-title-width="100px" style="margin-bottom: var(--d-gap-sm)">
-      <d-cell title="标题宽度">
-        <d-input v-model="labelWidth" type="number" />
-      </d-cell>
-      <d-cell title="布局切换">
-        <d-radio-group v-model="formLayout" :options="formLayoutOptions" direction="horizontal" />
-      </d-cell>
-      <d-cell title="必填标识位置">
-        <d-radio-group
-          v-model="requiredMarkPosition"
-          :options="requiredMarkPositionOptions"
-          direction="horizontal"
-        />
-      </d-cell>
-    </d-cell-group>
+    <d-cell title="单元格" required>我是单元格内容</d-cell>
     <d-form :models="formModels" client-type="MOBILE" />
   </d-config-provider>
 </template>
@@ -30,6 +37,7 @@ import { ref } from 'vue'
 const formLayout = ref<any>('horizontal')
 const requiredMarkPosition = ref<any>('left')
 const labelWidth = ref(80)
+const colon = ref(false)
 
 const formLayoutOptions = [
   { label: 'horizontal', value: 'horizontal' },
@@ -50,7 +58,19 @@ const formModels: FormModels = [
     layout: {
       parent: 'root'
     },
-    placeholder: '请输入'
+    placeholder: '请输入',
+    value: ''
+  },
+  {
+    id: 'switch',
+    dataKey: 'switch',
+    label: '开关',
+    required: true,
+    component: 'DSwitch',
+    layout: {
+      parent: 'root'
+    },
+    value: true
   }
 ]
 </script>

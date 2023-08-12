@@ -10,10 +10,7 @@ export const CELL_GROUP_PROPS = {
     default: true
   },
   cellTitleWidth: String,
-  cellContentAlign: {
-    type: String as PropType<HorizontalAlignType>,
-    default: undefined
-  },
+  cellContentAlign: String as PropType<HorizontalAlignType>,
   layout: String as PropType<DirectionType>,
   border: {
     type: Boolean,

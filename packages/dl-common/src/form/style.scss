@@ -36,5 +36,9 @@
       vertical-align: middle;
       color: var(--d-error);
     }
+
+    &-colon {
+      margin-inline-start: 3px;
+    }
   }
 }

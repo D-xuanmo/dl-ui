@@ -3,7 +3,7 @@ import { withInstall } from '../utils'
 
 export const DConfigProvider = withInstall(ConfigProvider)
 
-export { type ConfigProviderProps } from './props'
+export { type ConfigProviderProps, type ConfigProviderTheme } from './props'
 
 export * from './context'
 

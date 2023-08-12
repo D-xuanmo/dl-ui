@@ -15,7 +15,8 @@
       >
         *
       </span>
-      <span>{{ model?.label }}{{ formProps.colon ? ':' : '' }}</span>
+      <span>{{ model?.label }}</span>
+      <span v-if="formProps.colon" :class="colonClass">:</span>
       <span
         v-if="showRequiredMark && formProps.requiredMarkPosition === 'right'"
         :class="requiredMarkClassName"
@@ -64,6 +65,7 @@ export default defineComponent({
     const itemClassName = createFormBEM('item')
     const errorClassName = createFormBEM('item-message')
     const requiredMarkClassName = createFormBEM('item-requiredMark')
+    const colonClass = createFormBEM('item-colon')
 
     const showRequiredMark = computed(() => {
       return props.model!.required || props.model!.rules?.includes('required')
@@ -83,6 +85,7 @@ export default defineComponent({
       itemClassName,
       errorClassName,
       requiredMarkClassName,
+      colonClass,
       showRequiredMark,
       errorMessage,
       formProps,

@@ -26,7 +26,8 @@
     "@xuanmo/dl-common": "workspace:*",
     "@xuanmo/dl-icons": "workspace:*",
     "@xuanmo/utils": "^0.0.1",
-    "@xuanmo/validator": "^0.0.16"
+    "@xuanmo/validator": "^0.0.16",
+    "vue-if": "latest"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.3",
