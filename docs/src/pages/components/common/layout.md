@@ -84,6 +84,7 @@ app
 |collapsed|`boolean`|`false`|是否开启折叠|N|
 |collapsed-width|`number`|`48px`|折叠后宽度|N|
 |placement|`'left' \| 'right'`|`left`|侧边栏位置|N|
+|trigger-top|`string \| number`|`50%`|触发按钮距离顶部距离|N|
 
 ### LayoutHeader、LayoutFooter Props
 

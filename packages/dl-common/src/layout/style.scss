@@ -19,30 +19,6 @@
     $siderPrefix: &;
     position: relative;
 
-    &--collapsed {
-      &#{$siderPrefix} {
-        &--placement {
-          &-left {
-            #{$siderPrefix} {
-              &__trigger {
-                right: 0;
-                transform: translate(50%, -50%) rotateZ(180deg);
-              }
-            }
-          }
-
-          &-right {
-            #{$siderPrefix} {
-              &__trigger {
-                left: 0;
-                transform: translate(-50%, -50%) rotateZ(0);
-              }
-            }
-          }
-        }
-      }
-    }
-
     &--placement {
       &-left {
         &#{$siderPrefix} {
@@ -71,6 +47,39 @@
             left: 0;
             transform: translate(-50%, -50%) rotateZ(180deg);
           }
+        }
+      }
+    }
+
+    &--collapsed {
+      &#{$siderPrefix} {
+        &--placement {
+          &-left {
+            border-right: 0;
+            #{$siderPrefix} {
+              &__trigger {
+                left: 0;
+                transform: translate(5px, -50%) rotateZ(180deg);
+              }
+            }
+          }
+
+          &-right {
+            border-left: 0;
+            #{$siderPrefix} {
+              &__trigger {
+                right: 0;
+                left: unset;
+                transform: translate(5px, -50%) rotateZ(0);
+              }
+            }
+          }
+        }
+      }
+
+      #{$siderPrefix} {
+        &__content {
+          visibility: hidden;
         }
       }
     }

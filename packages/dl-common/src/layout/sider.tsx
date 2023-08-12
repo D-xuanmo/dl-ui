@@ -23,7 +23,9 @@ export default defineComponent({
     }
 
     const trigger = props.collapsed ? (
-      <LeftOutlined class={bem('trigger')} onClick={handleCollapsed} />
+      <span class={bem('trigger')} style={{ top: addUnit(props.triggerTop) }}>
+        <LeftOutlined onClick={handleCollapsed} />
+      </span>
     ) : null
 
     return () => (

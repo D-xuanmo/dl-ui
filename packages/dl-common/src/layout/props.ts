@@ -9,6 +9,7 @@ export const LAYOUT_SIDER_PROPS = {
     type: [Number, String],
     default: 200
   },
+
   border: {
     type: Boolean,
     default: true
@@ -27,7 +28,7 @@ export const LAYOUT_SIDER_PROPS = {
    */
   collapsedWidth: {
     type: Number,
-    default: 48
+    default: 0
   },
 
   /**
@@ -36,6 +37,15 @@ export const LAYOUT_SIDER_PROPS = {
   placement: {
     type: String as PropType<'left' | 'right'>,
     default: 'left'
+  },
+
+  /**
+   * 触发按钮距离顶部距离
+   * 默认：50%
+   */
+  triggerTop: {
+    type: [Number, String],
+    default: '50%'
   }
 }
 

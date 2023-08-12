@@ -4,7 +4,7 @@
       <doc-header />
     </d-layout-header>
 
-    <d-layout-sider :class="menuClassName" width="250px">
+    <d-layout-sider :class="menuClassName" width="250px" collapsed>
       <doc-menu :data="menuData" />
     </d-layout-sider>
 
@@ -92,6 +92,12 @@ const menuData = computed(() => getMenuList(route.params.type as any))
 
     .dl-doc-preview__wrapper {
       margin-bottom: 16px;
+    }
+  }
+
+  .d-layout-sider--collapsed {
+    .d-layout-sider__content {
+      padding: 0;
     }
   }
 
