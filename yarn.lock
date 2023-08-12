@@ -1814,6 +1814,7 @@ __metadata:
   resolution: "@xuanmo/dl-common@workspace:packages/dl-common"
   dependencies:
     vue: ^3.2.47
+    vue-router: ^4.2.4
   languageName: unknown
   linkType: soft
 
@@ -7434,6 +7435,17 @@ __metadata:
   peerDependencies:
     vue: ^3.2.0
   checksum: 99ac17d79d46127e51d9ab2cd4577f4740ff31190e1d6cc719cf58c231b066f6442a2acd22bc185c0255bc9ad6d4c9074c23b84e61bff7ae47001f583173024d
+  languageName: node
+  linkType: hard
+
+"vue-router@npm:^4.2.4":
+  version: 4.2.4
+  resolution: "vue-router@npm:4.2.4"
+  dependencies:
+    "@vue/devtools-api": ^6.5.0
+  peerDependencies:
+    vue: ^3.2.0
+  checksum: 9fe1fc11b613c8e020aad5d0850ba5caa971033dfaa4fc117e4595349f2c5f211793a247c30e3c03b0f91c3512b87af929af96b8b20b6b7d4cdccc5af13e5e7f
   languageName: node
   linkType: hard
 

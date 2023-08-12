@@ -197,6 +197,10 @@
     &#{$prefix}--theme {
       &-default {
         color: var(--d-primary-text-color);
+
+        &:hover {
+          color: var(--d-primary);
+        }
       }
 
       &-primary {

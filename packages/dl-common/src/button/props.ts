@@ -1,5 +1,6 @@
 import { ExtractPropTypes, PropType } from 'vue'
 import { SizeEnum, ThemeEnum } from '../common'
+import { RouteLocationRaw } from 'vue-router'
 
 export type ButtonProps = ExtractPropTypes<typeof BUTTON_PROPS>
 
@@ -58,6 +59,13 @@ export const BUTTON_PROPS = {
    * 链接模式
    */
   link: Boolean,
+
+  /**
+   * 链接跳转
+   */
+  to: {
+    type: [String, Object] as PropType<RouteLocationRaw>
+  },
 
   /**
    * 虚线模式

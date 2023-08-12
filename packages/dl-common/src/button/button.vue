@@ -21,6 +21,7 @@ import { computed, defineComponent } from 'vue'
 import { createNamespace } from '../utils'
 import { BUTTON_PROPS } from './props'
 import { LoadingOutlined } from '@xuanmo/dl-icons'
+import { useRouter } from 'vue-router'
 
 const [name, bem] = createNamespace('button')
 
@@ -32,6 +33,7 @@ export default defineComponent({
   props: BUTTON_PROPS,
   emits: ['click'],
   setup(props, context) {
+    const router = useRouter()
     const wrapperClassName = computed(() =>
       bem({
         [`theme-${props.theme}`]: true,
@@ -46,6 +48,9 @@ export default defineComponent({
       })
     )
     const onClick = (event: MouseEvent) => {
+      if (props.to) {
+        return router.push(props.to)
+      }
       context.emit('click', event)
     }
 
