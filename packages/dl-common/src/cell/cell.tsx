@@ -43,7 +43,7 @@ export default defineComponent({
       const renderLabel = (
         <When
           condition={
-            !globalConfig.value.hideTitle || !(isEmpty(props.title) && isEmpty(slots.title))
+            !globalConfig.value.hideTitle && !(isEmpty(props.title) && isEmpty(slots.title))
           }
         >
           <div class={titleClassName} style={{ width: addUnit(globalConfig.value.labelWidth) }}>
