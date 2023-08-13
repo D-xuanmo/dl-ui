@@ -7,13 +7,13 @@ import { CustomKeys, ICascaderOption, IData } from '@xuanmo/dl-common'
  * @param columns
  * @param keys
  */
-export const findCascadeFirstLevelData = (columns: ICascaderOption[], keys: CustomKeys) => {
+export const findCascadeFirstLevelData = (columns: ICascaderOption[], keys?: CustomKeys) => {
   const firstLevelData: ICascaderOption[] = []
   let level = 0
   const findFirstLevelData = (column: ICascaderOption) => {
     firstLevelData.push(column)
     while (firstLevelData?.[level]) {
-      const result = (firstLevelData?.[level] as any)?.[keys.children || 'children']
+      const result = (firstLevelData?.[level] as any)?.[keys?.children || 'children']
       level++
       result && findFirstLevelData(result[0])
     }
@@ -28,9 +28,13 @@ export const findCascadeFirstLevelData = (columns: ICascaderOption[], keys: Cust
  * @param columns
  * @param keys
  */
-export const formatCascade = (value: PickerValue, columns: ICascaderOption[], keys: CustomKeys) => {
-  const valueKey = keys.value || 'value'
-  const childrenKey = keys.children || 'children'
+export const formatCascade = (
+  value: PickerValue,
+  columns: ICascaderOption[],
+  keys?: CustomKeys
+) => {
+  const valueKey = keys?.value || 'value'
+  const childrenKey = keys?.children || 'children'
   const formatted: PickerOption[][] = []
   let level = 0
   function findColumns(data: ICascaderOption[]) {
@@ -67,10 +71,10 @@ export const formatCascade = (value: PickerValue, columns: ICascaderOption[], ke
 export const findDisplayName = (
   value: PickerValue,
   originalColumns: PickerOptions,
-  keys: CustomKeys
+  keys?: CustomKeys
 ) => {
-  const labelKey = keys.label || 'label'
-  const valueKey = keys.value || 'value'
+  const labelKey = keys?.label || 'label'
+  const valueKey = keys?.value || 'value'
   const labels: string[] = []
   const columns = originalColumns.flat()
   for (let i = 0; i < value.length; i++) {
