@@ -46,6 +46,14 @@ export const LAYOUT_SIDER_PROPS = {
   triggerTop: {
     type: [Number, String],
     default: '50%'
+  },
+
+  /**
+   * 折叠事件
+   */
+  onCollapsed: {
+    type: Function as PropType<(collapsed: boolean) => void>,
+    default: undefined
   }
 }
 
