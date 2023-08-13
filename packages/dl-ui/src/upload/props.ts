@@ -1,4 +1,4 @@
-import { COMMON_PROPS } from '@xuanmo/dl-common'
+import { COMMON_PROPS, pickProps } from '@xuanmo/dl-common'
 import { ExtractPropTypes, PropType } from 'vue'
 
 /**
@@ -50,7 +50,7 @@ export type AfterUploadType = (response: XMLHttpRequestResponseType) => UploadLi
 export type UploadProps = ExtractPropTypes<typeof UPLOAD_PROPS>
 
 export const UPLOAD_PROPS = {
-  ...COMMON_PROPS,
+  ...pickProps(COMMON_PROPS, ['disabled', 'readonly']),
   modelValue: {
     type: Array as PropType<UploadListItemType[]>,
     default: () => []

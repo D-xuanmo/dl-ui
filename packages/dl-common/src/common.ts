@@ -43,7 +43,22 @@ export interface ICascaderOption extends IData {
   level?: number
 }
 
+/**
+ * 自定义数据相关属性
+ */
+export type CustomKeys = {
+  label?: string
+  value?: string
+  children?: string
+}
+
 export const COMMON_PROPS = {
-  disabled: Boolean,
-  readonly: Boolean
+  disabled: {
+    type: Boolean,
+    default: false
+  },
+  readonly: {
+    type: Boolean,
+    default: false
+  }
 }

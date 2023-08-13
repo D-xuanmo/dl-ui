@@ -1,10 +1,10 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { IData, DirectionType, COMMON_PROPS } from '@xuanmo/dl-common'
+import { IData, DirectionType, COMMON_PROPS, pickProps } from '@xuanmo/dl-common'
 
 export type CheckboxGroupProps = ExtractPropTypes<typeof CHECKBOX_GROUP_PROPS>
 
 export const CHECKBOX_GROUP_PROPS = {
-  ...COMMON_PROPS,
+  ...pickProps(COMMON_PROPS, ['disabled', 'readonly']),
   modelValue: {
     type: [Array] as PropType<(string | number)[]>,
     required: true

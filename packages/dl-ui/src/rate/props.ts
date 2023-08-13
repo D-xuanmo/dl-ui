@@ -1,11 +1,11 @@
 import { ExtractPropTypes, FunctionalComponent, PropType } from 'vue'
-import { SizeEnum, COMMON_PROPS } from '@xuanmo/dl-common'
+import { SizeEnum, COMMON_PROPS, pickProps } from '@xuanmo/dl-common'
 import { StarFilled, StarOutlined } from '@xuanmo/dl-icons'
 
 export type RateProps = ExtractPropTypes<typeof RATE_PROPS>
 
 export const RATE_PROPS = {
-  ...COMMON_PROPS,
+  ...pickProps(COMMON_PROPS, ['disabled', 'readonly']),
   modelValue: {
     type: Number,
     default: undefined

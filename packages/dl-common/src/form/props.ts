@@ -2,11 +2,12 @@ import { ExtractPropTypes, PropType } from 'vue'
 import { FormModels } from './types'
 import type { FormStore } from './store'
 import { COMMON_PROPS, DirectionType, HorizontalAlignType } from '../common'
+import { pickProps } from '../utils'
 
 export type FormProps = ExtractPropTypes<typeof FORM_PROPS>
 
 export const FORM_PROPS = {
-  ...COMMON_PROPS,
+  ...pickProps(COMMON_PROPS, ['disabled', 'readonly']),
   models: {
     type: Array as PropType<FormModels>,
     required: true,

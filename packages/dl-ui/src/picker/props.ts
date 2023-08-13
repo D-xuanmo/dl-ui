@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { ICascaderOption, COMMON_PROPS, IData } from '@xuanmo/dl-common'
+import { ICascaderOption, COMMON_PROPS, IData, pickProps } from '@xuanmo/dl-common'
 
 export type PickerValue = string[] | number[] | IData[]
 
@@ -12,7 +12,7 @@ export type PickerOptions = PickerOption[] | PickerOption[][]
 export type PickerProps = ExtractPropTypes<typeof PICKER_PROPS>
 
 export const PICKER_PROPS = {
-  ...COMMON_PROPS,
+  ...pickProps(COMMON_PROPS, ['disabled', 'readonly']),
   modelValue: {
     type: Array as PropType<PickerValue>,
     default: undefined

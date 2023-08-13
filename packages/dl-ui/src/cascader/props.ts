@@ -1,10 +1,10 @@
-import { ICascaderOption, CascaderValue, COMMON_PROPS, IData } from '@xuanmo/dl-common'
+import { ICascaderOption, CascaderValue, COMMON_PROPS, IData, pickProps } from '@xuanmo/dl-common'
 import { ExtractPropTypes, PropType } from 'vue'
 
 export type CascaderProps = ExtractPropTypes<typeof CASCADER_PROPS>
 
 export const CASCADER_PROPS = {
-  ...COMMON_PROPS,
+  ...pickProps(COMMON_PROPS, ['disabled', 'readonly']),
 
   modelValue: {
     type: Array as PropType<CascaderValue>,

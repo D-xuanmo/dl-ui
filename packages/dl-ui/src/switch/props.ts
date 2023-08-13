@@ -1,10 +1,10 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { COMMON_PROPS, SizeEnum } from '@xuanmo/dl-common'
+import { COMMON_PROPS, pickProps, SizeEnum } from '@xuanmo/dl-common'
 
 export type SwitchProps = ExtractPropTypes<typeof SWITCH_PROPS>
 
 export const SWITCH_PROPS = {
-  ...COMMON_PROPS,
+  ...pickProps(COMMON_PROPS, ['disabled', 'readonly']),
   modelValue: {
     type: Boolean,
     default: undefined

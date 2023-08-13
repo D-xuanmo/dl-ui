@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { COMMON_PROPS } from '@xuanmo/dl-common'
+import { COMMON_PROPS, pickProps } from '@xuanmo/dl-common'
 import { IDay } from './types'
 
 export type CalendarValue = string | Array<string>
@@ -22,7 +22,7 @@ export type CalendarProps = ExtractPropTypes<typeof CALENDAR_PROPS>
 const currentDate = new Date()
 
 export const CALENDAR_PROPS = {
-  ...COMMON_PROPS,
+  ...pickProps(COMMON_PROPS, ['disabled', 'readonly']),
   modelValue: {
     type: [String, Array] as PropType<CalendarValue>,
     default: undefined

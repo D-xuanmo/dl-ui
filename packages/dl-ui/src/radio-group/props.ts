@@ -1,10 +1,10 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { COMMON_PROPS, IData, DirectionType } from '@xuanmo/dl-common'
+import { COMMON_PROPS, IData, DirectionType, pickProps } from '@xuanmo/dl-common'
 
 export type RadioGroupProps = ExtractPropTypes<typeof RADIO_GROUP_PROPS>
 
 export const RADIO_GROUP_PROPS = {
-  ...COMMON_PROPS,
+  ...pickProps(COMMON_PROPS, ['disabled', 'readonly']),
   modelValue: {
     type: [String, Number],
     required: true
