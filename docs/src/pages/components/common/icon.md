@@ -3,6 +3,15 @@
 - 图标基于 `SVG` 创建；
 - 图标为独立包，通过 `@xuanmo/dl-icons` 引入图标。
 
+## 引入
+```typescript
+// 单个图标引入，推荐单个按需引入
+import { CheckSquareFilled } from '@xuanmo/dl-icons'
+
+// 全量图标引入，一般用于图标选择器场景
+import { manifest } from '@xuanmo/dl-icons'
+```
+
 ## 所有图标预览
 
 ```vue preview
