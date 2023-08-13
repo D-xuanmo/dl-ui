@@ -12,7 +12,7 @@ export type PickerOptions = PickerOption[] | PickerOption[][]
 export type PickerProps = ExtractPropTypes<typeof PICKER_PROPS>
 
 export const PICKER_PROPS = {
-  ...pickProps(COMMON_PROPS, ['disabled', 'readonly']),
+  ...pickProps(COMMON_PROPS, ['disabled', 'readonly', 'keys']),
   modelValue: {
     type: Array as PropType<PickerValue>,
     default: undefined

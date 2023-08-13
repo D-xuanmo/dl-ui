@@ -38,7 +38,8 @@ import {
   DButton,
   DPopup,
   createNamespace,
-  useModelValue
+  useModelValue,
+  useConfig
 } from '@xuanmo/dl-common'
 import { PickerOption, PICKER_PROPS, PickerValue } from './props'
 import { debounce, deepCopy, isEmpty, isObject } from '@xuanmo/utils'
@@ -58,6 +59,7 @@ export default defineComponent({
   setup(props, context) {
     const className = bem()
     const contentClassName = bem('content')
+    const config = useConfig(['keys'], props)
 
     const [visible, updateVisible] = useModelValue<
       boolean,
@@ -80,12 +82,12 @@ export default defineComponent({
     const temporaryValue = ref<PickerValue>(
       !isEmpty(innerValue.value)
         ? deepCopy(innerValue.value)
-        : findCascadeFirstLevelData(props.options as ICascaderOption[])
+        : findCascadeFirstLevelData(props.options as ICascaderOption[], config.keys)
     )
     // 内部渲染列使用
     const formattedColumns = computed(() => {
       if (isCascade.value) {
-        return formatCascade(temporaryValue.value, props.options as ICascaderOption[])
+        return formatCascade(temporaryValue.value, props.options as ICascaderOption[], config.keys)
       }
 
       if (isObject(props.options[0])) {
@@ -152,7 +154,7 @@ export default defineComponent({
           temporaryValue.value = deepCopy(innerValue.value)
         }
         displayValue.value =
-          findDisplayName(innerValue.value, formattedColumns.value) ||
+          findDisplayName(innerValue.value, formattedColumns.value, config.keys) ||
           (props.placeholder ?? '请选择')
       },
       {
@@ -164,10 +166,13 @@ export default defineComponent({
       () => props.options,
       () => {
         displayValue.value =
-          findDisplayName(innerValue.value, formattedColumns.value) ||
+          findDisplayName(innerValue.value, formattedColumns.value, config.keys) ||
           (props.placeholder ?? '请选择')
         if (isCascade.value && isEmpty(temporaryValue.value)) {
-          temporaryValue.value = findCascadeFirstLevelData(props.options as ICascaderOption[])
+          temporaryValue.value = findCascadeFirstLevelData(
+            props.options as ICascaderOption[],
+            config.keys
+          )
         }
       }
     )

@@ -94,6 +94,7 @@ fetch(
 |cancel-button-text|`string`|`取消`|关闭按钮文字|N|
 |confirm-button-text|`string`|`确认`|确认按钮文字|N|
 |option-height|`number`|42|单个选项高度|N|
+|keys|`CustomKeys`|-|自定义数据源中的属性，[公用类型定义](https://uoo.ink/common)|N|
 
 ### Events
 
@@ -104,9 +105,9 @@ fetch(
 |confirm|确认事件|`(value: PickerValue) => void`|
 |close|关闭事件|`() => void`|
 
-## TypeScript 类型
+## TS 类型
 
-公用类型 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/common.ts](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/common.ts)
+公用类型 [https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/common.ts](https://uoo.ink/common)
 
 ```typescript
 type PickerValue = string[] | number[] | IData[]
