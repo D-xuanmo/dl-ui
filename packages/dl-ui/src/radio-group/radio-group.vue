@@ -3,9 +3,9 @@
     <template v-if="options">
       <d-radio
         v-for="option in options"
-        :key="option.value"
-        :label="option.label"
-        :value="option.value"
+        :key="(option as any)[valueKey]"
+        :label="(option as any)[labelKey]"
+        :value="(option as any)[valueKey]"
       />
     </template>
     <slot v-else />
@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, provide, SetupContext } from 'vue'
-import { createNamespace, useModelValue } from '@xuanmo/dl-common'
+import { createNamespace, useConfig, useModelValue } from '@xuanmo/dl-common'
 import { RADIO_GROUP_PROPS } from './props'
 import { RADIO_GROUP_CONTEXT_KEY } from '../context'
 import DRadio from '../radio'
@@ -29,6 +29,7 @@ export default defineComponent({
   props: RADIO_GROUP_PROPS,
   emits: ['update:model-value', 'change'],
   setup(props, { emit }) {
+    const config = useConfig(['keys'], props)
     const wrapperClassName = bem({
       horizontal: props.direction === 'horizontal',
       vertical: props.direction === 'vertical'
@@ -36,6 +37,9 @@ export default defineComponent({
     const [innerValue] = useModelValue(props, emit as SetupContext['emit'])
     const disabled = computed(() => props.disabled)
     const readonly = computed(() => props.readonly)
+
+    const valueKey = config.keys?.value || 'value'
+    const labelKey = config.keys?.label || 'label'
 
     const updateModelValue = (value: any) => {
       emit('update:model-value', value)
@@ -52,6 +56,8 @@ export default defineComponent({
 
     return {
       wrapperClassName,
+      valueKey,
+      labelKey,
       updateModelValue
     }
   }

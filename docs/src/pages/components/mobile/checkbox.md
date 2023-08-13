@@ -81,6 +81,7 @@ const value2 = ref(['1', '3'])
 |default-checked|`boolean`|-|是否默认选中|N|
 |disabled|`boolean`|-|是否禁用|N|
 |icon|`string`|-|图标名|N|
+|keys|`CustomKeys`|-|自定义数据源中的属性，`label`、`value`、`children` 别名，[公用类型定义](https://uoo.ink/common)|N|
 
 ### CheckboxGroup Props
 

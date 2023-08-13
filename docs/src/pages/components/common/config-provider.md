@@ -101,7 +101,7 @@ const formModels: FormModels = [
 |参数|类型|默认值|说明|必传|
 |---|---|------|---|---|
 |theme|`ConfigProviderTheme`|-|修改主题颜色|N|
-|keys|`CustomKeys`|-|自定义数据源中的属性，[公用类型定义](https://uoo.ink/common)|N|
+|keys|`CustomKeys`|-|自定义数据源中的属性，`label`、`value`、`children` 别名，[公用类型定义](https://uoo.ink/common)|N|
 |colon|`boolean`|`false`|是否显示冒号，仅 `Form` 支持|N|
 |layout|`'horizontal' \| 'vertical'`|`horizontal`|布局类型，支持的组件有：`Cell`、`Form`|N|
 |required-mark-position|`'left' \| 'right'`|`right`|必填标识显示位置，支持的组件有：`Cell`、`Form`|N|

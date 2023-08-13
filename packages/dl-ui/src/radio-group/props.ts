@@ -4,7 +4,7 @@ import { COMMON_PROPS, IData, DirectionType, pickProps } from '@xuanmo/dl-common
 export type RadioGroupProps = ExtractPropTypes<typeof RADIO_GROUP_PROPS>
 
 export const RADIO_GROUP_PROPS = {
-  ...pickProps(COMMON_PROPS, ['disabled', 'readonly']),
+  ...pickProps(COMMON_PROPS, ['disabled', 'readonly', 'keys']),
   modelValue: {
     type: [String, Number],
     required: true
