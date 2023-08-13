@@ -1,6 +1,7 @@
 import { ConfigProviderInjectKey, ConfigProviderProps } from '../config-provider'
 import { inject } from 'vue'
 import { isEmpty } from '@xuanmo/utils'
+import { CustomKeys } from '../common'
 
 /**
  * 获取 config provider 对应的参数
@@ -13,7 +14,12 @@ export function useConfig<
 >(keys: T[], currentProps: P) {
   const config = inject(ConfigProviderInjectKey, {
     requiredMarkPosition: 'right',
-    labelWidth: 80
+    labelWidth: 80,
+    keys: <CustomKeys>{
+      label: 'label',
+      value: 'value',
+      children: 'children'
+    }
   } as ConfigProviderProps)
 
   return keys.reduce((prev, currentKey) => {

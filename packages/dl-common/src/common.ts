@@ -1,3 +1,5 @@
+import { PropType } from 'vue'
+
 /** 水平对齐方式 */
 export type HorizontalAlignType = 'left' | 'center' | 'right'
 
@@ -60,5 +62,9 @@ export const COMMON_PROPS = {
   readonly: {
     type: Boolean,
     default: false
+  },
+  keys: {
+    type: Object as PropType<CustomKeys>,
+    default: undefined
   }
 }
