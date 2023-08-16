@@ -1,5 +1,12 @@
 # Form 表单
 
+## 表单概念解释
+
+- `Form item` 一个数据单元对应 (`一个标题 + 一个输入型组件` 或者 `一个任意组件`) + 描述组成；
+- `Layout container` 布局容器，在表单的字段上层加入布局维度，使表单字段不受限于一种风格，可达到组件任意布局，更加灵活；
+- `Layout item` 布局组件的子项，用于和布局容器做父子绑定，整体渲染流程：`Layout container => Layout item => Form item`，布局还可以继续嵌套布局组件，实现更复杂的场景；
+- `Form store` 所有与数据、校验、事件等操作，统一由 `store` 提供能力，`Form` 组件只负责渲染。
+
 ## 整体架构
 
 - 表单不仅仅是表单，页面一切皆可为表单；
@@ -7,7 +14,7 @@
 - 表单不区分 PC、H5，表单只是作为一个容器，可以容纳 PC、H5、任意第三方组件库的组件，不关心子级的具体渲染，非表单组件也可以渲染，具体展示效果由子级自行处理；
 - 关于布局，组件库已实现[单例分组](https://www.xuanmo.xin/-/dl-ui/comp-common/cell)、[网格系统](https://www.xuanmo.xin/-/dl-ui/comp-common/grid)、[框架](https://www.xuanmo.xin/-/dl-ui/comp-common/layout)等布局类组件，用户也可以自行实现布局组件，做不一样的展示效果，只需要通过父子级关系绑定即可。
 
-![](https://upyun.xuanmo.xin/dl-ui/20230711235904394385.svg)
+![Form 架构](https://upyun.xuanmo.xin/dl-ui/form.png)
 
 ## 引入
 
