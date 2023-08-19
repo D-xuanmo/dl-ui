@@ -1,7 +1,7 @@
 <template>
   <d-upload
     v-model="value"
-    action="/api/file-server/p/upload"
+    action="/api/my-admin/p/file/upload"
     multiple
     upload-data-key="files"
     :data="uploadData"
@@ -20,7 +20,8 @@ const value = ref<UploadListItemType[]>([
 ])
 
 const uploadData = {
-  type: 'media'
+  type: 'media',
+  directoryId: '1de547bf-67d4-4a7d-bb88-2178090327c8'
 }
 
 const headerParams = {

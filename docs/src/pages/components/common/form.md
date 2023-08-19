@@ -371,12 +371,13 @@ const formModel: IFormModelItem[] = [
     },
     value: [
       {
-        url: 'https://www.xuanmo.xin/api/file-server/read-file/cf5be5e5-a84b-41e9-b91a-c99646039f15'
+        url: 'https://my.xuanmo.xin:3000/api/my-admin/p/file/read/02e535e6-8348-423e-8cf5-0d480fa4d247'
       }
     ],
-    action: '/api/file-server/p/upload',
+    action: '/api/my-admin/p/file/upload',
     data: {
-      type: 'media'
+      type: 'media',
+      directoryId: '1de547bf-67d4-4a7d-bb88-2178090327c8'
     },
     headerParams: {
       'X-XSRF-TOKEN': dCookie().getItem('csrfToken')
@@ -457,7 +458,7 @@ const handleChange: OnFormChange = (value, model) => {
 }
 
 fetch(
-  'https://my.xuanmo.xin:3202/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727'
+  'https://my.xuanmo.xin:3000/api/my-admin/p/file/read/335f8ac3-f7f5-4408-ab30-a25000041190'
 ).then(async (res) => {
   const options = await res.json()
   formRef.value.store.updateModel('cascaderPicker', {
