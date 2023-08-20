@@ -1,11 +1,10 @@
 import { FunctionalComponent } from 'vue'
 import { createBEM, generatePlaygroundURL } from './utils'
 import CopyCode from './copy-code'
-import CodeSandbox from '@doc/components/icons/code-sandbox'
 import PreviewOnly from '@doc/components/preview/preview-only'
 import { DSpace } from '@xuanmo/dl-ui'
-import BrowserOutlined from '@doc/components/icons/browser-outlined'
-import { QrcodeOutlined } from '@xuanmo/dl-icons'
+import { QrcodeOutlined, LinkOpenOutlined, CodeSandboxOutlined } from '@xuanmo/dl-icons'
+import { When, If, Then, Else } from 'vue-if'
 
 type MobilePreviewProps = {
   // 源码
@@ -26,15 +25,19 @@ type MobilePreviewProps = {
 
 const MobilePreview: FunctionalComponent<MobilePreviewProps, any> = (props, { slots }) => {
   const { sourceCode, playgroundKey, qrcodeImage, previewURL, previewType, title } = props
-  const previewContent =
-    previewType === 'iframe' ? (
-      <iframe src={`${previewURL}?preview=true`} />
-    ) : (
-      <PreviewOnly code={slots.default?.()} />
-    )
+  const previewContent = (
+    <If condition={previewType === 'iframe'}>
+      <Then>
+        <iframe src={`${previewURL}?preview=true`} />
+      </Then>
+      <Else>
+        <PreviewOnly code={slots.default?.()} />
+      </Else>
+    </If>
+  )
   const playgroundBtn = (
     <a href={generatePlaygroundURL(playgroundKey)} target="_blank" title="在 Playground 中编辑">
-      <CodeSandbox />
+      <CodeSandboxOutlined />
     </a>
   )
   return (
@@ -45,9 +48,9 @@ const MobilePreview: FunctionalComponent<MobilePreviewProps, any> = (props, { sl
             <DSpace justify="between">
               <h3>{title ?? playgroundBtn}</h3>
               <DSpace gap={16}>
-                {!title ? null : playgroundBtn}
+                <When condition={title}>{playgroundBtn}</When>
                 <a href="javascript:">
-                  <CopyCode code={sourceCode} />
+                  <CopyCode code={sourceCode} size="medium" />
                 </a>
               </DSpace>
             </DSpace>
@@ -59,7 +62,7 @@ const MobilePreview: FunctionalComponent<MobilePreviewProps, any> = (props, { sl
           <div class={createBEM('mobile-toolbar')}>
             <DSpace justify="end" gap={16}>
               <a href={`${previewURL}?preview=true`} target="_blank">
-                <BrowserOutlined />
+                <LinkOpenOutlined />
               </a>
               <div class={createBEM('qrcode')}>
                 <QrcodeOutlined class={createBEM('qrcode-trigger')} />

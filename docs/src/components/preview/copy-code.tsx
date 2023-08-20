@@ -1,6 +1,7 @@
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { copyText } from '@doc/utils/copy'
 import { CopyOutlined } from '@xuanmo/dl-icons'
+import { SizeEnum } from '@xuanmo/dl-common'
 
 export default defineComponent({
   name: 'CopyCode',
@@ -8,6 +9,10 @@ export default defineComponent({
     code: {
       type: String,
       default: ''
+    },
+    size: {
+      type: String as PropType<SizeEnum>,
+      default: 'small'
     }
   },
   setup(props) {
@@ -18,11 +23,7 @@ export default defineComponent({
     }
 
     return () => {
-      return (
-        <span title="复制代码" onClick={handleCopy}>
-          <CopyOutlined size="small" />
-        </span>
-      )
+      return <CopyOutlined size={props.size} onClick={handleCopy} />
     }
   }
 })

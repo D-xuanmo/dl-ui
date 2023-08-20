@@ -1,10 +1,9 @@
 import { defineComponent, ref, useSlots } from 'vue'
 import PreviewOnly from '@doc/components/preview/preview-only'
 import { createBEM, generatePlaygroundURL } from './utils'
-import CodeSandbox from '@doc/components/icons/code-sandbox'
 import { DSpace } from '@xuanmo/dl-ui'
 import CopyCode from '@doc/components/preview/copy-code'
-import { CodeOutlined } from '@xuanmo/dl-icons'
+import { CodeOutlined, CodeSandboxOutlined } from '@xuanmo/dl-icons'
 
 export default defineComponent({
   name: 'DesktopPreview',
@@ -36,7 +35,7 @@ export default defineComponent({
           <h2 class={createBEM('desktop-title')}>{props.title}</h2>
           <DSpace class={createBEM('desktop-toolbar')} gap={10}>
             <a href={generatePlaygroundURL(props.playground)} title="在线编辑" target="_blank">
-              <CodeSandbox size="small" />
+              <CodeSandboxOutlined size="small" />
             </a>
             <a href="javascript:;" title="复制代码">
               <CopyCode code={props.source} />
