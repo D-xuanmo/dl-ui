@@ -53,13 +53,13 @@ export default defineComponent({
     }))
 
     function onTransitionBefore() {
-      if (props.blockScroll) {
+      if (props.lockScroll) {
         document.body.classList.add(`${PREFIX}-overflow-hidden`)
       }
     }
 
     function onTransitionAfterLeave() {
-      if (props.blockScroll) {
+      if (props.lockScroll) {
         document.body.classList.remove(`${PREFIX}-overflow-hidden`)
       }
     }
