@@ -154,16 +154,6 @@ import { StarOutlined } from '@xuanmo/dl-icons'
 </script>
 ```
 
-```vue client=PC playground=2q78rd7 title=链接跳转
-<template>
-  <markdown>链接跳转使用 `to` 参数即可，实现使用的是 `vue-router push`</markdown>
-  <d-space :gap="16" align="center">
-    <d-button theme="primary" to="/">跳转到首页</d-button>
-    <d-button link theme="primary" :to="{ path: '/' }">跳转到首页</d-button>
-  </d-space>
-</template>
-```
-
 ```vue client=PC playground=2q78rd7 title=块级元素
 <template>
   <d-space direction="vertical" :gap="8">
@@ -188,7 +178,6 @@ import { StarOutlined } from '@xuanmo/dl-icons'
 |shape|`'default' \| 'round' \| 'rectangular'`|`default`|按钮形状|N|
 |loading|`boolean`|`false`|是否显示 loading 效果|N|
 |link|`boolean`|`false`|链接模式|N|
-|to|`RouteLocationRaw`|-|跳转链接，接受 `vue-router.push` 参数|N|
 
 ### Slots
 
