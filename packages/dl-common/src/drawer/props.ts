@@ -6,7 +6,7 @@ import { pickProps } from '../utils'
 export type DrawerProps = ExtractPropTypes<typeof DRAWER_PROPS>
 
 export const DRAWER_PROPS = {
-  ...pickProps(COMMON_PROPS, ['lockScroll', 'teleport']),
+  ...pickProps(COMMON_PROPS, ['lockScroll', 'teleport', 'lazyRender']),
   /**
    * 弹框显示隐藏
    */

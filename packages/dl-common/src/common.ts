@@ -84,5 +84,13 @@ export const COMMON_PROPS = {
   teleport: {
     type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body'
+  },
+
+  /**
+   * 是否开启懒加载渲染，默认开启
+   */
+  lazyRender: {
+    type: Boolean,
+    default: true
   }
 }

@@ -6,7 +6,7 @@ import { pickProps } from '../utils'
 export type DialogProps = ExtractPropTypes<typeof DIALOG_PROPS>
 
 export const DIALOG_PROPS = {
-  ...pickProps(COMMON_PROPS, ['lockScroll', 'teleport']),
+  ...pickProps(COMMON_PROPS, ['lockScroll', 'teleport', 'lazyRender']),
   /**
    * 弹框显示隐藏
    */

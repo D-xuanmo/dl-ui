@@ -155,6 +155,7 @@ export default defineComponent({
         popupBodyClass={bodyClass}
         popupStyle={style.value}
         lockScroll={props.lockScroll}
+        lazyRender={props.lazyRender}
         onClose={handleClose}
       >
         {{

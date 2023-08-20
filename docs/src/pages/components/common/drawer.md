@@ -149,6 +149,7 @@ const showDrawer = (p: string) => {
 |width|`'number' \| 'string'`|`480px`|对话框宽度|N|
 |height|`'number' \| 'string'`|-|对话框高度|N|
 |placement|`'top' \| 'right' \| 'bottom' \| 'left'`|`right`|抽屉打开位置|N|
+|lazy-render|`boolean`|`true`|是否显示抽屉时渲染内容，内容较多时，建议开启，以保证页面渲染性能|N|
 |teleport|`TeleportProps['to']`|`body`|选择要插入的 DOM 节点，同 `Teleport` 组件，[参考链接](https://staging-cn.vuejs.org/guide/built-ins/teleport.html#basic-usage) |N|
 |onClose|`() => void`|-|对话框关闭事件|N|
 |onConfirm|`() => void \| Promise<boolean>`|-|对话框确认事件，返回 `Promise<false>` 则不会关闭弹框|N|

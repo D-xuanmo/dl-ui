@@ -6,7 +6,7 @@ import { pickProps } from '../utils'
 export type PopupProps = ExtractPropTypes<typeof POPUP_PROPS>
 
 export const POPUP_PROPS = {
-  ...pickProps(COMMON_PROPS, ['lockScroll', 'teleport']),
+  ...pickProps(COMMON_PROPS, ['lockScroll', 'teleport', 'lazyRender']),
   visible: Boolean,
   title: String,
   placement: {
@@ -55,14 +55,6 @@ export const POPUP_PROPS = {
     default: {}
   },
   closeOnOverlayClick: {
-    type: Boolean,
-    default: true
-  },
-
-  /**
-   * 是否开启懒加载渲染，默认开启
-   */
-  lazyRender: {
     type: Boolean,
     default: true
   }
