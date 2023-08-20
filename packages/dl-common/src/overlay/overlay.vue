@@ -25,6 +25,7 @@ import { createNamespace } from '../utils'
 import { useModelValue, useZIndex } from '../hooks'
 import { PREFIX } from '../constants'
 import { OVERLAY_PROPS } from './props'
+import { isEmpty } from '@xuanmo/utils'
 
 const [name, bem] = createNamespace('overlay')
 
@@ -41,9 +42,7 @@ export default defineComponent({
     )
     const isLoaded = ref(props.visible ? true : !props.lazyRender)
 
-    const [zIndex, setZIndex] = useZIndex(props, props.zIndex !== undefined)
-
-    setZIndex()
+    const [zIndex] = isEmpty(props.zIndex) ? useZIndex(props) : [ref(props.zIndex)]
 
     const style = computed<CSSProperties>(() => ({
       zIndex: zIndex.value,
