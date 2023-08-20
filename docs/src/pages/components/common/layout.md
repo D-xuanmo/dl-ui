@@ -26,7 +26,7 @@ app
 
 ## 代码演示
 
-```vue title=基础用法
+```vue title=基础用法 playground=qom257
 <template>
   <div style="height: 300px">
     <d-layout>
@@ -41,7 +41,7 @@ app
 </template>
 ```
 
-```vue title=侧边栏开启折叠
+```vue title=侧边栏开启折叠 playground=29sop8j
 <template>
   <div style="height: 300px">
     <d-layout>
@@ -55,7 +55,7 @@ app
 </template>
 ```
 
-```vue title=嵌套使用
+```vue title=嵌套使用 playground=c60rrp
 <template>
   <div style="height: 300px">
     <d-layout>

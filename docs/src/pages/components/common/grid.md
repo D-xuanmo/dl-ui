@@ -141,7 +141,7 @@ app.use(DGrid).use(DGridItem)
 </style>
 ```
 
-```vue client=PC playground=2irner title=实际场景4*7
+```vue client=PC playground=2rckg0d title=实际场景4*7
 <template>
   <d-grid :columns="7" :gap="6" :class="className">
     <d-grid-item :row="3" :column="2">

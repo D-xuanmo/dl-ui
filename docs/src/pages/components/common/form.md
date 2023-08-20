@@ -471,7 +471,7 @@ fetch(
 </script>
 ```
 
-```vue title=通过Grid组件实现布局 playground=cl29qs
+```vue title=通过Grid组件实现布局 playground=FormGrid
 <template>
   <d-form
     ref='formRef'
@@ -600,7 +600,7 @@ const reset = () => {
 </style>
 ```
 
-```vue title=结合Layout组件实现布局
+```vue title=结合Layout组件实现布局 playground=FormLayout
 <template>
   <d-form :models="formModels" />
 </template>
@@ -756,8 +756,8 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 ### 内置布局容器
 
 - `DFormCellGroup` 可以快速实现单列表单分组效果，参考链接：[https://uoo.ink/Form](https://uoo.ink/Form)
-- `DFormGrid` 通过 Grid 网格组件实现更灵活的布局，参考链接：[https://uoo.ink/cl29qs](https://uoo.ink/cl29qs)
-- `DFormLayout` 通过 Layout 组件实现布局
+- `DFormGrid` 通过 Grid 网格组件实现更灵活的布局，参考链接：[https://uoo.ink/FormGrid](https://uoo.ink/FormGrid)
+- `DFormLayout` 通过 Layout 组件实现布局，参考链接：[https://uoo.ink/FormLayout](https://uoo.ink/FormLayout)
 
 ### 开发表单组件
 

@@ -77,15 +77,15 @@ app.use(DInput)
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { TipsOutlined } from '@xuanmo/dl-icons'
+  import { ref } from 'vue'
+  import { TipsOutlined } from '@xuanmo/dl-icons'
 
-const value = ref('')
-const number = ref('')
+  const value = ref('')
+  const number = ref('')
 
-function onBlur(value: string) {
-  console.log(value)
-}
+  function onBlur(value: string) {
+    console.log(value)
+  }
 </script>
 ```
 

@@ -18,7 +18,7 @@ app.use(DDialog)
 
 ## 代码演示
 
-```vue title=基础用法
+```vue title=基础用法 playground=4ho4ot
 <template>
   <d-button @click="visible = true">显示对话框</d-button>
   <d-dialog v-model:visible="visible" title="标题">
@@ -33,7 +33,7 @@ const visible = ref(false)
 </script>
 ```
 
-```vue title=显示主题
+```vue title=显示主题 playground=3jeq1t0
 <template>
   <markdown>
     设置 `show-icon` 为 `true`，即可显示图标
@@ -81,7 +81,7 @@ const visible5 = ref(false)
 </script>
 ```
 
-```vue title=隐藏遮罩层
+```vue title=隐藏遮罩层 playground=6272ai
 <template>
   <d-button @click="visible = true">显示对话框</d-button>
   <d-dialog
@@ -101,7 +101,7 @@ const visible = ref(false)
 </script>
 ```
 
-```vue title=插件形式调用
+```vue title=插件形式调用 playground=199n7c0
 <template>
   <d-space :gap='8'>
     <d-button @click="showDialog1">显示对话框</d-button>
@@ -139,7 +139,7 @@ const showDialog3 = () => {
 </script>
 ```
 
-```vue title=异步场景
+```vue title=异步场景 playground=29lcof4
 <template>
   <d-space :gap='8'>
     <d-button @click="showDialog">显示对话框</d-button>

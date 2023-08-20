@@ -13,7 +13,7 @@ const app = createApp()
 app.use(DConfigProvider)
 ```
 
-```vue client=Mobile
+```vue client=Mobile playground=ConfigProvider
 <template>
   <d-cell-group title="表单操作" cell-title-width="100px">
     <d-cell title="标题宽度">

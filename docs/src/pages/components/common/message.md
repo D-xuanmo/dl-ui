@@ -35,7 +35,7 @@ const showLoading = () => MessagePlugin.loading('加载中...')
 </script>
 ```
 
-```vue client=PC playground=Message title=手动开启、关闭
+```vue client=PC playground=1mueg9f title=手动开启、关闭
 
 <template>
   <markdown>
@@ -58,7 +58,7 @@ const manual = () => {
 </script>
 ```
 
-```vue client=PC playground=Message title=不显示图标
+```vue client=PC playground=hohu45 title=不显示图标
 <template>
   <d-button fill="outline" @click="showInfo">打开</d-button>
 </template>
@@ -69,7 +69,7 @@ const showInfo = () => MessagePlugin.text('消息内容')
 </script>
 ```
 
-```vue client=PC playground=Message title=显示关闭
+```vue client=PC playground=3mfcvm8 title=显示关闭
 <template>
   <d-button fill="outline" @click="showInfo">打开</d-button>
 </template>
@@ -83,7 +83,7 @@ const showInfo = () => MessagePlugin.info('消息内容', {
 </script>
 ```
 
-```vue client=PC playground=Message title=关闭所有消息
+```vue client=PC playground=13c1qbo title=关闭所有消息
 <template>
   <markdown>
     调用 `destroyAll` 可关闭页面所有 `message` 实例。

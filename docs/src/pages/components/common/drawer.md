@@ -19,7 +19,7 @@ app.use(DDrawer)
 
 ## 代码演示
 
-```vue title=基础用法
+```vue title=基础用法 playground=75q0r5
 <template>
   <d-button @click="visible = true">显示抽屉</d-button>
   <d-drawer v-model:visible="visible" title="标题">
@@ -34,7 +34,7 @@ const visible = ref(false)
 </script>
 ```
 
-```vue title=超出滚动
+```vue title=超出滚动 playground=216ri0a
 <template>
   <d-button @click="visible = true">显示抽屉</d-button>
   <d-drawer v-model:visible="visible" title="标题">
@@ -49,7 +49,7 @@ const visible = ref(false)
 </script>
 ```
 
-```vue title=嵌套使用
+```vue title=嵌套使用 playground=324crha
 <template>
   <d-button @click="visible1 = true">显示抽屉</d-button>
   <d-drawer
@@ -92,7 +92,7 @@ const showCloseMessage = () => {
 </script>
 ```
 
-```vue title=切换位置
+```vue title=切换位置 playground=1usqcnc
 <template>
   <d-space :gap="8">
     <d-button @click="showDrawer('top')">上</d-button>

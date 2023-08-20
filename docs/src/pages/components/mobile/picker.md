@@ -72,7 +72,7 @@ const value3 = ref([
 const template3 = ref([])
 
 fetch(
-  'https://my.xuanmo.xin:3202/api/file-server/read-file/4e896e26-0c4a-4d75-b8fb-73f9319b9727'
+  'https://my.xuanmo.xin:3000/api/my-admin/p/file/read/335f8ac3-f7f5-4408-ab30-a25000041190'
 ).then(async (res) => {
   template3.value = await res.json()
 })
