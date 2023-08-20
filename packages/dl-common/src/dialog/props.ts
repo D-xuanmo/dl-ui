@@ -1,10 +1,12 @@
 import { ExtractPropTypes, PropType, TeleportProps, VNode } from 'vue'
-import { MessageThemeEnum } from '../common'
+import { COMMON_PROPS, MessageThemeEnum } from '../common'
 import { ButtonProps } from '../button'
+import { pickProps } from '../utils'
 
 export type DialogProps = ExtractPropTypes<typeof DIALOG_PROPS>
 
 export const DIALOG_PROPS = {
+  ...pickProps(COMMON_PROPS, ['lockScroll']),
   /**
    * 弹框显示隐藏
    */

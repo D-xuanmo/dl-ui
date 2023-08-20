@@ -1,10 +1,12 @@
 import { CSSProperties, ExtractPropTypes, PropType, TeleportProps } from 'vue'
-import { PlacementEnum } from '../common'
+import { COMMON_PROPS, PlacementEnum } from '../common'
 import { TRANSITION_DURATION } from '../constants'
+import { pickProps } from '../utils'
 
 export type PopupProps = ExtractPropTypes<typeof POPUP_PROPS>
 
 export const POPUP_PROPS = {
+  ...pickProps(COMMON_PROPS, ['lockScroll']),
   visible: Boolean,
   title: String,
   placement: {

@@ -1,10 +1,12 @@
 import { ExtractPropTypes, PropType, TeleportProps, VNode } from 'vue'
 import { ButtonProps } from '../button'
-import { PlacementEnum } from '../common'
+import { COMMON_PROPS, PlacementEnum } from '../common'
+import { pickProps } from '../utils'
 
 export type DrawerProps = ExtractPropTypes<typeof DRAWER_PROPS>
 
 export const DRAWER_PROPS = {
+  ...pickProps(COMMON_PROPS, ['lockScroll']),
   /**
    * 弹框显示隐藏
    */

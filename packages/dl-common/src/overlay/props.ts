@@ -1,9 +1,12 @@
 import { CSSProperties, ExtractPropTypes, PropType, TeleportProps } from 'vue'
 import { TRANSITION_DURATION } from '../constants'
+import { pickProps } from '../utils'
+import { COMMON_PROPS } from '../common'
 
 export type OverlayProps = ExtractPropTypes<typeof OVERLAY_PROPS>
 
 export const OVERLAY_PROPS = {
+  ...pickProps(COMMON_PROPS, ['lockScroll']),
   visible: {
     type: Boolean,
     default: false

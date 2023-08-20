@@ -66,5 +66,14 @@ export const COMMON_PROPS = {
   keys: {
     type: Object as PropType<CustomKeys>,
     default: undefined
+  },
+
+  /**
+   * 锁定 body 滚动
+   * @default true
+   */
+  lockScroll: {
+    type: Boolean,
+    default: true
   }
 }

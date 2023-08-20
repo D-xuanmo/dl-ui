@@ -41,6 +41,7 @@ const visible2 = ref(false)
 |---|----|-----|---|----|
 |v-model:visible|`boolean`|`false`|控制遮罩层显示隐藏|Y|
 |z-index|`number`|`2000`|CSS z-index|N|
+|lock-scroll|`boolean`|`true`|是否显示时，锁定 body 滚动|N|
 |duration|`string \| number`|`0.3s`|背景过渡时间|N|
 |overlay-class|`string`|-|背景过渡时间|N|
 |overlay-style|`CSSProperties`|-|自定义 CSS|N|

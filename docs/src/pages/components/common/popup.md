@@ -111,6 +111,7 @@ function handleShowPopup2() {
 |placement|`PositionType`|`center`|弹出层位置，可选值`'top' \| 'right' \| 'bottom' \| 'left' \| 'center'`|N|
 |z-index|`number`|`2000`|CSS z-index|N|
 |duration|`number`|`0.3`|过渡动画时间|N|
+|lock-scroll|`boolean`|`true`|是否显示时，锁定 body 滚动|N|
 |round|`boolean`|`false`|实现显示未圆角，`placement`不等于`center`有效|N|
 |closable|`boolean`|`false`|是否显示关闭图标|N|
 |popup-container-class|`string`|-|弹出层容器 className|N|

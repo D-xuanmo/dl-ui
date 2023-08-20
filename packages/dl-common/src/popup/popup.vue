@@ -7,6 +7,7 @@
       :z-index="overlayZIndex"
       :overlay-style="overlayStyle"
       :lazy-render="lazyRender"
+      :block-scroll="blockScroll"
       @click="handleClose"
     />
     <transition

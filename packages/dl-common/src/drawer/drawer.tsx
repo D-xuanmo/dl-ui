@@ -128,6 +128,7 @@ export default defineComponent({
         popupHeaderClass={headerClass}
         popupBodyClass={bodyClass}
         popupStyle={style.value}
+        blockScroll={props.blockScroll}
         onClose={handleClose}
       >
         {{
