@@ -1,4 +1,4 @@
-import { ExtractPropTypes, PropType, TeleportProps, VNode } from 'vue'
+import { ExtractPropTypes, PropType, VNode } from 'vue'
 import { COMMON_PROPS, MessageThemeEnum } from '../common'
 import { ButtonProps } from '../button'
 import { pickProps } from '../utils'
@@ -6,7 +6,7 @@ import { pickProps } from '../utils'
 export type DialogProps = ExtractPropTypes<typeof DIALOG_PROPS>
 
 export const DIALOG_PROPS = {
-  ...pickProps(COMMON_PROPS, ['lockScroll']),
+  ...pickProps(COMMON_PROPS, ['lockScroll', 'teleport']),
   /**
    * 弹框显示隐藏
    */
@@ -175,14 +175,6 @@ export const DIALOG_PROPS = {
   placement: {
     type: String as PropType<'top' | 'center'>,
     default: 'top'
-  },
-
-  /**
-   * 指定挂载节点
-   */
-  teleport: {
-    type: [String, Object] as PropType<TeleportProps['to']>,
-    default: 'body'
   },
 
   /**

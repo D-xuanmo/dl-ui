@@ -1,4 +1,4 @@
-import { ExtractPropTypes, PropType, TeleportProps, VNode } from 'vue'
+import { ExtractPropTypes, PropType, VNode } from 'vue'
 import { ButtonProps } from '../button'
 import { COMMON_PROPS, PlacementEnum } from '../common'
 import { pickProps } from '../utils'
@@ -6,7 +6,7 @@ import { pickProps } from '../utils'
 export type DrawerProps = ExtractPropTypes<typeof DRAWER_PROPS>
 
 export const DRAWER_PROPS = {
-  ...pickProps(COMMON_PROPS, ['lockScroll']),
+  ...pickProps(COMMON_PROPS, ['lockScroll', 'teleport']),
   /**
    * 弹框显示隐藏
    */
@@ -149,14 +149,6 @@ export const DRAWER_PROPS = {
   placement: {
     type: String as PropType<Exclude<PlacementEnum, 'center' | 'custom'>>,
     default: 'right'
-  },
-
-  /**
-   * 指定挂载节点
-   */
-  teleport: {
-    type: [String, Object] as PropType<TeleportProps['to']>,
-    default: 'body'
   },
 
   /**

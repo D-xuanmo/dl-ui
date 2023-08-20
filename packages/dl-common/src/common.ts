@@ -1,4 +1,5 @@
 import { PropType } from 'vue'
+import { TeleportProps } from 'vue/dist/vue'
 
 /** 水平对齐方式 */
 export type HorizontalAlignType = 'left' | 'center' | 'right'
@@ -75,5 +76,13 @@ export const COMMON_PROPS = {
   lockScroll: {
     type: Boolean,
     default: true
+  },
+
+  /**
+   * 需要将元素插入到那个位置
+   */
+  teleport: {
+    type: [String, Object] as PropType<TeleportProps['to']>,
+    default: 'body'
   }
 }

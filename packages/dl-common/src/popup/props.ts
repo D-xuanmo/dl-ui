@@ -1,4 +1,4 @@
-import { CSSProperties, ExtractPropTypes, PropType, TeleportProps } from 'vue'
+import { CSSProperties, ExtractPropTypes, PropType } from 'vue'
 import { COMMON_PROPS, PlacementEnum } from '../common'
 import { TRANSITION_DURATION } from '../constants'
 import { pickProps } from '../utils'
@@ -6,7 +6,7 @@ import { pickProps } from '../utils'
 export type PopupProps = ExtractPropTypes<typeof POPUP_PROPS>
 
 export const POPUP_PROPS = {
-  ...pickProps(COMMON_PROPS, ['lockScroll']),
+  ...pickProps(COMMON_PROPS, ['lockScroll', 'teleport']),
   visible: Boolean,
   title: String,
   placement: {
@@ -23,10 +23,6 @@ export const POPUP_PROPS = {
   },
   round: Boolean,
   closable: Boolean,
-  teleport: {
-    type: [String, Object] as PropType<TeleportProps['to']>,
-    default: 'body'
-  },
 
   /**
    * 动画前缀

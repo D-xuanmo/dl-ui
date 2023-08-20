@@ -2,9 +2,10 @@
   <teleport :to="(teleport as string)">
     <d-overlay
       v-if="overlay"
+      :teleport="wrapperRef"
       :visible="visible"
       :overlay-class="overlayClass"
-      :z-index="overlayZIndex"
+      :z-index="-1"
       :overlay-style="overlayStyle"
       :lazy-render="lazyRender"
       :lock-scroll="lockScroll"
@@ -20,6 +21,7 @@
       <template v-if="isLoaded">
         <div
           v-show="visible"
+          ref="wrapperRef"
           :class="[bem('container'), popupContainerClass]"
           :style="style"
           @click="closeOnOverlayClick && handleClose()"
@@ -66,6 +68,7 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const isCenter = computed(() => props.placement === 'center')
     const isLoaded = ref(props.visible ? true : !props.lazyRender)
+    const wrapperRef = ref<HTMLDivElement>()
 
     const showHeader = computed(() => {
       return (
@@ -88,7 +91,6 @@ export default defineComponent({
       ].join(' ')
     )
 
-    const [overlayZIndex] = useZIndex(props)
     const [zIndex] = useZIndex(props)
 
     const transitionPosition = computed(
@@ -126,10 +128,10 @@ export default defineComponent({
       transitionPosition,
       wrapperClassName,
       style,
-      overlayZIndex,
       isCenter,
       showHeader,
       isLoaded,
+      wrapperRef,
       bem,
       handleClose,
       onEnter,
