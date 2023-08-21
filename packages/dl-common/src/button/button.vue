@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 import { createNamespace } from '../utils'
 import { BUTTON_PROPS } from './props'
 import { LoadingOutlined } from '@xuanmo/dl-icons'
@@ -32,6 +32,7 @@ export default defineComponent({
   props: BUTTON_PROPS,
   emits: ['click'],
   setup(props, context) {
+    const active = ref(false)
     const wrapperClassName = computed(() =>
       bem({
         [`theme-${props.theme}`]: true,
@@ -42,10 +43,14 @@ export default defineComponent({
         [`fill-${props.fill}`]: !props.link && !props.dashed,
         block: props.block,
         disabled: props.disabled,
-        'is-link': props.link
+        'is-link': props.link,
+        active: active.value
       })
     )
+
     const onClick = (event: MouseEvent) => {
+      active.value = true
+      setTimeout(() => (active.value = false), 400)
       context.emit('click', event)
     }
 

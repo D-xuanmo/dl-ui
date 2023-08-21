@@ -9,14 +9,31 @@
 
 .#{$prefix}-button {
   $prefix: &;
+  --d-button-wave: var(--d-primary-1);
+  position: relative;
   display: inline-block;
   box-sizing: border-box;
   border: var(--d-border);
   cursor: pointer;
 
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: inherit;
+  }
+
   &--block {
     display: block;
     width: 100%;
+  }
+
+  &--active {
+    animation: button-wave-spread 0.35s cubic-bezier(0, 0, 0.2, 1);
   }
 
   // 形状
@@ -193,6 +210,10 @@
     padding: 0;
     border: 0;
 
+    &::before {
+      display: none;
+    }
+
     // 主题
     &#{$prefix}--theme {
       &-default {
@@ -219,5 +240,29 @@
         color: var(--d-error);
       }
     }
+  }
+
+  &--theme {
+    &-primary {
+      --d-button-wave: var(--d-primary-1);
+    }
+    &-success {
+      --d-button-wave: var(--d-success-bg);
+    }
+    &-warning {
+      --d-button-wave: var(--d-warning-bg);
+    }
+    &-danger {
+      --d-button-wave: var(--d-error-bg);
+    }
+  }
+}
+
+@keyframes button-wave-spread {
+  from {
+    box-shadow: 0 0 0.5px 0 var(--d-button-wave);
+  }
+  to {
+    box-shadow: 0 0 0.5px 5px var(--d-button-wave);
   }
 }

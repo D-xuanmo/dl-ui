@@ -3,7 +3,7 @@ import { version } from '../package.json'
 
 import * as components from './components'
 
-import { generatePrimaryColors } from './utils/color'
+import { color } from './utils'
 
 import './style/index.scss'
 
@@ -16,7 +16,10 @@ const install = function (app: App) {
   })
 }
 
-generatePrimaryColors()
+color.generatePrimaryColors()
+color.generateSuccessColors()
+color.generateWarningColors()
+color.generateErrorColors()
 
 export { version }
 
