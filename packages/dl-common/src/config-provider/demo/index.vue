@@ -23,16 +23,17 @@
     :required-mark-position="requiredMarkPosition"
     :label-width="labelWidth"
     :colon="colon"
-    :theme="{ primary: '#0FB57DFF' }"
+    :theme="theme"
   >
     <d-cell title="单元格" required>我是单元格内容</d-cell>
     <d-form :models="formModels" client-type="MOBILE" />
   </d-config-provider>
 </template>
 
-<script setup lang="ts">
+<script setup lang="tsx">
 import { FormModels } from '../../form'
 import { ref } from 'vue'
+import ButtonGroup from './button-group.vue'
 
 const formLayout = ref<any>('horizontal')
 const requiredMarkPosition = ref<any>('left')
@@ -47,6 +48,13 @@ const requiredMarkPositionOptions = [
   { label: 'left', value: 'left' },
   { label: 'right', value: 'right' }
 ]
+
+const theme = ref({
+  primary: '#bd34fe',
+  success: '#20c997',
+  warning: '#fab005',
+  error: '#f03e3e'
+})
 
 const formModels: FormModels = [
   {
@@ -71,6 +79,16 @@ const formModels: FormModels = [
       parent: 'root'
     },
     value: true
+  },
+  {
+    id: 'buttonGroup',
+    dataKey: 'buttonGroup',
+    label: '按钮',
+    component: ButtonGroup,
+    required: true,
+    layout: {
+      parent: 'root'
+    }
   }
 ]
 </script>

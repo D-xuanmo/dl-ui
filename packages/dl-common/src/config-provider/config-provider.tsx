@@ -1,7 +1,8 @@
 import { createNamespace } from '../utils'
-import { computed, CSSProperties, defineComponent, provide, SetupContext } from 'vue'
+import { defineComponent, provide, SetupContext } from 'vue'
 import { CONFIG_PROVIDER_PROPS } from './props'
 import { ConfigProviderInjectKey } from './context'
+import { useStyle } from './use-style'
 
 const [name, bem] = createNamespace('config-provider')
 
@@ -11,12 +12,7 @@ export default defineComponent({
   setup(props, context: SetupContext) {
     provide(ConfigProviderInjectKey, props)
 
-    const style = computed<CSSProperties>(() => ({
-      '--d-primary': props.theme?.primary,
-      '--d-success': props.theme?.success,
-      '--d-warning': props.theme?.warning,
-      '--d-error': props.theme?.error
-    }))
+    const style = useStyle(props)
 
     return () => (
       <div class={bem()} style={style.value}>

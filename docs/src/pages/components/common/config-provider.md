@@ -23,11 +23,7 @@ app.use(DConfigProvider)
       <d-switch v-model="colon" />
     </d-cell>
     <d-cell title="布局切换">
-      <d-radio-group
-      v-model="formLayout"
-      :options="formLayoutOptions"
-      direction="horizontal"
-    />
+      <d-radio-group v-model="formLayout" :options="formLayoutOptions" direction="horizontal" />
     </d-cell>
     <d-cell title="必填标识位置">
       <d-radio-group
@@ -43,56 +39,86 @@ app.use(DConfigProvider)
     :required-mark-position="requiredMarkPosition"
     :label-width="labelWidth"
     :colon="colon"
-    :theme="{ primary: '#0FB57DFF' }"
+    :theme="theme"
   >
     <d-cell title="单元格" required>我是单元格内容</d-cell>
     <d-form :models="formModels" client-type="MOBILE" />
   </d-config-provider>
 </template>
 
-<script setup lang="ts">
-import { FormModels } from '../../form'
-import { ref } from 'vue'
+<script setup lang="tsx">
+  import { FormModels } from '../../form'
+  import { ref } from 'vue'
+  import { DButton, DSpace } from '@xuanmo/dl-common'
 
-const formLayout = ref<any>('horizontal')
-const requiredMarkPosition = ref<any>('left')
-const labelWidth = ref(80)
-const colon = ref(false)
+  const formLayout = ref<any>('horizontal')
+  const requiredMarkPosition = ref<any>('left')
+  const labelWidth = ref(80)
+  const colon = ref(false)
 
-const formLayoutOptions = [
-  { label: 'horizontal', value: 'horizontal' },
-  { label: 'vertical', value: 'vertical' }
-]
-const requiredMarkPositionOptions = [
-  { label: 'left', value: 'left' },
-  { label: 'right', value: 'right' }
-]
+  const formLayoutOptions = [
+    { label: 'horizontal', value: 'horizontal' },
+    { label: 'vertical', value: 'vertical' }
+  ]
+  const requiredMarkPositionOptions = [
+    { label: 'left', value: 'left' },
+    { label: 'right', value: 'right' }
+  ]
 
-const formModels: FormModels = [
-  {
-    id: 'input',
-    dataKey: 'input',
-    label: '输入框',
-    required: true,
-    component: 'DInput',
-    layout: {
-      parent: 'root'
-    },
-    placeholder: '请输入',
-    value: ''
-  },
-  {
-    id: 'switch',
-    dataKey: 'switch',
-    label: '开关',
-    required: true,
-    component: 'DSwitch',
-    layout: {
-      parent: 'root'
-    },
-    value: true
+  const theme = ref({
+    primary: '#bd34fe',
+    success: '#20c997',
+    warning: '#fab005',
+    error: '#f03e3e'
+  })
+
+  const ButtonGroup = () => {
+    return (
+      <DSpace gap={8} wrap>
+        <DButton>default</DButton>
+        <DButton theme="primary">primary</DButton>
+        <DButton theme="success">success</DButton>
+        <DButton theme="warning">warning</DButton>
+        <DButton theme="danger">danger</DButton>
+      </DSpace>
+    )
   }
-]
+
+  const formModels: FormModels = [
+    {
+      id: 'input',
+      dataKey: 'input',
+      label: '输入框',
+      required: true,
+      component: 'DInput',
+      layout: {
+        parent: 'root'
+      },
+      placeholder: '请输入',
+      value: ''
+    },
+    {
+      id: 'switch',
+      dataKey: 'switch',
+      label: '开关',
+      required: true,
+      component: 'DSwitch',
+      layout: {
+        parent: 'root'
+      },
+      value: true
+    },
+    {
+      id: 'buttonGroup',
+      dataKey: 'buttonGroup',
+      label: '按钮',
+      component: ButtonGroup,
+      required: true,
+      layout: {
+        parent: 'root'
+      }
+    }
+  ]
 </script>
 ```
 
