@@ -22,6 +22,7 @@
     "lint:tsc": "yarn workspace @xuanmo/dl-ui tsc:clear"
   },
   "dependencies": {
+    "@ant-design/colors": "^7.0.0",
     "@xuanmo/datejs": "^1.0.15",
     "@xuanmo/dl-common": "workspace:*",
     "@xuanmo/dl-icons": "workspace:*",

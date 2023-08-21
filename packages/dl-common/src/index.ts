@@ -3,6 +3,8 @@ import { version } from '../package.json'
 
 import * as components from './components'
 
+import { generatePrimaryColors } from './utils/color'
+
 import './style/index.scss'
 
 // 引入图标样式
@@ -13,6 +15,8 @@ const install = function (app: App) {
     if (/^d-/.test(component?.name)) app.use(component)
   })
 }
+
+generatePrimaryColors()
 
 export { version }
 
