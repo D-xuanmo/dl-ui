@@ -49,8 +49,10 @@ export default defineComponent({
     )
 
     const onClick = (event: MouseEvent) => {
-      active.value = true
-      setTimeout(() => (active.value = false), 400)
+      if (!props.link) {
+        active.value = true
+        setTimeout(() => (active.value = false), 400)
+      }
       context.emit('click', event)
     }
 
