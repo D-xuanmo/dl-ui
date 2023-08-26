@@ -126,9 +126,6 @@ const menuData = computed(() => getMenuList(route.params.type as any))
   }
 
   &__content {
-    overflow-y: auto;
-    line-height: initial;
-
     .markdown-body {
       padding: var(--d-gap-sm) 40px;
 

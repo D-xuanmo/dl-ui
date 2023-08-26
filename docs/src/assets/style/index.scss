@@ -15,6 +15,7 @@ html {
 }
 
 body {
+  background-color: #fff !important;
   font-family: -apple-system;
   font-size: var(--d-font-size-sm);
   color: var(--d-primary-text-color);
@@ -84,6 +85,7 @@ blockquote {
   box-sizing: border-box;
   margin-top: var(--d-gap-sm);
   padding: var(--d-gap-sm);
+  border: var(--d-border);
   border-radius: var(--d-radius-medium);
   line-height: 1.8;
 }
