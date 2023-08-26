@@ -7,8 +7,9 @@
 
   &__wrapper {
     margin: var(--d-gap-sm) 0 40px;
-    box-shadow: 0px 10px 24px rgba(9, 16, 30, 0.04), 0px 6px 40px rgba(9, 16, 30, 0.08);
+    box-shadow: 0 10px 24px rgba(9, 16, 30, 0.04), 0px 6px 40px rgba(9, 16, 30, 0.08);
     border-radius: 8px;
+    background-color: #fff;
 
     &:empty {
       display: none;

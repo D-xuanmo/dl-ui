@@ -53,10 +53,11 @@ app.use(DForm).use(DFormCellGroup).use(DFormGrid)
   <d-form
     ref='formRef'
     :models="formModel"
-    client-type="MOBILE"
     :disabled="formDisabled"
     :readonly="formReadonly"
+    :layout="formLayout"
     label-width="100"
+    client-type="MOBILE"
     :hide-label="hideLabel"
     @change="handleChange"
   />
@@ -78,7 +79,8 @@ app.use(DForm).use(DFormCellGroup).use(DFormGrid)
         <d-button @click="validate">执行校验</d-button>
         <d-button @click="getFormData">获取数据</d-button>
         <d-button @click="updateData">更新数据</d-button>
-        <d-button @click="hideFirstRow">隐藏第一行</d-button>
+        <d-button @click="hideFirstRow">隐藏输入框</d-button>
+        <d-button @click="showFirstRow">显示输入框</d-button>
         <d-button @click="reset">重置</d-button>
       </d-space>
     </d-cell>
@@ -91,384 +93,393 @@ app.use(DForm).use(DFormCellGroup).use(DFormGrid)
 </template>
 
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
-import { dCookie } from '@xuanmo/utils'
-import { IFormModelItem } from '../types'
+  import { computed, ref } from 'vue'
+  import { FormModels, FormProps, FormStore } from '@xuanmo/dl-common'
+  import { dCookie } from '@xuanmo/utils'
 
-const formModel: IFormModelItem[] = [
-  {
-    id: 'basicGroup',
-    label: '内置组件',
-    component: 'DFormCellGroup',
-    layout: {
-      parent: 'root',
-      children: [
-        'input',
-        'textarea',
-        'disabledInput',
-        'email',
-        'switch',
-        'rate',
-        'calendarSingle',
-        'calendarMultiple',
-        'calendarRange',
-        'picker',
-        'multiPicker',
-        'cascaderPicker',
-        'cascader',
-        'datePicker',
-        'timePicker',
-        'radio',
-        'checkbox',
-        'upload'
-      ]
-    }
-  },
-  {
-    id: 'input',
-    dataKey: 'input',
-    component: 'DInput',
-    label: '输入框',
-    value: '',
-    description: '1、这是一段很长很长的备注。\n2、我这一段备注不仅长而且有两行',
-    required: true,
-    layout: {
-      parent: 'basicGroup'
+  const formModel: FormModels = [
+    {
+      id: 'basicGroup',
+      label: '内置组件',
+      component: 'DFormCellGroup',
+      layout: {
+        parent: 'root',
+        children: [
+          'input',
+          'textarea',
+          'disabledInput',
+          'email',
+          'switch',
+          'rate',
+          'calendarSingle',
+          'calendarMultiple',
+          'calendarRange',
+          'picker',
+          'multiPicker',
+          'cascaderPicker',
+          'cascader',
+          'datePicker',
+          'timePicker',
+          'radio',
+          'checkbox',
+          'upload'
+        ]
+      }
     },
-    placeholder: '请输入文字'
-  },
-  {
-    id: 'textarea',
-    dataKey: 'textarea',
-    component: 'DTextarea',
-    label: '多行文本框',
-    value: '',
-    required: true,
-    layout: {
-      parent: 'basicGroup'
+    {
+      id: 'input',
+      dataKey: 'input',
+      component: 'DInput',
+      label: '输入框',
+      value: '',
+      description: '1、这是一段很长很长的备注。\n2、我这一段备注不仅长而且有两行',
+      required: true,
+      layout: {
+        parent: 'basicGroup'
+      },
+      placeholder: '请输入文字'
     },
-    placeholder: '请输入文字',
-    maxlength: 80,
-    showWordLimit: true
-  },
-  {
-    id: 'disabledInput',
-    dataKey: 'disabledInput',
-    component: 'DInput',
-    label: '被禁用的输入框',
-    value: '',
-    layout: {
-      parent: 'basicGroup'
+    {
+      id: 'textarea',
+      dataKey: 'textarea',
+      component: 'DTextarea',
+      label: '多行文本框',
+      value: '',
+      required: true,
+      layout: {
+        parent: 'basicGroup'
+      },
+      placeholder: '请输入文字',
+      maxlength: 80,
+      showWordLimit: true
     },
-    placeholder: '这个输入框被禁用了',
-    disabled: true
-  },
-  {
-    id: 'email',
-    dataKey: 'email',
-    component: 'DInput',
-    label: '邮箱',
-    value: '',
-    rules: 'required|email',
-    layout: {
-      parent: 'basicGroup'
+    {
+      id: 'disabledInput',
+      dataKey: 'disabledInput',
+      component: 'DInput',
+      label: '被禁用的输入框',
+      value: '',
+      layout: {
+        parent: 'basicGroup'
+      },
+      placeholder: '这个输入框被禁用了',
+      disabled: true
     },
-    placeholder: '请输入邮箱'
-  },
-  {
-    id: 'switch',
-    dataKey: 'switch',
-    component: 'DSwitch',
-    label: '开关',
-    layout: {
-      parent: 'basicGroup'
+    {
+      id: 'email',
+      dataKey: 'email',
+      component: 'DInput',
+      label: '邮箱',
+      value: '',
+      rules: 'required|email',
+      layout: {
+        parent: 'basicGroup'
+      },
+      placeholder: '请输入邮箱'
     },
-    value: false
-  },
-  {
-    id: 'rate',
-    dataKey: 'rate',
-    component: 'DRate',
-    label: '评分',
-    layout: {
-      parent: 'basicGroup'
+    {
+      id: 'switch',
+      dataKey: 'switch',
+      component: 'DSwitch',
+      label: '开关',
+      layout: {
+        parent: 'basicGroup'
+      },
+      value: false
     },
-    value: 0
-  },
-  {
-    id: 'calendarSingle',
-    dataKey: 'calendarSingle',
-    component: 'DCalendar',
-    label: '日历单选',
-    layout: {
-      parent: 'basicGroup'
+    {
+      id: 'rate',
+      dataKey: 'rate',
+      component: 'DRate',
+      label: '评分',
+      layout: {
+        parent: 'basicGroup'
+      },
+      value: 0
     },
-    value: '',
-    placeholder: '请选择',
-    minDate: new Date(2023, 0, 1)
-  },
-  {
-    id: 'calendarMultiple',
-    dataKey: 'calendarMultiple',
-    component: 'DCalendar',
-    label: '日历多选',
-    layout: {
-      parent: 'basicGroup'
+    {
+      id: 'calendarSingle',
+      dataKey: 'calendarSingle',
+      component: 'DCalendar',
+      label: '日历单选',
+      layout: {
+        parent: 'basicGroup'
+      },
+      value: '',
+      placeholder: '请选择',
+      minDate: new Date(2023, 0, 1)
     },
-    value: '',
-    placeholder: '请选择',
-    type: 'multiple',
-    minDate: new Date(2023, 0, 1)
-  },
-  {
-    id: 'calendarRange',
-    dataKey: 'calendarRange',
-    component: 'DCalendar',
-    label: '日历区间',
-    layout: {
-      parent: 'basicGroup'
+    {
+      id: 'calendarMultiple',
+      dataKey: 'calendarMultiple',
+      component: 'DCalendar',
+      label: '日历多选',
+      layout: {
+        parent: 'basicGroup'
+      },
+      value: '',
+      placeholder: '请选择',
+      type: 'multiple',
+      minDate: new Date(2023, 0, 1)
     },
-    value: '',
-    placeholder: '请选择',
-    type: 'range',
-    minDate: new Date(2023, 0, 1)
-  },
-  {
-    id: 'picker',
-    dataKey: 'picker',
-    component: 'DPicker',
-    label: '选择器',
-    value: [],
-    layout: {
-      parent: 'basicGroup'
+    {
+      id: 'calendarRange',
+      dataKey: 'calendarRange',
+      component: 'DCalendar',
+      label: '日历区间',
+      layout: {
+        parent: 'basicGroup'
+      },
+      value: '',
+      placeholder: '请选择',
+      type: 'range',
+      minDate: new Date(2023, 0, 1)
     },
-    options: [
-      { label: '选项1', value: '1' },
-      { label: '选项2', value: '2' },
-      { label: '选项3', value: '3' }
-    ]
-  },
-  {
-    id: 'multiPicker',
-    dataKey: 'multiPicker',
-    component: 'DPicker',
-    label: '多列选择器',
-    value: ['1', '2-2'],
-    layout: {
-      parent: 'basicGroup'
-    },
-    title: '多列选择器',
-    options: [
-      [
+    {
+      id: 'picker',
+      dataKey: 'picker',
+      component: 'DPicker',
+      label: '选择器',
+      value: [],
+      layout: {
+        parent: 'basicGroup'
+      },
+      options: [
         { label: '选项1', value: '1' },
         { label: '选项2', value: '2' },
         { label: '选项3', value: '3' }
-      ],
-      [
-        { label: '选项1-1', value: '1-1' },
-        { label: '选项2-2', value: '2-2' },
-        { label: '选项3-3', value: '3-3' }
       ]
-    ]
-  },
-  {
-    id: 'cascaderPicker',
-    dataKey: 'cascaderPicker',
-    component: 'DPicker',
-    label: '树形选择',
-    value: ['110000000000', '110100000000', '110102000000'],
-    // value 也可以是对象数组
-    // value: [
-    //   { value: '110000000000', label: '北京市' },
-    //   { value: '110100000000', label: '市辖区' },
-    //   { value: '110102000000', label: '西城区' }
-    // ],
-    layout: {
-      parent: 'basicGroup'
     },
-    title: '使用选择器模拟级联选择',
-    placeholder: '数据加载中...',
-    options: []
-  },
-  {
-    id: 'cascader',
-    dataKey: 'cascader',
-    component: 'DCascader',
-    label: '级联选择',
-    value: ['110000000000', '110100000000', '110102000000', '110102007000'],
-    // value 也可以是对象数组
-    // value: [
-    //   { value: '110000000000', label: '北京市' },
-    //   { value: '110100000000', label: '市辖区' },
-    //   { value: '110102000000', label: '西城区' }
-    // ],
-    layout: {
-      parent: 'basicGroup'
+    {
+      id: 'multiPicker',
+      dataKey: 'multiPicker',
+      component: 'DPicker',
+      label: '多列选择器',
+      value: ['1', '2-2'],
+      layout: {
+        parent: 'basicGroup'
+      },
+      title: '多列选择器',
+      options: [
+        [
+          { label: '选项1', value: '1' },
+          { label: '选项2', value: '2' },
+          { label: '选项3', value: '3' }
+        ],
+        [
+          { label: '选项1-1', value: '1-1' },
+          { label: '选项2-2', value: '2-2' },
+          { label: '选项3-3', value: '3-3' }
+        ]
+      ]
     },
-    placeholder: '数据加载中...',
-    options: []
-  },
-  {
-    id: 'datePicker',
-    dataKey: 'datePicker',
-    component: 'DDateTimePicker',
-    label: '日期选择器',
-    layout: {
-      parent: 'basicGroup'
+    {
+      id: 'cascaderPicker',
+      dataKey: 'cascaderPicker',
+      component: 'DPicker',
+      label: '树形选择',
+      value: ['110000000000', '110100000000', '110102000000'],
+      // value 也可以是对象数组
+      // value: [
+      //   { value: '110000000000', label: '北京市' },
+      //   { value: '110100000000', label: '市辖区' },
+      //   { value: '110102000000', label: '西城区' }
+      // ],
+      layout: {
+        parent: 'basicGroup'
+      },
+      title: '使用选择器模拟级联选择',
+      placeholder: '数据加载中...',
+      options: []
     },
-    value: '2022/4/15'
-  },
-  {
-    id: 'timePicker',
-    dataKey: 'timePicker',
-    component: 'DDateTimePicker',
-    label: '日期选择器',
-    layout: {
-      parent: 'basicGroup'
+    {
+      id: 'cascader',
+      dataKey: 'cascader',
+      component: 'DCascader',
+      label: '级联选择',
+      value: ['110000000000', '110100000000', '110102000000', '110102007000'],
+      // value 也可以是对象数组
+      // value: [
+      //   { value: '110000000000', label: '北京市' },
+      //   { value: '110100000000', label: '市辖区' },
+      //   { value: '110102000000', label: '西城区' }
+      // ],
+      layout: {
+        parent: 'basicGroup'
+      },
+      placeholder: '数据加载中...',
+      options: []
     },
-    value: '22:58',
-    type: 'time'
-  },
-  {
-    id: 'radio',
-    dataKey: 'radio',
-    component: 'DRadioGroup',
-    label: '单选框',
-    value: '2',
-    layout: {
-      parent: 'basicGroup'
+    {
+      id: 'datePicker',
+      dataKey: 'datePicker',
+      component: 'DDateTimePicker',
+      label: '日期选择器',
+      layout: {
+        parent: 'basicGroup'
+      },
+      value: '2022/4/15'
     },
-    direction: 'horizontal',
-    options: [
-      { label: '选项1', value: '1' },
-      { label: '选项2', value: '2' },
-      { label: '选项3', value: '3' }
-    ]
-  },
-  {
-    id: 'checkbox',
-    dataKey: 'checkbox',
-    component: 'DCheckboxGroup',
-    label: '复选框',
-    value: ['1'],
-    layout: {
-      parent: 'basicGroup'
+    {
+      id: 'timePicker',
+      dataKey: 'timePicker',
+      component: 'DDateTimePicker',
+      label: '日期选择器',
+      layout: {
+        parent: 'basicGroup'
+      },
+      value: '22:58',
+      type: 'time'
     },
-    direction: 'horizontal',
-    options: [
-      { label: '选项1', value: '1' },
-      { label: '选项2', value: '2' },
-      { label: '选项3', value: '3' }
-    ]
-  },
-  {
-    id: 'upload',
-    dataKey: 'upload',
-    component: 'DUpload',
-    label: '上传',
-    layout: {
-      parent: 'basicGroup'
+    {
+      id: 'radio',
+      dataKey: 'radio',
+      component: 'DRadioGroup',
+      label: '单选框',
+      value: '2',
+      layout: {
+        parent: 'basicGroup'
+      },
+      direction: 'horizontal',
+      options: [
+        { label: '选项1', value: '1' },
+        { label: '选项2', value: '2' },
+        { label: '选项3', value: '3' }
+      ]
     },
-    value: [
-      {
-        url: 'https://my.xuanmo.xin:3000/api/my-admin/p/file/read/02e535e6-8348-423e-8cf5-0d480fa4d247'
-      }
-    ],
-    action: '/api/my-admin/p/file/upload',
-    data: {
-      type: 'media',
-      directoryId: '1de547bf-67d4-4a7d-bb88-2178090327c8'
+    {
+      id: 'checkbox',
+      dataKey: 'checkbox',
+      component: 'DCheckboxGroup',
+      label: '复选框',
+      value: ['1'],
+      layout: {
+        parent: 'basicGroup'
+      },
+      direction: 'horizontal',
+      options: [
+        { label: '选项1', value: '1' },
+        { label: '选项2', value: '2' },
+        { label: '选项3', value: '3' }
+      ]
     },
-    headerParams: {
-      'X-XSRF-TOKEN': dCookie().getItem('csrfToken')
-    },
-    uploadAfter(response) {
-      // 返回上传组件需要的格式
-      return {
-        url: (response as any).data?.[0].url,
-        deletable: true
+    {
+      id: 'upload',
+      dataKey: 'upload',
+      component: 'DUpload',
+      label: '上传',
+      layout: {
+        parent: 'basicGroup'
+      },
+      value: [
+        {
+          url: 'https://my.xuanmo.xin:3000/api/my-admin/p/file/read/3aae4d3f-7096-461f-a54b-0c52972672e2'
+        }
+      ],
+      action: '/api/my-admin/p/file/upload',
+      data: {
+        type: 'media',
+        directoryId: '1de547bf-67d4-4a7d-bb88-2178090327c8'
+      },
+      headerParams: {
+        'X-XSRF-TOKEN': dCookie().getItem('csrfToken')
+      },
+      uploadAfter(response) {
+        // 返回上传组件需要的格式
+        return {
+          url: (response as any).data?.[0].url,
+          deletable: true
+        }
       }
     }
+  ]
+
+  const formRef = ref<{ store?: FormStore }>()
+  const formDisabled = ref(false)
+  const formReadonly = ref(false)
+  const hideLabel = ref(false)
+  const formLayout = ref<FormProps['layout']>('horizontal')
+
+  const formLayoutOptions = [
+    { label: 'horizontal', value: 'horizontal' },
+    { label: 'vertical', value: 'vertical' }
+  ]
+
+  const formData = computed(() => formRef.value?.store?.getFormData?.())
+
+  const validate = () => {
+    formRef.value.store
+      .validate()
+      .then(() => {
+        console.log('校验通过')
+      })
+      .catch((error) => {
+        console.log('校验失败', error)
+      })
   }
-]
 
-const formRef = ref()
-const formDisabled = ref(false)
-const formReadonly = ref(false)
-const hideLabel = ref(false)
-const formLayout = ref('horizontal')
+  const getFormData = () => {
+    console.log(formRef.value.store.getFormData())
+  }
 
-const formLayoutOptions = [
-  { label: 'horizontal', value: 'horizontal' },
-  { label: 'vertical', value: 'vertical' }
-]
-
-const formData = computed(() => formRef.value?.store?.getFormData?.())
-
-const validate = () => {
-  formRef.value.store
-    .validate()
-    .then(() => {
-      console.log('校验通过')
+  const updateData = () => {
+    formRef.value.store.updateData({
+      input: 'input 数据',
+      textarea: '多行文本内容',
+      switch: true,
+      radio: '3',
+      checkbox: ['1', '3'],
+      picker: ['3'],
+      email: 'example@qq.com',
+      rate: 3,
+      upload: [
+        { url: 'https://my.xuanmo.xin:3000/api/my-admin/p/file/read/02e535e6-8348-423e-8cf5-0d480fa4d247', deletable: false },
+        { url: 'https://my.xuanmo.xin:3000/api/my-admin/p/file/read/02e535e6-8348-423e-8cf5-0d480fa4d247', deletable: true }
+      ],
+      customInput: '我是自定义数据',
+      cascader: ['310000000000', '310100000000', '310104000000', '310104007000'],
+      datePicker: '2025/5/18',
+      timePicker: '08:35',
+      calendarSingle: '2023/3/8',
+      calendarMultiple: ['2023/3/8', '2023/3/12'],
+      calendarRange: ['2023/3/8', '2023/3/12']
     })
-    .catch((error) => {
-      console.log('校验失败', error)
+  }
+
+  const hideFirstRow = () => {
+    formRef.value.store.setDisplay('input', false)
+  }
+
+  const showFirstRow = () => {
+    formRef.value.store.setDisplay('input', true)
+  }
+
+  const reset = () => {
+    formRef.value.store.reset()
+  }
+
+  const handleChange = (value, model) => {
+    console.log(value, model)
+  }
+
+  fetch(
+    'https://my.xuanmo.xin:3000/api/my-admin/p/file/read/335f8ac3-f7f5-4408-ab30-a25000041190'
+  ).then(async (res) => {
+    const options = await res.json()
+    formRef.value.store?.updateModel('cascaderPicker', {
+      options
     })
-}
-
-const getFormData = () => {
-  console.log(formRef.value.store.getFormData())
-}
-
-const updateData = () => {
-  formRef.value.store.updateData({
-    input: 'input 数据',
-    switch: true,
-    radio: '3',
-    checkbox: ['1', '3'],
-    picker: ['3'],
-    email: 'example@qq.com',
-    rate: 3,
-    upload: [
-      { url: '/api/file-server/read-file/15b1c772-94ca-4e92-92be-d40b47832068', deletable: false },
-      { url: '/api/file-server/read-file/15b1c772-94ca-4e92-92be-d40b47832068', deletable: true }
-    ],
-    customInput: '我是自定义数据',
-    cascader: ['310000000000', '310100000000', '310104000000', '310104007000'],
-    datePicker: '2025/5/18',
-    timePicker: '08:35',
-    calendarSingle: '2023/3/8',
-    calendarMultiple: ['2023/3/8', '2023/3/12'],
-    calendarRange: ['2023/3/8', '2023/3/12']
+    formRef.value.store?.updateModel('cascader', {
+      options
+    })
   })
-}
-
-const hideFirstRow = () => {
-  formRef.value.store.updateModel('input', {
-    hide: true
-  })
-}
-
-const reset = () => {
-  formRef.value.store.reset()
-}
-
-const handleChange: OnFormChange = (value, model) => {
-  console.log(value, model)
-}
-
-fetch(
-  'https://my.xuanmo.xin:3000/api/my-admin/p/file/read/335f8ac3-f7f5-4408-ab30-a25000041190'
-).then(async (res) => {
-  const options = await res.json()
-  formRef.value.store.updateModel('cascaderPicker', {
-    options
-  })
-  formRef.value.store.updateModel('cascader', {
-    options
-  })
-})
 </script>
+
+<style>
+  body {
+    background: #f7f8fa;
+  }
+</style>
 ```
 
 ```vue title=通过Grid组件实现布局 playground=FormGrid

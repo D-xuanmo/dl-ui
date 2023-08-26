@@ -45,9 +45,8 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { FormStore } from '../store'
 import FORM_MODEL from './model'
-import { DirectionType } from '@xuanmo/dl-common'
+import { DirectionType, FormStore } from '@xuanmo/dl-common'
 import { OnFormChange } from '../types'
 
 const formDisabled = ref(false)
