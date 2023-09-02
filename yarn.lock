@@ -1861,6 +1861,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xuanmo/prettier-config@npm:latest":
+  version: 0.0.2
+  resolution: "@xuanmo/prettier-config@npm:0.0.2"
+  peerDependencies:
+    prettier: ^3.0.0
+  checksum: b7de813f5bcdda6f0f8026b4228a5a5d4ddaec8531396af3da1ea5cbb147055f41c42c979e2539aee6816094f9b724f5d5ad0b6760c5d6f44e56a1f93710da33
+  languageName: node
+  linkType: hard
+
 "@xuanmo/utils@npm:^0.0.1":
   version: 0.0.1
   resolution: "@xuanmo/utils@npm:0.0.1"
@@ -2831,6 +2840,7 @@ __metadata:
     "@xuanmo/datejs": ^1.0.15
     "@xuanmo/dl-common": "workspace:*"
     "@xuanmo/dl-icons": "workspace:*"
+    "@xuanmo/prettier-config": latest
     "@xuanmo/utils": ^0.0.1
     "@xuanmo/validator": ^0.0.16
     autoprefixer: ^10.4.7
