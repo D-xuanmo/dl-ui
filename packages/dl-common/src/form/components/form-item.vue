@@ -32,7 +32,7 @@
       :store="store"
       @update:model-value="handleChange"
     />
-    <p :class="descriptionClass">{{ model.description }}</p>
+    <p v-if="model.description" :class="descriptionClass">{{ model.description }}</p>
     <p v-if="errorMessage" :class="errorClassName">{{ errorMessage }}</p>
   </d-cell>
 </template>
