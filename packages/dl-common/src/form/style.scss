@@ -32,13 +32,20 @@
     }
 
     &-requiredMark {
-      margin-left: var(--d-gap-xxs);
       vertical-align: middle;
       color: var(--d-error);
     }
 
     &-colon {
       margin-inline-start: 3px;
+    }
+
+    &-description {
+      margin-top: var(--d-gap-xs);
+      font-size: var(--d-font-size-sm);
+      line-height: var(--d-line-height-xs);
+      color: var(--d-secondary-text-color);
+      white-space: pre-wrap;
     }
   }
 }

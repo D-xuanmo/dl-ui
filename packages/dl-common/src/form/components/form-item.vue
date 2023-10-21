@@ -4,7 +4,6 @@
     content-align="left"
     :title-width="formProps.labelWidth"
     :layout="formProps.layout"
-    :description="model.description"
     :hide-title="formProps.hideLabel || model.hideLabel"
     :colon="formProps.colon"
   >
@@ -33,7 +32,8 @@
       :store="store"
       @update:model-value="handleChange"
     />
-    <div v-if="errorMessage" :class="errorClassName">{{ errorMessage }}</div>
+    <p :class="descriptionClass">{{ model.description }}</p>
+    <p v-if="errorMessage" :class="errorClassName">{{ errorMessage }}</p>
   </d-cell>
 </template>
 
@@ -66,6 +66,7 @@ export default defineComponent({
     const errorClassName = createFormBEM('item-message')
     const requiredMarkClassName = createFormBEM('item-requiredMark')
     const colonClass = createFormBEM('item-colon')
+    const descriptionClass = createFormBEM('item-description')
 
     const showRequiredMark = computed(() => {
       return props.model!.required || props.model!.rules?.includes('required')
@@ -86,6 +87,7 @@ export default defineComponent({
       errorClassName,
       requiredMarkClassName,
       colonClass,
+      descriptionClass,
       showRequiredMark,
       errorMessage,
       formProps,

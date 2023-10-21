@@ -47,7 +47,6 @@ const FORM_MODEL: FormModels = [
     label: '输入框',
     value: '',
     description: '1、这是一段很长很长的备注。\n2、我这一段备注不仅长而且有两行',
-    disabled: true,
     required: true,
     layout: {
       parent: 'basicGroup'
@@ -67,18 +66,6 @@ const FORM_MODEL: FormModels = [
     placeholder: '请输入文字',
     maxlength: 80,
     showWordLimit: true
-  },
-  {
-    id: 'disabledInput',
-    dataKey: 'disabledInput',
-    component: 'DInput',
-    label: '被禁用的输入框',
-    value: '',
-    layout: {
-      parent: 'basicGroup'
-    },
-    placeholder: '这个输入框被禁用了',
-    disabled: true
   },
   {
     id: 'email',
