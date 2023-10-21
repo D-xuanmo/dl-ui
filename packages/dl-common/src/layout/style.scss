@@ -100,7 +100,7 @@
       height: 26px;
       background: var(--d-white-color);
       border-radius: 50%;
-      box-shadow: var(--d-shadow-1);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 20%);
       transition: 0.3s;
       cursor: pointer;
     }
