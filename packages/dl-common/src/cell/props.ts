@@ -1,9 +1,11 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { DirectionType, HorizontalAlignType } from '../common'
+import { COMMON_PROPS, DirectionType, HorizontalAlignType } from '../common'
+import { pickProps } from '../utils'
 
 export type CellProps = ExtractPropTypes<typeof CELL_PROPS>
 
 export const CELL_PROPS = {
+  ...pickProps(COMMON_PROPS, ['requiredMarkPosition']),
   title: String,
   titleClass: String,
   titleWidth: [String, Number],
@@ -13,7 +15,6 @@ export const CELL_PROPS = {
   },
   hideTitle: Boolean,
   required: Boolean,
-  requiredMarkPosition: String as PropType<Exclude<HorizontalAlignType, 'center'>>,
 
   content: String as PropType<string | undefined>,
   contentClass: String,

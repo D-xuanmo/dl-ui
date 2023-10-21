@@ -1,14 +1,13 @@
 import { ExtractPropTypes, PropType } from 'vue'
 import { FormModels } from './types'
 import type { FormStore } from './store'
-import { COMMON_PROPS, DirectionType, HorizontalAlignType } from '../common'
+import { COMMON_PROPS, DirectionType } from '../common'
 import { pickProps } from '../utils'
-import { LABEL_WIDTH } from '../constants'
 
 export type FormProps = ExtractPropTypes<typeof FORM_PROPS>
 
 export const FORM_PROPS = {
-  ...pickProps(COMMON_PROPS, ['disabled', 'readonly']),
+  ...pickProps(COMMON_PROPS, ['disabled', 'readonly', 'requiredMarkPosition', 'labelWidth']),
   /**
    * 表单模型
    */
@@ -24,35 +23,11 @@ export const FORM_PROPS = {
   store: Object as PropType<FormStore>,
 
   /**
-   * 表单宽度
-   */
-  labelWidth: {
-    type: [Number, String] as PropType<number | string>,
-    default: LABEL_WIDTH
-  },
-
-  /**
    * 标题布局类型
    */
   layout: {
     type: String as PropType<DirectionType>,
     default: 'horizontal'
-  },
-
-  /**
-   * 是否显示冒号
-   */
-  colon: {
-    type: Boolean,
-    default: undefined
-  },
-
-  /**
-   * 必填标识位置
-   */
-  requiredMarkPosition: {
-    type: String as PropType<Exclude<HorizontalAlignType, 'center'>>,
-    default: 'right'
   },
 
   /**
@@ -74,6 +49,14 @@ export const FORM_PROPS = {
   hasBackground: {
     type: Boolean,
     default: true
+  },
+
+  /**
+   * 是否显示冒号
+   */
+  colon: {
+    type: Boolean,
+    default: undefined
   },
 
   /**

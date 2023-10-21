@@ -6,7 +6,7 @@ import { useConfig } from '../hooks'
 export const useGlobalConfig = (props: CellProps) => {
   const { cellTitleWidth, cellContentAlign, layout, border } = inject(CELL_GROUP_CONTEXT_KEY, {})
   return computed(() => {
-    const config = useConfig(['layout', 'labelWidth', 'requiredMarkPosition'], props)
+    const config = useConfig(['layout', 'labelWidth', 'requiredMarkPosition'], props as any)
     return {
       labelWidth: props.titleWidth || cellTitleWidth || config.labelWidth,
       contentAlign: props.contentAlign || cellContentAlign || 'left',

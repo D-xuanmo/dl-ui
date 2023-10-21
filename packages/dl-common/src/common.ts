@@ -1,5 +1,6 @@
 import { PropType } from 'vue'
 import { TeleportProps } from 'vue/dist/vue'
+import { LABEL_WIDTH } from './constants'
 
 /** 水平对齐方式 */
 export type HorizontalAlignType = 'left' | 'center' | 'right'
@@ -92,5 +93,21 @@ export const COMMON_PROPS = {
   lazyRender: {
     type: Boolean,
     default: true
+  },
+
+  /**
+   * 必填标识位置
+   */
+  requiredMarkPosition: {
+    type: String as PropType<Exclude<HorizontalAlignType, 'center'>>,
+    default: 'right'
+  },
+
+  /**
+   * 表单宽度
+   */
+  labelWidth: {
+    type: [Number, String] as PropType<number | string>,
+    default: LABEL_WIDTH
   }
 }
