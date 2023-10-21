@@ -25,10 +25,7 @@ export const FORM_PROPS = {
   /**
    * 标题布局类型
    */
-  layout: {
-    type: String as PropType<DirectionType>,
-    default: 'horizontal'
-  },
+  layout: String as PropType<DirectionType>,
 
   /**
    * 是否隐藏标题
