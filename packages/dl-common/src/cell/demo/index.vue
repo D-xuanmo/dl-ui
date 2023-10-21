@@ -1,5 +1,5 @@
 <template>
-  <d-cell title="我是标题" content="内容" />
+  <d-cell title="我是标题" content="内容" description="我是描述内容" />
   <d-cell title="我是标题" content="必填标识" required />
   <d-cell content="隐藏标题" hide-title />
   <d-cell title="扩展内容" content="正文" suffix="单位" />

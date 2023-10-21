@@ -100,24 +100,21 @@ export default defineComponent({
 
       return (
         <div class={wrapperClassName.value}>
-          <div class={bem('layout')} onClick={handleClick}>
-            <div class={bem('wrapper')}>
-              {renderLabel}
-              <div class={contentClassName}>
-                <div class={bem('content-inner')}>
-                  <If condition={!isEmpty(slots.default)}>
-                    <Then>{slots.default?.()}</Then>
-                    <Else>{props.content}</Else>
-                  </If>
-                </div>
-                {renderRightIcon}
-                {renderSuffix}
+          <div class={bem('wrapper')} onClick={handleClick}>
+            {renderLabel}
+            <div class={contentClassName}>
+              <div class={bem('content-inner')}>
+                <If condition={!isEmpty(slots.default)}>
+                  <Then>{slots.default?.()}</Then>
+                  <Else>{props.content}</Else>
+                </If>
+                {renderDescription}
               </div>
+              {renderRightIcon}
+              {renderSuffix}
             </div>
-
-            {renderArrow}
           </div>
-          {renderDescription}
+          {renderArrow}
         </div>
       )
     }

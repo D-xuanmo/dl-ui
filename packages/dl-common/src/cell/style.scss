@@ -8,15 +8,12 @@
 
 .#{$prefix}-cell {
   $parent: &;
+  display: flex;
+  align-items: center;
   font-size: var(--d-font-size-md);
   line-height: var(--d-line-height-md);
   padding: var(--d-cell-padding);
   background-color: var(--d-cell-background);
-
-  &__layout {
-    display: flex;
-    align-items: center;
-  }
 
   &--border {
     &:not(:last-of-type) {
@@ -43,30 +40,22 @@
 
   &--layout {
     &-horizontal {
-      > #{$parent} {
-        &__wrapper {
-          flex-direction: row;
-        }
-      }
+      flex-direction: row;
     }
 
     &-vertical {
       > #{$parent} {
-        &__layout {
+        &__wrapper {
+          flex-direction: column;
+
           > #{$parent} {
-            &__wrapper {
-              flex-direction: column;
+            &__title {
+              min-width: 100%;
+            }
 
-              > #{$parent} {
-                &__title {
-                  min-width: 100%;
-                }
-
-                &__content {
-                  width: 100%;
-                  margin-top: var(--d-gap-xxs);
-                }
-              }
+            &__content {
+              width: 100%;
+              margin-top: var(--d-gap-xxs);
             }
           }
         }
