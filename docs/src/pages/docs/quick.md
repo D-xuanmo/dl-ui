@@ -9,13 +9,13 @@
 
 ```bash
 # npm 安装
-$ npm i @xuanmo/{dl-ui,dl-common,dl-icons,validator}
+$ npm i @xuanmo/{dl-ui,dl-common,dl-icons}
 
 # yarn 安装
-$ yarn add @xuanmo/{dl-ui,dl-common,dl-icons,validator}
+$ yarn add @xuanmo/{dl-ui,dl-common,dl-icons}
 
 # pnpm 安装
-$ pnpm add @xuanmo/{dl-ui,dl-common,dl-icons,validator}
+$ pnpm add @xuanmo/{dl-ui,dl-common,dl-icons}
 ```
 
 ## 完整引入组件
