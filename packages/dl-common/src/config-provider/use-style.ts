@@ -19,7 +19,9 @@ const generateStyle = (colors: string[], key: ThemeEnum | 'error') => {
 
 export function useStyle(props: ConfigProviderProps) {
   return computed<CSSProperties>(() => {
-    const style: CSSProperties = {}
+    const style: CSSProperties = {
+      height: '100%'
+    }
     if (props.theme?.primary) {
       Object.assign(style, generateStyle(generate(props.theme.primary), 'primary'))
     }
