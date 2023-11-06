@@ -17,7 +17,7 @@ export default defineComponent({
       bem('body', {
         [props.layout]: true,
         fullScreen: props.fullScreen,
-        scrollThrough: props.preventScrollThrough && props.fullScreen
+        scrollThrough: !props.preventScrollThrough && props.fullScreen
       })
     )
     const descriptionClassName = bem('description')

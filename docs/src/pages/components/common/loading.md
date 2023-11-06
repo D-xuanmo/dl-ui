@@ -19,7 +19,7 @@ app.use(DLoading)
 
 ## 代码演示
 
-```vue title=基础用法
+```vue title=基础用法 playground=1pauthc
 <template>
   <markdown>`loading` 尺寸分为 `small`、`medium`、`large`或者自定义尺寸</markdown>
   <d-space :gap="16" direction="vertical">
@@ -31,7 +31,7 @@ app.use(DLoading)
 </template>
 ```
 
-```vue title=自定义图标
+```vue title=自定义图标 playground=3a9mlhn
 <template>
   <d-loading>
     我是一段内容
@@ -45,7 +45,7 @@ import { LoadingOutlined } from '@xuanmo/dl-icons'
 </script>
 ```
 
-```vue title=延迟
+```vue title=延迟 playground=27u1bsu
 <template>
   <markdown>设置 `delay` 防止请求过快出现闪烁的问题。</markdown>
   <d-loading :loading='loading' :delay='1000'>我是一段内容</d-loading>
@@ -62,7 +62,7 @@ const show = () => {
 </script>
 ```
 
-```vue title=服务模式调用
+```vue title=服务模式调用 playground=1tv982r
 <template>
   <d-button theme='primary' @click='open'>显示</d-button>
 </template>
