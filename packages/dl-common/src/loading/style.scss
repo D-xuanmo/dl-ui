@@ -1,0 +1,66 @@
+@import '../style/prefix';
+
+:root {
+  --d-loading-overlay-color: rgba(255, 255, 255, 0.7);
+}
+
+%position {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.#{$prefix}-loading {
+  $loadingPrefix: &;
+  position: relative;
+
+  &__body {
+    @extend %position;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateZ(0);
+
+    &--horizontal {
+      flex-direction: row;
+    }
+
+    &--vertical {
+      flex-direction: column;
+
+      #{$loadingPrefix} {
+        &__description {
+          margin-top: var(--d-gap-xs);
+          margin-left: 0;
+        }
+      }
+    }
+
+    &--fullScreen {
+      @extend %position;
+      position: fixed;
+    }
+
+    &--scrollThrough {
+      pointer-events: none;
+    }
+
+    &::after {
+      content: '';
+      @extend %position;
+      z-index: -1;
+      background-color: var(--d-loading-overlay-color);
+    }
+  }
+
+  &__icon {
+    color: var(--d-primary);
+  }
+
+  &__description {
+    margin-left: var(--d-gap-xs);
+  }
+}

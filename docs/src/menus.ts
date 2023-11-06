@@ -66,7 +66,8 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
         children: [
           { id: 'dialog', path: '/comp-common/dialog', content: 'Dialog [对话框]' },
           { id: 'dialog', path: '/comp-common/drawer', content: 'Drawer [抽屉]' },
-          { id: 'message', path: '/comp-common/message', content: 'Message [消息提示]' }
+          { id: 'message', path: '/comp-common/message', content: 'Message [消息提示]' },
+          { id: 'loading', path: '/comp-common/loading', content: 'Loading [加载提示]' }
         ]
       },
       {
