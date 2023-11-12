@@ -1,13 +1,12 @@
 <template>
   <div :class="wrapperClassName">
     <template v-for="item in data">
-      <div
+      <form-render-item
         v-if="item.layout.parent === 'root' && item.display"
         :key="item.id"
         :class="itemClassName"
-      >
-        <form-render-item :model="item" />
-      </div>
+        :model="item"
+      />
     </template>
   </div>
 </template>
