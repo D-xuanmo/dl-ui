@@ -66,7 +66,11 @@ export const COMMON_PROPS = {
   },
   keys: {
     type: Object as PropType<CustomKeys>,
-    default: undefined
+    default: <CustomKeys>{
+      label: 'label',
+      value: 'value',
+      children: 'children'
+    }
   },
 
   /**

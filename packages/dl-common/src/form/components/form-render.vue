@@ -4,7 +4,6 @@
       <form-render-item
         v-if="item.layout.parent === 'root' && item.display"
         :key="item.id"
-        :class="itemClassName"
         :model="item"
       />
     </template>
@@ -33,11 +32,9 @@ export default defineComponent({
   },
   setup() {
     const wrapperClassName = bem()
-    const itemClassName = bem('item')
 
     return {
-      wrapperClassName,
-      itemClassName
+      wrapperClassName
     }
   }
 })
