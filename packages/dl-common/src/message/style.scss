@@ -13,6 +13,8 @@
   top: 0;
   left: 50%;
   z-index: 999999;
+  width: 100%;
+  max-width: 90%;
   transform: translateX(-50%);
 }
 
@@ -58,5 +60,9 @@
 
   &__closable {
     cursor: pointer;
+  }
+
+  .#{$prefix}-icon {
+    height: 100%;
   }
 }
