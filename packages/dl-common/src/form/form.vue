@@ -32,7 +32,10 @@ export default defineComponent({
     )
 
     const formProps = computed(() => {
-      const config = useConfig(['colon', 'requiredMarkPosition', 'layout', 'labelWidth'], props)
+      const config = useConfig(
+        ['colon', 'requiredMarkPosition', 'layout', 'labelWidth'],
+        props as any
+      )
       return {
         disabled: props.disabled,
         readonly: props.readonly,
