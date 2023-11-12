@@ -19,9 +19,6 @@
     "clear": "rimraf dist",
     "tsc:clear": "rimraf dist && npm run tsc"
   },
-  "dependencies": {
-    "vue": "^3.2.47"
-  },
   "keywords": [
     "svg icon",
     "icon"

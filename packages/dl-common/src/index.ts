@@ -21,8 +21,6 @@ color.generateSuccessColors()
 color.generateWarningColors()
 color.generateErrorColors()
 
-export { version }
-
 export type ComponentNames = keyof typeof components extends infer T
   ? T extends `D${infer Name}`
     ? `D${Name}`

@@ -27,5 +27,3 @@ export const generateWarningColors = (color = WARNING_COLOR) => {
 export const generateErrorColors = (color = ERROR_COLOR) => {
   setHTMLStyle(generate(color), 'error')
 }
-
-export * from '@ant-design/colors'

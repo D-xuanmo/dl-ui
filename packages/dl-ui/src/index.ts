@@ -1,4 +1,5 @@
 import { App } from 'vue'
+import { version } from '../package.json'
 
 // 引入所有 common 包组件
 import DLCommon, { ComponentNames as CommonComponentNames } from '@xuanmo/dl-common'
@@ -27,5 +28,4 @@ export type ComponentNames = CommonComponentNames & keyof typeof components exte
 
 export * from './components'
 export * from '@xuanmo/dl-common'
-export { version } from '../package.json'
-export default { install }
+export default { install, version }

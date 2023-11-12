@@ -1,6 +1,6 @@
 {
   "name": "@xuanmo/dl-common",
-  "version": "0.0.4-beta.10",
+  "version": "0.0.4-beta.12",
   "author": {
     "name": "xuanmo",
     "email": "me@xuanmo.xin"
@@ -19,10 +19,11 @@
     "clear": "rimraf dist",
     "tsc:clear": "rimraf dist && npm run tsc"
   },
-  "dependencies": {
-    "vue": "^3.2.47"
+  "peerDependencies": {
+    "@xuanmo/validator": "^0.0.16"
   },
-  "devDependencies": {
-    "vue-router": "^4.2.4"
-  }
+  "keywords": [
+    "dynamic-form",
+    "Vue3 Form"
+  ]
 }

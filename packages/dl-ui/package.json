@@ -1,6 +1,6 @@
 {
   "name": "@xuanmo/dl-ui",
-  "version": "0.0.4-beta.4",
+  "version": "0.0.4-beta.7",
   "author": {
     "name": "xuanmo",
     "email": "me@xuanmo.xin"
@@ -24,12 +24,10 @@
   "types": "./dist/src/index.d.ts",
   "license": "MIT",
   "dependencies": {
-    "@xuanmo/datejs": "^1.0.15",
-    "vue": "^3.2.25"
+    "@xuanmo/datejs": "^1.0.15"
   },
   "peerDependencies": {
-    "@xuanmo/validator": "^0.0.15",
-    "vue": "^3.0.0"
+    "@xuanmo/validator": "^0.0.16"
   },
   "keywords": [
     "dynamic-form",

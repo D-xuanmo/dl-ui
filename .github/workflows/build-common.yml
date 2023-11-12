@@ -13,13 +13,30 @@ jobs:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
-        node-version: 18
+        node-version: 16.17.0
         registry-url: https://registry.npmjs.org/
     - run: corepack enable
-    - run: yarn
+
     - shell: bash
-      run: cp -r README.md ./packages/dl-common && cp -r .npmignore ./packages/dl-common && cp -r LICENSE ./packages/dl-common && npm run build:common
-    - run: cd packages/dl-common && npm publish --access public
+      name: List workspace
+      run: ls -la
+
+    - shell: bash
+      name: Log yarn version
+      run: yarn -v
+
+    - name: Install
+      run: yarn
+
+    - shell: bash
+      name: Copy file
+      run: cp -r README.md ./packages/dl-common && cp -r .npmignore ./packages/dl-common && cp -r LICENSE ./packages/dl-common
+
+    - name: Build
+      run: yarn build:common
+
+    - name: Publish
+      run: cd packages/dl-common && npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
