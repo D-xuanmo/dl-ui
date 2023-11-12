@@ -12,7 +12,8 @@
 
   &__inner {
     flex: 1;
-    margin-right: var(--d-gap-xs);
+    width: 100%;
+    min-width: 0;
     border: 0;
     &::placeholder {
       color: var(--d-placeholder-color);
@@ -23,6 +24,7 @@
   }
 
   &__suffix-icon {
+    margin-left: var(--d-gap-xs);
     color: var(--d-secondary-text-color);
   }
 }
