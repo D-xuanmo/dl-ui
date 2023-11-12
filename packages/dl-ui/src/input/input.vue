@@ -18,7 +18,7 @@
     />
     <close-filled
       v-if="innerValue && clearable"
-      color="var(--d-secondary-text-color)"
+      :class="suffixIconClass"
       size="small"
       @click="handleClear"
     />
@@ -49,29 +49,33 @@ export default defineComponent({
       })
     )
     const innerClassName = bem('inner')
+    const suffixIconClass = bem('suffix-icon')
 
-    const [innerValue, setValue] = useModelValue<string | number | undefined, typeof props>(
+    const [innerValue, updateValue] = useModelValue<string | number | undefined, typeof props>(
       props,
       emit as SetupContext['emit']
     )
 
     function handleInput(event: Event) {
       const value = (event.target as HTMLInputElement).value
-      const newValue =
-        props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value
-      setValue(newValue)
+      // prettier-ignore
+      const newValue = props.formatterTrigger === 'onChange' && props.formatter
+        ? props.formatter(value)
+        : value
+      updateValue(newValue)
     }
 
     function handleClear(event: MouseEvent) {
-      emit('update:model-value', '')
+      updateValue('')
       emit('clear', '', event)
     }
 
     function handleBlur(event: Event) {
-      const value = innerValue.value
-      const newValue =
-        props.formatterTrigger === 'onChange' && props.formatter ? props.formatter(value) : value
-      setValue(newValue)
+      const value = (event.target as HTMLInputElement).value
+      // prettier-ignore
+      const newValue = props.formatterTrigger === 'onChange' && props.formatter
+        ? props.formatter(value)
+        : value
       emit('blur', newValue, event)
     }
 
@@ -88,6 +92,7 @@ export default defineComponent({
       innerValue,
       inputClassName,
       innerClassName,
+      suffixIconClass,
       handleInput,
       handleClear,
       handleBlur,
