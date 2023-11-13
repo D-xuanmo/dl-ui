@@ -111,7 +111,7 @@
       <d-grid-item :row="3" :column="2">
         <div class="x-panel__image">
           <d-image src="https://upyun.xuanmo.xin/logo/dl-ui.svg" />
-          <p>{{ version }}</p>
+          <p>{{ uiVersion }}</p>
         </div>
       </d-grid-item>
       <d-grid-item :row="1" :column="2">
@@ -138,7 +138,7 @@
 import { computed, onUnmounted, reactive } from 'vue'
 import dateJS from '@xuanmo/datejs'
 import { ua } from '@xuanmo/utils'
-import { version } from '@xuanmo/dl-ui'
+import { uiVersion } from '@xuanmo/dl-ui'
 import { BluetoothOutlined } from '@xuanmo/dl-icons'
 
 const uaInfo = ua()
