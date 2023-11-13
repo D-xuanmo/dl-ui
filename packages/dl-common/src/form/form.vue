@@ -14,6 +14,7 @@ import { FORM_CONTEXT_KEY } from './context'
 import { FormStore } from './store'
 import FormRender from './components/form-render.vue'
 import { useConfig } from '../hooks'
+import { DEFAULT_REQUIRED_MARK_POSITION } from '../constants'
 
 export default defineComponent({
   name: formNamespace,
@@ -43,7 +44,7 @@ export default defineComponent({
         colon: config.colon,
         layout: config.layout,
         labelWidth: config.labelWidth,
-        requiredMarkPosition: config.requiredMarkPosition
+        requiredMarkPosition: config.requiredMarkPosition || DEFAULT_REQUIRED_MARK_POSITION
       }
     })
 

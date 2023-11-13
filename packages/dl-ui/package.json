@@ -1,6 +1,6 @@
 {
   "name": "@xuanmo/dl-ui",
-  "version": "0.0.4-beta.7",
+  "version": "0.0.4-beta.12",
   "author": {
     "name": "xuanmo",
     "email": "me@xuanmo.xin"
@@ -12,16 +12,16 @@
   "scripts": {
     "build": "yarn workspace @xuanmo/dl-common build && vite build && npm run tsc",
     "preview": "vite preview",
-    "tsc": "vue-tsc --emitDeclarationOnly -p tsconfig.build.json",
+    "tsc": "vue-tsc --emitDeclarationOnly -p tsconfig.json",
     "clear": "rimraf dist",
-    "tsc:clear": "rimraf dist && npm run tsc"
+    "tsc:clear": "npm run clear && npm run tsc"
   },
   "files": [
     "dist"
   ],
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
-  "types": "./dist/src/index.d.ts",
+  "types": "./dist/index.d.ts",
   "license": "MIT",
   "dependencies": {
     "@xuanmo/datejs": "^1.0.15"

@@ -2,7 +2,7 @@
 node_modules
 public
 src
-!dist/src
+!lib
 
 # Log files
 npm-debug.log*

@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import { version } from '../package.json'
+import { version as commonVersion } from '../package.json'
 
 import * as components from './components'
 
@@ -34,4 +34,6 @@ export * from './common'
 export * from './hooks'
 export * from './validator'
 
-export default { install, version }
+export { commonVersion }
+
+export default { install, version: commonVersion }

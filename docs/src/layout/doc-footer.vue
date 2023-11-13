@@ -4,7 +4,7 @@
       <h3>当前版本</h3>
       <ul>
         <li>dl-common：{{ commonVersion }}</li>
-        <li>dl-ui：{{ version }}</li>
+        <li>dl-ui：{{ uiVersion }}</li>
       </ul>
     </d-space>
     <d-space direction="vertical">
@@ -32,8 +32,8 @@
 </template>
 
 <script lang="ts" setup>
-import { version as commonVersion } from '@xuanmo/dl-common'
-import { version } from '@xuanmo/dl-ui'
+import { commonVersion } from '@xuanmo/dl-common'
+import { uiVersion } from '@xuanmo/dl-ui'
 </script>
 
 <style scoped lang="scss">

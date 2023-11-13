@@ -9,10 +9,10 @@
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
-    "resolveJsonModule": true,
     "isolatedModules": false,
     "lib": ["ESNext", "dom"],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "resolveJsonModule": false
   },
   "include": ["**/*.d.ts"]
 }

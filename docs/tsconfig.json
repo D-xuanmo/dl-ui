@@ -5,7 +5,6 @@
     "outDir": "dist",
     "paths": {
       "@xuanmo/dl-ui": ["../packages/dl-ui/src"],
-      "@xuanmo/dl-ui/*": ["../packages/dl-ui/src/*"],
       "@doc/*": ["src/*"]
     },
     "types": ["vite/client"]
