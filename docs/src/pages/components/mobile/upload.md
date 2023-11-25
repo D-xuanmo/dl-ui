@@ -34,7 +34,7 @@ app.use(DUpload)
 
   const value = ref([
     {
-      url: 'https://my.xuanmo.xin:3000/api/my-admin/p/file/read/02e535e6-8348-423e-8cf5-0d480fa4d247',
+      url: 'https://admin.xuanmo.xin/api/my-admin/p/file/read/02e535e6-8348-423e-8cf5-0d480fa4d247',
       deletable: false
     }
   ])
