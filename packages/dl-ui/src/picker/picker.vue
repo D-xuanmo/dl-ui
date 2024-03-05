@@ -5,7 +5,7 @@
   </span>
   <d-popup :visible="innerVisible" placement="bottom" :title="title" @update:visible="handleClose">
     <template #header-left>
-      <d-button v-if="cancelButtonText" link @touchstart="handleClose">
+      <d-button v-if="cancelButtonText" link @click="handleClose">
         {{ cancelButtonText }}
       </d-button>
     </template>
