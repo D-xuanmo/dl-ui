@@ -173,6 +173,10 @@ export default defineComponent({
             props.options as ICascaderOption[],
             config.keys
           )
+        } else {
+          temporaryValue.value = isObject(props.options[0])
+            ? ([(props.options[0] as PickerOption)?.value] as PickerValue)
+            : (props.options.map((item) => (item as PickerOption[])[0]?.value) as PickerValue)
         }
       }
     )
