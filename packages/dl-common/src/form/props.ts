@@ -20,7 +20,7 @@ export const FORM_PROPS = {
   /**
    * 表单 FormStore
    */
-  store: Object as PropType<FormStore>,
+  store: Object as Required<PropType<FormStore>>,
 
   /**
    * 标题布局类型

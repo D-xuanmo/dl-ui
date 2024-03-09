@@ -1,7 +1,7 @@
 <template>
   <form :class="formClassName" @submit.prevent>
     <button type="submit" class="d-hide" />
-    <form-render :data="store.getFormModels()" />
+    <form-render :data="store!.getFormModels()" />
   </form>
 </template>
 
