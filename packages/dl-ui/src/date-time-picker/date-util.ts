@@ -116,9 +116,9 @@ class DateUtil {
       case 'year-month':
         return new Date(`${date}/1`)
       case 'month-day':
-        return new Date(`1970/${date}`)
+        return new Date(`${this.freezeDate.getFullYear()}/${date}`)
       case 'time':
-        return new Date(`1970/1/1 ${date}`)
+        return new Date(`${this.freezeDate.getFullYear()}/1/1 ${date}`)
     }
     /* eslint-enable indent */
   }

@@ -70,15 +70,15 @@ export default defineComponent({
       if (['year', 'month'].includes(columnValue.type)) {
         const types: DateTimePickerType[] = ['date', 'datetime', 'date-hour']
         if (types.includes(props.type)) {
-          const [year, month] = formatted
+          const [year, month, day] = formatted
           const lastDay = dateJS(new Date(+year, +month)).lastDay()
-          formatted.splice(2, 1, `${lastDay}`)
+          if (+day > lastDay) formatted.splice(2, 1, `${lastDay}`)
         }
         if (props.type === 'month-day') {
           const year = new Date().getFullYear()
-          const [month] = formatted
+          const [month, day] = formatted
           const lastDay = dateJS(new Date(year, +month)).lastDay()
-          formatted.splice(1, 1, `${lastDay}`)
+          if (+day > lastDay) formatted.splice(1, 1, `${lastDay}`)
         }
       }
       dateUtil.update(formatted)
