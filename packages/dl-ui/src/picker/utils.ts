@@ -1,5 +1,5 @@
 import { PickerOptions, PickerOption, PickerValue } from './props'
-import { isObject } from '@xuanmo/utils'
+import { isEmpty, isObject } from '@xuanmo/utils'
 import { CustomKeys, ICascaderOption, IData } from '@xuanmo/dl-common'
 
 /**
@@ -8,6 +8,7 @@ import { CustomKeys, ICascaderOption, IData } from '@xuanmo/dl-common'
  * @param keys
  */
 export const findCascadeFirstLevelData = (columns: ICascaderOption[], keys?: CustomKeys) => {
+  if (isEmpty(columns) || columns.every(isEmpty)) return []
   const firstLevelData: ICascaderOption[] = []
   let level = 0
   const findFirstLevelData = (column: ICascaderOption) => {

@@ -168,15 +168,17 @@ export default defineComponent({
         displayValue.value =
           findDisplayName(innerValue.value, formattedColumns.value, config.keys) ||
           (props.placeholder ?? '请选择')
-        if (isCascade.value && isEmpty(temporaryValue.value)) {
-          temporaryValue.value = findCascadeFirstLevelData(
-            props.options as ICascaderOption[],
-            config.keys
-          )
-        } else {
-          temporaryValue.value = isObject(props.options[0])
-            ? ([(props.options[0] as PickerOption)?.value] as PickerValue)
-            : (props.options.map((item) => (item as PickerOption[])[0]?.value) as PickerValue)
+        if (isEmpty(temporaryValue.value)) {
+          if (isCascade.value) {
+            temporaryValue.value = findCascadeFirstLevelData(
+              props.options as ICascaderOption[],
+              config.keys
+            )
+          } else {
+            temporaryValue.value = isObject(props.options[0])
+              ? ([(props.options[0] as PickerOption)?.value] as PickerValue)
+              : (props.options.map((item) => (item as PickerOption[])[0]?.value) as PickerValue)
+          }
         }
       }
     )
