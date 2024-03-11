@@ -8,6 +8,10 @@
       <d-picker v-model="value4" placeholder="请选择" :options="options4" />
     </d-cell>
 
+    <d-cell title="异步获取数据" content-align="right">
+      <d-picker v-model="value5" placeholder="请选择" :options="options5" />
+    </d-cell>
+
     <d-cell title="搭配单元格使用(visible 外部受控)" content-align="right" @click="visible2 = true">
       <d-picker v-model="value2" v-model:visible="visible2" title="标题" :options="options2" />
     </d-cell>
@@ -36,6 +40,9 @@ const template4 = Array.from(new Array(10)).map((_, index) => ({
 const options4 = ref<PickerOptions>([template4, template4])
 const value4 = ref(['0-1', '0-3'])
 
+const options5 = ref([])
+const value5 = ref([])
+
 const template2 = Array.from(new Array(10)).map((_, index) => ({
   label: `选项${index + 1}`,
   value: `0-${index + 1}`,
@@ -56,6 +63,11 @@ const template3 = ref([])
 fetch(
   'https://admin.xuanmo.xin/api/my-admin/p/file/read/335f8ac3-f7f5-4408-ab30-a25000041190'
 ).then(async (res) => {
-  template3.value = await res.json()
+  const data = await res.json()
+  template3.value = data
+  options5.value = data.map((item) => {
+    const { value, label } = item
+    return { value, label }
+  })
 })
 </script>
