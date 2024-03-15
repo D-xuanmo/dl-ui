@@ -1,6 +1,6 @@
 <template>
   <span :class="triggerClassName" @click="showPicker">
-    <span>{{ displayValue }}</span>
+    <span>{{ innerValue ? displayValue : placeholder }}</span>
     <slot v-if="!readonly" name="trigger-arrow">
       <right-outlined color="var(--d-secondary-text-color)" />
     </slot>
@@ -29,6 +29,7 @@ import { PickerValue } from '../picker/props'
 import dateJS from '@xuanmo/datejs'
 import { DateTimePickerOption } from './types'
 import { RightOutlined } from '@xuanmo/dl-icons'
+import { isEmpty } from '@xuanmo/utils'
 
 const [name, bem] = createNamespace('date-time-picker')
 
@@ -40,7 +41,7 @@ export default defineComponent({
   emits: ['update:model-value'],
   setup(props, { emit }) {
     const [innerValue, updateValue] = useModelValue(props, emit as SetupContext['emit'])
-    const dateUtil = new DateUtil(innerValue.value, {
+    const dateUtil = new DateUtil(innerValue.value || props.minDate, {
       dateType: props.type,
       formatter: props.formatter!,
       minDate: props.minDate,
@@ -53,6 +54,7 @@ export default defineComponent({
 
     const triggerClassName = computed(() =>
       bem('trigger', {
+        empty: isEmpty(innerValue.value),
         readonly: props.readonly,
         disabled: props.disabled
       })
@@ -120,6 +122,7 @@ export default defineComponent({
     return {
       visible,
       columns,
+      innerValue,
       pickerValue,
       displayValue,
       triggerClassName,

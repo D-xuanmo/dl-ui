@@ -10,7 +10,7 @@ export type DateTimePickerType =
   | 'datetime'
   | 'date-hour'
 
-export type DateTimePickerValue = string | number
+export type DateTimePickerValue = string | number | Date
 
 export type DateTimePickerFormatter<V extends string | number = string> = (
   type: DateTimePickerOption['type'],
@@ -34,6 +34,14 @@ export const DATE_PICKER_PROPS = {
   visible: {
     type: Boolean,
     default: false
+  },
+
+  /**
+   * 提示语
+   */
+  placeholder: {
+    type: String,
+    default: '请选择'
   },
 
   /**
