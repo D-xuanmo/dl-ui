@@ -8,7 +8,7 @@
 
 .#{$prefix}-calendar {
   $calendarPrefix: &;
-  max-height: 90%;
+  max-height: 85%;
   @include trigger;
 
   &--range {

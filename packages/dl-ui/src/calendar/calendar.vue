@@ -29,6 +29,7 @@
     <d-button
       theme="primary"
       block
+      size="large"
       :class="confirmButtonClass"
       :disabled="!store.state.selectedComplete"
       @click="handleConfirm"
