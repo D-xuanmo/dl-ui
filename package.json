@@ -26,7 +26,7 @@
     "@xuanmo/datejs": "^1.0.15",
     "@xuanmo/dl-common": "workspace:*",
     "@xuanmo/dl-icons": "workspace:*",
-    "@xuanmo/utils": "^0.0.1",
+    "@xuanmo/utils": "^0.0.2",
     "@xuanmo/validator": "^0.0.16",
     "vue-if": "latest"
   },

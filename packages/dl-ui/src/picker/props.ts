@@ -18,7 +18,10 @@ export const PICKER_PROPS = {
     default: undefined
   },
 
-  placeholder: String,
+  placeholder: {
+    type: String,
+    default: '请选择'
+  },
 
   /**
    * 显示隐藏

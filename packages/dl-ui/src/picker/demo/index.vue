@@ -1,5 +1,5 @@
 <template>
-  <d-cell-group>
+  <d-cell-group layout="vertical">
     <d-cell title="搭配单元格使用" content-align="right">
       <d-picker v-model="value1" title="直接使用" placeholder="请选择" :options="options1" />
     </d-cell>
@@ -16,7 +16,7 @@
       <d-picker v-model="value2" v-model:visible="visible2" title="标题" :options="options2" />
     </d-cell>
 
-    <d-cell title="级联选择" @click="visible3 = true">
+    <d-cell title="级联选择" description="如果层级过多，如行政区域选择，推荐使用 Cascader级联选择器" @click="visible3 = true">
       <d-picker v-model="value3" v-model:visible="visible3" title="标题" :options="template3" />
     </d-cell>
   </d-cell-group>
@@ -53,16 +53,10 @@ const options2 = ref<PickerOptions>(template2)
 const value2 = ref(['0-2'])
 
 const visible3 = ref(false)
-const value3 = ref([
-  { value: '110000', label: '北京市' },
-  { value: '110100', label: '市辖区' },
-  { value: '110102', label: '西城区' }
-])
+const value3 = ref([])
 const template3 = ref([])
 
-fetch(
-  'https://admin.xuanmo.xin/api/my-admin/p/file/read/335f8ac3-f7f5-4408-ab30-a25000041190'
-).then(async (res) => {
+fetch('https://admin.xuanmo.xin/api/my-admin/p/file/read/335f8ac3-f7f5-4408-ab30-a25000041190').then(async (res) => {
   const data = await res.json()
   template3.value = data
   options5.value = data.map((item) => {

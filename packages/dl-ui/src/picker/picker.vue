@@ -42,7 +42,7 @@ import {
   useConfig
 } from '@xuanmo/dl-common'
 import { PickerOption, PICKER_PROPS, PickerValue } from './props'
-import { debounce, deepCopy, isEmpty, isObject } from '@xuanmo/utils'
+import { debounce, deepCopy, isEmpty, isObject, treeToMap } from '@xuanmo/utils'
 import { findCascadeFirstLevelData, findDisplayName, formatCascade } from './utils'
 import { EventType } from './types'
 import DScrollRadio from '../scroll-radio'
@@ -75,8 +75,13 @@ export default defineComponent({
       context.emit
     )
 
+    // 将数组转换为 map 结构，用于后续数据查找
+    let optionsMap = new Map<string | number, PickerOption>()
+
     // 是否为级联选择模式
-    const isCascade = computed(() => Array.isArray((props.options[0] as ICascaderOption)?.children))
+    const isCascade = computed(() =>
+      Array.isArray((props.options[0] as ICascaderOption)?.[config.keys.children as 'children'])
+    )
 
     // 接收子级传递回来的数据，用作缓存
     const temporaryValue = ref<PickerValue>(
@@ -84,6 +89,7 @@ export default defineComponent({
         ? deepCopy(innerValue.value)
         : findCascadeFirstLevelData(props.options as ICascaderOption[], config.keys)
     )
+
     // 内部渲染列使用
     const formattedColumns = computed(() => {
       if (isCascade.value) {
@@ -96,10 +102,11 @@ export default defineComponent({
 
       return props.options as PickerOption[][]
     })
+
     const displayValue = ref(props.placeholder ?? '')
     const triggerClassName = computed(() =>
       bem('trigger', {
-        empty: displayValue.value === props.placeholder || displayValue.value === '请选择',
+        empty: displayValue.value === props.placeholder,
         readonly: props.readonly,
         disabled: props.disabled
       })
@@ -115,6 +122,11 @@ export default defineComponent({
       context.emit('change', temporaryValue.value, currentColumn)
     }, 20)
 
+    const updateDisplayName = () => {
+      displayValue.value =
+        findDisplayName(innerValue.value, optionsMap, config.keys) || props.placeholder || ''
+    }
+
     const handleChange = (data: IData, columnIndex: number) => {
       temporaryValue.value[columnIndex] = data
       currentColumn = data
@@ -128,7 +140,7 @@ export default defineComponent({
 
     const handleConfirm = () => {
       const value = temporaryValue.value.map((item) =>
-        isObject(item) ? (item as IData).value : item
+        isObject(item) ? (item as IData)[config.keys.value as 'value'] : item
       )
       updateValue(value as PickerValue)
       handleClose()
@@ -144,7 +156,9 @@ export default defineComponent({
 
     const formatColumnValue = (columnIndex: number) => {
       const columnValue = temporaryValue.value[columnIndex]
-      return (isObject(columnValue) ? (columnValue as IData).value : columnValue) as string | number
+      return (
+        isObject(columnValue) ? (columnValue as IData)[config.keys.value as 'value'] : columnValue
+      ) as string | number
     }
 
     watch(
@@ -153,33 +167,39 @@ export default defineComponent({
         if (!isEmpty(innerValue.value)) {
           temporaryValue.value = deepCopy(innerValue.value)
         }
-        displayValue.value =
-          findDisplayName(innerValue.value, formattedColumns.value, config.keys) ||
-          (props.placeholder ?? '请选择')
-      },
-      {
-        immediate: true
+        updateDisplayName()
       }
     )
 
     watch(
       () => props.options,
       () => {
-        displayValue.value =
-          findDisplayName(innerValue.value, formattedColumns.value, config.keys) ||
-          (props.placeholder ?? '请选择')
+        optionsMap = treeToMap<ICascaderOption, 'value', 'children'>(
+          props.options.flat(),
+          // config 不会存在无值的情况
+          config.keys.value as 'value',
+          config.keys.children as 'children'
+        )
+        updateDisplayName()
         if (isEmpty(temporaryValue.value)) {
           if (isCascade.value) {
             temporaryValue.value = findCascadeFirstLevelData(
               props.options as ICascaderOption[],
               config.keys
             )
+            /* eslint-disable indent */
           } else {
             temporaryValue.value = isObject(props.options[0])
-              ? ([(props.options[0] as PickerOption)?.value] as PickerValue)
-              : (props.options.map((item) => (item as PickerOption[])[0]?.value) as PickerValue)
+              ? [(props.options[0] as PickerOption)[config.keys.value as 'value'] as string]
+              : props.options.map(
+                  (item) => (item as PickerOption[])[0][config.keys.value as 'value'] as string
+                )
           }
+          /* eslint-enable indent */
         }
+      },
+      {
+        immediate: true
       }
     )
 

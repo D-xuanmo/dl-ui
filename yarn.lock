@@ -1551,6 +1551,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xuanmo/utils@npm:^0.0.2":
+  version: 0.0.2
+  resolution: "@xuanmo/utils@npm:0.0.2"
+  checksum: 62e497f168b2be2e98fcfa9365e5bb4c1d5e53209726a93ad2ba6b5412f636387ecba253b34a1cf43b0a44f9053ce3b0bb2c555203afb06f7e8e77da96b96f1f
+  languageName: node
+  linkType: hard
+
 "@xuanmo/validator@npm:^0.0.16":
   version: 0.0.16
   resolution: "@xuanmo/validator@npm:0.0.16"
@@ -2492,7 +2499,7 @@ __metadata:
     "@xuanmo/dl-common": "workspace:*"
     "@xuanmo/dl-icons": "workspace:*"
     "@xuanmo/prettier-config": latest
-    "@xuanmo/utils": ^0.0.1
+    "@xuanmo/utils": ^0.0.2
     "@xuanmo/validator": ^0.0.16
     autoprefixer: ^10.4.7
     eslint: ^8.41.0
