@@ -150,7 +150,9 @@ export default defineComponent({
     const handleClose = () => {
       if (props.controlled) updateVisible(false)
       innerVisible.value = false
-      temporaryValue.value = deepCopy(innerValue.value)
+      if (!isEmpty(innerValue.value)) {
+        temporaryValue.value = deepCopy(innerValue.value)
+      }
       context.emit('close')
     }
 

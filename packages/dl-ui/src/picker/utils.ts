@@ -7,14 +7,14 @@ import { CustomKeys, ICascaderOption, IData } from '@xuanmo/dl-common'
  * @param columns
  * @param keys
  */
-export const findCascadeFirstLevelData = (columns: ICascaderOption[], keys?: CustomKeys) => {
+export const findCascadeFirstLevelData = (columns: ICascaderOption[], keys: CustomKeys) => {
   if (isEmpty(columns) || columns.every(isEmpty)) return []
   const firstLevelData: ICascaderOption[] = []
   let level = 0
   const findFirstLevelData = (column: ICascaderOption) => {
     firstLevelData.push(column)
     while (firstLevelData?.[level]) {
-      const result = (firstLevelData?.[level] as any)?.[keys?.children || 'children']
+      const result = (firstLevelData?.[level] as any)?.[keys.children as 'children']
       level++
       result && findFirstLevelData(result[0])
     }
@@ -29,7 +29,11 @@ export const findCascadeFirstLevelData = (columns: ICascaderOption[], keys?: Cus
  * @param columns
  * @param keys
  */
-export const formatCascade = (value: PickerValue, columns: ICascaderOption[], keys?: CustomKeys) => {
+export const formatCascade = (
+  value: PickerValue,
+  columns: ICascaderOption[],
+  keys?: CustomKeys
+) => {
   const valueKey = keys?.value || 'value'
   const childrenKey = keys?.children || 'children'
   const formatted: PickerOption[][] = []
@@ -41,7 +45,10 @@ export const formatCascade = (value: PickerValue, columns: ICascaderOption[], ke
         data.find((item) => {
           const current = value[level] as IData
           // 传入的 value 为对象数组，取 value 属性
-          return (item as any)?.[valueKey] === (isObject(current) ? (current as ICascaderOption)[valueKey as 'value'] : current)
+          return (
+            (item as any)?.[valueKey] ===
+            (isObject(current) ? (current as ICascaderOption)[valueKey as 'value'] : current)
+          )
         }) ?? data[0]
       level++
       if (result) {
@@ -62,7 +69,11 @@ export const formatCascade = (value: PickerValue, columns: ICascaderOption[], ke
  * @param optionsMap
  * @param keys
  */
-export const findDisplayName = (value: PickerValue, optionsMap: Map<string | number, PickerOption>, keys?: CustomKeys) => {
+export const findDisplayName = (
+  value: PickerValue,
+  optionsMap: Map<string | number, PickerOption>,
+  keys?: CustomKeys
+) => {
   const labelKey = keys?.label || 'label'
   const valueKey = keys?.value || 'value'
   const labels: string[] = []
