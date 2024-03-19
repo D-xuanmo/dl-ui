@@ -31,6 +31,7 @@
         <d-button @click="hideFirstRow">隐藏第一行</d-button>
         <d-button @click="showFirstRow">显示第一行</d-button>
         <d-button @click="reset">重置</d-button>
+        <d-button @click="updateOptions">更新 options</d-button>
       </d-space>
     </d-cell>
   </d-cell-group>
@@ -114,6 +115,17 @@ const reset = () => {
 
 const handleChange: OnFormChange = (value, model) => {
   console.log(value, model)
+}
+
+const updateOptions = () => {
+  formStore.updateModel('picker', {
+    value: [],
+    options: [
+      { label: '选项11', value: '11' },
+      { label: '选项22', value: '22' },
+      { label: '选项33', value: '33' }
+    ]
+  })
 }
 
 fetch(
