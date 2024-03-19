@@ -18,6 +18,7 @@
       <div :class="contentClassName" :style="contentStyle">
         <d-scroll-radio
           v-for="(item, index) in formattedColumns"
+          ref="scrollRefs"
           :key="`@${index}`"
           :options="item"
           :option-height="optionHeight"
@@ -30,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties, defineComponent, ref, watch } from 'vue'
+import { computed, CSSProperties, defineComponent, nextTick, ref, watch } from 'vue'
 import {
   ICascaderOption,
   IData,
@@ -45,7 +46,7 @@ import { PickerOption, PICKER_PROPS, PickerValue } from './props'
 import { debounce, deepCopy, isEmpty, isObject, treeToMap } from '@xuanmo/utils'
 import { findCascadeFirstLevelData, findDisplayName, formatCascade } from './utils'
 import { EventType } from './types'
-import DScrollRadio from '../scroll-radio'
+import DScrollRadio, { ScrollRadioInstance } from '../scroll-radio'
 import { RightOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('picker')
@@ -60,6 +61,7 @@ export default defineComponent({
     const className = bem()
     const contentClassName = bem('content')
     const config = useConfig(['keys'], props)
+    const scrollRefs = ref<ScrollRadioInstance[]>()
 
     const [visible, updateVisible] = useModelValue<
       boolean,
@@ -212,6 +214,18 @@ export default defineComponent({
       }
     )
 
+    watch(
+      () => innerVisible.value,
+      async (visible) => {
+        if (visible) {
+          await nextTick()
+          scrollRefs.value?.forEach((instance) => {
+            instance.scrollToCurrent()
+          })
+        }
+      }
+    )
+
     return {
       innerVisible,
       className,
@@ -221,6 +235,7 @@ export default defineComponent({
       contentStyle,
       isCascade,
       displayValue,
+      scrollRefs,
       showPicker,
       handleClose,
       handleChange,

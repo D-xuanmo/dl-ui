@@ -28,6 +28,7 @@ import { SCROLL_RADIO_PROPS } from './props'
 import ScrollRadioItem from './scroll-radio-item.vue'
 import { debounce } from '@xuanmo/utils'
 import { IData } from '@xuanmo/dl-common'
+import { ScrollRadioInstance } from './types'
 
 const [name, bem] = createNamespace('scroll-radio')
 
@@ -38,7 +39,7 @@ export default defineComponent({
   },
   props: SCROLL_RADIO_PROPS,
   emits: ['change'],
-  setup(props, { emit }) {
+  setup(props, { emit, expose }) {
     const wrapperClassName = bem()
     const scrollClassName = bem('scroll')
     const maskClassName = bem('mask')
@@ -58,7 +59,7 @@ export default defineComponent({
 
     const scrollToCurrent = () => {
       const index = props.options.findIndex((item) => item.value === props.value)
-      wrapperRef.value?.scrollTo(0, index * props.optionHeight)
+      wrapperRef.value?.scrollTo(0, (index <= 0 ? 0 : index) * props.optionHeight)
     }
 
     const findNext = (current: IData, index: number): [IData, number] => {
@@ -88,6 +89,8 @@ export default defineComponent({
     })
 
     watch(() => props.value, scrollToCurrent)
+
+    expose({ scrollToCurrent } as ScrollRadioInstance)
 
     return {
       wrapperClassName,
