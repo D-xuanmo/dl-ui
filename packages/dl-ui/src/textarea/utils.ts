@@ -60,8 +60,8 @@ export const useCalcTextareaHeight = (
   })
 
   onUnmounted(() => {
-    if (autosize) {
-      document.body.removeChild(hiddenTextarea!)
+    if (autosize && hiddenTextarea) {
+      document.body.removeChild(hiddenTextarea)
       hiddenTextarea = null
       clearTimeout(timer)
     }
