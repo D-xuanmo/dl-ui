@@ -168,9 +168,7 @@ export default defineComponent({
     watch(
       () => innerValue.value,
       () => {
-        if (!isEmpty(innerValue.value)) {
-          temporaryValue.value = deepCopy(innerValue.value)
-        }
+        temporaryValue.value = deepCopy(innerValue.value)
         updateDisplayName()
       }
     )
