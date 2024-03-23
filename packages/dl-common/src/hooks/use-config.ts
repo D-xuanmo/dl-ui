@@ -2,6 +2,7 @@ import { ConfigProviderInjectKey, ConfigProviderProps } from '../config-provider
 import { inject } from 'vue'
 import { isEmpty } from '@xuanmo/utils'
 import { CustomKeys } from '../common'
+import { LABEL_WIDTH } from '../constants'
 
 /**
  * 获取 config provider 对应的参数
@@ -18,7 +19,8 @@ export function useConfig<
       value: 'value',
       children: 'children',
       ...(currentProps as ConfigProviderProps).keys
-    }
+    },
+    labelWidth: LABEL_WIDTH
   } as ConfigProviderProps)
 
   return keys.reduce((prev, currentKey) => {

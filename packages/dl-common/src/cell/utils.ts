@@ -12,7 +12,7 @@ export const useGlobalConfig = (props: CellProps) => {
       contentAlign: props.contentAlign || cellContentAlign || 'left',
       hideTitle: props.hideTitle,
       layout: props.layout || layout?.value || config.layout || 'horizontal',
-      border: props.border || border,
+      border: props.border ?? border,
       requiredMarkPosition: props.requiredMarkPosition || config.requiredMarkPosition || 'right'
     }
   })

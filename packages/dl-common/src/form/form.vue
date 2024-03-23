@@ -38,6 +38,7 @@ export default defineComponent({
         props as any
       )
       return {
+        border: props.border ?? props.clientType === 'MOBILE',
         disabled: props.disabled,
         readonly: props.readonly,
         hideLabel: props.hideLabel,

@@ -41,6 +41,14 @@ export const FORM_PROPS = {
   },
 
   /**
+   * 显示边框
+   */
+  border: {
+    type: Boolean,
+    default: undefined
+  },
+
+  /**
    * 是否显示背景
    */
   hasBackground: {

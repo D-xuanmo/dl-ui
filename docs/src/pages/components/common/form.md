@@ -613,7 +613,7 @@ const reset = () => {
 
 ```vue title=结合Layout组件实现布局 playground=FormLayout
 <template>
-  <d-form :models="formModels" />
+  <d-form :models="formModels" :border="false" />
 </template>
 
 <script lang="ts" setup>
@@ -640,7 +640,7 @@ const formModels = [
     component: 'DFormLayoutFooter',
     layout: {
       parent: 'layout',
-      children: ['footerContent'],
+      children: ['footerContent', 'footerContent1'],
       height: 80
     }
   },
@@ -725,6 +725,17 @@ const formModels = [
     value: 5,
     description: '我是底部的评分'
   },
+  {
+    id: 'footerContent1',
+    dataKey: 'footerContent1',
+    component: 'DInput',
+    layout: {
+      parent: 'footer'
+    },
+    label: '输入框',
+    value: '',
+    placeholder: '我是输入框'
+  },
 ]
 </script>
 ```
@@ -793,6 +804,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 |hide-label|`boolean`|`false`|隐藏 label|N|
 |layout|`'horizontal' \| 'vertical'`|`horizontal`|布局类型|N|
 |colon|`boolean`|`false`|是否显示冒号|N|
+|border|`boolean`|`true`|是否显示边框|N|
 |round|`boolean`|`true`|分组是否展示为圆角|N|
 |required-mark-position|`'left' \| 'right'`|`right`|必填标识显示位置|N|
 |has-background|`boolean`|`true`|是否显示背景色|N|

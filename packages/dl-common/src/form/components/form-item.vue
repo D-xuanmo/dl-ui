@@ -6,6 +6,7 @@
     :layout="formProps.layout"
     :hide-title="formProps.hideLabel || model.hideLabel"
     :colon="formProps.colon"
+    :border="formProps.border"
   >
     <template #title>
       <span

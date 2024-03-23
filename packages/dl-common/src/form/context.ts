@@ -9,6 +9,7 @@ export interface IFormContext {
     Pick<
       FormProps,
       | 'colon'
+      | 'border'
       | 'disabled'
       | 'readonly'
       | 'layout'
