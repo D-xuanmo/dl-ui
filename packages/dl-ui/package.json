@@ -27,9 +27,7 @@
     "@xuanmo/datejs": "^1.0.15"
   },
   "peerDependencies": {
-    "@xuanmo/validator": "^0.0.16",
-    "@xuanmo/dl-common": "^0.0.5-beta.3",
-    "@xuanmo/dl-icons": "^0.0.9"
+    "@xuanmo/validator": "^0.0.16"
   },
   "keywords": [
     "dynamic-form",
