@@ -75,7 +75,10 @@ export default defineComponent({
       () => props.visible,
       (visible) => {
         if (visible && props.duration > 0) {
-          setTimeout(handleClose, props.duration)
+          const timer = setTimeout(() => {
+            handleClose()
+            clearTimeout(timer)
+          }, props.duration)
         }
       }
     )

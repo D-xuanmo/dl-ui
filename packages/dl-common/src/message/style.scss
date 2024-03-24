@@ -13,14 +13,26 @@
   top: 0;
   left: 50%;
   z-index: 999999;
+  display: flex;
+  justify-content: center;
   width: 100%;
   max-width: 90%;
   transform: translateX(-50%);
 }
 
 .#{$prefix}-message {
+  position: absolute;
+  top: 0;
   text-align: center;
   @include font-size(md);
+
+  &:last-of-type {
+    .#{$prefix}-message {
+      &__content {
+        box-shadow: var(--d-message-box-shadow);
+      }
+    }
+  }
 
   &-enter-active,
   &-leave-active {
@@ -44,7 +56,6 @@
     margin: 10px auto 0;
     padding: var(--d-message-padding);
     border-radius: var(--d-radius-medium);
-    box-shadow: var(--d-message-box-shadow);
     background: var(--d-white-color);
   }
 
