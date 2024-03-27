@@ -16,34 +16,16 @@ export const useCalcTextareaHeight = (
   otherParams: Pick<TextareaProps, 'autosize'>
 ) => {
   const { autosize } = otherParams
-  let timer: ReturnType<typeof setTimeout>
-  if (!hiddenTextarea) {
-    const style = `
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -10000;
-      overflow: hidden;
-      visibility: hidden;
-    `
-    hiddenTextarea = document.createElement('textarea')
-    hiddenTextarea.classList.add('d-textarea__inner')
-    hiddenTextarea.value = value.value
-    document.body.appendChild(hiddenTextarea)
-    hiddenTextarea.setAttribute('style', style)
-  }
 
-  const height = ref({ height: addUnit(0) })
+  const style = ref({ height: addUnit(0) })
 
   const calcHeight = async () => {
     if (autosize) {
       hiddenTextarea!.value = value.value
       await nextTick()
-      timer = setTimeout(() => {
-        height.value = {
-          height: addUnit(hiddenTextarea!.scrollHeight)
-        }
-      })
+      style.value = {
+        height: addUnit(hiddenTextarea!.scrollHeight)
+      }
     }
   }
 
@@ -51,9 +33,28 @@ export const useCalcTextareaHeight = (
 
   onMounted(() => {
     if (autosize) {
-      hiddenTextarea!.style.width = addUnit(targetEl.value?.offsetWidth)
-      hiddenTextarea!.setAttribute('rows', `${targetEl.value?.rows}`)
-      height.value = {
+      if (!hiddenTextarea) {
+        const { width, fontSize, lineHeight } = window.getComputedStyle(
+          targetEl.value || document.body
+        )
+        const style = `
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -10000;
+          width: ${width};
+          visibility: hidden;
+          font-size: ${fontSize};
+          line-height: ${lineHeight};
+        `
+        hiddenTextarea = document.createElement('textarea')
+        hiddenTextarea.classList.add('d-textarea__inner')
+        hiddenTextarea.value = value.value
+        hiddenTextarea.setAttribute('style', style)
+        hiddenTextarea.setAttribute('rows', `${targetEl.value?.rows}`)
+        document.body.appendChild(hiddenTextarea)
+      }
+      style.value = {
         height: addUnit(hiddenTextarea!.scrollHeight)
       }
     }
@@ -63,9 +64,8 @@ export const useCalcTextareaHeight = (
     if (autosize && hiddenTextarea) {
       document.body.removeChild(hiddenTextarea)
       hiddenTextarea = null
-      clearTimeout(timer)
     }
   })
 
-  return autosize ? height : {}
+  return autosize ? style : {}
 }
