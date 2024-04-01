@@ -122,7 +122,7 @@ export default defineComponent({
 
       if (!files) return
 
-      if (files.length > props.maxCount) {
+      if (files.length + previewList.value.length > props.maxCount) {
         return debugWarn(name, `已选文件个数不能大于${props.maxCount}个`)
       }
 

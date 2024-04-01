@@ -5,6 +5,7 @@
     multiple
     upload-data-key="files"
     :data="uploadData"
+    :max-count="3"
     :header-params="headerParams"
     :upload-after="uploadAfterHandler"
   />
