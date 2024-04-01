@@ -1,14 +1,19 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { FieldFormatterTrigger, HorizontalAlignType } from '@xuanmo/dl-common'
+import {
+  COMMON_PROPS,
+  FieldFormatterTrigger,
+  HorizontalAlignType,
+  pickProps
+} from '@xuanmo/dl-common'
 
 export type InputProps = ExtractPropTypes<typeof INPUT_PROPS>
 
 export const INPUT_PROPS = {
+  ...pickProps(COMMON_PROPS, ['disabled', 'readonly']),
   modelValue: {
     type: [String, Number] as PropType<string | number | undefined>,
     default: undefined
   },
-
   type: {
     type: String as PropType<'text' | 'number' | 'password' | 'email' | 'url'>,
     default: 'text'
@@ -17,9 +22,10 @@ export const INPUT_PROPS = {
     type: String,
     default: ''
   },
-  disabled: Boolean,
-  readonly: Boolean,
-  autofocus: Boolean,
+  autofocus: {
+    type: Boolean,
+    default: false
+  },
   inputAlign: {
     type: String as PropType<HorizontalAlignType>,
     default: 'left'
@@ -32,7 +38,10 @@ export const INPUT_PROPS = {
     type: String,
     default: ''
   },
-  clearable: Boolean,
+  clearable: {
+    type: Boolean,
+    default: false
+  },
   placeholder: {
     type: String,
     default: ''
