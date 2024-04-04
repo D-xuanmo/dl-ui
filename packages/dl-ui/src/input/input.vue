@@ -44,11 +44,14 @@ export default defineComponent({
     const inputClassName = computed(() =>
       bem({
         disabled: props.disabled,
-        readonly: props.readonly,
+        readonly: props.readonly
+      })
+    )
+    const innerClassName = computed(() =>
+      bem('inner', {
         [`${props.inputAlign}`]: props.inputAlign
       })
     )
-    const innerClassName = bem('inner')
     const suffixIconClass = bem('suffix-icon')
 
     const [innerValue, updateValue] = useModelValue<string | number | undefined, typeof props>(
