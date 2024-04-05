@@ -6,7 +6,7 @@
     </slot>
   </span>
   <d-picker
-    :visible="visible"
+    :visible="innerVisible"
     :model-value="pickerValue"
     :options="columns"
     :title="title"
@@ -47,7 +47,7 @@ export default defineComponent({
       minDate: props.minDate,
       maxDate: props.maxDate
     })
-    const visible = ref(props.visible)
+    const innerVisible = ref(props.visible)
     const pickerValue = ref(dateUtil.pickerValue)
     const displayValue = ref(dateUtil.value)
     const columns = ref(dateUtil.getColumns())
@@ -88,19 +88,26 @@ export default defineComponent({
     }
 
     const handleConfirm = () => {
-      visible.value = false
+      innerVisible.value = false
       pickerValue.value = dateUtil.pickerValue
       updateValue(dateUtil.value)
     }
 
     const showPicker = () => {
       if (props.disabled || props.readonly) return
-      visible.value = true
+      innerVisible.value = true
     }
 
     const hidePicker = () => {
-      visible.value = false
+      innerVisible.value = false
     }
+
+    watch(
+      () => props.visible,
+      (visible) => {
+        innerVisible.value = visible
+      }
+    )
 
     watch(
       () => props.modelValue,
@@ -120,7 +127,7 @@ export default defineComponent({
     )
 
     return {
-      visible,
+      innerVisible,
       columns,
       innerValue,
       pickerValue,
