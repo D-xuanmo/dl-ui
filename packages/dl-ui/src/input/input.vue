@@ -11,12 +11,12 @@
       :readonly="readonly"
       :autocomplete="autocomplete"
       :autofocus="autofocus"
-      @input="handleInput"
-      @blur="handleBlur"
-      @focus="handleFocus"
-      @click="handleClick"
+      @input="onInput"
+      @blur="onBlur"
+      @focus="onFocus"
+      @click="onClick"
     />
-    <close-filled v-if="showCloseIcon" :class="suffixIconClass" size="small" @click="handleClear" />
+    <close-filled v-if="showCloseIcon" :class="suffixIconClass" size="small" @click="onClear" />
   </div>
 </template>
 
@@ -59,7 +59,7 @@ export default defineComponent({
       return innerValue.value && props.clearable
     })
 
-    function handleInput(event: Event) {
+    function onInput(event: Event) {
       const value = (event.target as HTMLInputElement).value
       // prettier-ignore
       const newValue = props.formatterTrigger === 'onChange' && props.formatter
@@ -68,12 +68,12 @@ export default defineComponent({
       updateValue(newValue)
     }
 
-    function handleClear(event: MouseEvent) {
+    function onClear(event: MouseEvent) {
       updateValue('')
       emit('clear', '', event)
     }
 
-    function handleBlur(event: Event) {
+    function onBlur(event: Event) {
       const value = (event.target as HTMLInputElement).value
       // prettier-ignore
       const newValue = props.formatterTrigger === 'onChange' && props.formatter
@@ -82,11 +82,11 @@ export default defineComponent({
       emit('blur', newValue, event)
     }
 
-    function handleFocus(event: Event) {
-      emit('focus', innerValue, event)
+    function onFocus(event: Event) {
+      emit('focus', innerValue.value, event)
     }
 
-    function handleClick(event: MouseEvent) {
+    function onClick(event: MouseEvent) {
       emit('click-input', innerValue.value, event)
     }
 
@@ -97,11 +97,11 @@ export default defineComponent({
       innerClassName,
       suffixIconClass,
       showCloseIcon,
-      handleInput,
-      handleClear,
-      handleBlur,
-      handleFocus,
-      handleClick
+      onInput,
+      onClear,
+      onBlur,
+      onFocus,
+      onClick
     }
   }
 })

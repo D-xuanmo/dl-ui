@@ -104,7 +104,8 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
           { id: 'picker', path: '/comp-mobile/picker', content: 'Picker [选择器]' },
           { id: 'rate', path: '/comp-mobile/rate', content: 'Rate [评分]' },
           { id: 'radio', path: '/comp-mobile/radio', content: 'Radio [单选框]' },
-          { id: 'upload', path: '/comp-mobile/upload', content: 'Upload [文件上传]' }
+          { id: 'upload', path: '/comp-mobile/upload', content: 'Upload [文件上传]' },
+          { id: 'search', path: '/comp-mobile/search', content: 'Search [搜索]' }
         ]
       }
     ]

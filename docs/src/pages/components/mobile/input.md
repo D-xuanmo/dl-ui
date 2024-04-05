@@ -120,7 +120,6 @@ app.use(DInput)
 |clear|清空内容按钮点击时触发|value: string, event: Event|
 |click-input|输入框点击时触发|value: string, event: Event|
 
-
 ### TypeScript 类型
 
 ```typescript

@@ -1,0 +1,19 @@
+@import '../style/prefix.scss';
+
+.#{$prefix}-search {
+  &__body {
+    display: flex;
+    align-items: center;
+    gap: var(--d-gap-xs);
+    padding: var(--d-gap-xs);
+    background-color: var(--d-gray-1);
+
+    &--round {
+      border-radius: var(--d-radius-max);
+    }
+  }
+
+  &__input {
+    align-items: center;
+  }
+}
