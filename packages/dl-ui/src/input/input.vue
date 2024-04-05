@@ -16,12 +16,7 @@
       @focus="handleFocus"
       @click="handleClick"
     />
-    <close-filled
-      v-if="innerValue && clearable"
-      :class="suffixIconClass"
-      size="small"
-      @click="handleClear"
-    />
+    <close-filled v-if="showCloseIcon" :class="suffixIconClass" size="small" @click="handleClear" />
   </div>
 </template>
 
@@ -58,6 +53,11 @@ export default defineComponent({
       props,
       emit as SetupContext['emit']
     )
+
+    const showCloseIcon = computed(() => {
+      if (props.readonly || props.disabled) return false
+      return innerValue.value && props.clearable
+    })
 
     function handleInput(event: Event) {
       const value = (event.target as HTMLInputElement).value
@@ -96,6 +96,7 @@ export default defineComponent({
       inputClassName,
       innerClassName,
       suffixIconClass,
+      showCloseIcon,
       handleInput,
       handleClear,
       handleBlur,
