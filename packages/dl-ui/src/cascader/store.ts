@@ -155,6 +155,7 @@ export class CascaderStore {
    */
   getDisplayLabel = () => {
     return this.activePath.value
+      .filter((item) => !this.isTemporary(item[this.valueKey]))
       .reduce<string[]>((prev, current) => {
         return [...prev, current[this.labelKey]]
       }, [])
