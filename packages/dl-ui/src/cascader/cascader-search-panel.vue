@@ -3,7 +3,11 @@
     <li
       v-for="item in store.searchResult.value"
       :key="item.id"
-      :class="itemClassName"
+      :class="
+        itemClassNames('search-item', {
+          disabled: item.disabled
+        })
+      "
       @click="onChange(item.path)"
     >
       <span v-html="item.displayName" />
@@ -17,6 +21,7 @@ import { defineComponent } from 'vue'
 import { createCascaderNameSpace } from './utils'
 import { CASCADER_SEARCH_PANEL_PROPS } from './props'
 import { ICascaderOption } from '@xuanmo/dl-common'
+import { pickLastItem } from '@xuanmo/utils'
 
 const [name, bem] = createCascaderNameSpace('search-panel')
 const [, itemClassNames] = createCascaderNameSpace('search-item')
@@ -27,13 +32,14 @@ export default defineComponent({
   props: CASCADER_SEARCH_PANEL_PROPS,
   setup(props) {
     const onChange = (path: ICascaderOption[]) => {
+      if (pickLastItem(path).disabled) return
       props.store.updatePath(path)
       props.store.updateSearch('')
     }
 
     return {
       wrapperClassName: bem(),
-      itemClassName: itemClassNames(),
+      itemClassNames,
       emptyClassName: emptyClassNames(),
       onChange
     }

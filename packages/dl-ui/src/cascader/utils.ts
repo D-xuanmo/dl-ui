@@ -5,7 +5,7 @@ function createCascaderNameSpace(): [string, ReturnType<typeof createBEM>]
 
 function createCascaderNameSpace(
   childName: string
-): [string, (el?: string | null, modifier?: Modifiers, only?: boolean) => string]
+): [string, (el?: string | null, modifier?: Modifiers) => string]
 
 function createCascaderNameSpace(childName?: string) {
   const [name, bem] = createNamespace('cascader')

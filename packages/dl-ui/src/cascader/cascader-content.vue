@@ -40,6 +40,7 @@ export default defineComponent({
     const tabClassName = bem()
 
     const onChange = async (option: ICascaderOption) => {
+      if (option.disabled) return
       const updateFirstLevel = () => {
         const { option: temporary, value } = store.getTemporaryOption()
         store.activePath.value = [option]

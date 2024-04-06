@@ -75,7 +75,8 @@ const handleLazyLoad = (options: ICascaderOption) =>
             },
             {
               label: '西城区',
-              value: '110102000000'
+              value: '110102000000',
+              disabled: true
             },
             {
               label: '朝阳区',

@@ -7,6 +7,7 @@ type SearchResultType = Array<{
   id: ICascaderOption['value']
   displayName: string
   path: ICascaderOption[]
+  disabled?: boolean
 }>
 
 const [, searchPanelMatch] = createCascaderNameSpace('search-match')
@@ -92,6 +93,7 @@ export class CascaderStore {
         result.push({
           id: value,
           path,
+          disabled: item.disabled,
           displayName: displayNames.join('/')
         })
       }
@@ -117,7 +119,7 @@ export class CascaderStore {
   } => {
     if (parentId === ROOT_PARENT) return { path, displayNames }
     const parent = this.optionMap.get(parentId)!
-    if (parent[this.valueKey] === initial) {
+    if (parent[this.valueKey] === initial && !parent.disabled) {
       displayNames.unshift(
         parent[this.labelKey].replace(new RegExp(this.searchKeywords.value, 'g'), (match) => {
           return `<span class='${searchPanelMatch()}'>${match}</span>`
