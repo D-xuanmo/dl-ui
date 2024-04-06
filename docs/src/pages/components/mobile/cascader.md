@@ -138,9 +138,11 @@ fetch(
 |model-value/v-model|`CascaderValue`|-|组件选择的值|Y|
 |options|`ICascaderOption[]`|-|选项数据|Y|
 |placeholder|`string`|-|提示语|N|
+|search-placeholder|`string`|-|搜索框提示语|N|
 |title|`string`|-|支持设置一个顶部标题|N|
 |disabled|`boolean`|`false`|是否禁用|N|
 |readonly|`boolean`|`false`|是否只读|N|
+|keys|`CustomKeys`|-|自定义数据源中的属性，[公用类型定义](https://uoo.ink/common)|N|
 |lazy|`boolean`|`false`|是否开启懒加载|N|
 |lazy-load|`(option: ICascaderOption) => Promise<ICascaderOption[]>`|-|数据懒加载方法，需要配合 `lazy` 使用|N|
 |cancel-button-text|`string`|`取消`|关闭按钮文字|N|

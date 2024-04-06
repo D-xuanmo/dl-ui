@@ -42,8 +42,17 @@ export interface ICascaderOption extends IData {
   // 子级数据
   children?: IData[]
 
-  // 当前数据所在级数
-  level?: number
+  /**
+   * 当前数据所在级数
+   * 层级从 1 开始计数
+   */
+  __level?: number
+
+  /**
+   * 当前层级的父级
+   * 一级选项的 parent 为 ROOT
+   */
+  __parent?: IData['value']
 }
 
 /**

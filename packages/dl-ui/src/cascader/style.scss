@@ -12,7 +12,14 @@
     overflow: hidden;
   }
 
+  &__body {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
   &__content {
+    flex: 1;
     height: 100%;
     overflow-y: auto;
 
@@ -36,5 +43,36 @@
 
   .#{$prefix}-tabs__nav {
     padding: 0;
+    border-radius: 0;
+  }
+
+  &__search {
+    position: sticky;
+    top: calc(var(--d-popup-padding) * -1);
+    padding-bottom: var(--d-gap-xs);
+    background-color: var(--d-white-color);
+
+    &-panel {
+      flex: 1;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      column-gap: var(--d-gap-md);
+      padding: var(--d-gap-xs) 0;
+    }
+
+    &-match {
+      color: var(--d-primary);
+    }
+
+    &-empty {
+      padding-top: var(--d-gap-xs);
+      color: var(--d-secondary-text-color);
+    }
   }
 }

@@ -29,7 +29,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { ICascaderOption } from '../../common'
+import { ICascaderOption } from '@xuanmo/dl-common'
 
 const template = ref<ICascaderOption[]>([])
 const value = ref(['110000000000', '110100000000', '110102000000', '110102007000'])

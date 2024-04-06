@@ -1,5 +1,5 @@
-import { createBEM, createNamespace, Modifiers } from '@xuanmo/dl-common'
-import { ICascaderOption, IData } from '@xuanmo/dl-common'
+import { createBEM, createNamespace, CustomKeys, Modifiers, ROOT_PARENT } from '@xuanmo/dl-common'
+import { ICascaderOption } from '@xuanmo/dl-common'
 
 function createCascaderNameSpace(): [string, ReturnType<typeof createBEM>]
 
@@ -21,14 +21,23 @@ function createCascaderNameSpace(childName?: string) {
 /**
  * 级联数据转换为 map 结构
  * @param originalOptions
+ * @param keys
  */
-export const cascaderOptionsToMap = (originalOptions: ICascaderOption[]) => {
-  const optionsMap = new Map<IData['value'], ICascaderOption>()
-  const formatOptions = (options: ICascaderOption[]) => {
+export const cascaderOptionsToMap = (originalOptions: ICascaderOption[], keys: CustomKeys) => {
+  const optionsMap = new Map<ICascaderOption['value'], ICascaderOption>()
+  const formatOptions = (
+    options: ICascaderOption[],
+    level = 1,
+    parent: ICascaderOption['value'] = ROOT_PARENT
+  ) => {
     options.forEach((item) => {
-      optionsMap.set(item.value, item)
-      if (Array.isArray(item.children)) {
-        formatOptions(item.children)
+      const value = item[keys.value as 'value']
+      const children = item[keys.children as 'children']
+      item.__level = level
+      item.__parent = parent
+      optionsMap.set(value, item)
+      if (Array.isArray(children)) {
+        formatOptions(children, level + 1, value)
       }
     })
   }
