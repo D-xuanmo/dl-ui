@@ -16,6 +16,7 @@
       <d-button v-if="cancelButtonText" link @click="handleCancel">
         {{ cancelButtonText }}
       </d-button>
+      <d-button link @click="handleClear">清空</d-button>
     </template>
     <template #header-right>
       <d-button v-if="confirmButtonText" link theme="primary" @click="handleConfirm">
@@ -82,6 +83,13 @@ export default defineComponent({
       visible.value = false
     }
 
+    const handleClear = () => {
+      updateValue([])
+      store.updateByValue([])
+      displayLabel.value = store.getDisplayLabel()
+      hidePicker()
+    }
+
     const handleConfirm = () => {
       hidePicker()
       updateValue(store.getValue() as CascaderValue)
@@ -122,7 +130,8 @@ export default defineComponent({
       bem,
       showPicker,
       handleCancel,
-      handleConfirm
+      handleConfirm,
+      handleClear
     }
   }
 })

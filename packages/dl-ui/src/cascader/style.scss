@@ -8,8 +8,15 @@
   @include trigger;
   @include font-size(md);
 
-  .#{$prefix}-popup__content {
-    overflow: hidden;
+  .#{$prefix}-popup {
+    &__content {
+      overflow: hidden;
+    }
+
+    &__header-left {
+      display: flex;
+      column-gap: var(--d-gap-sm);
+    }
   }
 
   &__body {
