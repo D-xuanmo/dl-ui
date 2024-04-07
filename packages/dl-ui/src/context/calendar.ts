@@ -6,4 +6,4 @@ type CalendarContext = {
   formatter: CalendarProps['formatter']
 }
 
-export const CALENDAR_CONTEXT_KEY = Symbol('calendar') as InjectionKey<CalendarContext>
+export const CALENDAR_CONTEXT_KEY: InjectionKey<CalendarContext> = Symbol('Calendar')

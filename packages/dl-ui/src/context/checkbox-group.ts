@@ -21,6 +21,5 @@ export type CheckboxGroupContextType = Omit<
   onChangeEvent: (value: UnwrapRef<CheckboxGroupContextType['value']>) => void
 }
 
-export const CHECKBOX_GROUP_CONTEXT_KEY = Symbol(
-  'DLuiCheckboxGroup'
-) as InjectionKey<CheckboxGroupContextType>
+export const CHECKBOX_GROUP_CONTEXT_KEY: InjectionKey<CheckboxGroupContextType> =
+  Symbol('CheckboxGroup')

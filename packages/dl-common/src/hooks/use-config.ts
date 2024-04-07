@@ -1,8 +1,17 @@
 import { ConfigProviderInjectKey, ConfigProviderProps } from '../config-provider'
-import { inject } from 'vue'
+import { getCurrentInstance, inject } from 'vue'
 import { isEmpty } from '@xuanmo/utils'
 import { CustomKeys } from '../common'
 import { LABEL_WIDTH } from '../constants'
+
+const globalConfig = {
+  keys: {
+    label: 'label',
+    value: 'value',
+    children: 'children'
+  },
+  labelWidth: LABEL_WIDTH
+} as ConfigProviderProps
 
 /**
  * 获取 config provider 对应的参数
@@ -13,15 +22,9 @@ export function useConfig<
   T extends keyof ConfigProviderProps,
   P extends Pick<ConfigProviderProps, T>
 >(keys: T[], currentProps: P) {
-  const config = inject(ConfigProviderInjectKey, {
-    keys: {
-      label: 'label',
-      value: 'value',
-      children: 'children',
-      ...(currentProps as ConfigProviderProps).keys
-    },
-    labelWidth: LABEL_WIDTH
-  } as ConfigProviderProps)
+  const config = getCurrentInstance()
+    ? inject(ConfigProviderInjectKey, globalConfig as ConfigProviderProps)
+    : globalConfig
 
   return keys.reduce((prev, currentKey) => {
     return {

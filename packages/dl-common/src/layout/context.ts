@@ -5,4 +5,4 @@ type LayoutContext = {
   onColumnWidthChange: (layoutId: string, width: string) => void
 }
 
-export const LAYOUT_CONTEXT_KEY = Symbol('layout') as InjectionKey<LayoutContext>
+export const LAYOUT_CONTEXT_KEY: InjectionKey<LayoutContext> = Symbol('Layout')

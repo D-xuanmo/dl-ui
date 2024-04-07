@@ -21,4 +21,4 @@ export interface IFormContext {
   onChange: OnFormChange
 }
 
-export const FORM_CONTEXT_KEY = Symbol('form') as InjectionKey<IFormContext>
+export const FORM_CONTEXT_KEY: InjectionKey<IFormContext> = Symbol('Form')
