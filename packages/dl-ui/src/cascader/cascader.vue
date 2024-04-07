@@ -110,9 +110,9 @@ export default defineComponent({
     )
 
     watch(
-      () => innerValue,
+      () => innerValue.value,
       (value) => {
-        store.updateByValue(value.value)
+        store.updateByValue(value)
         displayLabel.value = store.getDisplayLabel()
       },
       {
