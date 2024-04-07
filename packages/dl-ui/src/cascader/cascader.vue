@@ -11,6 +11,7 @@
     placement="bottom"
     round
     @update:visible="handleCancel"
+    @close="handleCancel"
   >
     <template #header-left>
       <d-button v-if="cancelButtonText" link @click="handleCancel">
@@ -55,7 +56,7 @@ export default defineComponent({
   },
   inheritAttrs: false,
   props: CASCADER_PROPS,
-  emits: ['update:model-value'],
+  emits: ['update:model-value', 'confirm', 'close', 'clear'],
   setup(props, { emit }) {
     const config = useConfig(['keys'], props)
     const [innerValue, updateValue] = useModelValue(props, emit as SetupContext['emit'])
@@ -88,17 +89,21 @@ export default defineComponent({
       store.updateByValue([])
       displayLabel.value = store.getDisplayLabel()
       hidePicker()
+      emit('clear')
     }
 
     const handleConfirm = () => {
+      const value = store.getValue() as CascaderValue
       hidePicker()
-      updateValue(store.getValue() as CascaderValue)
+      updateValue(value)
       displayLabel.value = store.getDisplayLabel()
+      emit('confirm', value)
     }
 
     const handleCancel = () => {
       store.updateByValue(innerValue.value)
       hidePicker()
+      emit('close')
     }
 
     watch(
