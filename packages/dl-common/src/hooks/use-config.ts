@@ -1,8 +1,8 @@
 import { ConfigProviderInjectKey, ConfigProviderProps } from '../config-provider'
-import { getCurrentInstance, inject } from 'vue'
+import { computed, inject } from 'vue'
 import { isEmpty } from '@xuanmo/utils'
 import { CustomKeys } from '../common'
-import { LABEL_WIDTH } from '../constants'
+import { DEFAULT_REQUIRED_MARK_POSITION, LABEL_WIDTH } from '../constants'
 
 const globalConfig = {
   keys: {
@@ -10,7 +10,8 @@ const globalConfig = {
     value: 'value',
     children: 'children'
   },
-  labelWidth: LABEL_WIDTH
+  labelWidth: LABEL_WIDTH,
+  requiredMarkPosition: DEFAULT_REQUIRED_MARK_POSITION
 } as ConfigProviderProps
 
 /**
@@ -22,16 +23,18 @@ export function useConfig<
   T extends keyof ConfigProviderProps,
   P extends Pick<ConfigProviderProps, T>
 >(keys: T[], currentProps: P) {
-  const config = getCurrentInstance()
-    ? inject(ConfigProviderInjectKey, globalConfig as ConfigProviderProps)
-    : globalConfig
+  const config = inject(ConfigProviderInjectKey, globalConfig as ConfigProviderProps)
 
-  return keys.reduce((prev, currentKey) => {
-    return {
-      ...prev,
-      [currentKey]: isEmpty(currentProps[currentKey])
-        ? config[currentKey]
-        : currentProps[currentKey]
-    }
-  }, {}) as { [Key in T]: Key extends 'keys' ? Required<CustomKeys> : ConfigProviderProps[Key] }
+  return computed(
+    () =>
+      keys.reduce(
+        (prev, currentKey) => ({
+          ...prev,
+          [currentKey]: isEmpty(currentProps[currentKey])
+            ? config[currentKey]
+            : currentProps[currentKey]
+        }),
+        {}
+      ) as { [Key in T]: Key extends 'keys' ? Required<CustomKeys> : ConfigProviderProps[Key] }
+  )
 }

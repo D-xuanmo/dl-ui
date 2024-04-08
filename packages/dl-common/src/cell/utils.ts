@@ -5,15 +5,15 @@ import { useConfig } from '../hooks'
 
 export const useGlobalConfig = (props: CellProps) => {
   const { cellTitleWidth, cellContentAlign, layout, border } = inject(CELL_GROUP_CONTEXT_KEY, {})
+  const config = useConfig(['layout', 'labelWidth', 'requiredMarkPosition'], props as any)
   return computed(() => {
-    const config = useConfig(['layout', 'labelWidth', 'requiredMarkPosition'], props as any)
     return {
-      labelWidth: props.titleWidth || cellTitleWidth || config.labelWidth,
-      contentAlign: props.contentAlign || cellContentAlign || 'left',
       hideTitle: props.hideTitle,
-      layout: props.layout || layout?.value || config.layout || 'horizontal',
       border: props.border ?? border,
-      requiredMarkPosition: props.requiredMarkPosition || config.requiredMarkPosition || 'right'
+      contentAlign: props.contentAlign || cellContentAlign || 'left',
+      labelWidth: props.titleWidth || cellTitleWidth || config.value.labelWidth,
+      layout: props.layout || layout?.value || config.value.layout || 'horizontal',
+      requiredMarkPosition: props.requiredMarkPosition || config.value.requiredMarkPosition
     }
   })
 }

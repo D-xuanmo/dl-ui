@@ -38,8 +38,8 @@ export default defineComponent({
     const disabled = computed(() => props.disabled)
     const readonly = computed(() => props.readonly)
 
-    const valueKey = config.keys?.value || 'value'
-    const labelKey = config.keys?.label || 'label'
+    const valueKey = config.value.keys?.value || 'value'
+    const labelKey = config.value.keys?.label || 'label'
 
     const updateModelValue = (value: any) => {
       emit('update:model-value', value)

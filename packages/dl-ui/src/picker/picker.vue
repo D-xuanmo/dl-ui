@@ -82,20 +82,26 @@ export default defineComponent({
 
     // 是否为级联选择模式
     const isCascade = computed(() =>
-      Array.isArray((props.options[0] as ICascaderOption)?.[config.keys.children as 'children'])
+      Array.isArray(
+        (props.options[0] as ICascaderOption)?.[config.value.keys.children as 'children']
+      )
     )
 
     // 接收子级传递回来的数据，用作缓存
     const temporaryValue = ref<PickerValue>(
       !isEmpty(innerValue.value)
         ? deepCopy(innerValue.value)
-        : findCascadeFirstLevelData(props.options as ICascaderOption[], config.keys)
+        : findCascadeFirstLevelData(props.options as ICascaderOption[], config.value.keys)
     )
 
     // 内部渲染列使用
     const formattedColumns = computed(() => {
       if (isCascade.value) {
-        return formatCascade(temporaryValue.value, props.options as ICascaderOption[], config.keys)
+        return formatCascade(
+          temporaryValue.value,
+          props.options as ICascaderOption[],
+          config.value.keys
+        )
       }
 
       if (isObject(props.options[0])) {
@@ -126,7 +132,7 @@ export default defineComponent({
 
     const updateDisplayName = () => {
       displayValue.value =
-        findDisplayName(innerValue.value, optionsMap, config.keys) || props.placeholder || ''
+        findDisplayName(innerValue.value, optionsMap, config.value.keys) || props.placeholder || ''
     }
 
     const handleChange = (data: IData, columnIndex: number) => {
@@ -142,7 +148,7 @@ export default defineComponent({
 
     const handleConfirm = () => {
       const value = temporaryValue.value.map((item) =>
-        isObject(item) ? (item as IData)[config.keys.value as 'value'] : item
+        isObject(item) ? (item as IData)[config.value.keys.value as 'value'] : item
       )
       updateValue(value as PickerValue)
       handleClose()
@@ -161,7 +167,9 @@ export default defineComponent({
     const formatColumnValue = (columnIndex: number) => {
       const columnValue = temporaryValue.value[columnIndex]
       return (
-        isObject(columnValue) ? (columnValue as IData)[config.keys.value as 'value'] : columnValue
+        isObject(columnValue)
+          ? (columnValue as IData)[config.value.keys.value as 'value']
+          : columnValue
       ) as string | number
     }
 
@@ -179,22 +187,23 @@ export default defineComponent({
         optionsMap = treeToMap<ICascaderOption, 'value', 'children'>(
           props.options.flat(),
           // config 不会存在无值的情况
-          config.keys.value as 'value',
-          config.keys.children as 'children'
+          config.value.keys.value as 'value',
+          config.value.keys.children as 'children'
         )
         updateDisplayName()
         if (isEmpty(temporaryValue.value)) {
           if (isCascade.value) {
             temporaryValue.value = findCascadeFirstLevelData(
               props.options as ICascaderOption[],
-              config.keys
+              config.value.keys
             )
             /* eslint-disable indent */
           } else {
             temporaryValue.value = isObject(props.options[0])
-              ? [(props.options[0] as PickerOption)[config.keys.value as 'value'] as string]
+              ? [(props.options[0] as PickerOption)[config.value.keys.value as 'value'] as string]
               : props.options.map(
-                  (item) => (item as PickerOption[])[0][config.keys.value as 'value'] as string
+                  (item) =>
+                    (item as PickerOption[])[0][config.value.keys.value as 'value'] as string
                 )
           }
           /* eslint-enable indent */

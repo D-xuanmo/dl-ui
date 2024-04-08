@@ -31,21 +31,21 @@ export default defineComponent({
         [props.clientType]: true
       })
     )
+    const config = useConfig(
+      ['colon', 'requiredMarkPosition', 'layout', 'labelWidth'],
+      props as any
+    )
 
     const formProps = computed(() => {
-      const config = useConfig(
-        ['colon', 'requiredMarkPosition', 'layout', 'labelWidth'],
-        props as any
-      )
       return {
         border: props.border ?? props.clientType === 'MOBILE',
         disabled: props.disabled,
         readonly: props.readonly,
         hideLabel: props.hideLabel,
-        colon: config.colon,
-        layout: config.layout,
-        labelWidth: config.labelWidth,
-        requiredMarkPosition: config.requiredMarkPosition || DEFAULT_REQUIRED_MARK_POSITION
+        colon: config.value.colon,
+        layout: config.value.layout,
+        labelWidth: config.value.labelWidth,
+        requiredMarkPosition: config.value.requiredMarkPosition || DEFAULT_REQUIRED_MARK_POSITION
       }
     })
 

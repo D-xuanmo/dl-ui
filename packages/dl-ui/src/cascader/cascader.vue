@@ -60,7 +60,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const config = useConfig(['keys'], props)
     const [innerValue, updateValue] = useModelValue(props, emit as SetupContext['emit'])
-    const store = new CascaderStore(innerValue.value, props.options, { keys: config.keys })
+    const store = new CascaderStore(innerValue.value, props.options, { keys: config.value.keys })
     const wrapperClassName = bem()
     const bodyClassName = bem('body')
     const displayLabel = ref('')
