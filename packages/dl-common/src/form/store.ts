@@ -1,9 +1,10 @@
-import { FormModels, IFormModelItem } from './types'
+import { EventsType, FormModels, IFormModelItem } from './types'
 import { markRaw, reactive, UnwrapNestedRefs } from 'vue'
 import { deepCopy, isEmpty, isObject } from '@xuanmo/utils'
 import { validator } from '../validator'
+import { EventEmitterEx } from './events'
 
-class FormStore {
+export class FormStore {
   /**
    * 表单数据模型
    */
@@ -26,6 +27,18 @@ class FormStore {
   private errorMessages: UnwrapNestedRefs<Record<string, string>> = reactive({})
 
   /**
+   * 组件关系
+   * key：id
+   * value 子级集合
+   */
+  private compRelationship: Map<string, string[]> = new Map()
+
+  /**
+   * 事件中心
+   */
+  events = new EventEmitterEx<EventsType>()
+
+  /**
    * 表单初始化
    * @param options
    */
@@ -33,7 +46,13 @@ class FormStore {
     const { models } = options
     this.originalModel = deepCopy(models)
     ;(models as IFormModelItem[]).forEach((item) => {
+      const parentComps = this.compRelationship.get(item.layout.parent)
       if (item.dataKey) this.dataKeyMap.set(item.dataKey, item.id)
+      if (parentComps) {
+        parentComps.push(item.id)
+      } else {
+        this.compRelationship.set(item.layout.parent, [item.id])
+      }
       this.models.set(item.id, {
         ...item,
         display: isEmpty(item.display) ? true : item.display,
@@ -92,7 +111,19 @@ class FormStore {
    * 获取单个 item 信息
    * @param id
    */
-  public getItem = (id: string) => this.models.get(this.dataKeyMap.get(id) || id)
+  public getItem = (id: string) => {
+    return this.models.get(this.dataKeyMap.get(id) || id) as IFormModelItem<unknown>
+  }
+
+  /**
+   * 获取子级集合
+   * @param parentId 父级 id
+   */
+  public getChildren = (parentId: string) => {
+    const children = this.compRelationship.get(parentId)
+    if (children) return children.map((id) => this.getItem(id))
+    return []
+  }
 
   /**
    * 获取单个字段 value
@@ -234,5 +265,3 @@ class FormStore {
    */
   public convertModel = () => Array.from(this.models.values())
 }
-
-export { FormStore }

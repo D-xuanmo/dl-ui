@@ -32,6 +32,8 @@
       :readonly="formProps.readonly || model.readonly"
       :store="store"
       @update:model-value="handleChange"
+      @blur="handleBlur"
+      @focus="handleFocus"
     />
     <p v-if="model.description" :class="descriptionClass">{{ model.description }}</p>
     <p v-if="errorMessage" :class="errorClassName">{{ errorMessage }}</p>
@@ -81,6 +83,16 @@ export default defineComponent({
         store.singleValidate(props.model.dataKey)
       }
       onChange({ [props.model.dataKey]: value }, props.model)
+      store.events.emit('field.change', value)
+      store.events.emit(`field.${props.model.dataKey}.change`, value)
+    }
+
+    const handleBlur = (value: unknown) => {
+      store.events.emit(`field.${props.model.dataKey}.blur`, value)
+    }
+
+    const handleFocus = (value: unknown) => {
+      store.events.emit(`field.${props.model.dataKey}.focus`, value)
     }
 
     return {
@@ -93,8 +105,10 @@ export default defineComponent({
       errorMessage,
       formProps,
       store,
+      omitSystemProps,
       handleChange,
-      omitSystemProps
+      handleBlur,
+      handleFocus
     }
   }
 })

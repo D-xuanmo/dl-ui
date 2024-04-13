@@ -5,7 +5,8 @@
 - 表单不仅仅是表单，页面一切皆可为表单；
 - 表单主要提供数据处理、数据校验、联动等功能；
 - 表单不区分 PC、H5，表单只是作为一个容器，可以容纳 PC、H5、任意第三方组件库的组件，不关心子级的具体渲染，非表单组件也可以渲染，具体展示效果由子级自行处理；
-- 关于布局，组件库已实现[单例分组](https://www.xuanmo.xin/-/dl-ui/comp-common/cell)、[网格系统](https://www.xuanmo.xin/-/dl-ui/comp-common/grid)、[框架](https://www.xuanmo.xin/-/dl-ui/comp-common/layout)等布局类组件，用户也可以自行实现布局组件，做不一样的展示效果，只需要通过父子级关系绑定即可。
+- 关于布局，组件库已实现[单例分组](https://www.xuanmo.xin/-/dl-ui/comp-common/cell)、[网格系统](https://www.xuanmo.xin/-/dl-ui/comp-common/grid)、[框架](https://www.xuanmo.xin/-/dl-ui/comp-common/layout)等布局类组件，用户也可以自行实现布局组件，做不一样的展示效果，只需要通过父子级关系绑定即可；
+- 目前这套架构比较灵活，大家可以发挥自己的想象，创造更多的使用场景，欢迎一起交流。
 
 ![Form 架构](https://upyun.xuanmo.xin/dl-ui/DLForm.svg)
 
@@ -96,27 +97,7 @@ app.use(DForm).use(DFormCellGroup).use(DFormGrid)
       label: '内置组件',
       component: 'DFormCellGroup',
       layout: {
-        parent: 'root',
-        children: [
-          'input',
-          'textarea',
-          'disabledInput',
-          'email',
-          'switch',
-          'rate',
-          'calendarSingle',
-          'calendarMultiple',
-          'calendarRange',
-          'picker',
-          'multiPicker',
-          'cascaderPicker',
-          'cascader',
-          'datePicker',
-          'timePicker',
-          'radio',
-          'checkbox',
-          'upload'
-        ]
+        parent: 'root'
       }
     },
     {
@@ -501,7 +482,6 @@ const formModel = [
       parent: 'root',
       columns: 6,
       gap: 16,
-      children: ['name', 'phone', 'email', 'sex', 'status', 'birthday']
     }
   },
   {
@@ -616,7 +596,6 @@ const formModels = [
     component: 'DFormLayout',
     layout: {
       parent: 'root',
-      children: ['header', 'footer', 'sider', 'content', 'sider1']
     }
   },
   {
@@ -624,7 +603,6 @@ const formModels = [
     component: 'DFormLayoutHeader',
     layout: {
       parent: 'layout',
-      children: ['headerContent'],
       height: 80
     }
   },
@@ -633,7 +611,6 @@ const formModels = [
     component: 'DFormLayoutFooter',
     layout: {
       parent: 'layout',
-      children: ['footerContent', 'footerContent1'],
       height: 80
     }
   },
@@ -642,7 +619,6 @@ const formModels = [
     component: 'DFormLayoutSider',
     layout: {
       parent: 'layout',
-      children: ['siderContent']
     }
   },
   {
@@ -650,7 +626,6 @@ const formModels = [
     component: 'DFormLayoutContent',
     layout: {
       parent: 'layout',
-      children: ['content2']
     }
   },
   {
@@ -658,7 +633,6 @@ const formModels = [
     component: 'DFormLayoutSider',
     layout: {
       parent: 'layout',
-      children: ['siderContent2'],
       border: true,
       placement: 'right'
     }
@@ -690,7 +664,7 @@ const formModels = [
     dataKey: 'siderContent2',
     component: 'DSwitch',
     layout: {
-      parent: 'sider'
+      parent: 'sider1'
     },
     label: '开关2',
     value: true,
@@ -776,9 +750,14 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 
 ### 开发表单组件
 
-1. 组件需要具备 `Vue3` 标准的 `v-model`，参考链接：[https://cn.vuejs.org/guide/components/v-model.html](https://cn.vuejs.org/guide/components/v-model.html)；
-2. 数据变更传递，通过 `update:modelValue` 事件；
-3. 组件不需要关心标题等标准属性，`FormItem` 会统一处理。
+1. 组件需要具备 `Vue3` 标准的 `v-model`，参考链接：[https://cn.vuejs.org/guide/components/v-model.html](https://cn.vuejs.org/guide/components/v-model.html)
+2. 数据变更传递，通过 `update:modelValue` 事件
+3. 组件不需要关心标题等标准属性，`FormItem` 会统一处理
+
+### 开发布局组件
+
+- 表单支持自定义开发一个布局类型组件，通过 `import { useLinkChildren } from '@xuanmo/dl-common` 引入获取子级集合的 hook
+- 组件示例参考：[https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/form/layout/form-grid/index.vue](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/form/layout/form-grid/index.vue)
 
 ### 更多案例
 
@@ -804,9 +783,22 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 
 ### Events
 
+#### Vue 事件
+
 |事件名|类型|说明|
 |-----|----|---|
 |change|`(value: Record<string, unknown>, model: IFormModelItem) => void`|表单数据发生改变时触发|
+
+#### formStore.events 事件中心
+
+解释：events 主要用于当前表单下的所有事件收集，提供订阅、拦截能力，事件更丰富
+
+|事件名|说明|
+|-----|---|
+|`field.change`|组件数据发生变更时触发|
+|`field.${dataKey}.change`|单个组件数据变更时触发|
+|`field.${dataKey}.focus`|组件聚焦时触发，由组件决定|
+|`field.${dataKey}.blur`|组件失焦时触发，由组件决定|
 
 ### FormStore API
 
@@ -826,6 +818,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 |validate|`() => Promise<true \| ValidateReturnType>`|表单校验|
 |singleValidate|`(dataKey: string) => void`|单个字段校验|
 |getSingleMessage|`(dataKey: string) => string`|获取单个字段的错误信息|
+|getChildren|`(id: string) => IFormModelItem<unknown>[]`|通过 id 获取当前子级集合|
 |clearMessages|`() => void`|清空所有校验信息|
 |reset|`() => void`|表单重置|
 
@@ -857,7 +850,6 @@ export interface IRenderModel<T = any> {
    *     component: 'DFormCellGroup',
    *     layout: {
    *       parent: 'root',
-   *       children: ['customInput', 'customInput1'],
    *       columns: 8
    *     }
    *   }
@@ -866,9 +858,6 @@ export interface IRenderModel<T = any> {
   layout: T & {
     // 父级组件，默认需要指定为 root
     parent: string
-
-    // 关联的子级
-    children?: string[]
   }
 
   // 是否显示

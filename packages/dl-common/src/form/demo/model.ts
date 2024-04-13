@@ -8,27 +8,7 @@ const FORM_MODEL: FormModels = [
     label: '内置组件',
     component: 'DFormCellGroup',
     layout: {
-      parent: 'root',
-      children: [
-        'input',
-        'textarea',
-        'disabledInput',
-        'email',
-        'switch',
-        'rate',
-        'calendarSingle',
-        'calendarMultiple',
-        'calendarRange',
-        'picker',
-        'multiPicker',
-        'cascaderPicker',
-        'cascader',
-        'datePicker',
-        'timePicker',
-        'radio',
-        'checkbox',
-        'upload'
-      ]
+      parent: 'root'
     }
   },
   {
@@ -36,8 +16,7 @@ const FORM_MODEL: FormModels = [
     label: '自定义组件',
     component: 'DFormCellGroup',
     layout: {
-      parent: 'root',
-      children: ['customInput', 'customInput1']
+      parent: 'root'
     }
   },
   {

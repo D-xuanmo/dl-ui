@@ -9,18 +9,28 @@
     </d-layout-header>
     <template v-for="item in children" :key="item.id">
       <d-layout-sider
-        v-if="item.component === 'DFormLayoutSider'"
+        v-if="item.component === 'DFormLayoutSider' && item.layout.placement !== 'right'"
         :width="item.layout.width"
         :border="item.layout.border"
         :collapsed="item.layout.collapsed"
         :collapsed-width="item.layout.collapsedWidth"
-        :placement="item.layout.placement"
+        placement="left"
       >
         <form-layout-sider :model="item" />
       </d-layout-sider>
       <d-layout-content v-if="item.component === 'DFormLayoutContent'">
         <form-layout-content :model="item" />
       </d-layout-content>
+      <d-layout-sider
+        v-if="item.component === 'DFormLayoutSider' && item.layout.placement === 'right'"
+        :width="item.layout.width"
+        :border="item.layout.border"
+        :collapsed="item.layout.collapsed"
+        :collapsed-width="item.layout.collapsedWidth"
+        placement="right"
+      >
+        <form-layout-sider :model="item" />
+      </d-layout-sider>
     </template>
     <d-layout-footer
       v-if="footerModel"
@@ -44,7 +54,7 @@ import {
   LayoutHeaderProps,
   LayoutFooterProps
 } from '../../../layout'
-import { useLinkChildren } from '../../hooks/use-link-children'
+import { useLinkChildren } from '../../hooks'
 import { IRenderModel } from '../../types'
 import FormLayoutHeader from './header.vue'
 import FormLayoutFooter from './footer.vue'
@@ -78,7 +88,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const children = useLinkChildren(props.model.layout.children)
+    const children = useLinkChildren(props.model.id)
     const headerModel: IRenderModel<LayoutHeaderProps> | undefined = children.value.find(
       (item) => item.component === 'DFormLayoutHeader'
     )

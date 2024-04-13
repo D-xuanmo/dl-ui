@@ -65,3 +65,7 @@ export interface IFormModelItem<TValue = unknown> extends IRenderModel {
 }
 
 export type OnFormChange = (value: Record<string, unknown>, model: IFormModelItem) => void
+
+type EventType = 'change' | 'blur' | 'focus'
+
+export type EventsType = 'field.change' | `field.${string}.${EventType}`

@@ -5,7 +5,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { createNamespace } from '../../../utils'
-import { useLinkChildren } from '../../hooks/use-link-children'
+import { useLinkChildren } from '../../hooks'
 import FormRenderItem from '../../components/form-render-item.vue'
 
 const [name] = createNamespace('form-layout-content')
@@ -22,7 +22,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const children = useLinkChildren(props.model.layout.children)
+    const children = useLinkChildren(props.model.id)
 
     return {
       children

@@ -25,7 +25,7 @@ import { defineComponent, PropType } from 'vue'
 import { createNamespace } from '../../../utils'
 import { DGrid, DGridItem, GridProps } from '../../../grid'
 import { IRenderModel } from '../../types'
-import { useLinkChildren } from '../../hooks/use-link-children'
+import { useLinkChildren } from '../../hooks'
 import FormRenderItem from '../../components/form-render-item.vue'
 
 const [name] = createNamespace('form-grid')
@@ -44,7 +44,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const children = useLinkChildren(props.model.layout.children)
+    const children = useLinkChildren(props.model.id)
 
     return {
       children

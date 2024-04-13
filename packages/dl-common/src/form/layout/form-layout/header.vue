@@ -6,7 +6,7 @@
 import { defineComponent, PropType } from 'vue'
 import { createNamespace } from '../../../utils'
 import { LayoutHeaderProps } from '../../../layout'
-import { useLinkChildren } from '../../hooks/use-link-children'
+import { useLinkChildren } from '../../hooks'
 import FormRenderItem from '../../components/form-render-item.vue'
 import { IRenderModel } from '../../types'
 
@@ -24,7 +24,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const children = useLinkChildren(props.model.layout.children)
+    const children = useLinkChildren(props.model.id)
 
     return {
       children

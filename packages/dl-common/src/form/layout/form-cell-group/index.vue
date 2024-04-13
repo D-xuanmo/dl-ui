@@ -12,7 +12,7 @@ import { defineComponent, PropType } from 'vue'
 import { IRenderModel } from '../../types'
 import { DCellGroup } from '../../../cell-group'
 import DFormItem from '../../components/form-item.vue'
-import { useLinkChildren } from '../../hooks/use-link-children'
+import { useLinkChildren } from '../../hooks'
 
 const [name] = createNamespace('form-cell-group')
 
@@ -29,7 +29,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const children = useLinkChildren(props.model.layout.children)
+    const children = useLinkChildren(props.model.id)
 
     return {
       children

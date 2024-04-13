@@ -10,6 +10,7 @@ export const DFormGrid = withInstall(FormGrid)
 export const DFormItem = withInstall(FormItem)
 
 export * from './layout/form-layout'
+export * from './hooks'
 
 export { type FormProps, FORM_PROPS } from './props'
 
