@@ -11,8 +11,13 @@
             :capture="capture"
             @change="handleChange"
           />
-          <camera-filled :class="triggerIconClassName" />
+          <slot>
+            <camera-filled :class="triggerIconClassName" />
+          </slot>
         </div>
+      </template>
+      <template #preview-item="{ item, handler }">
+        <slot name="preview-item" :item="item" :handler="handler" />
       </template>
     </upload-list>
   </div>

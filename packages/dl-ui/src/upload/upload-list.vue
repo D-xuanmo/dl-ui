@@ -1,20 +1,22 @@
 <template>
   <div :class="wrapperClassName">
     <div v-for="(item, index) in list" :key="`${item.url}@${index}`" :class="itemClassName">
-      <d-image
-        :src="item.url"
-        :width="previewSize"
-        :height="previewSize"
-        :show-loading="item.loading"
-        :show-error="item.fail"
-        :error-text="item.fail ? '上传失败' : undefined"
-      />
-      <close-filled
-        v-if="deletable && item.deletable"
-        size="small"
-        :class="itemCloseClassName"
-        @click="handleDeleteItem(index, item)"
-      />
+      <slot name="preview-item" :item="item" :handler="() => handleDeleteItem(index, item)">
+        <d-image
+          :src="item.url"
+          :width="previewSize"
+          :height="previewSize"
+          :show-loading="item.loading"
+          :show-error="item.fail"
+          :error-text="item.fail ? '上传失败' : undefined"
+        />
+        <close-filled
+          v-if="deletable && item.deletable"
+          size="small"
+          :class="itemCloseClassName"
+          @click="handleDeleteItem(index, item)"
+        />
+      </slot>
     </div>
     <div :class="itemClassName">
       <slot name="trigger" />

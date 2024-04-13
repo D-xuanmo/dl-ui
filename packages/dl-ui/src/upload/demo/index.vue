@@ -17,7 +17,7 @@ import { dCookie } from '@xuanmo/utils'
 import { UploadListItemType } from '../props'
 
 const value = ref<UploadListItemType[]>([
-  { url: '/api/file-server/read-file/cf5be5e5-a84b-41e9-b91a-c99646039f15', deletable: false }
+  { url: 'https://upyun.xuanmo.xin/logo/20230311103746211510.JPG', deletable: false }
 ])
 
 const uploadData = {
@@ -37,10 +37,10 @@ const uploadAfterHandler = (response: any) => {
 }
 
 onMounted(() => {
-  document.querySelector('.d-preview-mobile__content')?.classList.add('bg-white')
+  document.querySelector('.dl-preview-mobile__content')?.classList.add('bg-white')
 })
 
 onUnmounted(() => {
-  document.querySelector('.d-preview-mobile__content')?.classList.remove('bg-white')
+  document.querySelector('.dl-preview-mobile__content')?.classList.remove('bg-white')
 })
 </script>

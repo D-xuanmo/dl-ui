@@ -54,15 +54,13 @@ app.use(DUpload)
       deletable: true
     }
   }
-
-  onMounted(() => {
-    document.querySelector('.d-preview-mobile__content')?.classList.add('bg-white')
-  })
-
-  onUnmounted(() => {
-    document.querySelector('.d-preview-mobile__content')?.classList.remove('bg-white')
-  })
 </script>
+
+<style>
+.dl-doc-preview__mobile-runtime-inner {
+  background-color: #fff !important; 
+}
+</style>
 ```
 
 ## API
@@ -88,6 +86,13 @@ app.use(DUpload)
 |header-params|`Record<string, any>`|-|文件上传请求头参数|N|
 |before-upload|`BeforeUploadType`|-|文件上传前回调函数，返回false终止上传|N|
 |upload-after|`AfterUploadType`|-|文件上传成功回调，返回文件预览列表|N|
+
+### Slots
+
+|名称|说明|参数|
+|---|----|---|
+|default|自定义文件上传触发内容|-|
+|preview-item|自定义渲染单个预览|`{ item: UploadListItemType, handler: () => originalFN }`|
 
 ### TypeScript 类型
 

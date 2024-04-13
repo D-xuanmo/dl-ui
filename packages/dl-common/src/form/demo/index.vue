@@ -87,8 +87,8 @@ const updateData = () => {
     email: 'example@qq.com',
     rate: 3,
     upload: [
-      { url: '/api/file-server/read-file/15b1c772-94ca-4e92-92be-d40b47832068', deletable: false },
-      { url: '/api/file-server/read-file/15b1c772-94ca-4e92-92be-d40b47832068', deletable: true }
+      { url: 'https://upyun.xuanmo.xin/logo/x-logo-1.png', deletable: false },
+      { url: 'https://upyun.xuanmo.xin/logo/dl-ui.svg', deletable: true }
     ],
     customInput: '我是自定义数据',
     cascader: ['310000000000', '310100000000', '310104000000', '310104007000'],
