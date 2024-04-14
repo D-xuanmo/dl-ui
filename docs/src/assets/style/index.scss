@@ -90,6 +90,15 @@ blockquote {
   line-height: 1.8;
 }
 
+.dl-doc__content {
+  display: flex;
+  flex-direction: column;
+
+  > .markdown-body {
+    flex: 1;
+  }
+}
+
 .dl-markdown {
   margin-bottom: 10px;
 }
