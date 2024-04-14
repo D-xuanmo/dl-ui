@@ -14,7 +14,7 @@
         :column="item.layout.column"
         :height="item.layout.height"
       >
-        <form-render-item :model="item" />
+        <form-item :model="item" />
       </d-grid-item>
     </template>
   </d-grid>
@@ -26,14 +26,14 @@ import { createNamespace } from '../../../utils'
 import { DGrid, DGridItem, GridProps } from '../../../grid'
 import { IRenderModel } from '../../types'
 import { useLinkChildren } from '../../hooks'
-import FormRenderItem from '../../components/form-render-item.vue'
+import FormItem from '../../components/form-item.vue'
 
 const [name] = createNamespace('form-grid')
 
 export default defineComponent({
   name,
   components: {
-    FormRenderItem,
+    FormItem,
     DGrid,
     DGridItem
   },

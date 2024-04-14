@@ -1,6 +1,6 @@
 import EventEmitter from 'eventemitter3'
-import { isObject, throwError } from '@xuanmo/utils'
-import { formNamespace } from './constants'
+import { throwError } from '@xuanmo/utils'
+import { formNamespace } from '../constants'
 
 type SuccessType = boolean
 
@@ -57,9 +57,8 @@ export class EventEmitterEx<T extends EventNames> extends EventEmitter<T> {
         if (tasks.length) {
           for (let i = 0; i < tasks.length; i++) {
             try {
-              const taskResult = await tasks[i](args)
-              // 返回对象时，统一认为失败
-              if (isObject(taskResult)) reject(taskResult as FailType)
+              const taskResult = await tasks[i](...args)
+              if (taskResult !== true) reject(taskResult as FailType)
             } catch (e) {
               reject(e as FailType)
             }

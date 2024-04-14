@@ -1,11 +1,7 @@
 <template>
   <div :class="wrapperClassName">
     <template v-for="item in data">
-      <form-render-item
-        v-if="item.layout.parent === 'root' && item.display"
-        :key="item.id"
-        :model="item"
-      />
+      <form-item v-if="item.layout.parent.toLowerCase() === 'root'" :key="item.id" :model="item" />
     </template>
   </div>
 </template>
@@ -14,14 +10,14 @@
 import { defineComponent, PropType } from 'vue'
 import { createNamespace } from '../../utils'
 import { IFormModelItem } from '../types'
-import FormRenderItem from './form-render-item.vue'
+import FormItem from './form-item.vue'
 
 const [name, bem] = createNamespace('form-render')
 
 export default defineComponent({
   name,
   components: {
-    FormRenderItem
+    FormItem
   },
   props: {
     data: {

@@ -1,19 +1,19 @@
 <template>
-  <form-render-item :is="item.component" v-for="item in children" :key="item.id" :model="item" />
+  <form-item :is="item.component" v-for="item in children" :key="item.id" :model="item" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { createNamespace } from '../../../utils'
 import { useLinkChildren } from '../../hooks'
-import FormRenderItem from '../../components/form-render-item.vue'
+import FormItem from '../../components/form-item.vue'
 
 const [name] = createNamespace('form-layout-content')
 
 export default defineComponent({
   name,
   components: {
-    FormRenderItem
+    FormItem
   },
   props: {
     model: {

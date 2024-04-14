@@ -14,7 +14,7 @@ export * from './hooks'
 
 export { type FormProps, FORM_PROPS } from './props'
 
-export { FormStore } from './store'
+export * from './store'
 
 export * from './types'
 

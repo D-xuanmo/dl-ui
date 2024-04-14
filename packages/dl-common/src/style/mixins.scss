@@ -1,6 +1,7 @@
 // 统一处理边框，宽度为 0.5px
 @mixin border($padding, $d: bottom) {
   position: relative;
+
   &::after {
     content: '';
     position: absolute;

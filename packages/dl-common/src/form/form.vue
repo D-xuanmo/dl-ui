@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, provide } from 'vue'
+import { computed, defineComponent, provide, watch } from 'vue'
 import { FORM_PROPS } from './props'
 import { formNamespace, createFormBEM } from './constants'
 import { OnFormChange } from './types'
@@ -28,7 +28,8 @@ export default defineComponent({
     const formClassName = computed(() =>
       createFormBEM({
         'has-bg': props.hasBackground,
-        [props.clientType]: true
+        [props.clientType.toLowerCase()]: true,
+        border: props.border ?? props.clientType === 'MOBILE'
       })
     )
     const config = useConfig(
@@ -39,8 +40,6 @@ export default defineComponent({
     const formProps = computed(() => {
       return {
         border: props.border ?? props.clientType === 'MOBILE',
-        disabled: props.disabled,
-        readonly: props.readonly,
         hideLabel: props.hideLabel,
         colon: config.value.colon,
         layout: config.value.layout,
@@ -54,7 +53,8 @@ export default defineComponent({
     }
 
     store.init({
-      models: props.models
+      models: props.models,
+      viewLinkage: props.viewLinkage
     })
 
     provide(FORM_CONTEXT_KEY, {
@@ -62,6 +62,9 @@ export default defineComponent({
       formProps,
       onChange: handleChange
     })
+
+    watch(() => props.disabled, store.setFormDisabled)
+    watch(() => props.readonly, store.setFormReadonly)
 
     return {
       formClassName,

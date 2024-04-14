@@ -1,5 +1,6 @@
 <template>
   <d-cell
+    v-if="model.dataKey"
     :class="itemClassName"
     content-align="left"
     :title-width="formProps.labelWidth"
@@ -27,9 +28,9 @@
     <component
       v-bind="omitSystemProps(model)"
       :is="model.component"
-      :model-value="model.value"
-      :disabled="formProps.disabled || model.disabled"
-      :readonly="formProps.readonly || model.readonly"
+      :model-value="store.getSingleValue(model.dataKey)"
+      :disabled="store.viewLinkage.getDisabled(model.id)"
+      :readonly="store.viewLinkage.getReadonly(model.id)"
       :store="store"
       @update:model-value="handleChange"
       @blur="handleBlur"
@@ -38,16 +39,17 @@
     <p v-if="model.description" :class="descriptionClass">{{ model.description }}</p>
     <p v-if="errorMessage" :class="errorClassName">{{ errorMessage }}</p>
   </d-cell>
+  <component :is="model.component" v-else :class="itemClassName" :model="model" />
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, PropType } from 'vue'
+import { computed, defineComponent, PropType } from 'vue'
 import { createNamespace } from '../../utils'
 import DCell from '../../cell'
 import { createFormBEM } from '../constants'
-import { FORM_CONTEXT_KEY, IFormContext } from '../context'
 import { IFormModelItem } from '../types'
 import { omitSystemProps } from '../utils'
+import { useForm } from '../hooks'
 
 const [name] = createNamespace('form-item')
 
@@ -64,35 +66,41 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { store, formProps, onChange } = inject(FORM_CONTEXT_KEY) as IFormContext
-    const itemClassName = createFormBEM('item')
+    const { store, formProps, onChange } = useForm()
+    const dataKey = props.model.dataKey
+    const itemClassName = computed(() =>
+      createFormBEM('item', {
+        hide: !store.viewLinkage.getDisplay(props.model.id)
+      })
+    )
     const errorClassName = createFormBEM('item-message')
     const requiredMarkClassName = createFormBEM('item-requiredMark')
     const colonClass = createFormBEM('item-colon')
     const descriptionClass = createFormBEM('item-description')
 
     const showRequiredMark = computed(() => {
-      return props.model!.required || props.model!.rules?.includes('required')
+      return store.viewLinkage.getRequired(props.model.id)
     })
 
-    const errorMessage = computed(() => store.getSingleMessage(props.model.dataKey))
+    const errorMessage = computed(() => store.getSingleMessage(dataKey))
 
     const handleChange = (value: unknown) => {
-      store.updateSingleValue(props.model.dataKey, value)
+      store.updateSingleValue(dataKey, value)
       if (errorMessage.value) {
-        store.singleValidate(props.model.dataKey)
+        store.singleValidate(dataKey)
       }
-      onChange({ [props.model.dataKey]: value }, props.model)
+      onChange({ [dataKey]: value }, props.model)
+      store.viewLinkage.execute(dataKey, value)
       store.events.emit('field.change', value)
-      store.events.emit(`field.${props.model.dataKey}.change`, value)
+      store.events.emit(`field.${dataKey}.change`, value)
     }
 
     const handleBlur = (value: unknown) => {
-      store.events.emit(`field.${props.model.dataKey}.blur`, value)
+      store.events.emit(`field.${dataKey}.blur`, value)
     }
 
     const handleFocus = (value: unknown) => {
-      store.events.emit(`field.${props.model.dataKey}.focus`, value)
+      store.events.emit(`field.${dataKey}.focus`, value)
     }
 
     return {

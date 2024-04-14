@@ -5,25 +5,23 @@
     background: none;
   }
 
-  &--PC {
-    .#{$prefix}-cell {
-      padding-top: 0;
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
-
   &--has-bg {
     .#{$prefix}-cell {
       background: var(--d-cell-background);
     }
   }
 
-  &__item {
+  &:not(&--border) {
     .#{$prefix}-cell {
       &::after {
         display: none;
       }
+    }
+  }
+
+  &__item {
+    &--hide {
+      display: none;
     }
 
     &-message {

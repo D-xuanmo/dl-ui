@@ -12,6 +12,14 @@ const FORM_MODEL: FormModels = [
     }
   },
   {
+    id: 'viewLinkage',
+    label: '显示属性联动',
+    component: 'DFormCellGroup',
+    layout: {
+      parent: 'root'
+    }
+  },
+  {
     id: 'customGroup',
     label: '自定义组件',
     component: 'DFormCellGroup',
@@ -298,6 +306,50 @@ const FORM_MODEL: FormModels = [
       parent: 'customGroup'
     },
     description: '直接传入一个 Vue 组件对象'
+  },
+  {
+    id: 'linkageID1',
+    dataKey: 'linkage1',
+    component: 'DInput',
+    label: '联动 1',
+    value: '',
+    layout: {
+      parent: 'viewLinkage'
+    },
+    placeholder: '请输入',
+    description: '输入 666，我会隐藏“上传”、必填“复选框”'
+  },
+  {
+    id: 'linkageID2',
+    dataKey: 'linkage2',
+    component: 'DCheckboxGroup',
+    label: '联动 2',
+    value: [],
+    layout: {
+      parent: 'viewLinkage'
+    },
+    direction: 'horizontal',
+    options: [
+      { label: '上传必填', value: '1' },
+      { label: '无用选项', value: '2' }
+    ]
+  },
+  {
+    id: 'linkageID3',
+    dataKey: 'linkage3',
+    component: 'DCheckboxGroup',
+    label: '联动 3',
+    value: [],
+    layout: {
+      parent: 'viewLinkage'
+    },
+    direction: 'horizontal',
+    options: [
+      { label: '选项 1', value: '1' },
+      { label: '选项 2', value: '2' },
+      { label: '选项 3', value: '3' }
+    ],
+    description: '所有选项都选择才会让“上传”必填'
   }
 ]
 

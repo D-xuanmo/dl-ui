@@ -1,5 +1,5 @@
 <template>
-  <form-render-item v-for="item in children" :key="item.id" :model="item" />
+  <form-item v-for="item in children" :key="item.id" :model="item" />
 </template>
 
 <script lang="ts">
@@ -7,7 +7,7 @@ import { defineComponent, PropType } from 'vue'
 import { createNamespace } from '../../../utils'
 import { LayoutHeaderProps } from '../../../layout'
 import { useLinkChildren } from '../../hooks'
-import FormRenderItem from '../../components/form-render-item.vue'
+import FormItem from '../../components/form-item.vue'
 import { IRenderModel } from '../../types'
 
 const [name] = createNamespace('form-layout-header')
@@ -15,7 +15,7 @@ const [name] = createNamespace('form-layout-header')
 export default defineComponent({
   name,
   components: {
-    FormRenderItem
+    FormItem
   },
   props: {
     model: {

@@ -1,5 +1,6 @@
-import { ComponentNames } from '../index'
+import { ComponentNames, ViewLinkageEventsType } from '../index'
 import { Component } from 'vue'
+import { EventPrefixEnum } from './constants'
 
 /**
  * 表单数据模型
@@ -12,6 +13,9 @@ export interface IRenderModel<T = any> {
 
   // 需要展示的标题
   label?: string
+
+  // 左侧标题宽度
+  labelWidth?: string | number
 
   // 组件
   component: Component | (ComponentNames | string)
@@ -33,6 +37,9 @@ export interface IRenderModel<T = any> {
 
   // 只读
   readonly?: boolean
+
+  // 是否必填，会展示必填星号
+  required?: boolean
 }
 
 export interface IFormModelItem<TValue = unknown> extends IRenderModel {
@@ -41,12 +48,6 @@ export interface IFormModelItem<TValue = unknown> extends IRenderModel {
 
   // 当前字段数据
   value: TValue
-
-  // 是否必填，会展示必填星号
-  required?: boolean
-
-  // 左侧标题宽度
-  labelWidth?: string | number
 
   // 隐藏 label，默认：false
   hideLabel?: boolean
@@ -68,4 +69,8 @@ export type OnFormChange = (value: Record<string, unknown>, model: IFormModelIte
 
 type EventType = 'change' | 'blur' | 'focus'
 
-export type EventsType = 'field.change' | `field.${string}.${EventType}`
+type FieldEventType =
+  | `${EventPrefixEnum.FIELD}.change`
+  | `${EventPrefixEnum.FIELD}.${string}.${EventType}`
+
+export type EventsType = FieldEventType | ViewLinkageEventsType

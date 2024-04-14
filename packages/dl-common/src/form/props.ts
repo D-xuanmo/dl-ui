@@ -3,6 +3,7 @@ import { FormModels } from './types'
 import type { FormStore } from './store'
 import { COMMON_PROPS, DirectionType } from '../common'
 import { pickProps } from '../utils'
+import { ViewLinkageType } from './store/view-linkage/types'
 
 export type FormProps = ExtractPropTypes<typeof FORM_PROPS>
 
@@ -14,6 +15,14 @@ export const FORM_PROPS = {
   models: {
     type: Array as PropType<FormModels>,
     required: true,
+    default: () => []
+  },
+
+  /**
+   * 显示属性联动
+   */
+  viewLinkage: {
+    type: Array as PropType<ViewLinkageType>,
     default: () => []
   },
 
