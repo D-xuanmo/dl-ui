@@ -13,7 +13,7 @@ export const SPACE_PROPS = {
    */
   gap: {
     type: Number,
-    default: 0
+    default: 8
   },
 
   /**

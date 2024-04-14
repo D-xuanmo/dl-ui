@@ -1,5 +1,5 @@
 import { computed, defineComponent } from 'vue'
-import { createNamespace, addUnit } from '../utils'
+import { addUnit, createNamespace } from '../utils'
 import { SPACE_PROPS } from './props'
 
 const [name, bem] = createNamespace('space')
@@ -21,24 +21,18 @@ export default defineComponent({
       const children = slots.default?.() ?? []
       const spaceItemClassName = bem('item')
       const spaceItems = children.map((item, index) => {
-        const style = {
-          marginRight:
-            props.direction === 'horizontal' && children.length - 1 !== index
-              ? addUnit(props.gap)
-              : undefined,
-          marginBottom:
-            (props.direction === 'vertical' || props.wrap) && children.length - 1 !== index
-              ? addUnit(props.gap)
-              : undefined
-        }
         return (
-          <div key={`${index}`} class={spaceItemClassName} style={style}>
+          <div key={`${index}`} class={spaceItemClassName}>
             {item}
           </div>
         )
       })
 
-      return <div class={wrapperClassName.value}>{spaceItems}</div>
+      return (
+        <div class={wrapperClassName.value} style={{ gap: addUnit(props.gap) }}>
+          {spaceItems}
+        </div>
+      )
     }
   }
 })
