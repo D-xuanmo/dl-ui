@@ -748,6 +748,13 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 - `DFormGrid` 通过 Grid 网格组件实现更灵活的布局，参考链接：[https://uoo.ink/FormGrid](https://uoo.ink/FormGrid)
 - `DFormLayout` 通过 Layout 组件实现布局，参考链接：[https://uoo.ink/FormLayout](https://uoo.ink/FormLayout)
 
+### 显示属性联动
+
+在实际使用中，一个表单缺不了各种联动，比如根据 a 字段等于 x，需要将 b 字段隐藏、必填等，这时候就需要用到显示实现联动来实现，避免通过写代码的方式来实现，通过显示属性联动的规则灵活多变，需要细心使用后，方可知道好处
+
+- 联动规则示例：[https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/form/demo/view-linkage.ts](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/form/demo/view-linkage.ts)
+- 联动详细类型：[https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/form/store/view-linkage/types.ts](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/form/store/view-linkage/types.ts)
+
 ### 开发表单组件
 
 1. 组件需要具备 `Vue3` 标准的 `v-model`，参考链接：[https://cn.vuejs.org/guide/components/v-model.html](https://cn.vuejs.org/guide/components/v-model.html)
