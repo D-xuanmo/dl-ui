@@ -349,7 +349,7 @@ const FORM_MODEL: FormModels = [
       { label: '选项 2', value: '2' },
       { label: '选项 3', value: '3' }
     ],
-    description: '所有选项都选择才会让“上传”必填'
+    description: '所有选项都选择才会让“单选”必填'
   }
 ]
 

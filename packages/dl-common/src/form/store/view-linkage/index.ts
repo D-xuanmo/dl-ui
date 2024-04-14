@@ -120,33 +120,24 @@ export class ViewLinkage {
     return this.formStore.formDisabled.value || this.disabledMap.get(id)
   }
 
-  private async compare(
+  private compare(
     detailItem: ConditionDetailNotNullType,
     sourceValue: unknown,
     compareValue: unknown
   ) {
-    const linkageProxy = await this.formStore.events.executeProxy(
-      `${EventPrefixEnum.LINKAGE}.beforeExecute`,
-      {
-        detailItem,
-        sourceValue,
-        compareValue
-      }
-    )
-    if (linkageProxy) return true
     switch (detailItem.symbol) {
       case ExecuteSymbolEnum.EQUAL:
-        return this.diff(sourceValue, compareValue)
+        return this.equal(sourceValue, compareValue)
       case ExecuteSymbolEnum.NOT_EQUAL:
-        return !this.diff(sourceValue, compareValue)
+        return !this.equal(sourceValue, compareValue)
       case ExecuteSymbolEnum.NULL:
         return isEmpty(compareValue)
       case ExecuteSymbolEnum.NOT_NULL:
         return !isEmpty(compareValue)
       case ExecuteSymbolEnum.IN:
-        return this.has(compareValue, sourceValue)
+        return this.compareIn(compareValue, sourceValue)
       case ExecuteSymbolEnum.NOT_IN:
-        return !this.has(compareValue, sourceValue)
+        return !this.compareIn(compareValue, sourceValue)
     }
   }
 
@@ -176,7 +167,7 @@ export class ViewLinkage {
     })
   }
 
-  private has(source: unknown, target: unknown) {
+  private compareIn(source: unknown, target: unknown) {
     if (isEmpty(target)) return false
     if (Array.isArray(source) && Array.isArray(target)) {
       return source.some((item) => {
@@ -198,11 +189,14 @@ export class ViewLinkage {
     return `${source}`.includes(`${target}`)
   }
 
-  private diff(diff1: unknown, diff2: unknown) {
+  private equal(diff1: unknown, diff2: unknown) {
     if (Array.isArray(diff1)) {
       return diff1.every((item) => {
         // 内置数据结构，对象数组比较
-        if (isObject(item) && (diff2 as IData[]).find((newItem) => newItem.value === item.value)) {
+        if (
+          isObject(item) &&
+          (diff2 as IData[]).findIndex((newItem) => newItem.value === item.value) > -1
+        ) {
           return true
         }
         return (diff2 as unknown[]).includes(item)

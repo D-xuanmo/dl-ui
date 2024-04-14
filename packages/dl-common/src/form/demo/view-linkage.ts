@@ -75,7 +75,7 @@ export const ViewLinkageData: ViewLinkageType = [
     ],
     linkageList: [
       {
-        targetId: 'upload',
+        targetId: 'radio',
         propKey: 'required'
       }
     ]
