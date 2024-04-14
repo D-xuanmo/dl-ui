@@ -8,7 +8,7 @@
 - 关于布局，组件库已实现[单例分组](https://www.xuanmo.xin/-/dl-ui/comp-common/cell)、[网格系统](https://www.xuanmo.xin/-/dl-ui/comp-common/grid)、[框架](https://www.xuanmo.xin/-/dl-ui/comp-common/layout)等布局类组件，用户也可以自行实现布局组件，做不一样的展示效果，只需要通过父子级关系绑定即可；
 - 目前这套架构比较灵活，大家可以发挥自己的想象，创造更多的使用场景，欢迎一起交流。
 
-![Form 架构](https://upyun.xuanmo.xin/dl-ui/DLForm.svg)
+<iframe src="https://boardmix.cn/app/share/CAE.COfa5AwgASoQSSiiXFSJw8Vmmx1M_-MhJDAGQAE/KN0yC0" height="650" width="100%" style="border: 0;"></iframe>
 
 ## 引入
 
