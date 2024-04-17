@@ -34,11 +34,11 @@ class DateUtil {
       maxDate: Date
     }
   ) {
-    const { dateType, minDate, maxDate, formatter = (type, value) => value } = options
+    const { dateType, minDate, maxDate, formatter = (_, value) => value } = options
     this.dateType = dateType
     this.formatter = formatter
-    this.minDate = minDate
-    this.maxDate = maxDate
+    this.minDate = this.convertMinDate(minDate)
+    this.maxDate = this.convertMaxDate(maxDate)
     this.update(date)
     this.freezeDate = this.date
   }
@@ -129,6 +129,8 @@ class DateUtil {
    */
   update = (date: DateTimePickerValue | DateTimePickerValue[]) => {
     this.date = this.convertDate(date)
+    this.minDate = this.convertMinDate()
+    this.maxDate = this.convertMaxDate()
   }
 
   getColumns = () => {
@@ -162,7 +164,31 @@ class DateUtil {
     /* eslint-enable indent */
   }
 
-  getYearColumn = (): DateTimePickerOption[] => {
+  /**
+   * 计算最小日期
+   * @param minDate
+   */
+  convertMinDate(minDate: Date = this.minDate) {
+    // 如果当前 value 小于最小日期，默认推后一年
+    if (minDate.getTime() > this.date.getTime()) {
+      return new Date(this.date.getFullYear(), 0, 1)
+    }
+    return minDate
+  }
+
+  /**
+   * 计算最大日期
+   * @param maxDate
+   */
+  convertMaxDate(maxDate: Date = this.maxDate) {
+    // 如果当前 value 小于最小日期，默认推后一年
+    if (this.date.getTime() > maxDate.getTime()) {
+      return new Date(this.date.getFullYear(), 11, 31)
+    }
+    return maxDate
+  }
+
+  private getYearColumn = (): DateTimePickerOption[] => {
     const currentYear = this.freezeDate.getFullYear()
     let start = 0
     let end = 0
@@ -197,7 +223,7 @@ class DateUtil {
     ]
   }
 
-  getMonthColumn = () => {
+  private getMonthColumn = () => {
     const column: DateTimePickerOption[] = []
     let i = this.date.getFullYear() !== this.freezeDate.getFullYear() ? 0 : this.minDate.getMonth()
     while (i <= this.maxDate.getMonth()) {
@@ -211,7 +237,7 @@ class DateUtil {
     return column
   }
 
-  getDayColumn = () => {
+  private getDayColumn = () => {
     const column: DateTimePickerOption[] = []
     const lastDay = dateJS(this.date).lastDay()
     const max = this.maxDate.getDate()
@@ -228,7 +254,7 @@ class DateUtil {
     return column
   }
 
-  getHourColumn = () => {
+  private getHourColumn = () => {
     const column: DateTimePickerOption[] = []
     let i = 0
     while (i < 24) {
@@ -242,7 +268,7 @@ class DateUtil {
     return column
   }
 
-  getMinute = () => {
+  private getMinute = () => {
     const column: DateTimePickerOption[] = []
     let i = 1
     while (i < 60) {
@@ -256,7 +282,7 @@ class DateUtil {
     return column
   }
 
-  getSecond = () => {
+  private getSecond = () => {
     const column: DateTimePickerOption[] = []
     let i = 1
     while (i < 60) {

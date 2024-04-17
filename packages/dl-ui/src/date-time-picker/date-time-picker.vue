@@ -115,6 +115,7 @@ export default defineComponent({
         await nextTick()
         if (modelValue) {
           dateUtil.update(modelValue)
+          columns.value = dateUtil.getColumns()
           pickerValue.value = dateUtil.pickerValue
           displayValue.value = props.displayFormatter
             ? dateJS(dateUtil.convertDate(modelValue)).format(props.displayFormatter)
