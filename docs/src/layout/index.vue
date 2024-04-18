@@ -12,6 +12,10 @@
       <router-view />
       <doc-footer />
     </d-layout-content>
+
+    <d-layout-sider :class="menuClassName" width="200px" placement="right" collapsed>
+      <anchor-menu :data="docStore.anchorList.value" />
+    </d-layout-sider>
   </d-layout>
 </template>
 
@@ -22,7 +26,9 @@ import { getMenuList } from '../menus'
 import DocMenu from '../components/menu'
 import DocHeader from './doc-header.vue'
 import DocFooter from './doc-footer.vue'
+import AnchorMenu from './anchor-menu.vue'
 import { classNames } from '../utils'
+import { docStore } from '@doc/store'
 
 const route = useRoute()
 
@@ -126,6 +132,7 @@ const menuData = computed(() => getMenuList(route.params.type as any))
   }
 
   &__content {
+    scroll-behavior: smooth;
     .markdown-body {
       padding: var(--d-gap-sm) 40px;
 

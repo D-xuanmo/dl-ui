@@ -2,7 +2,7 @@
 
 一个基于 Vue 3 的低代码组件库
 
-### DL 释义
+## DL 释义
 
 - D 代表梦想（Dream）、动态（Dynamic）
 - L 代表低代码（Low code）

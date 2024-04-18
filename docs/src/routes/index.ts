@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { ua } from '@xuanmo/utils'
+import { nextTick } from 'vue'
+import { docStore } from '@doc/store'
 
 const generateRoutes = (modules: Record<string, () => Record<string, any>>) => {
   const routes: RouteRecordRaw[] = []
@@ -85,6 +87,12 @@ const routes = createRouter({
     ...getRoutes(),
     ...getDemoRoutes()
   ]
+})
+
+routes.afterEach(async () => {
+  await nextTick()
+  docStore.updateAnchorList()
+  document.querySelector('.dl-doc__content')?.scrollTo(0, 0)
 })
 
 export default routes
