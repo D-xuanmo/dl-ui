@@ -1,8 +1,8 @@
 import { generate } from '@ant-design/colors'
 import { ERROR_COLOR, PREFIX, PRIMARY_COLOR, SUCCESS_COLOR, WARNING_COLOR } from '../constants'
-import { ThemeEnum } from '../common'
+import { ThemeType } from '../common'
 
-const setHTMLStyle = (colors: string[], key: ThemeEnum | 'error') => {
+const setHTMLStyle = (colors: string[], key: ThemeType | 'error') => {
   document.querySelector('html')!.style.cssText += [
     `--${PREFIX}-${key}: ${colors[5]};`,
     ...colors.reduce<string[]>(

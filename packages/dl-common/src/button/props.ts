@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
-import { SizeEnum, ThemeEnum } from '../common'
+import { SizeType, ThemeType } from '../common'
 
 export type ButtonProps = ExtractPropTypes<typeof BUTTON_PROPS>
 
@@ -8,7 +8,7 @@ export const BUTTON_PROPS = {
    * 主题分类
    */
   theme: {
-    type: String as PropType<ThemeEnum>,
+    type: String as PropType<ThemeType>,
     default: 'default'
   },
 
@@ -16,7 +16,7 @@ export const BUTTON_PROPS = {
    * 按钮大小
    */
   size: {
-    type: String as PropType<SizeEnum>,
+    type: String as PropType<SizeType>,
     default: 'medium'
   },
 

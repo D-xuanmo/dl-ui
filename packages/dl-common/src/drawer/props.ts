@@ -1,6 +1,6 @@
 import { ExtractPropTypes, PropType, VNode } from 'vue'
 import { ButtonProps } from '../button'
-import { COMMON_PROPS, PlacementEnum } from '../common'
+import { COMMON_PROPS, PlacementType } from '../common'
 import { pickProps } from '../utils'
 
 export type DrawerProps = ExtractPropTypes<typeof DRAWER_PROPS>
@@ -147,7 +147,7 @@ export const DRAWER_PROPS = {
    * 抽屉位置
    */
   placement: {
-    type: String as PropType<Exclude<PlacementEnum, 'center' | 'custom'>>,
+    type: String as PropType<Exclude<PlacementType, 'center' | 'custom'>>,
     default: 'right'
   },
 

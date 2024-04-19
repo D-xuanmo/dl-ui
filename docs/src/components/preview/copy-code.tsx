@@ -1,7 +1,7 @@
 import { defineComponent, PropType } from 'vue'
 import { copyText } from '@doc/utils/copy'
 import { CopyOutlined } from '@xuanmo/dl-icons'
-import { SizeEnum } from '@xuanmo/dl-common'
+import { SizeType } from '@xuanmo/dl-common'
 
 export default defineComponent({
   name: 'CopyCode',
@@ -11,7 +11,7 @@ export default defineComponent({
       default: ''
     },
     size: {
-      type: String as PropType<SizeEnum>,
+      type: String as PropType<SizeType>,
       default: 'small'
     }
   },

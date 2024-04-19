@@ -1,5 +1,5 @@
 import { ExtractPropTypes, FunctionalComponent, PropType } from 'vue'
-import { SizeEnum, COMMON_PROPS, pickProps } from '@xuanmo/dl-common'
+import { SizeType, COMMON_PROPS, pickProps } from '@xuanmo/dl-common'
 import { StarFilled, StarOutlined } from '@xuanmo/dl-icons'
 
 export type RateProps = ExtractPropTypes<typeof RATE_PROPS>
@@ -23,7 +23,7 @@ export const RATE_PROPS = {
    * 图标大小
    */
   size: {
-    type: String as PropType<SizeEnum | string>,
+    type: String as PropType<SizeType | string>,
     default: 'medium'
   },
 

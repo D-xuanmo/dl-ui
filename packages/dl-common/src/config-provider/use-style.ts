@@ -2,9 +2,9 @@ import { ConfigProviderProps } from './props'
 import { computed, CSSProperties } from 'vue'
 import { generate } from '@ant-design/colors'
 import { PREFIX } from '../constants'
-import { ThemeEnum } from '../common'
+import { ThemeType } from '../common'
 
-const generateStyle = (colors: string[], key: ThemeEnum | 'error') => {
+const generateStyle = (colors: string[], key: ThemeType | 'error') => {
   return {
     [`--${PREFIX}-${key}`]: colors[5],
     ...colors.reduce(

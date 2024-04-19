@@ -7,7 +7,7 @@ import DPopup from '../popup'
 import DButton from '../button'
 import DSpace from '../space'
 import { CheckCircleFilled, CloseFilled, TipsFilled, WarningFilled } from '@xuanmo/dl-icons'
-import { MessageThemeEnum } from '../common'
+import { MessageThemeType } from '../common'
 import { useCloseOnEsc } from '../hooks'
 
 const [name, bem] = createNamespace('dialog')
@@ -81,7 +81,7 @@ export default defineComponent({
     const getIcon = () => {
       if (!props.showIcon) return null
       if (context.slots.icon) return context.slots.icon()
-      const icons: Record<MessageThemeEnum, any> = {
+      const icons: Record<MessageThemeType, any> = {
         info: <TipsFilled className={titleIconClass} color="var(--d-primary)" />,
         success: <CheckCircleFilled className={titleIconClass} color="var(--d-success)" />,
         warning: <WarningFilled className={titleIconClass} color="var(--d-warning)" />,

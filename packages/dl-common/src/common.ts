@@ -1,23 +1,30 @@
 import { PropType } from 'vue'
 import { TeleportProps } from 'vue/dist/vue'
+import {
+  SizeEnum,
+  ThemeEnum,
+  PlacementEnum,
+  MessageThemeEnum,
+  HorizontalAlignEnum
+} from './constants'
 
 /** 水平对齐方式 */
-export type HorizontalAlignType = 'left' | 'center' | 'right'
+export type HorizontalAlignType = `${HorizontalAlignEnum}`
 
 /** 所有大小类型定义 */
-export type SizeEnum = 'small' | 'medium' | 'large'
+export type SizeType = `${SizeEnum}`
 
 /** 格式化触发时机 */
 export type FieldFormatterTrigger = 'onChange' | 'onBlur'
 
 /** 弹框位置类型 */
-export type PlacementEnum = 'top' | 'right' | 'bottom' | 'left' | 'center' | 'custom'
+export type PlacementType = `${PlacementEnum}`
 
 /** 主题类型 */
-export type ThemeEnum = 'primary' | 'success' | 'warning' | 'danger' | 'default'
+export type ThemeType = `${ThemeEnum}`
 
 /** 消息类型 */
-export type MessageThemeEnum = 'info' | 'success' | 'warning' | 'error'
+export type MessageThemeType = `${MessageThemeEnum}`
 
 /** 数据基础类型，单选、多选、选择器等组件 */
 export interface IData<T = string | number> {
@@ -73,6 +80,10 @@ export const COMMON_PROPS = {
     type: Boolean,
     default: false
   },
+
+  /**
+   * 自定义 key
+   */
   keys: {
     type: Object as PropType<CustomKeys>,
     default: undefined

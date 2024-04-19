@@ -1,5 +1,5 @@
 import { ExtractPropTypes, PropType, VNode } from 'vue'
-import { COMMON_PROPS, MessageThemeEnum } from '../common'
+import { COMMON_PROPS, MessageThemeType } from '../common'
 import { ButtonProps } from '../button'
 import { pickProps } from '../utils'
 
@@ -123,7 +123,7 @@ export const DIALOG_PROPS = {
    * 主题
    */
   theme: {
-    type: String as PropType<MessageThemeEnum>,
+    type: String as PropType<MessageThemeType>,
     default: 'info'
   },
 
