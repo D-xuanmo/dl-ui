@@ -219,7 +219,6 @@ class FormStore {
    */
   public setFormDisabled = (value: boolean) => {
     this.formDisabled.value = value
-    this.setDisabled('*', value)
   }
 
   /**
@@ -228,7 +227,6 @@ class FormStore {
    */
   public setFormReadonly = (value: boolean) => {
     this.formReadonly.value = value
-    this.setReadonly('*', value)
   }
 
   /**

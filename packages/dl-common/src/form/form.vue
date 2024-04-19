@@ -52,11 +52,6 @@ export default defineComponent({
       emit('change', value, model)
     }
 
-    store.init({
-      models: props.models,
-      viewLinkage: props.viewLinkage
-    })
-
     provide(FORM_CONTEXT_KEY, {
       store,
       formProps,
@@ -65,6 +60,19 @@ export default defineComponent({
 
     watch(() => props.disabled, store.setFormDisabled)
     watch(() => props.readonly, store.setFormReadonly)
+    watch(
+      () => props.models,
+      () => {
+        store.init({
+          models: props.models,
+          viewLinkage: props.viewLinkage
+        })
+      },
+      {
+        immediate: true
+      }
+    )
+    watch(() => props.viewLinkage, store.viewLinkage.init)
 
     return {
       formClassName,
