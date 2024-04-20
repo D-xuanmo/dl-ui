@@ -1569,6 +1569,7 @@ __metadata:
   resolution: "@xuanmo/dl-cli@workspace:packages/dl-cli"
   dependencies:
     "@types/inquirer": ^9.0.7
+    commander: ^12.0.0
     download-git-repo: ^3.0.2
     inquirer: ^9.2.19
     log-symbols: ^6.0.0
@@ -2405,6 +2406,13 @@ __metadata:
   version: 1.1.4
   resolution: "color-name@npm:1.1.4"
   checksum: b0445859521eb4021cd0fb0cc1a75cecf67fceecae89b63f62b201cca8d345baf8b952c966862a9d9a2632987d4f6581f0ec8d957dfacece86f0a7919316f610
+  languageName: node
+  linkType: hard
+
+"commander@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "commander@npm:12.0.0"
+  checksum: bce9e243dc008baba6b8d923f95b251ad115e6e7551a15838d7568abebcca0fc832da1800cf37caf37852f35ce4b7fb794ba7a4824b88c5adb1395f9268642df
   languageName: node
   linkType: hard
 

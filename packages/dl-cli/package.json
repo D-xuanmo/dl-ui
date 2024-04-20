@@ -1,6 +1,6 @@
 {
   "name": "@xuanmo/dl-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": {
     "name": "xuanmo",
     "email": "me@xuanmo.xin"
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@types/inquirer": "^9.0.7",
+    "commander": "^12.0.0",
     "download-git-repo": "^3.0.2",
     "inquirer": "^9.2.19",
     "log-symbols": "^6.0.0",

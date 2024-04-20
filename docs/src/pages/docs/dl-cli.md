@@ -13,7 +13,3 @@ $ npm i @xuanmo/dl-cli -g
 
 1. 使用命令 `dl-cli create <prejectName>`
 2. 根据选项选择模板，完成项目创建
-
-## DLUI 官网
-
-1. [DLUI](https://www.xuanmo.xin/-/dl-ui)

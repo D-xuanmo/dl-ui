@@ -18,6 +18,7 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
         groupTitle: '开发指南',
         children: [
           { id: 'quick', path: '/docs/quick', content: '快速上手' },
+          { id: 'dl-cli', path: '/docs/dl-cli', content: 'dl-cli 脚手架' },
           { id: 'common', path: '/docs/common', content: '全局说明' },
           { id: 'custom', path: '/docs/custom', content: '自定义能力' },
           { id: 'questions', path: '/docs/questions', content: '常见问题' },
