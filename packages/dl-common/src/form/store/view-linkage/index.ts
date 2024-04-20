@@ -1,11 +1,11 @@
 import { reactive, UnwrapNestedRefs } from 'vue'
 import { IRenderModel } from '../../types'
 import {
+  FormStore,
+  LinkageItemType,
   ConditionDetailNotNullType,
   ConditionDetailRelationshipConstantType,
-  ConditionDetailRelationshipVariableType,
-  FormStore,
-  LinkageItemType
+  ConditionDetailRelationshipVariableType
 } from '../index'
 import { ViewLinkageType } from './types'
 import { isEmpty, isObject } from '@xuanmo/utils'

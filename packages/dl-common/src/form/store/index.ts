@@ -253,15 +253,15 @@ class FormStore {
         // 隐藏字段、禁用字段、只读字段不参与校验
         if (
           !item.dataKey ||
-          this.viewLinkage.getDisabled(item.dataKey) ||
-          this.viewLinkage.getDisabled(item.dataKey) ||
-          this.viewLinkage.getReadonly(item.dataKey)
+          this.viewLinkage.getDisplay(item.id) ||
+          this.viewLinkage.getDisabled(item.id) ||
+          this.viewLinkage.getReadonly(item.id)
         ) {
           return
         }
         models.push({
           ...this.getItem(item.id),
-          required: this.viewLinkage.getRequired(item.dataKey)
+          required: this.viewLinkage.getRequired(item.id)
         })
       })
       validator
