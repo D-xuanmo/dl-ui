@@ -90,6 +90,7 @@ import { TipsOutlined, CloseOutlined } from '@xuanmo/dl-icons'
 |border|`boolean`|true|是否显示边框|N|
 |layout|`'horizontal' \| 'vertical'`|`horizontal`|布局类型|N|
 |description|`string`|-|描述|N|
+|client-type|`'PC' \| 'MOBILE'`|`PC`|终端类型|N|
 
 ### Cell Slots
 

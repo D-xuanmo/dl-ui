@@ -5,7 +5,7 @@ import { pickProps } from '../utils'
 export type CellProps = ExtractPropTypes<typeof CELL_PROPS>
 
 export const CELL_PROPS = {
-  ...pickProps(COMMON_PROPS, ['requiredMarkPosition']),
+  ...pickProps(COMMON_PROPS, ['requiredMarkPosition', 'clientType']),
   title: String,
   titleClass: String,
   titleWidth: [String, Number],

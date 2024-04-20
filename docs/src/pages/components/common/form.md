@@ -586,7 +586,7 @@ const reset = () => {
 
 ```vue title=结合Layout组件实现布局 playground=FormLayout
 <template>
-  <d-form :models="formModels" :border="false" />
+  <d-form :models="formModels" :border="false" label-width='60px' />
 </template>
 
 <script lang="ts" setup>

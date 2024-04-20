@@ -3,12 +3,18 @@ import { FormModels } from './types'
 import type { FormStore } from './store'
 import { COMMON_PROPS, DirectionType } from '../common'
 import { pickProps } from '../utils'
-import { ViewLinkageType } from './store/view-linkage/types'
+import { ViewLinkageType } from './store'
 
 export type FormProps = ExtractPropTypes<typeof FORM_PROPS>
 
 export const FORM_PROPS = {
-  ...pickProps(COMMON_PROPS, ['disabled', 'readonly', 'requiredMarkPosition', 'labelWidth']),
+  ...pickProps(COMMON_PROPS, [
+    'disabled',
+    'readonly',
+    'requiredMarkPosition',
+    'labelWidth',
+    'clientType'
+  ]),
   /**
    * 表单模型
    */
@@ -71,13 +77,5 @@ export const FORM_PROPS = {
   colon: {
     type: Boolean,
     default: undefined
-  },
-
-  /**
-   * 终端类型
-   */
-  clientType: {
-    type: String as PropType<'PC' | 'MOBILE'>,
-    default: 'PC'
   }
 }

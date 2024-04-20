@@ -25,7 +25,8 @@ export default defineComponent({
         'hide-title': globalConfig.value.hideTitle,
         [`layout-${globalConfig.value.layout}`]: globalConfig.value.layout,
         disabled: props.disabled,
-        border: globalConfig.value.border || globalConfig.value.border === undefined
+        border: globalConfig.value.border || globalConfig.value.border === undefined,
+        [`${globalConfig.value.clientType?.toLowerCase()}`]: true
       })
     )
 
@@ -98,23 +99,42 @@ export default defineComponent({
         emit('click', event)
       }
 
-      return (
-        <div class={wrapperClassName.value}>
-          <div class={bem('wrapper')} onClick={handleClick}>
-            {renderLabel}
-            <div class={contentClassName}>
-              <div class={bem('content-inner')}>
-                <If condition={!isEmpty(slots.default)}>
-                  <Then>{slots.default?.()}</Then>
-                  <Else>{props.content}</Else>
-                </If>
-                {renderDescription}
+      if (globalConfig.value.clientType === 'MOBILE') {
+        return (
+          <div class={wrapperClassName.value}>
+            <div class={bem('wrapper')} onClick={handleClick}>
+              {renderLabel}
+              <div class={contentClassName}>
+                <div class={bem('content-inner')}>
+                  <If condition={!isEmpty(slots.default)}>
+                    <Then>{slots.default?.()}</Then>
+                    <Else>{props.content}</Else>
+                  </If>
+                </div>
+                {renderRightIcon}
+                {renderSuffix}
+                {renderArrow}
               </div>
-              {renderRightIcon}
-              {renderSuffix}
             </div>
+            {renderDescription}
           </div>
-          {renderArrow}
+        )
+      }
+
+      return (
+        <div class={wrapperClassName.value} onClick={handleClick}>
+          {renderLabel}
+          <div class={contentClassName}>
+            <div class={bem('content-inner')}>
+              <If condition={!isEmpty(slots.default)}>
+                <Then>{slots.default?.()}</Then>
+                <Else>{props.content}</Else>
+              </If>
+            </div>
+            {renderRightIcon}
+            {renderSuffix}
+            {renderDescription}
+          </div>
         </div>
       )
     }

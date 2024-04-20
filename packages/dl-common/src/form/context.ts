@@ -8,7 +8,13 @@ export interface IFormContext {
   formProps: ComputedRef<
     Pick<
       FormProps,
-      'colon' | 'border' | 'layout' | 'labelWidth' | 'hideLabel' | 'requiredMarkPosition'
+      | 'colon'
+      | 'border'
+      | 'layout'
+      | 'hideLabel'
+      | 'labelWidth'
+      | 'clientType'
+      | 'requiredMarkPosition'
     >
   >
   onChange: OnFormChange

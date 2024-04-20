@@ -122,5 +122,13 @@ export const COMMON_PROPS = {
   /**
    * 表单宽度
    */
-  labelWidth: [Number, String] as PropType<number | string>
+  labelWidth: [Number, String] as PropType<number | string>,
+
+  /**
+   * 终端类型
+   */
+  clientType: {
+    type: String as PropType<'PC' | 'MOBILE'>,
+    default: 'PC'
+  }
 }

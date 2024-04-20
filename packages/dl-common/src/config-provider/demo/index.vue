@@ -19,11 +19,12 @@
   </d-cell-group>
 
   <d-config-provider
-    :layout="formLayout"
-    :required-mark-position="requiredMarkPosition"
-    :label-width="labelWidth"
     :colon="colon"
     :theme="theme"
+    client-type="MOBILE"
+    :layout="formLayout"
+    :label-width="labelWidth"
+    :required-mark-position="requiredMarkPosition"
   >
     <d-cell title="单元格" required>我是单元格内容</d-cell>
     <d-form :models="formModels" client-type="MOBILE" />

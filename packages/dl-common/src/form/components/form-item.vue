@@ -8,6 +8,8 @@
     :hide-title="formProps.hideLabel || model.hideLabel"
     :colon="formProps.colon"
     :border="formProps.border"
+    :client-type="formProps.clientType"
+    :description="model.description"
   >
     <template #title>
       <span
@@ -36,7 +38,6 @@
       @blur="handleBlur"
       @focus="handleFocus"
     />
-    <p v-if="model.description" :class="descriptionClass">{{ model.description }}</p>
     <p v-if="errorMessage" :class="errorClassName">{{ errorMessage }}</p>
   </d-cell>
   <component :is="model.component" v-else :class="itemClassName" :model="model" />

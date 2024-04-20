@@ -33,17 +33,18 @@ export default defineComponent({
       })
     )
     const config = useConfig(
-      ['colon', 'requiredMarkPosition', 'layout', 'labelWidth'],
+      ['colon', 'requiredMarkPosition', 'layout', 'labelWidth', 'clientType'],
       props as any
     )
 
     const formProps = computed(() => {
       return {
-        border: props.border ?? props.clientType === 'MOBILE',
-        hideLabel: props.hideLabel,
         colon: config.value.colon,
+        hideLabel: props.hideLabel,
         layout: config.value.layout,
         labelWidth: config.value.labelWidth,
+        clientType: config.value.clientType,
+        border: props.border ?? props.clientType === 'MOBILE',
         requiredMarkPosition: config.value.requiredMarkPosition || DEFAULT_REQUIRED_MARK_POSITION
       }
     })

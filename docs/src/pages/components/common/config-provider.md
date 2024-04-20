@@ -35,11 +35,12 @@ app.use(DConfigProvider)
   </d-cell-group>
 
   <d-config-provider
-    :layout="formLayout"
-    :required-mark-position="requiredMarkPosition"
-    :label-width="labelWidth"
     :colon="colon"
     :theme="theme"
+    client-type="MOBILE"
+    :layout="formLayout"
+    :label-width="labelWidth"
+    :required-mark-position="requiredMarkPosition"
   >
     <d-cell title="单元格" required>我是单元格内容</d-cell>
     <d-form :models="formModels" client-type="MOBILE" />
@@ -132,6 +133,7 @@ app.use(DConfigProvider)
 |layout|`'horizontal' \| 'vertical'`|`horizontal`|布局类型，支持的组件有：`Cell`、`Form`|N|
 |required-mark-position|`'left' \| 'right'`|`right`|必填标识显示位置，支持的组件有：`Cell`、`Form`|N|
 |label-width|`string \| number`|`80px`|标题宽度，支持的组件有：`Cell`、`Form`|N|
+|client-type|`'PC' \| 'MOBILE'`|`PC`|终端类型|N|
 
 ## TS 类型
 

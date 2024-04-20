@@ -16,7 +16,6 @@ class DocStore {
       .map((_, index) => `.dl-doc__content .markdown-body > h${index + 1}:not(h1)`)
       .join(',')
     const nodeList = document.querySelectorAll(titleClass) as unknown as HTMLElement[]
-    console.log(nodeList)
     const formatted = Array.from(nodeList).map((item) => {
       item.setAttribute('id', item.innerText)
       return {
