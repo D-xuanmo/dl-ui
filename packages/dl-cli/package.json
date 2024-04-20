@@ -1,6 +1,6 @@
 {
   "name": "@xuanmo/dl-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": {
     "name": "xuanmo",
     "email": "me@xuanmo.xin"
@@ -11,11 +11,12 @@
     "dev": "tsc --watch",
     "build": "rimraf ./lib && tsc"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/D-xuanmo/dl-ui"
   },
-  "devDependencies": {
+  "dependencies": {
     "@types/inquirer": "^9.0.7",
     "commander": "^12.0.0",
     "download-git-repo": "^3.0.2",
