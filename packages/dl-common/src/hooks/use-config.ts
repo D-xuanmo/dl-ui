@@ -27,14 +27,23 @@ export function useConfig<
 
   return computed(
     () =>
-      keys.reduce(
-        (prev, currentKey) => ({
+      keys.reduce((prev, currentKey) => {
+        if (currentKey === 'keys') {
+          return {
+            ...prev,
+            keys: {
+              ...globalConfig.keys,
+              ...config.keys,
+              ...(currentProps as ConfigProviderProps).keys
+            }
+          }
+        }
+        return {
           ...prev,
           [currentKey]: isEmpty(currentProps[currentKey])
             ? config[currentKey]
             : currentProps[currentKey]
-        }),
-        {}
-      ) as { [Key in T]: Key extends 'keys' ? Required<CustomKeys> : ConfigProviderProps[Key] }
+        }
+      }, {}) as { [Key in T]: Key extends 'keys' ? Required<CustomKeys> : ConfigProviderProps[Key] }
   )
 }
