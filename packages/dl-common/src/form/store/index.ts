@@ -253,7 +253,7 @@ class FormStore {
         // 隐藏字段、禁用字段、只读字段不参与校验
         if (
           !item.dataKey ||
-          this.viewLinkage.getDisplay(item.id) ||
+          !this.viewLinkage.getDisplay(item.id) ||
           this.viewLinkage.getDisabled(item.id) ||
           this.viewLinkage.getReadonly(item.id)
         ) {
