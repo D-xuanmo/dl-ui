@@ -1,0 +1,38 @@
+name: Build UI
+
+on:
+  push:
+    paths:
+     - 'packages/dl-cli/package.json'
+     - '.github/workflows/build-cli.yml'
+
+jobs:
+  publish-npm:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18.18.0
+        registry-url: https://registry.npmjs.org/
+    - run: corepack enable
+
+    - shell: bash
+      name: Log yarn version
+      run: yarn cache clean --all && yarn -v
+
+    - name: Install
+      run: yarn --immutable
+
+    - name: Build
+      run: yarn build:cli
+
+    - shell: bash
+      name: List workspace
+      run: cd packages/dl-cli && ls -la
+
+    - name: Publish
+      run: cd packages/dl-cli && npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

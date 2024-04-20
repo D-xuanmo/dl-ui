@@ -1,0 +1,25 @@
+{
+  "name": "@xuanmo/dl-cli",
+  "version": "0.0.1",
+  "author": {
+    "name": "xuanmo",
+    "email": "me@xuanmo.xin"
+  },
+  "type": "module",
+  "bin": "./bin.js",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "rimraf ./lib && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/D-xuanmo/dl-ui"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.7",
+    "download-git-repo": "^3.0.2",
+    "inquirer": "^9.2.19",
+    "log-symbols": "^6.0.0",
+    "ora": "^8.0.1"
+  }
+}

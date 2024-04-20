@@ -17,6 +17,7 @@
     "build:icons": "yarn workspace @xuanmo/dl-icons build",
     "build:docs": "yarn workspace docs build",
     "build:lib": "yarn workspace @xuanmo/dl-ui build",
+    "build:cli": "yarn workspace @xuanmo/dl-cli build",
     "prettier": "prettier --write .",
     "lint": "eslint . --ext js,ts,tsx,vue && npm run lint:tsc",
     "lint:tsc": "yarn workspace @xuanmo/dl-ui tsc:clear"
