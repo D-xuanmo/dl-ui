@@ -4,7 +4,7 @@
     :class="itemClassName"
     content-align="left"
     :title-width="formProps.labelWidth"
-    :layout="formProps.layout"
+    :layout="model.layout.layout || formProps.layout"
     :hide-title="formProps.hideLabel || model.hideLabel"
     :colon="formProps.colon"
     :border="formProps.border"
