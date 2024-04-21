@@ -4,7 +4,7 @@
 
 - `dl-common` 包含 PC、H5 通用的组件，一些公用方法，独立于 UI 包之外
 - `dl-ui` 包含所有组件的功能
-- `validator` 非必须包，如果不需要表单校验可不用安装
+- `validator` 数据校验插件
 - `dl-icons` 非必须包，如果需要扩展图标，可自行安装
 
 ```bash
@@ -60,19 +60,6 @@ app.use(DButton)
 ```typescript
 // 全量引入
 import DLCommon from '@xuanmo/dl-common'
-
-// 按需引入组件
-// import {
-//   DGrid,
-//   DGridItem,
-//   DMessage,
-//   DButton,
-//   DPopup,
-//   DOverlay,
-//   DSpace,
-//   DImage,
-//   // ... 更多参考公用组件篇
-// } from '@xuanmo/dl-common'
 
 // 引入样式
 import '@xuanmo/dl-common/dist/index.css'
