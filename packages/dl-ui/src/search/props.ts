@@ -1,8 +1,9 @@
 import {
+  pickProps,
   COMMON_PROPS,
+  FormProps,
   FieldFormatterTrigger,
-  HorizontalAlignType,
-  pickProps
+  HorizontalAlignType
 } from '@xuanmo/dl-common'
 import { ExtractPropTypes, PropType } from 'vue'
 
@@ -53,5 +54,45 @@ export const SEARCH_PROPS = {
   formatterTrigger: {
     type: String as PropType<FieldFormatterTrigger | undefined>,
     default: 'onChange'
+  },
+
+  /**
+   * 高级搜索
+   */
+  advancedSearch: {
+    type: Boolean,
+    default: false
+  },
+
+  /**
+   * 高级搜索标题
+   */
+  advancedSearchTitle: {
+    type: String,
+    default: '高级搜索'
+  },
+
+  /**
+   * 搜索重置按钮文字
+   */
+  searchResetText: {
+    type: String,
+    default: '重置'
+  },
+
+  /**
+   * 搜索确认按钮文字
+   */
+  searchConfirmText: {
+    type: String,
+    default: '确定'
+  },
+
+  /**
+   * 高级搜索表单 props
+   */
+  formProps: {
+    type: Object as PropType<Partial<FormProps>>,
+    default: undefined
   }
 }

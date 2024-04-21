@@ -1,7 +1,16 @@
 @import '../style/prefix.scss';
 
+:root {
+  --d-advanced-search-gap: var(--d-gap-sm);
+}
+
 .#{$prefix}-search {
+  display: flex;
+  align-items: center;
+  column-gap: var(--d-gap-xs);
+
   &__body {
+    flex: 1;
     display: flex;
     align-items: center;
     gap: var(--d-gap-xs);
@@ -16,5 +25,55 @@
 
   &__input {
     align-items: center;
+  }
+
+  &__advanced-search {
+    &-icon {
+      color: var(--d-secondary-text-color);
+
+      &--active {
+        color: var(--d-primary);
+      }
+    }
+
+    .#{$prefix} {
+      &-popup {
+        &__header {
+          padding-bottom: var(--d-gap-sm);
+          text-align: left;
+        }
+
+        &__wrapper {
+          max-width: 85%;
+          min-width: 85%;
+        }
+
+        &__body {
+          display: flex;
+          flex-direction: column;
+          padding: var(--d-advanced-search-gap);
+          overflow: hidden;
+          background-color: var(--d-gray-1);
+        }
+      }
+
+      &-form {
+        flex: 1;
+        overflow-y: auto;
+      }
+    }
+
+    &-footer {
+      display: flex;
+      column-gap: var(--d-gap-sm);
+      padding: var(--d-advanced-search-gap);
+      background-color: var(--d-white-color);
+
+      .#{$prefix} {
+        &-button {
+          width: 50%;
+        }
+      }
+    }
   }
 }

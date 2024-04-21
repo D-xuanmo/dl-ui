@@ -30,6 +30,7 @@
       font-size: var(--d-popup-title-font-size);
       color: var(--d-title-color);
       @include ellipsis();
+      font-weight: bold;
     }
 
     &-left {
