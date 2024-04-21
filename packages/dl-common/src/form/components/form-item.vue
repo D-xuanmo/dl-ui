@@ -47,7 +47,7 @@
 import { computed, defineComponent, PropType } from 'vue'
 import { createNamespace } from '../../utils'
 import DCell from '../../cell'
-import { createFormBEM } from '../constants'
+import { createFormBEM, EventPrefixEnum } from '../constants'
 import { IFormModelItem } from '../types'
 import { omitSystemProps } from '../utils'
 import { useForm } from '../hooks'
@@ -92,16 +92,16 @@ export default defineComponent({
       }
       onChange({ [dataKey]: value }, props.model)
       store.viewLinkage.execute(dataKey, value)
-      store.events.emit('field.change', value)
-      store.events.emit(`field.${dataKey}.change`, value)
+      store.events.emit(`${EventPrefixEnum.FIELD}.change`, value)
+      store.events.emit(`${EventPrefixEnum.FIELD}.${dataKey}.change`, value)
     }
 
     const handleBlur = (value: unknown) => {
-      store.events.emit(`field.${dataKey}.blur`, value)
+      store.events.emit(`${EventPrefixEnum.FIELD}.${dataKey}.blur`, value)
     }
 
     const handleFocus = (value: unknown) => {
-      store.events.emit(`field.${dataKey}.focus`, value)
+      store.events.emit(`${EventPrefixEnum.FIELD}.${dataKey}.focus`, value)
     }
 
     return {
