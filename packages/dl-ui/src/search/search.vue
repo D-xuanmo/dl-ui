@@ -20,6 +20,7 @@
         @clear="onClear"
         @blur="onBlur"
         @focus="onFocus"
+        @keyup.enter="onQuickSearch"
       />
       <filter-outlined
         v-if="advancedSearch"
@@ -67,7 +68,7 @@ export default defineComponent({
   name,
   components: { DInput, DPopup, DForm, DButton, SearchOutlined, FilterOutlined },
   props: SEARCH_PROPS,
-  emits: ['update:model-value', 'clear', 'focus', 'blur', 'confirm', 'reset'],
+  emits: ['update:model-value', 'clear', 'focus', 'blur', 'confirm', 'reset', 'quick-search'],
   setup(props, ctx) {
     const [innerValue, setInnerValue] = useModelValue(props, ctx.emit as SetupContext['emit'])
     const popupVisible = ref(false)
@@ -108,6 +109,10 @@ export default defineComponent({
       ctx.emit('confirm', formStore.getFormData())
     }
 
+    const onQuickSearch = () => {
+      ctx.emit('quick-search', innerValue.value)
+    }
+
     const onReset = () => {
       searchActive.value = false
       formStore.reset()
@@ -130,7 +135,8 @@ export default defineComponent({
       onBlur,
       onFocus,
       onConfirm,
-      onReset
+      onReset,
+      onQuickSearch
     }
   }
 })

@@ -132,6 +132,7 @@ app.use(DSearch)
 |focus|输入框聚焦时触发|value: string, event: Event|
 |clear|清空内容按钮点击时触发|value: string, event: Event|
 |confirm|高级搜索确认事件|value: Record<string, unknown>|
+|quick-search|快捷搜索事件|value: string|
 |reset|高级搜索重置事件|-|
 
 ### TypeScript 类型
