@@ -7,7 +7,7 @@ export const CHECKBOX_GROUP_PROPS = {
   ...pickProps(COMMON_PROPS, ['disabled', 'readonly', 'keys']),
   modelValue: {
     type: [Array] as PropType<(string | number)[]>,
-    required: true
+    default: undefined
   },
   direction: {
     type: String as PropType<DirectionType>,

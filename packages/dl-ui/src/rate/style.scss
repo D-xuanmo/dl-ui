@@ -1,5 +1,33 @@
 @import '../style/prefix';
 
 .#{$prefix}-rate {
+  display: flex;
+  align-items: center;
   @include disabled;
+
+  &--disabled {
+    .#{$prefix}-rate {
+      &__icon {
+        color: inherit;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  &__icon {
+    box-sizing: border-box;
+
+    &--unchecked {
+      color: var(--d-secondary-text-color);
+    }
+
+    &--checked {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
 }

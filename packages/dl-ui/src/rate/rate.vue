@@ -1,24 +1,24 @@
 <template>
-  <div :class="classes">
+  <div :class="classes" :style="style">
     <span v-if="readonly">{{ innerValue }}</span>
     <template v-else>
       <span
         v-for="i in count"
-        :key="i"
+        :key="`id.${i}`"
         :class="bem('item', { active: i <= innerValue })"
-        :style="rateItemStyle"
         @click="handleChange(i)"
       >
         <component
           :is="uncheckedIcon"
-          v-if="i > innerValue"
           :size="size!"
-          :color="disabled ? 'var(--d-disable-color)' : 'var(--d-secondary-text-color)'"
+          :class="bem('icon', 'unchecked')"
+          :color="disabled ? 'var(--d-disable-color)' : undefined"
         />
         <component
           :is="checkedIcon"
           v-if="i <= innerValue"
           :size="size!"
+          :class="bem('icon', 'checked')"
           :color="disabled ? 'var(--d-disable-color)' : activeColor"
         />
       </span>
@@ -28,8 +28,7 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent } from 'vue'
-import { createNamespace, useModelValue } from '@xuanmo/dl-common'
-import { isNumber } from '@xuanmo/utils'
+import { addUnit, createNamespace, useModelValue } from '@xuanmo/dl-common'
 import { RATE_PROPS } from './props'
 
 const [name, bem] = createNamespace('rate')
@@ -43,13 +42,15 @@ export default defineComponent({
       context.emit
     )
 
-    const classes = bem({
-      readonly: props.readonly,
-      disabled: props.disabled
-    })
+    const classes = computed(() =>
+      bem({
+        readonly: props.readonly,
+        disabled: props.disabled
+      })
+    )
 
-    const rateItemStyle = computed<CSSProperties>(() => ({
-      marginRight: isNumber(props.gap) ? `${props.gap}px` : props.gap
+    const style = computed<CSSProperties>(() => ({
+      columnGap: addUnit(props.gap)
     }))
 
     function handleChange(index: number) {
@@ -63,7 +64,7 @@ export default defineComponent({
     return {
       innerValue,
       classes,
-      rateItemStyle,
+      style,
       bem,
       handleChange
     }

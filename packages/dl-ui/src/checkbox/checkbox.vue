@@ -41,7 +41,7 @@ export default defineComponent({
     const labelClassName = bem('label')
     const checked = computed(() => {
       // 如果 group 为空值，则默认选中当前
-      return isEmpty(groupValue) ? props.defaultChecked : groupValue?.value.includes(props.value)
+      return isEmpty(groupValue) ? props.defaultChecked : groupValue?.value?.includes(props.value)
     })
     const iconColor = computed(() => {
       if (disabled.value || readonly.value) return 'var(--d-disable-color)'

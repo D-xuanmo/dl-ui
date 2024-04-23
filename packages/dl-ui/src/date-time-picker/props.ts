@@ -24,7 +24,7 @@ const currentDate = new Date()
 export const DATE_PICKER_PROPS = {
   ...COMMON_PROPS,
   modelValue: {
-    type: [String, Number] as PropType<DateTimePickerValue>,
+    type: [String, Number, Date] as PropType<DateTimePickerValue>,
     default: undefined
   },
 

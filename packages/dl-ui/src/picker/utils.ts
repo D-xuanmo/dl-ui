@@ -74,6 +74,7 @@ export const findDisplayName = (
   optionsMap: Map<string | number, PickerOption>,
   keys?: CustomKeys
 ) => {
+  if (isEmpty(value)) return ''
   const labelKey = keys?.label || 'label'
   const valueKey = keys?.value || 'value'
   const labels: string[] = []

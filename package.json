@@ -11,7 +11,6 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "prestart": "build:lib",
     "start": "yarn workspace docs dev",
     "build:common": "yarn workspace @xuanmo/dl-common build",
     "build:icons": "yarn workspace @xuanmo/dl-icons build",

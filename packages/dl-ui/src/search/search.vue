@@ -34,13 +34,14 @@
     v-if="advancedSearch"
     v-model:visible="popupVisible"
     :popup-container-class="bem('advanced-search')"
+    popup-header-class="safe-area-inset-top"
     placement="right"
     closable
     :title="advancedSearchTitle"
   >
     <d-form v-bind="formProps" client-type="MOBILE" :store="formStore" />
     <template #footer>
-      <div :class="bem('advanced-search-footer')">
+      <div :class="bem('advanced-search-footer')" class="safe-area-inset-bottom">
         <d-button size="large" @click="onReset">{{ searchResetText }}</d-button>
         <d-button theme="primary" size="large" @click="onConfirm">{{ searchConfirmText }}</d-button>
       </div>

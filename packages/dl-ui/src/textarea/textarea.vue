@@ -44,7 +44,7 @@ export default defineComponent({
       context.emit as SetupContext['emit']
     )
 
-    const limit = computed(() => `${innerValue.value.length}/${props.maxlength}`)
+    const limit = computed(() => `${innerValue.value?.length || 0}/${props.maxlength}`)
 
     const handleInput = (event: Event) => {
       updateValue((event.target as HTMLTextAreaElement).value)

@@ -7,7 +7,7 @@ export const RADIO_GROUP_PROPS = {
   ...pickProps(COMMON_PROPS, ['disabled', 'readonly', 'keys']),
   modelValue: {
     type: [String, Number],
-    required: true
+    default: undefined
   },
   options: {
     type: Array as PropType<Array<IData> | undefined>,

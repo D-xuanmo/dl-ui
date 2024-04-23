@@ -1,6 +1,6 @@
 import { ExtractPropTypes, FunctionalComponent, PropType } from 'vue'
 import { SizeType, COMMON_PROPS, pickProps } from '@xuanmo/dl-common'
-import { StarFilled, StarOutlined } from '@xuanmo/dl-icons'
+import { StarFilled } from '@xuanmo/dl-icons'
 
 export type RateProps = ExtractPropTypes<typeof RATE_PROPS>
 
@@ -48,7 +48,7 @@ export const RATE_PROPS = {
    */
   uncheckedIcon: {
     type: Function as PropType<FunctionalComponent>,
-    default: StarOutlined
+    default: StarFilled
   },
 
   /**
