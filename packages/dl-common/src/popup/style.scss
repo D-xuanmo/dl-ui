@@ -21,6 +21,7 @@
   &__header {
     position: relative;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: var(--d-popup-padding) var(--d-popup-padding) 0;
     text-align: center;
@@ -42,9 +43,6 @@
     }
 
     &-closable {
-      position: absolute;
-      top: var(--d-popup-padding);
-      right: var(--d-popup-padding);
       cursor: pointer;
     }
   }

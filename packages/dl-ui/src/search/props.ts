@@ -57,6 +57,14 @@ export const SEARCH_PROPS = {
   },
 
   /**
+   * 显示取消按钮
+   */
+  showCancelButton: {
+    type: Boolean,
+    default: false
+  },
+
+  /**
    * 高级搜索
    */
   advancedSearch: {

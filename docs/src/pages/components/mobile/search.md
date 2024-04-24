@@ -122,6 +122,7 @@ app.use(DSearch)
 |search-reset-text|`string`|`重置`|高级搜索重置按钮文字|N|
 |search-confirm-text|`string`|`确定`|高级搜索确认按钮文字|N|
 |form-props|`FormProps`|-|表单组件 props|N|
+|show-cancel-button|`boolean`|`false`|显示取消按钮|N|
 
 ### Events
 
@@ -130,7 +131,7 @@ app.use(DSearch)
 |update:model-value|输入内容发生改变时触发|value: string(当前输入内容)|
 |blur|输入框失焦时触发|value: string, event: Event|
 |focus|输入框聚焦时触发|value: string, event: Event|
-|clear|清空内容按钮点击时触发|value: string, event: Event|
+|cancel|取消按钮点击事件|value: string, event: Event|
 |confirm|高级搜索确认事件|value: Record<string, unknown>|
 |quick-search|快捷搜索事件|value: string|
 |reset|高级搜索重置事件|-|
