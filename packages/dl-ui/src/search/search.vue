@@ -107,10 +107,12 @@ export default defineComponent({
     }
 
     const onConfirm = () => {
-      searchActive.value = true
-      popupVisible.value = false
-      showCancel.value = true
-      ctx.emit('confirm', formStore.getFormData())
+      formStore.validate().then(() => {
+        searchActive.value = true
+        popupVisible.value = false
+        showCancel.value = true
+        ctx.emit('confirm', formStore.getFormData())
+      })
     }
 
     const onQuickSearch = () => {
