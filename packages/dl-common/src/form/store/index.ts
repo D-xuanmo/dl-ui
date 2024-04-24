@@ -236,7 +236,7 @@ class FormStore {
     ;(this.originalModel as IFormModelItem[]).forEach((item) => {
       if (item.dataKey) {
         const model = this.getItem(item.dataKey)!
-        Object.assign(model, { value: undefined })
+        Object.assign(model, { value: item.value })
         this.updateModel(item.dataKey, model)
       }
     })
