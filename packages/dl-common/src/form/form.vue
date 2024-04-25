@@ -25,16 +25,16 @@ export default defineComponent({
   emits: ['change'],
   setup(props, { emit }) {
     const store = props.store || new FormStore()
-    const formClassName = computed(() =>
-      createFormBEM({
-        'has-bg': props.hasBackground,
-        [props.clientType.toLowerCase()]: true,
-        border: props.border ?? props.clientType === 'MOBILE'
-      })
-    )
     const config = useConfig(
       ['colon', 'requiredMarkPosition', 'layout', 'labelWidth', 'clientType'],
       props as any
+    )
+    const formClassName = computed(() =>
+      createFormBEM({
+        'has-bg': props.hasBackground,
+        [config.value.clientType!.toLowerCase()]: true,
+        border: props.border ?? props.clientType === 'MOBILE'
+      })
     )
 
     const formProps = computed(() => {
