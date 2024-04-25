@@ -20,7 +20,7 @@
     "tsc:clear": "npm run clear && npm run tsc"
   },
   "peerDependencies": {
-    "@xuanmo/validator": "latest"
+    "@xuanmo/validator": "^0.0.16"
   },
   "keywords": [
     "dynamic-form",
