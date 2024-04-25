@@ -31,10 +31,12 @@ export default defineComponent({
     )
 
     return () => {
-      const titleClassName = bem('title', {
-        [props.titleClass ?? '']: toBoolean(props.titleClass),
-        [props.titleAlign]: props.titleAlign
-      })
+      const titleClassName = [
+        props.titleClass,
+        bem('title', {
+          [props.titleAlign]: props.titleAlign
+        })
+      ]
 
       const contentClassName = bem('content', {
         [props.contentClass ?? '']: toBoolean(props.contentClass),
