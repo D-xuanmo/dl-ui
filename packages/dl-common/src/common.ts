@@ -127,8 +127,5 @@ export const COMMON_PROPS = {
   /**
    * 终端类型
    */
-  clientType: {
-    type: String as PropType<'PC' | 'MOBILE'>,
-    default: 'PC'
-  }
+  clientType: String as PropType<'PC' | 'MOBILE'>
 }

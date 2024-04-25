@@ -11,7 +11,8 @@ const globalConfig = {
     children: 'children'
   },
   labelWidth: LABEL_WIDTH,
-  requiredMarkPosition: DEFAULT_REQUIRED_MARK_POSITION
+  requiredMarkPosition: DEFAULT_REQUIRED_MARK_POSITION,
+  clientType: 'PC'
 } as ConfigProviderProps
 
 /**
