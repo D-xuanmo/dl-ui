@@ -41,7 +41,7 @@ export default defineComponent({
     UploadList
   },
   props: UPLOAD_PROPS,
-  emits: ['update:model-value', 'change'],
+  emits: ['update:model-value', 'change', 'success', 'error', 'exceed-count', 'exceed-size'],
   setup(props, { emit }) {
     const wrapperClassName = bem()
     const triggerClassName = computed(() =>
@@ -102,13 +102,15 @@ export default defineComponent({
               ...preview,
               loading: false
             })
+            emit('success', response)
           })
-          .catch(() => {
+          .catch((error) => {
             localPreviewList.value.splice(i, 1, {
               ...currentPreview,
               loading: false,
               fail: true
             })
+            emit('error', error)
           })
           .finally(async () => {
             queueTask--
@@ -128,12 +130,14 @@ export default defineComponent({
       if (!files) return
 
       if (files.length + previewList.value.length > props.maxCount) {
+        emit('exceed-count')
         return debugWarn(name, `已选文件个数不能大于${props.maxCount}个`)
       }
 
       for (let i = 0; i < files.length; i++) {
         const file = files[i]
         if (file.size > props.maxSize) {
+          emit('exceed-size')
           return debugWarn(name, `${file.name}文件大小不能大于${props.maxSize}B`)
         }
 

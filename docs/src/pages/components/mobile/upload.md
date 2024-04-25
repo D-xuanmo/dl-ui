@@ -94,6 +94,17 @@ app.use(DUpload)
 |default|自定义文件上传触发内容|-|
 |preview-item|自定义渲染单个预览|`{ item: UploadListItemType, handler: () => originalFN }`|
 
+### Events
+
+|事件|说明|回调参数|
+|---|----|-------|
+|update:model-value|文件 value 变更|`value: UploadListItemType[]`|
+|change|文件选择，原生事件|`value: FileList`|
+|exceed-size|文件大小超出限制|-|
+|exceed-count|文件个数超出限制|-|
+|success|文件上传成功回调|`value: Response`|
+|error|文件上传失败回调|`value: Response`|
+
 ### TypeScript 类型
 
 ```typescript
