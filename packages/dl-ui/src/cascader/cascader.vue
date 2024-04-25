@@ -1,7 +1,9 @@
 <template>
   <span :class="triggerClassName" @click="showPicker">
-    <span style="vertical-align: middle">{{ displayLabel || placeholder }}</span>
-    <right-outlined v-if="!readonly" color="var(--d-secondary-text-color)" />
+    <slot>
+      <span style="vertical-align: middle">{{ displayLabel || placeholder }}</span>
+      <right-outlined v-if="!readonly" color="var(--d-secondary-text-color)" />
+    </slot>
   </span>
   <d-popup
     :visible="visible"

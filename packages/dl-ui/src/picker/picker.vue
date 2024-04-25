@@ -1,7 +1,9 @@
 <template>
   <span v-if="!controlled" :class="triggerClassName" @click="showPicker">
-    <span style="vertical-align: middle">{{ displayValue }}</span>
-    <right-outlined v-if="!readonly" color="var(--d-secondary-text-color)" />
+    <slot>
+      <span style="vertical-align: middle">{{ displayValue }}</span>
+      <right-outlined v-if="!readonly" color="var(--d-secondary-text-color)" />
+    </slot>
   </span>
   <d-popup :visible="innerVisible" placement="bottom" :title="title" @update:visible="handleClose">
     <template #header-left>
