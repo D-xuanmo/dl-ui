@@ -12,7 +12,7 @@ const globalConfig = {
   },
   labelWidth: LABEL_WIDTH,
   requiredMarkPosition: DEFAULT_REQUIRED_MARK_POSITION,
-  clientType: 'PC'
+  clientType: 'MOBILE'
 } as ConfigProviderProps
 
 /**
