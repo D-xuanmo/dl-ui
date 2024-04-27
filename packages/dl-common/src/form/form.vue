@@ -26,25 +26,26 @@ export default defineComponent({
   setup(props, { emit }) {
     const store = props.store || new FormStore()
     const config = useConfig(
-      ['colon', 'requiredMarkPosition', 'layout', 'labelWidth', 'clientType'],
+      ['colon', 'requiredMarkPosition', 'layout', 'labelWidth', 'clientType', 'border'],
       props as any
     )
     const formClassName = computed(() =>
       createFormBEM({
         'has-bg': props.hasBackground,
         [config.value.clientType!.toLowerCase()]: true,
-        border: props.border ?? props.clientType === 'MOBILE'
+        border: config.value.border ?? config.value.clientType === 'MOBILE'
       })
     )
 
     const formProps = computed(() => {
+      console.log(config.value.border)
       return {
         colon: config.value.colon,
         hideLabel: props.hideLabel,
         layout: config.value.layout,
         labelWidth: config.value.labelWidth,
         clientType: config.value.clientType,
-        border: props.border ?? props.clientType === 'MOBILE',
+        border: config.value.border ?? config.value.clientType === 'MOBILE',
         requiredMarkPosition: config.value.requiredMarkPosition || DEFAULT_REQUIRED_MARK_POSITION
       }
     })

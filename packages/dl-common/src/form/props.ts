@@ -13,7 +13,8 @@ export const FORM_PROPS = {
     'readonly',
     'requiredMarkPosition',
     'labelWidth',
-    'clientType'
+    'clientType',
+    'border'
   ]),
   /**
    * 表单模型
@@ -53,14 +54,6 @@ export const FORM_PROPS = {
   round: {
     type: Boolean,
     default: true
-  },
-
-  /**
-   * 显示边框
-   */
-  border: {
-    type: Boolean,
-    default: undefined
   },
 
   /**

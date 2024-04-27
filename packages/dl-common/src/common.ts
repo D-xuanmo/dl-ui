@@ -127,5 +127,13 @@ export const COMMON_PROPS = {
   /**
    * 终端类型
    */
-  clientType: String as PropType<'PC' | 'MOBILE'>
+  clientType: String as PropType<'PC' | 'MOBILE'>,
+
+  /**
+   * 边框显示
+   */
+  border: {
+    type: Boolean,
+    default: undefined
+  }
 }

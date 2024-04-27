@@ -1,7 +1,7 @@
 import { ExtractPropTypes, PropType } from 'vue'
 import { pickProps } from '../utils'
 import { COMMON_PROPS, DirectionType, HorizontalAlignType } from '../common'
-import { DEFAULT_REQUIRED_MARK_POSITION, LABEL_WIDTH } from '../constants'
+import { DEFAULT_REQUIRED_MARK_POSITION } from '../constants'
 
 export type ConfigProviderTheme = {
   // 主题色
@@ -20,15 +20,7 @@ export type ConfigProviderTheme = {
 export type ConfigProviderProps = ExtractPropTypes<typeof CONFIG_PROVIDER_PROPS>
 
 export const CONFIG_PROVIDER_PROPS = {
-  ...pickProps(COMMON_PROPS, ['keys', 'clientType']),
-
-  /**
-   * 表单宽度
-   */
-  labelWidth: {
-    type: [Number, String] as PropType<number | string>,
-    default: LABEL_WIDTH
-  },
+  ...pickProps(COMMON_PROPS, ['keys', 'clientType', 'labelWidth', 'border']),
 
   /**
    * 标题布局类型
