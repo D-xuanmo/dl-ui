@@ -1,6 +1,6 @@
 import { computed, defineComponent, provide, ref } from 'vue'
 import { createNamespace, addUnit } from '../utils'
-import { isEmpty, toBoolean } from '@xuanmo/utils'
+import { isEmpty } from '@xuanmo/utils'
 import { CELL_PROPS } from './props'
 import { useGlobalConfig } from './utils'
 import { CELL_GROUP_CONTEXT_KEY } from '../cell-group/context'
@@ -33,16 +33,18 @@ export default defineComponent({
 
     return () => {
       const titleClassName = [
-        props.titleClass,
         bem('title', {
           [props.titleAlign]: props.titleAlign
-        })
+        }),
+        props.titleClass
       ]
 
-      const contentClassName = bem('content', {
-        [props.contentClass ?? '']: toBoolean(props.contentClass),
-        [globalConfig.value.contentAlign]: globalConfig.value.contentAlign
-      })
+      const contentClassName = [
+        bem('content', {
+          [globalConfig.value.contentAlign]: globalConfig.value.contentAlign
+        }),
+        props.contentClass
+      ]
 
       const renderLabel = (
         <When
