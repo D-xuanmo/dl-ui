@@ -13,7 +13,7 @@ const app = createApp()
 app.use(DConfigProvider)
 ```
 
-```vue client=Mobile playground=ConfigProvider
+```vue client=Mobile playground=ConfigProvider previewType=iframe
 <template>
   <d-cell-group title="表单操作" cell-title-width="100px">
     <d-cell title="标题宽度">
@@ -130,6 +130,7 @@ app.use(DConfigProvider)
 |keys|`CustomKeys`|-|自定义数据源中的属性，`label`、`value`、`children` 别名，[公用类型定义](https://uoo.ink/common)|N|
 |colon|`boolean`|`false`|是否显示冒号，仅 `Form` 支持|N|
 |border|`boolean`|`false`|是否显示边框，支持的组件：`Cell`、`Form` 支持|N|
+|round|`boolean`|`true`|是否显示圆角，支持的组件：`Cell`、`Form` 支持|N|
 |layout|`'horizontal' \| 'vertical'`|`horizontal`|布局类型，支持的组件有：`Cell`、`Form`|N|
 |required-mark-position|`'left' \| 'right'`|`right`|必填标识显示位置，支持的组件有：`Cell`、`Form`|N|
 |label-width|`string \| number`|`80px`|标题宽度，支持的组件有：`Cell`、`Form`|N|

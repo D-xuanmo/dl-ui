@@ -4,7 +4,6 @@
   --d-cell-group-title-gap-bottom: var(--d-gap-xs);
   --d-cell-group-title-gap-padding: var(--d-gap-sm);
   --d-cell-group-gap-bottom: var(--d-gap-sm);
-  --d-cell-group-radius: var(--d-radius-large);
 }
 
 .#{$prefix}-cell-group {
@@ -18,12 +17,5 @@
     margin-bottom: var(--d-cell-group-title-gap-bottom);
     padding: 0 var(--d-cell-group-title-gap-padding);
     color: var(--d-secondary-text-color);
-  }
-
-  &__content {
-    &--round {
-      overflow: hidden;
-      border-radius: var(--d-cell-group-radius);
-    }
   }
 }

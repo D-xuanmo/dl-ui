@@ -26,7 +26,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const store = props.store || new FormStore()
     const config = useConfig(
-      ['colon', 'requiredMarkPosition', 'layout', 'labelWidth', 'clientType', 'border'],
+      ['colon', 'requiredMarkPosition', 'layout', 'labelWidth', 'clientType', 'border', 'round'],
       props as any
     )
     const formClassName = computed(() =>
@@ -38,13 +38,13 @@ export default defineComponent({
     )
 
     const formProps = computed(() => {
-      console.log(config.value.border)
       return {
         colon: config.value.colon,
         hideLabel: props.hideLabel,
         layout: config.value.layout,
         labelWidth: config.value.labelWidth,
         clientType: config.value.clientType,
+        round: config.value.round,
         border: config.value.border ?? config.value.clientType === 'MOBILE',
         requiredMarkPosition: config.value.requiredMarkPosition || DEFAULT_REQUIRED_MARK_POSITION
       }

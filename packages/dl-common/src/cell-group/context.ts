@@ -3,7 +3,7 @@ import { CellGroupProps } from './props'
 import { DirectionType } from '../common'
 
 interface CellGroupConfig
-  extends Pick<CellGroupProps, 'cellTitleWidth' | 'cellContentAlign' | 'border'> {
+  extends Pick<CellGroupProps, 'cellTitleWidth' | 'cellContentAlign' | 'border' | 'round'> {
   layout: Ref<DirectionType>
 }
 

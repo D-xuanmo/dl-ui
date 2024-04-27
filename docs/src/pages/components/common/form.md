@@ -42,7 +42,7 @@ app.use(DForm).use(DFormCellGroup).use(DFormGrid)
 
 ## 代码演示
 
-```vue client=Mobile title=移动端所有组件 playground=Form
+```vue client=Mobile title=移动端所有组件 playground=Form previewType=iframe
 <template>
   <d-form
     ref='formRef'

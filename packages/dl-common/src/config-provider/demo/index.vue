@@ -6,6 +6,12 @@
     <d-cell title="显示冒号">
       <d-switch v-model="colon" />
     </d-cell>
+    <d-cell title="显示圆角">
+      <d-switch v-model="round" />
+    </d-cell>
+    <d-cell title="显示边框">
+      <d-switch v-model="border" />
+    </d-cell>
     <d-cell title="布局切换">
       <d-radio-group v-model="formLayout" :options="formLayoutOptions" direction="horizontal" />
     </d-cell>
@@ -20,13 +26,15 @@
 
   <d-config-provider
     :colon="colon"
+    :round="round"
     :theme="theme"
+    :border="border"
     client-type="MOBILE"
     :layout="formLayout"
     :label-width="labelWidth"
     :required-mark-position="requiredMarkPosition"
   >
-    <d-cell title="单元格" required>我是单元格内容</d-cell>
+    <d-cell title="单元格" required style="margin-bottom: 10px">我是单元格内容</d-cell>
     <d-form :models="formModels" client-type="MOBILE" />
   </d-config-provider>
 </template>
@@ -39,6 +47,8 @@ import ButtonGroup from './button-group.vue'
 const formLayout = ref<any>('horizontal')
 const requiredMarkPosition = ref<any>('left')
 const labelWidth = ref(80)
+const round = ref(true)
+const border = ref(true)
 const colon = ref(false)
 
 const formLayoutOptions = [

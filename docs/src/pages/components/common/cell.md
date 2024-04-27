@@ -67,7 +67,7 @@ import { TipsOutlined, CloseOutlined } from '@xuanmo/dl-icons'
 |---|----|-----|---|----|
 |title|`string`|-|分组标题|N|
 |cell-title-width|`string`|`80px`|单元格标题宽度|N|
-|round|`boolean`|`false`|是否展示圆角|N|
+|round|`boolean`|`true`|是否展示圆角|N|
 |border|`boolean`|`true`|是否显示边框|N|
 |layout|`'horizontal' \| 'vertical'`|`horizontal`|布局类型|N|
 
@@ -87,6 +87,7 @@ import { TipsOutlined, CloseOutlined } from '@xuanmo/dl-icons'
 |disabled|`boolean`|-|是否禁用|N|
 |suffix|`string`|-|扩展内容|N|
 |arrow|`boolean`|`false`|是否显示右侧箭头|N|
+|round|`boolean`|`true`|是否展示圆角|N|
 |border|`boolean`|true|是否显示边框|N|
 |layout|`'horizontal' \| 'vertical'`|`horizontal`|布局类型|N|
 |description|`string`|-|描述|N|
@@ -113,10 +114,10 @@ import type { CellGroupProps, CellProps } from '@xuanmo/dl-ui'
 ### CSS 变量
 
 |变量名|默认值|描述|
-|-----|-----|----|
+|-----|-----|--|
 |--d-cell-group-title-gap-bottom|var(--d-gap-xs)|标题下外边距|
 |--d-cell-group-title-gap-padding|var(--d-gap-sm)|标题左右内边距|
 |--d-cell-group-gap-bottom|var(--d-gap-sm)|分组与分组间的边距|
-|--d-cell-group-radius|var(--d-radius-large)|分组圆角|
+|--d-cell-radius|var(--d-radius-large)|圆角|
 |--d-cell-padding|var(--d-horizontal-gap) var(--d-gap-sm)|单元格内边距|
 |--d-cell-background|var(--d-white-color)|单元格背景色|

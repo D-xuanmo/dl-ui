@@ -13,7 +13,8 @@ const globalConfig = {
   labelWidth: LABEL_WIDTH,
   requiredMarkPosition: DEFAULT_REQUIRED_MARK_POSITION,
   clientType: 'MOBILE',
-  layout: 'horizontal'
+  layout: 'horizontal',
+  round: true
 } as ConfigProviderProps
 
 /**
@@ -43,7 +44,7 @@ export function useConfig<
         return {
           ...prev,
           [currentKey]: isEmpty(currentProps[currentKey])
-            ? config[currentKey]
+            ? config[currentKey] ?? globalConfig[currentKey]
             : currentProps[currentKey]
         }
       }, {}) as { [Key in T]: Key extends 'keys' ? Required<CustomKeys> : ConfigProviderProps[Key] }

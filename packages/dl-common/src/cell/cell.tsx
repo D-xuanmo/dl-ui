@@ -26,7 +26,8 @@ export default defineComponent({
         [`layout-${globalConfig.value.layout}`]: globalConfig.value.layout,
         disabled: props.disabled,
         border: globalConfig.value.border || globalConfig.value.border === undefined,
-        [`${globalConfig.value.clientType?.toLowerCase()}`]: true
+        [`${globalConfig.value.clientType?.toLowerCase()}`]: true,
+        round: globalConfig.value.round
       })
     )
 

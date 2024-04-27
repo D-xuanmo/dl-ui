@@ -14,13 +14,14 @@ export default defineComponent({
   setup(props, { slots }) {
     const layout = ref(props.layout)
 
-    const config = useConfig(['border'], props)
+    const config = useConfig(['border', 'round'], props)
 
     provide(CELL_GROUP_CONTEXT_KEY, {
       cellTitleWidth: props.cellTitleWidth || LABEL_WIDTH,
       cellContentAlign: props.cellContentAlign,
       layout: layout as Ref<DirectionType>,
-      border: config.value.border
+      border: config.value.border,
+      round: config.value.round
     })
 
     watchEffect(() => {
@@ -28,11 +29,11 @@ export default defineComponent({
     })
 
     return () => {
-      const { title, round } = props
+      const { title } = props
       return (
         <div class={bem()}>
           {title && <p class={bem('title')}>{title}</p>}
-          <div class={bem('content', { round })}>{slots.default?.()}</div>
+          <div class={bem('content')}>{slots.default?.()}</div>
         </div>
       )
     }

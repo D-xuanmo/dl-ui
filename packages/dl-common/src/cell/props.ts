@@ -5,7 +5,7 @@ import { pickProps } from '../utils'
 export type CellProps = ExtractPropTypes<typeof CELL_PROPS>
 
 export const CELL_PROPS = {
-  ...pickProps(COMMON_PROPS, ['requiredMarkPosition', 'clientType']),
+  ...pickProps(COMMON_PROPS, ['requiredMarkPosition', 'clientType', 'border', 'round']),
   title: String,
   titleClass: String,
   titleWidth: [String, Number],
@@ -15,19 +15,12 @@ export const CELL_PROPS = {
   },
   hideTitle: Boolean,
   required: Boolean,
-
   content: String as PropType<string | undefined>,
   contentClass: String,
   contentAlign: String as PropType<HorizontalAlignType>,
   disabled: Boolean,
-
   suffix: String,
   description: String,
-
   arrow: Boolean,
-  border: {
-    type: Boolean,
-    default: undefined
-  },
   layout: String as PropType<DirectionType | undefined>
 }

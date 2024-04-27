@@ -135,5 +135,13 @@ export const COMMON_PROPS = {
   border: {
     type: Boolean,
     default: undefined
+  },
+
+  /**
+   * 显示圆角
+   */
+  round: {
+    type: Boolean,
+    default: undefined
   }
 }

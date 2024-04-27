@@ -14,7 +14,8 @@ export const FORM_PROPS = {
     'requiredMarkPosition',
     'labelWidth',
     'clientType',
-    'border'
+    'border',
+    'round'
   ]),
   /**
    * 表单模型
@@ -47,14 +48,6 @@ export const FORM_PROPS = {
    * 是否隐藏标题
    */
   hideLabel: Boolean,
-
-  /**
-   * 显示圆角
-   */
-  round: {
-    type: Boolean,
-    default: true
-  },
 
   /**
    * 是否显示背景

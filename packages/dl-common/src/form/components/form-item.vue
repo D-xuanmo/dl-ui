@@ -7,6 +7,7 @@
     :layout="model.layout.layout || formProps.layout"
     :hide-title="formProps.hideLabel || model.hideLabel"
     :colon="formProps.colon"
+    :round="formProps.round"
     :border="formProps.border"
     :client-type="formProps.clientType"
     :description="model.description"

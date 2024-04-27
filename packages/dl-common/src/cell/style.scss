@@ -4,6 +4,7 @@
 :root {
   --d-cell-padding: var(--d-horizontal-gap) var(--d-gap-sm);
   --d-cell-background: var(--d-white-color);
+  --d-cell-radius: var(--d-radius-large);
 }
 
 .#{$prefix}-cell {
@@ -90,6 +91,20 @@
       &__content {
         color: var(--d-disable-color);
       }
+    }
+  }
+
+  &--round {
+    overflow: hidden;
+
+    &:first-of-type {
+      border-top-left-radius: var(--d-cell-radius);
+      border-top-right-radius: var(--d-cell-radius);
+    }
+
+    &:last-of-type {
+      border-bottom-left-radius: var(--d-cell-radius);
+      border-bottom-right-radius: var(--d-cell-radius);
     }
   }
 
