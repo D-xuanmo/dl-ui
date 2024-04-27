@@ -1,8 +1,8 @@
 import { defineComponent, FunctionalComponent } from 'vue'
 import { manifest } from '@xuanmo/dl-icons'
 import { createNamespace } from '@doc/utils'
-import './style.scss'
 import { copyText } from '@doc/utils/copy'
+import './style.scss'
 
 console.log(manifest)
 const [name, bem] = createNamespace('icons-preview')
@@ -20,7 +20,7 @@ const ListItem: FunctionalComponent<ListItemProps> = (props) => {
   const { Comp, name } = props.data
 
   const handleCopy = () => {
-    copyText(`<${name} />`, `<${name} /> 复制成功 🎉`)
+    copyText(name, `${name} 复制成功 🎉`)
   }
 
   return (

@@ -3,6 +3,7 @@
     &__list {
       display: flex;
       flex-wrap: wrap;
+      gap: var(--d-gap-sm);
 
       &-title {
         font-size: 18px;
@@ -17,7 +18,6 @@
 
     &__item {
       width: calc(100% / 8);
-      margin-bottom: 16px;
       list-style: none;
       text-align: center;
       cursor: pointer;
