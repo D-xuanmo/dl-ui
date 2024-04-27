@@ -1,7 +1,9 @@
 <template>
   <div :class="wrapperClassName" @click="handleChange">
-    <check-square-filled v-if="checked" :color="iconColor" />
-    <border-square-outlined v-else :color="iconColor" />
+    <template v-if="!readonly">
+      <check-square-filled v-if="checked" :color="iconColor" />
+      <border-square-outlined v-else :color="iconColor" />
+    </template>
     <span v-if="label || $slots.default" :class="labelClassName">
       <slot>{{ label }}</slot>
     </span>
@@ -45,7 +47,7 @@ export default defineComponent({
     })
     const iconColor = computed(() => {
       if (disabled.value || readonly.value) return 'var(--d-disable-color)'
-      return checked.value ? 'var(--d-primary)' : 'var(--d-secondary-text-color)'
+      return checked.value ? 'var(--d-primary)' : 'var(--d-checkbox-unchecked-color)'
     })
 
     const handleChange = () => {
@@ -61,6 +63,7 @@ export default defineComponent({
       labelClassName,
       iconColor,
       checked,
+      readonly,
       handleChange
     }
   }

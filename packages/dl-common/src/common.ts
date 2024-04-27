@@ -143,5 +143,14 @@ export const COMMON_PROPS = {
   round: {
     type: Boolean,
     default: undefined
+  },
+
+  /**
+   * 分隔符
+   * 常用于多个值合并显示进行分割
+   */
+  separator: {
+    type: String,
+    default: undefined
   }
 }

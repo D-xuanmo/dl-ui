@@ -20,7 +20,7 @@ export type ConfigProviderTheme = {
 export type ConfigProviderProps = ExtractPropTypes<typeof CONFIG_PROVIDER_PROPS>
 
 export const CONFIG_PROVIDER_PROPS = {
-  ...pickProps(COMMON_PROPS, ['keys', 'clientType', 'labelWidth', 'border', 'round']),
+  ...pickProps(COMMON_PROPS, ['keys', 'clientType', 'labelWidth', 'border', 'round', 'separator']),
 
   /**
    * 标题布局类型

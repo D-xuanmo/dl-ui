@@ -1,5 +1,9 @@
 @import '../style/prefix';
 
+:root {
+  --d-rate-unckecked-color: var(--d-gray-4);
+}
+
 .#{$prefix}-rate {
   display: flex;
   align-items: center;
@@ -21,7 +25,7 @@
     box-sizing: border-box;
 
     &--unchecked {
-      color: var(--d-secondary-text-color);
+      color: var(--d-rate-unckecked-color);
     }
 
     &--checked {

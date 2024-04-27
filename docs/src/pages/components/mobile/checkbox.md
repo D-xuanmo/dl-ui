@@ -92,6 +92,7 @@ const value2 = ref(['1', '3'])
 |disabled|`boolean`|-|是否禁用|N|
 |max|`number`|-|最大选择个数|N|
 |options|`IData[]`|-|复选框数据项|N|
+|separator|`string`|`,`|分隔符|N|
 
 ### TypeScript 类型
 

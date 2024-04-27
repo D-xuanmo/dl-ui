@@ -2,7 +2,7 @@ import { ConfigProviderInjectKey, ConfigProviderProps } from '../config-provider
 import { computed, inject } from 'vue'
 import { isEmpty } from '@xuanmo/utils'
 import { CustomKeys } from '../common'
-import { DEFAULT_REQUIRED_MARK_POSITION, LABEL_WIDTH } from '../constants'
+import { DEFAULT_REQUIRED_MARK_POSITION, LABEL_WIDTH, SEPARATOR } from '../constants'
 
 const globalConfig = {
   keys: {
@@ -14,7 +14,8 @@ const globalConfig = {
   requiredMarkPosition: DEFAULT_REQUIRED_MARK_POSITION,
   clientType: 'MOBILE',
   layout: 'horizontal',
-  round: true
+  round: true,
+  separator: SEPARATOR
 } as ConfigProviderProps
 
 /**

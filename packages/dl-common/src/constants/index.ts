@@ -51,3 +51,9 @@ export enum MessageThemeEnum {
   warning = 'warning',
   error = 'error'
 }
+
+/**
+ * 分隔符
+ * 常用于多个值合并显示进行分割
+ */
+export const SEPARATOR = ','

@@ -1,6 +1,10 @@
 @import '../style/prefix.scss';
 @import '../style/mixins.scss';
 
+:root {
+  --d-checkbox-unchecked-color: var(--d-gray-4);
+}
+
 .#{$prefix}-checkbox {
   display: flex;
   align-items: center;

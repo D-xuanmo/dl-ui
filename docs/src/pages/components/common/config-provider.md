@@ -135,6 +135,7 @@ app.use(DConfigProvider)
 |required-mark-position|`'left' \| 'right'`|`right`|必填标识显示位置，支持的组件有：`Cell`、`Form`|N|
 |label-width|`string \| number`|`80px`|标题宽度，支持的组件有：`Cell`、`Form`|N|
 |client-type|`'PC' \| 'MOBILE'`|`PC`|终端类型|N|
+|separator|`string`|`,`|分隔符，支持的组件有：`CheckboxGroup`|N|
 
 ## TS 类型
 

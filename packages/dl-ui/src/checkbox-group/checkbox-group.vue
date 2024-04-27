@@ -1,14 +1,17 @@
 <template>
   <div :class="wrapperClassName">
-    <template v-if="options">
-      <d-checkbox
-        v-for="option in options"
-        :key="(option as any)[valueKey]"
-        :label="(option as any)[labelKey]"
-        :value="(option as any)[valueKey]"
-      />
+    <template v-if="!readonly">
+      <template v-if="options">
+        <d-checkbox
+          v-for="option in options"
+          :key="(option as any)[valueKey]"
+          :label="(option as any)[labelKey]"
+          :value="(option as any)[valueKey]"
+        />
+      </template>
+      <slot v-else />
     </template>
-    <slot v-else />
+    <template v-else>{{ displayName }}</template>
   </div>
 </template>
 
@@ -29,21 +32,29 @@ export default defineComponent({
   props: CHECKBOX_GROUP_PROPS,
   emits: ['update:model-value'],
   setup(props, { emit }) {
-    const config = useConfig(['keys'], props)
+    const config = useConfig(['keys', 'separator'], props)
+    const valueKey = config.value.keys?.value || 'value'
+    const labelKey = config.value.keys?.label || 'label'
     const wrapperClassName = bem({
       horizontal: props.direction === 'horizontal',
       vertical: props.direction === 'vertical'
     })
-    const [innerValue] = useModelValue(props, emit as SetupContext['emit'])
+    const [innerValue, updateValue] = useModelValue(props, emit as SetupContext['emit'])
     const disabled = computed(() => props.disabled)
     const readonly = computed(() => props.readonly)
-
-    const valueKey = config.value.keys?.value || 'value'
-    const labelKey = config.value.keys?.label || 'label'
+    const displayName = computed<string>(() => {
+      if (!readonly.value || !props.options?.length) return ''
+      const result: string[] = []
+      innerValue.value?.forEach((value) => {
+        const option = props.options?.find((o) => o[valueKey as 'value'] === value)
+        option && result.push(option[labelKey as 'label'])
+      })
+      return result.join(config.value.separator)
+    })
 
     const updateModelValue = (value: UnwrapRef<CheckboxGroupContextType['value']>) => {
       if (value.length > props.max!) return
-      emit('update:model-value', value)
+      updateValue(value)
     }
 
     provide(CHECKBOX_GROUP_CONTEXT_KEY, {
@@ -58,6 +69,8 @@ export default defineComponent({
       wrapperClassName,
       valueKey,
       labelKey,
+      readonly,
+      displayName,
       updateModelValue
     }
   }

@@ -1,6 +1,10 @@
 @import '../style/prefix.scss';
 @import '../style/mixins.scss';
 
+:root {
+  --d-radio-unchecked-color: var(--d-gray-4);
+}
+
 .#{$prefix}-radio {
   display: flex;
   align-items: center;

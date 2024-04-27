@@ -1,7 +1,7 @@
 @import '../style/prefix.scss';
 
 :root {
-  --d-switch-bg-color: #bcbcbc;
+  --d-switch-bg-color: var(--d-gray-4);
   --d-switch-small-width: 30px;
   --d-switch-small-height: 16px;
   --d-switch-medium-width: 40px;
