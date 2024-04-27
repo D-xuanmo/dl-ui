@@ -32,6 +32,17 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
     [
       {
         id: createRandomID(),
+        groupTitle: '全局配置',
+        children: [
+          {
+            id: 'dialog',
+            path: '/comp-common/config-provider',
+            content: 'ConfigProvider [全局化配置]'
+          }
+        ]
+      },
+      {
+        id: createRandomID(),
         groupTitle: '基础',
         children: [
           { id: 'button', path: '/comp-common/button', content: 'Button [按钮]' },
@@ -70,17 +81,6 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
           { id: 'message', path: '/comp-common/message', content: 'Message [消息提示]' },
           { id: 'loading', path: '/comp-common/loading', content: 'Loading [加载提示]' }
         ]
-      },
-      {
-        id: createRandomID(),
-        groupTitle: '其他',
-        children: [
-          {
-            id: 'dialog',
-            path: '/comp-common/config-provider',
-            content: 'ConfigProvider [全局化配置]'
-          }
-        ]
       }
     ]
   ],
@@ -108,6 +108,11 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
           { id: 'upload', path: '/comp-mobile/upload', content: 'Upload [文件上传]' },
           { id: 'search', path: '/comp-mobile/search', content: 'Search [搜索]' }
         ]
+      },
+      {
+        id: createRandomID(),
+        groupTitle: '反馈',
+        children: [{ id: 'toast', path: '/comp-mobile/toast', content: 'Toast [轻提示]' }]
       }
     ]
   ]

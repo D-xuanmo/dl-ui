@@ -1,0 +1,29 @@
+@import '../style/prefix.scss';
+
+:root {
+  --d-toast-bg-color: rgba(0, 0, 0, 0.9);
+  --d-toast-radius: var(--d-radius-medium);
+  --d-toast-max-width: 80%;
+}
+
+.#{$prefix}-toast {
+  pointer-events: none;
+
+  &__wrapper {
+    max-width: var(--d-toast-max-width);
+    padding: 0;
+    background-color: var(--d-toast-bg-color);
+    border-radius: var(--d-toast-radius);
+    color: var(--d-white-color);
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: var(--d-gap-xs);
+
+    &--vertical {
+      flex-direction: column;
+    }
+  }
+}
