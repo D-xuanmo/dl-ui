@@ -40,7 +40,7 @@
   --d-gray-14: #181818;
 
   // 边框颜色
-  --d-border-color: #e5e5e5;
+  --d-border-color: var(--d-gray-3);
   --d-border: 1px solid var(--d-border-color);
 
   // 阴影

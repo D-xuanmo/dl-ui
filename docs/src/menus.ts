@@ -21,7 +21,6 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
           { id: 'dl-cli', path: '/docs/dl-cli', content: 'dl-cli 脚手架' },
           { id: 'common', path: '/docs/common', content: '全局说明' },
           { id: 'custom', path: '/docs/custom', content: '自定义能力' },
-          { id: 'questions', path: '/docs/questions', content: '常见问题' },
           { id: 'guide', path: '/docs/guide', content: '项目规范' }
         ]
       }

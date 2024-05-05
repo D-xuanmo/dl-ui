@@ -7,6 +7,7 @@
 - `packages/dl-common` 全局公用方法、样式、组件（PC、H5）
 - `packages/dl-icons` 独立图标库
 - `packages/dl-ui` 组件目录
+- `packages/dl-cli` 脚手架
 
 ## 目录、文件命名规则
 
