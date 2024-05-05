@@ -42,10 +42,9 @@ app.use(DSpace)
 </template>
 ```
 
-```vue playground=389vma8
+```vue playground=389vma8 title=水平对齐方式
 <template>
   <d-space :gap='10' direction="vertical">
-    <p>水平对齐方式</p>
     <d-radio-group v-model="justify" direction="horizontal">
       <d-radio value="start" label="start" />
       <d-radio value="center" label="center" />

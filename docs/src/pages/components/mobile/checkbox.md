@@ -15,7 +15,7 @@ app.use(DCheckboxGroup).use(DCheckbox)
 
 ## 代码演示
 
-```vue client=Mobile playground=MCheckbox
+```vue client=Mobile playground=MCheckbox previewType=iframe
 <template>
   <dl-demo-block title="基础用法">
     <d-checkbox-group v-model="value">

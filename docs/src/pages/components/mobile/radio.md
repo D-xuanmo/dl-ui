@@ -15,7 +15,7 @@ app.use(DRadioGroup).use(DRadio)
 
 ## 代码演示
 
-```vue client=Mobile playground=MRadio
+```vue client=Mobile playground=MRadio previewType=iframe
 <template>
   <dl-demo-block title="基本用法">
     <d-radio-group v-model="value">

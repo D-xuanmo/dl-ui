@@ -15,7 +15,7 @@ app.use(DInput)
 
 ## 代码演示
 
-```vue client=Mobile playground=MInput
+```vue client=Mobile playground=MInput previewType=iframe
 <template>
   <d-cell-group title="基础用法">
     <d-cell title="输入框">

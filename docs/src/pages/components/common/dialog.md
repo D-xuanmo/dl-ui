@@ -38,7 +38,7 @@ const visible = ref(false)
   <markdown>
     设置 `show-icon` 为 `true`，即可显示图标
   </markdown>
-  <d-space :gap="4">
+  <d-space :gap="4" wrap>
     <d-button @click="visible1 = true" theme="primary">提示反馈</d-button>
     <d-dialog v-model:visible="visible1" show-icon theme="info" title="标题">
       对话框内容

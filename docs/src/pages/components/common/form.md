@@ -740,7 +740,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 </script>
 ```
 
-## API
+## 开发说明
 
 ### 内置布局容器
 
@@ -763,12 +763,15 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 
 ### 开发布局组件
 
-- 表单支持自定义开发一个布局类型组件，通过 `import { useLinkChildren } from '@xuanmo/dl-common` 引入获取子级集合的 hook
+- FormItem 引入 `import { DFormItem } from '@xuanmo/dl-common'`
+- 布局类型组件需要获取子级集合，通过 `import { useLinkChildren } from '@xuanmo/dl-common'` hook 进行获取
 - 组件示例参考：[https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/form/layout/form-grid/index.vue](https://github.com/D-xuanmo/dl-ui/blob/develop/packages/dl-common/src/form/layout/form-grid/index.vue)
 
 ### 更多案例
 
 1. 结合 [TDesign](https://tdesign.tencent.com/vue-next) 实现的表单，参考链接：[https://uoo.ink/DL-TDesign](https://uoo.ink/DL-TDesign)
+
+## API
 
 ### Form Props
 
@@ -792,11 +795,13 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 
 #### Vue 事件
 
+解释：使用方式遵循 Vue 事件模式，表单因为更多的数据能力都是在 store 中，不是很推荐 Vue 事件模式，推荐事件事件中心
+
 |事件名|类型|说明|
 |-----|----|---|
 |change|`(value: Record<string, unknown>, model: IFormModelItem) => void`|表单数据发生改变时触发|
 
-#### formStore.events 事件中心
+#### FormStore.events 事件中心
 
 解释：events 主要用于当前表单下的所有事件收集，提供订阅、拦截能力，事件更丰富
 

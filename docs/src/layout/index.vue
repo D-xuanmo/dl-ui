@@ -1,6 +1,6 @@
 <template>
   <d-layout :class="containerClassName">
-    <d-layout-header :class="headerClass">
+    <d-layout-header :class="headerClass" height="58px">
       <doc-header />
     </d-layout-header>
 
@@ -73,7 +73,8 @@ const menuData = computed(() => getMenuList(route.params.type as any))
     }
 
     &-left {
-      line-height: 50px;
+      display: flex;
+      align-items: center;
     }
 
     &-center {
