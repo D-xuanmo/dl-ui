@@ -1,9 +1,7 @@
 <template>
   <d-space direction="vertical" :gap="24">
     <d-space :gap="8">
-      <d-button theme="primary">按钮</d-button>
-      <d-button theme="primary">按钮</d-button>
-      <d-button theme="primary">按钮</d-button>
+      <d-button v-for="i in 5" :key="i" theme="primary">按钮</d-button>
     </d-space>
 
     <d-space :gap="8" direction="vertical">

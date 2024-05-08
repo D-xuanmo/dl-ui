@@ -1,6 +1,7 @@
 import { computed, defineComponent } from 'vue'
 import { addUnit, createNamespace } from '../utils'
 import { SPACE_PROPS } from './props'
+import { findChildren } from '../utils/find-children'
 
 const [name, bem] = createNamespace('space')
 
@@ -18,7 +19,7 @@ export default defineComponent({
         }),
         attrs.class
       ])
-      const children = slots.default?.() ?? []
+      const children = findChildren(slots.default?.() ?? [])
       const spaceItemClassName = bem('item')
       const spaceItems = children.map((item, index) => {
         return (
