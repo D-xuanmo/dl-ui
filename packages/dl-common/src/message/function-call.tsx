@@ -1,15 +1,15 @@
-import { getCurrentInstance, reactive } from 'vue'
+import { reactive } from 'vue'
 import { PREFIX } from '../constants'
-import { mountComponent } from '../utils'
+import { mountComponent, getID } from '../utils'
 import { MessageProps } from './props'
 import DMessage from './message.vue'
+
+type MessageOptions = Partial<Pick<MessageProps, 'duration' | 'closable'>>
 
 export type MessageInstance = {
   open: () => void
   destroy: () => void
 }
-
-type MessageOption = Partial<Pick<MessageProps, 'duration' | 'closable'>>
 
 let wrapperId: string | null = null
 
@@ -19,9 +19,9 @@ const defaultProps: Partial<MessageProps> = {
   duration: 2000
 }
 
-function createInstance(option: MessageOption, id: string) {
+function createInstance(option: MessageOptions, id: string) {
   const { instance, unmount } = mountComponent({
-    setup() {
+    setup(_, { expose }) {
       const state = reactive({
         show: false
       })
@@ -38,7 +38,9 @@ function createInstance(option: MessageOption, id: string) {
         }, defaultProps.duration ?? option.duration)
       }
 
-      ;(getCurrentInstance() as any).render = () => {
+      expose({ open: handleOpen, destroy: handleClose })
+
+      return () => {
         const attrs = {
           ...defaultProps,
           ...option,
@@ -48,11 +50,6 @@ function createInstance(option: MessageOption, id: string) {
           'onUpdate:visible': handleClose
         }
         return <DMessage {...attrs} />
-      }
-
-      return {
-        open: handleOpen,
-        destroy: handleClose
       }
     }
   })
@@ -80,44 +77,47 @@ function showMessage(props: string | Partial<Omit<MessageProps, 'visible'>>) {
     }
   }
 
-  const id = `message@${Date.now()}`
+  const id = getID('message')
   const instance = createInstance(options, id)
   messageInstances.set(id, instance)
   instance.open()
   return instance
 }
 
+/**
+ * TODO 下个主版本去掉
+ */
 export const MessagePlugin = {
-  text: (content: string, option?: MessageOption) =>
+  text: (content: string, option?: MessageOptions) =>
     showMessage({
       content,
       ...option
     }),
-  info: (content: string, option?: MessageOption) =>
+  info: (content: string, option?: MessageOptions) =>
     showMessage({
       content,
       theme: 'info',
       ...option
     }),
-  success: (content: string, option?: MessageOption) =>
+  success: (content: string, option?: MessageOptions) =>
     showMessage({
       content,
       theme: 'success',
       ...option
     }),
-  warning: (content: string, option?: MessageOption) =>
+  warning: (content: string, option?: MessageOptions) =>
     showMessage({
       content,
       theme: 'warning',
       ...option
     }),
-  error: (content: string, option?: MessageOption) =>
+  error: (content: string, option?: MessageOptions) =>
     showMessage({
       content,
       theme: 'error',
       ...option
     }),
-  loading: (content: string, option?: MessageOption) =>
+  loading: (content: string, option?: MessageOptions) =>
     showMessage({
       content,
       type: 'loading',
@@ -128,4 +128,8 @@ export const MessagePlugin = {
       instance.destroy()
     })
   }
+}
+
+export const useMessage = () => {
+  return MessagePlugin
 }

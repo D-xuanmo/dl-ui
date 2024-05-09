@@ -32,7 +32,9 @@ app.use(DToast)
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ToastPlugin } from '@xuanmo/dl-ui'
+import { useToast } from '@xuanmo/dl-ui'
+
+const toast = useToast()
 
 const visible1 = ref(false)
 const visible2 = ref(false)
@@ -40,7 +42,7 @@ const visible3 = ref(false)
 const visible4 = ref(false)
 
 const show = (text: string) => {
-  ToastPlugin.loading(text)
+  toast.loading(text)
 }
 </script>
 ```
@@ -53,6 +55,7 @@ const show = (text: string) => {
 |---|----|-----|---|----|
 |visible/v-model|`boolean`|-|显示状态|Y|
 |duration|`number`|`2000`|消息提示时间，单位毫秒|N|
+|direction|`DirectionType`|`horizontal`|排列方式|N|
 
 ### Toast Plugin
 

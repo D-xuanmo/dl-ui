@@ -14,7 +14,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ToastPlugin } from '../index'
+import { useToast } from '../index'
+
+const toast = useToast()
 
 const visible1 = ref(false)
 const visible2 = ref(false)
@@ -22,6 +24,6 @@ const visible3 = ref(false)
 const visible4 = ref(false)
 
 const show = (text: string) => {
-  ToastPlugin.loading(text)
+  toast.loading(text)
 }
 </script>

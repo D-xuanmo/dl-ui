@@ -1,6 +1,9 @@
 import { DDialog, DialogProps } from './index'
-import { mountComponent } from '../utils'
-import { getCurrentInstance, reactive, ref } from 'vue'
+import { mountComponent, getID } from '../utils'
+import { reactive, ref } from 'vue'
+import { useConfig } from '../hooks'
+
+type DialogOptions = Partial<Omit<DialogProps, 'visible'>>
 
 export type DialogInstance = {
   open: () => void
@@ -10,9 +13,9 @@ export type DialogInstance = {
 
 const dialogInstances: Map<string, DialogInstance> = new Map()
 
-function createInstance(options: Partial<Omit<DialogProps, 'visible'>>) {
+function createInstance(options: DialogOptions) {
   const { instance, unmount } = mountComponent({
-    setup() {
+    setup(_props, { expose }) {
       const visible = ref(false)
       const dialogProps = reactive(options)
 
@@ -25,11 +28,13 @@ function createInstance(options: Partial<Omit<DialogProps, 'visible'>>) {
         unmount()
       }
 
-      const update = (options: Omit<DialogProps, 'visible'>) => {
+      const update = (options: DialogOptions) => {
         Object.assign(dialogProps, options)
       }
 
-      ;(getCurrentInstance() as any).render = () => {
+      expose({ open, update, close })
+
+      return () => {
         const props = {
           ...dialogProps,
           visible: visible.value,
@@ -37,33 +42,47 @@ function createInstance(options: Partial<Omit<DialogProps, 'visible'>>) {
         }
         return <DDialog {...props} />
       }
-
-      return {
-        open,
-        close,
-        update
-      }
     }
   })
 
   return instance as unknown as DialogInstance
 }
 
-function showDialog(props: Partial<Omit<DialogProps, 'visible'>>) {
-  const id = `dialog@${Date.now()}`
+function showDialog(props: DialogOptions) {
   const dialogInstance = createInstance(props)
   dialogInstance.open()
-  dialogInstances.set(id, dialogInstance)
+  dialogInstances.set(getID('dialog'), dialogInstance)
   return dialogInstance
 }
 
+/**
+ * TODO 下个主版本去掉
+ */
 export const DialogPlugin = {
-  confirm: (options: Partial<Omit<DialogProps, 'visible'>>) => showDialog(options),
-  alert: (options: Omit<DialogProps, 'visible'>) =>
+  confirm: (options: DialogOptions) => showDialog(options),
+  alert: (options: DialogOptions) =>
     showDialog({
       ...options,
       hideCancelButton: true,
       closeOnEsc: false,
       closeOnOverlayClick: false
     })
+}
+
+export const useDialog = () => {
+  const config = useConfig(['closeOnEsc'])
+  return {
+    confirm: (options: DialogOptions) =>
+      showDialog({
+        closeOnEsc: config.value.closeOnEsc,
+        ...options
+      }),
+    alert: (options: DialogOptions) =>
+      showDialog({
+        ...options,
+        hideCancelButton: true,
+        closeOnEsc: false,
+        closeOnOverlayClick: false
+      })
+  }
 }

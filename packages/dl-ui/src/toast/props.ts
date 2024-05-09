@@ -1,9 +1,10 @@
 import { Component, ExtractPropTypes, PropType } from 'vue'
-import { DirectionType, MessageThemeType } from '@xuanmo/dl-common'
+import { COMMON_PROPS, MessageThemeType, pickProps } from '@xuanmo/dl-common'
 
 export type ToastProps = ExtractPropTypes<typeof TOAST_PROPS>
 
 export const TOAST_PROPS = {
+  ...pickProps(COMMON_PROPS, ['direction']),
   visible: {
     type: Boolean,
     default: false
@@ -44,13 +45,5 @@ export const TOAST_PROPS = {
   duration: {
     type: Number,
     default: 2000
-  },
-
-  /**
-   * 排列方式，水平、垂直
-   */
-  direction: {
-    type: String as PropType<DirectionType>,
-    default: 'horizontal'
   }
 }

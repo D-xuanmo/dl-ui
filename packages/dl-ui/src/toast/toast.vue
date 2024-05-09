@@ -4,7 +4,7 @@
     :overlay="false"
     :popup-container-class="bem()"
     :popup-class="bem('wrapper')"
-    :popup-body-class="bem('content', { [direction]: true })"
+    :popup-body-class="bem('content', { [config.direction!]: true })"
   >
     <check-circle-outlined v-if="theme === 'success'" />
     <close-circle-outlined v-if="theme === 'error'" />
@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { defineComponent, watch, SetupContext } from 'vue'
-import { createNamespace, DPopup, useModelValue } from '@xuanmo/dl-common'
+import { createNamespace, DPopup, useConfig, useModelValue } from '@xuanmo/dl-common'
 import { TOAST_PROPS, ToastProps } from './props'
 import { CheckCircleOutlined, CloseCircleOutlined, LoadingOutlined } from '@xuanmo/dl-icons'
 
@@ -35,6 +35,7 @@ export default defineComponent({
       'visible',
       'update:visible'
     )
+    const config = useConfig(['direction'], props)
 
     const handleClose = () => {
       if (props.duration === 0) return
@@ -53,7 +54,8 @@ export default defineComponent({
 
     return {
       bem,
-      innerVisible
+      innerVisible,
+      config
     }
   }
 })

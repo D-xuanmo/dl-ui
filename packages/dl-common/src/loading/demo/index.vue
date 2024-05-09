@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { LoadingPlugin } from '../function-call'
+import { useLoading } from '@xuanmo/dl-common'
 
-const loading = ref(false)
+const loadingStatus = ref(false)
+const loading = useLoading()
 
 setTimeout(() => {
-  loading.value = true
+  loadingStatus.value = true
 }, 0)
 
 const open = () => {
-  const instance = LoadingPlugin.open({
+  const instance = loading.open({
     fullScreen: true
   })
 
@@ -18,7 +19,7 @@ const open = () => {
 </script>
 
 <template>
-  <d-loading :loading="loading">
+  <d-loading :loading="loadingStatus">
     <p v-for="i in 10" :key="i">{{ i }}</p>
   </d-loading>
 

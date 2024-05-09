@@ -6,21 +6,24 @@
   </d-dialog>
 </template>
 
-<script setup lang="ts">
+<script setup lang="tsx">
 import { ref } from 'vue'
-import { DialogPlugin, MessagePlugin } from '@xuanmo/dl-common'
+import { useDialog, useMessage } from '@xuanmo/dl-common'
 
 const visible = ref(false)
 
+const dialog = useDialog()
+const message = useMessage()
+
 const showDialog = () => {
-  const dialog = DialogPlugin.confirm({
+  const instance = dialog.confirm({
     content: '可以实现一些异步场景',
     onConfirm() {
-      dialog.update({ loading: true })
+      instance.update({ loading: true })
       return new Promise((resolve) => {
         setTimeout(() => {
-          dialog.update({ loading: false })
-          MessagePlugin.success('完成')
+          instance.update({ loading: false })
+          message.success('完成')
           resolve(true)
         }, 3000)
       })

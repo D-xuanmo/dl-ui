@@ -67,15 +67,17 @@ const show = () => {
   <d-button theme='primary' @click='open'>显示</d-button>
 </template>
 <script setup>
-import { LoadingPlugin } from '@xuanmo/dl-common'
+import { useLoading } from '@xuanmo/dl-common'
+
+const loading = useLoading()
 
 const open = () => {
-  LoadingPlugin.open({
+  loading.open({
     description: '加载中...'
   })
 
   setTimeout(() => {
-    LoadingPlugin.close()
+    loading.close()
   }, 1000)
 }
 </script>
@@ -98,5 +100,5 @@ const open = () => {
 ### TS 类型
 
 ```ts
-import { LoadingPlugin, type LoadingProps } from '@xuanmo/dl-common'
+import { useLoading, type LoadingProps } from '@xuanmo/dl-common'
 ```

@@ -1,6 +1,6 @@
 import { DLoading, LoadingProps } from '.'
 import { mountComponent } from '../utils'
-import { getCurrentInstance, ref, Teleport } from 'vue'
+import { ref, Teleport } from 'vue'
 import { TeleportProps } from 'vue/dist/vue'
 
 type LoadingInstance = {
@@ -15,7 +15,7 @@ let globalInstance: LoadingInstance | null = null
 
 const createInstance = (options?: LoadingOptions) => {
   const { instance, unmount } = mountComponent({
-    setup() {
+    setup(_, { expose }) {
       const { to = 'body' } = options ?? {}
       const loading = ref(true)
 
@@ -24,7 +24,9 @@ const createInstance = (options?: LoadingOptions) => {
         unmount()
       }
 
-      ;(getCurrentInstance() as any).render = () => {
+      expose({ close })
+
+      return () => {
         const props = {
           ...options,
           loading: loading.value
@@ -35,14 +37,15 @@ const createInstance = (options?: LoadingOptions) => {
           </Teleport>
         )
       }
-
-      return { close }
     }
   })
 
   return instance as unknown as LoadingInstance
 }
 
+/**
+ * TODO 下个主版本去掉
+ */
 export const LoadingPlugin = {
   open(options?: LoadingOptions) {
     globalInstance?.close()
@@ -52,4 +55,17 @@ export const LoadingPlugin = {
     }))
   },
   close: () => globalInstance?.close()
+}
+
+export const useLoading = () => {
+  return {
+    open(options?: LoadingOptions) {
+      globalInstance?.close()
+      return (globalInstance = createInstance({
+        fullScreen: true,
+        ...options
+      }))
+    },
+    close: () => globalInstance?.close()
+  }
 }

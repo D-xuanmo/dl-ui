@@ -1,15 +1,15 @@
-import { getCurrentInstance, reactive } from 'vue'
+import { reactive } from 'vue'
 import DToast from './toast.vue'
 import { ToastProps } from './props'
-import { mountComponent } from '@xuanmo/dl-common'
+import { mountComponent, getID, useConfig } from '@xuanmo/dl-common'
 
 export type ToastInstance = {
-  update: (option: ToastOption) => void
+  update: (option: ToastOptions) => void
   open: () => void
   destroy: () => void
 }
 
-type ToastOption = Partial<Pick<ToastProps, 'duration'>>
+type ToastOptions = Partial<Omit<ToastProps, 'visible'>>
 
 const toastInstances: Map<string, ToastInstance> = new Map()
 
@@ -17,9 +17,9 @@ const defaultProps: Partial<ToastProps> = {
   duration: 2000
 }
 
-function createInstance(option: ToastOption, id: string) {
+function createInstance(option: ToastOptions, id: string) {
   const { instance, unmount } = mountComponent({
-    setup() {
+    setup(_, { expose }) {
       const state = reactive({
         show: false
       })
@@ -28,7 +28,7 @@ function createInstance(option: ToastOption, id: string) {
 
       const toggleVisible = (visible: boolean) => (state.show = visible)
 
-      const update = (option: ToastOption) => {
+      const update = (option: ToastOptions) => {
         Object.assign(toastProps, option)
       }
 
@@ -42,7 +42,13 @@ function createInstance(option: ToastOption, id: string) {
         }, defaultProps.duration ?? option.duration)
       }
 
-      ;(getCurrentInstance() as any).render = () => {
+      expose({
+        update,
+        open: handleOpen,
+        destroy: handleClose
+      })
+
+      return () => {
         const attrs = {
           ...defaultProps,
           ...toastProps,
@@ -52,20 +58,14 @@ function createInstance(option: ToastOption, id: string) {
         }
         return <DToast {...attrs} />
       }
-
-      return {
-        update,
-        open: handleOpen,
-        destroy: handleClose
-      }
     }
   })
 
   return instance as unknown as ToastInstance
 }
 
-function showMessage(props: string | Partial<Omit<ToastProps, 'visible'>>) {
-  let options: Partial<Omit<ToastProps, 'visible'>>
+function showMessage(props: string | ToastOptions) {
+  let options: ToastOptions
   if (typeof props === 'string') {
     options = {
       content: props
@@ -74,40 +74,47 @@ function showMessage(props: string | Partial<Omit<ToastProps, 'visible'>>) {
     options = props
   }
 
-  const id = `toast@${Date.now()}`
+  const id = getID('toast')
   const instance = createInstance(options, id)
   toastInstances.set(id, instance)
   instance.open()
   return instance
 }
 
-export const ToastPlugin = {
-  text: (content: string, option?: ToastOption) =>
-    showMessage({
-      content,
-      ...option
-    }),
-  success: (content: string, option?: ToastOption) =>
-    showMessage({
-      content,
-      theme: 'success',
-      ...option
-    }),
-  error: (content: string, option?: ToastOption) =>
-    showMessage({
-      content,
-      theme: 'error',
-      ...option
-    }),
-  loading: (content: string, option?: ToastOption) =>
-    showMessage({
-      content,
-      theme: 'loading',
-      ...option
-    }),
-  destroyAll() {
-    toastInstances.forEach((instance) => {
-      instance.destroy()
-    })
+export const useToast = () => {
+  const config = useConfig(['direction'])
+  return {
+    text: (content: string, option?: ToastOptions) =>
+      showMessage({
+        content,
+        direction: config.value.direction,
+        ...option
+      }),
+    success: (content: string, option?: ToastOptions) =>
+      showMessage({
+        content,
+        theme: 'success',
+        direction: config.value.direction,
+        ...option
+      }),
+    error: (content: string, option?: ToastOptions) =>
+      showMessage({
+        content,
+        theme: 'error',
+        direction: config.value.direction,
+        ...option
+      }),
+    loading: (content: string, option?: ToastOptions) =>
+      showMessage({
+        content,
+        theme: 'loading',
+        direction: config.value.direction,
+        ...option
+      }),
+    destroyAll() {
+      toastInstances.forEach((instance) => {
+        instance.destroy()
+      })
+    }
   }
 }

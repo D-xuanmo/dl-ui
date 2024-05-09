@@ -1,13 +1,16 @@
-import { Component, createApp } from 'vue'
+import { Component, render, createVNode } from 'vue'
 
 export function mountComponent(RootComponent: Component) {
-  const app = createApp(RootComponent)
   const root = document.createElement('div')
+  const instance = createVNode(RootComponent)
+  render(instance, root)
+  document.body.appendChild(root)
 
   return {
-    instance: app.mount(root),
-    unmount() {
-      app.unmount()
+    instance: instance.component?.exposed,
+    unmount: () => {
+      render(null, root)
+      document.body.contains(root) && document.body.removeChild(root)
     }
   }
 }

@@ -1,6 +1,6 @@
 import { addUnit, createNamespace } from '../utils'
 import { computed, CSSProperties, defineComponent } from 'vue'
-import { useModelValue } from '../hooks'
+import { useConfig, useModelValue } from '../hooks'
 import { DIALOG_PROPS, DialogProps } from './props'
 import { SetupContext } from 'vue'
 import DPopup from '../popup'
@@ -54,6 +54,8 @@ export default defineComponent({
       height: addUnit(props.height)
     }))
 
+    const config = useConfig(['closeOnEsc'], props)
+
     const handleClose = () => {
       context.emit('close')
       setValue(false)
@@ -74,7 +76,7 @@ export default defineComponent({
 
     useCloseOnEsc(innerValue, {
       type: 'dialog',
-      closeOnEsc: props.closeOnEsc,
+      closeOnEsc: config.value.closeOnEsc,
       closeFN: handleClose
     })
 

@@ -15,7 +15,9 @@ const globalConfig = {
   clientType: 'MOBILE',
   layout: 'horizontal',
   round: true,
-  separator: SEPARATOR
+  separator: SEPARATOR,
+  closeOnEsc: true,
+  direction: 'horizontal'
 } as ConfigProviderProps
 
 /**
@@ -26,7 +28,7 @@ const globalConfig = {
 export function useConfig<
   T extends keyof ConfigProviderProps,
   P extends Pick<ConfigProviderProps, T>
->(keys: T[], currentProps: P) {
+>(keys: T[], currentProps?: P) {
   const config = inject(ConfigProviderInjectKey, globalConfig as ConfigProviderProps)
 
   return computed(
@@ -44,9 +46,9 @@ export function useConfig<
         }
         return {
           ...prev,
-          [currentKey]: isEmpty(currentProps[currentKey])
+          [currentKey]: isEmpty(currentProps?.[currentKey])
             ? config[currentKey] ?? globalConfig[currentKey]
-            : currentProps[currentKey]
+            : currentProps?.[currentKey]
         }
       }, {}) as { [Key in T]: Key extends 'keys' ? Required<CustomKeys> : ConfigProviderProps[Key] }
   )

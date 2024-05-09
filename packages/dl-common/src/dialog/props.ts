@@ -6,7 +6,7 @@ import { pickProps } from '../utils'
 export type DialogProps = ExtractPropTypes<typeof DIALOG_PROPS>
 
 export const DIALOG_PROPS = {
-  ...pickProps(COMMON_PROPS, ['lockScroll', 'teleport', 'lazyRender']),
+  ...pickProps(COMMON_PROPS, ['lockScroll', 'teleport', 'lazyRender', 'closeOnEsc']),
   /**
    * 弹框显示隐藏
    */
@@ -27,7 +27,7 @@ export const DIALOG_PROPS = {
    * 对话框内容
    */
   content: {
-    type: String,
+    type: [String, Object] as PropType<string | VNode>,
     default: ''
   },
 
@@ -91,14 +91,6 @@ export const DIALOG_PROPS = {
    * 是否显示关闭图标
    */
   closable: {
-    type: Boolean,
-    default: true
-  },
-
-  /**
-   * 是否按下 esc 关闭对话框
-   */
-  closeOnEsc: {
     type: Boolean,
     default: true
   },

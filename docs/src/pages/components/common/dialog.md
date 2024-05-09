@@ -111,10 +111,12 @@ const visible = ref(false)
 </template>
 
 <script setup lang="ts">
-import { DialogPlugin } from '@xuanmo/dl-common'
+import { useDialog } from '@xuanmo/dl-common'
+
+const dialog = useDialog()
 
 const showDialog1 = () => {
-  DialogPlugin.confirm({
+  dialog.confirm({
     title: '对话框标题',
     content: '对话框内容',
     onConfirm() {
@@ -123,14 +125,14 @@ const showDialog1 = () => {
   })
 }
 const showDialog2 = () => {
-  DialogPlugin.confirm({
+  dialog.confirm({
     title: '对话框标题',
     content: '对话框内容',
     showIcon: true
   })
 }
 const showDialog3 = () => {
-  DialogPlugin.alert({
+  dialog.alert({
     title: '对话框标题',
     content: '对话框内容',
     showIcon: true
@@ -147,23 +149,26 @@ const showDialog3 = () => {
 </template>
 
 <script setup lang="ts">
-import { DialogPlugin, MessagePlugin } from '@xuanmo/dl-common'
+import { useDialog, useMessage } from '@xuanmo/dl-common'
+
+const dialog = useDialog()
+const message = useMessage()
 
 const showDialog = () => {
-  const dialog = DialogPlugin.confirm({
+  const instance = dialog.confirm({
     content: '可以实现一些异步场景',
     onConfirm() {
-      dialog.update({ loading: true })
+      instance.update({ loading: true })
       return new Promise((resolve) => {
         let count = 3
-        dialog.update({ content: `倒计时${count}秒` })
+        instance.update({ content: `倒计时${count}秒` })
         const timer = setInterval(() => {
           count--
-          dialog.update({ content: `倒计时${count}秒` })
+          instance.update({ content: `倒计时${count}秒` })
         }, 1000)
         setTimeout(() => {
-          dialog.update({ loading: false })
-          MessagePlugin.success('完成')
+          instance.update({ loading: false })
+          message.success('完成')
           clearInterval(timer)
           resolve(true)
         }, 3000)

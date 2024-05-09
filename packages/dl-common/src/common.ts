@@ -71,6 +71,9 @@ export type CustomKeys = {
   children?: string
 }
 
+/**
+ * 所有公用 props
+ */
 export const COMMON_PROPS = {
   disabled: {
     type: Boolean,
@@ -151,6 +154,22 @@ export const COMMON_PROPS = {
    */
   separator: {
     type: String,
+    default: undefined
+  },
+
+  /**
+   * 是否按下 esc 关闭对话框
+   */
+  closeOnEsc: {
+    type: Boolean,
+    default: undefined
+  },
+
+  /**
+   * 排列方式，水平、垂直
+   */
+  direction: {
+    type: String as PropType<DirectionType>,
     default: undefined
   }
 }

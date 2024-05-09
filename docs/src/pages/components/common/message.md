@@ -26,12 +26,13 @@ import { MessagePlugin } from '@xuanmo/dl-common'
 </template>
 
 <script setup lang="ts">
-import { MessagePlugin } from '@xuanmo/dl-common'
-const showInfo = () => MessagePlugin.info('消息内容')
-const showSuccess = () => MessagePlugin.success('成功消息内容')
-const showWarning = () => MessagePlugin.warning('警告消息内容')
-const showError = () => MessagePlugin.error('消息内容')
-const showLoading = () => MessagePlugin.loading('加载中...')
+import { useMessage } from '@xuanmo/dl-common'
+const message = useMessage()
+const showInfo = () => message.info('消息内容')
+const showSuccess = () => message.success('成功消息内容')
+const showWarning = () => message.warning('警告消息内容')
+const showError = () => message.error('消息内容')
+const showLoading = () => message.loading('加载中...')
 </script>
 ```
 
@@ -48,10 +49,11 @@ const showLoading = () => MessagePlugin.loading('加载中...')
 </template>
 
 <script setup lang='ts'>
-import { MessagePlugin, MessageInstance } from '@xuanmo/dl-common'
+import { useMessage, MessageInstance } from '@xuanmo/dl-common'
+const message = useMessage()
 let messageInstance: MessageInstance | null = null
 const manual = () => {
-  messageInstance = MessagePlugin.info('我不会自动关闭', {
+  messageInstance = message.info('我不会自动关闭', {
     duration: 0
   })
 }
@@ -64,8 +66,9 @@ const manual = () => {
 </template>
 
 <script setup lang="ts">
-import { MessagePlugin } from '@xuanmo/dl-common'
-const showInfo = () => MessagePlugin.text('消息内容')
+import { useMessage } from '@xuanmo/dl-common'
+const message = useMessage()
+const showInfo = () => message.text('消息内容')
 </script>
 ```
 
@@ -75,8 +78,9 @@ const showInfo = () => MessagePlugin.text('消息内容')
 </template>
 
 <script setup lang="ts">
-import { MessagePlugin } from '@xuanmo/dl-common'
-const showInfo = () => MessagePlugin.info('消息内容', {
+import { useMessage } from '@xuanmo/dl-common'
+const message = useMessage()
+const showInfo = () => message.info('消息内容', {
   closable: true,
   duration: 5000
 })
@@ -88,11 +92,12 @@ const showInfo = () => MessagePlugin.info('消息内容', {
   <markdown>
     调用 `destroyAll` 可关闭页面所有 `message` 实例。
   </markdown>
-  <d-button fill="outline" @click="MessagePlugin.destroyAll">close all</d-button>
+  <d-button fill="outline" @click="message.destroyAll">close all</d-button>
 </template>
 
 <script setup lang="ts">
-import { MessagePlugin } from '@xuanmo/dl-common'
+  import { useMessage } from '@xuanmo/dl-common'
+  const message = useMessage()
 </script>
 ```
 
