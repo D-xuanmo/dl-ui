@@ -1,8 +1,9 @@
-import { defineComponent, provide, reactive, ref, SetupContext, Fragment, VNode } from 'vue'
+import { defineComponent, provide, reactive, ref, SetupContext } from 'vue'
 import { addUnit, createNamespace, getComponentName } from '../utils'
-import DGrid from '../grid'
+import { DGrid } from '../grid'
 import { LAYOUT_CONTEXT_KEY } from './context'
 import { createRandomID } from '@xuanmo/utils'
+import { findChildren } from '../utils/find-children'
 
 const [name, bem] = createNamespace('layout')
 
@@ -13,19 +14,6 @@ export default defineComponent({
     const rowsTemplate = ref('')
     const columnsMap = reactive<Map<string, string>>(new Map())
     const rows: Map<string, string> = new Map()
-
-    // 递归查询子级，不包含 Fragment
-    const findChildren = (children: VNode[], result: any[] = []) => {
-      children.forEach((item: any) => {
-        if (item.type === Fragment && Array.isArray(item.children)) {
-          findChildren(item.children as VNode[], result)
-        }
-        if (item.type !== Fragment) {
-          result.push(item)
-        }
-      })
-      return result
-    }
 
     const children = findChildren(context.slots.default?.() ?? []).map((item: any) => {
       const layoutId = createRandomID(8)
