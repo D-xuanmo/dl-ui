@@ -57,5 +57,13 @@ export const MESSAGE_PROPS = {
   teleport: {
     type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body'
+  },
+
+  /**
+   * 提示框关闭完成事件
+   */
+  onClosed: {
+    type: Function as PropType<() => void>,
+    default: undefined
   }
 }

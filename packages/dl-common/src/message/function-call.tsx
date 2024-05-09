@@ -4,7 +4,7 @@ import { mountComponent, getID } from '../utils'
 import { MessageProps } from './props'
 import DMessage from './message.vue'
 
-type MessageOptions = Partial<Pick<MessageProps, 'duration' | 'closable'>>
+type MessageOptions = Partial<Pick<MessageProps, 'duration' | 'closable' | 'onClosed'>>
 
 export type MessageInstance = {
   open: () => void
@@ -96,32 +96,32 @@ export const MessagePlugin = {
   info: (content: string, option?: MessageOptions) =>
     showMessage({
       content,
-      theme: 'info',
-      ...option
+      ...option,
+      theme: 'info'
     }),
   success: (content: string, option?: MessageOptions) =>
     showMessage({
       content,
-      theme: 'success',
-      ...option
+      ...option,
+      theme: 'success'
     }),
   warning: (content: string, option?: MessageOptions) =>
     showMessage({
       content,
-      theme: 'warning',
-      ...option
+      ...option,
+      theme: 'warning'
     }),
   error: (content: string, option?: MessageOptions) =>
     showMessage({
       content,
-      theme: 'error',
-      ...option
+      ...option,
+      theme: 'error'
     }),
   loading: (content: string, option?: MessageOptions) =>
     showMessage({
       content,
-      type: 'loading',
-      ...option
+      ...option,
+      type: 'loading'
     }),
   destroyAll() {
     messageInstances.forEach((instance) => {

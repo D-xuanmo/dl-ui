@@ -1,6 +1,6 @@
 <template>
   <teleport :to="(teleport as string)">
-    <transition :name="name" appear>
+    <transition :name="name" appear @after-leave="onAfterLeave">
       <div v-if="visible" :class="containerClassName">
         <div :class="contentClassName">
           <template v-if="type === 'text'">
@@ -53,7 +53,7 @@ export default defineComponent({
   },
   inheritAttrs: false,
   props: MESSAGE_PROPS,
-  emits: ['update:visible'],
+  emits: ['update:visible', 'closed'],
   setup(props, { emit }) {
     const containerClassName = bem()
     const contentClassName = bem('content')
@@ -69,6 +69,10 @@ export default defineComponent({
 
     const handleClose = () => {
       updateVisible(false)
+    }
+
+    const onAfterLeave = () => {
+      emit('closed')
     }
 
     watch(
@@ -90,7 +94,8 @@ export default defineComponent({
       closeIconClassName,
       innerVisible,
       textClassName,
-      handleClose
+      handleClose,
+      onAfterLeave
     }
   }
 })
