@@ -11,7 +11,9 @@ export type MessageInstance = {
   destroy: () => void
 }
 
-let wrapperId: string | null = null
+const wrapperId = `${PREFIX}-message-container`
+const wrapperDOM = document.createElement('div')
+wrapperDOM.setAttribute('id', wrapperId)
 
 const messageInstances: Map<string, MessageInstance> = new Map()
 
@@ -20,61 +22,60 @@ const defaultProps: Partial<MessageProps> = {
 }
 
 function createInstance(option: MessageOptions, id: string) {
-  const { instance, unmount } = mountComponent({
-    setup(_, { expose }) {
-      const state = reactive({
-        show: false
-      })
+  const { instance, unmount } = mountComponent(
+    {
+      setup(_, { expose }) {
+        const state = reactive({
+          show: false
+        })
 
-      const toggleVisible = (visible: boolean) => (state.show = visible)
+        const toggleVisible = (visible: boolean) => (state.show = visible)
 
-      const handleOpen = () => toggleVisible(true)
+        const handleOpen = () => toggleVisible(true)
 
-      const handleClose = () => {
-        toggleVisible(false)
-        setTimeout(() => {
-          messageInstances.delete(id)
-          unmount()
-        }, defaultProps.duration ?? option.duration)
-      }
-
-      expose({ open: handleOpen, destroy: handleClose })
-
-      return () => {
-        const attrs = {
-          ...defaultProps,
-          ...option,
-          teleport: `#${wrapperId}`,
-          visible: state.show,
-          'transition-appear': true,
-          'onUpdate:visible': handleClose
+        const handleClose = () => {
+          toggleVisible(false)
+          setTimeout(() => {
+            messageInstances.delete(id)
+            unmount()
+          }, defaultProps.duration ?? option.duration)
         }
-        return <DMessage {...attrs} />
+
+        expose({ open: handleOpen, destroy: handleClose })
+
+        return () => {
+          const attrs = {
+            ...defaultProps,
+            ...option,
+            teleport: `#${wrapperId}`,
+            visible: state.show,
+            'transition-appear': true,
+            'onUpdate:visible': handleClose
+          }
+          return <DMessage {...attrs} />
+        }
       }
-    }
-  })
+    },
+    undefined,
+    wrapperDOM
+  )
 
   return instance as unknown as MessageInstance
 }
 
 function showMessage(props: string | Partial<Omit<MessageProps, 'visible'>>) {
   let options: Partial<Omit<MessageProps, 'visible'>>
+
+  if (!document.body.contains(wrapperDOM)) {
+    document.body.appendChild(wrapperDOM)
+  }
+
   if (typeof props === 'string') {
     options = {
       content: props
     }
   } else {
     options = props
-  }
-
-  if (!wrapperId) {
-    const wrapperDOM = document.createElement('div')
-    wrapperId = `${PREFIX}-message-container`
-    wrapperDOM.setAttribute('id', wrapperId)
-
-    if (!document.body.querySelector(`#${wrapperId}`)) {
-      document.body.appendChild(wrapperDOM)
-    }
   }
 
   const id = getID('message')

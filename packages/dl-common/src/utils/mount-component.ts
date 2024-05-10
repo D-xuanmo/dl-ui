@@ -1,16 +1,21 @@
 import { Component, render, createVNode } from 'vue'
 
-export function mountComponent(RootComponent: Component) {
-  const root = document.createElement('div')
-  const instance = createVNode(RootComponent)
-  render(instance, root)
-  document.body.appendChild(root)
+export function mountComponent(
+  RootComponent: Component,
+  teleport: Element = document.createElement('div'),
+  root: Element = document.body
+) {
+  const instance = createVNode(RootComponent, {
+    teleport: teleport
+  })
+  render(instance, teleport)
+  root.appendChild(teleport)
 
   return {
     instance: instance.component?.exposed,
     unmount: () => {
-      render(null, root)
-      document.body.contains(root) && document.body.removeChild(root)
+      render(null, teleport)
+      root.contains(teleport) && root.removeChild(teleport)
     }
   }
 }
