@@ -32,24 +32,26 @@
     <d-button v-if="showCancel && showCancelButton" link theme="primary" @click="onCancel">
       取消
     </d-button>
+    <d-popup
+      v-if="advancedSearch"
+      v-model:visible="popupVisible"
+      :popup-container-class="bem('advanced-search')"
+      popup-class="safe-area-inset-top"
+      placement="right"
+      closable
+      :title="advancedSearchTitle"
+    >
+      <d-form v-bind="formProps" client-type="MOBILE" :store="formStore" />
+      <template #footer>
+        <div :class="bem('advanced-search-footer')">
+          <d-button size="large" @click="onReset">{{ searchResetText }}</d-button>
+          <d-button theme="primary" size="large" @click="onConfirm">{{
+            searchConfirmText
+          }}</d-button>
+        </div>
+      </template>
+    </d-popup>
   </div>
-  <d-popup
-    v-if="advancedSearch"
-    v-model:visible="popupVisible"
-    :popup-container-class="bem('advanced-search')"
-    popup-class="safe-area-inset-top"
-    placement="right"
-    closable
-    :title="advancedSearchTitle"
-  >
-    <d-form v-bind="formProps" client-type="MOBILE" :store="formStore" />
-    <template #footer>
-      <div :class="bem('advanced-search-footer')">
-        <d-button size="large" @click="onReset">{{ searchResetText }}</d-button>
-        <d-button theme="primary" size="large" @click="onConfirm">{{ searchConfirmText }}</d-button>
-      </div>
-    </template>
-  </d-popup>
 </template>
 
 <script lang="ts">
