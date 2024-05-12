@@ -102,3 +102,12 @@ const open = () => {
 ```ts
 import { useLoading, type LoadingProps } from '@xuanmo/dl-common'
 ```
+
+## 主题定制
+
+### CSS 变量
+
+|变量名|默认值|描述|
+|-----|-----|----|
+|--d-loading-overlay-color|`rgba(255, 255, 255, 0.7)`|背景颜色|
+|--d-loading-max-z-index|`99999`|全屏时，loading 层级|

@@ -2,6 +2,7 @@
 
 :root {
   --d-loading-overlay-color: rgba(255, 255, 255, 0.7);
+  --d-loading-max-z-index: 99999;
 }
 
 %position {
@@ -18,7 +19,7 @@
 
   &__body {
     @extend %position;
-    z-index: 1;
+    z-index: var(--d-loading-max-z-index);
     display: flex;
     align-items: center;
     justify-content: center;

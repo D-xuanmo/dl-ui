@@ -11,10 +11,11 @@ setTimeout(() => {
 
 const open = () => {
   const instance = loading.open({
+    description: '我在 3s 后关闭',
     fullScreen: true
   })
 
-  setTimeout(instance.close, 1000)
+  setTimeout(instance.close, 3000)
 }
 </script>
 

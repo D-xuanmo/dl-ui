@@ -1,3 +1,19 @@
+<template>
+  <div :class="wrapperClassName">
+    <div v-if="$slots.default" :class="contentClassName">
+      <slot />
+    </div>
+    <div v-show="showLoading" :class="bodyClassName">
+      <span :class="iconClassName">
+        <slot name="icon">
+          <loading2-outlined spin :size="size" />
+        </slot>
+      </span>
+      <p v-if="description" :class="descriptionClassName">{{ description }}</p>
+    </div>
+  </div>
+</template>
+
 <script lang="ts">
 import { computed, defineComponent, ref, watch } from 'vue'
 import { createNamespace } from '../utils'
@@ -49,19 +65,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<template>
-  <div :class="wrapperClassName">
-    <div :class="contentClassName">
-      <slot />
-    </div>
-    <div v-show="showLoading" :class="bodyClassName">
-      <span :class="iconClassName">
-        <slot name="icon">
-          <loading2-outlined spin :size="size" />
-        </slot>
-      </span>
-      <p v-if="description" :class="descriptionClassName">{{ description }}</p>
-    </div>
-  </div>
-</template>
