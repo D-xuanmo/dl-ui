@@ -9,7 +9,12 @@ columns: 2
 ## 引入
 
 ```typescript
-import { MessagePlugin } from '@xuanmo/dl-common'
+import { createApp } from 'vue';
+import { DMessage } from '@xuanmo/dl-common'
+
+// 注册组件
+const app = createApp()
+app.use(DMessage)
 ```
 
 ## 代码演示
