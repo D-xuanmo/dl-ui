@@ -20,13 +20,16 @@ export interface IRenderModel<T = any> {
   // 组件
   component: Component | (ComponentNames | string)
 
+  // 组件类型
+  componentType?: string
+
   // 布局信息
   layout: T & {
     // 父级组件，默认为 root
     parent: string
 
-    // 关联的子级
-    children?: string[]
+    // 是否需要组件容器
+    container?: boolean
   }
 
   // 是否显示
@@ -49,6 +52,9 @@ export interface IFormModelItem<TValue = unknown> extends IRenderModel {
   // 当前字段数据
   value: TValue
 
+  // 明细表 id
+  detailTableId?: string
+
   // 隐藏 label，默认：false
   hideLabel?: boolean
 
@@ -61,11 +67,27 @@ export interface IFormModelItem<TValue = unknown> extends IRenderModel {
   // 描述字段
   description?: string
 
+  // 是否为受控组件，默认 false，数据直接受控于 store；
+  // 一般明细表场景下，设置为 true，使组件变为受控组件
+  // controlled?: boolean
+
   // 外部更多属性
   [key: string]: any
 }
 
-export type OnFormChange = (value: Record<string, unknown>, model: IFormModelItem) => void
+export interface IDetailTableItem extends IRenderModel {
+  // 明细表 id
+  detailTableId: string
+
+  // 组件类型
+  componentType: 'DetailTable'
+}
+
+export type OnFormChange = (
+  value: Record<string, unknown>,
+  model: IFormModelItem,
+  rowId?: string
+) => void
 
 type EventType = 'change' | 'blur' | 'focus'
 

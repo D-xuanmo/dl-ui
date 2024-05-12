@@ -9,7 +9,6 @@
     label-width="100"
     :view-linkage="ViewLinkageData"
     :hide-label="hideLabel"
-    @change="handleChange"
   />
   <d-cell-group title="表单操作" style="margin-top: var(--d-gap-sm)">
     <d-cell title="表单禁用">
@@ -49,8 +48,8 @@
 import { ref } from 'vue'
 import FORM_MODEL from './model'
 import { DirectionType, FormStore } from '@xuanmo/dl-common'
-import { OnFormChange } from '../types'
 import { ViewLinkageData } from './view-linkage'
+import { createRandomID } from '@xuanmo/utils'
 
 const formDisabled = ref(false)
 const formReadonly = ref(false)
@@ -58,7 +57,6 @@ const hideLabel = ref(false)
 const formLayout = ref<DirectionType>('horizontal')
 
 const formStore = new FormStore()
-window.formStore = formStore
 console.log(formStore)
 
 const formLayoutOptions = [
@@ -100,12 +98,15 @@ const updateData = () => {
     timePicker: '08:35',
     calendarSingle: '2023/3/8',
     calendarMultiple: ['2023/3/8', '2023/3/12'],
-    calendarRange: ['2023/3/8', '2023/3/12']
+    calendarRange: ['2023/3/8', '2023/3/12'],
+    tableId: [
+      { id: createRandomID(), name: '萧炎', sex: '男' },
+      { id: createRandomID(), name: '药老', sex: '男' }
+    ]
   })
 }
 
 const hideFirstRow = () => {
-  console.log(formStore.getSingleValue('input'))
   formStore.setDisplay('input', false)
 }
 
@@ -115,10 +116,6 @@ const showFirstRow = () => {
 
 const reset = () => {
   formStore.reset()
-}
-
-const handleChange: OnFormChange = (value, model) => {
-  console.log(value, model)
 }
 
 const updateOptions = () => {

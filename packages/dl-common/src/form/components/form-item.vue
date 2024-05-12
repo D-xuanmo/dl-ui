@@ -1,6 +1,6 @@
 <template>
   <d-cell
-    v-if="model.dataKey"
+    v-if="model.dataKey && model.layout.container !== false"
     :class="itemClassName"
     content-align="left"
     :title-width="formProps.labelWidth"
@@ -31,10 +31,11 @@
     <component
       v-bind="omitSystemProps(model)"
       :is="model.component"
-      :model-value="store.getSingleValue(model.dataKey)"
-      :disabled="store.viewLinkage.getDisabled(model.id)"
-      :readonly="store.viewLinkage.getReadonly(model.id)"
+      :model-value="store.getSingleValue(model.dataKey, rowId)"
+      :disabled="store.viewLinkageStore.getDisabled(model.id)"
+      :readonly="store.viewLinkageStore.getReadonly(model.id)"
       :store="store"
+      :model="model"
       @update:model-value="handleChange"
       @blur="handleBlur"
       @focus="handleFocus"
@@ -57,22 +58,25 @@ const [name] = createNamespace('form-item')
 
 export default defineComponent({
   name,
-  components: {
-    DCell
-  },
+  components: { DCell },
   props: {
     model: {
       type: Object as PropType<IFormModelItem>,
       required: true,
       default: () => ({})
+    },
+    rowId: {
+      type: String,
+      default: undefined
     }
   },
-  setup(props) {
-    const { store, formProps, onChange } = useForm()
+  emits: ['change'],
+  setup(props, { emit }) {
+    const { store, formProps, onChange: onFormChange } = useForm()
     const dataKey = props.model.dataKey
     const itemClassName = computed(() =>
       createFormBEM('item', {
-        hide: !store.viewLinkage.getDisplay(props.model.id)
+        hide: !store.viewLinkageStore.getDisplay(props.model.id)
       })
     )
     const errorClassName = createFormBEM('item-message')
@@ -81,28 +85,27 @@ export default defineComponent({
     const descriptionClass = createFormBEM('item-description')
 
     const showRequiredMark = computed(() => {
-      return store.viewLinkage.getRequired(props.model.id)
+      return store.viewLinkageStore.getRequired(props.model.id)
     })
 
     const errorMessage = computed(() => store.getSingleMessage(dataKey))
 
     const handleChange = (value: unknown) => {
-      store.updateSingleValue(dataKey, value)
-      if (errorMessage.value) {
-        store.singleValidate(dataKey)
-      }
-      onChange({ [dataKey]: value }, props.model)
-      store.viewLinkage.execute(dataKey, value)
-      store.events.emit(`${EventPrefixEnum.FIELD}.change`, value)
-      store.events.emit(`${EventPrefixEnum.FIELD}.${dataKey}.change`, value)
+      props.model.controlled !== true && store.updateSingleValue(dataKey, value, props.rowId)
+      if (errorMessage.value) store.singleValidate(dataKey)
+      emit('change', value, props.rowId)
+      onFormChange({ [dataKey]: value }, props.model, props.rowId)
+      store.viewLinkageStore.execute(dataKey, value)
+      store.events.emit(`${EventPrefixEnum.FIELD}.change`, value, props.rowId)
+      store.events.emit(`${EventPrefixEnum.FIELD}.${dataKey}.change`, value, props.rowId)
     }
 
     const handleBlur = (value: unknown) => {
-      store.events.emit(`${EventPrefixEnum.FIELD}.${dataKey}.blur`, value)
+      store.events.emit(`${EventPrefixEnum.FIELD}.${dataKey}.blur`, value, props.rowId)
     }
 
     const handleFocus = (value: unknown) => {
-      store.events.emit(`${EventPrefixEnum.FIELD}.${dataKey}.focus`, value)
+      store.events.emit(`${EventPrefixEnum.FIELD}.${dataKey}.focus`, value, props.rowId)
     }
 
     return {

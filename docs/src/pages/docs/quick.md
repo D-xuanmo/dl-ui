@@ -20,6 +20,10 @@ $ pnpm add @xuanmo/{dl-ui,dl-common,dl-icons}
 
 ## 完整引入组件
 
+> 如果是 PC 端使用，只需要安装 dl-common，所有组件的引入通过 @xuanmo/dl-common 包引入
+> 
+> 如果是移动端使用，统一通过 @xuanmo/dl-ui 引入组件
+
 ```typescript
 import { createApp } from 'vue'
 

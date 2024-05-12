@@ -742,6 +742,14 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 
 ## 开发说明
 
+### 表单名词解释
+
+1. `FormModel`：表单配置模型，通过模型定义出一个完整的表单
+2. `id`：每一个 model 都需要有一个唯一 id 进行区分
+3. `dataKey`：由于一个表单既可以渲染非数据录入组件，也可以渲染数据录入型组件，此时需要通过 dataKey 区分两种类型组件，dataKey 也是对应数据保存的 key
+4. `detailTableId`：明细表 id，数据保存时，则是对应整个明细表的数据 key
+5. `rowId`：对应明细表每行数据 id，目前内置 id 是随机 12 位的字符串
+
 ### 内置布局容器
 
 - `DFormCellGroup` 可以快速实现单列表单分组效果，参考链接：[https://uoo.ink/Form](https://uoo.ink/Form)
@@ -760,6 +768,20 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 1. 组件需要具备 `Vue3` 标准的 `v-model`，参考链接：[https://cn.vuejs.org/guide/components/v-model.html](https://cn.vuejs.org/guide/components/v-model.html)
 2. 数据变更传递，通过 `update:modelValue` 事件
 3. 组件不需要关心标题等标准属性，`FormItem` 会统一处理
+
+### 开发明细表
+
+#### 使用场景及说明
+
+ 1. 如一件商品对应多个型号，此时就会通过明细表进行保存，也就是一条数据可以对应多条子数据
+ 2. 由于明细表风格多变，所以组件并未有完整的交互，只是提供了明细表相关数据能力 API，需要使用者实现具体的 UI 效果
+
+#### 开发注意事项
+
+1. 需要先引入明细表容器组件 `import { DDetailTableWrapper } from '@xuanmo/dl-common'`
+2. FormItem 引入 `import { DFormItem } from '@xuanmo/dl-common'`，用于渲染子级组件
+3. 所有明细表 API 都在 `FormStore.detailTableStore`
+4. 具体 demo 可参考地址：[https://github.com/D-xuanmo/dl-ui/tree/develop/packages/dl-common/src/form/demo](https://github.com/D-xuanmo/dl-ui/tree/develop/packages/dl-common/src/form/demo)
 
 ### 开发布局组件
 

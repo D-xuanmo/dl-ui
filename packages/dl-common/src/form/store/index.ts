@@ -1,11 +1,13 @@
-import { EventsType, FormModels, IFormModelItem } from '../types'
+import { EventsType, FormModels, IDetailTableItem, IFormModelItem } from '../types'
 import { markRaw, reactive, ref, UnwrapNestedRefs } from 'vue'
 import { deepCopy, isEmpty, isObject } from '@xuanmo/utils'
 import { validator } from '../../validator'
 import { EventEmitterEx } from './events'
-import { ViewLinkage } from './view-linkage'
+import { ViewLinkageStore } from './view-linkage'
 import { ViewLinkageType } from './view-linkage/types'
 import { ValidateDataModel } from '@xuanmo/validator'
+import { DetailTableStore } from './detail-table'
+import { DetailTableRowData } from './detail-table/types'
 
 class FormStore {
   /**
@@ -18,6 +20,12 @@ class FormStore {
    * @private
    */
   private dataKeyMap: Map<string, string> = new Map()
+
+  /**
+   * 明细表 id 映射 id 对应关系
+   * @private
+   */
+  private tableIdMap: Map<string, string> = new Map()
 
   /**
    * 表单原始数据
@@ -37,6 +45,12 @@ class FormStore {
   private compRelationship: Map<string, string[]> = new Map()
 
   /**
+   * 表单数据
+   * @private
+   */
+  private mainFormData = reactive<Record<string, any>>({})
+
+  /**
    * 表单禁用
    */
   formDisabled = ref(false)
@@ -54,7 +68,12 @@ class FormStore {
   /**
    * 显示属性联动 store
    */
-  viewLinkage = new ViewLinkage(this)
+  viewLinkageStore = new ViewLinkageStore(this)
+
+  /**
+   * 明细表数据
+   */
+  detailTableStore = new DetailTableStore(this)
 
   /**
    * 表单初始化
@@ -70,6 +89,9 @@ class FormStore {
       } else {
         this.compRelationship.set(item.layout.parent, [item.id])
       }
+      if (item.detailTableId && item.componentType === 'DetailTable') {
+        this.tableIdMap.set(item.detailTableId, item.id)
+      }
       this.models.set(item.id, {
         ...item,
         display: isEmpty(item.display) ? true : item.display,
@@ -82,12 +104,13 @@ class FormStore {
         item.required ?? (item as IFormModelItem).rules?.includes('required') ?? false
       )
       if (item.dataKey) {
+        Object.assign(this.mainFormData, { [item.dataKey]: item.value })
         this.dataKeyMap.set(item.dataKey, item.id)
         this.setReadonly(item.id, item.readonly ?? false)
         this.setDisabled(item.id, item.disabled ?? false)
       }
     })
-    this.viewLinkage.init(viewLinkage)
+    this.viewLinkageStore.init(viewLinkage)
   }
 
   /**
@@ -105,9 +128,15 @@ class FormStore {
    * 更新单个字段数据
    * @param dataKey
    * @param value
+   * @param rowId
    */
-  public updateSingleValue = (dataKey: string, value: any) => {
-    this.updateModel(this.getModelIdByDataKey(dataKey), { value })
+  public updateSingleValue = (dataKey: string, value: any, rowId?: string) => {
+    if (rowId) {
+      const detailTableId = this.getDetailTableId(dataKey)
+      this.detailTableStore.upsert(value, dataKey, detailTableId, rowId)
+    } else {
+      Object.assign(this.mainFormData, { [dataKey]: value })
+    }
   }
 
   /**
@@ -117,7 +146,11 @@ class FormStore {
    */
   public updateData = (data: Record<string, unknown>, validate = true) => {
     for (const [key, value] of Object.entries(data)) {
-      this.updateSingleValue(key, value)
+      if (this.tableIdMap.get(key)) {
+        this.detailTableStore.updateTableData(key, value as DetailTableRowData[])
+      } else {
+        this.updateSingleValue(key, value)
+      }
     }
     validate && this.validate()
   }
@@ -128,7 +161,7 @@ class FormStore {
    * @param item
    */
   public updateModel = (id: string, item: Partial<IFormModelItem>) => {
-    const newItem = this.getItem(id)
+    const newItem = this.getModel(id)
     if (newItem) {
       Object.assign(newItem, item)
       this.models.set(this.getModelIdByDataKey(id), newItem)
@@ -138,9 +171,26 @@ class FormStore {
   /**
    * 获取单个 item 信息
    * @param id
+   * @deprecated 主版本发布后废弃，改为 getModel
    */
-  public getItem = (id: string) => {
-    return this.models.get(this.dataKeyMap.get(id) || id) as IFormModelItem
+  public getItem<T = IFormModelItem>(id: string) {
+    return this.models.get(this.dataKeyMap.get(id) || id) as T
+  }
+
+  /**
+   * 获取单个 model 信息
+   * @param id
+   */
+  public getModel<T = IFormModelItem>(id: string) {
+    return this.models.get(this.dataKeyMap.get(id) || id) as T
+  }
+
+  /**
+   * 获取明细表信息
+   * @param tableId
+   */
+  public getModelByTableId(tableId: string) {
+    return this.models.get(this.tableIdMap.get(tableId)!) as IDetailTableItem
   }
 
   /**
@@ -149,32 +199,47 @@ class FormStore {
    */
   public getChildren = (parentId: string) => {
     const children = this.compRelationship.get(parentId)
-    if (children) return children.map((id) => this.getItem(id))
+    if (children) return children.map((id) => this.getModel(id))
     return []
+  }
+
+  /**
+   * 获取父级信息
+   * @param id
+   */
+  public getParent<T>(id: string) {
+    return this.getModel<T>(this.getModel(this.getModelIdByDataKey(id))?.layout.parent)
+  }
+
+  /**
+   * 获取明细表 id
+   * @param id
+   */
+  public getDetailTableId(id: string) {
+    return this.getModel<IDetailTableItem>(id).detailTableId
   }
 
   /**
    * 获取单个字段 value
    * @param dataKey
+   * @param rowId
    */
-  public getSingleValue = (dataKey: string) => {
-    return this.getItem(this.getModelIdByDataKey(dataKey))?.value
+  public getSingleValue = (dataKey: string, rowId?: string) => {
+    if (rowId) {
+      const detailTableId = this.getDetailTableId(dataKey)
+      return this.detailTableStore.getFieldValue(detailTableId, dataKey, rowId)
+    }
+    return this.mainFormData[dataKey]
   }
 
   /**
-   *
-   * @returns 获取表单数据
+   * 获取表单数据
    */
   public getFormData = () => {
-    return Array.from(this.models.values()).reduce((prev, current) => {
-      if (current.dataKey) {
-        return {
-          ...prev,
-          [current.dataKey]: current.value
-        }
-      }
-      return prev
-    }, {})
+    return {
+      ...this.mainFormData,
+      ...this.detailTableStore.getTableDataConverted()
+    }
   }
 
   /**
@@ -183,7 +248,7 @@ class FormStore {
    * @param value
    */
   public setDisplay = (id: string, value: boolean) => {
-    this.viewLinkage.setDisplay(id, value)
+    this.viewLinkageStore.setDisplay(id, value)
   }
 
   /**
@@ -192,7 +257,7 @@ class FormStore {
    * @param value
    */
   public setReadonly = (id: string, value: boolean) => {
-    this.viewLinkage.setReadonly(id, value)
+    this.viewLinkageStore.setReadonly(id, value)
   }
 
   /**
@@ -201,7 +266,7 @@ class FormStore {
    * @param value
    */
   public setDisabled = (id: string, value: boolean) => {
-    this.viewLinkage.setDisabled(id, value)
+    this.viewLinkageStore.setDisabled(id, value)
   }
 
   /**
@@ -210,7 +275,7 @@ class FormStore {
    * @param value
    */
   public setRequired = (id: string, value: boolean) => {
-    this.viewLinkage.setRequired(id, value)
+    this.viewLinkageStore.setRequired(id, value)
   }
 
   /**
@@ -235,7 +300,7 @@ class FormStore {
   public reset = () => {
     ;(this.originalModel as IFormModelItem[]).forEach((item) => {
       if (item.dataKey) {
-        const model = this.getItem(item.dataKey)!
+        const model = this.getModel(item.dataKey)!
         Object.assign(model, { value: item.value })
         this.updateModel(item.dataKey, model)
       }
@@ -253,15 +318,16 @@ class FormStore {
         // 隐藏字段、禁用字段、只读字段不参与校验
         if (
           !item.dataKey ||
-          !this.viewLinkage.getDisplay(item.id) ||
-          this.viewLinkage.getDisabled(item.id) ||
-          this.viewLinkage.getReadonly(item.id)
+          !this.viewLinkageStore.getDisplay(item.id) ||
+          this.viewLinkageStore.getDisabled(item.id) ||
+          this.viewLinkageStore.getReadonly(item.id)
         ) {
           return
         }
         models.push({
-          ...this.getItem(item.id),
-          required: this.viewLinkage.getRequired(item.id)
+          ...this.getModel(item.id),
+          value: this.getSingleValue(item.dataKey),
+          required: this.viewLinkageStore.getRequired(item.id)
         })
       })
       validator
@@ -283,8 +349,9 @@ class FormStore {
    */
   public singleValidate = (dataKey: string) => {
     const item = {
-      ...this.getItem(dataKey),
-      required: this.viewLinkage.getRequired(dataKey)
+      ...this.getModel(dataKey),
+      value: this.getSingleValue(dataKey),
+      required: this.viewLinkageStore.getRequired(dataKey)
     }
     if (item) {
       validator
@@ -319,3 +386,4 @@ class FormStore {
 
 export { FormStore }
 export * from './view-linkage/types'
+export * from './detail-table/types'

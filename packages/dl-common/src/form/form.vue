@@ -74,7 +74,7 @@ export default defineComponent({
         immediate: true
       }
     )
-    watch(() => props.viewLinkage, store.viewLinkage.init)
+    watch(() => props.viewLinkage, store.viewLinkageStore.init)
 
     return {
       formClassName,

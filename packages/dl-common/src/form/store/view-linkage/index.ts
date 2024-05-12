@@ -16,7 +16,7 @@ import { EventPrefixEnum } from '../../constants'
 /**
  * 显示属性联动
  */
-export class ViewLinkage {
+export class ViewLinkageStore {
   // 显示集合
   private displayMap: UnwrapNestedRefs<Map<IRenderModel['id'], boolean>> = reactive(new Map())
 

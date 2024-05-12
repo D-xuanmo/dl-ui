@@ -21,6 +21,7 @@ export const omitSystemProps = (model: IFormModelItem) => {
     rules,
     errorMessage,
     description,
+    rowId,
     ...rest
   } = model
   return rest

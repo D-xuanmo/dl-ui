@@ -1,6 +1,7 @@
 import { dCookie } from '@xuanmo/utils'
 import CustomInput from './custom-input.vue'
-import { FormModels } from '../types'
+import { FormModels, IDetailTableItem } from '../types'
+import DetailTable from './detail-table.vue'
 
 const FORM_MODEL: FormModels = [
   {
@@ -350,6 +351,38 @@ const FORM_MODEL: FormModels = [
       { label: '选项 3', value: '3' }
     ],
     description: '所有选项都选择才会让“单选”必填'
+  },
+  <IDetailTableItem>{
+    id: 'detailTableId',
+    detailTableId: 'tableId',
+    component: DetailTable,
+    componentType: 'DetailTable',
+    layout: {
+      parent: 'root',
+      container: false
+    }
+  },
+  {
+    id: 'detailTableInputId',
+    detailTableId: 'tableId',
+    dataKey: 'name',
+    component: 'DInput',
+    label: '姓名',
+    layout: {
+      parent: 'detailTableId'
+    },
+    placeholder: '请输入内容'
+  },
+  {
+    id: 'detailTableSexId',
+    detailTableId: 'tableId',
+    dataKey: 'sex',
+    component: 'DInput',
+    label: '性别',
+    layout: {
+      parent: 'detailTableId'
+    },
+    placeholder: '请输入内容2'
   }
 ]
 
