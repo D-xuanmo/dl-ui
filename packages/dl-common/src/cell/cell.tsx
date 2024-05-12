@@ -6,7 +6,6 @@ import { useGlobalConfig } from './utils'
 import { CELL_GROUP_CONTEXT_KEY } from '../cell-group/context'
 import { DirectionType } from '../common'
 import { RightOutlined } from '@xuanmo/dl-icons'
-import { If, Then, Else, When } from 'vue-if'
 
 const [name, bem] = createNamespace('cell')
 
@@ -46,59 +45,48 @@ export default defineComponent({
         props.contentClass
       ]
 
-      const renderLabel = (
-        <When
-          condition={
-            !globalConfig.value.hideTitle && !(isEmpty(props.title) && isEmpty(slots.title))
-          }
-        >
+      const leftIcon = slots['left-icon'] ? (
+        <span class={bem('title-icon')}>{slots['left-icon']!()}</span>
+      ) : null
+      const leftMark =
+        props.required && globalConfig.value.requiredMarkPosition === 'left' ? (
+          <span class={bem('title-mark')}>* </span>
+        ) : null
+      const rightMark =
+        props.required && globalConfig.value.requiredMarkPosition === 'right' ? (
+          <span class={bem('title-mark')}> *</span>
+        ) : null
+      const defaultLabel = (
+        <>
+          {leftIcon}
+          {leftMark}
+          <span>{props.title}</span>
+          {rightMark}
+        </>
+      )
+      const renderLabel =
+        !globalConfig.value.hideTitle && !(isEmpty(props.title) && isEmpty(slots.title)) ? (
           <div class={titleClassName} style={{ width: addUnit(globalConfig.value.labelWidth) }}>
-            <If condition={!isEmpty(slots.title)}>
-              <Then>{slots.title?.()}</Then>
-              <Else>
-                <When condition={!isEmpty(slots['left-icon'])}>
-                  <span class={bem('title-icon')}>{slots['left-icon']!()}</span>
-                </When>
-                <When
-                  condition={props.required && globalConfig.value.requiredMarkPosition === 'left'}
-                >
-                  <span class={bem('title-mark')}>* </span>
-                </When>
-                <span>{props.title}</span>
-                <When
-                  condition={props.required && globalConfig.value.requiredMarkPosition === 'right'}
-                >
-                  <span class={bem('title-mark')}> *</span>
-                </When>
-              </Else>
-            </If>
+            {!isEmpty(slots.title) ? slots.title?.() : defaultLabel}
           </div>
-        </When>
-      )
+        ) : null
 
-      const renderDescription = (
-        <When condition={props.description}>
-          <div class={bem('description')}>{props.description}</div>
-        </When>
-      )
+      const renderDescription = props.description ? (
+        <div class={bem('description')}>{props.description}</div>
+      ) : null
 
-      const renderRightIcon = (
-        <When condition={slots['right-icon'] as any}>
-          <span class={bem('right-icon')}>{slots['right-icon']!()}</span>
-        </When>
-      )
+      const renderRightIcon = slots['right-icon'] ? (
+        <span class={bem('right-icon')}>{slots['right-icon']!()}</span>
+      ) : null
 
-      const renderSuffix = (
-        <When condition={(slots.suffix || props.suffix) as any}>
+      const renderSuffix =
+        slots.suffix || props.suffix ? (
           <div class={bem('suffix')}>{slots.suffix ? slots.suffix() : props.suffix}</div>
-        </When>
-      )
+        ) : null
 
-      const renderArrow = (
-        <When condition={props.arrow}>
-          <RightOutlined className={bem('arrow')} color="var(--d-secondary-text-color)" />
-        </When>
-      )
+      const renderArrow = props.arrow ? (
+        <RightOutlined className={bem('arrow')} color="var(--d-secondary-text-color)" />
+      ) : null
 
       function handleClick(event: Event) {
         emit('click', event)
@@ -111,10 +99,7 @@ export default defineComponent({
               {renderLabel}
               <div class={contentClassName}>
                 <div class={bem('content-inner')}>
-                  <If condition={!isEmpty(slots.default)}>
-                    <Then>{slots.default?.()}</Then>
-                    <Else>{props.content}</Else>
-                  </If>
+                  {slots.default ? slots.default() : props.content}
                 </div>
                 {renderRightIcon}
                 {renderSuffix}
@@ -131,10 +116,7 @@ export default defineComponent({
           {renderLabel}
           <div class={contentClassName}>
             <div class={bem('content-inner')}>
-              <If condition={!isEmpty(slots.default)}>
-                <Then>{slots.default?.()}</Then>
-                <Else>{props.content}</Else>
-              </If>
+              {slots.default ? slots.default() : props.content}
             </div>
             {renderRightIcon}
             {renderSuffix}
