@@ -5,7 +5,7 @@ import { validator } from '../../validator'
 import { EventEmitterEx } from './events'
 import { ViewLinkageStore } from './view-linkage'
 import { ViewLinkageType } from './view-linkage/types'
-import { ValidateDataModel } from '@xuanmo/validator'
+import { ValidateDataModel, ValidateDataModelItem } from '@xuanmo/validator'
 import { DetailTableStore } from './detail-table'
 import { DetailTableRowData } from './detail-table/types'
 import { getMessageKey } from '../utils'
@@ -326,7 +326,7 @@ class FormStore {
         ) {
           return
         }
-        const model = {
+        const model: ValidateDataModelItem = {
           ...item,
           value: this.getSingleValue(item.dataKey),
           required: this.viewLinkageStore.getRequired(item.id)

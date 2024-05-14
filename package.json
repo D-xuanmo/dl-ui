@@ -27,7 +27,7 @@
     "@xuanmo/dl-common": "workspace:*",
     "@xuanmo/dl-icons": "workspace:*",
     "@xuanmo/utils": "^0.0.2",
-    "@xuanmo/validator": "^0.0.18",
+    "@xuanmo/validator": "latest",
     "eventemitter3": "^5.0.1",
     "vue-if": "latest"
   },
