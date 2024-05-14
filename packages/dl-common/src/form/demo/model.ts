@@ -371,7 +371,9 @@ const FORM_MODEL: FormModels = [
     layout: {
       parent: 'detailTableId'
     },
-    placeholder: '请输入内容'
+    placeholder: '请输入内容',
+    required: true,
+    rules: 'min_length:8'
   },
   {
     id: 'detailTableSexId',

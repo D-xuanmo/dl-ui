@@ -31,11 +31,11 @@
     <component
       v-bind="omitSystemProps(model)"
       :is="model.component"
+      :store="store"
+      :model="model"
       :model-value="store.getSingleValue(model.dataKey, rowId)"
       :disabled="store.viewLinkageStore.getDisabled(model.id)"
       :readonly="store.viewLinkageStore.getReadonly(model.id)"
-      :store="store"
-      :model="model"
       @update:model-value="handleChange"
       @blur="handleBlur"
       @focus="handleFocus"
@@ -88,11 +88,13 @@ export default defineComponent({
       return store.viewLinkageStore.getRequired(props.model.id)
     })
 
-    const errorMessage = computed(() => store.getSingleMessage(dataKey))
+    const errorMessage = computed(() =>
+      store.getSingleMessage(dataKey, props.model.detailTableId, props.rowId)
+    )
 
     const handleChange = (value: unknown) => {
       props.model.controlled !== true && store.updateSingleValue(dataKey, value, props.rowId)
-      if (errorMessage.value) store.singleValidate(dataKey)
+      if (errorMessage.value) store.singleValidate(dataKey, props.model.detailTableId, props.rowId)
       emit('change', value, props.rowId)
       onFormChange({ [dataKey]: value }, props.model, props.rowId)
       store.viewLinkageStore.execute(dataKey, value)

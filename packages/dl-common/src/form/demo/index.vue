@@ -100,8 +100,8 @@ const updateData = () => {
     calendarMultiple: ['2023/3/8', '2023/3/12'],
     calendarRange: ['2023/3/8', '2023/3/12'],
     tableId: [
-      { id: createRandomID(), name: '萧炎', sex: '男' },
-      { id: createRandomID(), name: '药老', sex: '男' }
+      { rowId: createRandomID(), name: '萧炎', sex: '男' },
+      { rowId: createRandomID(), name: '药老', sex: '男' }
     ]
   })
 }

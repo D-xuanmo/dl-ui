@@ -8,6 +8,7 @@ import { ViewLinkageType } from './view-linkage/types'
 import { ValidateDataModel } from '@xuanmo/validator'
 import { DetailTableStore } from './detail-table'
 import { DetailTableRowData } from './detail-table/types'
+import { getMessageKey } from '../utils'
 
 class FormStore {
   /**
@@ -73,7 +74,7 @@ class FormStore {
   /**
    * 明细表数据
    */
-  detailTableStore = new DetailTableStore(this)
+  detailTableStore = new DetailTableStore()
 
   /**
    * 表单初始化
@@ -317,18 +318,32 @@ class FormStore {
       this.convertModel().forEach((item) => {
         // 隐藏字段、禁用字段、只读字段不参与校验
         if (
-          !item.dataKey ||
+          (!item.dataKey && item.componentType !== 'DetailTable') ||
+          (item.detailTableId && item.componentType !== 'DetailTable') ||
           !this.viewLinkageStore.getDisplay(item.id) ||
           this.viewLinkageStore.getDisabled(item.id) ||
           this.viewLinkageStore.getReadonly(item.id)
         ) {
           return
         }
-        models.push({
-          ...this.getModel(item.id),
+        const model = {
+          ...item,
           value: this.getSingleValue(item.dataKey),
           required: this.viewLinkageStore.getRequired(item.id)
-        })
+        }
+        if (item.componentType === 'DetailTable') {
+          Object.assign(model, {
+            matrix: item.componentType === 'DetailTable',
+            matrixId: item.detailTableId,
+            value: {
+              columns: this.getChildren(item.id),
+              data: Array.from(
+                this.detailTableStore.getTableData(item.detailTableId!)?.values() ?? []
+              )
+            }
+          })
+        }
+        models.push(model)
       })
       validator
         .validate(models)
@@ -346,21 +361,29 @@ class FormStore {
   /**
    * 单个校验
    * @param dataKey 数据键名
+   * @param detailTableId
+   * @param rowId
    */
-  public singleValidate = (dataKey: string) => {
+  public singleValidate = (dataKey: string, detailTableId?: string, rowId?: string) => {
     const item = {
       ...this.getModel(dataKey),
       value: this.getSingleValue(dataKey),
       required: this.viewLinkageStore.getRequired(dataKey)
     }
+    if (detailTableId) {
+      Object.assign(item, {
+        ...this.getModel(dataKey),
+        value: this.detailTableStore.getFieldValue(detailTableId, dataKey, rowId!)
+      })
+    }
     if (item) {
       validator
         .validate([item])
         .then(() => {
-          this.errorMessages[dataKey] = ''
+          this.errorMessages[getMessageKey(dataKey, detailTableId, rowId)] = ''
         })
         .catch((error) => {
-          this.errorMessages[dataKey] = error[dataKey]
+          this.errorMessages[getMessageKey(dataKey, detailTableId, rowId)] = error[dataKey]
         })
     }
   }
@@ -368,8 +391,12 @@ class FormStore {
   /**
    * 获取单个字段的错误信息
    * @param dataKey 数据键名
+   * @param detailTableId 明细表 id
+   * @param rowId 明细表行数据 id
    */
-  public getSingleMessage = (dataKey: string) => this.errorMessages[dataKey]
+  public getSingleMessage = (dataKey: string, detailTableId?: string, rowId?: string) => {
+    return this.errorMessages[getMessageKey(dataKey, detailTableId, rowId)]
+  }
 
   /**
    * 清空所有校验信息

@@ -67,10 +67,6 @@ export interface IFormModelItem<TValue = unknown> extends IRenderModel {
   // 描述字段
   description?: string
 
-  // 是否为受控组件，默认 false，数据直接受控于 store；
-  // 一般明细表场景下，设置为 true，使组件变为受控组件
-  // controlled?: boolean
-
   // 外部更多属性
   [key: string]: any
 }

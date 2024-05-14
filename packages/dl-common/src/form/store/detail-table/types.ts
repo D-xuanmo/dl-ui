@@ -1,6 +1,6 @@
 export type DetailTableRowData = {
   // 行数据 id
-  id: string
+  rowId: string
 
   // 行数据真实下标
   dataIndex: number

@@ -1,7 +1,6 @@
 import { DetailTableRowData } from './types'
 import { reactive, UnwrapNestedRefs } from 'vue'
 import { createRandomID, deepCopy, throwError } from '@xuanmo/utils'
-import { FormStore } from '../index'
 
 export class DetailTableStore {
   /**
@@ -10,20 +9,16 @@ export class DetailTableStore {
    */
   private tableData: Map<string, UnwrapNestedRefs<Map<string, DetailTableRowData>>> = new Map()
 
-  private formStore: FormStore
-
-  constructor(formStore: FormStore) {
-    this.formStore = formStore
-  }
-
   /**
    * 批量更新明细表数据
    * @param tableId
    * @param tableData
    */
   updateTableData(tableId: string, tableData: DetailTableRowData[]) {
+    const oldTableData = this.getTableData(tableId)
+    oldTableData?.clear()
     tableData.forEach((data) => {
-      this.getTableData(tableId)?.set(data.id, data)
+      oldTableData?.set(data.rowId, data)
     })
   }
 
@@ -55,7 +50,7 @@ export class DetailTableStore {
     const rowId = createRandomID()
     tableData?.set(rowId, {
       ...rowData,
-      id: rowId,
+      rowId,
       dataIndex: tableData.size + 1
     })
   }
@@ -79,7 +74,7 @@ export class DetailTableStore {
     } else {
       const rowId = createRandomID()
       tableData.set(rowId, {
-        id: rowId,
+        rowId,
         dataIndex: tableData.size,
         [dataKey]: value
       })
