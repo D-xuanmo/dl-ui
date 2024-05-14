@@ -37,3 +37,11 @@ export const getMessageKey = (dataKey: string, detailTableId?: string, rowId?: s
   if (detailTableId) return `${detailTableId}.${rowId}.${dataKey}`
   return dataKey
 }
+
+/**
+ * 是否是明细表字段
+ * @param model
+ */
+export const isDetailTableField = (model: IFormModelItem) => {
+  return model.detailTableId && model.componentType !== 'DetailTable'
+}

@@ -8,7 +8,7 @@ import { ViewLinkageType } from './view-linkage/types'
 import { ValidateDataModel, ValidateDataModelItem } from '@xuanmo/validator'
 import { DetailTableStore } from './detail-table'
 import { DetailTableRowData } from './detail-table/types'
-import { getMessageKey } from '../utils'
+import { getMessageKey, isDetailTableField } from '../utils'
 
 class FormStore {
   /**
@@ -105,7 +105,9 @@ class FormStore {
         item.required ?? (item as IFormModelItem).rules?.includes('required') ?? false
       )
       if (item.dataKey) {
-        Object.assign(this.mainFormData, { [item.dataKey]: item.value })
+        if (!isDetailTableField(item)) {
+          Object.assign(this.mainFormData, { [item.dataKey]: item.value })
+        }
         this.dataKeyMap.set(item.dataKey, item.id)
         this.setReadonly(item.id, item.readonly ?? false)
         this.setDisabled(item.id, item.disabled ?? false)
