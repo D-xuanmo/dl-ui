@@ -136,7 +136,7 @@ class FormStore {
   public updateSingleValue = (dataKey: string, value: any, rowId?: string) => {
     if (rowId) {
       const detailTableId = this.getDetailTableId(dataKey)
-      this.detailTableStore.upsert(value, dataKey, detailTableId, rowId)
+      this.detailTableStore.upsert(detailTableId, rowId, value, dataKey)
     } else {
       Object.assign(this.mainFormData, { [dataKey]: value })
     }
@@ -230,7 +230,7 @@ class FormStore {
   public getFieldValue = (dataKey: string, rowId?: string) => {
     if (rowId) {
       const detailTableId = this.getDetailTableId(dataKey)
-      return this.detailTableStore.getFieldValue(detailTableId, dataKey, rowId)
+      return this.detailTableStore.getFieldValue(detailTableId, rowId, dataKey)
     }
     return this.mainFormData[dataKey]
   }
@@ -244,7 +244,7 @@ class FormStore {
   public getSingleValue = (dataKey: string, rowId?: string) => {
     if (rowId) {
       const detailTableId = this.getDetailTableId(dataKey)
-      return this.detailTableStore.getFieldValue(detailTableId, dataKey, rowId)
+      return this.detailTableStore.getFieldValue(detailTableId, rowId, dataKey)
     }
     return this.mainFormData[dataKey]
   }

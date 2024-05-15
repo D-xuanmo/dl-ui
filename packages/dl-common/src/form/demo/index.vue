@@ -100,7 +100,12 @@ const updateData = () => {
     calendarMultiple: ['2023/3/8', '2023/3/12'],
     calendarRange: ['2023/3/8', '2023/3/12'],
     tableId: [
-      { rowId: createRandomID(), name: '萧炎', sex: '男' },
+      {
+        rowId: createRandomID(),
+        name: '萧炎',
+        sex: '男',
+        avatar: [{ url: 'https://upyun.xuanmo.xin/logo/x-logo-1.png', deletable: false }]
+      },
       { rowId: createRandomID(), name: '药老', sex: '男' }
     ]
   })

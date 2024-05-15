@@ -385,6 +385,33 @@ const FORM_MODEL: FormModels = [
       parent: 'detailTableId'
     },
     placeholder: '请输入内容2'
+  },
+  {
+    id: 'detailTableAvatarId',
+    detailTableId: 'tableId',
+    dataKey: 'avatar',
+    component: 'DUpload',
+    label: '头像',
+    layout: {
+      parent: 'detailTableId'
+    },
+    name: 'files',
+    action: '/api/my-admin/p/file/upload',
+    data: {
+      type: 'media',
+      isPublic: false,
+      directoryId: '1de547bf-67d4-4a7d-bb88-2178090327c8'
+    },
+    headerParams: {
+      'X-XSRF-TOKEN': dCookie().getItem('csrfToken')
+    },
+    uploadAfter(response: any) {
+      // 返回上传组件需要的格式
+      return {
+        url: (response as any).data?.[0].url,
+        deletable: true
+      }
+    }
   }
 ]
 
