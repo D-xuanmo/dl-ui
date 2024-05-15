@@ -6,7 +6,7 @@ import { pickProps } from '../utils'
 export type PopupProps = ExtractPropTypes<typeof POPUP_PROPS>
 
 export const POPUP_PROPS = {
-  ...pickProps(COMMON_PROPS, ['lockScroll', 'teleport', 'lazyRender']),
+  ...pickProps(COMMON_PROPS, ['lockScroll', 'teleport', 'lazyRender', 'round']),
   visible: Boolean,
   title: String,
   placement: {
@@ -21,7 +21,6 @@ export const POPUP_PROPS = {
     type: [Number, String] as PropType<number | string | undefined>,
     default: TRANSITION_DURATION
   },
-  round: Boolean,
   closable: Boolean,
 
   /**

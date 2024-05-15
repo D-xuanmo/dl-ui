@@ -839,7 +839,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 |方法名|类型|说明|
 |-----|----|---|
 |getFormModels|`() => IFormModelItem<unknown>[]`|获取表单模型|
-|getSingleValue|`(dataKey: string) => unknown`|获取单个字段 value|
+|getFieldValue|`(dataKey: string) => unknown`|获取单个字段 value|
 |getFormData|`() => Record<string, any>`|获取表单数据|
 |getItem|`(id: string) => IFormModelItem<unknown> \| undefined`|获取单个 item 信息|
 |updateSingleValue|`(dataKey: string, value: any) => void`|更新单个字段数据|

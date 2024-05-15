@@ -48,12 +48,9 @@
   }
 
   &__wrapper {
+    $wrapper: &;
     position: absolute;
     background-color: var(--d-white-color);
-
-    &--round {
-      border-radius: var(--d-popup-radius) var(--d-popup-radius) 0 0;
-    }
 
     &--notCenter {
       display: flex;
@@ -81,6 +78,10 @@
 
     &--bottom {
       bottom: 0;
+
+      &#{$wrapper}--round {
+        border-radius: var(--d-popup-radius) var(--d-popup-radius) 0 0;
+      }
     }
 
     &--left,

@@ -52,7 +52,7 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent, ref, watch } from 'vue'
-import { useZIndex } from '../hooks'
+import { useConfig, useZIndex } from '../hooks'
 import { createNamespace } from '../utils'
 import DOverlay from '../overlay'
 import { POPUP_PROPS } from './props'
@@ -69,6 +69,7 @@ export default defineComponent({
     const isCenter = computed(() => props.placement === 'center')
     const isLoaded = ref(props.visible ? true : !props.lazyRender)
     const wrapperRef = ref<HTMLDivElement>()
+    const config = useConfig(['round'], props)
 
     const showHeader = computed(() => {
       return (
@@ -84,7 +85,7 @@ export default defineComponent({
       [
         bem('wrapper', {
           [props.placement]: props.placement,
-          round: props.round,
+          round: config.value.round,
           notCenter: !isCenter.value
         }),
         props.popupClass
