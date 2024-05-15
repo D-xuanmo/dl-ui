@@ -33,7 +33,7 @@
       :is="model.component"
       :store="store"
       :model="model"
-      :model-value="store.getSingleValue(model.dataKey, rowId)"
+      :model-value="store.getFieldValue(model.dataKey, rowId)"
       :disabled="store.viewLinkageStore.getDisabled(model.id)"
       :readonly="store.viewLinkageStore.getReadonly(model.id)"
       @update:model-value="handleChange"

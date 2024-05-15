@@ -30,6 +30,6 @@ const children = useLinkChildren(props.model?.id)
 const tableData = computed(() => store.detailTableStore.getTableData(props.model.detailTableId))
 
 const addRow = () => {
-  store.detailTableStore.addRow({}, props.model.detailTableId)
+  store.detailTableStore.addRow(props.model.detailTableId, undefined)
 }
 </script>

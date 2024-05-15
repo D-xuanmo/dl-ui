@@ -14,7 +14,7 @@ export class DetailTableStore {
    * @param tableId
    * @param tableData
    */
-  updateTableData(tableId: string, tableData: DetailTableRowData[]) {
+  public updateTableData(tableId: string, tableData: DetailTableRowData[]) {
     const oldTableData = this.getTableData(tableId)
     oldTableData?.clear()
     tableData.forEach((data) => {
@@ -25,10 +25,10 @@ export class DetailTableStore {
   /**
    * 获取明细表单个字段数据
    * @param tableId 明细表 id
-   * @param dataKey 数据 key
    * @param rowId 明细行行 id
+   * @param dataKey 数据 key
    */
-  getFieldValue(tableId: string, dataKey: string, rowId: string) {
+  public getFieldValue(tableId: string, rowId: string, dataKey: string) {
     return this.getTableData(tableId)?.get(rowId)?.[dataKey]
   }
 
@@ -36,16 +36,16 @@ export class DetailTableStore {
    * 明细表初始化时，创建空表数据
    * @param tableId
    */
-  createEmptyData(tableId: string) {
+  public createEmptyData(tableId: string) {
     this.tableData.set(tableId, reactive(new Map()))
   }
 
   /**
    * 添加行数据
-   * @param rowData 行数据
    * @param tableId 明细表 id
+   * @param rowData 行数据
    */
-  addRow(rowData: DetailTableRowData, tableId: string) {
+  public addRow(tableId: string, rowData: DetailTableRowData | undefined) {
     const tableData = this.getTableData(tableId)
     const rowId = createRandomID()
     tableData?.set(rowId, {
@@ -57,12 +57,12 @@ export class DetailTableStore {
 
   /**
    * 更新明细表行数据
-   * @param value 当前组件数据
-   * @param dataKey 当前组件 dataKey
    * @param tableId 明细表 id
    * @param rowId 行 id
+   * @param value 当前组件数据
+   * @param dataKey 当前组件 dataKey
    */
-  upsert(value: unknown, dataKey: string, tableId: string, rowId: string) {
+  public upsert(tableId: string, rowId: string, value: unknown, dataKey: string) {
     const tableData = this.getTableData(tableId)
     if (!tableData) return throwError('DetailTable', '未找到对应的明细表')
     const rowData = tableData.get(rowId)
@@ -86,7 +86,7 @@ export class DetailTableStore {
    * @param tableId 明细表 id
    * @param rowId 行 id
    */
-  deleteRow(tableId: string, rowId: string) {
+  public deleteRow(tableId: string, rowId: string) {
     this.getTableData(tableId)?.delete(rowId)
   }
 
@@ -95,27 +95,30 @@ export class DetailTableStore {
    * @param tableId 明细表 id
    * @param rowId 行 id
    */
-  copyRow(tableId: string, rowId: string) {
+  public copyRow(tableId: string, rowId: string) {
     const rowData = this.getTableData(tableId)?.get(rowId)
     if (!rowData) return throwError('DetailTable', '未找到对应的明细行数据')
-    this.addRow(deepCopy(rowData), tableId)
+    this.addRow(tableId, deepCopy(rowData))
   }
 
   /**
    * 获取明细表数据
-   * @param tableId
+   * @param tableId 明细表 id
    */
-  getTableData(tableId: string) {
+  public getTableData(tableId: string): Map<string, DetailTableRowData>
+  public getTableData(tableId: string, convert: true): DetailTableRowData[]
+  public getTableData(tableId: string, convert = false) {
+    if (convert) return Array.from(this.tableData.get(tableId)?.values() ?? [])
     return this.tableData.get(tableId)
   }
 
   /**
    * 获取转换后的明细表数据
    */
-  getTableDataConverted() {
+  public getTableDataConverted() {
     const data: Record<string, any[]> = {}
     Array.from(this.tableData.keys()).forEach((tableId) => {
-      data[tableId] = Array.from(this.getTableData(tableId)?.values() ?? [])
+      data[tableId] = this.getTableData(tableId, true)
     })
     return data
   }

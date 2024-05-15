@@ -227,6 +227,20 @@ class FormStore {
    * @param dataKey
    * @param rowId
    */
+  public getFieldValue = (dataKey: string, rowId?: string) => {
+    if (rowId) {
+      const detailTableId = this.getDetailTableId(dataKey)
+      return this.detailTableStore.getFieldValue(detailTableId, dataKey, rowId)
+    }
+    return this.mainFormData[dataKey]
+  }
+
+  /**
+   * 获取单个字段 value
+   * @param dataKey
+   * @param rowId
+   * @deprecated 主版本发布后去除，需要改为 getFieldValue
+   */
   public getSingleValue = (dataKey: string, rowId?: string) => {
     if (rowId) {
       const detailTableId = this.getDetailTableId(dataKey)
@@ -330,7 +344,7 @@ class FormStore {
         }
         const model: ValidateDataModelItem = {
           ...item,
-          value: this.getSingleValue(item.dataKey),
+          value: this.getFieldValue(item.dataKey),
           required: this.viewLinkageStore.getRequired(item.id)
         }
         if (item.componentType === 'DetailTable') {
@@ -369,13 +383,13 @@ class FormStore {
   public singleValidate = (dataKey: string, detailTableId?: string, rowId?: string) => {
     const item = {
       ...this.getModel(dataKey),
-      value: this.getSingleValue(dataKey),
+      value: this.getFieldValue(dataKey),
       required: this.viewLinkageStore.getRequired(dataKey)
     }
     if (detailTableId) {
       Object.assign(item, {
         ...this.getModel(dataKey),
-        value: this.detailTableStore.getFieldValue(detailTableId, dataKey, rowId!)
+        value: this.getFieldValue(dataKey, rowId!)
       })
     }
     if (item) {
