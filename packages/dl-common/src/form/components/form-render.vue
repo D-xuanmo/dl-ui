@@ -1,16 +1,14 @@
 <template>
   <div :class="wrapperClassName">
-    <template v-for="item in data">
-      <form-item v-if="item.layout.parent.toLowerCase() === 'root'" :key="item.id" :model="item" />
-    </template>
+    <form-item v-for="item in children" :key="item.id" :model="item" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent } from 'vue'
 import { createNamespace } from '../../utils'
-import { IFormModelItem } from '../types'
 import FormItem from './form-item.vue'
+import { useLinkChildren } from '../hooks'
 
 const [name, bem] = createNamespace('form-render')
 
@@ -19,18 +17,13 @@ export default defineComponent({
   components: {
     FormItem
   },
-  props: {
-    data: {
-      type: Array as PropType<IFormModelItem[]>,
-      default: () => [],
-      require: true
-    }
-  },
   setup() {
     const wrapperClassName = bem()
+    const children = useLinkChildren('root')
 
     return {
-      wrapperClassName
+      wrapperClassName,
+      children
     }
   }
 })

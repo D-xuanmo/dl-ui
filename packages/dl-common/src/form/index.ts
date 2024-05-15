@@ -23,5 +23,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     DForm: typeof Form
     DFormItem: typeof FormItem
+    DDetailTableWrapper: typeof DetailTableWrapper
   }
 }
