@@ -3,9 +3,9 @@ export * from './animation'
 export const LABEL_WIDTH = '80px'
 
 export const PRIMARY_COLOR = '#1890ff'
-export const SUCCESS_COLOR = '#00a870'
-export const WARNING_COLOR = '#ed7b2f'
-export const ERROR_COLOR = '#e34d59'
+export const SUCCESS_COLOR = '#00B578'
+export const WARNING_COLOR = '#FF8F1F'
+export const ERROR_COLOR = '#FF3B30'
 
 export const DEFAULT_REQUIRED_MARK_POSITION = 'right'
 
@@ -41,7 +41,8 @@ export enum ThemeEnum {
   success = 'success',
   warning = 'warning',
   danger = 'danger',
-  default = 'default'
+  default = 'default',
+  light = 'light'
 }
 
 /** 消息类型 */
