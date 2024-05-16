@@ -1,5 +1,16 @@
 <template>
   <dl-demo-block>
+    <p>主题</p>
+    <d-space :gap="10" wrap>
+      <d-button theme="default">default</d-button>
+      <d-button theme="light">light</d-button>
+      <d-button theme="primary">primary</d-button>
+      <d-button theme="success">success</d-button>
+      <d-button theme="warning">warning</d-button>
+      <d-button theme="danger">danger</d-button>
+    </d-space>
+  </dl-demo-block>
+  <dl-demo-block>
     <p>填充模式</p>
     <d-button fill="solid" theme="primary">solid</d-button>
     <d-button fill="outline" class="m-l-5px m-r-5px">outline</d-button>
@@ -23,17 +34,6 @@
       <d-button size="small" fill="solid" theme="primary">small</d-button>
       <d-button size="medium" fill="solid" theme="primary">medium</d-button>
       <d-button size="large" fill="solid" theme="primary">large</d-button>
-    </d-space>
-  </dl-demo-block>
-
-  <dl-demo-block>
-    <p>主题</p>
-    <d-space :gap="10" wrap>
-      <d-button theme="default">default</d-button>
-      <d-button theme="primary">primary</d-button>
-      <d-button theme="success">success</d-button>
-      <d-button theme="warning">warning</d-button>
-      <d-button theme="danger">danger</d-button>
     </d-space>
   </dl-demo-block>
 

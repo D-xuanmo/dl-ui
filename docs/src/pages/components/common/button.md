@@ -22,10 +22,11 @@ app.use(DButton)
 ```vue client=PC playground=3hbs5el title=基础用法
 <template>
   <markdown>
-    按钮 `theme` 分别为：`default`、`primary`、`success`、`warning`、`danger`。
+    按钮 `theme` 分别为：`default`、`light`、`primary`、`success`、`warning`、`danger`。
   </markdown>
   <d-space :gap="10" wrap>
     <d-button theme="default">default</d-button>
+    <d-button theme="light">light</d-button>
     <d-button theme="primary">primary</d-button>
     <d-button theme="success">success</d-button>
     <d-button theme="warning">warning</d-button>

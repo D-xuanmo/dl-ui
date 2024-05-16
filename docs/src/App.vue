@@ -1,6 +1,8 @@
 <template>
   <preview-h5 v-if="isDemoRoute" />
-  <doc-layout v-else :is-demo-route="isDemoRoute" />
+  <d-config-provider v-else client-type="PC" :round="true">
+    <doc-layout :is-demo-route="isDemoRoute" />
+  </d-config-provider>
 </template>
 
 <script lang="ts" setup>
