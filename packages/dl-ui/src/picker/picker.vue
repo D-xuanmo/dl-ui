@@ -48,7 +48,7 @@ import { PickerOption, PICKER_PROPS, PickerValue } from './props'
 import { debounce, deepCopy, isEmpty, isObject, treeToMap } from '@xuanmo/utils'
 import { findCascadeFirstLevelData, findDisplayName, formatCascade } from './utils'
 import { EventType } from './types'
-import DScrollRadio, { ScrollRadioInstance } from '../scroll-radio'
+import { DScrollRadio, ScrollRadioInstance } from '../scroll-radio'
 import { RightOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('picker')

@@ -14,8 +14,6 @@ export { type CalendarStore } from './store'
 
 export { type IDay } from './types'
 
-export default DCalendar
-
 declare module 'vue' {
   export interface GlobalComponents {
     DCalendar: typeof Calendar

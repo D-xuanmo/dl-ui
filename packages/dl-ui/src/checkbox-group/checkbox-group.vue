@@ -20,7 +20,7 @@ import { computed, defineComponent, provide, SetupContext, UnwrapRef } from 'vue
 import { createNamespace, useConfig, useModelValue } from '@xuanmo/dl-common'
 import { CHECKBOX_GROUP_PROPS } from './props'
 import { CHECKBOX_GROUP_CONTEXT_KEY, CheckboxGroupContextType } from '../context'
-import DCheckbox from '../checkbox'
+import { DCheckbox } from '../checkbox'
 
 const [name, bem] = createNamespace('checkbox-group')
 

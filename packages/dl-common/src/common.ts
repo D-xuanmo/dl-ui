@@ -26,6 +26,8 @@ export type ThemeType = `${ThemeEnum}`
 /** 消息类型 */
 export type MessageThemeType = `${MessageThemeEnum}`
 
+export type ClassName = string | Record<string, unknown> | ClassName[]
+
 /** 数据基础类型，单选、多选、选择器等组件 */
 export interface IData<T = string | number> {
   label: string
@@ -75,10 +77,22 @@ export type CustomKeys = {
  * 所有公用 props
  */
 export const COMMON_PROPS = {
+  className: {
+    type: [String, Array, Object] as PropType<ClassName>,
+    default: undefined
+  },
+
+  /**
+   * 禁用状态
+   */
   disabled: {
     type: Boolean,
     default: false
   },
+
+  /**
+   * 只读状态
+   */
   readonly: {
     type: Boolean,
     default: false

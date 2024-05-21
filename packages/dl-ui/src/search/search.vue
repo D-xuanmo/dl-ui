@@ -65,7 +65,7 @@ import {
   FormStore
 } from '@xuanmo/dl-common'
 import { SearchOutlined, FilterOutlined } from '@xuanmo/dl-icons'
-import DInput from '../input'
+import { DInput } from '../input'
 import { SEARCH_PROPS } from './props'
 import { isEmpty } from '@xuanmo/utils'
 

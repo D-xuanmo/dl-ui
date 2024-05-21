@@ -10,8 +10,6 @@ export {
   type DateTimePickerType
 } from './props'
 
-export default DDateTimePicker
-
 declare module 'vue' {
   export interface GlobalComponents {
     DDateTimePicker: typeof DateTimePicker

@@ -6,8 +6,6 @@ export * from './function-call'
 
 export { type ToastProps } from './props'
 
-export default DToast
-
 declare module 'vue' {
   export interface GlobalComponents {
     DToast: typeof Toast

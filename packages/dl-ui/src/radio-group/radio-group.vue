@@ -20,7 +20,7 @@ import { computed, defineComponent, provide, SetupContext } from 'vue'
 import { createNamespace, useConfig, useModelValue } from '@xuanmo/dl-common'
 import { RADIO_GROUP_PROPS } from './props'
 import { RADIO_GROUP_CONTEXT_KEY } from '../context'
-import DRadio from '../radio'
+import { DRadio } from '../radio'
 
 const [name, bem] = createNamespace('radio-group')
 

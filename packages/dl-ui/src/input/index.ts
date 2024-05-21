@@ -5,8 +5,6 @@ export const DInput = withInstall(Input)
 
 export { type InputProps } from './props'
 
-export default DInput
-
 declare module 'vue' {
   export interface GlobalComponents {
     DInput: typeof Input

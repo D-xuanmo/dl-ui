@@ -7,8 +7,6 @@ export { type MessageProps } from './props'
 
 export * from './function-call'
 
-export default DMessage
-
 declare module 'vue' {
   export interface GlobalComponents {
     DMessage: typeof Message

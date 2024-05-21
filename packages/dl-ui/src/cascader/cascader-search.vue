@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import DSearch from '../search'
+import { DSearch } from '../search'
 import { createCascaderNameSpace } from './utils'
 import { CASCADER_SEARCH_PROPS } from './props'
 import { debounce } from '@xuanmo/utils'

@@ -22,7 +22,7 @@
 <script lang="ts">
 import { computed, defineComponent, nextTick, ref, SetupContext, watch } from 'vue'
 import { createNamespace, useModelValue } from '@xuanmo/dl-common'
-import DPicker from '../picker'
+import { DPicker } from '../picker'
 import DateUtil from './date-util'
 import { DATE_PICKER_PROPS, DateTimePickerType } from './props'
 import { PickerValue } from '../picker/props'

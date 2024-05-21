@@ -1,5 +1,5 @@
 import { CSSProperties, ExtractPropTypes, PropType } from 'vue'
-import { COMMON_PROPS, PlacementType } from '../common'
+import { ClassName, COMMON_PROPS, PlacementType } from '../common'
 import { TRANSITION_DURATION } from '../constants'
 import { pickProps } from '../utils'
 
@@ -35,10 +35,22 @@ export const POPUP_PROPS = {
     default: false
   },
 
-  popupContainerClass: String,
-  popupClass: String,
-  popupHeaderClass: String,
-  popupBodyClass: String,
+  popupContainerClass: {
+    type: [String, Array, Object] as PropType<ClassName>,
+    default: undefined
+  },
+  popupClass: {
+    type: [String, Array, Object] as PropType<ClassName>,
+    default: undefined
+  },
+  popupHeaderClass: {
+    type: [String, Array, Object] as PropType<ClassName>,
+    default: undefined
+  },
+  popupBodyClass: {
+    type: [String, Array, Object] as PropType<ClassName>,
+    default: undefined
+  },
   popupStyle: {
     type: Object as PropType<CSSProperties>,
     default: {}
