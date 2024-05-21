@@ -7,6 +7,12 @@
   --d-button-disabled-opacity: 0.5;
 }
 
+.#{$prefix}-mobile {
+  --d-button-large: 48px;
+  --d-button-medium: 40px;
+  --d-button-small: 32px;
+}
+
 .#{$prefix}-button {
   $prefix: &;
   --d-button-wave: var(--d-primary-1);

@@ -2,7 +2,7 @@ import { App } from 'vue'
 import { version as uiVersion } from '../package.json'
 
 // 引入所有 common 包组件
-import DLCommon, { ComponentNames as CommonComponentNames } from '@xuanmo/dl-common'
+import DLCommon, { ComponentNames as CommonComponentNames, PREFIX } from '@xuanmo/dl-common'
 
 import * as components from './components'
 
@@ -14,6 +14,7 @@ import '../../dl-icons/src/style.scss'
 import './style/index.scss'
 
 const install = function (app: App) {
+  document.querySelector('html')?.classList.add(`${PREFIX}-mobile`)
   Object.values(components).forEach((component: any) => {
     if (/^d-/.test(component?.name)) app.use(component)
   })
