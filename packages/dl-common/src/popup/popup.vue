@@ -54,7 +54,7 @@
 import { computed, CSSProperties, defineComponent, ref, watch } from 'vue'
 import { useConfig, useZIndex } from '../hooks'
 import { createNamespace } from '../utils'
-import DOverlay from '../overlay'
+import { DOverlay } from '../overlay'
 import { POPUP_PROPS } from './props'
 import { CloseOutlined } from '@xuanmo/dl-icons'
 

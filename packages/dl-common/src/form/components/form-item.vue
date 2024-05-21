@@ -48,7 +48,7 @@
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue'
 import { createNamespace } from '../../utils'
-import DCell from '../../cell'
+import { DCell } from '../../cell'
 import { createFormBEM, EventPrefixEnum } from '../constants'
 import { IFormModelItem } from '../types'
 import { omitSystemProps } from '../utils'

@@ -1,10 +1,10 @@
 import { defineComponent, computed, CSSProperties, SetupContext } from 'vue'
 import { addUnit, createNamespace } from '../utils'
 import { DRAWER_PROPS, DrawerProps } from './props'
-import DPopup from '../popup'
+import { DPopup } from '../popup'
 import { useModelValue } from '../hooks'
-import DButton from '../button'
-import DSpace from '../space'
+import { DButton } from '../button'
+import { DSpace } from '../space'
 import { useCloseOnEsc } from '../hooks'
 
 const [name, bem] = createNamespace('drawer')
