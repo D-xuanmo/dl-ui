@@ -4,11 +4,12 @@ import { useConfig, useModelValue } from '../hooks'
 import { DIALOG_PROPS, DialogProps } from './props'
 import { SetupContext } from 'vue'
 import { DPopup } from '../popup'
-import { DButton } from '../button'
+import { ButtonProps, DButton } from '../button'
 import { DSpace } from '../space'
 import { CheckCircleFilled, CloseFilled, TipsFilled, WarningFilled } from '@xuanmo/dl-icons'
 import { MessageThemeType } from '../common'
 import { useCloseOnEsc } from '../hooks'
+import { ClientTypeEnum } from '../constants'
 
 const [name, bem] = createNamespace('dialog')
 
@@ -26,10 +27,15 @@ export default defineComponent({
   props: DIALOG_PROPS,
   emits: ['update:visible', 'confirm', 'close'],
   setup(props, context: SetupContext) {
+    const config = useConfig(['clientType', 'closeOnEsc'], props)
+    const isMobile = config.value.clientType === ClientTypeEnum.MOBILE
     const containerClass = computed(() =>
       bem({
         'hide-overlay': !props.showOverlay,
-        [props.placement]: props.placement
+        [props.placement]: props.placement,
+        [config.value.clientType!.toLowerCase()]: true,
+        'text-btn': props.textButton,
+        [props.type]: true
       })
     )
     const wrapperClass = bem('wrapper')
@@ -54,7 +60,14 @@ export default defineComponent({
       height: addUnit(props.height)
     }))
 
-    const config = useConfig(['closeOnEsc'], props)
+    /* eslint-disable indent */
+    const buttonProps = props.textButton
+      ? ({
+          fill: 'none',
+          size: 'large'
+        } as Partial<ButtonProps>)
+      : undefined
+    /* eslint-enable indent */
 
     const handleClose = () => {
       context.emit('close')
@@ -113,8 +126,11 @@ export default defineComponent({
       const cancel = props.hideCancelButton ? null : (
         <DButton
           class={cancelButtonClass}
-          fill="outline"
+          fill={isMobile ? 'solid' : 'outline'}
+          theme={isMobile ? 'light' : undefined}
           disabled={props.loading}
+          block={isMobile}
+          {...buttonProps}
           {...props.cancelButtonProps}
           onClick={handleClose}
         >
@@ -126,6 +142,8 @@ export default defineComponent({
           class={confirmButtonClass}
           theme="primary"
           loading={props.loading}
+          block={isMobile}
+          {...buttonProps}
           {...props.confirmButtonProps}
           onClick={handleConfirm}
         >
@@ -134,10 +152,10 @@ export default defineComponent({
       )
       return (
         context.slots?.footer?.() || (
-          <DSpace class={footerClass} justify="end" gap={8}>
+          <div class={footerClass}>
             {cancel}
             {confirm}
-          </DSpace>
+          </div>
         )
       )
     }
@@ -149,7 +167,7 @@ export default defineComponent({
         placement="custom"
         transitionPrefix={name}
         overlay={props.showOverlay}
-        closable={props.closable}
+        closable={isMobile ? false : props.closable}
         closeOnOverlayClick={props.closeOnOverlayClick}
         popupContainerClass={containerClass.value}
         popupClass={wrapperClass}

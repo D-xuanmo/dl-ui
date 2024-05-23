@@ -2,6 +2,7 @@ import { DDialog, DialogProps } from './index'
 import { mountComponent, getID } from '../utils'
 import { reactive, ref } from 'vue'
 import { useConfig } from '../hooks'
+import { DialogTypeEnum } from './constants'
 
 type DialogOptions = Partial<Omit<DialogProps, 'visible'>>
 
@@ -55,31 +56,19 @@ function showDialog(props: DialogOptions) {
   return dialogInstance
 }
 
-/**
- * TODO 下个主版本去掉
- */
-export const DialogPlugin = {
-  confirm: (options: DialogOptions) => showDialog(options),
-  alert: (options: DialogOptions) =>
-    showDialog({
-      ...options,
-      hideCancelButton: true,
-      closeOnEsc: false,
-      closeOnOverlayClick: false
-    })
-}
-
 export const useDialog = () => {
   const config = useConfig(['closeOnEsc'])
   return {
     confirm: (options: DialogOptions) =>
       showDialog({
         closeOnEsc: config.value.closeOnEsc,
-        ...options
+        ...options,
+        type: DialogTypeEnum.Confirm
       }),
     alert: (options: DialogOptions) =>
       showDialog({
         ...options,
+        type: DialogTypeEnum.Alert,
         hideCancelButton: true,
         closeOnEsc: false,
         closeOnOverlayClick: false

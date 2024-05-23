@@ -203,6 +203,7 @@ const showDialog = () => {
 |confirm-button-props|`ButtonProps`|-|可复写按钮参数|N|
 |hide-confirm-button|`boolean`|`false`|隐藏确认按钮|N|
 |footer|`boolean \| VNode[]`|-|类型为 `boolean` 时，控制底部显示隐藏，为 `VNode[]` 时，复写整个底部|N|
+|text-button|`boolean`|-|底部按钮是否显示为文字按钮，仅移动端生效|N|
 |destroy-on-close|`boolean`|`false`|是否关闭对话框销毁子元素|N|
 |width|`'number' \| 'string'`|`480px`|对话框宽度|N|
 |height|`'number' \| 'string'`|-|对话框高度|N|

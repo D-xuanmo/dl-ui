@@ -1,5 +1,5 @@
 // 统一处理边框，宽度为 0.5px
-@mixin border($padding, $d: bottom) {
+@mixin border($padding, $d: bottom, $width: calc(100% - #{$padding})) {
   position: relative;
 
   &::after {
@@ -14,13 +14,13 @@
     &::after {
       bottom: 0;
       left: 50%;
-      width: calc(100% - #{$padding});
+      width: $width;
     }
   } @else if ($d == top) {
     &::after {
       top: 0;
       left: 50%;
-      width: calc(100% - #{$padding});
+      width: $width;
     }
   } @else if ($d == right) {
     &::after {

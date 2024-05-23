@@ -5,7 +5,8 @@ import {
   ThemeEnum,
   PlacementEnum,
   MessageThemeEnum,
-  HorizontalAlignEnum
+  HorizontalAlignEnum,
+  ClientTypeEnum
 } from './constants'
 
 /** 水平对齐方式 */
@@ -144,7 +145,7 @@ export const COMMON_PROPS = {
   /**
    * 终端类型
    */
-  clientType: String as PropType<'PC' | 'MOBILE'>,
+  clientType: String as PropType<`${ClientTypeEnum}`>,
 
   /**
    * 边框显示

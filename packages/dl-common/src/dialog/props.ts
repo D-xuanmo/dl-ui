@@ -2,11 +2,12 @@ import { ExtractPropTypes, PropType, VNode } from 'vue'
 import { COMMON_PROPS, MessageThemeType } from '../common'
 import { ButtonProps } from '../button'
 import { pickProps } from '../utils'
+import { DialogTypeEnum } from './constants'
 
 export type DialogProps = ExtractPropTypes<typeof DIALOG_PROPS>
 
 export const DIALOG_PROPS = {
-  ...pickProps(COMMON_PROPS, ['lockScroll', 'teleport', 'lazyRender', 'closeOnEsc']),
+  ...pickProps(COMMON_PROPS, ['lockScroll', 'teleport', 'lazyRender', 'closeOnEsc', 'clientType']),
   /**
    * 弹框显示隐藏
    */
@@ -175,6 +176,22 @@ export const DIALOG_PROPS = {
   footer: {
     type: [Boolean, Object] as PropType<boolean | VNode[]>,
     default: true
+  },
+
+  /**
+   * 底部按钮是否为文字按钮
+   */
+  textButton: {
+    type: Boolean,
+    default: false
+  },
+
+  /**
+   * 弹框类型
+   */
+  type: {
+    type: String as PropType<`${DialogTypeEnum}`>,
+    default: DialogTypeEnum.Confirm
   },
 
   /**

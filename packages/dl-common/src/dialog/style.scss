@@ -89,9 +89,13 @@
 
   &__body {
     padding: var(--d-dialog-padding);
+    color: var(--d-secondary-text-color);
   }
 
   &__footer {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: var(--d-gap-sm);
     padding: 0 var(--d-dialog-padding) var(--d-dialog-padding);
   }
 
@@ -122,7 +126,48 @@
   }
 
   &__cancel-button {
-    background: var(--d-gray-3);
     color: var(--d-primary-text-color);
+  }
+
+  &--mobile {
+    #{$dialogPrefix} {
+      &__header {
+        text-align: center;
+      }
+
+      &__title {
+        max-width: 100%;
+      }
+    }
+  }
+
+  &--text-btn {
+    #{$dialogPrefix} {
+      &__footer {
+        padding: 0;
+        @include border(var(--d-gap-sm), top, 100%);
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 50%;
+          width: 1px;
+          height: 100%;
+          background: var(--d-border-color);
+          transform: scaleX(0.5) translateX(-50%);
+        }
+      }
+    }
+  }
+
+  &--alert {
+    #{$dialogPrefix} {
+      &__footer {
+        &::before {
+          display: none;
+        }
+      }
+    }
   }
 }
