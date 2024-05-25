@@ -7,9 +7,9 @@
     <d-button block theme="primary" fill="outline" @click="show('文本内容')">函数调用</d-button>
   </d-space>
   <d-toast v-model:visible="visible1">显示内容</d-toast>
-  <d-toast v-model:visible="visible2" theme="success">保存成功</d-toast>
-  <d-toast v-model:visible="visible3" theme="error">保存失败</d-toast>
-  <d-toast v-model:visible="visible4" theme="loading">加载中...</d-toast>
+  <d-toast v-model:visible="visible2" theme="success" direction="vertical">保存成功</d-toast>
+  <d-toast v-model:visible="visible3" theme="error" direction="vertical">保存失败</d-toast>
+  <d-toast v-model:visible="visible4" theme="loading" direction="vertical">加载中...</d-toast>
 </template>
 
 <script setup lang="ts">
@@ -24,6 +24,8 @@ const visible3 = ref(false)
 const visible4 = ref(false)
 
 const show = (text: string) => {
-  toast.loading(text)
+  toast.loading(text, {
+    direction: 'vertical'
+  })
 }
 </script>

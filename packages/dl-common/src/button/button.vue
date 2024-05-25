@@ -49,7 +49,7 @@ export default defineComponent({
     )
 
     const onClick = (event: MouseEvent) => {
-      if (!props.link) {
+      if (props.fill !== 'none' && !props.link) {
         active.value = true
         setTimeout(() => (active.value = false), 300)
       }

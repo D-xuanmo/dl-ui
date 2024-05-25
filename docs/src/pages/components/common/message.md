@@ -22,10 +22,10 @@ app.use(DMessage)
 ```vue client=PC playground=Message title=基础
 <template>
   <d-space :gap="10">
-    <d-button fill="outline" @click="showInfo">info</d-button>
-    <d-button fill="outline" @click="showSuccess">success</d-button>
-    <d-button fill="outline" @click="showWarning">warning</d-button>
-    <d-button fill="outline" @click="showError">error</d-button>
+    <d-button fill="outline" theme="primary" @click="showInfo">info</d-button>
+    <d-button fill="outline" theme="success" @click="showSuccess">success</d-button>
+    <d-button fill="outline" theme="warning" @click="showWarning">warning</d-button>
+    <d-button fill="outline" theme="danger" @click="showError">error</d-button>
     <d-button fill="outline" @click="showLoading">loading</d-button>
   </d-space>
 </template>

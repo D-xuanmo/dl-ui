@@ -64,7 +64,7 @@ function createInstance(option: ToastOptions, id: string) {
   return instance as unknown as ToastInstance
 }
 
-function showMessage(props: string | ToastOptions) {
+function showToast(props: string | ToastOptions) {
   let options: ToastOptions
   if (typeof props === 'string') {
     options = {
@@ -85,27 +85,27 @@ export const useToast = () => {
   const config = useConfig(['direction'])
   return {
     text: (content: string, option?: ToastOptions) =>
-      showMessage({
+      showToast({
         content,
         direction: config.value.direction,
         ...option
       }),
     success: (content: string, option?: ToastOptions) =>
-      showMessage({
+      showToast({
         content,
         theme: 'success',
         direction: config.value.direction,
         ...option
       }),
     error: (content: string, option?: ToastOptions) =>
-      showMessage({
+      showToast({
         content,
         theme: 'error',
         direction: config.value.direction,
         ...option
       }),
     loading: (content: string, option?: ToastOptions) =>
-      showMessage({
+      showToast({
         content,
         theme: 'loading',
         direction: config.value.direction,

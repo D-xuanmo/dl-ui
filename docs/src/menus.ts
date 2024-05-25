@@ -111,7 +111,14 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
       {
         id: createRandomID(),
         groupTitle: '反馈',
-        children: [{ id: 'toast', path: '/comp-mobile/toast', content: 'Toast [轻提示]' }]
+        children: [
+          {
+            id: 'action-sheet',
+            path: '/comp-mobile/action-sheet',
+            content: 'ActionSheet [动作面板]'
+          },
+          { id: 'toast', path: '/comp-mobile/toast', content: 'Toast [轻提示]' }
+        ]
       }
     ]
   ]

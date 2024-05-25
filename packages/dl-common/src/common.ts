@@ -1,5 +1,4 @@
-import { PropType } from 'vue'
-import { TeleportProps } from 'vue/dist/vue'
+import { PropType, TeleportProps } from 'vue'
 import {
   SizeEnum,
   ThemeEnum,
@@ -73,6 +72,13 @@ export type CustomKeys = {
   value?: string
   children?: string
 }
+
+/**
+ * 用于必选部分属性
+ */
+export type RequiredProperties<T extends Record<string, any>, K extends keyof T> = {
+  [P in K]-?: T[K]
+} & Partial<Omit<T, K>>
 
 /**
  * 所有公用 props

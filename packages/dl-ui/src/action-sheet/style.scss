@@ -1,0 +1,49 @@
+@import '../style/prefix';
+@import '../style/mixins';
+
+:root {
+  --d-action-sheet-gap-x: var(--d-gap-sm);
+  --d-action-sheet-description-color: var(--d-secondary-text-color);
+}
+
+.#{$prefix}-action-sheet {
+  &--left {
+    text-align: left;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  &__description {
+    padding: var(--d-gap-sm) var(--d-action-sheet-gap-x);
+    @include border(0px);
+    color: var(--d-action-sheet-description-color);
+  }
+
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  &__item {
+    &:not(:last-of-type) {
+      @include border(0px);
+    }
+
+    .#{$prefix}-button {
+      text-align: inherit;
+    }
+  }
+
+  &__cancel {
+    border-top: 8px solid var(--d-border-color);
+  }
+}

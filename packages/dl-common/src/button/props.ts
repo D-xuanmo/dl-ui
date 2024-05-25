@@ -45,7 +45,7 @@ export const BUTTON_PROPS = {
    * 按钮形状
    */
   shape: {
-    type: String as PropType<'default' | 'round' | 'rectangular'>,
+    type: String as PropType<'default' | 'round' | 'rectangular' | 'none'>,
     default: 'default'
   },
 

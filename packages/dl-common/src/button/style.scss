@@ -13,6 +13,32 @@
   --d-button-small: 32px;
 }
 
+@mixin theme {
+  &-default {
+    color: var(--d-primary-text-color);
+
+    &:hover:not(:disabled) {
+      color: var(--d-primary);
+    }
+  }
+
+  &-primary {
+    color: var(--d-primary);
+  }
+
+  &-success {
+    color: var(--d-success);
+  }
+
+  &-warning {
+    color: var(--d-warning);
+  }
+
+  &-danger {
+    color: var(--d-error);
+  }
+}
+
 .#{$prefix}-button {
   $prefix: &;
   --d-button-wave: var(--d-primary-1);
@@ -71,6 +97,86 @@
 
     &-rectangular {
       border-radius: 0;
+    }
+
+    &-default,
+    &-round,
+    &-rectangular {
+      &#{$prefix}--theme {
+        &-default {
+          color: var(--d-primary-text-color);
+        }
+
+        &-primary {
+          --d-button-wave: var(--d-primary-1);
+          --d-button-wave-bg: var(--d-primary-7);
+        }
+
+        &-success {
+          --d-button-wave: var(--d-success-1);
+          --d-button-wave-bg: var(--d-success-7);
+        }
+
+        &-warning {
+          --d-button-wave: var(--d-warning-1);
+          --d-button-wave-bg: var(--d-warning-7);
+        }
+
+        &-danger {
+          --d-button-wave: var(--d-error-1);
+          --d-button-wave-bg: var(--d-error-7);
+        }
+      }
+    }
+  }
+
+  // 尺寸
+  &--size {
+    &-large {
+      height: var(--d-button-large);
+      min-height: var(--d-button-large);
+      padding: 0 var(--d-gap-sm);
+      font-size: var(--d-font-size-lg);
+    }
+
+    &-medium {
+      height: var(--d-button-medium);
+      min-height: var(--d-button-medium);
+      padding: 0 var(--d-gap-sm);
+      font-size: var(--d-font-size-md);
+    }
+
+    &-small {
+      height: var(--d-button-small);
+      min-height: var(--d-button-small);
+      padding: 0 var(--d-gap-sm);
+      font-size: var(--d-font-size-sm);
+    }
+  }
+
+  &:disabled {
+    opacity: var(--d-button-disabled-opacity);
+    cursor: not-allowed;
+  }
+
+  &__icon-loading {
+    margin-right: var(--d-gap-xxs);
+  }
+
+  // 链接模式
+  &--is-link {
+    height: auto;
+    min-height: initial;
+    padding: 0;
+    border: 0;
+
+    &::before {
+      display: none;
+    }
+
+    // 主题
+    &#{$prefix}--theme {
+      @include theme;
     }
   }
 
@@ -198,98 +304,11 @@
 
     &-none {
       border: 0;
-      color: var(--d-primary);
-    }
-  }
 
-  // 尺寸
-  &--size {
-    &-large {
-      height: var(--d-button-large);
-      min-height: var(--d-button-large);
-      padding: 0 var(--d-gap-sm);
-      font-size: var(--d-font-size-lg);
-    }
-
-    &-medium {
-      height: var(--d-button-medium);
-      min-height: var(--d-button-medium);
-      padding: 0 var(--d-gap-sm);
-      font-size: var(--d-font-size-md);
-    }
-
-    &-small {
-      height: var(--d-button-small);
-      min-height: var(--d-button-small);
-      padding: 0 var(--d-gap-sm);
-      font-size: var(--d-font-size-sm);
-    }
-  }
-
-  &:disabled {
-    opacity: var(--d-button-disabled-opacity);
-    cursor: not-allowed;
-  }
-
-  &__icon-loading {
-    margin-right: var(--d-gap-xxs);
-  }
-
-  // 链接模式
-  &--is-link {
-    height: auto;
-    min-height: initial;
-    padding: 0;
-    border: 0;
-
-    &::before {
-      display: none;
-    }
-
-    // 主题
-    &#{$prefix}--theme {
-      &-default {
-        color: var(--d-primary-text-color);
-
-        &:hover {
-          color: var(--d-primary);
-        }
+      // 主题
+      &#{$prefix}--theme {
+        @include theme;
       }
-
-      &-primary {
-        color: var(--d-primary);
-      }
-
-      &-success {
-        color: var(--d-success);
-      }
-
-      &-warning {
-        color: var(--d-warning);
-      }
-
-      &-danger {
-        color: var(--d-error);
-      }
-    }
-  }
-
-  &--theme {
-    &-primary {
-      --d-button-wave: var(--d-primary-1);
-      --d-button-wave-bg: var(--d-primary-7);
-    }
-    &-success {
-      --d-button-wave: var(--d-success-1);
-      --d-button-wave-bg: var(--d-success-7);
-    }
-    &-warning {
-      --d-button-wave: var(--d-warning-1);
-      --d-button-wave-bg: var(--d-warning-7);
-    }
-    &-danger {
-      --d-button-wave: var(--d-error-1);
-      --d-button-wave-bg: var(--d-error-7);
     }
   }
 }
