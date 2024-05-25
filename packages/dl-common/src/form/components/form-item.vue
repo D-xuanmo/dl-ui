@@ -1,16 +1,17 @@
 <template>
   <d-cell
     v-if="model.dataKey && model.layout.container !== false"
-    :class="itemClassName"
     content-align="left"
-    :title-width="formProps.labelWidth"
-    :layout="model.layout.layout || formProps.layout"
-    :hide-title="formProps.hideLabel || model.hideLabel"
+    :class="itemClassName"
     :colon="formProps.colon"
     :round="formProps.round"
     :border="formProps.border"
-    :client-type="formProps.clientType"
     :description="model.description"
+    :title-width="formProps.labelWidth"
+    :client-type="formProps.clientType"
+    :layout="model.layout.layout || formProps.layout"
+    :hide-title="formProps.hideLabel || model.hideLabel"
+    :title-vertical-center="model.layout.titleVerticalCenter"
   >
     <template #title>
       <span

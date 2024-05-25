@@ -6,6 +6,7 @@
     suffix="后缀"
     arrow
     required
+    client-type="PC"
   >
     <template #left-icon>
       <tips-outlined size="small" color="#f00" />
@@ -21,6 +22,7 @@
     suffix="后缀"
     arrow
     required
+    client-type="PC"
     layout="vertical"
   >
     <template #left-icon>

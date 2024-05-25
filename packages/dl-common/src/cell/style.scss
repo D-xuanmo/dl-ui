@@ -130,12 +130,17 @@
         vertical-align: middle;
       }
     }
+
+    &--title-vertical-center {
+      align-self: center;
+    }
   }
 
   &__content {
     flex: 1;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     @include text-align;
 
     #{$parent} {

@@ -13,6 +13,13 @@ export const CELL_PROPS = {
     type: String as PropType<HorizontalAlignType>,
     default: 'left'
   },
+  /**
+   * 标题垂直居中
+   */
+  titleVerticalCenter: {
+    type: Boolean,
+    default: false
+  },
   hideTitle: Boolean,
   required: Boolean,
   content: String as PropType<string | undefined>,

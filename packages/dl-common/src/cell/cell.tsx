@@ -33,7 +33,8 @@ export default defineComponent({
     return () => {
       const titleClassName = [
         bem('title', {
-          [props.titleAlign]: props.titleAlign
+          [props.titleAlign]: props.titleAlign,
+          'title-vertical-center': props.titleVerticalCenter
         }),
         props.titleClass
       ]

@@ -79,6 +79,7 @@ import { TipsOutlined, CloseOutlined } from '@xuanmo/dl-icons'
 |title-width|`string`|`80px`|标题宽度|N|
 |title-class|`string`|-|标题类名|N|
 |title-align|`string`|`left`|标题对齐方式，可选值：`left/center/right`|N|
+|title-vertical-center|`boolean`|`false`|标题垂直居中|N|
 |hide-title|`boolean`|`false`|是否隐藏标题|N|
 |required|`boolean`|`false`|是否显示必填标识|N|
 |content|`string`|-|内容|N|
