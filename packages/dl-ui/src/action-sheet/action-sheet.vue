@@ -4,7 +4,7 @@
     placement="bottom"
     :popup-container-class="bem({ [align]: align })"
     :popup-class="bem('wrapper')"
-    :popup-body-class="bem('body')"
+    :popup-body-class="[bem('body'), 'safe-area-inset-bottom']"
     @update:visible="onVisible"
   >
     <div v-if="description" :class="bem('description')">{{ description }}</div>

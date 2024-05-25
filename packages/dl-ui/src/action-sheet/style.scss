@@ -25,6 +25,7 @@
   &__description {
     padding: var(--d-gap-sm) var(--d-action-sheet-gap-x);
     @include border(0px);
+    font-size: var(--d-font-size-md);
     color: var(--d-action-sheet-description-color);
   }
 
