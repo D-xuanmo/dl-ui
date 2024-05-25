@@ -1,4 +1,5 @@
 import { Component, render, createVNode } from 'vue'
+import { PREFIX } from '../constants'
 
 export function mountComponent(
   RootComponent: Component,
@@ -8,6 +9,7 @@ export function mountComponent(
   const instance = createVNode(RootComponent, {
     teleport: teleport
   })
+  teleport.classList.add(`${PREFIX}-teleport`)
   render(instance, teleport)
   root.appendChild(teleport)
 

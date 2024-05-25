@@ -13,11 +13,14 @@
   top: 0;
   left: 50%;
   z-index: 999999;
-  display: flex;
-  justify-content: center;
   width: 100%;
   max-width: 90%;
   transform: translateX(-50%);
+
+  .#{$prefix}-teleport {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .#{$prefix}-message {
