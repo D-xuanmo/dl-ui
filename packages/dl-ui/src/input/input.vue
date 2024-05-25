@@ -88,7 +88,9 @@ export default defineComponent({
     }
 
     function onFocus(event: Event) {
-      isFocus.value = true
+      if (props.border || ['warning', 'error'].includes(props.status!)) {
+        isFocus.value = true
+      }
       emit('focus', innerValue.value, event)
     }
 
