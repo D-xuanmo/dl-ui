@@ -105,6 +105,8 @@ app.use(DInput)
 |input-align|`string`|-|输入框文字对齐方式，可选值：`left/center/right`|N|
 |maxlength|`number`|-|最大长度，原生属性|N|
 |suffix|`string`|-|右侧扩展内容|N|
+|bordered|`boolean`|`false`|是否显示边框|N|
+|status|`'warning' \| 'error'`|-|输入框状态，用于边框显示|N|
 |autocomplete|`string`|-|原生属性，[MDN-autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)|N|
 |clearable|`boolean`|-|显示可清空按钮|N|
 |formatter|`(value: string) => string`|-|格式化函数|N|

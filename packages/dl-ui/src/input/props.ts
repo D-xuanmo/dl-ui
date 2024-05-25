@@ -53,5 +53,13 @@ export const INPUT_PROPS = {
   formatterTrigger: {
     type: String as PropType<FieldFormatterTrigger | undefined>,
     default: 'onChange'
+  },
+  border: {
+    type: Boolean,
+    default: false
+  },
+  status: {
+    type: String as PropType<'warning' | 'error'>,
+    default: undefined
   }
 }

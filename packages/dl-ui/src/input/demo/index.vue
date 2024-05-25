@@ -40,6 +40,15 @@
     </d-cell>
   </d-cell-group>
   <d-cell-group title="其他设置">
+    <d-cell title="显示边框" layout="vertical">
+      <d-input v-model="value" border placeholder="请输入文字" clearable />
+    </d-cell>
+    <d-cell title="警告状态" layout="vertical">
+      <d-input v-model="value" placeholder="请输入文字" status="warning" clearable />
+    </d-cell>
+    <d-cell title="错误状态" layout="vertical">
+      <d-input v-model="value" placeholder="请输入文字" status="error" clearable />
+    </d-cell>
     <d-cell title="显示冒号" colon>
       <d-input v-model="value" placeholder="请输入文字" />
     </d-cell>

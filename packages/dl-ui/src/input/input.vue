@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, SetupContext } from 'vue'
+import { computed, defineComponent, ref, SetupContext } from 'vue'
 import { createNamespace, useModelValue } from '@xuanmo/dl-common'
 import { INPUT_PROPS } from './props'
 import { CloseFilled } from '@xuanmo/dl-icons'
@@ -36,8 +36,12 @@ export default defineComponent({
   props: INPUT_PROPS,
   emits: ['update:model-value', 'blur', 'clear', 'focus', 'click-input'],
   setup(props, { emit }) {
+    const isFocus = ref(false)
     const inputClassName = computed(() =>
       bem({
+        border: props.border,
+        focus: isFocus.value,
+        [`status-${props.status}`]: props.status,
         disabled: props.disabled,
         readonly: props.readonly
       })
@@ -74,6 +78,7 @@ export default defineComponent({
     }
 
     function onBlur(event: Event) {
+      isFocus.value = false
       const value = (event.target as HTMLInputElement).value
       // prettier-ignore
       const newValue = props.formatterTrigger === 'onChange' && props.formatter
@@ -83,6 +88,7 @@ export default defineComponent({
     }
 
     function onFocus(event: Event) {
+      isFocus.value = true
       emit('focus', innerValue.value, event)
     }
 

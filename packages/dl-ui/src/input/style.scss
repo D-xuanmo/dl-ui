@@ -1,6 +1,10 @@
 @import '../style/prefix.scss';
 @import '../style/mixins.scss';
 
+:root {
+  --d-input-padding: var(--d-cell-padding);
+}
+
 .#{$prefix}-input {
   display: inline-flex;
   width: 100%;
@@ -8,6 +12,32 @@
   caret-color: var(--d-primary);
   @include disabled;
   @include font-size(md);
+
+  &--status-warning,
+  &--status-error,
+  &--border {
+    box-sizing: border-box;
+    padding: var(--d-input-padding);
+    outline: 1px solid var(--d-border-color);
+    border-radius: var(--d-radius-medium);
+  }
+
+  &--focus {
+    outline-color: var(--d-primary);
+    box-shadow: 0 0 5px var(--d-primary);
+  }
+
+  &--status {
+    &-warning {
+      outline-color: var(--d-warning);
+      box-shadow: 0 0 5px var(--d-warning);
+    }
+
+    &-error {
+      outline-color: var(--d-error);
+      box-shadow: 0 0 5px var(--d-error);
+    }
+  }
 
   &__inner {
     flex: 1;
