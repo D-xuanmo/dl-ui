@@ -61,5 +61,21 @@ export const CONFIG_PROVIDER_PROPS = {
   theme: {
     type: Object as PropType<ConfigProviderTheme>,
     default: undefined
+  },
+
+  /**
+   * 是否为顶级组件
+   */
+  isRoot: {
+    type: Boolean,
+    default: true
+  },
+
+  /**
+   * 高度是否撑满
+   */
+  fullHeight: {
+    type: Boolean,
+    default: true
   }
 }

@@ -2,7 +2,7 @@ import { createNamespace } from '../utils'
 import { defineComponent, provide, SetupContext } from 'vue'
 import { CONFIG_PROVIDER_PROPS } from './props'
 import { ConfigProviderInjectKey } from './context'
-import { useStyle } from './use-style'
+import { useTheme } from './use-style'
 
 const [name, bem] = createNamespace('config-provider')
 
@@ -12,10 +12,25 @@ export default defineComponent({
   setup(props, context: SetupContext) {
     provide(ConfigProviderInjectKey, props)
 
-    const style = useStyle(props)
+    const theme = useTheme(props)
+
+    const style = {
+      height: props.fullHeight ? '100%' : undefined
+    }
+
+    if (props.isRoot) {
+      const htmlEl = document.querySelector('html')
+      if (htmlEl) {
+        for (const [key, value] of Object.entries(theme.value)) {
+          htmlEl.style.setProperty(key, value)
+        }
+      }
+    } else {
+      Object.assign(style, theme.value)
+    }
 
     return () => (
-      <div class={bem()} style={style.value}>
+      <div class={bem()} style={style}>
         {context.slots.default?.()}
       </div>
     )

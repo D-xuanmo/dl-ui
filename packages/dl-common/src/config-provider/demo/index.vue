@@ -30,6 +30,7 @@
     :theme="theme"
     :border="border"
     client-type="MOBILE"
+    :is-root="false"
     :layout="formLayout"
     :label-width="labelWidth"
     :required-mark-position="requiredMarkPosition"
