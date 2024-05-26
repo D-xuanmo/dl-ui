@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref, SetupContext } from 'vue'
-import { createNamespace, useModelValue } from '@xuanmo/dl-common'
+import { createNamespace, useFormEventEmit, useModelValue } from '@xuanmo/dl-common'
 import { INPUT_PROPS } from './props'
 import { CloseFilled } from '@xuanmo/dl-icons'
 
@@ -37,6 +37,7 @@ export default defineComponent({
   emits: ['update:model-value', 'blur', 'clear', 'focus', 'click-input'],
   setup(props, { emit }) {
     const isFocus = ref(false)
+    const formEventEmit = useFormEventEmit(props.model!)
     const inputClassName = computed(() =>
       bem({
         border: props.border,
@@ -75,6 +76,7 @@ export default defineComponent({
     function onClear(event: MouseEvent) {
       updateValue('')
       emit('clear', '', event)
+      formEventEmit?.('clear', '', props.rowId)
     }
 
     function onBlur(event: Event) {
@@ -85,6 +87,7 @@ export default defineComponent({
         ? props.formatter(value)
         : value
       emit('blur', newValue, event)
+      formEventEmit?.('blur', newValue, props.rowId)
     }
 
     function onFocus(event: Event) {
@@ -92,6 +95,7 @@ export default defineComponent({
         isFocus.value = true
       }
       emit('focus', innerValue.value, event)
+      formEventEmit?.('focus', innerValue.value, props.rowId)
     }
 
     function onClick(event: MouseEvent) {

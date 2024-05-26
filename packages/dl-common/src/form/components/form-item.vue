@@ -39,8 +39,6 @@
       :disabled="store.viewLinkageStore.getDisabled(model.id)"
       :readonly="store.viewLinkageStore.getReadonly(model.id)"
       @update:model-value="handleChange"
-      @blur="handleBlur"
-      @focus="handleFocus"
     />
     <p v-if="errorMessage" :class="errorClassName">{{ errorMessage }}</p>
   </d-cell>
@@ -105,14 +103,6 @@ export default defineComponent({
       formEventEmit!('change', value, rowId)
     }
 
-    const handleBlur = (value: unknown) => {
-      formEventEmit!('blur', value, rowId)
-    }
-
-    const handleFocus = (value: unknown) => {
-      formEventEmit!('focus', value, rowId)
-    }
-
     return {
       itemClassName,
       errorClassName,
@@ -124,9 +114,7 @@ export default defineComponent({
       formProps,
       store,
       omitSystemProps,
-      handleChange,
-      handleBlur,
-      handleFocus
+      handleChange
     }
   }
 })

@@ -29,7 +29,7 @@ import { UploadListItemType, UPLOAD_PROPS } from './props'
 import { createUploadNameSpace } from './utils'
 import UploadList from './upload-list.vue'
 import { debugWarn, deepCopy, isObject, throwError } from '@xuanmo/utils'
-import { addUnit, filePreview, request } from '@xuanmo/dl-common'
+import { addUnit, filePreview, request, useFormEventEmit } from '@xuanmo/dl-common'
 import { CameraFilled } from '@xuanmo/dl-icons'
 
 const [name, bem] = createUploadNameSpace()
@@ -43,6 +43,7 @@ export default defineComponent({
   props: UPLOAD_PROPS,
   emits: ['update:model-value', 'change', 'success', 'error', 'exceed-count', 'exceed-size'],
   setup(props, { emit }) {
+    const formEventEmit = useFormEventEmit(props.model!)
     const wrapperClassName = bem()
     const triggerClassName = computed(() =>
       bem('trigger', {
@@ -63,11 +64,16 @@ export default defineComponent({
       return props.deletable && !props.disabled && !props.readonly
     })
 
-    const handleUpload = (files: File[]) => {
+    const handleUpload = async (files: File[]) => {
       if (!props.action) throwError(name, '未配置文件上传请求地址')
       let queueTask = files.length
       for (let i = 0; i < files.length; i++) {
         const file = files[i]
+        const beforeUpload = await props.beforeUpload?.(file, {
+          index: i,
+          files
+        })
+        if (beforeUpload === false) return
         const formData = new FormData()
         const currentPreview = localPreviewList.value[i]
         formData.append(props.name, file, file.name)
@@ -103,6 +109,7 @@ export default defineComponent({
               loading: false
             })
             emit('success', response)
+            formEventEmit?.('success', response, props.rowId)
           })
           .catch((error) => {
             localPreviewList.value.splice(i, 1, {
@@ -111,6 +118,7 @@ export default defineComponent({
               fail: true
             })
             emit('error', error)
+            formEventEmit?.('error', error, props.rowId)
           })
           .finally(async () => {
             queueTask--
@@ -131,6 +139,7 @@ export default defineComponent({
 
       if (files.length + previewList.value.length > props.maxCount) {
         emit('exceed-count')
+        formEventEmit?.('exceed-count', undefined, props.rowId)
         return debugWarn(name, `已选文件个数不能大于${props.maxCount}个`)
       }
 
@@ -138,6 +147,7 @@ export default defineComponent({
         const file = files[i]
         if (file.size > props.maxSize) {
           emit('exceed-size')
+          formEventEmit?.('exceed-size', file, props.rowId)
           return debugWarn(name, `${file.name}文件大小不能大于${props.maxSize}B`)
         }
 
@@ -152,6 +162,7 @@ export default defineComponent({
       }
 
       emit('change', files)
+      formEventEmit?.('change', files, props.rowId)
       handleUpload(fileList.value)
     }
 

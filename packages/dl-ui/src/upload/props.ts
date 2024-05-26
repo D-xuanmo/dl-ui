@@ -50,7 +50,7 @@ export type AfterUploadType = (response: XMLHttpRequestResponseType) => UploadLi
 export type UploadProps = ExtractPropTypes<typeof UPLOAD_PROPS>
 
 export const UPLOAD_PROPS = {
-  ...pickProps(COMMON_PROPS, ['disabled', 'readonly']),
+  ...pickProps(COMMON_PROPS, ['disabled', 'readonly', 'rowId', 'model']),
   modelValue: {
     type: Array as PropType<UploadListItemType[]>,
     default: () => []

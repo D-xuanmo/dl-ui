@@ -9,7 +9,7 @@ import {
 export type InputProps = ExtractPropTypes<typeof INPUT_PROPS>
 
 export const INPUT_PROPS = {
-  ...pickProps(COMMON_PROPS, ['disabled', 'readonly']),
+  ...pickProps(COMMON_PROPS, ['disabled', 'readonly', 'rowId', 'model']),
   modelValue: {
     type: [String, Number] as PropType<string | number | undefined>,
     default: undefined
