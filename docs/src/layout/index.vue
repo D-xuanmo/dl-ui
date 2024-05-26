@@ -149,7 +149,6 @@ const menuData = computed(() => getMenuList(route.params.type as any))
 
     li {
       padding: 4px 0;
-      list-style-type: circle;
       list-style-position: inside;
 
       ul,

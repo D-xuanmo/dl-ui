@@ -13,7 +13,7 @@
 
   &__item {
     $itemPrefix: &;
-    list-style: none;
+    list-style: none !important;
 
     &--active {
       color: var(--d-primary);

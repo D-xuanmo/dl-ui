@@ -25,7 +25,10 @@ const isActive = (link: string) => decodeURI(window.location.hash) === link
 <style lang="scss" scoped>
 .anchor-menu {
   font-size: 12px;
+
   &__item {
+    list-style: none;
+
     &--active {
       > .anchor-menu__link {
         color: var(--d-primary);

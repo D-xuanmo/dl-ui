@@ -22,9 +22,9 @@ watch(
     demoPath.value = `${import.meta.env.BASE_URL}demo${route.path}`
     isDemoRoute.value = /^\/demo/.test(route.path)
     if (isDemoRoute.value) {
-      document.querySelector('html').classList.add('d-mobile')
+      document.querySelector('html')!.classList.add('d-mobile')
     } else {
-      document.querySelector('html').classList.remove('d-mobile')
+      document.querySelector('html')!.classList.remove('d-mobile')
     }
   }
 )
