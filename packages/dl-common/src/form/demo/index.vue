@@ -59,6 +59,15 @@ const formLayout = ref<DirectionType>('horizontal')
 const formStore = new FormStore()
 console.log(formStore)
 
+// 事件监听
+formStore.events
+  // 监听所有字段值改变
+  .on('field.change', (value, model, rowId) => console.log({ value, model, rowId }))
+  // 监听指定字段值改变
+  .on('field.input.change', (value, rowId) => console.log({ value, rowId }))
+  .on('field.input.clear', (value, rowId) => console.log({ value, rowId }))
+  .on('field.avatar.success', (value, rowId) => console.log({ value, rowId }))
+
 const formLayoutOptions = [
   { label: 'horizontal', value: 'horizontal' },
   { label: 'vertical', value: 'vertical' }

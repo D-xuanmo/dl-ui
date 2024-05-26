@@ -91,4 +91,4 @@ type FieldEventType =
   | `${EventPrefixEnum.FIELD}.change`
   | `${EventPrefixEnum.FIELD}.${string}.${EventType}`
 
-export type EventsType = FieldEventType | ViewLinkageEventsType
+export type EventsType = FieldEventType | ViewLinkageEventsType | string

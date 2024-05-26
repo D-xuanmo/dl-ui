@@ -7,6 +7,7 @@ import {
   HorizontalAlignEnum,
   ClientTypeEnum
 } from './constants'
+import { IFormModelItem } from './form'
 
 /** 水平对齐方式 */
 export type HorizontalAlignType = `${HorizontalAlignEnum}`
@@ -86,6 +87,22 @@ export type RequiredProperties<T extends Record<string, any>, K extends keyof T>
 export const COMMON_PROPS = {
   className: {
     type: [String, Array, Object] as PropType<ClassName>,
+    default: undefined
+  },
+
+  /**
+   * 明细表行 id
+   */
+  rowId: {
+    type: String,
+    default: undefined
+  },
+
+  /**
+   * 表单中使用时，代表当前组件配置模型
+   */
+  model: {
+    type: Object as PropType<IFormModelItem>,
     default: undefined
   },
 

@@ -39,7 +39,8 @@ const FORM_MODEL: FormModels = [
     layout: {
       parent: 'basicGroup'
     },
-    placeholder: '请输入文字'
+    placeholder: '请输入文字',
+    clearable: true
   },
   {
     id: 'textarea',

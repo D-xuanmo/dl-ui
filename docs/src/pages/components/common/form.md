@@ -768,6 +768,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 1. 组件需要具备 `Vue3` 标准的 `v-model`，参考链接：[https://cn.vuejs.org/guide/components/v-model.html](https://cn.vuejs.org/guide/components/v-model.html)
 2. 数据变更传递，通过 `update:modelValue` 事件
 3. 组件不需要关心标题等标准属性，`FormItem` 会统一处理
+4. 事件触发可以通过 `useFormEventEmit` 方法进行处理，此方法底层调用 `formStore.events.emit`
 
 ### 开发明细表
 
@@ -841,17 +842,20 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 |getFormModels|`() => IFormModelItem<unknown>[]`|获取表单模型|
 |getFieldValue|`(dataKey: string) => unknown`|获取单个字段 value|
 |getFormData|`() => Record<string, any>`|获取表单数据|
-|getItem|`(id: string) => IFormModelItem<unknown> \| undefined`|获取单个 item 信息|
-|updateSingleValue|`(dataKey: string, value: any) => void`|更新单个字段数据|
+|getModel|`(id: string) => IFormModelItem<unknown> \| undefined`|获取单个 item 信息|
+|updateFieldValue|`(dataKey: string, value: any) => void`|更新单个字段数据|
 |updateData|`(data: Record<string, unknown>, validate?: boolean) => void`|更新多个字段数据，默认会执行校验|
 |updateModel|`(id: string, item: Partial<IFormModelItem>) => void`|更新单个 item 信息|
 |setRequired|`(id: string, required: boolean) => void`|设置必填|
 |setDisplay|`(id: string, display: boolean) => void`|设置显示隐藏|
 |setReadonly|`(id: string, readonly: boolean) => void`|设置只读|
 |setDisabled|`(id: string, disabled: boolean) => void`|设置禁用|
+|setFormDisabled|`(value: boolean) => void`|设置整表禁用|
+|setFormReadonly|`(value: boolean) => void`|设置整表只读|
 |validate|`() => Promise<true \| ValidateReturnType>`|表单校验|
 |singleValidate|`(dataKey: string) => void`|单个字段校验|
 |getSingleMessage|`(dataKey: string) => string`|获取单个字段的错误信息|
+|getParent|`(id: string) => IFormModelItem<unknown>`|通过 id 获取当前父级信息|
 |getChildren|`(id: string) => IFormModelItem<unknown>[]`|通过 id 获取当前子级集合|
 |clearMessages|`() => void`|清空所有校验信息|
 |reset|`() => void`|表单重置|

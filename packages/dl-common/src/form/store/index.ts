@@ -132,8 +132,19 @@ class FormStore {
    * @param dataKey
    * @param value
    * @param rowId
+   * @deprecated 主版本发布后废弃，改为 updateFieldValue
    */
   public updateSingleValue = (dataKey: string, value: any, rowId?: string) => {
+    this.updateFieldValue(dataKey, value, rowId)
+  }
+
+  /**
+   * 更新单个字段数据
+   * @param dataKey
+   * @param value
+   * @param rowId
+   */
+  public updateFieldValue = (dataKey: string, value: any, rowId?: string) => {
     if (rowId) {
       const detailTableId = this.getDetailTableId(dataKey)
       this.detailTableStore.upsert(detailTableId, rowId, value, dataKey)
@@ -152,7 +163,7 @@ class FormStore {
       if (this.tableIdMap.get(key)) {
         this.detailTableStore.updateTableData(key, value as DetailTableRowData[])
       } else {
-        this.updateSingleValue(key, value)
+        this.updateFieldValue(key, value)
       }
     }
     validate && this.validate()
@@ -177,7 +188,7 @@ class FormStore {
    * @deprecated 主版本发布后废弃，改为 getModel
    */
   public getItem<T = IFormModelItem>(id: string) {
-    return this.models.get(this.dataKeyMap.get(id) || id) as T
+    return this.getModel(id) as T
   }
 
   /**
@@ -242,11 +253,7 @@ class FormStore {
    * @deprecated 主版本发布后去除，需要改为 getFieldValue
    */
   public getSingleValue = (dataKey: string, rowId?: string) => {
-    if (rowId) {
-      const detailTableId = this.getDetailTableId(dataKey)
-      return this.detailTableStore.getFieldValue(detailTableId, rowId, dataKey)
-    }
-    return this.mainFormData[dataKey]
+    return this.getFieldValue(dataKey, rowId)
   }
 
   /**
