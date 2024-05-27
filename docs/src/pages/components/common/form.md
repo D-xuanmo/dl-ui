@@ -17,6 +17,10 @@ import { createApp } from 'vue';
 import {
   // 表单组件
   DForm,
+
+  // 组件容器
+  DFormItem,
+  DDetailTableWrapper,
   
   // 单列分组容器（可选），用法参考：https://www.xuanmo.xin/-/dl-ui/comp-common/cell
   DFormCellGroup,
@@ -32,12 +36,17 @@ import {
   DFormLayoutContent,
   
   // 表单 store
-  FormStore
+  FormStore,
+
+  // hooks
+  useForm,
+  useLinkChildren,
+  useFormEventEmit
 } from '@xuanmo/dl-common'
 
 // 注册组件
 const app = createApp()
-app.use(DForm).use(DFormCellGroup).use(DFormGrid)
+app.use(DForm)
 ```
 
 ## 代码演示
@@ -834,6 +843,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 |`field.${dataKey}.change`|单个组件数据变更时触发|
 |`field.${dataKey}.focus`|组件聚焦时触发，由组件决定|
 |`field.${dataKey}.blur`|组件失焦时触发，由组件决定|
+|`field.${dataKey \| id}.[type]`|组件更多事件|
 
 ### FormStore API
 
@@ -942,5 +952,13 @@ export interface IFormModelItem<TValue = unknown> extends IRenderModel {
 
   // 外部更多属性
   [key: string]: any
+}
+
+export interface IDetailTableItem extends IRenderModel {
+  // 明细表 id
+  detailTableId: string
+
+  // 组件类型
+  componentType: 'DetailTable'
 }
 ```

@@ -80,6 +80,25 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
           { id: 'message', path: '/comp-common/message', content: 'Message [消息提示]' },
           { id: 'loading', path: '/comp-common/loading', content: 'Loading [加载提示]' }
         ]
+      },
+      {
+        id: createRandomID(),
+        groupTitle: '组合式 API',
+        children: [
+          { id: 'hook', path: '/comp-common/hook', content: '介绍' },
+          { id: 'use-config', path: '/comp-common/use-config', content: 'useConfig' },
+          { id: 'use-form', path: '/comp-common/use-form', content: 'useForm' },
+          {
+            id: 'use-link-children',
+            path: '/comp-common/use-link-children',
+            content: 'useLinkChildren'
+          },
+          {
+            id: 'use-form-event-emit',
+            path: '/comp-common/use-form-event-emit',
+            content: 'useFormEventEmit'
+          }
+        ]
       }
     ]
   ],
