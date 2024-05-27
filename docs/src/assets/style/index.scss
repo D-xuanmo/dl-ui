@@ -61,14 +61,6 @@ h6 {
   line-height: initial;
 }
 
-ul > li {
-  list-style-type: disc;
-}
-
-ol > li {
-  list-style-type: decimal;
-}
-
 blockquote {
   position: relative;
   box-sizing: border-box;
@@ -104,6 +96,14 @@ blockquote {
 
   > .markdown-body {
     flex: 1;
+
+    ul > li {
+      list-style-type: disc;
+    }
+
+    ol > li {
+      list-style-type: decimal;
+    }
   }
 }
 
