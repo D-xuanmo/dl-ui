@@ -2,7 +2,9 @@
 @import '../style/mixins.scss';
 
 :root {
-  --d-cell-padding: var(--d-horizontal-gap) var(--d-gap-sm);
+  --d-cell-padding-x: var(--d-horizontal-gap);
+  --d-cell-padding-y: var(--d-vertical-gap);
+  --d-cell-padding: var(--d-cell-padding-y) var(--d-cell-padding-x);
   --d-cell-background: var(--d-white-color);
   --d-cell-radius: var(--d-radius-large);
 }
@@ -23,6 +25,7 @@
   &--pc {
     display: flex;
     align-items: center;
+    padding: 0 0 var(--d-cell-padding-y) 0;
 
     &#{$parent} {
       &--layout-horizontal {
