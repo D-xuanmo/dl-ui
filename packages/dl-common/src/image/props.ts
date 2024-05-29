@@ -77,5 +77,15 @@ export const IMAGE_PROPS = {
   errorText: {
     type: String,
     default: '加载失败'
+  },
+
+  /**
+   * 是否延迟渲染
+   * 对应原生 loading 属性
+   * @link https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img#loading
+   */
+  lazy: {
+    type: Boolean,
+    default: true
   }
 }
