@@ -29,14 +29,13 @@ export default defineComponent({
   setup(props, context: SetupContext) {
     const config = useConfig(['clientType', 'closeOnEsc'], props)
     const isMobile = config.value.clientType === ClientTypeEnum.MOBILE
-    const placement = isMobile ? 'center' : props.placement
     const containerClass = computed(() =>
       bem({
         'hide-overlay': !props.showOverlay,
-        [placement]: placement,
         [config.value.clientType!.toLowerCase()]: true,
         'text-btn': props.textButton,
-        [props.type]: true
+        [props.type]: true,
+        ['no-footer']: !props.footer
       })
     )
     const wrapperClass = bem('wrapper')
@@ -56,7 +55,6 @@ export default defineComponent({
     )
 
     const style = computed<CSSProperties>(() => ({
-      top: placement === 'center' ? '50%' : addUnit(props.top),
       width: addUnit(props.width),
       height: addUnit(props.height)
     }))

@@ -153,24 +153,6 @@ export const DIALOG_PROPS = {
   },
 
   /**
-   * 顶部距离
-   */
-  top: {
-    type: [Number, String],
-    default: '20%'
-  },
-
-  /**
-   * 对话框位置
-   * 为 top 时，默认距离顶部 20%
-   * 为 center 时，上下左右居中显示
-   */
-  placement: {
-    type: String as PropType<'top' | 'center'>,
-    default: 'top'
-  },
-
-  /**
    * 显示底部
    */
   footer: {

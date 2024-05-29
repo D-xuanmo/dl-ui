@@ -207,8 +207,6 @@ const showDialog = () => {
 |destroy-on-close|`boolean`|`false`|是否关闭对话框销毁子元素|N|
 |width|`'number' \| 'string'`|`480px`|对话框宽度|N|
 |height|`'number' \| 'string'`|-|对话框高度|N|
-|top|`'number' \| 'string'`|-|对话框距离顶部距离|N|
-|placement|`'top' \| 'center'`|`top`|对话框位置，top 时，距离顶部默认 20%；center 时，垂直居中|N|
 |lazy-render|`boolean`|`true`|是否显示对话框时渲染内容，内容较多时，建议开启，以保证页面渲染性能|N|
 |teleport|`TeleportProps['to']`|`body`|选择要插入的 DOM 节点，同 `Teleport` 组件，[参考链接](https://staging-cn.vuejs.org/guide/built-ins/teleport.html#basic-usage) |N|
 |onClose|`() => void`|-|对话框关闭事件|N|

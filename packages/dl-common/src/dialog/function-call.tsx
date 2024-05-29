@@ -57,17 +57,19 @@ function showDialog(props: DialogOptions) {
 }
 
 export const useDialog = () => {
-  const config = useConfig(['closeOnEsc'])
+  const config = useConfig(['closeOnEsc', 'clientType'])
   return {
     confirm: (options: DialogOptions) =>
       showDialog({
         closeOnEsc: config.value.closeOnEsc,
+        clientType: config.value.clientType,
         ...options,
         type: DialogTypeEnum.Confirm
       }),
     alert: (options: DialogOptions) =>
       showDialog({
         ...options,
+        clientType: config.value.clientType,
         type: DialogTypeEnum.Alert,
         hideCancelButton: true,
         closeOnEsc: false,

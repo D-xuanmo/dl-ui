@@ -18,85 +18,59 @@
     }
   }
 
+  &--no-footer {
+    #{$dialogPrefix} {
+      &__body {
+        padding-bottom: var(--d-dialog-padding);
+      }
+    }
+  }
+
   &__wrapper {
+    top: 50%;
     left: 50%;
     // 防止内容溢出屏幕
     max-width: 80%;
+    max-height: 90%;
     padding: 0;
     border-radius: var(--d-radius-medium);
     transition: transform 0.3s ease;
+    transform: translate(-50%, -50%) scale(1);
   }
 
-  &--top {
-    #{$dialogPrefix} {
-      &__wrapper {
-        transform: translate(-50%, 0) scale(1);
-      }
-    }
-
-    &#{$dialogPrefix} {
-      &-custom-enter-active,
-      &-custom-leave-active {
-        #{$dialogPrefix} {
-          &__wrapper {
-            transform: translate(-50%, 0) scale(1);
-          }
-        }
-      }
-
-      &-custom-leave-to,
-      &-custom-enter-from {
-        #{$dialogPrefix} {
-          &__wrapper {
-            transform: translate(-50%, 0) scale(0);
-          }
-        }
-      }
-    }
-  }
-
-  &--center {
+  &-custom-enter-active,
+  &-custom-leave-active {
     #{$dialogPrefix} {
       &__wrapper {
         transform: translate(-50%, -50%) scale(1);
       }
     }
-    &#{$dialogPrefix} {
-      &-custom-enter-active,
-      &-custom-leave-active {
-        #{$dialogPrefix} {
-          &__wrapper {
-            transform: translate(-50%, -50%) scale(1);
-          }
-        }
-      }
+  }
 
-      &-custom-leave-to,
-      &-custom-enter-from {
-        #{$dialogPrefix} {
-          &__wrapper {
-            transform: translate(-50%, -50%) scale(0);
-          }
-        }
+  &-custom-leave-to,
+  &-custom-enter-from {
+    #{$dialogPrefix} {
+      &__wrapper {
+        transform: translate(-50%, -50%) scale(0);
       }
     }
   }
 
   &__header {
     margin-bottom: 0;
-    padding: var(--d-dialog-padding) var(--d-dialog-padding) 0;
+    padding: var(--d-dialog-padding);
     text-align: left;
   }
 
   &__body {
-    padding: var(--d-dialog-padding);
+    padding: 0 var(--d-dialog-padding);
   }
 
   &__footer {
     display: flex;
     justify-content: flex-end;
     column-gap: var(--d-gap-sm);
-    padding: 0 var(--d-dialog-padding) var(--d-dialog-padding);
+    padding: var(--d-dialog-padding);
   }
 
   &__title {
