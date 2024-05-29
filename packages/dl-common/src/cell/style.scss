@@ -33,7 +33,6 @@
       }
 
       &--layout-vertical {
-        row-gap: var(--d-gap-xs);
         flex-direction: column;
 
         #{$parent} {
@@ -61,7 +60,6 @@
         #{$parent} {
           &__wrapper {
             flex-direction: column;
-            row-gap: var(--d-gap-xs);
           }
 
           &__title,
