@@ -106,11 +106,22 @@
   &--mobile {
     #{$dialogPrefix} {
       &__header {
+        padding: var(--d-gap-md) var(--d-gap-md) var(--d-gap-xs);
         text-align: center;
       }
 
       &__title {
         max-width: 100%;
+      }
+
+      &__body {
+        padding: var(--d-gap-xs) var(--d-dialog-padding);
+      }
+
+      &__footer {
+        margin-top: var(--d-gap-xs);
+        padding-top: var(--d-gap-xs);
+        text-align: center;
       }
     }
   }
