@@ -1,48 +1,50 @@
 <template>
-  <d-cell
-    v-if="model.dataKey && model.layout.container !== false"
-    content-align="left"
-    :class="itemClassName"
-    :colon="formProps.colon"
-    :round="formProps.round"
-    :border="formProps.border"
-    :description="model.description"
-    :title-width="formProps.labelWidth"
-    :client-type="formProps.clientType"
-    :layout="model.layout.layout || formProps.layout"
-    :hide-title="formProps.hideLabel || model.hideLabel"
-    :title-vertical-center="model.layout.titleVerticalCenter"
-  >
-    <template #title>
-      <span
-        v-if="showRequiredMark && formProps.requiredMarkPosition === 'left'"
-        :class="requiredMarkClassName"
-      >
-        *
-      </span>
-      <span>{{ model?.label }}</span>
-      <span v-if="formProps.colon" :class="colonClass">:</span>
-      <span
-        v-if="showRequiredMark && formProps.requiredMarkPosition === 'right'"
-        :class="requiredMarkClassName"
-      >
-        *
-      </span>
-    </template>
-    <component
-      v-bind="omitSystemProps(model)"
-      :is="model.component"
-      :store="store"
-      :model="model"
-      :row-id="rowId"
-      :model-value="store.getFieldValue(model.dataKey, rowId)"
-      :disabled="store.viewLinkageStore.getDisabled(model.id)"
-      :readonly="store.viewLinkageStore.getReadonly(model.id)"
-      @update:model-value="handleChange"
-    />
-    <p v-if="errorMessage" :class="errorClassName">{{ errorMessage }}</p>
-  </d-cell>
-  <component :is="model.component" v-else :class="itemClassName" :model="model" :row-id="rowId" />
+  <template v-if="store.viewLinkageStore.getDisplay(model.id)">
+    <d-cell
+      v-if="model.dataKey && model.layout.container !== false"
+      content-align="left"
+      :class="itemClassName"
+      :colon="formProps.colon"
+      :round="formProps.round"
+      :border="formProps.border"
+      :description="model.description"
+      :title-width="formProps.labelWidth"
+      :client-type="formProps.clientType"
+      :layout="model.layout.layout || formProps.layout"
+      :hide-title="formProps.hideLabel || model.hideLabel"
+      :title-vertical-center="model.layout.titleVerticalCenter"
+    >
+      <template #title>
+        <span
+          v-if="showRequiredMark && formProps.requiredMarkPosition === 'left'"
+          :class="requiredMarkClassName"
+        >
+          *
+        </span>
+        <span>{{ model?.label }}</span>
+        <span v-if="formProps.colon" :class="colonClass">:</span>
+        <span
+          v-if="showRequiredMark && formProps.requiredMarkPosition === 'right'"
+          :class="requiredMarkClassName"
+        >
+          *
+        </span>
+      </template>
+      <component
+        v-bind="omitSystemProps(model)"
+        :is="model.component"
+        :store="store"
+        :model="model"
+        :row-id="rowId"
+        :model-value="store.getFieldValue(model.dataKey, rowId)"
+        :disabled="store.viewLinkageStore.getDisabled(model.id)"
+        :readonly="store.viewLinkageStore.getReadonly(model.id)"
+        @update:model-value="handleChange"
+      />
+      <p v-if="errorMessage" :class="errorClassName">{{ errorMessage }}</p>
+    </d-cell>
+    <component :is="model.component" v-else :class="itemClassName" :model="model" :row-id="rowId" />
+  </template>
 </template>
 
 <script lang="ts">
@@ -77,11 +79,7 @@ export default defineComponent({
     const detailTableId = props.model.detailTableId
     const rowId = props.rowId
     const dataKey = props.model.dataKey
-    const itemClassName = computed(() =>
-      createFormBEM('item', {
-        hide: !store.viewLinkageStore.getDisplay(props.model.id)
-      })
-    )
+    const itemClassName = createFormBEM('item')
     const errorClassName = createFormBEM('item-message')
     const requiredMarkClassName = createFormBEM('item-requiredMark')
     const colonClass = createFormBEM('item-colon')
