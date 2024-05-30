@@ -5,6 +5,9 @@
   --d-cell-padding-x: var(--d-horizontal-gap);
   --d-cell-padding-y: var(--d-vertical-gap);
   --d-cell-padding: var(--d-cell-padding-y) var(--d-cell-padding-x);
+  --d-m-cell-padding-x: var(--d-gap-sm);
+  --d-m-cell-padding-y: var(--d-gap-xs);
+  --d-m-cell-padding: var(--d-m-cell-padding-y) var(--d-m-cell-padding-x);
   --d-cell-background: var(--d-white-color);
   --d-cell-radius: var(--d-radius-large);
 }
@@ -53,6 +56,7 @@
   }
 
   &--mobile {
+    padding: var(--d-m-cell-padding);
     flex-direction: column;
 
     &#{$parent} {
