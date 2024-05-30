@@ -2,7 +2,7 @@ import { FunctionalComponent } from 'vue'
 import { createBEM, generatePlaygroundURL } from './utils'
 import CopyCode from './copy-code'
 import PreviewOnly from '@doc/components/preview/preview-only'
-import { DSpace } from '@xuanmo/dl-ui'
+import { DSpace, DConfigProvider } from '@xuanmo/dl-common'
 import { QrcodeOutlined, LinkOpenOutlined, CodeSandboxOutlined } from '@xuanmo/dl-icons'
 import { When, If, Then, Else } from 'vue-if'
 
@@ -41,40 +41,45 @@ const MobilePreview: FunctionalComponent<MobilePreviewProps, any> = (props, { sl
     </a>
   )
   return (
-    <div class={createBEM('mobile', { [previewType]: true })}>
-      <div class={createBEM('mobile-content')}>
-        <div class={createBEM('mobile-left')}>
-          <div class={createBEM('mobile-toolbar')}>
-            <DSpace justify="between">
-              <h3>{title ?? playgroundBtn}</h3>
-              <DSpace gap={16}>
-                <When condition={title}>{playgroundBtn}</When>
-                <a href="javascript:">
-                  <CopyCode code={sourceCode} size="medium" />
-                </a>
+    <DConfigProvider clientType="MOBILE">
+      <div class={createBEM('mobile', { [previewType]: true })}>
+        <div class={createBEM('mobile-content')}>
+          <div class={createBEM('mobile-left')}>
+            <div class={createBEM('mobile-toolbar')}>
+              <DSpace justify="between">
+                <h3>{title ?? playgroundBtn}</h3>
+                <DSpace gap={16}>
+                  <When condition={title}>{playgroundBtn}</When>
+                  <a href="javascript:">
+                    <CopyCode code={sourceCode} size="medium" />
+                  </a>
+                </DSpace>
               </DSpace>
-            </DSpace>
+            </div>
+            <div
+              class={createBEM('mobile-code')}
+              v-html={decodeURIComponent(sourceCode as string)}
+            />
           </div>
-          <div class={createBEM('mobile-code')} v-html={decodeURIComponent(sourceCode as string)} />
-        </div>
-        <div class={createBEM('mobile-runtime')}>
-          <div class={createBEM('mobile-runtime-inner')}>{previewContent}</div>
-          <div class={createBEM('mobile-toolbar')}>
-            <DSpace justify="end" gap={16}>
-              <a href={`${previewURL}?preview=true`} target="_blank">
-                <LinkOpenOutlined />
-              </a>
-              <div class={createBEM('qrcode')}>
-                <QrcodeOutlined class={createBEM('qrcode-trigger')} />
-                <div class={createBEM('qrcode-img')}>
-                  <img src={qrcodeImage} />
+          <div class={createBEM('mobile-runtime')}>
+            <div class={createBEM('mobile-runtime-inner')}>{previewContent}</div>
+            <div class={createBEM('mobile-toolbar')}>
+              <DSpace justify="end" gap={16}>
+                <a href={`${previewURL}?preview=true`} target="_blank">
+                  <LinkOpenOutlined />
+                </a>
+                <div class={createBEM('qrcode')}>
+                  <QrcodeOutlined class={createBEM('qrcode-trigger')} />
+                  <div class={createBEM('qrcode-img')}>
+                    <img src={qrcodeImage} />
+                  </div>
                 </div>
-              </div>
-            </DSpace>
+              </DSpace>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </DConfigProvider>
   )
 }
 
