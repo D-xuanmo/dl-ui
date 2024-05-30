@@ -20,6 +20,14 @@
   .#{$prefix}-teleport {
     display: flex;
     justify-content: center;
+
+    &:last-of-type {
+      .#{$prefix}-message {
+        &__content {
+          box-shadow: var(--d-message-box-shadow);
+        }
+      }
+    }
   }
 }
 
@@ -28,14 +36,6 @@
   top: 0;
   text-align: center;
   @include font-size(md);
-
-  &:last-of-type {
-    .#{$prefix}-message {
-      &__content {
-        box-shadow: var(--d-message-box-shadow);
-      }
-    }
-  }
 
   &-enter-active,
   &-leave-active {
