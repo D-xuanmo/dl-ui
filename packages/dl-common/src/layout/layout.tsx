@@ -1,4 +1,4 @@
-import { defineComponent, provide, reactive, ref, SetupContext } from 'vue'
+import { markRaw, defineComponent, provide, reactive, ref, SetupContext, VNode, watch } from 'vue'
 import { addUnit, createNamespace, getComponentName } from '../utils'
 import { DGrid } from '../grid'
 import { LAYOUT_CONTEXT_KEY } from './context'
@@ -14,50 +14,56 @@ export default defineComponent({
     const rowsTemplate = ref('')
     const columnsMap = reactive<Map<string, string>>(new Map())
     const rows: Map<string, string> = new Map()
+    const children = ref<VNode[]>([])
 
-    const children = findChildren(context.slots.default?.() ?? []).map((item: any) => {
-      const layoutId = createRandomID(8)
-      item.props = {
-        ...item.props,
-        layoutId
-      }
-      const compName = getComponentName(item.type?.name)
-      /* eslint-disable indent */
-      switch (compName) {
-        case 'layout':
-          columnsCount.value += 1
-          columnsMap.set(layoutId, '1fr')
-          break
-        case 'layout-sider':
-          columnsCount.value++
-          columnsMap.set(
-            layoutId,
-            addUnit(item.props?.width) || addUnit(item.type.props?.width?.default) || '1fr'
-          )
-          rows.set(
-            'layout-content',
-            addUnit(item.props?.height) || addUnit(item.type.props?.height?.default) || '1fr'
-          )
-          break
-        case 'layout-content':
-          columnsCount.value += 2
-          columnsMap.set(layoutId, '1fr 1fr')
-          rows.set(
-            'layout-content',
-            addUnit(item.props?.height) || addUnit(item.type.props?.height?.default) || '1fr'
-          )
-          break
-        case 'layout-header':
-        case 'layout-footer':
-          rows.set(
-            compName,
-            addUnit(item.props?.height) || addUnit(item.type.props?.height?.default) || '1fr'
-          )
-          break
-      }
-      /* eslint-enable indent */
-      return item
-    })
+    const initialChildren = () => {
+      rows.clear()
+      children.value = findChildren(context.slots.default?.() ?? []).map((item: any) => {
+        const layoutId = createRandomID(8)
+        item.props = {
+          ...item.props,
+          layoutId
+        }
+        const compName = getComponentName(item.type?.name)
+        /* eslint-disable indent */
+        switch (compName) {
+          case 'layout':
+            columnsCount.value += 1
+            columnsMap.set(layoutId, '1fr')
+            break
+          case 'layout-sider':
+            columnsCount.value++
+            columnsMap.set(
+              layoutId,
+              addUnit(item.props?.width) || addUnit(item.type.props?.width?.default) || '1fr'
+            )
+            rows.set(
+              'layout-content',
+              addUnit(item.props?.height) || addUnit(item.type.props?.height?.default) || '1fr'
+            )
+            break
+          case 'layout-content':
+            columnsCount.value += 2
+            columnsMap.set(layoutId, '1fr 1fr')
+            rows.set(
+              'layout-content',
+              addUnit(item.props?.height) || addUnit(item.type.props?.height?.default) || '1fr'
+            )
+            break
+          case 'layout-header':
+          case 'layout-footer':
+            rows.set(
+              compName,
+              addUnit(item.props?.height) || addUnit(item.type.props?.height?.default) || '1fr'
+            )
+            break
+        }
+        /* eslint-enable indent */
+        return markRaw(item)
+      })
+    }
+
+    watch(() => context.slots.default?.(), initialChildren, { immediate: true })
 
     rowsTemplate.value = Array.from(rows.values()).join(' ')
 
@@ -76,7 +82,7 @@ export default defineComponent({
         rows={rowsTemplate.value}
         columns={Array.from(columnsMap.values()).join(' ') || columnsCount.value}
       >
-        {children}
+        {children.value}
       </DGrid>
     )
   }
