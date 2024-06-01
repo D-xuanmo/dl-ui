@@ -29,7 +29,7 @@ import { UploadListItemType, UPLOAD_PROPS } from './props'
 import { createUploadNameSpace } from './utils'
 import UploadList from './upload-list.vue'
 import { debugWarn, deepCopy, isObject, throwError } from '@xuanmo/utils'
-import { addUnit, filePreview, request, useFormEventEmit } from '@xuanmo/dl-common'
+import { addUnit, filePreview, request, useFormEvent } from '@xuanmo/dl-common'
 import { CameraFilled } from '@xuanmo/dl-icons'
 
 const [name, bem] = createUploadNameSpace()
@@ -43,7 +43,7 @@ export default defineComponent({
   props: UPLOAD_PROPS,
   emits: ['update:model-value', 'change', 'success', 'error', 'exceed-count', 'exceed-size'],
   setup(props, { emit }) {
-    const formEventEmit = useFormEventEmit(props.model!)
+    const { emit: formEventEmit } = useFormEvent(props.model!)
     const wrapperClassName = bem()
     const triggerClassName = computed(() =>
       bem('trigger', {

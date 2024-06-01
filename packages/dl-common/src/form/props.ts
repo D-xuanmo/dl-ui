@@ -27,6 +27,14 @@ export const FORM_PROPS = {
   },
 
   /**
+   * 表单数据
+   */
+  data: {
+    type: Object as PropType<Record<string, any>>,
+    default: undefined
+  },
+
+  /**
    * 显示属性联动
    */
   viewLinkage: {

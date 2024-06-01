@@ -1,4 +1,4 @@
-import { EventsType, FormModels, IDetailTableItem, IFormModelItem } from '../types'
+import { FormModels, IDetailTableItem, IFormModelItem } from '../types'
 import { markRaw, reactive, ref, UnwrapNestedRefs } from 'vue'
 import { deepCopy, isEmpty, isObject } from '@xuanmo/utils'
 import { validator } from '../../validator'
@@ -9,6 +9,7 @@ import { ValidateDataModel, ValidateDataModelItem } from '@xuanmo/validator'
 import { DetailTableStore } from './detail-table'
 import { DetailTableRowData } from './detail-table/types'
 import { getMessageKey, isDetailTableField } from '../utils'
+import { EventPrefixEnum } from '../constants'
 
 class FormStore {
   /**
@@ -64,7 +65,7 @@ class FormStore {
   /**
    * 事件中心
    */
-  events = new EventEmitterEx<EventsType>()
+  events = new EventEmitterEx()
 
   /**
    * 显示属性联动 store
@@ -114,6 +115,7 @@ class FormStore {
       }
     })
     this.viewLinkageStore.init(viewLinkage)
+    this.events.emit(`${EventPrefixEnum.FORM}.ready`)
   }
 
   /**
@@ -159,14 +161,16 @@ class FormStore {
    * @param validate 是否执行校验
    */
   public updateData = (data: Record<string, unknown>, validate = true) => {
-    for (const [key, value] of Object.entries(data)) {
-      if (this.tableIdMap.get(key)) {
-        this.detailTableStore.updateTableData(key, value as DetailTableRowData[])
-      } else {
-        this.updateFieldValue(key, value)
+    if (data) {
+      for (const [key, value] of Object.entries(data)) {
+        if (this.tableIdMap.get(key)) {
+          this.detailTableStore.updateTableData(key, value as DetailTableRowData[])
+        } else {
+          this.updateFieldValue(key, value)
+        }
       }
+      validate && this.validate()
     }
-    validate && this.validate()
   }
 
   /**
@@ -324,9 +328,7 @@ class FormStore {
   public reset = () => {
     ;(this.originalModel as IFormModelItem[]).forEach((item) => {
       if (item.dataKey) {
-        const model = this.getModel(item.dataKey)!
-        Object.assign(model, { value: item.value })
-        this.updateModel(item.dataKey, model)
+        this.updateFieldValue(item.dataKey, item.value)
       }
     })
     this.clearMessages()

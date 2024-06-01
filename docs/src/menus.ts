@@ -94,9 +94,9 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
             content: 'useLinkChildren'
           },
           {
-            id: 'use-form-event-emit',
-            path: '/comp-common/use-form-event-emit',
-            content: 'useFormEventEmit'
+            id: 'use-form-event',
+            path: '/comp-common/use-form-event',
+            content: 'useFormEvent'
           }
         ]
       }

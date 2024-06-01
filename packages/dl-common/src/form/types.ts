@@ -87,8 +87,10 @@ export type OnFormChange = (
 
 type EventType = 'change' | 'blur' | 'focus'
 
+type FormEventType = `${EventPrefixEnum.FORM}.ready`
+
 type FieldEventType =
   | `${EventPrefixEnum.FIELD}.change`
   | `${EventPrefixEnum.FIELD}.${string}.${EventType}`
 
-export type EventsType = FieldEventType | ViewLinkageEventsType | string
+export type EventsType = FormEventType | FieldEventType | ViewLinkageEventsType | string

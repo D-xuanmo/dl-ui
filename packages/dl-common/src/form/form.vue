@@ -59,9 +59,6 @@ export default defineComponent({
       formProps,
       onChange: handleChange
     })
-
-    watch(() => props.disabled, store.setFormDisabled)
-    watch(() => props.readonly, store.setFormReadonly)
     watch(
       () => props.models,
       () => {
@@ -74,6 +71,15 @@ export default defineComponent({
         immediate: true
       }
     )
+    watch(
+      () => props.data,
+      (data) => store.updateData(data!, false),
+      {
+        immediate: true
+      }
+    )
+    watch(() => props.disabled, store.setFormDisabled)
+    watch(() => props.readonly, store.setFormReadonly)
     watch(() => props.viewLinkage, store.viewLinkageStore.init)
 
     return {

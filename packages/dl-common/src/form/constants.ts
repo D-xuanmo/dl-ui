@@ -9,6 +9,11 @@ export { formNamespace, createFormBEM }
  */
 export enum EventPrefixEnum {
   /**
+   * 表单事件
+   */
+  FORM = 'form',
+
+  /**
    * 字段事件
    */
   FIELD = 'field',

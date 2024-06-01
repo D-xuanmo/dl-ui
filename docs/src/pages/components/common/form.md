@@ -810,6 +810,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 |参数|类型|默认值|说明|必传|
 |---|---|------|---|---|
 |models|`FormModels`|-|表单模型|Y|
+|data|`Record<string, any>`|-|表单数据|N|
 |client-type|`PC \| MOBILE`|`PC`|终端类型|N|
 |store|`FormStore`|-|表单 store，如果需要对 store 进行扩展，可传入处理后的 store，默认通过 `ref` 即可获取到组件内 store 实例|N|
 |disabled|`boolean`|-|表单禁用|N|
@@ -827,7 +828,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 
 #### Vue 事件
 
-解释：使用方式遵循 Vue 事件模式，表单因为更多的数据能力都是在 store 中，不是很推荐 Vue 事件模式，推荐事件事件中心
+解释：使用方式遵循 Vue 事件模式，表单因为更多的数据能力都是在 store 中，不是很推荐 Vue 事件模式，推荐使用事件中心
 
 |事件名|类型|说明|
 |-----|----|---|
@@ -839,6 +840,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 
 |事件名|说明|
 |-----|---|
+|`form.ready`|表单初始化完成|
 |`field.change`|组件数据发生变更时触发|
 |`field.${dataKey}.change`|单个组件数据变更时触发|
 |`field.${dataKey}.focus`|组件聚焦时触发，由组件决定|

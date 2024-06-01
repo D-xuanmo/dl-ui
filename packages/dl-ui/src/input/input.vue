@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref, SetupContext } from 'vue'
-import { createNamespace, useFormEventEmit, useModelValue } from '@xuanmo/dl-common'
+import { createNamespace, useFormEvent, useModelValue } from '@xuanmo/dl-common'
 import { INPUT_PROPS } from './props'
 import { CloseFilled } from '@xuanmo/dl-icons'
 
@@ -37,7 +37,7 @@ export default defineComponent({
   emits: ['update:model-value', 'blur', 'clear', 'focus', 'click-input'],
   setup(props, { emit }) {
     const isFocus = ref(false)
-    const formEventEmit = useFormEventEmit(props.model!)
+    const { emit: formEventEmit } = useFormEvent(props.model!)
     const inputClassName = computed(() =>
       bem({
         border: props.border,

@@ -54,7 +54,7 @@ import { DCell } from '../../cell'
 import { createFormBEM, EventPrefixEnum } from '../constants'
 import { IFormModelItem } from '../types'
 import { omitSystemProps } from '../utils'
-import { useForm, useFormEventEmit } from '../hooks'
+import { useForm, useFormEvent } from '../hooks'
 
 const [name] = createNamespace('form-item')
 
@@ -75,7 +75,7 @@ export default defineComponent({
   emits: ['change'],
   setup(props, { emit }) {
     const { store, formProps, onChange: onFormChange } = useForm()
-    const formEventEmit = useFormEventEmit(props.model)
+    const { emit: formEventEmit } = useFormEvent(props.model)
     const detailTableId = props.model.detailTableId
     const rowId = props.rowId
     const dataKey = props.model.dataKey
