@@ -152,6 +152,7 @@ class FormStore {
       this.detailTableStore.upsert(detailTableId, rowId, value, dataKey)
     } else {
       Object.assign(this.mainFormData, { [dataKey]: value })
+      this.viewLinkageStore.execute(dataKey, value)
     }
   }
 

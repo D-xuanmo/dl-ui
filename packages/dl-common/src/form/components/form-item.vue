@@ -97,7 +97,6 @@ export default defineComponent({
       if (errorMessage.value) store.singleValidate(dataKey, detailTableId, rowId)
       emit('change', value, rowId)
       onFormChange({ [dataKey]: value }, props.model, rowId)
-      store.viewLinkageStore.execute(dataKey, value)
       store.events.emit(`${EventPrefixEnum.FIELD}.change`, value, props.model, rowId)
       formEventEmit!('change', value, rowId)
     }
