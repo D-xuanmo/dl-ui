@@ -16,6 +16,11 @@ export const DIALOG_PROPS = {
     default: false
   },
 
+  class: {
+    type: String,
+    default: undefined
+  },
+
   /**
    * 对话框标题
    */

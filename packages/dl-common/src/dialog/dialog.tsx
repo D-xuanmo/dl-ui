@@ -30,13 +30,16 @@ export default defineComponent({
     const config = useConfig(['clientType', 'closeOnEsc'], props)
     const isMobile = config.value.clientType === ClientTypeEnum.MOBILE
     const containerClass = computed(() =>
-      bem({
-        'hide-overlay': !props.showOverlay,
-        [config.value.clientType!.toLowerCase()]: true,
-        'text-btn': props.textButton,
-        [props.type]: true,
-        ['no-footer']: !props.footer
-      })
+      [
+        bem({
+          'hide-overlay': !props.showOverlay,
+          [config.value.clientType!.toLowerCase()]: true,
+          'text-btn': props.textButton,
+          [props.type]: true,
+          ['no-footer']: !props.footer
+        }),
+        props.class
+      ].join(' ')
     )
     const wrapperClass = bem('wrapper')
     const headerClass = bem('header')
