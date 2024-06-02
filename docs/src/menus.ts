@@ -129,6 +129,17 @@ const menuMap: Map<RoutePath, MenuItemType[]> = new Map([
       },
       {
         id: createRandomID(),
+        groupTitle: '导航',
+        children: [
+          {
+            id: 'nav-bar',
+            path: '/comp-mobile/nav-bar',
+            content: 'NavBar [导航栏]'
+          }
+        ]
+      },
+      {
+        id: createRandomID(),
         groupTitle: '反馈',
         children: [
           {
