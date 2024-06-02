@@ -4,6 +4,7 @@ import type { FormStore } from './store'
 import { COMMON_PROPS, DirectionType } from '../common'
 import { pickProps } from '../utils'
 import { ViewLinkageType } from './store'
+import { CellProps } from '../cell'
 
 export type FormProps = ExtractPropTypes<typeof FORM_PROPS>
 
@@ -71,5 +72,13 @@ export const FORM_PROPS = {
   colon: {
     type: Boolean,
     default: undefined
+  },
+
+  /**
+   * 内容对齐方式
+   */
+  contentAlign: {
+    type: String as PropType<CellProps['contentAlign']>,
+    default: 'left'
   }
 }

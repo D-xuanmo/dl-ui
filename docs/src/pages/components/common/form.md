@@ -821,6 +821,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 |colon|`boolean`|`false`|是否显示冒号|N|
 |border|`boolean`|`true`|是否显示边框|N|
 |round|`boolean`|`true`|分组是否展示为圆角|N|
+|content-align|`CellProps['contentAlign']`|`left`|内容水平对齐方式|N|
 |required-mark-position|`'left' \| 'right'`|`right`|必填标识显示位置|N|
 |has-background|`boolean`|`true`|是否显示背景色|N|
 

@@ -15,6 +15,7 @@ export interface IFormContext {
       | 'hideLabel'
       | 'labelWidth'
       | 'clientType'
+      | 'contentAlign'
       | 'requiredMarkPosition'
     >
   >

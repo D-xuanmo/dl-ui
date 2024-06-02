@@ -40,11 +40,12 @@ export default defineComponent({
     const formProps = computed(() => {
       return {
         colon: config.value.colon,
+        round: config.value.round,
         hideLabel: props.hideLabel,
         layout: config.value.layout,
+        contentAlign: props.contentAlign,
         labelWidth: config.value.labelWidth,
         clientType: config.value.clientType,
-        round: config.value.round,
         border: config.value.border ?? config.value.clientType === 'MOBILE',
         requiredMarkPosition: config.value.requiredMarkPosition || DEFAULT_REQUIRED_MARK_POSITION
       }

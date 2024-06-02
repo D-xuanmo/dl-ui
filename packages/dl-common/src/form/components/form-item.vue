@@ -2,17 +2,18 @@
   <template v-if="store.viewLinkageStore.getDisplay(model.id)">
     <d-cell
       v-if="model.dataKey && model.layout.container !== false"
-      content-align="left"
       :class="itemClassName"
       :colon="formProps.colon"
       :round="formProps.round"
       :border="formProps.border"
+      :arrow="model.layout.showArrow"
       :description="model.description"
       :title-width="formProps.labelWidth"
       :client-type="formProps.clientType"
       :layout="model.layout.layout || formProps.layout"
       :hide-title="formProps.hideLabel || model.hideLabel"
       :title-vertical-center="model.layout.titleVerticalCenter"
+      :content-align="model.layout.layout || formProps.contentAlign"
     >
       <template #title>
         <span
