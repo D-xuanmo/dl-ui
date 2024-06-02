@@ -21,7 +21,7 @@
 
   &--border {
     &:not(:last-of-type) {
-      @include border(var(--d-gap-sm));
+      @include border(calc(var(--d-gap-sm) * 2));
     }
   }
 
