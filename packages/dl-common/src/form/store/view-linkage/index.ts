@@ -12,6 +12,7 @@ import { isEmpty, isObject } from '@xuanmo/utils'
 import { ConditionEnum, ConditionTypeEnum, ExecutePropEnum, ExecuteSymbolEnum } from './constants'
 import { IData } from '../../../common'
 import { EventPrefixEnum } from '../../constants'
+import { isEqual } from '../../../utils'
 
 /**
  * 显示属性联动
@@ -69,7 +70,7 @@ export class ViewLinkageStore {
           const compareValue =
             detailItem.triggerId === dataKey
               ? value
-              : this.formStore.getSingleValue(detailItem.triggerId)
+              : this.formStore.getFieldValue(detailItem.triggerId)
           const constantItem =
             ConditionTypeEnum.CONSTANT &&
             (detailItem as ConditionDetailNotNullType<ConditionDetailRelationshipConstantType>)
@@ -79,7 +80,7 @@ export class ViewLinkageStore {
           const sourceValue =
             detailItem.type === ConditionTypeEnum.CONSTANT
               ? constantItem.constants
-              : this.formStore.getSingleValue(variableItem.variableId)
+              : this.formStore.getFieldValue(variableItem.variableId)
           return this.compare(detailItem, sourceValue, compareValue)
         })
         return this.trigger(linageItem.linkageList, result)
@@ -127,9 +128,9 @@ export class ViewLinkageStore {
   ) {
     switch (detailItem.symbol) {
       case ExecuteSymbolEnum.EQUAL:
-        return this.equal(sourceValue, compareValue)
+        return isEqual(sourceValue, compareValue)
       case ExecuteSymbolEnum.NOT_EQUAL:
-        return !this.equal(sourceValue, compareValue)
+        return !isEqual(sourceValue, compareValue)
       case ExecuteSymbolEnum.NULL:
         return isEmpty(compareValue)
       case ExecuteSymbolEnum.NOT_NULL:
@@ -187,26 +188,5 @@ export class ViewLinkageStore {
       })
     }
     return `${source}`.includes(`${target}`)
-  }
-
-  private equal(diff1: unknown, diff2: unknown) {
-    if (Array.isArray(diff1)) {
-      return diff1.every((item) => {
-        // 内置数据结构，对象数组比较
-        if (
-          isObject(item) &&
-          (diff2 as IData[]).findIndex((newItem) => newItem.value === item.value) > -1
-        ) {
-          return true
-        }
-        return (diff2 as unknown[]).includes(item)
-      })
-    }
-    if (isObject(diff1)) {
-      return Object.keys(diff1 as Record<string, unknown>).every((key) => {
-        return (diff1 as Record<string, unknown>)[key] === (diff2 as Record<string, unknown>)[key]
-      })
-    }
-    return diff1 === diff2
   }
 }
