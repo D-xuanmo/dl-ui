@@ -15,16 +15,23 @@ export default defineComponent({
     const columnsMap = reactive<Map<string, string>>(new Map())
     const rows: Map<string, string> = new Map()
     const children = ref<VNode[]>([])
+    const ids: Record<string, string> = {
+      layout: createRandomID(8),
+      'layout-header': createRandomID(8),
+      'layout-footer': createRandomID(8),
+      'layout-content': createRandomID(8)
+    }
 
     const initialChildren = () => {
       rows.clear()
+      columnsMap.clear()
       children.value = findChildren(context.slots.default?.() ?? []).map((item: any) => {
-        const layoutId = createRandomID(8)
+        const compName = getComponentName(item.type?.name)
+        const layoutId = ids[compName] || createRandomID(8)
         item.props = {
           ...item.props,
           layoutId
         }
-        const compName = getComponentName(item.type?.name)
         /* eslint-disable indent */
         switch (compName) {
           case 'layout':
