@@ -64,7 +64,13 @@ const value = ref(2)
 |allow-clear|`boolean`|`true`|是否允许反选清空|N|
 |disabled|`boolean`|`false`|是否禁用|N|
 
-### TypeScript 类型
+### Events
+
+|事件|说明|回调参数|
+|---|----|-------|
+|change|内容发生改变时触发|`value: number(当前输入内容)`|
+
+### TS 类型
 
 ```typescript
 import type { RateProps } from '@xuanmo/dl-ui'

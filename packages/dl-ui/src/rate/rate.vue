@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { computed, CSSProperties, defineComponent } from 'vue'
+import { computed, CSSProperties, defineComponent, SetupContext } from 'vue'
 import { addUnit, createNamespace, useModelValue } from '@xuanmo/dl-common'
 import { RATE_PROPS } from './props'
 
@@ -36,10 +36,11 @@ const [name, bem] = createNamespace('rate')
 export default defineComponent({
   name,
   props: RATE_PROPS,
+  emits: ['update:model-value', 'change'],
   setup(props, context) {
     const [innerValue, updateValue] = useModelValue<number, typeof props>(
       props as never,
-      context.emit
+      context.emit as SetupContext['emit']
     )
 
     const classes = computed(() =>
@@ -56,9 +57,13 @@ export default defineComponent({
     function handleChange(index: number) {
       if (props.disabled) return
       if (props.allowClear) {
-        return updateValue(innerValue.value === index ? 0 : index)
+        const value = innerValue.value === index ? 0 : index
+        updateValue(value)
+        context.emit('change', value)
+        return
       }
       updateValue(index)
+      context.emit('change', index)
     }
 
     return {

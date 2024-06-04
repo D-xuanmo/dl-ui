@@ -39,7 +39,7 @@ export default defineComponent({
       horizontal: props.direction === 'horizontal',
       vertical: props.direction === 'vertical'
     })
-    const [innerValue] = useModelValue(props, emit as SetupContext['emit'])
+    const [innerValue, updateValue] = useModelValue(props, emit as SetupContext['emit'])
     const disabled = computed(() => props.disabled)
     const readonly = computed(() => props.readonly)
     const displayName = computed<string>(() => {
@@ -52,7 +52,7 @@ export default defineComponent({
     })
 
     const updateModelValue = (value: any) => {
-      emit('update:model-value', value)
+      updateValue(value)
       emit('change', value)
     }
 

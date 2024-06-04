@@ -67,7 +67,7 @@ export default defineComponent({
   },
   inheritAttrs: false,
   props: CALENDAR_PROPS,
-  emits: ['update:model-value', 'select'],
+  emits: ['update:model-value', 'confirm'],
   setup(props, { emit }) {
     const [innerValue, updateValue] = useModelValue(props, emit as SetupContext['emit'])
     const wrapperClassName = bem({
@@ -137,16 +137,31 @@ export default defineComponent({
       /* eslint-disable indent */
       switch (props.type) {
         case 'single':
-          updateValue(formatValue(isEmpty(days) ? currentDay.value : store.getDay(days[0]).value))
+          {
+            const value = formatValue(
+              isEmpty(days) ? currentDay.value : store.getDay(days[0]).value
+            )
+            updateValue(value)
+            emit('confirm', value)
+          }
           break
         case 'multiple':
-          updateValue(days.map((id) => formatValue(store.getDay(id)!.value)))
+          {
+            const value = days.map((id) => formatValue(store.getDay(id)!.value))
+            updateValue(value)
+            emit('confirm', value)
+          }
           break
         case 'range':
-          updateValue([
-            formatValue(store.getDay(days[0]).value),
-            formatValue(store.getDay(days[1]).value)
-          ])
+          {
+            const value = [
+              formatValue(store.getDay(days[0]).value),
+              formatValue(store.getDay(days[1]).value)
+            ]
+            updateValue(value)
+            emit('confirm', value)
+          }
+
           break
       }
       /* eslint-enable indent */

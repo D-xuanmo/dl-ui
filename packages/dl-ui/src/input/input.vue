@@ -34,7 +34,7 @@ export default defineComponent({
     CloseFilled
   },
   props: INPUT_PROPS,
-  emits: ['update:model-value', 'blur', 'clear', 'focus', 'click-input'],
+  emits: ['update:model-value', 'change', 'blur', 'clear', 'focus', 'click-input'],
   setup(props, { emit }) {
     const isFocus = ref(false)
     const { emit: formEventEmit } = useFormEvent(props.model!)
@@ -71,6 +71,8 @@ export default defineComponent({
         ? props.formatter(value)
         : value
       updateValue(newValue)
+      emit('change', newValue, event)
+      formEventEmit?.('change', innerValue.value, props.rowId)
     }
 
     function onClear(event: MouseEvent) {
@@ -100,6 +102,7 @@ export default defineComponent({
 
     function onClick(event: MouseEvent) {
       emit('click-input', innerValue.value, event)
+      formEventEmit?.('focus', innerValue.value, props.rowId)
     }
 
     return {

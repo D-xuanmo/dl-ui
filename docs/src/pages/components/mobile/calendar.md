@@ -122,7 +122,13 @@ const formatter: CalendarDayFormatter = (day) => {
 |confirm-button-text|`string`|`确认`|确认按钮文字|N|
 |formatter|`CalendarDayFormatter`|-|单个日期格式|N|
 
-## TypeScript 类型
+### Events
+
+|事件|说明|回调参数|
+|---|----|-------|
+|confirm|内容发生改变时触发|`value: CalendarValue(当前输入内容)`|
+
+## TS 类型
 
 ```typescript
 export type CalendarValue = string | Array<string>

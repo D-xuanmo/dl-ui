@@ -148,7 +148,15 @@ fetch(
 |cancel-button-text|`string`|`取消`|关闭按钮文字|N|
 |confirm-button-text|`string`|`确认`|确认按钮文字|N|
 
-### TypeScript 类型
+### Events
+
+|事件|说明|回调参数|
+|---|----|-------|
+|confirm|内容发生改变时触发|`value: CalendarValue(当前输入内容)`|
+|close|面板关闭事件|-|
+|clear|数据清除事件|-|
+
+### TS 类型
 
 ```typescript
 import type { CascaderProps, ICascaderOption, CascaderValue } from '@xuanmo/dl-ui'

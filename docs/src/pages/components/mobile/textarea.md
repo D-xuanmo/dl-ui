@@ -54,7 +54,13 @@ const value3 = ref('')
 |show-word-limit|`boolean`|-|是否显示字数统计，需要开启 `maxlength`|N|
 |autosize|`boolean`|-|是否输入内容自动撑高|N|## 主题定制
 
-### TypeScript 类型
+### Events
+
+|事件|说明|回调参数|
+|---|----|-------|
+|change|内容发生改变时触发|`value: string(当前输入内容)`|
+
+### TS 类型
 
 ```typescript
 import type { TextareaProps } from '@xuanmo/dl-ui'

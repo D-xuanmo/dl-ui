@@ -67,6 +67,12 @@ const value5 = ref('22:58')
 |---|----|
 |trigger-arrow|自定义触发图标|
 
+### Events
+
+|事件|说明|回调参数|
+|---|----|-------|
+|change|内容发生改变时触发|`value: string(当前输入内容)`|
+
 ### TypeScript 类型
 
 ```typescript

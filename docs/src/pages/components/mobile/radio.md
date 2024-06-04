@@ -82,7 +82,13 @@ const value = ref('1')
 |disabled|`boolean`|-|是否禁用|N|
 |options|`IData[]`|-|单选框数据项|N|
 
-### TypeScript 类型
+### RadioGroup Events
+
+|事件|说明|回调参数|
+|---|----|-------|
+|change|内容发生改变时触发|`value: string \| number(当前输入内容)`|
+
+### TS 类型
 
 ```typescript
 export type DirectionType = 'horizontal' | 'vertical'

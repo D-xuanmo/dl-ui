@@ -97,7 +97,13 @@ function beforeChange() {
 |checked-icon|自定义选中状态下图标|
 |unchecked-icon|自定义未选中状态下图标|
 
-### TypeScript 类型
+### Events
+
+|事件|说明|回调参数|
+|---|----|-------|
+|change|内容发生改变时触发|`value: boolean(当前输入内容)`|
+
+### TS 类型
 
 ```typescript
 import type { SwitchProps } from '@xuanmo/dl-ui'

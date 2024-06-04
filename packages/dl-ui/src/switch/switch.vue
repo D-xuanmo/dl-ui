@@ -22,9 +22,9 @@ export default defineComponent({
   name,
   components: { LoadingOutlined },
   props: SWITCH_PROPS,
-  emits: ['update:model-value'],
+  emits: ['update:model-value', 'change'],
   setup(props, { emit }) {
-    const [innerValue, setValue] = useModelValue<boolean | undefined, typeof props>(
+    const [innerValue, updateValue] = useModelValue<boolean | undefined, typeof props>(
       props,
       emit as SetupContext['emit']
     )
@@ -40,14 +40,14 @@ export default defineComponent({
       })
     )
 
-    const updateValue = () => setValue((innerValue.value = !innerValue.value))
-
     function handleChange() {
       if (props.loading) return
 
       const { beforeChange } = props
       if (!beforeChange) {
-        updateValue()
+        const value = (innerValue.value = !innerValue.value)
+        updateValue(value)
+        emit('change', value)
         return
       }
 
@@ -59,10 +59,18 @@ export default defineComponent({
 
       if (isPromise(interceptionResult)) {
         interceptionResult
-          .then((result) => result && updateValue())
+          .then((result) => {
+            const value = (innerValue.value = !innerValue.value)
+            if (result) {
+              updateValue(value)
+              emit('change', value)
+            }
+          })
           .catch((e) => debugWarn(name, e))
       } else if (interceptionResult as unknown as boolean) {
-        updateValue()
+        const value = (innerValue.value = !innerValue.value)
+        updateValue(value)
+        emit('change', value)
       }
     }
 

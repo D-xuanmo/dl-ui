@@ -67,6 +67,7 @@ formStore.events
   .on('field.input.change', (value, rowId) => console.log({ value, rowId }))
   .on('field.input.clear', (value, rowId) => console.log({ value, rowId }))
   .on('field.avatar.success', (value, rowId) => console.log({ value, rowId }))
+  .on('field.calendarMultiple.change', (value, rowId) => console.log({ value, rowId }))
 
 const formLayoutOptions = [
   { label: 'horizontal', value: 'horizontal' },

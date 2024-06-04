@@ -94,7 +94,13 @@ const value2 = ref(['1', '3'])
 |options|`IData[]`|-|复选框数据项|N|
 |separator|`string`|`,`|分隔符|N|
 
-### TypeScript 类型
+### CheckboxGroup Events
+
+|事件|说明|回调参数|
+|---|----|-------|
+|change|内容发生改变时触发|`value: (string \| number)[](当前输入内容)`|
+
+### TS 类型
 
 ```typescript
 export type DirectionType = 'horizontal' | 'vertical'

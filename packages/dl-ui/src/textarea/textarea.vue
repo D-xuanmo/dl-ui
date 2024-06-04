@@ -27,7 +27,7 @@ const [name, bem] = createNamespace('textarea')
 export default defineComponent({
   name,
   props: TEXTAREA_PROPS,
-  emits: ['update:model-value'],
+  emits: ['update:model-value', 'change'],
   setup(props, context) {
     const wrapperClassName = computed(() =>
       bem({
@@ -47,7 +47,9 @@ export default defineComponent({
     const limit = computed(() => `${innerValue.value?.length || 0}/${props.maxlength}`)
 
     const handleInput = (event: Event) => {
-      updateValue((event.target as HTMLTextAreaElement).value)
+      const value = (event.target as HTMLTextAreaElement).value
+      updateValue(value)
+      context.emit('change', value)
     }
 
     const textareaHeight = useCalcTextareaHeight(innerValue, textareaRef, {

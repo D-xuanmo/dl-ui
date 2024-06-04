@@ -38,7 +38,7 @@ export default defineComponent({
   components: { DPicker, RightOutlined },
   inheritAttrs: false,
   props: DATE_PICKER_PROPS,
-  emits: ['update:model-value'],
+  emits: ['update:model-value', 'change'],
   setup(props, { emit }) {
     const [innerValue, updateValue] = useModelValue(props, emit as SetupContext['emit'])
     const dateUtil = new DateUtil(innerValue.value || props.minDate, {
@@ -91,6 +91,7 @@ export default defineComponent({
       innerVisible.value = false
       pickerValue.value = dateUtil.pickerValue
       updateValue(dateUtil.value)
+      emit('change', dateUtil.value)
     }
 
     const showPicker = () => {

@@ -30,7 +30,7 @@ export default defineComponent({
     DCheckbox
   },
   props: CHECKBOX_GROUP_PROPS,
-  emits: ['update:model-value'],
+  emits: ['update:model-value', 'change'],
   setup(props, { emit }) {
     const config = useConfig(['keys', 'separator'], props)
     const valueKey = config.value.keys?.value || 'value'
@@ -55,6 +55,7 @@ export default defineComponent({
     const updateModelValue = (value: UnwrapRef<CheckboxGroupContextType['value']>) => {
       if (value.length > props.max!) return
       updateValue(value)
+      emit('change', value)
     }
 
     provide(CHECKBOX_GROUP_CONTEXT_KEY, {
