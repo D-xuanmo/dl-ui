@@ -129,7 +129,8 @@
     }
 
     &-icon {
-      margin-right: var(--d-gap-xxs);
+      display: inline-block;
+      margin-right: var(--d-gap-xs);
 
       & + * {
         vertical-align: middle;
