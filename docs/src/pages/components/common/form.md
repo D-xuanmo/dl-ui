@@ -841,7 +841,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 
 |事件名|说明|
 |-----|---|
-|`form.ready`|表单初始化完成|
+|`form.ready`|表单初始化完成，设置显示隐藏等 API 需要在 ready 之后使用|
 |`field.change`|组件数据发生变更时触发|
 |`field.${dataKey}.change`|单个组件数据变更时触发|
 |`field.${dataKey}.focus`|组件聚焦时触发，由组件决定|

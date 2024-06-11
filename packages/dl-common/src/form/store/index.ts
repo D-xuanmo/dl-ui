@@ -116,7 +116,7 @@ class FormStore {
       }
     })
     this.viewLinkageStore.init(viewLinkage)
-    this.events.emit(`${EventPrefixEnum.FORM}.ready`)
+    this.events.emit(`${EventPrefixEnum.FORM}.ready`, this)
   }
 
   /**
