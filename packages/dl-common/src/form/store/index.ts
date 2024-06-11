@@ -44,7 +44,7 @@ class FormStore {
    * key：id
    * value 子级集合
    */
-  private compRelationship: Map<string, string[]> = new Map()
+  private compRelationship: Map<string, string[]> = reactive(new Map())
 
   /**
    * 表单数据
@@ -81,7 +81,8 @@ class FormStore {
    * 表单初始化
    * @param options
    */
-  public init = (options: { models: FormModels; viewLinkage: ViewLinkageType }) => {
+  public init(options: { models: FormModels; viewLinkage: ViewLinkageType }) {
+    this.clear()
     const { models, viewLinkage } = options
     this.originalModel = deepCopy(models)
     ;(models as IFormModelItem[]).forEach((item) => {
@@ -136,7 +137,7 @@ class FormStore {
    * @param rowId
    * @deprecated 主版本发布后废弃，改为 updateFieldValue
    */
-  public updateSingleValue = (dataKey: string, value: any, rowId?: string) => {
+  public updateSingleValue(dataKey: string, value: any, rowId?: string) {
     this.updateFieldValue(dataKey, value, rowId)
   }
 
@@ -146,7 +147,7 @@ class FormStore {
    * @param value
    * @param rowId
    */
-  public updateFieldValue = (dataKey: string, value: any, rowId?: string) => {
+  public updateFieldValue(dataKey: string, value: any, rowId?: string) {
     if (rowId) {
       const detailTableId = this.getDetailTableId(dataKey)
       this.detailTableStore.upsert(detailTableId, rowId, value, dataKey)
@@ -161,7 +162,7 @@ class FormStore {
    * @param data
    * @param validate 是否执行校验
    */
-  public updateData = (data: Record<string, unknown>, validate = true) => {
+  public updateData(data: Record<string, unknown>, validate = true) {
     if (data) {
       for (const [key, value] of Object.entries(data)) {
         if (this.tableIdMap.get(key)) {
@@ -179,7 +180,7 @@ class FormStore {
    * @param id
    * @param item
    */
-  public updateModel = (id: string, item: Partial<IFormModelItem>) => {
+  public updateModel(id: string, item: Partial<IFormModelItem>) {
     const newItem = this.getModel(id)
     if (newItem) {
       Object.assign(newItem, item)
@@ -216,7 +217,7 @@ class FormStore {
    * 获取子级集合
    * @param parentId 父级 id
    */
-  public getChildren = (parentId: string) => {
+  public getChildren(parentId: string) {
     const children = this.compRelationship.get(parentId)
     if (children) return children.map((id) => this.getModel(id))
     return []
@@ -243,7 +244,7 @@ class FormStore {
    * @param dataKey
    * @param rowId
    */
-  public getFieldValue = (dataKey: string, rowId?: string) => {
+  public getFieldValue(dataKey: string, rowId?: string) {
     if (rowId) {
       const detailTableId = this.getDetailTableId(dataKey)
       return this.detailTableStore.getFieldValue(detailTableId, rowId, dataKey)
@@ -257,14 +258,14 @@ class FormStore {
    * @param rowId
    * @deprecated 主版本发布后去除，需要改为 getFieldValue
    */
-  public getSingleValue = (dataKey: string, rowId?: string) => {
+  public getSingleValue(dataKey: string, rowId?: string) {
     return this.getFieldValue(dataKey, rowId)
   }
 
   /**
    * 获取表单数据
    */
-  public getFormData = () => {
+  public getFormData() {
     return {
       ...this.mainFormData,
       ...this.detailTableStore.getTableDataConverted()
@@ -276,7 +277,7 @@ class FormStore {
    * @param id
    * @param value
    */
-  public setDisplay = (id: string, value: boolean) => {
+  public setDisplay(id: string, value: boolean) {
     this.viewLinkageStore.setDisplay(id, value)
   }
 
@@ -285,7 +286,7 @@ class FormStore {
    * @param id
    * @param value
    */
-  public setReadonly = (id: string, value: boolean) => {
+  public setReadonly(id: string, value: boolean) {
     this.viewLinkageStore.setReadonly(id, value)
   }
 
@@ -294,7 +295,7 @@ class FormStore {
    * @param id
    * @param value
    */
-  public setDisabled = (id: string, value: boolean) => {
+  public setDisabled(id: string, value: boolean) {
     this.viewLinkageStore.setDisabled(id, value)
   }
 
@@ -303,7 +304,7 @@ class FormStore {
    * @param id
    * @param value
    */
-  public setRequired = (id: string, value: boolean) => {
+  public setRequired(id: string, value: boolean) {
     this.viewLinkageStore.setRequired(id, value)
   }
 
@@ -311,7 +312,7 @@ class FormStore {
    * 设置整表禁用
    * @param value
    */
-  public setFormDisabled = (value: boolean) => {
+  public setFormDisabled(value: boolean) {
     this.formDisabled.value = value
   }
 
@@ -319,14 +320,14 @@ class FormStore {
    * 设置整表只读
    * @param value
    */
-  public setFormReadonly = (value: boolean) => {
+  public setFormReadonly(value: boolean) {
     this.formReadonly.value = value
   }
 
   /**
    * 表单重置
    */
-  public reset = () => {
+  public reset() {
     ;(this.originalModel as IFormModelItem[]).forEach((item) => {
       if (item.dataKey) {
         this.updateFieldValue(item.dataKey, item.value)
@@ -338,8 +339,8 @@ class FormStore {
   /**
    * 表单校验
    */
-  public validate = () =>
-    new Promise((resolve, reject) => {
+  public validate() {
+    return new Promise((resolve, reject) => {
       const models: ValidateDataModel = []
       this.convertModel().forEach((item) => {
         // 隐藏字段、禁用字段、只读字段不参与校验
@@ -383,6 +384,7 @@ class FormStore {
           reject(error)
         })
     })
+  }
 
   /**
    * 单个校验
@@ -390,7 +392,7 @@ class FormStore {
    * @param detailTableId
    * @param rowId
    */
-  public singleValidate = (dataKey: string, detailTableId?: string, rowId?: string) => {
+  public singleValidate(dataKey: string, detailTableId?: string, rowId?: string) {
     const item = {
       ...this.getModel(dataKey),
       value: this.getFieldValue(dataKey),
@@ -420,14 +422,14 @@ class FormStore {
    * @param detailTableId 明细表 id
    * @param rowId 明细表行数据 id
    */
-  public getSingleMessage = (dataKey: string, detailTableId?: string, rowId?: string) => {
+  public getSingleMessage(dataKey: string, detailTableId?: string, rowId?: string) {
     return this.errorMessages[getMessageKey(dataKey, detailTableId, rowId)]
   }
 
   /**
    * 清空所有校验信息
    */
-  public clearMessages = () => {
+  public clearMessages() {
     Object.keys(this.errorMessages).forEach((key) => (this.errorMessages[key] = ''))
   }
 
@@ -435,6 +437,20 @@ class FormStore {
    * 转换表单模型
    */
   public convertModel = () => Array.from(this.models.values())
+
+  /**
+   * 清理 store 相关数据
+   */
+  private clear() {
+    this.models.clear()
+    this.compRelationship.clear()
+    this.dataKeyMap = new Map()
+    this.tableIdMap = new Map()
+    this.originalModel = []
+    this.errorMessages = reactive({})
+    this.mainFormData = reactive({})
+    this.viewLinkageStore = new ViewLinkageStore(this)
+  }
 }
 
 export { FormStore }
