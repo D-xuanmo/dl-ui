@@ -15,7 +15,7 @@ app.use(DUpload)
 
 ## 代码演示
 
-```vue client=Mobile playground=MUpload
+```vue client=Mobile playground=MUpload previewType=iframe
 <template>
   <d-upload
     v-model="value"

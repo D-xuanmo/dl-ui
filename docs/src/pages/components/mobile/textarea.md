@@ -15,7 +15,7 @@ app.use(DTextarea)
 
 ## 代码演示
 
-```vue client=Mobile playground=MTextarea
+```vue client=Mobile playground=MTextarea previewType=iframe
 <template>
   <d-cell-group cell-title-width="100">
     <d-cell title="基础用法">
