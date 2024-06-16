@@ -1,6 +1,6 @@
 <template>
   <div :class="wrapperClassName">
-    <tabs-nav :nav-list="items" :active="value" :style="navStyle" @tab-click="handleTabClick" />
+    <tab-nav :nav-list="items" :active="value" :style="navStyle" @tab-click="handleTabClick" />
     <div :class="contentClassName">
       <component :is="childrenMap.get(value)?.component" :key="value" />
     </div>
@@ -9,23 +9,28 @@
 
 <script lang="ts">
 import { computed, CSSProperties, defineComponent, Fragment, SetupContext } from 'vue'
-import { getComponentName, useModelValue } from '@xuanmo/dl-common'
+import { getComponentName, useConfig, useModelValue } from '@xuanmo/dl-common'
 import { TABS_PROPS, TabsProps } from './props'
 import { createTabsNameSpace } from './utils'
 import { TabsItemType, TabsValueType } from './types'
-import TabsNav from './nav.vue'
+import TabNav from './tab-nav.vue'
 
 const [name, bem] = createTabsNameSpace()
 
 export default defineComponent({
   name,
   components: {
-    TabsNav
+    TabNav
   },
   props: TABS_PROPS,
   emits: ['update:model-value', 'tab-click'],
   setup(props, { slots, emit }) {
-    const wrapperClassName = bem()
+    const config = useConfig(['round'], props)
+    const wrapperClassName = computed(() =>
+      bem({
+        round: config.value.round
+      })
+    )
     const navClassName = bem('nav')
     const navItemClassName = bem('nav-item')
     const contentClassName = bem('content')

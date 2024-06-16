@@ -1,5 +1,5 @@
 import Tabs from './tabs.vue'
-import TabPanel from './panel.vue'
+import TabPanel from './tab-panel.vue'
 import { withInstall } from '@xuanmo/dl-common'
 
 export const DTabs = withInstall(Tabs)

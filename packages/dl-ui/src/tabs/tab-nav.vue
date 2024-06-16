@@ -1,13 +1,13 @@
 <template>
   <ul ref="navRef" :class="wrapperClassName">
-    <nav-item
+    <tab-nav-item
       v-for="(item, index) in navList"
       :key="item.name"
       :active="item.name === active"
       @click="handleTabClick(item, index)"
     >
       {{ item.label }}
-    </nav-item>
+    </tab-nav-item>
     <li :class="lineClassName" :style="lineStyle" />
   </ul>
 </template>
@@ -15,7 +15,7 @@
 <script lang="ts">
 import { CSSProperties, defineComponent, nextTick, onMounted, PropType, ref, watch } from 'vue'
 import { createTabsNameSpace } from './utils'
-import NavItem from './nav-item.vue'
+import TabNavItem from './tab-nav-item.vue'
 import { TabsItemType } from './types'
 import { addUnit } from '@xuanmo/dl-common'
 
@@ -24,7 +24,7 @@ const [name, bem] = createTabsNameSpace('nav')
 export default defineComponent({
   name,
   components: {
-    NavItem
+    TabNavItem
   },
   props: {
     active: {

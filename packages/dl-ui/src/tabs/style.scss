@@ -6,13 +6,21 @@
 }
 
 .#{$prefix}-tabs {
+  $prefix: &;
+  &--round {
+    #{$prefix} {
+      &__nav {
+        border-radius: var(--d-radius-medium);
+      }
+    }
+  }
+
   &__nav {
     position: relative;
     display: flex;
     padding: 0 var(--d-tabs-nav-padding);
     overflow: auto hidden;
     background: var(--d-white-color);
-    border-radius: var(--d-radius-medium);
 
     &::-webkit-scrollbar {
       display: none;
