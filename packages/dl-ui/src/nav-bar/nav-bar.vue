@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { NAV_BAR_PROPS } from './props'
 import { createNamespace } from '@xuanmo/dl-common'
 import { LeftOutlined } from '@xuanmo/dl-icons'
@@ -27,7 +27,9 @@ export default defineComponent({
   props: NAV_BAR_PROPS,
   emits: ['click-left', 'click-right'],
   setup(props, ctx) {
-    const wrapperClass = bem({ border: props.border, highlight: props.buttonHighlight })
+    const wrapperClass = computed(() =>
+      bem({ border: props.border, highlight: props.buttonHighlight })
+    )
     const leftClass = bem('left')
     const centerClass = bem('title', { [props.titleAlign]: true })
     const rightClass = bem('right')
