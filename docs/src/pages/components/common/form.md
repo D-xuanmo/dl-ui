@@ -356,10 +356,10 @@ app.use(DForm)
       },
       value: [
         {
-          url: 'https://admin.xuanmo.xin/api/my-admin/p/file/read/3aae4d3f-7096-461f-a54b-0c52972672e2'
+          url: 'https://admin.xuanmo.xin/papi/my-admin/file/read/3aae4d3f-7096-461f-a54b-0c52972672e2'
         }
       ],
-      action: '/api/my-admin/p/file/upload',
+      action: '/papi/my-admin/file/upload',
       data: {
         type: 'media',
         directoryId: '1de547bf-67d4-4a7d-bb88-2178090327c8'
@@ -416,8 +416,8 @@ app.use(DForm)
       email: 'example@qq.com',
       rate: 3,
       upload: [
-        { url: 'https://admin.xuanmo.xin/api/my-admin/p/file/read/02e535e6-8348-423e-8cf5-0d480fa4d247', deletable: false },
-        { url: 'https://admin.xuanmo.xin/api/my-admin/p/file/read/02e535e6-8348-423e-8cf5-0d480fa4d247', deletable: true }
+        { url: 'https://admin.xuanmo.xin/papi/my-admin/file/read/02e535e6-8348-423e-8cf5-0d480fa4d247', deletable: false },
+        { url: 'https://admin.xuanmo.xin/papi/my-admin/file/read/02e535e6-8348-423e-8cf5-0d480fa4d247', deletable: true }
       ],
       customInput: '我是自定义数据',
       cascader: ['310000000000', '310100000000', '310104000000', '310104007000'],
@@ -446,7 +446,7 @@ app.use(DForm)
   }
 
   fetch(
-    'https://admin.xuanmo.xin/api/my-admin/p/file/read/335f8ac3-f7f5-4408-ab30-a25000041190'
+    'https://admin.xuanmo.xin/papi/my-admin/file/read/335f8ac3-f7f5-4408-ab30-a25000041190'
   ).then(async (res) => {
     const options = await res.json()
     formRef.value.store?.updateModel('cascaderPicker', {

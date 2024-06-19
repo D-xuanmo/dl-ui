@@ -144,15 +144,15 @@ const updateOptions = () => {
   })
 }
 
-fetch(
-  'https://admin.xuanmo.xin/api/my-admin/p/file/read/335f8ac3-f7f5-4408-ab30-a25000041190'
-).then(async (res) => {
-  const options = await res.json()
-  formStore.updateModel('cascaderPicker', {
-    options
-  })
-  formStore.updateModel('cascader', {
-    options
-  })
-})
+fetch('https://admin.xuanmo.xin/papi/my-admin/file/read/335f8ac3-f7f5-4408-ab30-a25000041190').then(
+  async (res) => {
+    const options = await res.json()
+    formStore.updateModel('cascaderPicker', {
+      options
+    })
+    formStore.updateModel('cascader', {
+      options
+    })
+  }
+)
 </script>

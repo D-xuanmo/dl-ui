@@ -33,7 +33,8 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 3200,
     proxy: {
-      '/api': 'https://www.xuanmo.xin'
+      '/api': 'https://www.xuanmo.xin',
+      '/papi': 'https://www.xuanmo.xin'
     }
   },
   resolve: {

@@ -1,7 +1,7 @@
 <template>
   <d-upload
     v-model="value"
-    action="/api/my-admin/p/file/upload"
+    action="/papi/my-admin/file/upload"
     multiple
     upload-data-key="files"
     :data="uploadData"

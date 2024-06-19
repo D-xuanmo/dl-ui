@@ -102,9 +102,9 @@ const handleLazyLoad = (options: ICascaderOption) =>
     }, 1000)
   })
 
-fetch(
-  'https://admin.xuanmo.xin/api/my-admin/p/file/read/335f8ac3-f7f5-4408-ab30-a25000041190'
-).then(async (res) => {
-  template.value = await res.json()
-})
+fetch('https://admin.xuanmo.xin/papi/my-admin/file/read/335f8ac3-f7f5-4408-ab30-a25000041190').then(
+  async (res) => {
+    template.value = await res.json()
+  }
+)
 </script>

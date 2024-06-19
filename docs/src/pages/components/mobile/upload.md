@@ -19,7 +19,7 @@ app.use(DUpload)
 <template>
   <d-upload
     v-model="value"
-    action="/api/my-admin/p/file/upload"
+    action="/papi/my-admin/file/upload"
     multiple
     upload-data-key="files"
     :data="uploadData"
@@ -34,7 +34,7 @@ app.use(DUpload)
 
   const value = ref([
     {
-      url: 'https://admin.xuanmo.xin/api/my-admin/p/file/read/02e535e6-8348-423e-8cf5-0d480fa4d247',
+      url: 'https://admin.xuanmo.xin/papi/my-admin/file/read/02e535e6-8348-423e-8cf5-0d480fa4d247',
       deletable: false
     }
   ])

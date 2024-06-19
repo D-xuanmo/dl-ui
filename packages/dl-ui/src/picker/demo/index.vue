@@ -60,14 +60,14 @@ const visible3 = ref(false)
 const value3 = ref([])
 const template3 = ref([])
 
-fetch(
-  'https://admin.xuanmo.xin/api/my-admin/p/file/read/335f8ac3-f7f5-4408-ab30-a25000041190'
-).then(async (res) => {
-  const data = await res.json()
-  template3.value = data
-  options5.value = data.map((item) => {
-    const { value, label } = item
-    return { value, label }
-  })
-})
+fetch('https://admin.xuanmo.xin/papi/my-admin/file/read/335f8ac3-f7f5-4408-ab30-a25000041190').then(
+  async (res) => {
+    const data = await res.json()
+    template3.value = data
+    options5.value = data.map((item) => {
+      const { value, label } = item
+      return { value, label }
+    })
+  }
+)
 </script>
