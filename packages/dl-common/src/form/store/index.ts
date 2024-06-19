@@ -393,27 +393,32 @@ class FormStore {
    * @param rowId
    */
   public singleValidate(dataKey: string, detailTableId?: string, rowId?: string) {
-    const item = {
-      ...this.getModel(dataKey),
-      value: this.getFieldValue(dataKey),
-      required: this.viewLinkageStore.getRequired(dataKey)
-    }
-    if (detailTableId) {
-      Object.assign(item, {
+    return new Promise<string>((resolve, reject) => {
+      const item = {
         ...this.getModel(dataKey),
-        value: this.getFieldValue(dataKey, rowId!)
-      })
-    }
-    if (item) {
-      validator
-        .validate([item])
-        .then(() => {
-          this.errorMessages[getMessageKey(dataKey, detailTableId, rowId)] = ''
+        value: this.getFieldValue(dataKey),
+        required: this.viewLinkageStore.getRequired(dataKey)
+      }
+      if (detailTableId) {
+        Object.assign(item, {
+          ...this.getModel(dataKey),
+          value: this.getFieldValue(dataKey, rowId!)
         })
-        .catch((error) => {
-          this.errorMessages[getMessageKey(dataKey, detailTableId, rowId)] = error[dataKey]
-        })
-    }
+      }
+      if (item) {
+        validator
+          .validate([item])
+          .then(() => {
+            this.errorMessages[getMessageKey(dataKey, detailTableId, rowId)] = ''
+            resolve('')
+          })
+          .catch((error) => {
+            this.errorMessages[getMessageKey(dataKey, detailTableId, rowId)] = error[dataKey]
+            reject(error[dataKey])
+          })
+      }
+      resolve('')
+    })
   }
 
   /**

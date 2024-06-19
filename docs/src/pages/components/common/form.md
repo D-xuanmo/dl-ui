@@ -866,7 +866,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 |setFormDisabled|`(value: boolean) => void`|设置整表禁用|
 |setFormReadonly|`(value: boolean) => void`|设置整表只读|
 |validate|`() => Promise<true \| ValidateReturnType>`|表单校验|
-|singleValidate|`(dataKey: string) => void`|单个字段校验|
+|singleValidate|`(dataKey: string) => Promise<string>`|单个字段校验|
 |getSingleMessage|`(dataKey: string) => string`|获取单个字段的错误信息|
 |getParent|`(id: string) => IFormModelItem<unknown>`|通过 id 获取当前父级信息|
 |getChildren|`(id: string) => IFormModelItem<unknown>[]`|通过 id 获取当前子级集合|
