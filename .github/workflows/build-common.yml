@@ -22,7 +22,7 @@ jobs:
       run: yarn -v
 
     - name: Install
-      run: yarn
+      run: YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn
 
     - shell: bash
       name: Copy file
