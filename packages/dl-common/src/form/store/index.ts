@@ -78,44 +78,15 @@ class FormStore {
   detailTableStore = new DetailTableStore()
 
   /**
-   * 表单初始化
-   * @param options
+   * 初始化表单
+   * @param options - 初始化选项
+   * @param options.models - 表单模型
+   * @param options.viewLinkage - 视图联动类型
    */
-  public init(options: { models: FormModels; viewLinkage: ViewLinkageType }) {
-    this.clear()
-    const { models, viewLinkage } = options
-    this.originalModel = deepCopy(models)
-    ;(models as IFormModelItem[]).forEach((item) => {
-      const parentComps = this.compRelationship.get(item.layout.parent)
-      if (parentComps) {
-        parentComps.push(item.id)
-      } else {
-        this.compRelationship.set(item.layout.parent, [item.id])
-      }
-      if (item.detailTableId && item.componentType === 'DetailTable') {
-        this.tableIdMap.set(item.detailTableId, item.id)
-      }
-      this.models.set(item.id, {
-        ...item,
-        display: isEmpty(item.display) ? true : item.display,
-        // 如果是一个 vue 组件，返回对象本身，不需要进行代理
-        component: isObject(item.component) ? markRaw(item.component as object) : item.component
-      })
-      this.setDisplay(item.id, item.display ?? true)
-      this.setRequired(
-        item.id,
-        item.required ?? (item as IFormModelItem).rules?.includes('required') ?? false
-      )
-      if (item.dataKey) {
-        if (!isDetailTableField(item)) {
-          Object.assign(this.mainFormData, { [item.dataKey]: item.value })
-        }
-        this.dataKeyMap.set(item.dataKey, item.id)
-        this.setReadonly(item.id, item.readonly ?? false)
-        this.setDisabled(item.id, item.disabled ?? false)
-      }
-    })
-    this.viewLinkageStore.init(viewLinkage)
+  public init(options: { models: FormModels; viewLinkage?: ViewLinkageType }) {
+    this.updateModels(options)
+
+    // 触发表单初始化完成事件
     this.events.emit(`${EventPrefixEnum.FORM}.ready`, this)
   }
 
@@ -176,16 +147,76 @@ class FormStore {
   }
 
   /**
-   * 更新单个 item 信息
-   * @param id
-   * @param item
+   * 更新表单模型
+   * @param id - 组件 ID
+   * @param item - 组件模型
    */
   public updateModel(id: string, item: Partial<IFormModelItem>) {
     const newItem = this.getModel(id)
+
     if (newItem) {
       Object.assign(newItem, item)
+
+      // 根据数据键获取模型 ID，并将更新后的模型添加到 models Map 中
       this.models.set(this.getModelIdByDataKey(id), newItem)
     }
+  }
+
+  /**
+   * 更新表单模型
+   * @param options - 初始化选项
+   * @param options.models - 表单模型
+   * @param options.viewLinkage - 视图联动类型
+   */
+  public updateModels(options: { models: FormModels; viewLinkage?: ViewLinkageType }) {
+    this.clear()
+
+    const { models, viewLinkage } = options
+
+    // 复制模型
+    this.originalModel = deepCopy(models)
+    ;(models as IFormModelItem[]).forEach((item) => {
+      // 处理父子级关系
+      const parentComps = this.compRelationship.get(item.layout.parent)
+      if (parentComps) {
+        parentComps.push(item.id)
+      } else {
+        this.compRelationship.set(item.layout.parent, [item.id])
+      }
+
+      // 处理明细表映射关系
+      if (item.detailTableId && item.componentType === 'DetailTable') {
+        this.tableIdMap.set(item.detailTableId, item.id)
+      }
+
+      this.models.set(item.id, {
+        ...item,
+        display: isEmpty(item.display) ? true : item.display,
+        component: isObject(item.component) ? markRaw(item.component as object) : item.component
+      })
+
+      // 设置显示状态
+      this.setDisplay(item.id, item.display ?? true)
+
+      // 设置必填状态
+      this.setRequired(
+        item.id,
+        item.required ?? (item as IFormModelItem).rules?.includes('required') ?? false
+      )
+
+      // 处理数据键映射关系
+      if (item.dataKey) {
+        if (!isDetailTableField(item)) {
+          Object.assign(this.mainFormData, { [item.dataKey]: item.value })
+        }
+        this.dataKeyMap.set(item.dataKey, item.id)
+        this.setReadonly(item.id, item.readonly ?? false)
+        this.setDisabled(item.id, item.disabled ?? false)
+      }
+    })
+
+    // 初始化视图联动
+    this.viewLinkageStore.init(viewLinkage || [])
   }
 
   /**
@@ -207,7 +238,7 @@ class FormStore {
 
   /**
    * 获取明细表信息
-   * @param tableId
+   * @param tableId 明细表 id
    */
   public getModelByTableId(tableId: string) {
     return this.models.get(this.tableIdMap.get(tableId)!) as IDetailTableItem

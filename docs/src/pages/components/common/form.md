@@ -859,6 +859,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 |updateFieldValue|`(dataKey: string, value: any) => void`|更新单个字段数据|
 |updateData|`(data: Record<string, unknown>, validate?: boolean) => void`|更新多个字段数据，默认会执行校验|
 |updateModel|`(id: string, item: Partial<IFormModelItem>) => void`|更新单个 item 信息|
+|updateModels|`(options: { models: FormModels; viewLinkage?: ViewLinkageType }) => void`|针对动态追加表单可使用此方法|
 |setRequired|`(id: string, required: boolean) => void`|设置必填|
 |setDisplay|`(id: string, display: boolean) => void`|设置显示隐藏|
 |setReadonly|`(id: string, readonly: boolean) => void`|设置只读|

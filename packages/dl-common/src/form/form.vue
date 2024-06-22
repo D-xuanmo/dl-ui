@@ -60,18 +60,12 @@ export default defineComponent({
       formProps,
       onChange: handleChange
     })
-    watch(
-      () => props.models,
-      () => {
-        store.init({
-          models: props.models,
-          viewLinkage: props.viewLinkage
-        })
-      },
-      {
-        immediate: true
-      }
-    )
+
+    store.init({
+      models: props.models,
+      viewLinkage: props.viewLinkage
+    })
+
     watch(
       () => props.data,
       (data) => store.updateData(data!, false),
