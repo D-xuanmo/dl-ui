@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import { IFormModelItem, DFormItem, useForm } from '@xuanmo/dl-common'
 
 const props = defineProps<{
