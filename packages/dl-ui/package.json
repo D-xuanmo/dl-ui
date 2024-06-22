@@ -23,12 +23,6 @@
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
-  "dependencies": {
-    "@xuanmo/datejs": "^1.0.15"
-  },
-  "peerDependencies": {
-    "@xuanmo/validator": "^0.0.20"
-  },
   "keywords": [
     "dynamic-form",
     "Vue3 Form"

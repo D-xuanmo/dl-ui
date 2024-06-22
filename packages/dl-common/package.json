@@ -19,9 +19,6 @@
     "clear": "rimraf dist",
     "tsc:clear": "npm run clear && npm run tsc"
   },
-  "peerDependencies": {
-    "@xuanmo/validator": "^0.0.20"
-  },
   "keywords": [
     "dynamic-form",
     "Vue3 Form"
