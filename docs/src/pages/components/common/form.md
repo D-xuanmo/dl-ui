@@ -758,6 +758,7 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 3. `dataKey`：由于一个表单既可以渲染非数据录入组件，也可以渲染数据录入型组件，此时需要通过 dataKey 区分两种类型组件，dataKey 也是对应数据保存的 key
 4. `detailTableId`：明细表 id，数据保存时，则是对应整个明细表的数据 key
 5. `rowId`：对应明细表每行数据 id，目前内置 id 是随机 12 位的字符串
+6. `component`：全局组件名称或者组件对象
 
 ### 内置布局容器
 
