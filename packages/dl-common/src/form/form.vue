@@ -26,7 +26,16 @@ export default defineComponent({
   setup(props, { emit }) {
     const store = props.store || new FormStore()
     const config = useConfig(
-      ['colon', 'requiredMarkPosition', 'layout', 'labelWidth', 'clientType', 'border', 'round'],
+      [
+        'colon',
+        'requiredMarkPosition',
+        'layout',
+        'labelWidth',
+        'clientType',
+        'border',
+        'round',
+        'idGenerator'
+      ],
       props as any
     )
     const formClassName = computed(() =>
@@ -50,6 +59,8 @@ export default defineComponent({
         requiredMarkPosition: config.value.requiredMarkPosition || DEFAULT_REQUIRED_MARK_POSITION
       }
     })
+
+    store.idGenerator = config.value.idGenerator!
 
     const handleChange: OnFormChange = (value, model) => {
       emit('change', value, model)

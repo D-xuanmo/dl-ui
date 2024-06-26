@@ -28,7 +28,8 @@ export const CONFIG_PROVIDER_PROPS = {
     'round',
     'separator',
     'closeOnEsc',
-    'direction'
+    'direction',
+    'idGenerator'
   ]),
 
   /**

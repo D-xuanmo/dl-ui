@@ -1,6 +1,6 @@
 import { FormModels, IDetailTableItem, IFormModelItem } from '../types'
 import { markRaw, reactive, ref, UnwrapNestedRefs } from 'vue'
-import { deepCopy, isEmpty, isObject } from '@xuanmo/utils'
+import { createRandomID, deepCopy, isEmpty, isObject } from '@xuanmo/utils'
 import { validator } from '../../validator'
 import { EventEmitterEx } from './events'
 import { ViewLinkageStore } from './view-linkage'
@@ -55,27 +55,32 @@ class FormStore {
   /**
    * 表单禁用
    */
-  formDisabled = ref(false)
+  public formDisabled = ref(false)
 
   /**
    * 表单只读
    */
-  formReadonly = ref(false)
+  public formReadonly = ref(false)
 
   /**
    * 事件中心
    */
-  events = new EventEmitterEx()
+  public events = new EventEmitterEx()
 
   /**
    * 显示属性联动 store
    */
-  viewLinkageStore = new ViewLinkageStore(this)
+  public viewLinkageStore = new ViewLinkageStore(this)
 
   /**
    * 明细表数据
    */
-  detailTableStore = new DetailTableStore()
+  public detailTableStore = new DetailTableStore(this)
+
+  /**
+   * id 生成器
+   */
+  public idGenerator: () => string = createRandomID
 
   /**
    * 初始化表单

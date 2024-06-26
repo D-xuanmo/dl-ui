@@ -209,5 +209,13 @@ export const COMMON_PROPS = {
   direction: {
     type: String as PropType<DirectionType>,
     default: undefined
+  },
+
+  /**
+   * id 生成器
+   */
+  idGenerator: {
+    type: Function as PropType<() => string>,
+    default: undefined
   }
 }

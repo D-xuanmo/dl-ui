@@ -1,8 +1,15 @@
 import { DetailTableRowData } from './types'
 import { reactive, UnwrapNestedRefs } from 'vue'
-import { createRandomID, deepCopy, throwError } from '@xuanmo/utils'
+import { deepCopy, throwError } from '@xuanmo/utils'
+import { FormStore } from '../index'
 
 export class DetailTableStore {
+  formStore: FormStore
+
+  constructor(formStore: FormStore) {
+    this.formStore = formStore
+  }
+
   /**
    * 所有明细表数据
    * key 为 IDetailTableItem.detailTableId
@@ -47,7 +54,7 @@ export class DetailTableStore {
    */
   public addRow(tableId: string, rowData: DetailTableRowData | undefined) {
     const tableData = this.getTableData(tableId)
-    const rowId = createRandomID()
+    const rowId = this.formStore.idGenerator()
     tableData?.set(rowId, {
       ...rowData,
       rowId,
@@ -72,7 +79,7 @@ export class DetailTableStore {
         [dataKey]: value
       })
     } else {
-      const rowId = createRandomID()
+      const rowId = this.formStore.idGenerator()
       tableData.set(rowId, {
         rowId,
         dataIndex: tableData.size,

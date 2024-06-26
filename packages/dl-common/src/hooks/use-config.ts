@@ -1,6 +1,6 @@
 import { ConfigProviderInjectKey, ConfigProviderProps } from '../config-provider'
 import { computed, inject } from 'vue'
-import { isEmpty } from '@xuanmo/utils'
+import { createRandomID, isEmpty } from '@xuanmo/utils'
 import { CustomKeys } from '../common'
 import { DEFAULT_REQUIRED_MARK_POSITION, LABEL_WIDTH, SEPARATOR } from '../constants'
 
@@ -17,7 +17,8 @@ const globalConfig = {
   round: true,
   separator: SEPARATOR,
   closeOnEsc: true,
-  direction: 'horizontal'
+  direction: 'horizontal',
+  idGenerator: createRandomID
 } as ConfigProviderProps
 
 /**

@@ -16,8 +16,10 @@ export const FORM_PROPS = {
     'labelWidth',
     'clientType',
     'border',
-    'round'
+    'round',
+    'idGenerator'
   ]),
+
   /**
    * 表单模型
    */
