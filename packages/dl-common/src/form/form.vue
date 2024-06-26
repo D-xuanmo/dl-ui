@@ -61,10 +61,18 @@ export default defineComponent({
       onChange: handleChange
     })
 
-    store.init({
-      models: props.models,
-      viewLinkage: props.viewLinkage
-    })
+    watch(
+      () => props.models,
+      (models) => {
+        store.init({
+          models: models,
+          viewLinkage: props.viewLinkage
+        })
+      },
+      {
+        immediate: true
+      }
+    )
 
     watch(
       () => props.data,
