@@ -64,6 +64,7 @@ export { default as LogoutOutlined } from './logout-outlined'
 export { default as ChromeOutlined } from './chrome-outlined'
 export { default as CodeSandboxOutlined } from './code-sandbox-outlined'
 export { default as GithubOutlined } from './github-outlined'
+export { default as BorderOutlined } from './border-outlined'
 
 // ==================== 面性图标 ====================
 export { default as CameraFilled } from './camera-filled'
@@ -76,3 +77,4 @@ export { default as TipsFilled } from './tips-filled'
 export { default as WarningFilled } from './warning-filled'
 export { default as HelpFilled } from './help-filled'
 export { default as GithubFilled } from './github-filled'
+export { default as MosaicFilled } from './mosaic-filled'
