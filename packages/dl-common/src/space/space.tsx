@@ -20,18 +20,10 @@ export default defineComponent({
         attrs.class
       ])
       const children = findChildren(slots.default?.() ?? [])
-      const spaceItemClassName = bem('item')
-      const spaceItems = children.map((item, index) => {
-        return (
-          <div key={`${index}`} class={spaceItemClassName}>
-            {item}
-          </div>
-        )
-      })
 
       return (
         <div class={wrapperClassName.value} style={{ gap: addUnit(props.gap) }}>
-          {spaceItems}
+          {children}
         </div>
       )
     }
