@@ -13,7 +13,7 @@
       :layout="model.layout.layout || formProps.layout"
       :hide-title="formProps.hideLabel || model.hideLabel"
       :title-vertical-center="model.layout.titleVerticalCenter"
-      :content-align="model.layout.layout || formProps.contentAlign"
+      :content-align="model.layout.contentAlign || formProps.contentAlign"
     >
       <template #title>
         <span
@@ -92,11 +92,18 @@ export default defineComponent({
 
     const errorMessage = computed(() => store.getSingleMessage(dataKey, detailTableId, rowId))
 
-    const handleChange = (value: unknown) => {
-      props.model.controlled !== true && store.updateFieldValue(dataKey, value, rowId)
-      if (errorMessage.value) store.singleValidate(dataKey, detailTableId, rowId)
+    const handleChange = (value: unknown, split: boolean) => {
+      if (props.model.controlled !== true) {
+        if (split) {
+          store.updateData(value as Record<string, any>, false)
+          onFormChange(value as Record<string, any>, props.model, rowId)
+        } else {
+          store.updateFieldValue(dataKey, value, rowId)
+          if (errorMessage.value) store.singleValidate(dataKey, detailTableId, rowId)
+          onFormChange({ [dataKey]: value }, props.model, rowId)
+        }
+      }
       emit('change', value, rowId)
-      onFormChange({ [dataKey]: value }, props.model, rowId)
       store.events.emit(`${EventPrefixEnum.FIELD}.change`, value, props.model, rowId)
       formEventEmit!('change', value, rowId)
     }

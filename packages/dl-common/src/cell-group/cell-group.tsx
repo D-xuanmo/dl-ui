@@ -3,7 +3,6 @@ import { createNamespace } from '../utils'
 import { CELL_GROUP_CONTEXT_KEY } from './context'
 import { CELL_GROUP_PROPS } from './props'
 import { DirectionType } from '../common'
-import { LABEL_WIDTH } from '../constants'
 import { useConfig } from '../hooks'
 
 const [name, bem] = createNamespace('cell-group')
@@ -17,7 +16,7 @@ export default defineComponent({
     const config = useConfig(['border', 'round'], props)
 
     provide(CELL_GROUP_CONTEXT_KEY, {
-      cellTitleWidth: props.cellTitleWidth || LABEL_WIDTH,
+      cellTitleWidth: props.cellTitleWidth,
       cellContentAlign: props.cellContentAlign,
       layout: layout as Ref<DirectionType>,
       border: config.value.border,

@@ -2,7 +2,7 @@ import { ConfigProviderInjectKey, ConfigProviderProps } from '../config-provider
 import { computed, inject } from 'vue'
 import { createRandomID, isEmpty } from '@xuanmo/utils'
 import { CustomKeys } from '../common'
-import { DEFAULT_REQUIRED_MARK_POSITION, LABEL_WIDTH, SEPARATOR } from '../constants'
+import { DEFAULT_REQUIRED_MARK_POSITION, SEPARATOR } from '../constants'
 
 const globalConfig = {
   keys: {
@@ -10,7 +10,6 @@ const globalConfig = {
     value: 'value',
     children: 'children'
   },
-  labelWidth: LABEL_WIDTH,
   requiredMarkPosition: DEFAULT_REQUIRED_MARK_POSITION,
   clientType: 'MOBILE',
   layout: 'horizontal',

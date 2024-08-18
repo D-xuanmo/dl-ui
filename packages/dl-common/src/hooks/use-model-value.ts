@@ -45,11 +45,16 @@ function useModelValue<V, P, VK extends string>(
     innerValue.value = value
   }
 
-  function updateValue(value: V) {
+  /**
+   * 更新数据
+   * @param value 当前变更数据
+   * @param split 是否拆分数据
+   */
+  function updateValue(value: V, split = false) {
     if (isUsedCustomValue) {
       emit(eventName!, value)
     } else {
-      emit('update:model-value', value)
+      emit('update:model-value', value, split)
     }
   }
 

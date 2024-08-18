@@ -10,6 +10,7 @@
   --d-m-cell-padding: var(--d-m-cell-padding-y) var(--d-m-cell-padding-x);
   --d-cell-background: var(--d-white-color);
   --d-cell-radius: var(--d-radius-large);
+  --d-cell-title-width: 80px;
 }
 
 .#{$prefix}-cell {
@@ -27,7 +28,6 @@
 
   &--pc {
     display: flex;
-    align-items: center;
     padding: 0 0 var(--d-cell-padding-y) 0;
 
     &#{$parent} {
@@ -120,6 +120,7 @@
 
   &__title {
     @include text-align;
+    width: var(--d-cell-title-width);
     align-self: flex-start;
     word-break: break-word;
 
@@ -146,7 +147,6 @@
     flex: 1;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     @include text-align;
 
     #{$parent} {
@@ -155,6 +155,7 @@
 
     &-inner {
       flex: 1;
+      overflow: hidden;
     }
   }
 
@@ -165,7 +166,6 @@
 
   &__description {
     flex-basis: 100%;
-    margin-top: var(--d-gap-xs);
     font-size: var(--d-font-size-sm);
     line-height: var(--d-line-height-xs);
     color: var(--d-secondary-text-color);
