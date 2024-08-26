@@ -23,6 +23,7 @@ export default defineComponent({
     )
     const wrapperClass = bem('wrapper')
     const headerClass = bem('header')
+    const headerExtraClass = bem('header-extra')
     const titleClass = bem('title')
     const titleTextClass = bem('title-text')
     const bodyClass = bem('body')
@@ -65,10 +66,17 @@ export default defineComponent({
       closeFN: handleClose
     })
 
+    const renderExtra = context.slots.headerExtra ? (
+      <div class={headerExtraClass}>{context.slots.headerExtra()}</div>
+    ) : null
+
     const renderTitle = () => (
-      <div class={titleClass}>
-        <span class={titleTextClass}>{props.title}</span>
-      </div>
+      <>
+        <div class={titleClass}>
+          <span class={titleTextClass}>{props.title}</span>
+        </div>
+        {renderExtra}
+      </>
     )
 
     const renderBody = () => {

@@ -7,6 +7,10 @@
     padding: var(--d-gap-sm) var(--d-gap-md);
     border-bottom: var(--d-border);
     text-align: left;
+
+    &-extra {
+      margin-right: var(--d-gap-xs);
+    }
   }
 
   &__title {
