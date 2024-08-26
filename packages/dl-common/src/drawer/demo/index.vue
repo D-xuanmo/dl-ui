@@ -46,14 +46,15 @@
     @close="showCloseMessage"
   >
     我是内容
+    <template #headerExtra>222</template>
   </d-drawer>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { MessagePlugin } from '@xuanmo/dl-common'
+import { DrawerProps, MessagePlugin } from '@xuanmo/dl-common'
 
-const placement = ref('right')
+const placement = ref<DrawerProps['placement']>('right')
 const visible = ref(false)
 const visible2 = ref(false)
 const visible3 = ref(false)
@@ -68,7 +69,7 @@ const showCloseMessage = () => {
   MessagePlugin.info('onClose')
 }
 
-const showDrawer = (p: string) => {
+const showDrawer = (p: DrawerProps['placement']) => {
   placement.value = p
   visible5.value = true
 }

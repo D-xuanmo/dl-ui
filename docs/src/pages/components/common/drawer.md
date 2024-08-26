@@ -167,6 +167,7 @@ const showDrawer = (p: string) => {
 |名称|说明|
 |---|----|
 |default|对话框内容|
+|headerExtra|头部右侧扩展内容|
 |footer|自定义底部|
 
 ### TS 类型

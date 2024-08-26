@@ -9,12 +9,14 @@
     text-align: left;
 
     &-extra {
-      margin-right: var(--d-gap-xs);
+      max-width: 50%;
+      margin: 0 var(--d-gap-xs);
     }
   }
 
   &__title {
     flex: 1;
+    flex-shrink: 0;
     // 32px = icon size 24px + 8px
     max-width: calc(100% - 32px);
     color: var(--d-title-color);
