@@ -33,6 +33,14 @@ export const CONFIG_PROVIDER_PROPS = {
   ]),
 
   /**
+   * 是否需要创建真实 DOM
+   */
+  createNode: {
+    type: Boolean,
+    default: true
+  },
+
+  /**
    * 标题布局类型
    */
   layout: {

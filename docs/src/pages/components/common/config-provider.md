@@ -127,6 +127,7 @@ app.use(DConfigProvider)
 |参数|类型|默认值|说明|必传|
 |---|---|------|---|---|
 |is-root|`boolean`|`true`|是否为顶级配置组件，一般用于根组件，修改主题使用|N|
+|create-node|`boolean`|`true`|是否需要创建真实 DOM 节点，默认创建|N|
 |full-height|`boolean`|`true`|是否撑满高度，`height: 100%`|N|
 |theme|`ConfigProviderTheme`|-|修改主题颜色|N|
 |keys|`CustomKeys`|-|自定义数据源中的属性，`label`、`value`、`children` 别名，[公用类型定义](https://uoo.ink/common)|N|

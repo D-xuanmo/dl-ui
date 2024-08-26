@@ -12,8 +12,9 @@ export default defineComponent({
   setup(props, context: SetupContext) {
     provide(ConfigProviderInjectKey, props)
 
-    const theme = useTheme(props)
+    if (!props.createNode) return () => context.slots.default?.()
 
+    const theme = useTheme(props)
     const style = {
       height: props.fullHeight ? '100%' : undefined
     }
