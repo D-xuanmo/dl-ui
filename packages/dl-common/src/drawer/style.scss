@@ -9,8 +9,14 @@
     text-align: left;
 
     &-extra {
+      display: flex;
+      gap: var(--d-gap-xs);
       max-width: 50%;
       margin: 0 var(--d-gap-xs);
+
+      &:empty {
+        display: none;
+      }
     }
   }
 
@@ -31,10 +37,5 @@
 
   &__body {
     padding: var(--d-gap-md);
-  }
-
-  &__footer {
-    padding: var(--d-gap-sm) var(--d-gap-md);
-    border-top: var(--d-border);
   }
 }

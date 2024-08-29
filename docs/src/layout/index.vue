@@ -1,6 +1,6 @@
 <template>
   <d-layout :class="containerClassName">
-    <d-layout-header :class="headerClass" height="58px">
+    <d-layout-header :class="headerClass" height="65px">
       <doc-header />
     </d-layout-header>
 

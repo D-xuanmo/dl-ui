@@ -144,7 +144,7 @@ const showDrawer = (p: string) => {
 |confirm-button-text|`string`|`确认`|确认按钮文字|N|
 |confirm-button-props|`ButtonProps`|-|可复写按钮参数|N|
 |hide-confirm-button|`boolean`|`false`|隐藏确认按钮|N|
-|footer|`boolean \| VNode[]`|-|类型为 `boolean` 时，控制底部显示隐藏，为 `VNode[]` 时，复写整个底部|N|
+|button-list|`boolean \| VNode[]`|-|类型为 `boolean` 时，控制按钮显示隐藏，为 `VNode[]` 时，复写整个按钮列表|N|
 |destroy-on-close|`boolean`|`false`|是否关闭对话框销毁子元素|N|
 |width|`'number' \| 'string'`|`480px`|对话框宽度|N|
 |height|`'number' \| 'string'`|-|对话框高度|N|
@@ -167,8 +167,7 @@ const showDrawer = (p: string) => {
 |名称|说明|
 |---|----|
 |default|对话框内容|
-|headerExtra|头部右侧扩展内容|
-|footer|自定义底部|
+|buttons|自定义按钮列表|
 
 ### TS 类型
 

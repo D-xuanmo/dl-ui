@@ -4,7 +4,6 @@ import { DRAWER_PROPS, DrawerProps } from './props'
 import { DPopup } from '../popup'
 import { useModelValue } from '../hooks'
 import { DButton } from '../button'
-import { DSpace } from '../space'
 import { useCloseOnEsc } from '../hooks'
 
 const [name, bem] = createNamespace('drawer')
@@ -27,7 +26,6 @@ export default defineComponent({
     const titleClass = bem('title')
     const titleTextClass = bem('title-text')
     const bodyClass = bem('body')
-    const footerClass = bem('footer')
     const cancelButtonClass = bem('cancel-button')
     const confirmButtonClass = bem('confirm-button')
     const [innerValue, setValue] = useModelValue<boolean, DrawerProps, 'visible'>(
@@ -66,30 +64,9 @@ export default defineComponent({
       closeFN: handleClose
     })
 
-    const renderExtra = context.slots.headerExtra ? (
-      <div class={headerExtraClass}>{context.slots.headerExtra()}</div>
-    ) : null
-
-    const renderTitle = () => (
-      <>
-        <div class={titleClass}>
-          <span class={titleTextClass}>{props.title}</span>
-        </div>
-        {renderExtra}
-      </>
-    )
-
-    const renderBody = () => {
-      const content = context.slots.default?.() || props.content || null
-      if (props.destroyOnClose) {
-        return innerValue.value ? content : null
-      }
-      return content
-    }
-
-    const renderFooter = () => {
-      if (!props.footer) return null
-      if (Array.isArray(props.footer)) return props.footer
+    const renderButtonList = () => {
+      if (!props.buttonList) return null
+      if (Array.isArray(props.buttonList)) return props.buttonList
       const cancel = props.hideCancelButton ? null : (
         <DButton
           class={cancelButtonClass}
@@ -113,13 +90,30 @@ export default defineComponent({
         </DButton>
       )
       return (
-        context.slots?.footer?.() || (
-          <DSpace class={footerClass} gap={8}>
+        context.slots?.buttons?.({ cancel, confirm }) || (
+          <>
             {confirm}
             {cancel}
-          </DSpace>
+          </>
         )
       )
+    }
+
+    const renderTitle = () => (
+      <>
+        <div class={titleClass}>
+          <span class={titleTextClass}>{props.title}</span>
+        </div>
+        <div class={headerExtraClass}>{renderButtonList()}</div>
+      </>
+    )
+
+    const renderBody = () => {
+      const content = context.slots.default?.() || props.content || null
+      if (props.destroyOnClose) {
+        return innerValue.value ? content : null
+      }
+      return content
     }
 
     return () => (
@@ -142,8 +136,7 @@ export default defineComponent({
       >
         {{
           title: renderTitle,
-          default: renderBody,
-          footer: renderFooter
+          default: renderBody
         }}
       </DPopup>
     )

@@ -152,9 +152,9 @@ export const DRAWER_PROPS = {
   },
 
   /**
-   * 显示底部
+   * 按钮列表
    */
-  footer: {
+  buttonList: {
     type: [Boolean, Object] as PropType<boolean | VNode[]>,
     default: true
   },
