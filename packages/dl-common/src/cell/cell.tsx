@@ -12,8 +12,7 @@ const [name, bem] = createNamespace('cell')
 export default defineComponent({
   name,
   props: CELL_PROPS,
-  emits: ['click'],
-  setup(props, { slots, emit }) {
+  setup(props, { slots }) {
     provide(CELL_GROUP_CONTEXT_KEY, {
       layout: ref<DirectionType>('horizontal')
     })
@@ -89,14 +88,10 @@ export default defineComponent({
         <RightOutlined className={bem('arrow')} color="var(--d-secondary-text-color)" />
       ) : null
 
-      function handleClick(event: Event) {
-        emit('click', event)
-      }
-
       if (globalConfig.value.clientType === 'MOBILE') {
         return (
           <div class={wrapperClassName.value}>
-            <div class={bem('wrapper')} onClick={handleClick}>
+            <div class={bem('wrapper')}>
               {renderLabel}
               <div class={contentClassName}>
                 <div class={bem('content-inner')}>
@@ -113,7 +108,7 @@ export default defineComponent({
       }
 
       return (
-        <div class={wrapperClassName.value} onClick={handleClick}>
+        <div class={wrapperClassName.value}>
           {renderLabel}
           <div class={contentClassName}>
             <div class={bem('content-inner')}>

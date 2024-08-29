@@ -119,6 +119,7 @@
   }
 
   &__title {
+    flex-shrink: 0;
     @include text-align;
     width: var(--d-cell-title-width);
     align-self: flex-start;
@@ -155,7 +156,7 @@
 
     &-inner {
       flex: 1;
-      overflow: hidden;
+      max-width: 100%;
     }
   }
 
