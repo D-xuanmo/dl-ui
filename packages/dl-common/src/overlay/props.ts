@@ -27,7 +27,7 @@ export const OVERLAY_PROPS = {
     type: Object as PropType<CSSProperties>,
     default: undefined
   },
-  closeOnClickOverlay: {
+  closeOnOverlayClick: {
     type: Boolean,
     default: true
   },

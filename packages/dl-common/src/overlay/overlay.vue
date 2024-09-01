@@ -31,6 +31,7 @@ const [name, bem] = createNamespace('overlay')
 
 export default defineComponent({
   name,
+  inheritAttrs: false,
   props: OVERLAY_PROPS,
   emits: ['update:visible', 'click'],
   setup(props, { emit }) {
@@ -64,7 +65,7 @@ export default defineComponent({
     }
 
     function handleClose() {
-      if (props.closeOnClickOverlay) {
+      if (props.closeOnOverlayClick) {
         setVisible((innerVisible.value = !innerVisible.value))
         emit('click')
       }

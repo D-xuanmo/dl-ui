@@ -9,6 +9,7 @@
       :overlay-style="overlayStyle"
       :lazy-render="lazyRender"
       :lock-scroll="lockScroll"
+      :close-on-overlay-click="closeOnOverlayClick"
       @click="handleClose"
     />
     <transition
@@ -63,6 +64,7 @@ const [name, bem] = createNamespace('popup')
 export default defineComponent({
   name,
   components: { DOverlay, CloseOutlined },
+  inheritAttrs: false,
   props: POPUP_PROPS,
   emits: ['update:visible', 'open', 'opened', 'close', 'closed', 'click-overlay-icon'],
   setup(props, { emit, slots }) {

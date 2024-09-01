@@ -46,7 +46,7 @@ const visible2 = ref(false)
 |overlay-class|`string`|-|背景过渡时间|N|
 |overlay-style|`CSSProperties`|-|自定义 CSS|N|
 |teleport|`TeleportProps['to']`|`body`|选择要插入的 DOM 节点，同`Teleport`组件，[参考链接](https://staging-cn.vuejs.org/guide/built-ins/teleport.html#basic-usage)|N|
-|close-on-click-overlay|`boolean`|`true`|点击遮罩层是否关闭弹出层|N|
+|close-on-overlay-click|`boolean`|`true`|点击遮罩层是否关闭弹出层|N|
 
 ### Events
 
