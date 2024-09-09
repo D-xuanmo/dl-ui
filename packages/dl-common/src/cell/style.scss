@@ -147,6 +147,7 @@
   &__content {
     flex: 1;
     display: flex;
+    align-content: flex-start;
     flex-wrap: wrap;
     @include text-align;
 
