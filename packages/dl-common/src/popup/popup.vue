@@ -10,7 +10,7 @@
       :lazy-render="lazyRender"
       :lock-scroll="lockScroll"
       :close-on-overlay-click="closeOnOverlayClick"
-      @click="handleClose"
+      @click="closeOnOverlayClick && handleClose()"
     />
     <transition
       :name="transitionPosition"
@@ -25,9 +25,8 @@
           ref="wrapperRef"
           :class="[bem('container'), popupContainerClass]"
           :style="style"
-          @click="closeOnOverlayClick && handleClose()"
         >
-          <div :class="wrapperClassName" :style="popupStyle" @click.stop>
+          <div :class="wrapperClassName" :style="popupStyle">
             <header v-if="showHeader" :class="[bem('header'), popupHeaderClass]">
               <div v-if="$slots['header-left']" :class="bem('header-left')">
                 <slot name="header-left" />
