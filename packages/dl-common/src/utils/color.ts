@@ -1,6 +1,21 @@
-import { generate } from '@ant-design/colors'
+import chroma from 'chroma-js'
 import { ERROR_COLOR, PREFIX, PRIMARY_COLOR, SUCCESS_COLOR, WARNING_COLOR } from '../constants'
 import { ThemeType } from '../common'
+
+export const generateColors = (color: string) => [
+  ...Array.from({ length: 5 })
+    .map((_, index) =>
+      chroma
+        .scale([color, '#fff'])((index + 5) / 10)
+        .hex()
+    )
+    .toReversed(),
+  ...Array.from({ length: 5 }).map((_, index) =>
+    chroma
+      .scale([color, '#000'])(index / 10)
+      .hex()
+  )
+]
 
 const setHTMLStyle = (colors: string[], key: ThemeType | 'error') => {
   document.querySelector('html')!.style.cssText += [
@@ -13,17 +28,17 @@ const setHTMLStyle = (colors: string[], key: ThemeType | 'error') => {
 }
 
 export const generatePrimaryColors = (primaryColor = PRIMARY_COLOR) => {
-  setHTMLStyle(generate(primaryColor), 'primary')
+  setHTMLStyle(generateColors(primaryColor), 'primary')
 }
 
 export const generateSuccessColors = (color = SUCCESS_COLOR) => {
-  setHTMLStyle(generate(color), 'success')
+  setHTMLStyle(generateColors(color), 'success')
 }
 
 export const generateWarningColors = (color = WARNING_COLOR) => {
-  setHTMLStyle(generate(color), 'warning')
+  setHTMLStyle(generateColors(color), 'warning')
 }
 
 export const generateErrorColors = (color = ERROR_COLOR) => {
-  setHTMLStyle(generate(color), 'error')
+  setHTMLStyle(generateColors(color), 'error')
 }

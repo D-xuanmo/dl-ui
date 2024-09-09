@@ -1,8 +1,8 @@
 import { ConfigProviderProps } from './props'
 import { computed, CSSProperties } from 'vue'
-import { generate } from '@ant-design/colors'
 import { PREFIX } from '../constants'
 import { ThemeType } from '../common'
+import { color } from '../utils'
 
 const generateStyle = (colors: string[], key: ThemeType | 'error') => {
   return {
@@ -21,16 +21,16 @@ export const useTheme = (props: ConfigProviderProps) => {
   return computed<CSSProperties>(() => {
     const style: CSSProperties = {}
     if (props.theme?.primary) {
-      Object.assign(style, generateStyle(generate(props.theme.primary), 'primary'))
+      Object.assign(style, generateStyle(color.generateColors(props.theme.primary), 'primary'))
     }
     if (props.theme?.success) {
-      Object.assign(style, generateStyle(generate(props.theme.success), 'success'))
+      Object.assign(style, generateStyle(color.generateColors(props.theme.success), 'success'))
     }
     if (props.theme?.warning) {
-      Object.assign(style, generateStyle(generate(props.theme.warning), 'warning'))
+      Object.assign(style, generateStyle(color.generateColors(props.theme.warning), 'warning'))
     }
     if (props.theme?.error) {
-      Object.assign(style, generateStyle(generate(props.theme.error), 'error'))
+      Object.assign(style, generateStyle(color.generateColors(props.theme.error), 'error'))
     }
     return style
   })
@@ -42,16 +42,16 @@ export function useStyle(props: ConfigProviderProps) {
       height: props.fullHeight ? '100%' : undefined
     }
     if (props.theme?.primary) {
-      Object.assign(style, generateStyle(generate(props.theme.primary), 'primary'))
+      Object.assign(style, generateStyle(color.generateColors(props.theme.primary), 'primary'))
     }
     if (props.theme?.success) {
-      Object.assign(style, generateStyle(generate(props.theme.success), 'success'))
+      Object.assign(style, generateStyle(color.generateColors(props.theme.success), 'success'))
     }
     if (props.theme?.warning) {
-      Object.assign(style, generateStyle(generate(props.theme.warning), 'warning'))
+      Object.assign(style, generateStyle(color.generateColors(props.theme.warning), 'warning'))
     }
     if (props.theme?.error) {
-      Object.assign(style, generateStyle(generate(props.theme.error), 'error'))
+      Object.assign(style, generateStyle(color.generateColors(props.theme.error), 'error'))
     }
     return style
   })

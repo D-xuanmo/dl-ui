@@ -15,15 +15,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ant-design/colors@npm:^7.0.0":
-  version: 7.0.2
-  resolution: "@ant-design/colors@npm:7.0.2"
-  dependencies:
-    "@ctrl/tinycolor": ^3.6.1
-  checksum: e09eec01d3f88b4101cbf28498ba181af65a02cb28fc1b7b70f5fdf509bef0fa61185c451d1a83fdcc9f8356057d0a0436253d8183a35e6f78845fea01f40072
-  languageName: node
-  linkType: hard
-
 "@antfu/utils@npm:^0.5.1":
   version: 0.5.2
   resolution: "@antfu/utils@npm:0.5.2"
@@ -591,13 +582,6 @@ __metadata:
   dependencies:
     "@jridgewell/trace-mapping": 0.3.9
   checksum: 5718f267085ed8edb3e7ef210137241775e607ee18b77d95aa5bd7514f47f5019aa2d82d96b3bf342ef7aa890a346fa1044532ff7cc3009e7d24fce3ce6200fa
-  languageName: node
-  linkType: hard
-
-"@ctrl/tinycolor@npm:^3.6.1":
-  version: 3.6.1
-  resolution: "@ctrl/tinycolor@npm:3.6.1"
-  checksum: cefec6fcaaa3eb8ddf193f981e097dccf63b97b93b1e861cb18c645654824c831a568f444996e15ee509f255658ed82fba11c5365494a6e25b9b12ac454099e0
   languageName: node
   linkType: hard
 
@@ -1600,8 +1584,6 @@ __metadata:
 "@xuanmo/dl-common@workspace:*, @xuanmo/dl-common@workspace:packages/dl-common":
   version: 0.0.0-use.local
   resolution: "@xuanmo/dl-common@workspace:packages/dl-common"
-  peerDependencies:
-    "@xuanmo/validator": ^0.0.16
   languageName: unknown
   linkType: soft
 
@@ -1614,10 +1596,6 @@ __metadata:
 "@xuanmo/dl-ui@workspace:*, @xuanmo/dl-ui@workspace:packages/dl-ui":
   version: 0.0.0-use.local
   resolution: "@xuanmo/dl-ui@workspace:packages/dl-ui"
-  dependencies:
-    "@xuanmo/datejs": ^1.0.15
-  peerDependencies:
-    "@xuanmo/validator": ^0.0.16
   languageName: unknown
   linkType: soft
 
@@ -2312,6 +2290,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chroma-js@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "chroma-js@npm:3.0.0"
+  checksum: b806e78d40124acee2705b764d365c6851722c2e0bbf650fa788e8031d4e8d1e7273e82b2b2421f86289f23a3d83587726ff150a1703a7e52758aea24c50f9a4
+  languageName: node
+  linkType: hard
+
 "clean-stack@npm:^2.0.0":
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
@@ -2924,7 +2909,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "dl-ui@workspace:."
   dependencies:
-    "@ant-design/colors": ^7.0.0
     "@commitlint/cli": ^17.6.3
     "@commitlint/config-conventional": ^17.6.3
     "@types/node": ^17.0.36
@@ -2939,6 +2923,7 @@ __metadata:
     "@xuanmo/utils": ^0.0.2
     "@xuanmo/validator": ^0.0.20
     autoprefixer: ^10.4.7
+    chroma-js: ^3.0.0
     eslint: ^8.41.0
     eslint-config-prettier: ^8.8.0
     eslint-config-standard: ^17.0.0
