@@ -14,12 +14,13 @@ export default defineComponent({
   props: DRAWER_PROPS,
   emits: ['update:visible', 'confirm', 'close'],
   setup(props, context: SetupContext) {
-    const containerClass = computed(() =>
+    const containerClass = computed(() => [
       bem({
         'hide-overlay': !props.showOverlay,
         [props.placement]: props.placement
-      })
-    )
+      }),
+      props.containerClass || ''
+    ])
     const wrapperClass = bem('wrapper')
     const headerClass = bem('header')
     const headerExtraClass = bem('header-extra')
@@ -129,7 +130,7 @@ export default defineComponent({
         popupClass={wrapperClass}
         popupHeaderClass={headerClass}
         popupBodyClass={bodyClass}
-        popupStyle={style.value}
+        popupStyle={props.noInlineStyle ? undefined : style.value}
         lockScroll={props.lockScroll}
         lazyRender={props.lazyRender}
         onClose={handleClose}

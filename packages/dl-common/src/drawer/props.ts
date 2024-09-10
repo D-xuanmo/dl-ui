@@ -160,6 +160,22 @@ export const DRAWER_PROPS = {
   },
 
   /**
+   * 容器 className
+   */
+  containerClass: {
+    type: String,
+    default: undefined
+  },
+
+  /**
+   * 是否需要行内样式
+   */
+  noInlineStyle: {
+    type: Boolean,
+    default: false
+  },
+
+  /**
    * 确认事件
    */
   onConfirm: {
