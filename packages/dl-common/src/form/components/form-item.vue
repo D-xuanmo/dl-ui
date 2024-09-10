@@ -8,11 +8,11 @@
       :border="formProps.border"
       :arrow="model.layout.showArrow"
       :description="model.description"
-      :title-width="formProps.labelWidth"
       :client-type="formProps.clientType"
       :layout="model.layout.layout || formProps.layout"
       :hide-title="formProps.hideLabel || model.hideLabel"
       :title-vertical-center="model.layout.titleVerticalCenter"
+      :title-width="model.layout.labelWidth || formProps.labelWidth"
       :content-align="model.layout.contentAlign || formProps.contentAlign"
     >
       <template #title>
