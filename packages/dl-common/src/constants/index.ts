@@ -7,7 +7,7 @@ export const SUCCESS_COLOR = '#00B578'
 export const WARNING_COLOR = '#FF8F1F'
 export const ERROR_COLOR = '#FF3B30'
 
-export const DEFAULT_REQUIRED_MARK_POSITION = 'right'
+export const DEFAULT_REQUIRED_MARK_POSITION = 'left'
 
 export const ROOT_PARENT = 'ROOT'
 
