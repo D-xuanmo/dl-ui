@@ -84,6 +84,6 @@ export const GRID_ITEM_PROPS = {
 
   height: {
     type: [Number, String],
-    default: '100%'
+    default: undefined
   }
 }
