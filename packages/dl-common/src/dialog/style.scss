@@ -34,15 +34,16 @@
     max-height: 90%;
     padding: 0;
     border-radius: var(--d-radius-medium);
-    transition: transform 0.3s ease;
-    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    transform: translate(-50%, -50%);
   }
 
   &-custom-enter-active,
   &-custom-leave-active {
     #{$dialogPrefix} {
       &__wrapper {
-        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
       }
     }
   }
@@ -51,7 +52,7 @@
   &-custom-enter-from {
     #{$dialogPrefix} {
       &__wrapper {
-        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
       }
     }
   }
