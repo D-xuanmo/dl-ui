@@ -1,5 +1,5 @@
 import { DetailTableRowData } from './types'
-import { reactive, UnwrapNestedRefs } from 'vue'
+import { reactive } from 'vue'
 import { deepCopy, throwError } from '@xuanmo/utils'
 import { FormStore } from '../index'
 
@@ -14,7 +14,15 @@ export class DetailTableStore {
    * 所有明细表数据
    * key 为 IDetailTableItem.detailTableId
    */
-  private tableData: Map<string, UnwrapNestedRefs<Map<string, DetailTableRowData>>> = new Map()
+  private tableData = reactive<Map<string, Map<string, DetailTableRowData>>>(new Map())
+
+  /**
+   * 是否为空表
+   * @param tableId
+   */
+  public isEmptyTable(tableId: string): boolean {
+    return (this.tableData.get(tableId)?.size ?? 0) === 0
+  }
 
   /**
    * 批量更新明细表数据
@@ -23,10 +31,18 @@ export class DetailTableStore {
    */
   public updateTableData(tableId: string, tableData: DetailTableRowData[]) {
     const oldTableData = this.getTableData(tableId)
-    oldTableData?.clear()
-    tableData.forEach((data) => {
-      oldTableData?.set(data.rowId, data)
-    })
+    if (!oldTableData) {
+      const map = new Map<string, DetailTableRowData>()
+      tableData.forEach((data) => {
+        map.set(data.rowId, data)
+      })
+      this.tableData.set(tableId, map)
+    } else {
+      oldTableData.clear()
+      tableData.forEach((data) => {
+        oldTableData.set(data.rowId, data)
+      })
+    }
   }
 
   /**
@@ -44,7 +60,7 @@ export class DetailTableStore {
    * @param tableId
    */
   public createEmptyData(tableId: string) {
-    this.tableData.set(tableId, reactive(new Map()))
+    this.tableData.set(tableId, new Map())
   }
 
   /**
@@ -59,6 +75,24 @@ export class DetailTableStore {
       ...rowData,
       rowId,
       dataIndex: tableData.size + 1
+    })
+  }
+
+  /**
+   * 插入行
+   * @param tableId 明细表 id
+   * @param dataIndex 行号
+   * @param rowData 行数据
+   */
+  public insertRow(tableId: string, dataIndex: number, rowData?: DetailTableRowData) {
+    const tableData = this.getTableData(tableId)
+    const convertedTableData = this.getTableData(tableId, true).toSpliced(
+      dataIndex,
+      0,
+      rowData || ({ rowId: this.formStore.idGenerator() } as DetailTableRowData)
+    )
+    convertedTableData.forEach((data, index) => {
+      tableData.set(data.rowId, { ...data, dataIndex: index })
     })
   }
 
@@ -115,7 +149,10 @@ export class DetailTableStore {
   public getTableData(tableId: string): Map<string, DetailTableRowData>
   public getTableData(tableId: string, convert: true): DetailTableRowData[]
   public getTableData(tableId: string, convert = false) {
-    if (convert) return Array.from(this.tableData.get(tableId)?.values() ?? [])
+    if (convert)
+      return Array.from(this.tableData.get(tableId)?.values() ?? []).toSorted(
+        (a, b) => a.dataIndex - b.dataIndex
+      )
     return this.tableData.get(tableId)
   }
 
