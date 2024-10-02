@@ -13,7 +13,7 @@ export default defineComponent({
     const columnsCount = ref(0)
     const rowsTemplate = ref('')
     const columnsMap = reactive<Map<string, string>>(new Map())
-    const rows: Map<string, string> = new Map()
+    const rows: Map<string, string> = reactive(new Map())
     const children = ref<VNode[]>([])
     const ids: Record<string, string> = {
       layout: createRandomID(8),
@@ -68,11 +68,10 @@ export default defineComponent({
         /* eslint-enable indent */
         return markRaw(item)
       })
+      rowsTemplate.value = Array.from(rows.values()).join(' ')
     }
 
     watch(() => context.slots.default?.(), initialChildren, { immediate: true })
-
-    rowsTemplate.value = Array.from(rows.values()).join(' ')
 
     const onColumnWidthChange = (layoutId: string, width: string) => {
       columnsMap.set(layoutId, width)
