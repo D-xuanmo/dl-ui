@@ -35,15 +35,15 @@
     padding: 0;
     border-radius: var(--d-radius-medium);
     opacity: 1;
-    transition: opacity 0.3s ease;
-    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease;
+    transform: translate(-50%, -50%) scale(1);
   }
 
   &-custom-enter-active,
   &-custom-leave-active {
     #{$dialogPrefix} {
       &__wrapper {
-        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
       }
     }
   }
@@ -52,7 +52,7 @@
   &-custom-enter-from {
     #{$dialogPrefix} {
       &__wrapper {
-        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
       }
     }
   }
