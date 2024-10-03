@@ -12,8 +12,6 @@ export default defineComponent({
   setup(props, context: SetupContext) {
     provide(ConfigProviderInjectKey, props)
 
-    if (!props.createNode) return () => context.slots.default?.()
-
     const theme = useTheme(props)
     const style = {
       height: props.fullHeight ? '100%' : undefined
@@ -29,6 +27,8 @@ export default defineComponent({
     } else {
       Object.assign(style, theme.value)
     }
+
+    if (!props.createNode) return () => context.slots.default?.()
 
     return () => (
       <div class={bem()} style={style}>
