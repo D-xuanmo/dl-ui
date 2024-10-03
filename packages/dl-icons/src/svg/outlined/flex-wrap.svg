@@ -1,8 +1,17 @@
 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="3" y="14" width="4" height="7" transform="rotate(-90 3 14)" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-<rect x="10" y="17" width="4" height="7" transform="rotate(90 10 17)" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-<rect x="10" y="3" width="4" height="7" transform="rotate(90 10 3)" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-<rect x="21" y="10" width="4" height="7" transform="rotate(90 21 10)" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-<rect x="14" y="21" width="4" height="7" transform="rotate(-90 14 21)" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-<rect x="14" y="7" width="4" height="7" transform="rotate(-90 14 7)" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+  <rect x="3" y="14" width="4" height="7" transform="rotate(-90 3 14)" stroke="currentColor" stroke-width="1.5"
+        stroke-linejoin="round"/>
+  <path
+    d="M10.75 17C10.75 16.5858 10.4142 16.25 10 16.25H3C2.58579 16.25 2.25 16.5858 2.25 17V21C2.25 21.4142 2.58579 21.75 3 21.75L10 21.75C10.4142 21.75 10.75 21.4142 10.75 21V17Z"
+    fill="currentColor"/>
+  <path
+    d="M10.75 3C10.75 2.58579 10.4142 2.25 10 2.25H3C2.58579 2.25 2.25 2.58579 2.25 3V7C2.25 7.41421 2.58579 7.75 3 7.75L10 7.75C10.4142 7.75 10.75 7.41421 10.75 7V3Z"
+    fill="currentColor"/>
+  <path
+    d="M21.75 10C21.75 9.58579 21.4142 9.25 21 9.25H14C13.5858 9.25 13.25 9.58579 13.25 10V14C13.25 14.4142 13.5858 14.75 14 14.75L21 14.75C21.4142 14.75 21.75 14.4142 21.75 14V10Z"
+    fill="currentColor"/>
+  <rect x="14" y="21" width="4" height="7" transform="rotate(-90 14 21)" stroke="currentColor" stroke-width="1.5"
+        stroke-linejoin="round"/>
+  <rect x="14" y="7" width="4" height="7" transform="rotate(-90 14 7)" stroke="currentColor" stroke-width="1.5"
+        stroke-linejoin="round"/>
 </svg>

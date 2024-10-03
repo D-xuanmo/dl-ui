@@ -1,6 +1,6 @@
-<svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M3 20H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M3 4L21 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M7 14V19H16V14H7Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-<path d="M7 5V10H16V5L7 5Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M3 20H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M3 4L21 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14.5455 5.5C14.2442 5.5 14 5.82335 14 6.22222V17.7778C14 18.1767 14.2442 18.5 14.5455 18.5H17.4545C17.7558 18.5 18 18.1767 18 17.7778V6.22222C18 5.82335 17.7558 5.5 17.4545 5.5H14.5455Z" fill="currentColor"/>
+  <path d="M6.54545 5.5C6.24421 5.5 6 5.82335 6 6.22222V17.7778C6 18.1767 6.24421 18.5 6.54545 18.5H9.45455C9.75579 18.5 10 18.1767 10 17.7778V6.22222C10 5.82335 9.75579 5.5 9.45455 5.5H6.54545Z" fill="currentColor"/>
 </svg>
