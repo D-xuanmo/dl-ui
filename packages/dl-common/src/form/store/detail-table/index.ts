@@ -33,14 +33,14 @@ export class DetailTableStore {
     const oldTableData = this.getTableData(tableId)
     if (!oldTableData) {
       const map = new Map<string, DetailTableRowData>()
-      tableData.forEach((data) => {
-        map.set(data.rowId, data)
+      tableData.forEach((data, index) => {
+        map.set(data.rowId, { ...data, dataIndex: index })
       })
       this.tableData.set(tableId, map)
     } else {
       oldTableData.clear()
-      tableData.forEach((data) => {
-        oldTableData.set(data.rowId, data)
+      tableData.forEach((data, index) => {
+        oldTableData.set(data.rowId, { ...data, dataIndex: index })
       })
     }
   }
