@@ -1,4 +1,4 @@
-import { FormModels, IDetailTableItem, IFormModelItem } from '../types'
+import { FormModels, IDetailTableItem, IFormModelItem, IRenderModel } from '../types'
 import { markRaw, reactive, ref, UnwrapNestedRefs } from 'vue'
 import { createRandomID, deepCopy, isEmpty, isObject } from '@xuanmo/utils'
 import { validator } from '../../validator'
@@ -263,8 +263,22 @@ class FormStore {
    * 获取父级信息
    * @param id
    */
-  public getParent<T>(id: string) {
+  public getParent<T extends IRenderModel>(id: string) {
     return this.getModel<T>(this.getModel(this.getModelIdByDataKey(id))?.layout.parent)
+  }
+
+  /**
+   * 获取父级集合
+   * @param id
+   */
+  public getParents(id: string) {
+    const parents: IRenderModel[] = []
+    let parent = this.getParent<IRenderModel>(id)
+    while (parent) {
+      parents.push(parent)
+      parent = this.getParent<IRenderModel>(parent.id)
+    }
+    return parents
   }
 
   /**

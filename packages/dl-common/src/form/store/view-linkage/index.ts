@@ -110,6 +110,13 @@ export class ViewLinkageStore {
   }
 
   getDisplay(id: IRenderModel['id']) {
+    const parents = this.formStore.getParents(id)
+    if (parents.length) {
+      for (let i = 0; i < parents.length; i++) {
+        // 如果任意父级为隐藏，则当前组件也为隐藏
+        if (!this.displayMap.get(parents[i].id)) return false
+      }
+    }
     return this.displayMap.get(id)
   }
 
