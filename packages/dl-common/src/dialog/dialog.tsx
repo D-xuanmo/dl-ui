@@ -175,7 +175,7 @@ export default defineComponent({
         popupClass={wrapperClass}
         popupHeaderClass={headerClass}
         popupBodyClass={bodyClass}
-        popupStyle={style.value}
+        popupStyle={props.noInlineStyle ? undefined : style.value}
         lockScroll={props.lockScroll}
         lazyRender={props.lazyRender}
         onClose={handleClose}

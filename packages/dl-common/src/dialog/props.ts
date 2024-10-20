@@ -150,6 +150,14 @@ export const DIALOG_PROPS = {
   },
 
   /**
+   * 是否需要行内样式
+   */
+  noInlineStyle: {
+    type: Boolean,
+    default: false
+  },
+
+  /**
    * 显示对话框图标
    */
   showIcon: {
