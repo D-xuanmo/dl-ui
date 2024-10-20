@@ -53,12 +53,12 @@
     "husky": "^7.0.4",
     "prettier": "2.6.2",
     "rimraf": "^4.3.0",
-    "rollup": "^3.22.0",
+    "rollup": "^4.24.0",
     "sass": "^1.51.0",
     "typescript": "^5.0.2",
-    "vite": "^2.9.2",
+    "vite": "^5.4.8",
     "vite-svg-loader": "^4.0.0",
-    "vue-tsc": "^1.6.5"
+    "vue-tsc": "^2.1.6"
   },
   "engines": {
     "node": ">= 16.17.0"

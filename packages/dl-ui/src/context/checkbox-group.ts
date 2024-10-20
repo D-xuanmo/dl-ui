@@ -1,4 +1,4 @@
-import { InjectionKey, UnwrapRef, WritableComputedRef } from 'vue'
+import { InjectionKey, UnwrapRef, WritableComputedRef, ComputedRef } from 'vue'
 import { CheckboxGroupProps } from '../checkbox-group'
 
 export type CheckboxGroupContextType = Omit<
@@ -10,9 +10,9 @@ export type CheckboxGroupContextType = Omit<
    */
   value: WritableComputedRef<(string | number)[]>
 
-  disabled: WritableComputedRef<CheckboxGroupProps['disabled']>
+  disabled: ComputedRef<CheckboxGroupProps['disabled']>
 
-  readonly: WritableComputedRef<CheckboxGroupProps['readonly']>
+  readonly: ComputedRef<CheckboxGroupProps['readonly']>
 
   /**
    * 子级 change 事件

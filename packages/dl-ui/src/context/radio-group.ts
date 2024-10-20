@@ -1,4 +1,4 @@
-import { InjectionKey, WritableComputedRef } from 'vue'
+import { InjectionKey, WritableComputedRef, ComputedRef } from 'vue'
 import { RadioGroupProps } from '../radio-group'
 
 type RadioGroupContextType = Omit<RadioGroupProps, 'modelValue' | 'disabled' | 'readonly'> & {
@@ -7,9 +7,9 @@ type RadioGroupContextType = Omit<RadioGroupProps, 'modelValue' | 'disabled' | '
    */
   value: WritableComputedRef<string | number>
 
-  disabled: WritableComputedRef<RadioGroupProps['disabled']>
+  disabled: ComputedRef<RadioGroupProps['disabled']>
 
-  readonly: WritableComputedRef<RadioGroupProps['readonly']>
+  readonly: ComputedRef<RadioGroupProps['readonly']>
 
   /**
    * 子级 change 事件
