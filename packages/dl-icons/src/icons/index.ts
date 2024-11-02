@@ -78,6 +78,12 @@ export { default as TextOutlined } from './text-outlined'
 export { default as TextItalicOutlined } from './text-italic-outlined'
 export { default as UnderlineOutlined } from './underline-outlined'
 export { default as LineThroughOutlined } from './line-through-outlined'
+export * from './refresh-outlined'
+export * from './undo-outlined'
+export * from './redo-outlined'
+export * from './page'
+export * from './page-add'
+export * from './folder-add'
 
 // ==================== flex ====================
 export * from './align-left'
