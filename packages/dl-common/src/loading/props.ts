@@ -34,7 +34,7 @@ export const LOADING_PROPS = {
    */
   size: {
     type: String as PropType<IconProps['size']>,
-    default: <IconProps['size']>'medium'
+    default: <IconProps['size']>'large'
   },
 
   /**

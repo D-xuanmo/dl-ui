@@ -25,6 +25,7 @@ const [name, bem] = createNamespace('loading')
 export default defineComponent({
   name,
   components: { Loading2Outlined },
+  inheritAttrs: false,
   props: LOADING_PROPS,
   setup(props) {
     const wrapperClassName = bem()

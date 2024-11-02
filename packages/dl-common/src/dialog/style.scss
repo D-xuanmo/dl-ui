@@ -59,19 +59,19 @@
 
   &__header {
     margin-bottom: 0;
-    padding: var(--d-dialog-padding);
+    padding: var(--d-dialog-padding) var(--d-dialog-padding) 0;
     text-align: left;
   }
 
   &__body {
-    padding: 0 var(--d-dialog-padding);
+    padding: var(--d-dialog-padding) var(--d-dialog-padding);
   }
 
   &__footer {
     display: flex;
     justify-content: flex-end;
     column-gap: var(--d-gap-sm);
-    padding: var(--d-dialog-padding);
+    padding: 0 var(--d-dialog-padding) var(--d-dialog-padding);
   }
 
   &__title {

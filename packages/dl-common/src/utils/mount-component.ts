@@ -6,9 +6,7 @@ export function mountComponent(
   teleport: Element = document.createElement('div'),
   root: Element = document.body
 ) {
-  const instance = createVNode(RootComponent, {
-    teleport: teleport
-  })
+  const instance = createVNode(RootComponent, { teleport })
   teleport.classList.add(`${PREFIX}-teleport`)
   render(instance, teleport)
   root.appendChild(teleport)

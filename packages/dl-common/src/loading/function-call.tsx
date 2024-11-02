@@ -14,31 +14,36 @@ type LoadingOptions = Partial<Omit<LoadingProps, 'loading'>> & {
 let globalInstance: LoadingInstance | null = null
 
 const createInstance = (options?: LoadingOptions) => {
-  const { instance, unmount } = mountComponent({
-    setup(_, { expose }) {
-      const { to = 'body' } = options ?? {}
-      const loading = ref(true)
+  const target = document.createElement('div')
+  const { instance, unmount } = mountComponent(
+    {
+      inheritAttrs: false,
+      setup(_, { expose }) {
+        const { to = target } = options ?? {}
+        const loading = ref(true)
 
-      const close = () => {
-        loading.value = false
-        unmount()
-      }
-
-      expose({ close })
-
-      return () => {
-        const props = {
-          ...options,
-          loading: loading.value
+        const close = () => {
+          loading.value = false
+          unmount()
         }
-        return (
-          <Teleport to={to}>
-            <DLoading {...props} />
-          </Teleport>
-        )
+
+        expose({ close })
+
+        return () => {
+          const props = {
+            ...options,
+            loading: loading.value
+          }
+          return (
+            <Teleport to={to}>
+              <DLoading {...props} />
+            </Teleport>
+          )
+        }
       }
-    }
-  })
+    },
+    target
+  )
 
   return instance as unknown as LoadingInstance
 }
