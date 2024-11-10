@@ -22,56 +22,59 @@ export default defineComponent({
       'layout-content': createRandomID(8)
     }
 
-    const initialChildren = () => {
-      rows.clear()
-      columnsMap.clear()
-      children.value = findChildren(context.slots.default?.() ?? []).map((item: any) => {
-        const compName = getComponentName(item.type?.name)
-        const layoutId = ids[compName] || createRandomID(8)
-        item.props = {
-          ...item.props,
-          layoutId
-        }
-        /* eslint-disable indent */
-        switch (compName) {
-          case 'layout':
-            columnsCount.value += 1
-            columnsMap.set(layoutId, '1fr')
-            break
-          case 'layout-sider':
-            columnsCount.value++
-            columnsMap.set(
-              layoutId,
-              addUnit(item.props?.width) || addUnit(item.type.props?.width?.default) || '1fr'
-            )
-            rows.set(
-              'layout-content',
-              addUnit(item.props?.height) || addUnit(item.type.props?.height?.default) || '1fr'
-            )
-            break
-          case 'layout-content':
-            columnsCount.value += 2
-            columnsMap.set(layoutId, '1fr 1fr')
-            rows.set(
-              'layout-content',
-              addUnit(item.props?.height) || addUnit(item.type.props?.height?.default) || '1fr'
-            )
-            break
-          case 'layout-header':
-          case 'layout-footer':
-            rows.set(
-              compName,
-              addUnit(item.props?.height) || addUnit(item.type.props?.height?.default) || '1fr'
-            )
-            break
-        }
-        /* eslint-enable indent */
-        return markRaw(item)
-      })
-      rowsTemplate.value = Array.from(rows.values()).join(' ')
-    }
-
-    watch(() => context.slots.default?.(), initialChildren, { immediate: true })
+    watch(
+      () => context.slots.default?.(),
+      (slotReturn) => {
+        rows.clear()
+        columnsMap.clear()
+        children.value = findChildren(slotReturn!).map((item) => {
+          const compName = getComponentName(item.type?.name)
+          const layoutId = ids[compName] || createRandomID(8)
+          item.props = {
+            ...item.props,
+            layoutId,
+            key: layoutId
+          }
+          /* eslint-disable indent */
+          switch (compName) {
+            case 'layout':
+              columnsCount.value += 1
+              columnsMap.set(layoutId, '1fr')
+              break
+            case 'layout-sider':
+              columnsCount.value++
+              columnsMap.set(
+                layoutId,
+                addUnit(item.props?.width) || addUnit(item.type.props?.width?.default) || '1fr'
+              )
+              rows.set(
+                'layout-content',
+                addUnit(item.props?.height) || addUnit(item.type.props?.height?.default) || '1fr'
+              )
+              break
+            case 'layout-content':
+              columnsCount.value += 2
+              columnsMap.set(layoutId, '1fr 1fr')
+              rows.set(
+                'layout-content',
+                addUnit(item.props?.height) || addUnit(item.type.props?.height?.default) || '1fr'
+              )
+              break
+            case 'layout-header':
+            case 'layout-footer':
+              rows.set(
+                compName,
+                addUnit(item.props?.height) || addUnit(item.type.props?.height?.default) || '1fr'
+              )
+              break
+          }
+          /* eslint-enable indent */
+          return markRaw(item)
+        })
+        rowsTemplate.value = Array.from(rows.values()).join(' ')
+      },
+      { immediate: true }
+    )
 
     const onColumnWidthChange = (layoutId: string, width: string) => {
       columnsMap.set(layoutId, width)
