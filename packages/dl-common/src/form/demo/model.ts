@@ -74,7 +74,8 @@ const FORM_MODEL: FormModels = [
     component: 'DSwitch',
     label: '开关',
     layout: {
-      parent: 'basicGroup'
+      parent: 'basicGroup',
+      suffix: '单位'
     },
     value: false
   },
@@ -94,7 +95,8 @@ const FORM_MODEL: FormModels = [
     component: 'DCalendar',
     label: '日历单选',
     layout: {
-      parent: 'basicGroup'
+      parent: 'basicGroup',
+      suffix: '单位'
     },
     value: '',
     placeholder: '请选择',

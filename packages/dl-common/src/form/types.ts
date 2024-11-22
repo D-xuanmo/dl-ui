@@ -30,6 +30,9 @@ export interface IRenderModel<T = any> {
 
     // 是否需要组件容器
     container?: boolean
+
+    // 后缀
+    suffix?: string
   }
 
   // 是否显示

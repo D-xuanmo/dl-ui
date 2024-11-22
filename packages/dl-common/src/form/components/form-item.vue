@@ -7,6 +7,7 @@
       :round="formProps.round"
       :border="formProps.border"
       :arrow="model.layout.showArrow"
+      :suffix="model.layout.suffix"
       :description="model.description"
       :client-type="formProps.clientType"
       :layout="model.layout.layout || formProps.layout"
