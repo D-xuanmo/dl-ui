@@ -20,12 +20,6 @@
   }
 
   &__item {
-    padding-bottom: 0;
-
-    & + & {
-      padding-top: var(--d-gap-sm);
-    }
-
     &--hide {
       display: none;
     }
