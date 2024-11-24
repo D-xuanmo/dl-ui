@@ -3,23 +3,40 @@ name: Build Icons
 on:
   push:
     paths:
-     - 'packages/dl-icons/package.json'
-     - '.github/workflows/build-icons.yml'
+      - 'packages/dl-icons/package.json'
+      - '.github/workflows/build-common.yml'
 
 jobs:
   publish-npm:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 18
-        registry-url: https://registry.npmjs.org/
-    - run: corepack enable
-    - run: yarn
-    - shell: bash
-      run: cp -r README.md ./packages/dl-icons && cp -r .npmignore ./packages/dl-icons && cp -r LICENSE ./packages/dl-icons && npm run build:icons
-    - run: cd packages/dl-icons && npm publish --access public
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.17.0
+          registry-url: https://registry.npmjs.org/
+      - run: corepack enable
+
+      - shell: bash
+        name: Log yarn version
+        run: yarn -v
+
+      - name: Install
+        run: YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn
+
+      - shell: bash
+        name: Copy file
+        run: cp -r README.md ./packages/dl-icons && cp -r .npmignore ./packages/dl-icons && cp -r LICENSE ./packages/dl-icons
+
+      - name: Build
+        run: yarn build:common
+
+      - shell: bash
+        name: List workspace
+        run: cd packages/dl-icons && ls -la
+
+      - name: Publish
+        run: cd packages/dl-icons && npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
