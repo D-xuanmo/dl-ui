@@ -63,6 +63,6 @@
   "engines": {
     "node": ">= 16.17.0"
   },
-  "packageManager": "yarn@3.1.0",
+  "packageManager": "yarn@3.8.6",
   "prettier": "@xuanmo/prettier-config"
 }
