@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - 'packages/dl-icons/package.json'
-      - '.github/workflows/build-common.yml'
+      - '.github/workflows/build-icons.yml'
 
 jobs:
   publish-npm:
