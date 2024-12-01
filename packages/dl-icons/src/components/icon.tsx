@@ -10,7 +10,7 @@ export default defineComponent({
   emits: ['click'],
   setup(props, { emit, attrs, slots }) {
     return () => {
-      const { color, size, spin, className } = props
+      const { color, size, spin, className, rotate } = props
       const wrapperClassName = [
         bem({
           [size]: size,
@@ -26,7 +26,8 @@ export default defineComponent({
       const iconStyle = {
         width: isCustomSize ? size : undefined,
         height: isCustomSize ? size : undefined,
-        color
+        color,
+        transform: `rotate(${rotate}deg)`
       }
 
       function handleClick(event: Event) {

@@ -26,6 +26,10 @@ export const ICON_PROPS = {
     type: Boolean,
     default: false
   },
+  rotate: {
+    type: Number,
+    default: 0
+  },
   onClick: {
     type: Function as PropType<(event: any) => void>
   }
