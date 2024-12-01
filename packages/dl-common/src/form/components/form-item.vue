@@ -8,7 +8,7 @@
       :border="formProps.border"
       :arrow="model.layout.showArrow"
       :suffix="model.layout.suffix"
-      :description="model.description"
+      :description="formProps.useCustomDescription ? undefined : model.description"
       :client-type="formProps.clientType"
       :layout="model.layout.layout || formProps.layout"
       :hide-title="formProps.hideLabel || model.hideLabel"
@@ -23,7 +23,11 @@
         >
           *
         </span>
-        <span>{{ model?.label }}</span>
+        <component
+          :is="formProps.renderFormLabel(model?.label!, model)"
+          v-if="formProps.renderFormLabel"
+        />
+        <span v-else>{{ model?.label }}</span>
         <span v-if="formProps.colon" :class="colonClass">:</span>
         <span
           v-if="showRequiredMark && formProps.requiredMarkPosition === 'right'"

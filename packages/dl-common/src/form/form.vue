@@ -34,7 +34,9 @@ export default defineComponent({
         'clientType',
         'border',
         'round',
-        'idGenerator'
+        'idGenerator',
+        'renderFormLabel',
+        'useCustomDescription'
       ],
       props as any
     )
@@ -55,6 +57,8 @@ export default defineComponent({
         contentAlign: props.contentAlign,
         labelWidth: config.value.labelWidth,
         clientType: config.value.clientType,
+        renderFormLabel: config.value.renderFormLabel,
+        useCustomDescription: config.value.useCustomDescription,
         border: config.value.border ?? config.value.clientType === 'MOBILE',
         requiredMarkPosition: config.value.requiredMarkPosition || DEFAULT_REQUIRED_MARK_POSITION
       }

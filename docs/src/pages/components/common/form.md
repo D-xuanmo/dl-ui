@@ -825,6 +825,8 @@ const formData = computed(() => formRef.value?.store?.getFormData?.())
 |content-align|`CellProps['contentAlign']`|`left`|内容水平对齐方式|N|
 |required-mark-position|`'left' \| 'right'`|`right`|必填标识显示位置|N|
 |has-background|`boolean`|`true`|是否显示背景色|N|
+|use-custom-description|`boolean`|`false`|自定义渲染描述：`Form`|N|
+|render-form-label|`(label: string, model: IFormModelItem) => VNode`|`-`|自定义渲染表单组件标题：`Form`|N|
 |id-generator|`() => string`|-|id 生成器，用于前端临时生成 id，如明细表行 id 需要前端临时生成，目前内置的是 12 位随机字符串|N|
 
 ### Events

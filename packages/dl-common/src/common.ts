@@ -1,4 +1,4 @@
-import { PropType, TeleportProps } from 'vue'
+import { PropType, TeleportProps, VNode } from 'vue'
 import {
   SizeEnum,
   ThemeEnum,
@@ -216,6 +216,22 @@ export const COMMON_PROPS = {
    */
   idGenerator: {
     type: Function as PropType<() => string>,
+    default: undefined
+  },
+
+  /**
+   * 表单组件标题自定义渲染
+   */
+  renderFormLabel: {
+    type: Function as PropType<(label: string, model: IFormModelItem) => VNode>,
+    default: undefined
+  },
+
+  /**
+   * 使用自定义描述
+   */
+  useCustomDescription: {
+    type: Boolean,
     default: undefined
   }
 }

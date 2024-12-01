@@ -17,6 +17,8 @@ export interface IFormContext {
       | 'clientType'
       | 'contentAlign'
       | 'requiredMarkPosition'
+      | 'renderFormLabel'
+      | 'useCustomDescription'
     >
   >
   onChange: OnFormChange

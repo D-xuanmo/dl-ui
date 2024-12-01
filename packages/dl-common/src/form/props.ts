@@ -17,7 +17,9 @@ export const FORM_PROPS = {
     'clientType',
     'border',
     'round',
-    'idGenerator'
+    'idGenerator',
+    'renderFormLabel',
+    'useCustomDescription'
   ]),
 
   /**

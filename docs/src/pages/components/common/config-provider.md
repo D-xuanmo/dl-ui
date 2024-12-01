@@ -141,6 +141,8 @@ app.use(DConfigProvider)
 |separator|`string`|`,`|分隔符，支持的组件有：`CheckboxGroup`|N|
 |close-on-esc|`boolean`|`true`|按下 `esc` 是否关闭对话框，支持的组件有：`Dialog`|N|
 |direction|`DirectionType`|`horizontal`|排列方式，支持的组件有：`Toast`|N|
+|use-custom-description|`boolean`|`false`|自定义渲染描述：`Form`|N|
+|render-form-label|`(label: string, model: IFormModelItem) => VNode`|`-`|自定义渲染表单组件标题：`Form`|N|
 |id-generator|`() => string`|-|id 生成器，用于前端临时生成 id，如明细表行 id 需要前端临时生成，目前内置的是 12 位随机字符串，支持的组件有：`Form`|N|
 
 ## TS 类型

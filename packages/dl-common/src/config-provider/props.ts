@@ -29,7 +29,9 @@ export const CONFIG_PROVIDER_PROPS = {
     'separator',
     'closeOnEsc',
     'direction',
-    'idGenerator'
+    'idGenerator',
+    'renderFormLabel',
+    'useCustomDescription'
   ]),
 
   /**
