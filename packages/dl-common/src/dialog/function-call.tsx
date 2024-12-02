@@ -63,11 +63,13 @@ export const useDialog = () => {
       showDialog({
         closeOnEsc: config.value.closeOnEsc,
         clientType: config.value.clientType,
+        width: 400,
         ...options,
         type: DialogTypeEnum.Confirm
       }),
     alert: (options: DialogOptions) =>
       showDialog({
+        width: 400,
         ...options,
         clientType: config.value.clientType,
         type: DialogTypeEnum.Alert,
