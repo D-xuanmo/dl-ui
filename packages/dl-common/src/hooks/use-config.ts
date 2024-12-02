@@ -29,7 +29,10 @@ export function useConfig<
   T extends keyof ConfigProviderProps,
   P extends Pick<ConfigProviderProps, T>
 >(keys: T[], currentProps?: P) {
-  const config = inject(ConfigProviderInjectKey, globalConfig as ConfigProviderProps)
+  const config = inject(
+    ConfigProviderInjectKey,
+    computed(() => globalConfig)
+  )
 
   return computed(
     () =>
@@ -39,7 +42,7 @@ export function useConfig<
             ...prev,
             keys: {
               ...globalConfig.keys,
-              ...config.keys,
+              ...config.value.keys,
               ...(currentProps as ConfigProviderProps).keys
             }
           }
@@ -47,7 +50,7 @@ export function useConfig<
         return {
           ...prev,
           [currentKey]: isEmpty(currentProps?.[currentKey])
-            ? config[currentKey] ?? globalConfig[currentKey]
+            ? config.value[currentKey] ?? globalConfig[currentKey]
             : currentProps?.[currentKey]
         }
       }, {}) as { [Key in T]: Key extends 'keys' ? Required<CustomKeys> : ConfigProviderProps[Key] }

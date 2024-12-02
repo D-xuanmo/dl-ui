@@ -1,4 +1,5 @@
-import { InjectionKey } from 'vue'
+import { ComputedRef, InjectionKey } from 'vue'
 import { ConfigProviderProps } from './props'
 
-export const ConfigProviderInjectKey: InjectionKey<ConfigProviderProps> = Symbol('ConfigProvider')
+export const ConfigProviderInjectKey: InjectionKey<ComputedRef<ConfigProviderProps>> =
+  Symbol('ConfigProvider')

@@ -1,5 +1,5 @@
 import { createNamespace } from '../utils'
-import { defineComponent, provide, SetupContext } from 'vue'
+import { computed, defineComponent, provide, SetupContext } from 'vue'
 import { CONFIG_PROVIDER_PROPS } from './props'
 import { ConfigProviderInjectKey } from './context'
 import { useTheme } from './use-style'
@@ -13,11 +13,14 @@ export default defineComponent({
   setup(props, context: SetupContext) {
     const config = useConfig(['renderFormLabel', 'useCustomDescription'], props)
 
-    provide(ConfigProviderInjectKey, {
-      ...props,
-      renderFormLabel: props.renderFormLabel || config.value.renderFormLabel,
-      useCustomDescription: props.useCustomDescription || config.value.useCustomDescription
-    })
+    provide(
+      ConfigProviderInjectKey,
+      computed(() => ({
+        ...props,
+        renderFormLabel: config.value.renderFormLabel,
+        useCustomDescription: config.value.useCustomDescription
+      }))
+    )
 
     const theme = useTheme(props)
     const style = {
