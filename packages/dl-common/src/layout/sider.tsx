@@ -1,4 +1,4 @@
-import { inject, defineComponent, ref, SetupContext } from 'vue'
+import { inject, defineComponent, SetupContext, computed } from 'vue'
 import { addUnit, createNamespace } from '../utils'
 import { DGridItem } from '../grid'
 import { LAYOUT_SIDER_PROPS } from './props'
@@ -13,16 +13,17 @@ export default defineComponent({
   props: LAYOUT_SIDER_PROPS,
   emits: ['collapsed'],
   setup(props, context: SetupContext) {
-    const { onColumnWidthChange } = inject(LAYOUT_CONTEXT_KEY)!
-    const collapsed = ref(false)
+    const { getCollapsed, onColumnWidthChange, onCollapsedChange } = inject(LAYOUT_CONTEXT_KEY)!
+    const collapsed = computed(() => getCollapsed(context.attrs!.layoutId as string))
 
     const handleCollapsed = () => {
-      collapsed.value = !collapsed.value
+      const newCollapsed = !collapsed.value
       onColumnWidthChange(
         context.attrs!.layoutId as string,
-        collapsed.value ? addUnit(props.collapsedWidth) : addUnit(props.width)
+        newCollapsed ? addUnit(props.collapsedWidth) : addUnit(props.width)
       )
-      context.emit('collapsed', collapsed.value)
+      onCollapsedChange(context.attrs!.layoutId as string, newCollapsed)
+      context.emit('collapsed', newCollapsed)
     }
 
     return () => (

@@ -21,6 +21,26 @@ export default defineComponent({
       'layout-footer': createRandomID(8),
       'layout-content': createRandomID(8)
     }
+    const collapsedMap = ref<Map<string, boolean>>(new Map())
+
+    const onColumnWidthChange = (layoutId: string, width: string) => {
+      columnsMap.set(layoutId, width)
+    }
+
+    const onCollapsedChange = (layoutId: string, collapsed: boolean) => {
+      collapsedMap.value.set(layoutId, collapsed)
+    }
+
+    const getCollapsed = (layoutId: string) => {
+      return collapsedMap.value.get(layoutId) ?? false
+    }
+
+    provide(LAYOUT_CONTEXT_KEY, {
+      columns: columnsCount,
+      getCollapsed,
+      onColumnWidthChange,
+      onCollapsedChange
+    })
 
     watch(
       () => context.slots.default?.(),
@@ -75,15 +95,6 @@ export default defineComponent({
       },
       { immediate: true }
     )
-
-    const onColumnWidthChange = (layoutId: string, width: string) => {
-      columnsMap.set(layoutId, width)
-    }
-
-    provide(LAYOUT_CONTEXT_KEY, {
-      columns: columnsCount,
-      onColumnWidthChange
-    })
 
     return () => (
       <DGrid
