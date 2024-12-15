@@ -50,11 +50,11 @@ export default defineComponent({
       ) : null
       const leftMark =
         props.required && globalConfig.value.requiredMarkPosition === 'left' ? (
-          <span class={bem('title-mark')}>* </span>
+          <span class={bem('title-mark')}>*</span>
         ) : null
       const rightMark =
         props.required && globalConfig.value.requiredMarkPosition === 'right' ? (
-          <span class={bem('title-mark')}> *</span>
+          <span class={bem('title-mark')}>*</span>
         ) : null
       const defaultLabel = (
         <>

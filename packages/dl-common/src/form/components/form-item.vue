@@ -20,9 +20,8 @@
         <span
           v-if="showRequiredMark && formProps.requiredMarkPosition === 'left'"
           :class="requiredMarkClassName"
+          >*</span
         >
-          *
-        </span>
         <component
           :is="formProps.renderFormLabel(model?.label!, model)"
           v-if="formProps.renderFormLabel"
@@ -32,9 +31,8 @@
         <span
           v-if="showRequiredMark && formProps.requiredMarkPosition === 'right'"
           :class="requiredMarkClassName"
+          >*</span
         >
-          *
-        </span>
       </template>
       <component
         v-bind="omitSystemProps(model)"
