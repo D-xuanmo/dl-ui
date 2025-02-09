@@ -1,5 +1,5 @@
 <template>
-  <div :class="wrapperClassName">
+  <div :id="$attrs.id as string" :class="[wrapperClassName, $attrs.class]">
     <div v-if="$slots.default" :class="contentClassName">
       <slot />
     </div>
