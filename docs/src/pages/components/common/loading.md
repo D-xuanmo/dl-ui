@@ -95,6 +95,7 @@ const open = () => {
 |size|`IconProps['size']`|-|图标大小|N|
 |layout|`DirectionType`|-|布局类型，上下、左右|N|
 |full-screen|`boolean`|`false`|是否全屏显示|N|
+|full-height|`boolean`|`false`|是否撑满父级容器|N|
 |prevent-scroll-through|`boolean`|`true`|全屏状态下禁止滚动穿透|N|
 
 ### TS 类型

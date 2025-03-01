@@ -54,6 +54,14 @@ export const LOADING_PROPS = {
   },
 
   /**
+   * 是否撑满父级元素高度
+   */
+  fullHeight: {
+    type: Boolean,
+    default: false
+  },
+
+  /**
    * 全屏状态下禁止滚动穿透
    */
   preventScrollThrough: {

@@ -28,7 +28,7 @@ export default defineComponent({
   inheritAttrs: false,
   props: LOADING_PROPS,
   setup(props) {
-    const wrapperClassName = bem()
+    const wrapperClassName = bem({ 'full-height': props.fullHeight })
     const contentClassName = bem('content')
     const bodyClassName = computed(() =>
       bem('body', {
