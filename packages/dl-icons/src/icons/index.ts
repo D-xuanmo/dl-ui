@@ -85,6 +85,7 @@ export * from './page'
 export * from './page-add'
 export * from './folder-add'
 export * from './message-outlined'
+export * from './return-arrow'
 
 // ==================== flex ====================
 export * from './align-left'
