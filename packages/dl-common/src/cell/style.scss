@@ -22,13 +22,12 @@
 
   &--border {
     &:not(:last-of-type) {
-      @include border(calc(var(--d-gap-sm) * 2));
+      @include border(calc(var(--d-cell-padding-x) * 2));
     }
   }
 
   &--pc {
     display: flex;
-    padding: 0 0 var(--d-cell-padding-y) 0;
 
     &#{$parent} {
       &--layout-horizontal {

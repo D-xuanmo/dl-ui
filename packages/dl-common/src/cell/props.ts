@@ -5,7 +5,14 @@ import { pickProps } from '../utils'
 export type CellProps = ExtractPropTypes<typeof CELL_PROPS>
 
 export const CELL_PROPS = {
-  ...pickProps(COMMON_PROPS, ['requiredMarkPosition', 'clientType', 'border', 'round']),
+  ...pickProps(COMMON_PROPS, [
+    'requiredMarkPosition',
+    'clientType',
+    'border',
+    'round',
+    'useCustomDescription',
+    'renderCellTitle'
+  ]),
   title: String,
   titleClass: String,
   titleWidth: [String, Number],

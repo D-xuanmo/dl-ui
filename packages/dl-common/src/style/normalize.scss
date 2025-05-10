@@ -36,6 +36,10 @@ ol:not(.ck ol),
 ul:not(.ck ul) {
   margin: 0;
   padding: 0;
+
+  li {
+    list-style: none;
+  }
 }
 
 [class*='d-'] {

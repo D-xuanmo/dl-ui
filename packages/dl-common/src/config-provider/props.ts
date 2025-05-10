@@ -31,7 +31,8 @@ export const CONFIG_PROVIDER_PROPS = {
     'direction',
     'idGenerator',
     'renderFormLabel',
-    'useCustomDescription'
+    'useCustomDescription',
+    'renderCellTitle'
   ]),
 
   /**

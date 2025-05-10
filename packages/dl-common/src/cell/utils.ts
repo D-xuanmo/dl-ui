@@ -10,7 +10,16 @@ export const useGlobalConfig = (props: CellProps) => {
     {}
   )
   const config = useConfig(
-    ['layout', 'labelWidth', 'requiredMarkPosition', 'clientType', 'border', 'round'],
+    [
+      'layout',
+      'labelWidth',
+      'requiredMarkPosition',
+      'clientType',
+      'border',
+      'round',
+      'useCustomDescription',
+      'renderCellTitle'
+    ],
     props as any
   )
   return computed(() => {
@@ -23,7 +32,9 @@ export const useGlobalConfig = (props: CellProps) => {
       contentAlign: props.contentAlign || cellContentAlign || 'left',
       labelWidth: props.titleWidth || cellTitleWidth || config.value.labelWidth,
       layout: props.layout || layout?.value || config.value.layout || 'horizontal',
-      requiredMarkPosition: props.requiredMarkPosition || config.value.requiredMarkPosition
+      requiredMarkPosition: props.requiredMarkPosition || config.value.requiredMarkPosition,
+      useCustomDescription: props.useCustomDescription || config.value.useCustomDescription,
+      renderCellTitle: props.renderCellTitle || config.value.renderCellTitle
     }
   })
 }

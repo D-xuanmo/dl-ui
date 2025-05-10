@@ -16,16 +16,16 @@ export default defineComponent({
     provide(CELL_GROUP_CONTEXT_KEY, {
       layout: ref<DirectionType>('horizontal')
     })
-    const globalConfig = useGlobalConfig(props)
+    const config = useGlobalConfig(props)
 
     const wrapperClassName = computed(() =>
       bem({
-        'hide-title': globalConfig.value.hideTitle,
-        [`layout-${globalConfig.value.layout}`]: globalConfig.value.layout,
+        'hide-title': config.value.hideTitle,
+        [`layout-${config.value.layout}`]: config.value.layout,
         disabled: props.disabled,
-        border: globalConfig.value.border || globalConfig.value.border === undefined,
-        [`${globalConfig.value.clientType?.toLowerCase()}`]: true,
-        round: globalConfig.value.round
+        border: config.value.border || config.value.border === undefined,
+        [`${config.value.clientType?.toLowerCase()}`]: true,
+        round: config.value.round
       })
     )
 
@@ -40,7 +40,7 @@ export default defineComponent({
 
       const contentClassName = [
         bem('content', {
-          [globalConfig.value.contentAlign]: globalConfig.value.contentAlign
+          [config.value.contentAlign]: config.value.contentAlign
         }),
         props.contentClass
       ]
@@ -49,29 +49,32 @@ export default defineComponent({
         <span class={bem('title-icon')}>{slots['left-icon']!()}</span>
       ) : null
       const leftMark =
-        props.required && globalConfig.value.requiredMarkPosition === 'left' ? (
+        props.required && config.value.requiredMarkPosition === 'left' ? (
           <span class={bem('title-mark')}>*</span>
         ) : null
       const rightMark =
-        props.required && globalConfig.value.requiredMarkPosition === 'right' ? (
+        props.required && config.value.requiredMarkPosition === 'right' ? (
           <span class={bem('title-mark')}>*</span>
         ) : null
+      const titleNode = config.value.renderCellTitle?.(props.title!, props.description) || (
+        <span>{props.title}</span>
+      )
       const defaultLabel = (
         <>
           {leftIcon}
           {leftMark}
-          <span>{props.title}</span>
+          {titleNode}
           {rightMark}
         </>
       )
       const renderLabel =
-        !globalConfig.value.hideTitle && !(isEmpty(props.title) && isEmpty(slots.title)) ? (
-          <div class={titleClassName} style={{ width: addUnit(globalConfig.value.labelWidth) }}>
+        !config.value.hideTitle && !(isEmpty(props.title) && isEmpty(slots.title)) ? (
+          <div class={titleClassName} style={{ width: addUnit(config.value.labelWidth) }}>
             {!isEmpty(slots.title) ? slots.title?.() : defaultLabel}
           </div>
         ) : null
 
-      const renderDescription = props.description ? (
+      const renderDescription = config.value.useCustomDescription ? null : props.description ? (
         <div class={bem('description')}>{props.description}</div>
       ) : null
 
@@ -88,7 +91,7 @@ export default defineComponent({
         <RightOutlined className={bem('arrow')} color="var(--d-secondary-text-color)" />
       ) : null
 
-      if (globalConfig.value.clientType === 'MOBILE') {
+      if (config.value.clientType === 'MOBILE') {
         return (
           <div class={wrapperClassName.value}>
             <div class={bem('wrapper')}>
@@ -111,12 +114,12 @@ export default defineComponent({
         <div class={wrapperClassName.value}>
           {renderLabel}
           <div class={contentClassName}>
+            {renderDescription}
             <div class={bem('content-inner')}>
               {slots.default ? slots.default() : props.content}
             </div>
             {renderRightIcon}
             {renderSuffix}
-            {renderDescription}
           </div>
         </div>
       )

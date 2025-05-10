@@ -233,5 +233,13 @@ export const COMMON_PROPS = {
   useCustomDescription: {
     type: Boolean,
     default: undefined
+  },
+
+  /**
+   * 全局自定义渲染单元格标题
+   */
+  renderCellTitle: {
+    type: Function as PropType<(title: string, description?: string) => VNode>,
+    default: undefined
   }
 }

@@ -11,14 +11,15 @@ export default defineComponent({
   name,
   props: CONFIG_PROVIDER_PROPS,
   setup(props, context: SetupContext) {
-    const config = useConfig(['renderFormLabel', 'useCustomDescription'], props)
+    const config = useConfig(['renderFormLabel', 'useCustomDescription', 'renderCellTitle'], props)
 
     provide(
       ConfigProviderInjectKey,
       computed(() => ({
         ...props,
         renderFormLabel: config.value.renderFormLabel,
-        useCustomDescription: config.value.useCustomDescription
+        useCustomDescription: config.value.useCustomDescription,
+        renderCellTitle: config.value.renderCellTitle
       }))
     )
 

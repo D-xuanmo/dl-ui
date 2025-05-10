@@ -620,7 +620,7 @@ const formModels = [
     component: 'DFormLayoutFooter',
     layout: {
       parent: 'layout',
-      height: 80
+      height: 120
     }
   },
   {
