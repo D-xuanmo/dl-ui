@@ -28,6 +28,7 @@
 
   &--pc {
     display: flex;
+    padding: 0 0 var(--d-cell-padding-y) 0;
 
     &#{$parent} {
       &--layout-horizontal {

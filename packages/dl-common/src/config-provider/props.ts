@@ -1,7 +1,6 @@
 import { ExtractPropTypes, PropType } from 'vue'
 import { pickProps } from '../utils'
-import { COMMON_PROPS, DirectionType, HorizontalAlignType } from '../common'
-import { DEFAULT_REQUIRED_MARK_POSITION } from '../constants'
+import { COMMON_PROPS, DirectionType } from '../common'
 
 export type ConfigProviderTheme = {
   // 主题色
@@ -32,7 +31,8 @@ export const CONFIG_PROVIDER_PROPS = {
     'idGenerator',
     'renderFormLabel',
     'useCustomDescription',
-    'renderCellTitle'
+    'renderCellTitle',
+    'requiredMarkPosition'
   ]),
 
   /**
@@ -49,14 +49,6 @@ export const CONFIG_PROVIDER_PROPS = {
   layout: {
     type: String as PropType<DirectionType>,
     default: 'horizontal'
-  },
-
-  /**
-   * 必填标识位置
-   */
-  requiredMarkPosition: {
-    type: String as PropType<Exclude<HorizontalAlignType, 'center'>>,
-    default: DEFAULT_REQUIRED_MARK_POSITION
   },
 
   /**
