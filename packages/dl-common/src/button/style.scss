@@ -41,8 +41,7 @@
 
 .#{$prefix}-button {
   $prefix: &;
-  --d-button-wave: var(--d-primary-1);
-  --d-button-wave-bg: var(--d-gray-1);
+  --d-button-wave: var(--d-primary-3);
   position: relative;
   z-index: 1;
   display: inline-block;
@@ -61,17 +60,6 @@
     left: 0;
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 0;
-    height: 200%;
-    background-color: var(--d-button-wave-bg);
-  }
-
   &--block {
     display: block;
     width: 100%;
@@ -79,10 +67,6 @@
 
   &--active {
     animation: button-wave-spread 0.25s cubic-bezier(0, 0, 0.2, 1);
-
-    &::after {
-      animation: button-bg 0.2s ease-in-out;
-    }
   }
 
   // 形状
@@ -108,23 +92,19 @@
         }
 
         &-primary {
-          --d-button-wave: var(--d-primary-1);
-          --d-button-wave-bg: var(--d-primary-7);
+          --d-button-wave: var(--d-primary-3);
         }
 
         &-success {
-          --d-button-wave: var(--d-success-1);
-          --d-button-wave-bg: var(--d-success-7);
+          --d-button-wave: var(--d-success-3);
         }
 
         &-warning {
-          --d-button-wave: var(--d-warning-1);
-          --d-button-wave-bg: var(--d-warning-7);
+          --d-button-wave: var(--d-warning-3);
         }
 
         &-danger {
-          --d-button-wave: var(--d-error-1);
-          --d-button-wave-bg: var(--d-error-7);
+          --d-button-wave: var(--d-error-3);
         }
       }
     }
@@ -257,7 +237,6 @@
         }
 
         &-primary {
-          --d-button-wave-bg: var(--d-gray-1);
           border-color: var(--d-primary);
           color: var(--d-primary);
 
@@ -267,7 +246,6 @@
         }
 
         &-success {
-          --d-button-wave-bg: var(--d-gray-1);
           border-color: var(--d-success);
           color: var(--d-success);
 
@@ -277,7 +255,6 @@
         }
 
         &-warning {
-          --d-button-wave-bg: var(--d-gray-1);
           border-color: var(--d-warning);
           color: var(--d-warning);
 
@@ -287,7 +264,6 @@
         }
 
         &-danger {
-          --d-button-wave-bg: var(--d-gray-1);
           border-color: var(--d-error);
           color: var(--d-error);
 
@@ -319,14 +295,5 @@
   }
   to {
     box-shadow: 0 0 0.3px 3px var(--d-button-wave);
-  }
-}
-
-@keyframes button-bg {
-  from {
-    width: 0;
-  }
-  to {
-    width: 120%;
   }
 }
