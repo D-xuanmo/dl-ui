@@ -24,6 +24,14 @@ export const POPUP_PROPS = {
   closable: Boolean,
 
   /**
+   * 是否支持全屏
+   */
+  scale: {
+    type: Boolean,
+    default: false
+  },
+
+  /**
    * 动画前缀
    */
   transitionPrefix: {

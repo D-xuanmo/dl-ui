@@ -22,7 +22,7 @@ app.use(DDrawer)
 ```vue title=基础用法 playground=75q0r5
 <template>
   <d-button @click="visible = true">显示抽屉</d-button>
-  <d-drawer v-model:visible="visible" title="标题">
+  <d-drawer v-model:visible="visible" scale title="标题">
     内容
   </d-drawer>
 </template>
@@ -134,6 +134,7 @@ const showDrawer = (p: string) => {
 |content|`string`|-|对话框内容|N|
 |loading|`boolean`|-|控制按钮 loading 状态|N|
 |lock-scroll|`boolean`|`true`|是否显示时，锁定 body 滚动|N|
+|scale|`boolean`|`false`|是否开启全屏切换|N|
 |closable|`boolean`|`true`|是否显示关闭图标|N|
 |close-on-esc|`boolean`|`true`|按下 `esc` 是否关闭对话框|N|
 |close-on-overlay-click|`boolean`|`true`|点击遮罩层是否关闭对话框|N|

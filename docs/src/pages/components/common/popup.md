@@ -113,6 +113,7 @@ function handleShowPopup2() {
 |duration|`number`|`0.3`|过渡动画时间|N|
 |lock-scroll|`boolean`|`true`|是否显示时，锁定 body 滚动|N|
 |round|`boolean`|`false`|实现显示未圆角，`placement`不等于`center`有效|N|
+|scale|`boolean`|`false`|是否开启全屏切换|N|
 |closable|`boolean`|`false`|是否显示关闭图标|N|
 |popup-container-class|`string`|-|弹出层容器 className|N|
 |popup-class|`string`|-|弹出层 className|N|

@@ -43,6 +43,13 @@
     }
 
     &-closable {
+      color: var(--d-secondary-text-color);
+      cursor: pointer;
+    }
+
+    &-scale {
+      margin-right: var(--d-gap-xs);
+      color: var(--d-secondary-text-color);
       cursor: pointer;
     }
   }
@@ -98,6 +105,13 @@
 
     &--right {
       right: 0;
+    }
+
+    &#{$wrapper} {
+      &--full-screen {
+        max-width: 100%;
+        max-height: 100%;
+      }
     }
   }
 

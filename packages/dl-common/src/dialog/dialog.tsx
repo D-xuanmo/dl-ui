@@ -169,6 +169,7 @@ export default defineComponent({
         placement="custom"
         transitionPrefix={name}
         overlay={props.showOverlay}
+        scale={props.scale}
         closable={isMobile ? false : props.closable}
         closeOnOverlayClick={props.closeOnOverlayClick}
         popupContainerClass={containerClass.value}

@@ -46,6 +46,14 @@ export const DIALOG_PROPS = {
   },
 
   /**
+   * 是否支持全屏
+   */
+  scale: {
+    type: Boolean,
+    default: false
+  },
+
+  /**
    * 关闭按钮文字
    */
   cancelButtonText: {

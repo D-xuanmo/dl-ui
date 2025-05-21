@@ -124,6 +124,7 @@ export default defineComponent({
         title={props.title}
         placement={props.placement}
         overlay={props.showOverlay}
+        scale={props.scale}
         closable={props.closable}
         closeOnOverlayClick={props.closeOnOverlayClick}
         popupContainerClass={containerClass.value}

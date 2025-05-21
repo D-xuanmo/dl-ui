@@ -37,6 +37,10 @@
               <div v-if="$slots['header-right']" :class="bem('header-right')">
                 <slot name="header-right" />
               </div>
+              <span v-if="scale" :class="bem('header-scale')">
+                <full-screen-outlined v-if="!fullScreen" @click="toggleFullScreen(true)" />
+                <non-full-screen-outlined v-else @click="toggleFullScreen(false)" />
+              </span>
               <span v-if="closable" :class="bem('header-closable')" @click="handleClickIcon">
                 <slot name="close-icon"><close-outlined /></slot>
               </span>
@@ -56,13 +60,13 @@ import { useConfig, useZIndex } from '../hooks'
 import { createNamespace } from '../utils'
 import { DOverlay } from '../overlay'
 import { POPUP_PROPS } from './props'
-import { CloseOutlined } from '@xuanmo/dl-icons'
+import { CloseOutlined, FullScreenOutlined, NonFullScreenOutlined } from '@xuanmo/dl-icons'
 
 const [name, bem] = createNamespace('popup')
 
 export default defineComponent({
   name,
-  components: { DOverlay, CloseOutlined },
+  components: { DOverlay, CloseOutlined, FullScreenOutlined, NonFullScreenOutlined },
   inheritAttrs: false,
   props: POPUP_PROPS,
   emits: ['update:visible', 'open', 'opened', 'close', 'closed', 'click-overlay-icon'],
@@ -71,6 +75,7 @@ export default defineComponent({
     const isLoaded = ref(props.visible ? true : !props.lazyRender)
     const wrapperRef = ref<HTMLDivElement>()
     const config = useConfig(['round'], props)
+    const fullScreen = ref(false)
 
     const showHeader = computed(() => {
       return (
@@ -87,7 +92,8 @@ export default defineComponent({
         bem('wrapper', {
           [props.placement]: props.placement,
           round: config.value.round,
-          notCenter: !isCenter.value
+          notCenter: !isCenter.value,
+          'full-screen': fullScreen.value
         }),
         props.popupClass
       ].join(' ')
@@ -105,16 +111,29 @@ export default defineComponent({
         typeof props.duration === 'number' ? `${props.duration}s` : (props.duration as string)
     }))
 
+    const popupStyle = computed(() => {
+      const result: CSSProperties = { ...props.popupStyle }
+      if (fullScreen.value) {
+        result.width = '100%'
+        result.height = '100%'
+      }
+      return result
+    })
+
     const onEnter = () => emit('open')
     const onAfterEnter = () => emit('opened')
     const onAfterLeave = () => emit('closed')
     const handleClose = () => {
+      toggleFullScreen(false)
       emit('update:visible', false)
       emit('close')
     }
     const handleClickIcon = () => {
       handleClose()
       emit('click-overlay-icon')
+    }
+    const toggleFullScreen = (status: boolean) => {
+      fullScreen.value = status
     }
 
     watch(
@@ -134,12 +153,15 @@ export default defineComponent({
       showHeader,
       isLoaded,
       wrapperRef,
+      fullScreen,
+      popupStyle,
       bem,
       handleClose,
       onEnter,
       onAfterEnter,
       onAfterLeave,
-      handleClickIcon
+      handleClickIcon,
+      toggleFullScreen
     }
   }
 })
