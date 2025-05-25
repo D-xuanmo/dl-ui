@@ -88,6 +88,10 @@ export * from './message-outlined'
 export * from './return-arrow'
 export * from './full-screen'
 export * from './non-full-screen'
+export * from './color-panel'
+export * from './home'
+export * from './save'
+export * from './plus-one-outlined'
 
 // ==================== flex ====================
 export * from './align-left'
