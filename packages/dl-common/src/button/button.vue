@@ -11,7 +11,7 @@
       size="small"
       color="inherit"
     />
-    <slot name="icon" />
+    <span v-if="$slots.icon" :class="iconClassName"><slot name="icon" /></span>
     <span :class="innerTextClassName"><slot /></span>
   </button>
 </template>
@@ -58,6 +58,7 @@ export default defineComponent({
 
     return {
       wrapperClassName,
+      iconClassName: bem('icon'),
       innerTextClassName: bem('text'),
       iconLoadingClassName: bem('icon-loading'),
       customIconClassName: bem('custom-icon'),
