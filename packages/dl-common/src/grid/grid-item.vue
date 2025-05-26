@@ -20,7 +20,9 @@ export default defineComponent({
     const style = computed<CSSProperties>(() => ({
       gridRow: `span ${props.row} / span ${props.row}`,
       gridColumn: `span ${props.column} / span 1`,
-      height: addUnit(props.height)
+      height: addUnit(props.height),
+      alignSelf: props.align,
+      justifySelf: props.justify
     }))
 
     return {

@@ -1,4 +1,5 @@
 import { ExtractPropTypes, PropType } from 'vue'
+import { SpaceAlignType, SpaceJustifyType } from '../space'
 
 export type GridProps = ExtractPropTypes<typeof GRID_PROPS>
 
@@ -84,6 +85,22 @@ export const GRID_ITEM_PROPS = {
 
   height: {
     type: [Number, String],
+    default: undefined
+  },
+
+  /**
+   * 水平排列对齐方式
+   */
+  justify: {
+    type: String as PropType<SpaceJustifyType>,
+    default: undefined
+  },
+
+  /**
+   * 垂直排列对齐方式
+   */
+  align: {
+    type: String as PropType<SpaceAlignType>,
     default: undefined
   }
 }
