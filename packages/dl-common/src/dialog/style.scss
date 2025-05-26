@@ -3,7 +3,8 @@
 
 :root {
   --d-dialog-title-font-size: 18px;
-  --d-dialog-padding: var(--d-gap-md);
+  --d-dialog-padding-x: var(--d-gap-sm);
+  --d-dialog-padding-y: var(--d-gap-md);
 }
 
 .#{$prefix}-dialog {
@@ -21,7 +22,7 @@
   &--no-footer {
     #{$dialogPrefix} {
       &__body {
-        padding-bottom: var(--d-dialog-padding);
+        padding-bottom: var(--d-dialog-padding-y) var(--d-dialog-padding-x);
       }
     }
   }
@@ -59,19 +60,19 @@
 
   &__header {
     margin-bottom: 0;
-    padding: var(--d-dialog-padding) var(--d-dialog-padding) 0;
+    padding: var(--d-dialog-padding-y) var(--d-dialog-padding-x) 0;
     text-align: left;
   }
 
   &__body {
-    padding: var(--d-dialog-padding) var(--d-dialog-padding);
+    padding: var(--d-dialog-padding-y) var(--d-dialog-padding-x);
   }
 
   &__footer {
     display: flex;
     justify-content: flex-end;
     column-gap: var(--d-gap-sm);
-    padding: 0 var(--d-dialog-padding) var(--d-dialog-padding);
+    padding: 0 var(--d-dialog-padding-y) var(--d-dialog-padding-x);
   }
 
   &__title {
@@ -95,8 +96,8 @@
 
   .#{$prefix} {
     &-popup__header-closable {
-      top: var(--d-dialog-padding);
-      right: var(--d-dialog-padding);
+      top: var(--d-dialog-padding-y);
+      right: var(--d-dialog-padding-x);
     }
   }
 
@@ -116,7 +117,7 @@
       }
 
       &__body {
-        padding: var(--d-gap-xs) var(--d-dialog-padding);
+        padding: var(--d-gap-xs) var(--d-dialog-padding-x);
       }
 
       &__footer {
