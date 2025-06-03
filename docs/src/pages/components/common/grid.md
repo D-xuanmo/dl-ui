@@ -327,5 +327,5 @@ onUnmounted(() => {
 |row|`number \| string`|1|占用行数|N|
 |column|`number \| string`|1|占用列数|N|
 |height|`number \| string`|-|元素高度，CSS height|N|
-|justify|`SpaceJustifyType`|-|水平排列方式|N|
-|align|`SpaceAlignType`|-|垂直排列对齐方式|N|
+|justify|`CSSProperties['justify-self']`|-|水平排列方式|N|
+|align|`CSSProperties['align-self']`|-|垂直排列对齐方式|N|
