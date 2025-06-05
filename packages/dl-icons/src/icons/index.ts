@@ -92,6 +92,11 @@ export * from './color-panel'
 export * from './home'
 export * from './save'
 export * from './plus-one-outlined'
+export * from './command-outlined'
+export * from './references-outlined'
+export * from './keyboard-outlined'
+export * from './media-outlined'
+export * from './expression-outlined'
 
 // ==================== flex ====================
 export * from './align-left'
