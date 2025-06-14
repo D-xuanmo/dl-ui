@@ -45,6 +45,7 @@ export default defineComponent({
     watch(
       () => context.slots.default?.(),
       (slotReturn) => {
+        columnsCount.value = 0
         rows.clear()
         columnsMap.clear()
         children.value = findChildren(slotReturn!).map((item) => {
