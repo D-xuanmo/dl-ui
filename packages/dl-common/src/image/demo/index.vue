@@ -6,7 +6,15 @@
   <dl-demo-block title="填充模式">
     <d-space :gap="20" wrap>
       <div>
-        <d-image :src="imgSrc" width="100" height="100" fit="cover" />
+        <d-image
+          v-slot="{ style, loading, load, error }"
+          :src="imgSrc"
+          width="100"
+          height="100"
+          fit="cover"
+        >
+          <img :src="imgSrc" :style="style" :loading="loading" @load="load" @error="error" />
+        </d-image>
         <p>cover</p>
       </div>
       <div>

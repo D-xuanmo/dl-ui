@@ -1,13 +1,22 @@
 <template>
   <div :class="wrapperClassName" :style="wrapperStyle">
-    <img
+    <slot
       :src="src"
       :alt="alt"
       :loading="lazy ? 'lazy' : 'eager'"
       :style="imageStyle"
-      @load="handleLoad"
-      @error="handleError"
-    />
+      :load="handleLoad"
+      :error="handleError"
+    >
+      <img
+        :src="src"
+        :alt="alt"
+        :loading="lazy ? 'lazy' : 'eager'"
+        :style="imageStyle"
+        @load="handleLoad"
+        @error="handleError"
+      />
+    </slot>
     <div v-if="loading || loadError" :class="tipsClassName">
       <loading2-outlined v-if="loading && !loadError" :class="tipsIconClassName" :spin="loading" />
       <template v-if="loadError">
