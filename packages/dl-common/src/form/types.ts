@@ -52,8 +52,42 @@ export interface IFormModelItem<TValue = unknown> extends IRenderModel {
   // 对应的数据键名
   dataKey: string
 
-  // 当前字段数据
+  /**
+   * 当前字段数据，
+   * @example 非虚拟 key 时，dataKey 对应的数据：
+   * {
+   *   dataKey: 'value'
+   * }
+   * @example 虚拟 key 时，value 将会以对象返回，数据格式如下：
+   * {
+   *   key1: 'value1',
+   *   key2: 'value2'
+   * }
+   */
   value: TValue
+
+  /**
+   * 是否为虚拟 key，默认为 false
+   * @example true 时，数据以多个属性存在，格式如下：
+   * {
+   *   key1: 'value1',
+   *   key2: 'value2'
+   * }
+   * @example false 时，数据以单个属性存在，格式如下：
+   * {
+   *   dataKey: {
+   *     key1: 'value1',
+   *     key2: 'value2'
+   *   }
+   * }
+   */
+  isVirtualKey?: boolean
+
+  /**
+   * 当 isVirtualKey 为 true 时，需要指定虚拟 key 的值，否则 value 将获取不到数据
+   * @example ['key1', 'key2']
+   */
+  valueItems?: string[]
 
   // 明细表 id
   detailTableId?: string

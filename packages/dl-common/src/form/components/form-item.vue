@@ -97,7 +97,7 @@ export default defineComponent({
 
     const handleChange = (value: unknown, split: boolean) => {
       if (props.model.controlled !== true) {
-        if (split) {
+        if (split || props.model.isVirtualKey) {
           store.updateData(value as Record<string, any>, false)
           onFormChange(value as Record<string, any>, props.model, rowId)
         } else {

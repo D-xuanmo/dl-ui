@@ -295,9 +295,18 @@ class FormStore {
    * @param rowId
    */
   public getFieldValue(dataKey: string, rowId?: string) {
+    const model = this.getModel(this.getModelIdByDataKey(dataKey))
     if (rowId) {
       const detailTableId = this.getDetailTableId(dataKey)
       return this.detailTableStore.getFieldValue(detailTableId, rowId, dataKey)
+    }
+    if (model && model.isVirtualKey && model.valueItems) {
+      const data = model.valueItems.reduce((prev: Record<string, any>, current: string) => {
+        if (this.mainFormData[current] === undefined) return prev
+        prev[current] = this.mainFormData[current]
+        return prev
+      }, {})
+      return isEmpty(data) ? undefined : data
     }
     return this.mainFormData[dataKey]
   }
