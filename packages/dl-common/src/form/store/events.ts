@@ -21,7 +21,7 @@ export class EventEmitterEx extends EventEmitter<EventsType> {
    * @param eventName 事件名
    * @param task 任务
    */
-  proxy(eventName: EventsType, task: TaskType) {
+  public proxy(eventName: EventsType, task: TaskType) {
     if (typeof task !== 'function') {
       throwError(formNamespace, 'The proxy must be a function.')
     }
@@ -35,7 +35,7 @@ export class EventEmitterEx extends EventEmitter<EventsType> {
    * @param eventName
    * @param task
    */
-  removeProxy(eventName: EventsType, task: TaskType) {
+  public removeProxy(eventName: EventsType, task: TaskType) {
     this.queueTask.get(eventName)?.delete(task)
     return this
   }
@@ -49,7 +49,7 @@ export class EventEmitterEx extends EventEmitter<EventsType> {
    *   .then((value: SuccessType) => { console.log(value) })
    *   .catch((error: FailType) => { console.log(error) })
    */
-  executeProxy(eventName: EventsType, ...args: unknown[]) {
+  public executeProxy(eventName: EventsType, ...args: unknown[]) {
     return new Promise(
       async (resolve: (value: SuccessType) => void, reject: (reason: FailType) => void) => {
         const tasks = Array.from(this.queueTask.get(eventName) ?? [])
@@ -66,5 +66,10 @@ export class EventEmitterEx extends EventEmitter<EventsType> {
         resolve(true)
       }
     )
+  }
+
+  public destroy() {
+    this.queueTask.clear()
+    this.removeAllListeners()
   }
 }

@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, provide, watch } from 'vue'
+import { computed, defineComponent, onUnmounted, provide, watch } from 'vue'
 import { FORM_PROPS } from './props'
 import { formNamespace, createFormBEM } from './constants'
 import { OnFormChange } from './types'
@@ -99,6 +99,10 @@ export default defineComponent({
     watch(() => props.disabled, store.setFormDisabled)
     watch(() => props.readonly, store.setFormReadonly)
     watch(() => props.viewLinkage, store.viewLinkageStore.init)
+
+    onUnmounted(() => {
+      store.destroy()
+    })
 
     return {
       formClassName,

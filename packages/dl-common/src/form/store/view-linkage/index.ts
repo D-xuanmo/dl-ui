@@ -41,7 +41,7 @@ export class ViewLinkageStore {
     this.formStore = formStore
   }
 
-  init(linageList: ViewLinkageType) {
+  public init(linageList: ViewLinkageType) {
     if (isEmpty(linageList)) return
     this.linageList = linageList
     linageList.forEach((linkage) => {
@@ -58,7 +58,7 @@ export class ViewLinkageStore {
    * @param dataKey
    * @param value
    */
-  execute(dataKey: string, value: unknown) {
+  public execute(dataKey: string, value: unknown) {
     if (!this.triggerIdList.includes(dataKey)) return
     const loopFnKey = {
       [ConditionEnum.ANY]: 'some',
@@ -89,27 +89,27 @@ export class ViewLinkageStore {
     this.formStore.events.emit(`${EventPrefixEnum.LINKAGE}.afterExecute`, true)
   }
 
-  setDisplay(id: IRenderModel['id'], value: boolean) {
+  public setDisplay(id: IRenderModel['id'], value: boolean) {
     this.displayMap.set(id, value)
   }
 
-  setReadonly(id: IRenderModel['id'], value: boolean) {
+  public setReadonly(id: IRenderModel['id'], value: boolean) {
     this.readonlyMap.set(id, value)
   }
 
-  setDisabled(id: IRenderModel['id'], value: boolean) {
+  public setDisabled(id: IRenderModel['id'], value: boolean) {
     this.disabledMap.set(id, value)
   }
 
-  setRequired(id: IRenderModel['id'], value: boolean) {
+  public setRequired(id: IRenderModel['id'], value: boolean) {
     this.requiredMap.set(id, value)
   }
 
-  getRequired(id: IRenderModel['id']) {
+  public getRequired(id: IRenderModel['id']) {
     return this.requiredMap.get(id)
   }
 
-  getDisplay(id: IRenderModel['id']) {
+  public getDisplay(id: IRenderModel['id']) {
     const parents = this.formStore.getParents(id)
     if (parents.length) {
       for (let i = 0; i < parents.length; i++) {
@@ -120,11 +120,11 @@ export class ViewLinkageStore {
     return this.displayMap.get(id)
   }
 
-  getReadonly(id: IRenderModel['id']) {
+  public getReadonly(id: IRenderModel['id']) {
     return this.formStore.formReadonly.value || this.readonlyMap.get(id)
   }
 
-  getDisabled = (id: IRenderModel['id']) => {
+  public getDisabled = (id: IRenderModel['id']) => {
     return this.formStore.formDisabled.value || this.disabledMap.get(id)
   }
 

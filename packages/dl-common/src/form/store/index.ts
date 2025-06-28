@@ -511,6 +511,11 @@ class FormStore {
    */
   public convertModel = () => Array.from(this.models.values())
 
+  public destroy() {
+    this.clear()
+    this.events.destroy()
+  }
+
   /**
    * 清理 store 相关数据
    */
