@@ -389,7 +389,16 @@ class FormStore {
   public reset() {
     ;(this.originalModel as IFormModelItem[]).forEach((item) => {
       if (item.dataKey) {
-        this.updateFieldValue(item.dataKey, item.value)
+        if (item.isVirtualKey && item.valueItems) {
+          item.valueItems.forEach((key) => {
+            this.updateFieldValue(
+              key,
+              isObject(item.value) ? (item.value as any)?.[key] : undefined
+            )
+          })
+        } else {
+          this.updateFieldValue(item.dataKey, item.value)
+        }
       }
     })
     this.clearMessages()
