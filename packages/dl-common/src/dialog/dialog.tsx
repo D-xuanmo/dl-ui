@@ -10,6 +10,7 @@ import { CheckCircleFilled, CloseFilled, TipsFilled, WarningFilled } from '@xuan
 import { MessageThemeType } from '../common'
 import { useCloseOnEsc } from '../hooks'
 import { ClientTypeEnum } from '../constants'
+import { useContent } from '../hooks/use-content'
 
 const [name, bem] = createNamespace('dialog')
 
@@ -28,6 +29,7 @@ export default defineComponent({
   emits: ['update:visible', 'confirm', 'close'],
   setup(props, context: SetupContext) {
     const config = useConfig(['clientType', 'closeOnEsc'], props)
+    const renderContent = useContent()
     const isMobile = config.value.clientType === ClientTypeEnum.MOBILE
     const containerClass = computed(() =>
       [
@@ -153,12 +155,12 @@ export default defineComponent({
         </DButton>
       )
       return (
-        context.slots?.footer?.() || (
-          <div class={footerClass}>
-            {cancel}
-            {confirm}
-          </div>
-        )
+        <div class={footerClass}>
+          {renderContent('footer', { cancel, confirm, handleClose, handleConfirm }) || [
+            cancel,
+            confirm
+          ]}
+        </div>
       )
     }
 
