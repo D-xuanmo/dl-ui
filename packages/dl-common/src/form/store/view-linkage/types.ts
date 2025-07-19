@@ -89,6 +89,37 @@ export type ViewLinkageItemType = {
   linkageList: LinkageItemType[]
 }
 
+/**
+ * 视图联动类型
+ * @example 联动配置示例
+ * [
+ *   {
+ *     conditionList: [
+ *       {
+ *         condition: 'any',
+ *         details: [
+ *           {
+ *             triggerId: 'linkage1',
+ *             symbol: 'equal',
+ *             type: 'constant',
+ *             constants: '666'
+ *           }
+ *         ]
+ *       }
+ *     ],
+ *     linkageList: [
+ *       {
+ *         targetId: 'upload',
+ *         propKey: 'hide'
+ *       },
+ *       {
+ *         targetId: 'checkbox',
+ *         propKey: 'required'
+ *       }
+ *     ]
+ *   }
+ * ]
+ */
 export type ViewLinkageType = ViewLinkageItemType[]
 
 export type ViewLinkageEventsType =
