@@ -37,11 +37,16 @@
               <div v-if="$slots['header-right']" :class="bem('header-right')">
                 <slot name="header-right" />
               </div>
-              <span v-if="scale" :class="bem('header-scale')">
+              <span v-if="scale" :class="bem('header-scale')" class="cursor-block">
                 <full-screen-outlined v-if="!fullScreen" @click="toggleFullScreen(true)" />
                 <non-full-screen-outlined v-else @click="toggleFullScreen(false)" />
               </span>
-              <span v-if="closable" :class="bem('header-closable')" @click="handleClickIcon">
+              <span
+                v-if="closable"
+                :class="bem('header-closable')"
+                class="cursor-block"
+                @click="handleClickIcon"
+              >
                 <slot name="close-icon"><close-outlined /></slot>
               </span>
             </header>
