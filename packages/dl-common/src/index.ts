@@ -3,26 +3,12 @@ import { version as commonVersion } from '../package.json'
 
 import * as components from './components'
 
-import { color } from './utils'
-
 import './style/index.scss'
 
 // 引入图标样式
 import '../../dl-icons/src/style.scss'
 
-const install = function (
-  app: App,
-  options?: {
-    primaryColor?: string
-    successColor?: string
-    warningColor?: string
-    errorColor?: string
-  }
-) {
-  color.generatePrimaryColors(options?.primaryColor)
-  color.generateSuccessColors(options?.successColor)
-  color.generateWarningColors(options?.warningColor)
-  color.generateErrorColors(options?.errorColor)
+const install = function (app: App) {
   Object.values(components).forEach((component: any) => {
     if (/^d-/.test(component?.name)) app.use(component)
   })

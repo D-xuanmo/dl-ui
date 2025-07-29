@@ -1,6 +1,7 @@
 import chroma from 'chroma-js'
 import { ERROR_COLOR, PREFIX, PRIMARY_COLOR, SUCCESS_COLOR, WARNING_COLOR } from '../constants'
 import { ThemeType } from '../common'
+import { ConfigProviderTheme } from '../config-provider'
 
 export const generateColors = (color: string) => [
   ...Array.from({ length: 5 })
@@ -41,4 +42,11 @@ export const generateWarningColors = (color = WARNING_COLOR) => {
 
 export const generateErrorColors = (color = ERROR_COLOR) => {
   setHTMLStyle(generateColors(color), 'error')
+}
+
+export const initColors = (theme: ConfigProviderTheme) => {
+  generatePrimaryColors(theme.primary)
+  generateSuccessColors(theme.success)
+  generateWarningColors(theme.warning)
+  generateErrorColors(theme.error)
 }
