@@ -35,24 +35,3 @@ export const useTheme = (props: ConfigProviderProps) => {
     return style
   })
 }
-
-export function useStyle(props: ConfigProviderProps) {
-  return computed<CSSProperties>(() => {
-    const style: CSSProperties = {
-      height: props.fullHeight ? '100%' : undefined
-    }
-    if (props.theme?.primary) {
-      Object.assign(style, generateStyle(color.generateColors(props.theme.primary), 'primary'))
-    }
-    if (props.theme?.success) {
-      Object.assign(style, generateStyle(color.generateColors(props.theme.success), 'success'))
-    }
-    if (props.theme?.warning) {
-      Object.assign(style, generateStyle(color.generateColors(props.theme.warning), 'warning'))
-    }
-    if (props.theme?.error) {
-      Object.assign(style, generateStyle(color.generateColors(props.theme.error), 'error'))
-    }
-    return style
-  })
-}

@@ -10,16 +10,23 @@ import './style/index.scss'
 // 引入图标样式
 import '../../dl-icons/src/style.scss'
 
-const install = function (app: App) {
+const install = function (
+  app: App,
+  options?: {
+    primaryColor?: string
+    successColor?: string
+    warningColor?: string
+    errorColor?: string
+  }
+) {
+  color.generatePrimaryColors(options?.primaryColor)
+  color.generateSuccessColors(options?.successColor)
+  color.generateWarningColors(options?.warningColor)
+  color.generateErrorColors(options?.errorColor)
   Object.values(components).forEach((component: any) => {
     if (/^d-/.test(component?.name)) app.use(component)
   })
 }
-
-color.generatePrimaryColors()
-color.generateSuccessColors()
-color.generateWarningColors()
-color.generateErrorColors()
 
 export type ComponentNames = keyof typeof components extends infer T
   ? T extends `D${infer Name}`

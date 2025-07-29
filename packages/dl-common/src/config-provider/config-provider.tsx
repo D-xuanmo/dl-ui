@@ -31,13 +31,14 @@ export default defineComponent({
     const style = {
       height: props.fullHeight ? '100%' : undefined
     }
-
     if (props.isRoot) {
       const htmlEl = document.querySelector('html')
+      const styles: string[] = []
       if (htmlEl) {
         for (const [key, value] of Object.entries(theme.value)) {
-          htmlEl.style.setProperty(key, value)
+          styles.push(`${key}: ${value};`)
         }
+        htmlEl.style.cssText += styles.join('')
       }
     } else {
       Object.assign(style, theme.value)

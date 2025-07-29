@@ -72,7 +72,7 @@ export const CONFIG_PROVIDER_PROPS = {
    */
   isRoot: {
     type: Boolean,
-    default: true
+    default: false
   },
 
   /**
