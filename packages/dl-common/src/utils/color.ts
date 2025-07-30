@@ -44,9 +44,9 @@ export const generateErrorColors = (color = ERROR_COLOR) => {
   setHTMLStyle(generateColors(color), 'error')
 }
 
-export const initColors = (theme: ConfigProviderTheme) => {
-  generatePrimaryColors(theme.primary)
-  generateSuccessColors(theme.success)
-  generateWarningColors(theme.warning)
-  generateErrorColors(theme.error)
+export const initColors = (theme?: ConfigProviderTheme) => {
+  generatePrimaryColors(theme?.primary)
+  generateSuccessColors(theme?.success)
+  generateWarningColors(theme?.warning)
+  generateErrorColors(theme?.error)
 }
