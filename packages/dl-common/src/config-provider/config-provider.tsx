@@ -26,30 +26,30 @@ export default defineComponent({
         requiredMarkPosition: config.value.requiredMarkPosition
       }))
     )
-
-    const theme = useTheme(props)
-    const style = {
-      height: props.fullHeight ? '100%' : undefined
-    }
-    if (props.isRoot) {
-      const htmlEl = document.querySelector('html')
-      const styles: string[] = []
-      if (htmlEl) {
-        for (const [key, value] of Object.entries(theme.value)) {
-          styles.push(`${key}: ${value};`)
-        }
-        htmlEl.style.cssText += styles.join('')
-      }
-    } else {
-      Object.assign(style, theme.value)
-    }
-
     if (!props.createNode) return () => context.slots.default?.()
 
-    return () => (
-      <div class={bem()} style={style}>
-        {context.slots.default?.()}
-      </div>
-    )
+    return () => {
+      const theme = useTheme(props)
+      const style = {
+        height: props.fullHeight ? '100%' : undefined
+      }
+      if (props.isRoot) {
+        const htmlEl = document.querySelector('html')
+        const styles: string[] = []
+        if (htmlEl) {
+          for (const [key, value] of Object.entries(theme.value)) {
+            styles.push(`${key}: ${value};`)
+          }
+          htmlEl.style.cssText += styles.join('')
+        }
+      } else {
+        Object.assign(style, theme.value)
+      }
+      return (
+        <div class={bem()} style={style}>
+          {context.slots.default?.()}
+        </div>
+      )
+    }
   }
 })
