@@ -7,9 +7,11 @@
       </slot>
     </div>
     <div :class="centerClass">{{ title }}</div>
-    <div v-if="rightText" :class="rightClass" @click="onRightClick">
-      <slot name="right">{{ rightText }}</slot>
-    </div>
+    <slot name="right">
+      <div v-if="rightText" :class="rightClass" @click="onRightClick">
+        {{ rightText }}
+      </div>
+    </slot>
   </div>
 </template>
 
