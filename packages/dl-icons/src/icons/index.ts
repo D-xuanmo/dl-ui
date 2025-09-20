@@ -97,6 +97,7 @@ export * from './references-outlined'
 export * from './keyboard-outlined'
 export * from './media-outlined'
 export * from './expression-outlined'
+export * from './workflow-outlined'
 
 // ==================== flex ====================
 export * from './align-left'
