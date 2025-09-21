@@ -4,11 +4,13 @@ import { DateTimePickerOption } from './types'
 
 export type DateTimePickerType =
   | 'date'
+  | 'year'
   | 'year-month'
   | 'month-day'
   | 'time'
   | 'datetime'
   | 'date-hour'
+  | 'date-hour-minute'
 
 export type DateTimePickerValue = string | number | Date
 

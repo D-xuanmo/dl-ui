@@ -5,9 +5,11 @@ import { DateTimePickerOption } from './types'
 class DateUtil {
   static formatType: Record<DateTimePickerType, string> = {
     'year-month': 'yyyy/MM',
+    year: 'yyyy',
     date: 'yyyy/MM/dd',
     datetime: 'yyyy/MM/dd HH:mm:ss',
     'date-hour': 'yyyy/MM/dd HH',
+    'date-hour-minute': 'yyyy/MM/dd HH:mm',
     'month-day': 'MM/dd',
     time: 'HH:mm'
   }
@@ -53,9 +55,11 @@ class DateUtil {
   get pickerValue() {
     const formatType: Record<DateTimePickerType, string> = {
       'year-month': 'yyyy,M',
+      year: 'yyyy',
       date: 'yyyy,M,d',
       datetime: 'yyyy,M,d,H,m,s',
       'date-hour': 'yyyy,M,d,H',
+      'date-hour-minute': 'yyyy,M,d,H,m',
       'month-day': 'M,d',
       time: 'H,m'
     }
@@ -66,7 +70,9 @@ class DateUtil {
       'date',
       'datetime',
       'date-hour',
-      'month-day'
+      'month-day',
+      'year',
+      'date-hour-minute'
     ] as DateTimePickerType[]
     // 转换月份，需要减一
     if (dateFormatTypes.includes(this.dateType)) {
@@ -88,11 +94,17 @@ class DateUtil {
       switch (this.dateType) {
         case 'date':
         case 'datetime':
-        case 'date-hour':
+        case 'date-hour-minute':
         case 'year-month':
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           return new Date(...date)
+        case 'date-hour':
+          return new Date(
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            ...([...dateJS(this.freezeDate).format('yyyy-M-d').split('-'), ...date] as any)
+          )
         case 'month-day':
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
@@ -103,6 +115,8 @@ class DateUtil {
             // @ts-ignore
             ...([...dateJS(this.freezeDate).format('yyyy-M-d').split('-'), ...date] as any)
           )
+        case 'year':
+          return new Date(`${date}/1/1`)
       }
       /* eslint-enable indent */
     }
@@ -111,7 +125,7 @@ class DateUtil {
     switch (this.dateType) {
       case 'date':
       case 'datetime':
-      case 'date-hour':
+      case 'date-hour-minute':
         return new Date(date)
       case 'year-month':
         return new Date(`${date}/1`)
@@ -119,6 +133,10 @@ class DateUtil {
         return new Date(`${this.freezeDate.getFullYear()}/${date}`)
       case 'time':
         return new Date(`${this.freezeDate.getFullYear()}/1/1 ${date}`)
+      case 'year':
+        return new Date(`${date}/1/1`)
+      case 'date-hour':
+        return new Date(`${date}:00`)
     }
     /* eslint-enable indent */
   }
@@ -158,8 +176,18 @@ class DateUtil {
           this.getDayColumn(),
           this.getHourColumn()
         ]
+      case 'date-hour-minute':
+        return [
+          this.getYearColumn(),
+          this.getMonthColumn(),
+          this.getDayColumn(),
+          this.getHourColumn(),
+          this.getMinute()
+        ]
       case 'time':
         return [this.getHourColumn(), this.getMinute()]
+      case 'year':
+        return [this.getYearColumn()]
     }
     /* eslint-enable indent */
   }
