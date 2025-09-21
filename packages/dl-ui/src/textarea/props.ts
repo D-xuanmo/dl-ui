@@ -13,7 +13,7 @@ export const TEXTAREA_PROPS = {
   },
   placeholder: {
     type: String,
-    default: ''
+    default: '请输入'
   },
   showWordLimit: Boolean,
   autosize: Boolean

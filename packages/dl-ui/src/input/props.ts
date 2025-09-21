@@ -44,7 +44,7 @@ export const INPUT_PROPS = {
   },
   placeholder: {
     type: String,
-    default: ''
+    default: '请输入'
   },
   formatter: {
     type: Function as PropType<(value: string | number | undefined) => string>,

@@ -11,6 +11,12 @@
     }
   }
 
+  &--vertical {
+    .#{$prefix}-checkbox + .#{$prefix}-checkbox {
+      margin-top: var(--d-gap-xs);
+    }
+  }
+
   .#{$prefix}-cell-group {
     margin-bottom: 0;
   }

@@ -11,6 +11,12 @@
     }
   }
 
+  &--vertical {
+    .#{$prefix}-radio + .#{$prefix}-radio {
+      margin-top: var(--d-gap-xs);
+    }
+  }
+
   .#{$prefix}-cell-group {
     margin-bottom: 0;
   }
