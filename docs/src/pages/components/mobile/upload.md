@@ -104,6 +104,7 @@ app.use(DUpload)
 |exceed-count|文件个数超出限制|-|
 |success|文件上传成功回调|`value: Response`|
 |error|文件上传失败回调|`value: Response`|
+|remove|文件删除回调|`value: { index: number, item: UploadListItemType }`|
 
 ### TypeScript 类型
 

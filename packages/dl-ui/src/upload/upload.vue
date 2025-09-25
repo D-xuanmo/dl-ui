@@ -41,7 +41,15 @@ export default defineComponent({
     UploadList
   },
   props: UPLOAD_PROPS,
-  emits: ['update:model-value', 'change', 'success', 'error', 'exceed-count', 'exceed-size'],
+  emits: [
+    'update:model-value',
+    'change',
+    'success',
+    'error',
+    'exceed-count',
+    'exceed-size',
+    'remove'
+  ],
   setup(props, { emit }) {
     const { emit: formEventEmit } = useFormEvent(props.model!)
     const wrapperClassName = bem()
@@ -168,7 +176,8 @@ export default defineComponent({
 
     const handleDeleteItem = (index: number) => {
       const newValue = deepCopy(props.modelValue)
-      newValue.splice(index, 1)
+      const item = newValue.splice(index, 1)[0]
+      emit('remove', { index, item })
       emit('update:model-value', newValue)
     }
 
