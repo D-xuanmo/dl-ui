@@ -1,4 +1,4 @@
-import { ExtractPropTypes, PropType } from 'vue'
+import { ExtractPropTypes, PropType, VNode } from 'vue'
 
 export type RadioProps = ExtractPropTypes<typeof RADIO_PROPS>
 
@@ -14,7 +14,7 @@ export const RADIO_PROPS = {
   /**
    * 单选框显示文字
    */
-  label: String,
+  label: [String, Function] as PropType<string | VNode>,
 
   /**
    * 是否默认选中

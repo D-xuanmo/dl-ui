@@ -5,7 +5,10 @@
       <border-square-outlined v-else :color="iconColor" />
     </template>
     <span v-if="label || $slots.default" :class="labelClassName">
-      <slot>{{ label }}</slot>
+      <slot>
+        <template v-if="typeof label === 'string'">{{ label }}</template>
+        <component :is="label" v-else />
+      </slot>
     </span>
   </div>
 </template>

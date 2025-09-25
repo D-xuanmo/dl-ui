@@ -4,12 +4,15 @@
       <check-circle-filled v-if="checked" :color="iconColor" />
       <border-circle-outlined v-else :color="iconColor" />
     </template>
-    <span v-if="label" :class="labelClassName">{{ label }}</span>
+    <span v-if="label" :class="labelClassName">
+      <template v-if="typeof label === 'string'">{{ label }}</template>
+      <component :is="label" v-else />
+    </span>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject } from 'vue'
+import { computed, defineComponent, inject, isVNode } from 'vue'
 import { createNamespace } from '@xuanmo/dl-common'
 import { RADIO_PROPS } from './props'
 import { isEmpty } from '@xuanmo/utils'
@@ -57,6 +60,7 @@ export default defineComponent({
       iconColor,
       checked,
       readonly,
+      isVNode,
       handleChange
     }
   }
