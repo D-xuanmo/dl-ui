@@ -31,6 +31,7 @@ const emit = <T = unknown>(model: IFormModelItem | IRenderModel): EmitType<T> | 
      */
     return (eventName, value, rowId) => {
       store.events.emit(`${EventPrefixEnum.FIELD}.${id}.${eventName}`, value, rowId)
+      if (rowId) store.events.emit(`${EventPrefixEnum.FIELD}.${id}.${eventName}.${rowId}`, value)
     }
   } catch {
     return undefined
