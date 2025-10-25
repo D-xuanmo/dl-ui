@@ -4,8 +4,7 @@
   @include font-size(md);
 
   &__header {
-    padding: var(--d-gap-sm);
-    border-bottom: var(--d-border);
+    padding: var(--d-gap-xs) var(--d-gap-sm);
     text-align: left;
 
     &-extra {
@@ -37,5 +36,6 @@
 
   &__body {
     padding: var(--d-gap-sm);
+    border-top: var(--d-border);
   }
 }
