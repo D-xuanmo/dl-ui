@@ -137,9 +137,18 @@ export class DetailTableStore {
    * @param rowId 行 id
    */
   public copyRow(tableId: string, rowId: string) {
-    const rowData = this.getTableData(tableId)?.get(rowId)
+    const rowData = this.getRowData(tableId, rowId)
     if (!rowData) return throwError('DetailTable', '未找到对应的明细行数据')
     this.addRow(tableId, deepCopy(rowData))
+  }
+
+  /**
+   * 获取明细表行数据
+   * @param tableId 明细表 id
+   * @param rowId 行 id
+   */
+  public getRowData(tableId: string, rowId: string) {
+    return this.getTableData(tableId)?.get(rowId)
   }
 
   /**
